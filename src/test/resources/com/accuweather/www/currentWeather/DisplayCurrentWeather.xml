@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Core-Regression" parallel="methods" thread-count="1">
+  
+	<parameter name="runLocation" value="remote" />
+	<parameter name="browserUnderTest" value="chrome" />
+	<parameter name="browserVersion" value="73" />
+	<parameter name="operatingSystem" value="linux" />
+	<parameter name="environment" value="qa" />
+	
+    <test name="navigation" >
+		<classes>
+			<class name="com.accuweather.www.currentWeather.Test_DisplayedCurrentWeatherDataMatchesRestData" />
+		</classes>
+	</test>
+ 
+</suite> <!-- Suite -->

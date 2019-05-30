@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Core-Regression" parallel="methods" thread-count="1">
+  
+	<parameter name="runLocation" value="local" />
+	<parameter name="browserUnderTest" value="ff" />
+	<parameter name="environment" value="qa" />
+	
+    <test name="PodCast Tests In FireFox Browser" >
+		<packages>
+			<package name="com.accuweather.glacier.www.podcast.*" />
+		</packages>
+	</test>
+ 
+</suite> <!-- Suite -->

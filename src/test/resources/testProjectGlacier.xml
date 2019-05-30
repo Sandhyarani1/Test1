@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Core-Regression" parallel="methods" thread-count="1">
+  
+	<parameter name="runLocation" value="local" />
+	
+	<parameter name="environment" value="qa" />
+	
+    <test name="Hourly Page Tests In Chrome Browser" >
+    <parameter name="browserUnderTest" value="chrome" />
+		<packages>
+			<package name="com.accuweather.glacier.www.hourlyForecast.*" />
+		</packages>
+	</test>
+	
+	<test name="Current Conditions Tests In Chrome Browser" >
+	<parameter name="browserUnderTest" value="chrome" />
+		<packages>
+			<package name="com.accuweather.glacier.www.currentCondition.*" />
+		</packages>
+	</test>
+	
+	<test name="Three Day Forecast Tests In Firefox Browser" >
+	<parameter name="browserUnderTest" value="firefox" />
+		<packages>
+			<package name="com.accuweather.glacier.www.threedayforecast.*" />
+		</packages>
+	</test>
+	
+	<test name="Monthly Forecasts Tests In Firefox Browser" >
+	<parameter name="browserUnderTest" value="firefox" />
+		<packages>
+			<package name="com.accuweather.glacier.www.monthlyforecast.*" />
+		</packages>
+	</test>
+ 
+</suite>

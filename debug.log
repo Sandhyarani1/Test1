@@ -1,0 +1,35 @@
+[0307/112901.936:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0307/112902.419:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0307/115010.341:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0307/165231.299:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0307/190142.709:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0308/082230.370:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0312/213219.613:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0313/090824.534:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0313/090825.769:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0313/093020.916:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0317/204320.760:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0318/160629.572:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0319/141953.253:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0325/135726.548:ERROR:process_info.cc(359)] UncheckedAllocate
+[0325/135726.700:ERROR:process_info.cc(359)] UncheckedAllocate
+[0325/135726.920:ERROR:process_info.cc(359)] UncheckedAllocate
+[0326/112210.677:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0327/093516.418:ERROR:process_info.cc(359)] UncheckedAllocate
+[0327/093815.862:ERROR:process_reader_win.cc(182)] ResumeThread: The parameter is incorrect. (0x57)
+[0327/093815.870:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0327/093815.870:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0327/093815.870:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0327/093815.870:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0327/093815.870:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0327/093815.870:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0327/093815.870:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0327/093815.870:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0327/093815.870:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0327/093815.870:ERROR:exception_snapshot_win.cc(88)] thread ID 38324 not found in process
+[0327/093815.874:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0327/094122.927:ERROR:process_info.cc(359)] UncheckedAllocate
+[0327/094122.931:ERROR:process_info.cc(359)] UncheckedAllocate
+[0327/094122.935:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\QUALIT~1\AppData\Local\Temp\scoped_dir42128_18496\Crashpad\reports\c3bf2a0a-5488-458e-8c1e-2cce9837dc3b.dmp: The process cannot access the file because it is being used by another process. (0x20)
+[0327/094452.717:ERROR:process_info.cc(359)] UncheckedAllocate
+[0508/153152.133:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0

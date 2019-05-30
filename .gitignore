@@ -1,0 +1,9 @@
+/target/
+/test-output/
+/selenium-reports/ 
+/lib/
+/src/test/resources/localRegression.xml
+/.idea/
+/allure-results/
+Chameleon.iml
+/selenium-reports/

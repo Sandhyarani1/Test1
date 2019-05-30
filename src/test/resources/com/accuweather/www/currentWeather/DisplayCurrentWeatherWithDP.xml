@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Core-Regression" parallel="methods" thread-count="1" data-provider-thread-count="3">
+  
+	<parameter name="runLocation" value="local" />
+	<parameter name="browser" value="chrome" />
+	<parameter name="environment" value="qa" />
+	
+    <test name="navigation" >
+		<classes>
+			<class name="com.accuweather.www.currentWeather.Test_DisplayedCurrentWeatherDataMatchesRestDataForTopCities" />
+		</classes>
+	</test>
+ 
+</suite> <!-- Suite -->

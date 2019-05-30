@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Core-Regression" parallel="methods" thread-count="2">
+  
+	<parameter name="runLocation" value="mobile_emulator" />
+	<parameter name="operatingSystem" value="Nexus_5" />
+	<parameter name="environment" value="qa" />
+	
+    <test name="searchLocations" >
+		<packages>
+			<package name="com.accuweather.m.searchLocations.*" />
+		</packages>
+	</test>
+ 
+</suite> <!-- Suite -->

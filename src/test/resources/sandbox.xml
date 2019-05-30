@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="regression" parallel="tests" thread-count="1">
+
+ <test name="sandbox" parallel="methods" thread-count="3" >
+		<parameter name="runLocation" value="mobile_emulator" />
+		<parameter name="operatingSystem" value="Nexus_5" />
+		<parameter name="environment" value="prod" />
+		<classes>
+			<class name="com.accuweather.sandbox.Sandbox" />
+		</classes>
+	</test>
+
+ <!-- 
+    <test name="mobile" parallel="methods" thread-count="3" >
+		<parameter name="runLocation" value="mobile_emulator" />
+		<parameter name="operatingSystem" value="Nexus_5" />
+		<parameter name="environment" value="qa" />
+		<packages>
+			<package name="com.accuweather.m.*" />
+		</packages>
+	</test>
+	
+	
+	 --><!-- 
+    <test name="web" parallel="methods" thread-count="3">
+		<parameter name="runLocation" value="local" />
+		<parameter name="browser" value="chrome" />
+		<packages>
+			<package name="com.accuweather.www.*" />
+		</packages>
+	</test> -->
+ 
+</suite> <!-- Suite -->
