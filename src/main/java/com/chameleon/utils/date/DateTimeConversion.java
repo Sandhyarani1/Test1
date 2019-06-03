@@ -1,5 +1,4 @@
 package com.chameleon.utils.date;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,13 +7,13 @@ import java.util.Date;
 import java.util.Locale;
 
 public class DateTimeConversion {
-
     public static String convert(String date, String fromFormat, String toFormat) {
         SimpleDateFormat dateFormat = new SimpleDateFormat(fromFormat, Locale.ENGLISH);
         Date parsedDate = null;
         try {
             parsedDate = dateFormat.parse(date);
-        } catch (ParseException e) {
+        }
+ catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
@@ -40,7 +39,6 @@ public class DateTimeConversion {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, Integer.parseInt(daysOut));
         String convertedDate = dateFormat.format(cal.getTime());
-
         return convertedDate;
     }
 
@@ -80,7 +78,5 @@ public class DateTimeConversion {
         cal.add(Calendar.DATE, daysOut);
         return dateFormat.format(cal.getTime());
     }
-    
 
-    
 }

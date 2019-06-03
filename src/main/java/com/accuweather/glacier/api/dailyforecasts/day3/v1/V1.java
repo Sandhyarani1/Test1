@@ -1,4 +1,4 @@
-package com.accuweather.glacier.api.dailyforecasts.v1;
+package com.accuweather.glacier.api.dailyforecasts.day3.v1;
 import com.accuweather.glacier.api.BaseAPI;
 import com.accuweather.glacier.api.objects1.Location;
 import com.chameleon.api.restServices.RestResponse;
@@ -24,6 +24,11 @@ public class V1 extends BaseAPI
     public RestResponse getDetails(String locationKey, boolean details) {
         Parameters params = new Parameters();
         params.add("details", details);
+        return sendGetRequest(pathBuilder(path, locationKey), buildParams(params));
+    }
+    public RestResponse getmeticDetails(String locationKey, boolean metric) {
+        Parameters params = new Parameters();
+        params.add("metricdetails", metric);
         return sendGetRequest(pathBuilder(path, locationKey), buildParams(params));
     }
 	/*

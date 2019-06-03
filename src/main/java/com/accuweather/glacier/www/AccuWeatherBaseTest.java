@@ -1,11 +1,8 @@
 package com.accuweather.glacier.www;
-
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
-
 import com.accuweather.glacier.Environment;
 import com.accuweather.glacier.LocationData;
 import com.accuweather.glacier.api.helpers.CurrentConditionsHelper;
@@ -19,11 +16,10 @@ import com.chameleon.selenium.web.chromeDevTool.ChromeDevToolClient;
 import com.chameleon.selenium.web.chromeDevTool.ChromeDevToolCommands;
 import com.chameleon.utils.TestReporter;
 
-public class AccuWeatherBaseTest extends WebBaseTest {
-
+public class AccuWeatherBaseTest extends WebBaseTest
+{
     // setting default language to be english
     private ThreadLocal<String> currentLanguage = ThreadLocal.withInitial(() -> "en");
-
     public AccuWeatherBaseTest() {
     }
 
@@ -67,15 +63,16 @@ public class AccuWeatherBaseTest extends WebBaseTest {
         testStart(testName);
         return condition;
     }
-    
+
     @SuppressWarnings("deprecation")
 	public void waitUntilElementIsDisplayedOrClickable() {
-    	WebDriverWait wait = new WebDriverWait(getDriver(),100);
+    	WebDriverWait wait = new WebDriverWait(getDriver(),500);
 		  wait.pollingEvery(5,TimeUnit.SECONDS);
     }
-    
+
     public void waitUntilWindowExistsWithTitle(String string) {
     	ExtendedWebDriver driver = (ExtendedWebDriver) DriverManager.getDriver();
   	  WindowHandler.waitUntilWindowExistsWithTitle(driver, string);
     }
+
 }

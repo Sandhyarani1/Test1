@@ -21,6 +21,7 @@ public class InternetExplorerDriverManager extends DriverManager {
         options = new InternetExplorerOptions();
         options.setPageLoadStrategy(DriverConstants.DEFAULT_INTERNET_EXPLORER_PAGE_LOAD_STRATEGY);
         options.ignoreZoomSettings();
+        options.destructivelyEnsureCleanSession();
     }
 
     public InternetExplorerDriverManager(InternetExplorerOptions options) {
