@@ -200,6 +200,8 @@ public class SimpleDate
 	{
 		int today = calendar.get(Calendar.DAY_OF_WEEK);
 		int tomorrow = today + 1;
+		if(tomorrow>7)
+			tomorrow = tomorrow-7;
 		String dayOfTheWeek = "";
 		switch (tomorrow)
 		{

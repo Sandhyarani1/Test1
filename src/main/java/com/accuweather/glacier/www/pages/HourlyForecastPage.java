@@ -17,43 +17,43 @@ public class HourlyForecastPage extends BasePage
 {
 	private By byHourlyForecastPage = By.cssSelector("div.page-subnav > div > div > div.subnav-items > a:nth-child(4)");
 	private By byTime = By
-			.cssSelector("div.two-column-page-content > div > div > div > div > div > div > div.date > p:nth-child(1)");
+			.cssSelector("div.two-column-page-content > div > div > div > div > div > div > div > div.date > p:nth-child(1)");
 	private By byDate = By
-			.cssSelector("div.two-column-page-content > div > div > div > div > div > div > div.date > p:nth-child(2)");
+			.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(1) > div:nth-child(1) > div > div > div.date > p:nth-child(2)");
 	private By byWeatherIcon = By
-			.cssSelector("div.two-column-page-content > div > div > div > div > div > div > img.weather-icon.icon");
+			.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(1) > div:nth-child(1) > div > div > img.weather-icon.icon");
 	private By byTemperature = By
-			.cssSelector("div.two-column-page-content > div > div > div > div > div > div > div.temp");
+			.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(1) > div:nth-child(1) > div > div > div.temp");
 	private By byWeatherText = By
-			.cssSelector("div.two-column-page-content > div > div > div > div > div > div > span.phrase");
+			.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(1) > div:nth-child(1) > div > div > span.phrase");
 	private By byPrecipitation = By
-			.cssSelector("div.two-column-page-content > div > div > div > div > div > div > div.precip");
+			.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(1) > div:nth-child(1) > div > div > div.precip");
 	private By byExpandTabIcon = By.cssSelector(" div.two-column-page-content > div > div > div > div > div > svg.");
 	private By byCompressTabIcon = By.cssSelector("");
 	private By byRealFeelValue = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item-content > div > div.panel.left > p:nth-child(1)");
+			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(1) > p:nth-child(1)");
 	private By byWindValue = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item-content > div > div.panel.left > p:nth-child(2)");
+			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(1) > p:nth-child(2)");
 	private By byGustsValue = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item-content > div > div.panel.left > p:nth-child(3)");
+			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(1) > p:nth-child(3)");
 	private By byHumidityValue = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item-content > div > div.panel.left > p:nth-child(4)");
+			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(1) > p:nth-child(4)");
 	private By byDewPointValue = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item-content > div > div.panel.left > p:nth-child(5)");
+			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(1) > p:nth-child(5)");
 	private By byMaxUVIndex = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item-content > div > div.panel.left > p:nth-child(6)");
+			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(1) > p:nth-child(6)");
 	private By byCloudCover = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(1)");
+			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(1)");
 	private By byRain = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(2)");
+			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(2)");
 	private By bySnow = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(3)");
+			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(3)");
 	private By byIce = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(4)");
+			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(4)");
 	private By byVisibility = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(5)");
+			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(5)");
 	private By byCeiling = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(6)");
+			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(6)");
 	private By byNextDay = By.cssSelector("div.navigation.content-module > a.card-button.nav-card.next.centered");
 	private By byNextDayText = By
 			.cssSelector("div.navigation.content-module > a.card-button.nav-card.next.centered > span.text");
@@ -62,9 +62,9 @@ public class HourlyForecastPage extends BasePage
 	private By byLeftArrowIcon = By.cssSelector(
 			"div.navigation.content-module > a.card-button.nav-card.prev.centered.has-next > div > svg.arrow.icon-chevron.icon-chevron-left");
 	private By byUpArrowIcon = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div > div > svg.icon-chevron.icon-chevron.icon-chevron-up");
+			"div.two-column-page-content > div > div > div > div > div > div.header-wrapper.card > svg.icon-chevron.icon-chevron.icon-chevron-up");
 	private By byDownArrowIcon = By
-			.cssSelector("div.two-column-page-content > div > div > div > div > div > svg.icon-chevron.icon-chevron");
+			.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(1) > div:nth-child(1) > div > svg.icon-chevron.icon-chevron");
 	private By byPreviousDayText = By
 			.cssSelector("div.navigation.content-module > a.card-button.nav-card.prev.centered.has-next > span.text");
 	private By byPreviousDay = By
@@ -76,9 +76,9 @@ public class HourlyForecastPage extends BasePage
 	private By byAccuWeatherLogo = By
 			.cssSelector("div.main-menu > div > div.icon-text > a:nth-child(1) > svg.icon-logo");
 	private By byCurrentHourTab = By
-			.cssSelector("div.two-column-page-content > div > div > div > div > div.header-wrapper.card");
+			.cssSelector("div.two-column-page-content > div > div > div.hourly-wrapper > div:nth-child(1) > div > div.header-wrapper.card");
 	private By byCurrentHourInfoTab = By.cssSelector(
-			"div.two-column-page-content > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div.hourly-forecast-card-content.hourly-forecast-content");
+			"div.two-column-page-content > div > div > div.hourly-wrapper > div:nth-child(1) > div:nth-child(2) > div.hourly-forecast-card-content.hourly-forecast-content");
 	private By byTemperatureAtTheTop = By.cssSelector(
 			"div.page-subheader.content-module > div.page-subheader-wrap > div.recent-locations-label > a.recent-location-display > span:nth-child(2)");
 	private By byWeatherIconAtTheTop = By.cssSelector(
@@ -360,7 +360,8 @@ public class HourlyForecastPage extends BasePage
 		for (int i = 1; i <= 24; i++)
 		{
 			WebElement hourTab = getDriver()
-					.findElement(By.cssSelector("div.two-column-page-content > div > div > div:nth-child(" + i + ")"));
+					.findElement(By.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(" + i + ")"));
+			hourTab.syncVisible(30);
 			getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			if (hourTab.isDisplayed())
 				counter++;
@@ -439,6 +440,12 @@ public class HourlyForecastPage extends BasePage
 		if (currentHourInfoTab.isDisplayed())
 		{
 			getDriver().findElement(byCurrentHourTab).jsClick();
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if (currentHourInfoTab.isDisplayed())
 				setCurrentHourInfoTabState(true);
 			else
@@ -908,7 +915,7 @@ public class HourlyForecastPage extends BasePage
 	{
 		WebPageLoaded.isDomInteractive();
 		WebElement time = getDriver()
-				.findElement(By.cssSelector("div.two-column-page-content > div > div > div:nth-child(" + i
+				.findElement(By.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(" + i
 						+ ") > div > div > div > div.date > p:nth-child(1)"));
 		time.syncVisible(15);
 		return time.getText();
@@ -919,8 +926,8 @@ public class HourlyForecastPage extends BasePage
 	{
 		WebPageLoaded.isDomInteractive();
 		WebElement date = getDriver()
-				.findElement(By.cssSelector("div.two-column-page-content > div > div > div:nth-child(" + i
-						+ ") > div > div > div > div.date > p:nth-child(2)"));
+				.findElement(By.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(" + i
+						+ ") > div > div > div > div.date > p.sub"));
 		date.syncVisible(15);
 		return date.getText();
 	}

@@ -27,9 +27,9 @@ public class LegalFooter extends BasePage
 	private By byPrivacyPolicyHeading = By.cssSelector("body > div.template-root > div.page-content > div > div > h2");
 	private By byTAGDisclosureHeading = By.cssSelector("body > div.template-root > div.page-content > div > div > h2");
 	private By byCookiePolicyHeading = By.cssSelector("body > div.template-root > div.page-content > div > div > h2");
-	private By bySettingsButton = By.cssSelector("body > div.template-root > div.component-sticky-container.header > div > div.main-menu > div.header-right-container > div.settings-button");
-	private By byLanguageSelector = By.cssSelector("body > div.template-root > div.component-sticky-container.header > div > div.utility-bar > div > div > div.dropdown-select.locale-dropdown.fade-in-left > div.dropdown-select-wrapper > div");
-	private By bySpanish = By.cssSelector("body > div.template-root > div.component-sticky-container.header > div > div.utility-bar > div > div > div.dropdown-select.locale-dropdown.fade-in-left > div.dropdown-content > div:nth-child(3)"); 
+	private By bySettingsButton = By.cssSelector("div.main-menu > div.header-right-container > div.settings-button");
+	private By byLanguageSelector = By.cssSelector("div.utility-bar > div > div > div.dropdown-select.locale-dropdown.fade-in-left > div.dropdown-select-wrapper > div.select-title.non-touch");
+	private By bySpanish = By.cssSelector("div.utility-bar > div > div > div.dropdown-select.locale-dropdown.fade-in-left > div.dropdown-content > div:nth-child(3)");
 	
 	/**
 	 * Method to validate if Terms Of Use link is present on Footer
@@ -58,13 +58,11 @@ public class LegalFooter extends BasePage
 		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		return termsOfUseText.getText();
 	}
-
+	
 	/**
-	 * Method to get the URL of Terms Of Use page
-	 * @author HFARAZ
-	 * @return - String value - "URL of Terms Of Use page"
+	 * Method to click on Terms Of Use
 	 * */
-	public String getURLOfTermsOfUse()
+	public void clickTermsOfUse()
 	{
 		WebPageLoaded.isDomInteractive();
 		WebElement termsOfUseLink = getDriver().findElement(byTermsOfUse);
@@ -73,6 +71,18 @@ public class LegalFooter extends BasePage
 		termsOfUseLink.jsClick();
 		String window = getDriver().getWindowHandle();
 		switchToPopUpWindow(window);
+		WebPageLoaded.isDomInteractive();
+		getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+	}
+
+	/**
+	 * Method to get the URL of Terms Of Use page
+	 * @author HFARAZ
+	 * @return - String value - "URL of Terms Of Use page"
+	 * */
+	public String getURLOfTermsOfUse()
+	{
+		clickTermsOfUse();
 		return getDriver().getCurrentUrl();
 	}
 
@@ -90,6 +100,7 @@ public class LegalFooter extends BasePage
 		termsOfUseLink.jsClick();
 		String window = getDriver().getWindowHandle();
 		switchToPopUpWindow(window);
+		WebPageLoaded.isDomInteractive();
 		return getDriver().getTitle();
 	}
 
@@ -100,13 +111,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getNameOfTermsOfUseTab()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement termsOfUseLink = getDriver().findElement(byTermsOfUse);
-		termsOfUseLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		termsOfUseLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickTermsOfUse();
 		WebElement termsOfUseTab = getDriver().findElement(byTermsOfUseTab);
 		return termsOfUseTab.getText();
 	}
@@ -118,13 +123,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getHeadingOfTermsOfUse()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement termsOfUseLink = getDriver().findElement(byTermsOfUse);
-		termsOfUseLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		termsOfUseLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickTermsOfUse();
 		WebElement termsOfUseHeading = getDriver().findElement(byTermsOfUseHeading);
 		return termsOfUseHeading.getText();
 	}
@@ -136,13 +135,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getTopBorderColor_Of_TermsOfUseTab()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement termsOfUseLink = getDriver().findElement(byTermsOfUse);
-		termsOfUseLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		termsOfUseLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickTermsOfUse();
 		String color = getDriver().findElement(byTermsOfUseTab).getCssValue("border-top-color");
 		return Color.fromString(color).asHex();
 	}
@@ -164,13 +157,12 @@ public class LegalFooter extends BasePage
 		}
 
 	}
-
+	
 	/**
-	 * Method to get the title of Privacy Policy page
+	 * Method to click Privacy Policy
 	 * @author HFARAZ
-	 * @return - String value - "title of Privacy Policy page"
 	 * */
-	public String getTitleOfPrivacyPolicy()
+	public void clickPrivacyPolicy()
 	{
 		WebPageLoaded.isDomInteractive();
 		WebElement privacyPolicyLink = getDriver().findElement(byPrivacyPolicy);
@@ -179,6 +171,18 @@ public class LegalFooter extends BasePage
 		privacyPolicyLink.jsClick();
 		String window = getDriver().getWindowHandle();
 		switchToPopUpWindow(window);
+		WebPageLoaded.isDomInteractive();
+		getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+	}
+
+	/**
+	 * Method to get the title of Privacy Policy page
+	 * @author HFARAZ
+	 * @return - String value - "title of Privacy Policy page"
+	 * */
+	public String getTitleOfPrivacyPolicy()
+	{
+		clickPrivacyPolicy();
 		return getDriver().getTitle();
 	}
 
@@ -217,13 +221,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getURLOfPrivacyPolicy()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement termsOfUseLink = getDriver().findElement(byPrivacyPolicy);
-		termsOfUseLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		termsOfUseLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickPrivacyPolicy();
 		return getDriver().getCurrentUrl();
 	}
 
@@ -234,13 +232,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getNameOfPrivacyPolicyTab()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement termsOfUseLink = getDriver().findElement(byPrivacyPolicy);
-		termsOfUseLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		termsOfUseLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickPrivacyPolicy();
 		WebElement termsOfUseTab = getDriver().findElement(byPrivacyPolicyTab);
 		return termsOfUseTab.getText();
 	}
@@ -252,13 +244,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getHeadingOfPrivacyPolicy()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement termsOfUseLink = getDriver().findElement(byPrivacyPolicy);
-		termsOfUseLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		termsOfUseLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickPrivacyPolicy();
 		WebElement termsOfUseHeading = getDriver().findElement(byPrivacyPolicyHeading);
 		return termsOfUseHeading.getText();
 	}
@@ -270,15 +256,26 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getTopBorderColor_Of_PrivacyPolicyTab()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement termsOfUseLink = getDriver().findElement(byPrivacyPolicy);
-		termsOfUseLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		termsOfUseLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickPrivacyPolicy();
 		String color = getDriver().findElement(byPrivacyPolicyTab).getCssValue("border-top-color");
 		return Color.fromString(color).asHex();
+	}
+	
+	/**
+	 * Method to click Cookie Policy
+	 * @author HFARAZ
+	 * **/
+	public void clickCookiePolicy()
+	{
+		WebPageLoaded.isDomInteractive();
+		WebElement cookiePolicyLink = getDriver().findElement(byCookiePolicy);
+		cookiePolicyLink.syncVisible(30);
+		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		cookiePolicyLink.jsClick();
+		String window = getDriver().getWindowHandle();
+		switchToPopUpWindow(window);
+		WebPageLoaded.isDomInteractive();
+		getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 	}
 
 	/**
@@ -288,13 +285,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getTitleOfCookiePolicy()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement cookiePolicyLink = getDriver().findElement(byCookiePolicy);
-		cookiePolicyLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		cookiePolicyLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickCookiePolicy();
 		return getDriver().getTitle();
 	}
 
@@ -333,13 +324,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getURLOfCookiePolicy()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement cookiePolicyLink = getDriver().findElement(byCookiePolicy);
-		cookiePolicyLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		cookiePolicyLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickCookiePolicy();
 		return getDriver().getCurrentUrl();
 	}
 
@@ -350,13 +335,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getNameOfCookiePolicyTab()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement cookiePolicyLink = getDriver().findElement(byCookiePolicy);
-		cookiePolicyLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		cookiePolicyLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickCookiePolicy();
 		WebElement cookiePolicyTab = getDriver().findElement(byCookiePolicyTab);
 		return cookiePolicyTab.getText();
 	}
@@ -368,13 +347,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getHeadingOfCookiePolicy()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement cookiePolicyLink = getDriver().findElement(byCookiePolicy);
-		cookiePolicyLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		cookiePolicyLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickCookiePolicy();
 		WebElement cookiePolicyHeading = getDriver().findElement(byCookiePolicyHeading);
 		return cookiePolicyHeading.getText();
 	}
@@ -386,15 +359,26 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getTopBorderColor_Of_CookiePolicyTab()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement cookiePolicyLink = getDriver().findElement(byCookiePolicy);
-		cookiePolicyLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		cookiePolicyLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickCookiePolicy();
 		String color = getDriver().findElement(byCookiePolicyTab).getCssValue("border-top-color");
 		return Color.fromString(color).asHex();
+	}
+	
+	/**
+	 * Method to click TAG Disclosure
+	 * @author HFARAZ
+	 * */
+	public void clickTAGDisclosure()
+	{
+		WebPageLoaded.isDomInteractive();
+		WebElement tagDisclosureLink = getDriver().findElement(byTAGDisclosure);
+		tagDisclosureLink.syncVisible(30);
+		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		tagDisclosureLink.jsClick();
+		String window = getDriver().getWindowHandle();
+		switchToPopUpWindow(window);
+		WebPageLoaded.isDomInteractive();
+		getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 	}
 
 	/**
@@ -404,13 +388,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getTitleOfTAGDisclosure()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement tagDisclosureLink = getDriver().findElement(byTAGDisclosure);
-		tagDisclosureLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		tagDisclosureLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickTAGDisclosure();
 		return getDriver().getTitle();
 	}
 
@@ -449,13 +427,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getURLOfTAGDisclosure()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement tagDisclosureLink = getDriver().findElement(byTAGDisclosure);
-		tagDisclosureLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		tagDisclosureLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickTAGDisclosure();
 		return getDriver().getCurrentUrl();
 	}
 
@@ -466,13 +438,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getNameOfTAGDisclosureTab()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement tagDisclosureLink = getDriver().findElement(byTAGDisclosure);
-		tagDisclosureLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		tagDisclosureLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickTAGDisclosure();
 		WebElement cookiePolicyTab = getDriver().findElement(byTAGDisclosureTab);
 		return cookiePolicyTab.getText();
 	}
@@ -484,13 +450,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getHeadingOfTAGDisclosure()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement tagDisclosureLink = getDriver().findElement(byTAGDisclosure);
-		tagDisclosureLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		tagDisclosureLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickTAGDisclosure();
 		WebElement cookiePolicyHeading = getDriver().findElement(byTAGDisclosureHeading);
 		return cookiePolicyHeading.getText();
 	}
@@ -502,13 +462,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getTopBorderColor_Of_TAGDisclosureTab()
 	{
-		WebPageLoaded.isDomInteractive();
-		WebElement tagDisclosureLink = getDriver().findElement(byTAGDisclosure);
-		tagDisclosureLink.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		tagDisclosureLink.jsClick();
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		clickTAGDisclosure();
 		String color = getDriver().findElement(byTAGDisclosureTab).getCssValue("border-top-color");
 		return Color.fromString(color).asHex();
 	}

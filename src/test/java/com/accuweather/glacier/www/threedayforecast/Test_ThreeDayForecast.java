@@ -22,7 +22,7 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 	ThreeDayForecastPage threeDayForecastPage = new ThreeDayForecastPage();
 	private SimpleDate getDateTime = new SimpleDate();
 	
-	/*@Test(priority = 1)
+	@Test(priority = 1)
 	public void TC1_nowTabOnCityForecastPage() {
 		String Expectedactive="subnav-item active";
 		testStart("Navigate to city forecast page and Verfiy Now Tab highlighted");
@@ -491,7 +491,7 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 		threeDayForecastPage.animationBackwardarrowclick();
 		WebPageLoaded.isDomInteractive(6000);
 		Assert.assertTrue(threeDayForecastPage.fourWeathercardisDisplayed());
-	}*/
+	}
 	@Test(priority = 45, enabled = true)
 	public void TC12_isTimeCorrectOnCurrentWeather()
 	{
@@ -512,7 +512,7 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 		Assert.assertTrue(threeDayForecastPage.dateValidationOnTodayCard());
 	}
 
-	/*@Test(priority = 47, enabled = true)
+	@Test(priority = 47, enabled = true)
 	public void TC12_isDateCorrectOnTonightCard()
 	{
 		testStart("Verification whether current date is displayed on tonight card");
@@ -530,5 +530,5 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
 		Assert.assertTrue(threeDayForecastPage.dateValidationOnTomorrowsCard());
-	}*/
+	}
 }

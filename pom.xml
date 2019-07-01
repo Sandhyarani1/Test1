@@ -50,7 +50,7 @@
 		<jenkinsBrowserVersion>${browserVersion}</jenkinsBrowserVersion>
 		<jenkinsRunLocation>${runLocation}</jenkinsRunLocation>
 		<testNGSourceDirectory>src/test/resources</testNGSourceDirectory>
-		<suiteXMLName>testHourlyForecast</suiteXMLName>
+		<suiteXMLName>testProjectGlacier</suiteXMLName>
 	</properties>
 	<repositories>
 		<repository>

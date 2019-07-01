@@ -1,5 +1,9 @@
 package com.accuweather.glacier.www.pages;
+import java.util.Iterator;
+import java.util.Set;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,7 +16,7 @@ import com.chameleon.utils.Constants;
 
 public class NavigationBar extends BasePage 
 {
-    private By byLogo = By.cssSelector("div > div.main-menu > div.logo-wrapper > a > svg");
+    private By byLogo = By.cssSelector("div > div.main-menu > div.logo-wrapper >div.icon-text > a > svg");
     //private By byRadarMaps = By.id("navRadar");
     //private By byRadarMaps = By.xpath("//li[contains(@id,'navRadar')]/a/span");
     private By byMegaMenu = By.cssSelector("div.main-menu-content");
@@ -21,12 +25,37 @@ public class NavigationBar extends BasePage
     private By byVideo = By.cssSelector("div.main-menu > ul > li:nth-child(3)");
     private By bySevereWeather = By.cssSelector("div.main-menu > ul > li:nth-child(4)");
     private By byMore = By.cssSelector("div.main-menu > ul > li:nth-child(5)");
+    private By bySettingIcon = By.cssSelector("div.settings-button > svg.icon-settings");
+    private By bySettingCountry = By.cssSelector("div.settings-wrap > div.dropdown-select.fade-in-left > div.dropdown-select-wrapper > div.select-title");
+    private By bySettingLanguage = By.cssSelector("div.settings-wrap > div.fade-in-left:nth-of-type(2) > div > div");
+    private By bySettingTemperature = By.cssSelector("div.settings-wrap > div.temp-switcher.fade-in-left > span.temp-switcher-label");
+    private By bySettingCountryUpArrow = By.cssSelector("div > div > div.dropdown-select-wrapper > svg.hide-mobile.icon-chevron");
+    private By bySettingMyRecentCountries = By.cssSelector("div > div.dropdown-select.fade-in-left > div.dropdown-content > div.dropdown-content-title");
+    private By bySettingMoreCountries = By.cssSelector("div > div > div.dropdown-content > a.button-primary");
+    private By bySettingCountryName = By.cssSelector("div > div > div.dropdown-content > a.dropdown-content-item");
+    private By bySettingLanguageArrow = By.cssSelector("div > div.fade-in-left:nth-of-type(2) > div > svg.hide-mobile.icon-chevron");
+    private By bySettingLangugaeList = By.cssSelector("div > div > div.dropdown-content");
+    private By bySettingLanguageSelect = By.cssSelector("div > div.dropdown-select.locale-dropdown.fade-in-left > div.dropdown-content > div.dropdown-content-item:nth-child(3)");
+    private By bySettingFarTempLabel = By.cssSelector("div > div.temp-switcher.fade-in-left > div.switcher-container > span.switcher-label");
+    private By bySettingCentigradeLabel = By.cssSelector("div.settings-wrap > div.temp-switcher.fade-in-left > div.switcher-container.switch-right");
+    private By bySettingTempBall = By.cssSelector("div > div.temp-switcher.fade-in-left > div.switcher-container > div.switcher > div.ball");
+    private By bySettingTempBar = By.cssSelector("div > div.temp-switcher.fade-in-left > div.switcher-container > div.switcher > div.bar" );
     private By byStartSearch = By.className("search-input");
     //private By byTopSearch = By.cssSelector("div.main-menu > div.header-right-container > div.search-wrapper.is-wide > svg.icon-search");
     private By byTopSearch = By.xpath("//div[contains(@class,'header-right-container')]/div");
     //private By byTopSearchClose = By.xpath("//div[contains(@class,'header-right-container')]/svg");
     private By byTopSearchClose = By.cssSelector("div.header-right-container > svg.icon-close");
-    private By bySuperSearch = By.className("super-search-input");
+    //private By bySuperSearch = By.className("super-search-input");
+    private By bySuperSearch = By.cssSelector("div.super-search-wrap > form.super-search-form > input");
+    private By byBrowseLocation = By.cssSelector("div.mega-menu-search > div.content-column > a.super-search-browse");
+    private By byTopNavCTA = By.cssSelector("div.mega-menu-search > div.content-column > div.super-search-current-location");
+    private By byTopNavNYCityImage = By.cssSelector("div.mega-menu-search > div.content-column > div.popular-location.fade-in-left:nth-of-type(1) > img");
+    private By byTopNavChicagoCityImage = By.cssSelector("div.mega-menu-search > div.content-column > div.popular-location.fade-in-left:nth-of-type(2) > img");
+    //private By byTopNavChicagoCityImage = By.cssSelector("div.mega-menu-search > div.content-column > div.popular-location.fade-in-left:nth-of-type(2) > img");
+    private By byTopNavDCCityImage = By.cssSelector("div.mega-menu-search > div.content-column > div.popular-location.fade-in-left:nth-of-type(3) > img");
+    private By byTopNavHoustonCityImage = By.cssSelector("div.mega-menu-search > div.content-column > div.popular-location.fade-in-left:nth-of-type(4) > img");
+    private By byFirstCityName = By.cssSelector("div > div > a.recent-location-item-header.recent-location-link.fade-in-left > span.recent-location-name");
+    private By byTopNavCityList = By.cssSelector("div.mega-menu-search > div.content-column > a.recent-location-link");
     //private By bySuperSearchCityName = By.xpath("//nav[contains(@class,'header-refresh ')]/div[5]/div/div[1]/ul/li[1]/a[contains(@href,'select-city')]");
     private By bySuperSearchCityName = By.xpath("//body[contains(@id,'home')]/nav/div[5]/div/div[1]/ul/li/a");
     private By byRadarSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(2) > a > h4");
@@ -34,7 +63,8 @@ public class NavigationBar extends BasePage
     private By bySatelliteMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(4) > a > h4");
     private By byForecastMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(5) > a > h4");
     private By byMainMenuDescriptionLink = By.cssSelector("a > figure > figcaption");
-    private By byWatchNewsSubMenu = By.cssSelector("div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(3)");
+    //private By byWatchNewsSubMenu = By.cssSelector("div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(3)");
+    private By byWatchNewsSubMenu = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-cta.fade-in-left > a.button-cta");
     private By byWeatherNewsSubMenu = By.cssSelector("div > div:nth-child(2) > a > h4");
     private By byPersonalitiesSubMenu = By.cssSelector("div > div:nth-child(3) > a > h4");
     private By byWeatherBlogsSubMenu = By.cssSelector("div:nth-child(4) > a > h4");
@@ -46,16 +76,21 @@ public class NavigationBar extends BasePage
     private By bySeverWeatherSubMenu = By.cssSelector("div.mega-menu > div > div.mega-menu-item.mega-menu-item-cta.fade-in-left > a > h4");
     //private By byVideoSubMenu = By.cssSelector("div.menu-dropdown > div > div:nth-child(1) > div > a:nth-child(1) > h3");
     private By byVideoSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(1) > a:nth-child(1) > h4");
-    private By byVideoDescription = By.cssSelector("div.mega-menu > div:nth-child(1) > div:first-child");
+    private By byVideoDescription = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-cta.fade-in-left > p");
+    //private By byVideoDescription = By.cssSelector("div.mega-menu > div:nth-child(1) > div:first-child");
     private By byWatchVideoButton = By.cssSelector("div.mega-menu > div > div:nth-child(1) > a:nth-child(3)");
    // private By byWatchVideoButton = By.cssSelector("div > a:nth-child(3)");
     //private By byWatchVideoButton = By.cssSelector("div.menu-dropdown > div > div:nth-child(1) > div > a.orange-button.videos");
     //private By byTrendingNow = By.cssSelector("div.menu-dropdown > div > div:nth-child(2) > div:nth-child(1) > h4 > a");
     private By byTrendingNow = By.cssSelector("div > div:nth-child(2) > a > h4");
-    private By byTrendingNowDescription = By.cssSelector("div.mega-menu > div > div:nth-child(2)");
+    private By byTrendingNowDescription = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-link.fade-in-left:nth-of-type(2) > p");
+    //private By byTrendingNowDescription = By.cssSelector("div.mega-menu > div > div:nth-child(2)");
+    //private By byExpertForecasts = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-of-type(3) > h4");
     private By byExpertForecasts = By.cssSelector(" div.mega-menu > div > div:nth-child(3) > a > h4");
+    //private By byExpertForecasts = By.cssSelector(" div.mega-menu-content > div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(3) > h4");
     private By byStormChasers = By.cssSelector(" div.mega-menu > div > div:nth-child(4) > a > h4");
-    private By byStormChasersDescription = By.cssSelector("div.mega-menu > div > div:nth-child(4)");
+    //private By byStormChasersDescription = By.cssSelector("div.mega-menu > div > div:nth-child(4)");
+    private By byStormChasersDescription = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-link.fade-in-left:nth-of-type(4) > p");
     private By byExpertForecastDescription = By.cssSelector("div.mega-menu > div > div:nth-child(3)");
     //private By byTrendingNow = By.xpath("//body[contains(@id,'home')]//div[5]/div/div[2]/div[1]/h4/a[contains(.,'Trending Now')]");
     //private By byExpertForecasts = By.cssSelector("div.menu-dropdown > div > div:nth-child(2) > div:nth-child(2) > h4 > a");
@@ -68,16 +103,23 @@ public class NavigationBar extends BasePage
     private By byAWPremiumText = By.cssSelector("div > div.mega-menu > div > div:nth-child(2) > p");
     private By byPodcastSubMenu = By.cssSelector("div > div.mega-menu > div > div:nth-child(5) > a > h4");
     private By byPodcastText = By.cssSelector("div > div.mega-menu > div > div:nth-child(3) > p");
-    private By byAWProfessionalSubMenu = By.cssSelector("div > div.mega-menu > div > div:nth-child(4) > a > h4");
+    private By byAWProfessionalSubMenu = By.cssSelector("div > div.mega-menu-content > div.mega-menu-item.mega-menu-item-link.fade-in-left:nth-of-type(4) > a > h4");
+    //private By byAWProfessionalSubMenu = By.cssSelector("div > div.mega-menu > div > div:nth-child(4) > a > h4");
     private By byAWProfessionalText = By.cssSelector("div > div.mega-menu > div > div:nth-child(4) > p");
-    private By byAboutAWSubMenu = By.cssSelector("div > div.mega-menu > div > div:nth-child(5) > a > h4");
+    //private By byAboutAWSubMenu = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(5) > h4");
+    private By byAboutAWSubMenu = By.cssSelector("div > div.mega-menu > div > div:nth-child(1) > a > h4");
+    //private By byAboutAWSubMenu = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(1) > h4");
     private By byAboutAWText = By.cssSelector("div > div.mega-menu > div > div:nth-child(5) > p");
+    //private By byCouponsSubMenu = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-cta.fade-in-left:nth-of-type(6) > a > h4");
+    //private By byCouponsSubMenu = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(6) > h4");
     private By byCouponsSubMenu = By.cssSelector("div > div.mega-menu > div > div:nth-child(6) > a > h4");
     private By byCouponsText = By.cssSelector("div > div.mega-menu > div > div:nth-child(6) > p");
-    private By byFacebookIcon = By.cssSelector("div > div.mega-menu > div > div:nth-child(7) > a > h4");
-    private By byTwitterIcon = By.cssSelector("div.mega-menu-content > div.header-social.fade-in-left > a > svg.icon-twitter");
-    private By byYoutubeIcon = By.cssSelector("div.mega-menu-content > div.header-social.fade-in-left > a > svg.icon-youtube");
-    private By byInstagramIcon = By.cssSelector("div.mega-menu-content > div.header-social.fade-in-left > a >img.icon-instagram");
+    private By byFacebookIcon = By.cssSelector("div.mega-menu-content > div.header-social.fade-in-left:nth-of-type(7) > a > svg.icon-facebook > g > path");
+    //private By byFacebookIcon = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(7) > h4");
+    //private By byFacebookIcon = By.cssSelector("div > div.mega-menu > div > div:nth-child(7) > a > h4");
+    private By byTwitterIcon = By.cssSelector("div.mega-menu-content > div.header-social.fade-in-left:nth-of-type(7) > a > svg.icon-twitter > g > path");
+    private By byYoutubeIcon = By.cssSelector("div.mega-menu-content > div.header-social.fade-in-left:nth-of-type(7) > a > svg.icon-youtube > g > path");
+    private By byInstagramIcon = By.cssSelector("div.mega-menu-content > div.header-social.fade-in-left:nth-of-type(7) > a >img.icon-instagram");
     private By byFaceBookText = By.xpath("//div[contains(@class,'social')]/a[1]/h4");
     private By byTwitterText = By.xpath("//div[contains(@class,'social')]/a[2]/h4");
     private By byInstagramText = By.xpath("//div[contains(@class,'social')]/a[3]/h4");
@@ -108,7 +150,9 @@ public class NavigationBar extends BasePage
     }
 
     public void navigateToRadar() {
-    getDriver().findElement(byRadarSubMenu).click();
+    //WebDriverWait wait = new WebDriverWait(getDriver(), 10);
+    //wait.until(ExpectedConditions.visibilityOfElementLocated(byRadarSubMenu));
+    getDriver().findElement(byRadarSubMenu).jsClick();
     //clickVisibleElement(byRadarSubMenu);
     }
 
@@ -123,31 +167,80 @@ public class NavigationBar extends BasePage
         }
 
     public void navigateToSatellitePage() {
-        getDriver().findElement(bySatelliteMapsSubMenu).click();
-        //clickVisibleElement(byRadarSubMenu);
-        }
+    	getDriver().findElement(bySatelliteMapsSubMenu).jsClick();
+        //getDriver().findElement(bySatelliteMapsSubMenu).click();
+         }
 
     public void navigateToForeCastPage() {
         getDriver().findElement(byForecastMapsSubMenu).click();
         //clickVisibleElement(byRadarSubMenu);
         }
 
+	/*
+	 * public void locationSearch(String info) { //WebTextbox txtSearch =
+	 * getDriver().findTextbox(byStartSearch); WebTextbox txtSearch =
+	 * getDriver().findTextbox(byTopSearch); txtSearch.syncEnabled();
+	 * txtSearch.click(); WebTextbox txtSuperSearch =
+	 * getDriver().findTextbox(bySuperSearch); txtSuperSearch.syncVisible();
+	 * txtSuperSearch.set(info); txtSuperSearch.sendKeys(Keys.RETURN); }
+	 */
+    
     public void locationSearch(String info) {
-        WebTextbox txtSearch = getDriver().findTextbox(byStartSearch);
-        txtSearch.syncEnabled();
-        txtSearch.click();
         WebTextbox txtSuperSearch = getDriver().findTextbox(bySuperSearch);
         txtSuperSearch.syncVisible();
         txtSuperSearch.set(info);
         txtSuperSearch.sendKeys(Keys.RETURN);
     }
 
+    public boolean isSettingCountryDisplayed() {
+       	WebPageLoaded.isDomInteractive();
+        WebTextbox settingcountry = getDriver().findTextbox(bySettingCountry);
+        settingcountry.syncVisible(15);
+    	return settingcountry.isDisplayed();     
+       }
+       
+        public boolean isSettingLanguageDisplayed() {
+       	WebPageLoaded.isDomInteractive();
+        WebTextbox settinglang = getDriver().findTextbox(bySettingLanguage);
+        settinglang.syncVisible(15);
+    	return settinglang.isDisplayed();     
+       }
+        
+        public boolean isSettingTemperatureDisplayed() {
+           	WebPageLoaded.isDomInteractive();
+            WebTextbox settingtemp = getDriver().findTextbox(bySettingTemperature);
+            settingtemp.syncVisible(15);
+        	return settingtemp.isDisplayed();     
+           }
+    
     public boolean isStartSearchDisplayed() {
    	WebPageLoaded.isDomInteractive();
     WebTextbox txtSearch = getDriver().findTextbox(byTopSearch);
     txtSearch.syncVisible(15);
 	return txtSearch.isDisplayed();     
    }
+    
+    
+    public void clickSettingsIcon() {
+       	WebPageLoaded.isDomInteractive();
+        WebTextbox settingicon = getDriver().findTextbox(bySettingIcon);
+        settingicon.syncVisible(15);
+    	settingicon.click();     
+       }
+    
+    public void clickTopNavStartSearchIcon() {
+       	WebPageLoaded.isDomInteractive();
+        WebTextbox startsearch = getDriver().findTextbox(byTopSearch);
+        startsearch.syncVisible(15);
+    	startsearch.click();     
+       }
+    
+    public void clickBrowseYourLocationLink() {
+       	WebPageLoaded.isDomInteractive();
+        WebTextbox browselocation = getDriver().findTextbox(byBrowseLocation);
+        browselocation.syncVisible(15);
+        browselocation.click();     
+       }
 
     public boolean isMegaMenuContentDisplayed() {
        	WebPageLoaded.isDomInteractive();
@@ -162,6 +255,57 @@ public class NavigationBar extends BasePage
         closesearch.syncVisible(15);
     	return closesearch.isDisplayed();     
        }
+    
+    public boolean isTopNavCTATextDisplayed() {
+       	WebPageLoaded.isDomInteractive();
+        WebTextbox topnavctatext = getDriver().findTextbox(byTopNavCTA);
+        topnavctatext.syncVisible(15);
+    	return topnavctatext.isDisplayed();     
+       }
+    
+    public boolean isTopNavNYCityImageDisplayed() {
+       	WebPageLoaded.isDomInteractive();
+        WebTextbox topnavcityimage = getDriver().findTextbox(byTopNavNYCityImage);
+        topnavcityimage.syncVisible(15);
+    	return topnavcityimage.isDisplayed();     
+       }
+    
+    public boolean isTopNavChicagoCityImageDisplayed() {
+       	WebPageLoaded.isDomInteractive();
+        WebTextbox topnavcityimage = getDriver().findTextbox(byTopNavChicagoCityImage);
+        topnavcityimage.syncVisible(15);
+    	return topnavcityimage.isDisplayed();     
+       }
+    
+    public boolean isTopNavDCCityImageDisplayed() {
+       	WebPageLoaded.isDomInteractive();
+        WebTextbox topnavcityimage = getDriver().findTextbox(byTopNavDCCityImage);
+        topnavcityimage.syncVisible(15);
+    	return topnavcityimage.isDisplayed();     
+       }
+    
+    public boolean isTopNavHoustonCityImageDisplayed() {
+       	WebPageLoaded.isDomInteractive();
+        WebTextbox topnavcityimage = getDriver().findTextbox(byTopNavHoustonCityImage);
+        topnavcityimage.syncVisible(15);
+    	return topnavcityimage.isDisplayed();     
+       }
+    
+    
+    public boolean isTopNavFirstCityDisplayed() {
+       	WebPageLoaded.isDomInteractive();
+        WebTextbox topnavcityimage = getDriver().findTextbox(byTopNavCityList);
+        topnavcityimage.syncVisible(15);
+    	return topnavcityimage.isDisplayed();     
+       }
+    
+    
+    public boolean isRecentCityNameDisplayed() {
+       	WebPageLoaded.isDomInteractive();
+        WebTextbox recentcityname = getDriver().findTextbox(byFirstCityName);
+        recentcityname.syncVisible(15);
+    	return recentcityname.isDisplayed();     
+       }
 
     public void clickTopNavSearchCloseIcon() {
        	WebPageLoaded.isDomInteractive();
@@ -171,9 +315,17 @@ public class NavigationBar extends BasePage
        }
 
     public void clickStartSearch() {
-    	 WebTextbox txtSearch = getDriver().findTextbox(byStartSearch);
-		  txtSearch.syncEnabled(); txtSearch.click();
+    WebTextbox txtSearch = getDriver().findTextbox(byStartSearch);
+	txtSearch.syncEnabled();
+	txtSearch.click();
     }
+    
+    
+    public void clickTopNavCTALink() {
+   	 WebTextbox ctalink = getDriver().findTextbox(byTopNavCTA);
+	 ctalink.syncEnabled();
+	 ctalink.click();
+   }
 
     public boolean validateNavigation(String url) {
         WebDriverWait wait = new WebDriverWait(getDriver(), Constants.PAGE_TIMEOUT);
@@ -300,22 +452,26 @@ public class NavigationBar extends BasePage
         }
 
         public void navigateToNewsPage() {
-            getDriver().findElement(byWeatherNewsSubMenu).click();
-            //clickVisibleElement(byRadarSubMenu);
+        	
+            getDriver().findElement(byWeatherNewsSubMenu).jsClick();
+            //getDriver().findElement(byWeatherNewsSubMenu).click();
+            
             }
 
         public void navigateToWeatherVidoesPage() {
-            getDriver().findElement(byWatchNewsSubMenu).click();
-            //clickVisibleElement(byRadarSubMenu);
+            getDriver().findElement(byWatchNewsSubMenu).jsClick();
+            //getDriver().findElement(byWatchNewsSubMenu).click();
+            
             }
 
             public void navigateToPersonalitiesPage() {
-                getDriver().findElement(byPersonalitiesSubMenu).click();
-                //clickVisibleElement(byRadarSubMenu);
-                }
+                getDriver().findElement(byPersonalitiesSubMenu).jsClick();
+               // getDriver().findElement(byPersonalitiesSubMenu).click();
+              }
 
             public void navigateToWeatherBlogPage() {
-                getDriver().findElement(byWeatherBlogsSubMenu).click();
+                getDriver().findElement(byWeatherBlogsSubMenu).jsClick();
+                //getDriver().findElement(byWeatherBlogsSubMenu).click();
                 //clickVisibleElement(byRadarSubMenu);
                 }
 
@@ -325,9 +481,9 @@ public class NavigationBar extends BasePage
                 }
 
             public void navigateToNewsTab() {
-                getDriver().findElement(byNewsSubMenu).click();
-                //clickVisibleElement(byRadarSubMenu);
-                }
+                getDriver().findElement(byNewsSubMenu).jsClick();
+                //getDriver().findElement(byNewsSubMenu).click();
+              }
 
             public void navigateToRadarPageFromDescritionLink() {
                 getDriver().findElement(byMainMenuDescriptionLink).click();
@@ -370,7 +526,10 @@ public class NavigationBar extends BasePage
         }
 
         public void navigateToSevereTab() {
-            getDriver().findElement(bySevereSubMenu).click();
+        	//WebDriverWait wait = new WebDriverWait(getDriver(), 10);
+        	//wait.until(ExpectedConditions.elementToBeClickable(bySevereSubMenu));
+        	getDriver().findElement(bySevereSubMenu).jsClick();
+            //getDriver().findElement(bySevereSubMenu).click();
             //clickVisibleElement(byRadarSubMenu);
             }
 
@@ -526,6 +685,147 @@ public class NavigationBar extends BasePage
             more.syncVisible(15);
             more.hover();
             }
+        
+        public void mouseHoverOnSettingsIcon() {
+        	WebPageLoaded.isDomInteractive();
+            WebElement settings = getDriver().findElement(bySettingIcon);
+            settings.syncVisible(15);
+            settings.hover();
+            }
+        
+        
+        public void mouseHoverOnSettingCountryUpArrowIcon() {
+        	WebPageLoaded.isDomInteractive();
+            WebElement settingcountryuparrow = getDriver().findElement(bySettingCountryUpArrow);
+            settingcountryuparrow.syncVisible(15);
+            settingcountryuparrow.hover();
+            }
+        
+        
+        public void clickSettingCountryUPArrow() {
+            getDriver().findElement(bySettingCountryUpArrow).click();
+            }
+        
+        
+        public boolean isMyRecentCountriesTextDisplayed() {
+        	WebPageLoaded.isDomInteractive();
+            WebElement myrecentcountry = getDriver().findElement(bySettingMyRecentCountries);
+            myrecentcountry.syncVisible(15);
+            return myrecentcountry.isDisplayed();    	   	
+        }
+        
+        public boolean isMoreCountriesButtonDisplayed() {
+        	WebPageLoaded.isDomInteractive();
+            WebElement morecountries = getDriver().findElement(bySettingMoreCountries);
+            morecountries.syncVisible(15);
+            return morecountries.isDisplayed();    	   	
+        }
+        
+        public void clickSettingMoreCountriesLink() {
+            getDriver().findElement(bySettingMoreCountries).click();
+            }
+        
+        
+        public void mouseHoverOnSettingLanguageArrowIcon() {
+        	WebPageLoaded.isDomInteractive();
+            WebElement settinglangarrow = getDriver().findElement(bySettingLanguageArrow);
+            settinglangarrow.syncVisible(15);
+            settinglangarrow.hover();
+            }
+        
+        public boolean isSettingsLanguageListDisplayed() {
+        	WebPageLoaded.isDomInteractive();
+            WebElement langlist = getDriver().findElement(bySettingLangugaeList);
+            langlist.syncVisible(15);
+            return langlist.isDisplayed();    	   	
+        }
+        
+        
+        public void clickSettingLanguageArrowLink() {
+            getDriver().findElement(bySettingLanguageArrow).click();
+            }
+        
+        public void mouseHoverOnSettingCountryNameLink() {
+        	WebPageLoaded.isDomInteractive();
+            WebElement countryname = getDriver().findElement(bySettingCountryName);
+            countryname.syncVisible(15);
+            countryname.hover();
+            }
+        
+        
+        public void mouseHoverOnSettingLanguageNameLink() {
+        	WebPageLoaded.isDomInteractive();
+            WebElement langname = getDriver().findElement(bySettingLanguageSelect);
+            langname.syncVisible(15);
+            langname.hover();
+            }
+        
+        public void clickSettingLangNameLink() {
+            getDriver().findElement(bySettingLanguageSelect).click();
+            }
+        
+        public String getSettingTranslatedLanguageNameText() {
+            return getDriver().findElement(bySettingLanguage).getText();                       
+        }
+        
+        public void clickSettingCountryNameLink() {
+            getDriver().findElement(bySettingCountryName).click();
+            }
+        
+        public String getSettingCountryNameLinkText() {
+            return getDriver().findElement(bySettingCountryName).getText();                       
+        }
+        
+        
+        public void mouseHoverOnTemperatureBall() {
+        	WebPageLoaded.isDomInteractive();
+            WebElement tempball = getDriver().findElement(bySettingTempBall);
+            WebElement tempbar = getDriver().findElement(bySettingTempBar);
+            //tempball.syncVisible(15);
+            //tempball.hover();
+            //getDriver().actions().moveToElement(tempball).click().dragAndDropBy(tempball, 1014 + 34, 0).build().perform();
+            getDriver().actions().moveToElement(tempball).click().dragAndDropBy(tempbar, 1014 + 34, 0).build().perform();
+
+            }
+        
+        public void dragAndDropTemperatureBall() {
+        	WebPageLoaded.isDomInteractive();
+            //WebElement tempbar = getDriver().findElement(bySettingTempBar);
+            WebElement tempball = getDriver().findElement(bySettingTempBall);
+            getDriver().actions().moveToElement(tempball).click().build().perform();
+            getDriver().actions().moveByOffset(1014 + 34, 60).build().perform();
+            //getDriver().actions().dragAndDropBy(tempball, 1014 + 34, 60).build().perform();
+            //getDriver().actions().moveToElement(tempball).click().dragAndDropBy(tempball, 1014 + 34, 60).build().perform();
+            //getDriver().actions().moveByOffset(1014, 60).perform();
+            //settingTempbarWidth();
+            //settingTempBarXAxis();
+            //settingTempBarYAxis();
+        }
+        
+        public void settingTempBarXAxis() {
+        	WebPageLoaded.isDomInteractive();
+            WebElement tempbar = getDriver().findElement(bySettingTempBar);
+            int xcoordinate = tempbar.getLocation().getX();
+            //int xcoordinate = tempbar.getCoordinates().onPage().x;
+            System.out.println("xcoordinate .......... " +xcoordinate);
+        }
+        
+        public void settingTempBarYAxis() {
+        	WebPageLoaded.isDomInteractive();
+            WebElement tempbar = getDriver().findElement(bySettingTempBar);
+            int ycoordinate = tempbar.getLocation().getY();
+            //int ycoordinate = tempbar.getCoordinates().onPage().y;
+            System.out.println("ycoordinate .......... " +ycoordinate);
+        }
+        
+        public void settingTempbarWidth() {
+        	WebPageLoaded.isDomInteractive();
+            WebElement tempbar = getDriver().findElement(bySettingTempBar);
+             Dimension tempbarSize = tempbar.getSize();
+            int barwidth = tempbarSize.getWidth();
+            //int ycoordinate = tempbar.getCoordinates().onPage().y;
+            System.out.println("barwidth .......... " +barwidth);
+        }
 
         public void mouseHoverOnPodcastSubMenu() {
         	WebPageLoaded.isDomInteractive();
@@ -534,6 +834,14 @@ public class NavigationBar extends BasePage
             podcast.hover();
             }
 
+        
+        
+        public boolean isSettingCentigradeLabelDisplayed() {
+        	WebPageLoaded.isDomInteractive();
+            WebElement centigrade = getDriver().findElement(bySettingCentigradeLabel);
+            centigrade.syncVisible(15);
+            return centigrade.isDisplayed();    	   	
+        }
         public boolean isPodcastSubMenuDisplayed() {
         	WebPageLoaded.isDomInteractive();
             WebElement podcast = getDriver().findElement(byPodcastSubMenu);
@@ -574,6 +882,8 @@ public class NavigationBar extends BasePage
         public String getAWPremiumText() {
             return getDriver().findElement(byAWPremiumSubMenu).getText();                       
         }
+        
+               
 
         public void mouseHoverOnAWProfessionalSubMenu() {
         	WebPageLoaded.isDomInteractive();
@@ -738,21 +1048,25 @@ public class NavigationBar extends BasePage
          * Method to get Video Sub Menu Description Text from Navigation Bar
          */
         public String getVideoSubMenuDescriptionText() {
-            return getDriver().findElement(byVideoDescription).getText().substring(5,71).trim();                       
+            return getDriver().findElement(byVideoDescription).getText();
+           // return getDriver().findElement(byVideoDescription).getText().substring(5,71).trim();                       
         }
 
         /*
          * Method to get Trending Now Sub Menu Description Text from Navigation Bar
          */
         public String getTredndingNowSubMenuDescriptionText() {
-            return getDriver().findElement(byTrendingNowDescription).getText().substring(13,57).trim();                       
+            return getDriver().findElement(byTrendingNowDescription).getText();                       
+
+        	//return getDriver().findElement(byTrendingNowDescription).getText().substring(12,57).trim();                       
         }
 
         /*
          * Method to get Storm Chasers Sub Menu Description Text from Navigation Bar
          */
         public String getStormChasersSubMenuDescriptionText() {
-            return getDriver().findElement(byStormChasersDescription).getText().substring(13,48).trim();                       
+            return getDriver().findElement(byStormChasersDescription).getText();                       
+            //return getDriver().findElement(byStormChasersDescription).getText().substring(13,48).trim();                       
         }
 
         /*
@@ -761,5 +1075,20 @@ public class NavigationBar extends BasePage
         public String getExpertForecastSubMenuDescriptionText() {
             return getDriver().findElement(byExpertForecastDescription).getText().substring(15,49).trim();                       
         }
+        
+        public void switchToPopUpWindow(String defaultwindow) {
+    		
+    		Set<String> windows = getDriver().getWindowHandles();
+    		Iterator iterator = windows.iterator();
+    		String currentwindowId;
+    		while(iterator.hasNext()) {
+    		currentwindowId = iterator.next().toString();
+    		    		if(!currentwindowId.equals(defaultwindow)) {
+    			getDriver().switchTo().window(currentwindowId);
+    			
+    		}
+    	}
+    		
+    }
 
 }
