@@ -6,7 +6,7 @@
 		<parameter name="operatingSystem" value="windows" />
 		
 		<test name="ReRun Failure Tests in Chrome">
-			<parameter name="browserUnderTest" value="Chrome"/>
+			<parameter name="browserUnderTest" value="Firefox"/>
 			<packages>
 				<package name="com.accuweather.glacier.www.Footer.*" />
 				<package name="com.accuweather.glacier.www.hourlyForecast.*" />

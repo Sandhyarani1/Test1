@@ -1,16 +1,13 @@
 package com.accuweather.glacier.www.pages;
-
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.Color;
 import org.testng.Assert;
-
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
@@ -21,189 +18,188 @@ public class CurrentConditionpage extends BasePage {
 	 * locators
 	 * 
 	 */
-
 	private By bycurrentWeatherCard = By.cssSelector(
-			"div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current");
+			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current");
 	private By bycurrentWeatherTitle = By.cssSelector(
-			"div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current > div > p:nth-child(1)");
+			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current > div > p:nth-child(1)");
 	private By bycurrentconditiontime = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > div > div.conditions-card.card.panel.conditions > p.module-header.sub.date");
+			"div.current-conditions-card.content-module > div > div.conditions-card.card.panel.conditions > p.module-header.sub.date");
 	private By bycurrentconditionweathericon = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > div > div.conditions-card.card.panel.conditions > div.temp-icon-wrapper > img");
+			"div.current-conditions-card.content-module > div > div.conditions-card.card.panel.conditions > div.temp-icon-wrapper > img");
 	private By bycurrentconditionTemperaure = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > div > div.conditions-card.card.panel.conditions > div.temp-icon-wrapper > div > p.value");
+			"div.current-conditions-card.content-module > div > div.conditions-card.card.panel.conditions > div.temp-icon-wrapper > div > p.value");
 	private By bycurrentconditionRealfeelTemp = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > div > div.conditions-card.card.panel.conditions > div.temp-icon-wrapper > div > p.realFeel");
+			"div.current-conditions-card.content-module > div > div.conditions-card.card.panel.conditions > div.temp-icon-wrapper > div > p.realFeel");
 	private By bycurrentconditionWeatherDescription = By.cssSelector(
 			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > div > div.conditions-card.card.panel.conditions > div.phrase");
 	private By bycurrentconditionHumidity = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > div > div.details-card.card.panel > div.list > p:nth-child(1)");
+			"div.current-conditions-card.content-module > div > div.details-card.card.panel > div.list > p:nth-child(1)");
 	private By bycurrentconditionUVIndex = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > div > div.details-card.card.panel > div.list > p:nth-child(2)");
+			"div.current-conditions-card.content-module > div > div.details-card.card.panel > div.list > p:nth-child(2)");
 	private By bycurrentconditionCloudCover = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > div > div.details-card.card.panel > div.list > p:nth-child(3)");
+			"div.current-conditions-card.content-module > div > div.details-card.card.panel > div.list > p:nth-child(3)");
 	private By bycurrentconditionPressure = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > div > div.details-card.card.panel > div.list > p:nth-child(4)");
+			"div.current-conditions-card.content-module > div > div.details-card.card.panel > div.list > p:nth-child(4)");
 	private By bycurrentconditionDewPoint = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > div > div.details-card.card.panel > div.list > p:nth-child(5)");
+			"div.current-conditions-card.content-module > div > div.details-card.card.panel > div.list > p:nth-child(5)");
 	private By bycurrentconditionVisibility = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > div > div.details-card.card.panel > div.list > p:nth-child(6)");
+			"div.current-conditions-card.content-module > div > div.details-card.card.panel > div.list > p:nth-child(6)");
 	private By bycurrentconditionRealfeelshade = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > div > div.details-card.card.panel > div.list > p:nth-child(7)");
+			"div.current-conditions-card.content-module > div > div.details-card.card.panel > div.list > p:nth-child(7)");
 	private By bycurrentconditionCompassicon = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > div > div.details-card.card.panel > div.short-list > div > svg");
+			"div.current-conditions-card.content-module > div > div.details-card.card.panel > div.short-list > div > svg");
 	private By bycurrentconditionWind = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > div > div.details-card.card.panel > div.short-list > p:nth-child(2)");
+			"div.current-conditions-card.content-module > div > div.details-card.card.panel > div.short-list > p:nth-child(2)");
 	private By bycurrentconditionGusts = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > div > div.details-card.card.panel > div.short-list > p:nth-child(3)");
-	private By bycurrentconditionHourlyCTB = By.cssSelector(".current-conditions-card > .card-button");
+			"div.current-conditions-card.content-module > div > div.details-card.card.panel > div.short-list > p:nth-child(3)");
+	private By bycurrentconditionHourlyCTB = By.cssSelector("div.current-conditions-card.content-module > a > span");
 	private By byrightarrow = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.current-conditions-card.content-module > a > div > svg");
+			"div.current-conditions-card.content-module > a > div > svg");
 	private By bycurrentdate = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.card-button.content-module.centered > span");
+			"div.card-button.content-module.centered > span");
 	private By byrightarrownnexttoDate = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.card-button.content-module.centered > a > svg");
+			"div.card-button.content-module.centered > a > svg");
 	private By bynextDaylink = By.cssSelector(
 			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.card-button.content-module.centered > a");
 	private By bydayorganism = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > p:nth-child(1)");
 	private By bydayorganismTitle = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > p:nth-child(1)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > p:nth-child(1)");
 	private By bydayOrganismDate = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > p.module-header.sub.date");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > p.module-header.sub.date");
 	private By bynightOrganismDate = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > p.module-header.sub.date");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > p.module-header.sub.date");
 	private By bydayOrganismWeatherIcon = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > img");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > img");
 	private By bynightOrganismWeatherIcon = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > img");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > img");
 	private By bydayOrganismWeatherCurrenTempearture = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > div > p.value");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > div > p.value");
 	private By bydayOrganismWeatherCurrentReelFeelTemperature = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > div > p.realFeel");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > div > p.realFeel");
 	private By bydayOrganismCurrentWeatherDescription = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.phrase");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.phrase");
 	private By bydayOrganismCurrentWeatherPrecipitation = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(1)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(1)");
 	private By bydayOrganismCurrentWeatherMaxUVIdex = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(2)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(2)");
 	private By bydayOragnismCurrentWeatherThunderstorms = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(3)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(3)");
 	private By bydayOrganismCurrentWeatherPrecipitation2 = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(4)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(4)");
 	private By bydayOrganismCurrentWeatherRain = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(5)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(5)");
 	private By bydayOrganismCurrentWeatherSnow = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(6)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(6)");
 	private By bydayOrganismCurrentWeatherIce = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(7)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(7)");
 	private By bydayOrganismCurrentWeatherHoursOfPrecipitation = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(8)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(8)");
 	private By bydayOrganismCurrentWeatherHoursOfRain = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(9)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(9)");
 	private By bydayOrganismCurrentWeatherWind = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > p:nth-child(2)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > p:nth-child(2)");
 	private By bydayOrganismCurrentWeatherGusts = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > p:nth-child(3)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > p:nth-child(3)");
 	private By bydayOrganismCurrentWeatherCompassIcon = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > div > svg");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > div > svg");
 	private By bynightOrganismCurrentWeather = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > p:nth-child(1)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > p:nth-child(1)");
 	private By bynightOrganismWeatherCurrentTempearture = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > div > p.value");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > div > p.value");
 	private By bynightOrganismWeatherCurrentReelFeelTemperature = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > div > p.realFeel");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > div > p.realFeel");
 	private By bynightOrganismCurrentWeatherDescription = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.phrase");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.phrase");
 	private By bynightOrganismCurrentWeatherPrecipitation = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(1)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(1)");
 	private By bynightOrganismCurrentWeatherMaxUVIdex = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(2)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(2)");
 	private By bynightOragnismCurrentWeatherThunderstorms = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(3)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(3)");
 	private By bynightOrganismCurrentWeatherPrecipitation2 = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(4)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(4)");
 	private By bynightOrganismCurrentWeatherRain = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(5)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(5)");
 	private By bynightOrganismCurrentWeatherSnow = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(6)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(6)");
 	private By bynightOrganismCurrentWeatherIce = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(7)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(7)");
 	private By bynightOrganismCurrentWeatherHoursOfPrecipitation = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(8)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(8)");
 	private By bynightOrganismCurrentWeatherHoursOfRain = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(9)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(9)");
 	private By bynightOrganismCurrentWeatherWind = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > p:nth-child(2)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > p:nth-child(2)");
 	private By bynightOrganismCurrentWeatherGusts = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > p:nth-child(3)");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > p:nth-child(3)");
 	private By bynightcurrentconditionCompassicon = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > div > svg");
+			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > div > svg");
 	private By bytemperatureHistoryOrganismCurrentWeather = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > div.header.card > div.title > span:nth-child(1)");
+			"div.temp-history.content-module > div.header.card > div.title > span:nth-child(1)");
 	private By bytemperatureHistoryOrganismDate = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > div.header.card > div.title > span.module-header.sub");
+			"div.temp-history.content-module > div.header.card > div.title > span.module-header.sub");
 	private By bytemperatureHistoryOrganismTodayHeader = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > div.header.card > div.row > span:nth-child(1)");
+			"div.temp-history.content-module > div.header.card > div.row > span:nth-child(1)");
 	private By bytemperatureHistoryOrganismNormalHeader = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > div.header.card > div.row > span:nth-child(2)");
+			"div.temp-history.content-module > div.header.card > div.row > span:nth-child(2)");
 	private By bytemperatureHistoryOrganismRecordHeader = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > div.header.card > div.row > span:nth-child(3)");
+			"div.temp-history.content-module > div.header.card > div.row > span:nth-child(3)");
 	private By bytemperatureHistoryOrganismLastYearHeader = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > div.header.card > div.row > span.label.last");
+			"div.temp-history.content-module > div.header.card > div.row > span.label.last");
 	private By bytemperatureHistoryOrganismTodayFirstRowValue = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > div.history.card > div:nth-child(1) > span:nth-child(1)");
+			"div.temp-history.content-module > div.history.card > div:nth-child(1) > span:nth-child(1)");
 	private By bytemperatureHistoryOrganismTodaySecondRowValue = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > div.history.card > div:nth-child(2) > span:nth-child(1)");
+			"div.temp-history.content-module > div.history.card > div:nth-child(2) > span:nth-child(1)");
 	private By bytemperatureHistoryOrganismNormalFirstRowValue = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > div.history.card > div:nth-child(1) > span:nth-child(2)");
+			"div.temp-history.content-module > div.history.card > div:nth-child(1) > span:nth-child(2)");
 	private By bytemperatureHistoryOrganismNormalSecondRowValue = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > div.history.card > div:nth-child(2) > span:nth-child(2)");
+			"div.temp-history.content-module > div.history.card > div:nth-child(2) > span:nth-child(2)");
 	private By bytemperatureHistoryOrganismRecordFirstRowValue = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > div.history.card > div:nth-child(1) > span:nth-child(3)");
+			"div.temp-history.content-module > div.history.card > div:nth-child(1) > span:nth-child(3)");
 	private By bytemperatureHistoryOrganismRecordSecondRowValue = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > div.history.card > div:nth-child(2) > span:nth-child(3)");
+			"div.temp-history.content-module > div.history.card > div:nth-child(2) > span:nth-child(3)");
 	private By bytemperatureHistoryOrganismLastYearFirstRowValue = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > div.history.card > div:nth-child(1) > span.label.last");
+			"div.temp-history.content-module > div.history.card > div:nth-child(1) > span.label.last");
 	private By bytemperatureHistoryOrganismLastYearSecondRowValue = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > div.history.card > div:nth-child(2) > span.label.last");
+			"div.temp-history.content-module > div.history.card > div:nth-child(2) > span.label.last");
 	private By byRecentLocationWeatherIcon = By.cssSelector(
-			"body > div.template-root.current-weather > div.page-subheader.content-module > div > div.recent-locations-label > a.recent-location-display > img");
+			"div.recent-locations-label > a.recent-location-display > img");
 	private By byTodayCardonThreeDayForecastPage = By.cssSelector(
-			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(2) > div > p:nth-child(1)");
+			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(2) > div > p:nth-child(1)");
 	private By bysunrisesunsetorganism = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div");
+			"div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div");
 	private By bysunriseTitle = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div > div.row-1 > div > span.section-header");
+			"div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div > div.row-1 > div > span.section-header");
 	private By bysunrisetime = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div > div.row-1 > div > span.section-content");
+			"div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div > div.row-1 > div > span.section-content");
 	private By bysunsetTitle = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div > div.row-2 > div.set.content-panel > span.section-header");
+			"div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div > div.row-2 > div.set.content-panel > span.section-header");
 	private By bysunsetTime = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div > div.row-2 > div.set.content-panel > span.section-content");
+			"div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div > div.row-2 > div.set.content-panel > span.section-content");
 	private By byduartionTitle = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div > div.row-2 > div.duration.content-panel > span.section-header");
+			"div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div > div.row-2 > div.duration.content-panel > span.section-header");
 	private By bydurationTime = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div > div.row-2 > div.duration.content-panel > span.section-content.last");
+			"div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div > div.row-2 > div.duration.content-panel > span.section-content.last");
 	private By bysunIcon = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div > div.row-1 > img");
+			"div.sliding-panel.sliding-panel.content-module > div > div.panel-1 > div > div.row-1 > img");
 	private By bymoonriseTitle = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.content-module > div > div.panel-2 > div > div.row-1 > div > span.section-header");
+			"div.sliding-panel.sliding-panel.content-module > div > div.panel-2 > div > div.row-1 > div > span.section-header");
 	private By bymoonriseTime = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.content-module > div > div.panel-2 > div > div.row-1 > div > span.section-content");
+			"div.sliding-panel.sliding-panel.content-module > div > div.panel-2 > div > div.row-1 > div > span.section-content");
 	private By bymoonsetTitle = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.content-module > div > div.panel-2 > div > div.row-2 > div.set.content-panel > span.section-header");
+			"div.sliding-panel.sliding-panel.content-module > div > div.panel-2 > div > div.row-2 > div.set.content-panel > span.section-header");
 	private By bymoonsetTime = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.content-module > div > div.panel-2 > div > div.row-2 > div.set.content-panel > span.section-content");
+			"div.sliding-panel.sliding-panel.content-module > div > div.panel-2 > div > div.row-2 > div.set.content-panel > span.section-content");
 	private By bymoonrisemoonsetduration = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.content-module > div > div.panel-2 > div > div.row-2 > div.duration.content-panel > span.section-header");
+			"div.sliding-panel.sliding-panel.content-module > div > div.panel-2 > div > div.row-2 > div.duration.content-panel > span.section-header");
 	private By bymoonrisemoonsetdurationtime = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.sliding-panel.sliding-panel.content-module > div > div.panel-2 > div > div.row-2 > div.duration.content-panel > span.section-content.last");
+			"div.sliding-panel.sliding-panel.content-module > div > div.panel-2 > div > div.row-2 > div.duration.content-panel > span.section-content.last");
 	private By bymoreHistoricalWeatherData = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > a > span");
+			"div.temp-history.content-module > a > span");
 	private By bymoreHistoricalCTAarrow = By.cssSelector(
-			"body > div.template-root.current-weather > div.two-column-page-content > div.page-column-1 > div.temp-history.content-module > a > div > svg");
-
+			"div.temp-history.content-module > a > div > svg");
+			
 	public void isclickedonCurrentweathercard() {
 		WebPageLoaded.isDomInteractive(10000);
 		getDriver().findElement(bycurrentWeatherCard).syncVisible();
@@ -273,14 +269,12 @@ public class CurrentConditionpage extends BasePage {
 
 	public String validateElementIsGrey(String element) {
 		String timedisplayedcolour = null;
-
 		if (element.equals("Title Sunrise displayed in grey")) 
 		{
 			WebPageLoaded.isDomInteractive();
 			timedisplayedcolour = getDriver().findElement(bysunriseTitle).getCssValue("color");
 			String actualcolourdisplayed = Color.fromString(timedisplayedcolour).asHex();
 			return actualcolourdisplayed;
-
 		}
 
 		if (element.equals("Title Sunset displayed in grey"))
@@ -289,15 +283,14 @@ public class CurrentConditionpage extends BasePage {
 			timedisplayedcolour = getDriver().findElement(bysunsetTitle).getCssValue("color");
 			String actualcolourdisplayed = Color.fromString(timedisplayedcolour).asHex();
 			return actualcolourdisplayed;
-
 		}
+
 		if (element.equals("Sunrise Time displayed in Black")) 
 		{
 			WebPageLoaded.isDomInteractive();
 			timedisplayedcolour = getDriver().findElement(bysunrisetime).getCssValue("color");
 			String actualcolourdisplayed = Color.fromString(timedisplayedcolour).asHex();
 			return actualcolourdisplayed;
-
 		}
 
 		if (element.equals("Sunset Time displayed in Black")) 
@@ -306,7 +299,6 @@ public class CurrentConditionpage extends BasePage {
 			timedisplayedcolour = getDriver().findElement(bysunsetTime).getCssValue("color");
 			String actualcolourdisplayed = Color.fromString(timedisplayedcolour).asHex();
 			return actualcolourdisplayed;
-
 		}
 
 		if (element.equals("Title Duration displayed in grey")) 
@@ -315,15 +307,14 @@ public class CurrentConditionpage extends BasePage {
 			timedisplayedcolour = getDriver().findElement(byduartionTitle).getCssValue("color");
 			String actualcolourdisplayed = Color.fromString(timedisplayedcolour).asHex();
 			return actualcolourdisplayed;
-
 		}
+
 		if (element.equals("Duration displayed in Black")) 
 		{
 			WebPageLoaded.isDomInteractive();
 			timedisplayedcolour = getDriver().findElement(bydurationTime).getCssValue("color");
 			String actualcolourdisplayed = Color.fromString(timedisplayedcolour).asHex();
 			return actualcolourdisplayed;
-
 		}
 
 		if (element.equals("Title Moonrise displayed in grey")) 
@@ -332,7 +323,6 @@ public class CurrentConditionpage extends BasePage {
 			timedisplayedcolour = getDriver().findElement(bymoonriseTitle).getCssValue("color");
 			String actualcolourdisplayed = Color.fromString(timedisplayedcolour).asHex();
 			return actualcolourdisplayed;
-
 		}
 
 		if (element.equals("Moonrise Time displayed in Black")) 
@@ -341,7 +331,6 @@ public class CurrentConditionpage extends BasePage {
 			timedisplayedcolour = getDriver().findElement(bymoonriseTime).getCssValue("color");
 			String actualcolourdisplayed = Color.fromString(timedisplayedcolour).asHex();
 			return actualcolourdisplayed;
-
 		}
 
 		if (element.equals("Title Moonset displayed in grey")) 
@@ -350,7 +339,6 @@ public class CurrentConditionpage extends BasePage {
 			timedisplayedcolour = getDriver().findElement(bymoonsetTitle).getCssValue("color");
 			String actualcolourdisplayed = Color.fromString(timedisplayedcolour).asHex();
 			return actualcolourdisplayed;
-
 		}
 
 		if (element.equals("Moonset Time displayed in Black")) 
@@ -486,7 +474,6 @@ public class CurrentConditionpage extends BasePage {
 			timedisplayedcolour = getDriver().findElement(bydayOrganismCurrentWeatherHoursOfPrecipitation).getCssValue("color");
 			String actualcolourdisplayed = Color.fromString(timedisplayedcolour).asHex();
 			return actualcolourdisplayed;
-
 		}
 
 		if (element.equals("day Oragnism Current Weather ice")) {
@@ -515,7 +502,6 @@ public class CurrentConditionpage extends BasePage {
 			timedisplayedcolour = getDriver().findElement(bydayOrganismCurrentWeatherPrecipitation2).getCssValue("color");
 			String actualcolourdisplayed = Color.fromString(timedisplayedcolour).asHex();
 			return actualcolourdisplayed;
-
 		}
 
 		if (element.equals("day Oragnism Current Weather Thunderstorms")) {
@@ -615,8 +601,8 @@ public class CurrentConditionpage extends BasePage {
 			String actualcolourdisplayed = Color.fromString(timedisplayedcolour).asHex();
 			return actualcolourdisplayed;
 		}
-		return timedisplayedcolour;
 
+		return timedisplayedcolour;
 	}
 
 	public Boolean HourlyCTAdisplayed() {
@@ -657,7 +643,6 @@ public class CurrentConditionpage extends BasePage {
 		String strDateFormat = "MMM-dd"; // Date format is Specified
 		SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat); // Date format string is passed as an argument to
 		return objSDF.format(objDate);
-
 	}
 
 	public String arrownexttodate() {
@@ -679,9 +664,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bydayorganism).isDisplayed();
 	}
 
@@ -689,9 +676,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bynightOrganismCurrentWeather).isDisplayed();
 	}
 
@@ -699,9 +688,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bytemperatureHistoryOrganismCurrentWeather).isDisplayed();
 	}
 
@@ -709,9 +700,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bytemperatureHistoryOrganismCurrentWeather).isDisplayed();
 	}
 
@@ -719,9 +712,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bytemperatureHistoryOrganismDate).isDisplayed();
 	}
 
@@ -729,9 +724,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bytemperatureHistoryOrganismTodayHeader).isDisplayed();
 	}
 
@@ -739,9 +736,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bytemperatureHistoryOrganismNormalHeader).isDisplayed();
 	}
 
@@ -749,9 +748,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bytemperatureHistoryOrganismRecordHeader).isDisplayed();
 	}
 
@@ -759,9 +760,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bytemperatureHistoryOrganismLastYearHeader).isDisplayed();
 	}
 
@@ -769,9 +772,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bytemperatureHistoryOrganismTodayFirstRowValue).isDisplayed();
 	}
 
@@ -779,9 +784,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bytemperatureHistoryOrganismTodaySecondRowValue).isDisplayed();
 	}
 
@@ -789,9 +796,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bytemperatureHistoryOrganismNormalFirstRowValue).isDisplayed();
 	}
 
@@ -799,9 +808,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bytemperatureHistoryOrganismNormalSecondRowValue).isDisplayed();
 	}
 
@@ -809,9 +820,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bytemperatureHistoryOrganismRecordFirstRowValue).isDisplayed();
 	}
 
@@ -819,9 +832,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bytemperatureHistoryOrganismRecordSecondRowValue).isDisplayed();
 	}
 
@@ -829,9 +844,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bytemperatureHistoryOrganismLastYearFirstRowValue).isDisplayed();
 	}
 
@@ -839,9 +856,11 @@ public class CurrentConditionpage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		try {
 			Thread.sleep(5000);
-		} catch (InterruptedException e) {
+		}
+ catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		return getDriver().findElement(bytemperatureHistoryOrganismLastYearSecondRowValue).isDisplayed();
 	}
 
@@ -850,9 +869,11 @@ public class CurrentConditionpage extends BasePage {
 		Robot robot = null;
 		try {
 			robot = new Robot();
-		} catch (AWTException e) {
+		}
+ catch (AWTException e) {
 			e.printStackTrace();
 		}
+
 		robot.keyPress(KeyEvent.VK_PAGE_DOWN);
 		robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
 	}
@@ -868,35 +889,30 @@ public class CurrentConditionpage extends BasePage {
 			return true;
 		else
 			return false;
-
 	}
 
 	public String dayOrganismTextTitleisBold() {
 		WebPageLoaded.isDomInteractive();
 		String dayOrganismFont = getDriver().findElement(bydayorganismTitle).getCssValue("font-weight");
 		return dayOrganismFont;
-
 	}
 
 	public String nightOrganismTextTitleisBold() {
 		WebPageLoaded.isDomInteractive();
 		String dayOrganismFont = getDriver().findElement(bynightOrganismCurrentWeather).getCssValue("font-weight");
 		return dayOrganismFont;
-
 	}
 
 	public String dayOrganismCurrentTemparatureisBold() {
 		WebPageLoaded.isDomInteractive();
 		String dayOrganismFont = getDriver().findElement(bydayOrganismWeatherCurrenTempearture).getCssValue("font-weight");
 		return dayOrganismFont;
-
 	}
 
 	public String nightOrganismCurrentTemparatureisBold() {
 		WebPageLoaded.isDomInteractive();
 		String dayOrganismFont = getDriver().findElement(bynightOrganismWeatherCurrentTempearture).getCssValue("font-weight");
 		return dayOrganismFont;
-
 	}
 
 	public Boolean dayOrganismDateIsDisplayed() {
@@ -948,7 +964,7 @@ public class CurrentConditionpage extends BasePage {
 
 	public String Sunicon() {
 		WebPageLoaded.isDomInteractive();
-		String displayedcolour = getDriver().findElement(bysunIcon).getCssValue("margin");
+		String displayedcolour = getDriver().findElement(bysunIcon).getCssValue("color");
 		String Actualcolourdisplayed = Color.fromString(displayedcolour).asHex();
 		return Actualcolourdisplayed;
 	}

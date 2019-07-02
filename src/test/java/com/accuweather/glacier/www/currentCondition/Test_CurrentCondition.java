@@ -32,8 +32,7 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
 		Assert.assertTrue(threedayforecast.weatherCardIsDisplayed("currentWeather"));
 	}
-
-	@Test(priority = 2, enabled = false)
+	@Test(priority = 2, enabled = true)
 	public void TC1_CityForecastPageTodayCardIsDisplayed() throws InterruptedException {
 		testStart("Validate Today card is displayed ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -42,8 +41,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
 		Assert.assertTrue(threedayforecast.weatherCardIsDisplayed("Today"));
 	}
-
-	@Test(priority = 3, enabled = false)
+	
+	
+	@Test(priority = 3, enabled = true)
 	public void TC1_CityForecastPageTonightCardIsDisplayed() throws InterruptedException {
 		testStart("Validate Tonight card is displayed ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -52,7 +52,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
 		Assert.assertTrue(threedayforecast.weatherCardIsDisplayed("Tonight"));
 	}
-
+	
+	
 	@Test(priority = 4, enabled = true)
 	public void TC1_CityForecastPageTomorrowCardIsDisplayed() throws InterruptedException {
 		testStart("Validate Tomorrow card is displayed ");
@@ -62,8 +63,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
 		Assert.assertTrue(threedayforecast.weatherCardIsDisplayed("Tomorrow"));
 	}
-
-	@Test(priority = 5, enabled = false)
+	
+	
+	@Test(priority = 5, enabled = true)
 	public void TC1_CityForecastPageCurrentWeatherURL() throws InterruptedException {
 		testStart("Validate curent weather Url ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -71,13 +73,14 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
 		Thread.sleep(3000);
-		conditionpage.isclickedonCurrentweathercard();
+		//conditionpage.isclickedonCurrentweathercard();
 		String ActualForecastPageTitle = conditionpage.isclickedonCurrentweathercard2();
-		String expectedForecastPageTitle = "https://development.accuweather.com/en/us/state-college/16801/current-weather/6787_pc";
+		String expectedForecastPageTitle = "https://qualityassurance.accuweather.com/en/us/mc-farland/53558/weather-forecast/23238_pc";
 		Assert.assertEquals(ActualForecastPageTitle, expectedForecastPageTitle);
 	}
-
-	@Test(priority = 6, enabled = false)
+	
+	
+	@Test(priority = 6, enabled = true)
 	public void TC2_Currentweather() {
 		testStart("Validate curent condition page current weather card is displayed ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -87,8 +90,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		String ActualForecastPageTitle = conditionpage.isclickedonCurrentweathercard2();
 		conditionpage.TitleofCurrentweathercard();
 	}
-
-	@Test(priority = 7, enabled = false)
+	
+	
+	@Test(priority = 7, enabled = true)
 	public void TC3_TimeDisplayedingrey() throws InterruptedException {
 		testStart("Validate curent weather Time is displayed ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -101,8 +105,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		String Actualtimecolour = conditionpage.Timedisplayedcolour();
 		Assert.assertEquals(Actualtimecolour, expectedTimecolourgrey);
 	}
-
-	@Test(priority = 8, enabled = false)
+	
+	@Test(priority = 8, enabled = true)
 	public void TC3_Weatherdisplayed() throws InterruptedException {
 		testStart("Validate curent weather icon is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -113,8 +117,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.isclickedonCurrentweathercard();
 		Assert.assertTrue(conditionpage.weathericondisplayed());
 	}
-
-	@Test(priority = 9, enabled = false)
+	
+	
+	@Test(priority = 9, enabled = true)
 	public void TC3_Temperaturedisplayedinfont() throws InterruptedException {
 		testStart("Validate curent weather Temperature is displayed in bold");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -124,8 +129,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.isclickedonCurrentweathercard();
 		Assert.assertTrue(Integer.parseInt(conditionpage.temperatureinbold()) > 290);
 	}
-
-	@Test(priority = 11, enabled = false)
+	
+	
+	@Test(priority = 11, enabled = true)
 	public void TC4_currentWeatherTimeisDisplayedinGrey() {
 		testStart("Validate curent weather time is displayed in Grey color");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -135,8 +141,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.isclickedonCurrentweathercard();
 		Assert.assertEquals(conditionpage.validateElementIsGrey("time displayed"), expectedTimecolourgrey);
 	}
-
-	@Test(priority = 12, enabled = false)
+	
+	
+	@Test(priority = 12, enabled = true)
 	public void TC4_currentWeatherRealFeelTemperatureisDisplayedinGrey() {
 		testStart("Validate current Weather Real Feel Temperature is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -146,8 +153,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.isclickedonCurrentweathercard();
 		Assert.assertEquals(conditionpage.validateElementIsGrey("Real feel temparature"), expectedTimecolourgrey);
 	}
-
-	@Test(priority = 13, enabled = false)
+	
+	
+	@Test(priority = 13, enabled = true)
 	public void TC4_currentWeatherHumidityisDisplayedinGrey() {
 		testStart("Validate TC4_current Weather Humidity is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -157,8 +165,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.isclickedonCurrentweathercard();
 		Assert.assertEquals(conditionpage.validateElementIsGrey("Humidity"), expectedblackcolour);
 	}
-
-	@Test(priority = 14, enabled = false)
+	
+	
+	@Test(priority = 14, enabled = true)
 	public void TC4_currentWeatherUVIndexisDisplayedinGrey() {
 		testStart("Validate current Weather UVIndex is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -168,8 +177,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.isclickedonCurrentweathercard();
 		Assert.assertEquals(conditionpage.validateElementIsGrey("UV index"), expectedblackcolour);
 	}
-
-	@Test(priority = 15, enabled = false)
+	
+	
+	@Test(priority = 15, enabled = true)
 	public void TC4_currentWeatherCloudCoverisDisplayedinGrey() {
 		testStart("Validate current Weather Cloud cover is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -179,8 +189,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.isclickedonCurrentweathercard();
 		Assert.assertEquals(conditionpage.validateElementIsGrey("cloud cover"), expectedblackcolour);
 	}
-
-	@Test(priority = 16, enabled = false)
+	
+	
+	@Test(priority = 16, enabled = true)
 	public void TC4_currentWeatherPressureisDisplayedinGrey() {
 		testStart("Validate current Weather Pressure is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -190,8 +201,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.isclickedonCurrentweathercard();
 		Assert.assertEquals(conditionpage.validateElementIsGrey("pressure"), expectedblackcolour);
 	}
-
-	@Test(priority = 17, enabled = false)
+	
+	
+	@Test(priority = 17, enabled = true)
 	public void TC4_currentWeatherDewPointisDisplayedinGrey() {
 		testStart("Validate current Weather dew point is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -201,8 +213,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.isclickedonCurrentweathercard();
 		Assert.assertEquals(conditionpage.validateElementIsGrey("dew point"), expectedblackcolour);
 	}
-
-	@Test(priority = 18, enabled = false)
+	
+	
+	@Test(priority = 18, enabled = true)
 	public void TC4_currentWeathervisibilityisDisplayedinGrey() {
 		testStart("Validate current Weather visibility is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -212,8 +225,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.isclickedonCurrentweathercard();
 		Assert.assertEquals(conditionpage.validateElementIsGrey("visibility"), expectedblackcolour);
 	}
-
-	@Test(priority = 19, enabled = false)
+	
+	
+	@Test(priority = 19, enabled = true)
 	public void TC4_currentWeatherRealfeelShadeIsDisplayedinGrey() {
 		testStart("Validate current Weather real feel shade is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -223,8 +237,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.isclickedonCurrentweathercard();
 		Assert.assertEquals(conditionpage.validateElementIsGrey("real feel shade"), expectedblackcolour);
 	}
-
-	@Test(priority = 20, enabled = false)
+	
+	
+	@Test(priority = 20, enabled = true)
 	public void TC4_currentWeatherCompassIconIsDisplayedinGrey() {
 		testStart("Validate current Weather compass icon is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -234,7 +249,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.isclickedonCurrentweathercard();
 		Assert.assertEquals(conditionpage.validateElementIsGrey("compass icon"), expectedblackcolour);
 	}
-
+	
+	
 	@Test(priority = 21)
 	public void TC4_currentWeatherWindIsDisplayedinGrey() {
 		testStart("Validate current Weather wind is Displayed in Grey");
@@ -245,8 +261,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.isclickedonCurrentweathercard();
 		Assert.assertEquals(conditionpage.validateElementIsGrey("wind"), expectedblackcolour);
 	}
-
-	@Test(priority = 22, enabled = false)
+	
+	
+	@Test(priority = 22, enabled = true)
 	public void TC4_currentWeatherGustsIsDisplayedinGrey() {
 		testStart("Validate current Weather gusts is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -256,8 +273,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.isclickedonCurrentweathercard();
 		Assert.assertEquals(conditionpage.validateElementIsGrey("gusts"), expectedblackcolour);
 	}
-
-	@Test(priority = 23, enabled = false)
+	
+	
+	@Test(priority = 23, enabled = true)
 	public void TC5_CurrentConditionDayOrganismRightArrowColor() throws InterruptedException {
 		String ExpectedRightArrowcolour = "#f59721";
 		String ExpectedHourlyforecasturl = "https://development.accuweather.com/en/us/state-college/16801/hourly-weather-forecast/6787_pc";
@@ -271,11 +289,12 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		String Actualarrowcolour = conditionpage.rightarrowcolour();
 		Assert.assertEquals(Actualarrowcolour, ExpectedRightArrowcolour);
 	}
-
-	@Test(priority = 24, enabled = false)
+	
+	
+	@Test(priority = 24, enabled = true)
 	public void TC5_CurrentConditionDayOrganism() throws InterruptedException {
 		String ExpectedRightArrowcolour = "#f59721";
-		String ExpectedHourlyforecasturl = "https://development.accuweather.com/en/us/state-college/16801/hourly-weather-forecast/6787_pc";
+		String ExpectedHourlyforecasturl = "https://qualityassurance.accuweather.com/en/us/mc-farland/53558/hourly-weather-forecast/23238_pc";
 		testStart("Validate curent condition Day Organism is displayed ");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -286,11 +305,12 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		String Actualarrowcolour = conditionpage.rightarrowcolour();
 		Assert.assertEquals(conditionpage.clickonHourlyCTA(), ExpectedHourlyforecasturl);
 	}
-
-	@Test(priority = 25, enabled = false)
+	
+	
+	@Test(priority = 25, enabled = true)
 	public void TC6_currentDateDisplayed() throws InterruptedException {
 		String ExpectedRightArrowcolour = "#f59721";
-		String ExpectedHourlyforecasturl = "https://development.accuweather.com/en/us/state-college/16801/daily-weather-forecast/6787_pc?day=1";
+		String ExpectedHourlyforecasturl = "https://qualityassurance.accuweather.com/en/us/state-college/16801/daily-weather-forecast/6787_pc?day=1";
 		testStart("Validate curent condition current Date is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -301,11 +321,12 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		Assert.assertEquals(conditionpage.currentDateonAccPage(), conditionpage.currentDateonAccPage());
 		String ActualarrowcolournexttoDate = conditionpage.arrownexttodate();
 	}
-
-	@Test(priority = 26, enabled = false)
+	
+	
+	@Test(priority = 26, enabled = true)
 	public void TC6_currentWeatherRightArrowNextToDateIsDisplayed() throws InterruptedException {
 		String ExpectedRightArrowcolour = "#f59721";
-		String ExpectedHourlyforecasturl = "https://development.accuweather.com/en/us/state-college/16801/daily-weather-forecast/6787_pc?day=1";
+		String ExpectedHourlyforecasturl = "https://qualityassurance.accuweather.com/en/us/state-college/16801/daily-weather-forecast/6787_pc?day=1";
 		testStart("Validate curent condition page Right Arrow colour is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -316,7 +337,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		String ActualarrowcolournexttoDate = conditionpage.arrownexttodate();
 		Assert.assertEquals(ActualarrowcolournexttoDate, ExpectedRightArrowcolour);
 	}
-
+	
+	
 	@Test(priority = 27, enabled = true)
 	public void TC7_DayorganismIsDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page day organism title is displayed");
@@ -328,8 +350,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		Assert.assertTrue(conditionpage.todayOrganism());
 		conditionpage.scrollPage();
 	}
-
-	@Test(priority = 28, enabled = false)
+	
+	
+	@Test(priority = 28, enabled = true)
 	public void TC7_DayorganismTitleInUpperCaseISDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page day organism title is in uppercase");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -340,8 +363,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.scrollPage();
 		Assert.assertTrue(conditionpage.isDayOranismTitleIsInUppercase("DAY"));
 	}
-
-	@Test(priority = 29, enabled = false)
+	
+	
+	@Test(priority = 29, enabled = true)
 	public void TC7_DayorganismTitleTextIsInBoldDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page Day Organism Title text is displayed in Bold ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -353,8 +377,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		String Font = conditionpage.dayOrganismTextTitleisBold();
 		Assert.assertTrue(Integer.parseInt(Font) > 499);
 	}
-
-	@Test(priority = 30, enabled = false)
+	
+	
+	@Test(priority = 30, enabled = true)
 	public void TC7_DayorganismDateIsDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page Day Organism Date is displayed ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -366,8 +391,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		String Font = conditionpage.dayOrganismTextTitleisBold();
 		Assert.assertTrue(conditionpage.dayOrganismDateIsDisplayed());
 	}
-
-	@Test(priority = 31, enabled = false)
+	
+	
+	@Test(priority = 31, enabled = true)
 	public void TC7_DayorganismWeatherIconIsDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page Day organism Weather Icon is Displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -379,8 +405,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		String Font = conditionpage.dayOrganismTextTitleisBold();
 		Assert.assertTrue(conditionpage.dayOrganismWeatheIconIsDisplayed());
 	}
-
-	@Test(priority = 32, enabled = false)
+	
+	
+	@Test(priority = 32, enabled = true)
 	public void TC7_DayorganismCurrentTemperatureisInBoldDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page day organism Current Temperature is displayed in bold");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -396,8 +423,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		String dayCurrentTemperature = conditionpage.dayOrganismCurrentTemparatureisBold();
 		Assert.assertTrue(Integer.parseInt(dayCurrentTemperature) > 299);
 	}
-
-	@Test(priority = 33, enabled = false)
+	
+	
+	@Test(priority = 33, enabled = true)
 	public void TC7_DayorganismReelFeelTemperatureContainsRegisteredTrademark() throws InterruptedException {
 		testStart("Validate curent condition page ReelFeel Temperature contains Registered trademark");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -408,8 +436,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.scrollPage();
 		Assert.assertTrue(conditionpage.dayCurrentWeatherReelFeelTemperatureGetText().contains("RealFeel®"));
 	}
-
-	@Test(priority = 34, enabled = false)
+	
+	
+	@Test(priority = 34, enabled = true)
 	public void TC7_DayorganismWeatherDescriptionDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page day organism Weather Description s displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -420,8 +449,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.scrollPage();
 		Assert.assertTrue(conditionpage.bydayOrganismCurrentWeatherDescriptionIsDisplayed());
 	}
-
-	@Test(priority = 35, enabled = false)
+	
+	
+	@Test(priority = 35, enabled = true)
 	public void TC7_DayorganismCurrentWeatherPrecipitationDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page day Organism Current Weather Precipitation is displayed ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -432,8 +462,7 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		conditionpage.scrollPage();
 		Assert.assertTrue(conditionpage.dayOrganismCurrentWeatherPrecipitationdisplayed());
 	}
-
-	@Test(priority = 36, enabled = false)
+	@Test(priority = 36, enabled = true)
 	public void TC7_DayorganismCurrentWeatherMaxUVIdexDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page Day organism Current Weather MaxUVIdex is displayed ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -445,8 +474,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		Assert.assertEquals(conditionpage.validateElementIsGrey("day Organism Current Weather MaxUVIdex"),
 				expectedblackcolour);
 	}
-
-	@Test(priority = 37, enabled = false)
+	
+	
+	@Test(priority = 37, enabled = true)
 	public void TC7_DayorganismThunderstormsIsDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page day organism Thunderstorms is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -458,8 +488,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		Assert.assertEquals(conditionpage.validateElementIsGrey("day Oragnism Current Weather Thunderstorms"),
 				expectedblackcolour);
 	}
-
-	@Test(priority = 38, enabled = false)
+	
+	
+	@Test(priority = 38, enabled = true)
 	public void TC7_DayorganismPrecipitationDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page day organism Precipitation is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -471,8 +502,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		Assert.assertEquals(conditionpage.validateElementIsGrey("day Oragnism Current Weather Precipitation"),
 				expectedblackcolour);
 	}
-
-	@Test(priority = 39, enabled = false)
+	
+	
+	@Test(priority = 39, enabled = true)
 	public void TC7_DayorganismRainDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page day organism Rain is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -484,8 +516,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		Assert.assertEquals(conditionpage.validateElementIsGrey("day Oragnism Current Weather rain"),
 				expectedblackcolour);
 	}
-
-	@Test(priority = 40, enabled = false)
+	
+	
+	@Test(priority = 40, enabled = true)
 	public void TC7_DayorganismSnowDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page day organism Snow value is displayed ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -497,8 +530,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		Assert.assertEquals(conditionpage.validateElementIsGrey("day Oragnism Current Weather snow"),
 				expectedblackcolour);
 	}
-
-	@Test(priority = 41, enabled = false)
+	
+	
+	@Test(priority = 41, enabled = true)
 	public void TC7_DayorganismIceDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page day organism Snow value is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -510,8 +544,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		Assert.assertEquals(conditionpage.validateElementIsGrey("day Oragnism Current Weather ice"),
 				expectedblackcolour);
 	}
-
-	@Test(priority = 42, enabled = false)
+	
+	
+	@Test(priority = 42, enabled = true)
 	public void TC7_DayorganismHoursOfPrecipitationDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page Day organism Hours Of Precipitation is Displayed ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -523,8 +558,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		Assert.assertEquals(conditionpage.validateElementIsGrey("day Oragnism Current Weather Hours of Precipitation"),
 				expectedblackcolour);
 	}
-
-	@Test(priority = 43, enabled = false)
+	
+	
+	@Test(priority = 43, enabled = true)
 	public void TC7_DayorganismHOursOfRainDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page  Day organism Hours Of Rain is Displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -536,8 +572,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		Assert.assertEquals(conditionpage.validateElementIsGrey("day Oragnism Current Weather Hours of Rain"),
 				expectedblackcolour);
 	}
-
-	@Test(priority = 44, enabled = false)
+	
+	
+	@Test(priority = 44, enabled = true)
 	public void TC7_DayorganismWindDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page Day organism Wind is Displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -549,8 +586,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		Assert.assertEquals(conditionpage.validateElementIsGrey("day Oragnism Current Weather Wind"),
 				expectedblackcolour);
 	}
-
-	@Test(priority = 45, enabled = false)
+	
+	
+	@Test(priority = 45, enabled = true)
 	public void TC7_DayorganismCompassIconIsDisplayed() throws InterruptedException {
 		testStart("Validate curent condition page Day organism Compass Icon Is Displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -562,8 +600,9 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		Assert.assertEquals(conditionpage.validateElementIsGrey("day Oragnism Current Weather Compass Icon"),
 				expectedblackcolour);
 	}
-
-	@Test(priority = 46, enabled = false)
+	
+	
+	@Test(priority = 46, enabled = true)
 	public void TC8_NightorganismTitleIsBold() {
 		testStart("Validate whether Night organism has Its elements");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -583,10 +622,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 47, enabled = false)
+	
+	
+	@Test(priority = 47, enabled = true)
 	public void TC8_NightorganismTimeDisplayed() {
 		testStart("Validate whether Night organism has Its elements");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -606,10 +645,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 48, enabled = false)
+	
+	
+	@Test(priority = 48, enabled = true)
 	public void TC8_NightorganismWeatherIconIsDisplayed() {
 		testStart("Validate whether Night organism has Its elements");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -628,10 +667,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 49, enabled = false)
+	
+	
+	@Test(priority = 49, enabled = true)
 	public void TC8_NightorganismCurrentTemperarureIsBold() {
 		testStart("Validate whether Night organism has Its elements");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -651,10 +690,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 50, enabled = false)
+	
+	
+	@Test(priority = 50, enabled = true)
 	public void TC8_NightorganismReelFeelTemperatureIsDisplayed() {
 		testStart("Validate whether Night organism has ReelFeel Temperature");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -673,10 +712,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 51, enabled = false)
+	
+	
+	@Test(priority = 51, enabled = true)
 	public void TC8_NightorganismCurrentWeatherDescriptionIsDisplayed() {
 		testStart("Validate whether Night organism has Weather description");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -695,10 +734,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 52, enabled = false)
+	
+	
+	@Test(priority = 52, enabled = true)
 	public void TC8_NightorganismCurrentWeatherPrecipitationPercentageIsDisplayed() {
 		testStart("Validate whether Night organism Current Weather Precipitation is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -717,10 +756,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 53, enabled = false)
+	
+	
+	@Test(priority = 53, enabled = true)
 	public void TC8_NightorganismCurrentWeatherMaxUVIndexIsInGreyColor() {
 		testStart("Validate whether night Organism Current Weather MaxUVIdex is grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -740,10 +779,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 54, enabled = false)
+	
+	
+	@Test(priority = 54, enabled = true)
 	public void TC8_NightorganismCurrentWeatherThunderstormsIsInGreyColor() {
 		testStart("Validate whether night Organism Current Weather Thunderstorms is grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -763,10 +802,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 55, enabled = false)
+	
+	
+	@Test(priority = 55, enabled = true)
 	public void TC8_NightorganismCurrentWeatherPrecipitationIsInGreyColor() {
 		testStart("Validate whether night Organism Current Weather Precipitation is grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -786,10 +825,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 56, enabled = false)
+	
+	
+	@Test(priority = 56, enabled = true)
 	public void TC8_NightorganismCurrentWeatherRainIsInGreyColor() {
 		testStart("Validate whether Night organism Current Weather Rain is grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -809,10 +848,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 57, enabled = false)
+	
+	
+	@Test(priority = 57, enabled = true)
 	public void TC8_NightorganismCurrentWeatherSnowIsInGreyColor() {
 		testStart("Validate whether Night organism Current Weather Snow is grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -832,10 +871,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 58, enabled = false)
+	
+	
+	@Test(priority = 58, enabled = true)
 	public void TC8_NightorganismCurrentWeatherIceIsInGreyColor() {
 		testStart("Validate whether Night organism Current Weather Ice is grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -855,10 +894,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 59, enabled = false)
+	
+	
+	@Test(priority = 59, enabled = true)
 	public void TC8_NightorganismCurrentWeatherHoursOfPrecipitationIsInGreyColor() {
 		testStart("Validate whether Night organism  Hours of Precipitation is grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -879,10 +918,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 60, enabled = false)
+	
+	
+	@Test(priority = 60, enabled = true)
 	public void TC8_NightorganismCurrentWeatherHoursOfRainIsInGreyColor() {
 		testStart("Validate whether Night organism Hours of Rain is grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -902,10 +941,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 61, enabled = false)
+	
+	
+	@Test(priority = 61, enabled = true)
 	public void TC8_NightorganismCurrentWeatherWindIsInGreyColor() {
 		testStart("Validate whether Night organism wind is grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -925,10 +964,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 62, enabled = false)
+	
+	
+	@Test(priority = 62, enabled = true)
 	public void TC8_NightorganismCurrentWeatherGustsIsInGreyColor() {
 		testStart("Validate whether Night organism Gusts element is grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -948,10 +987,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 63, enabled = false)
+	
+	
+	@Test(priority = 63, enabled = true)
 	public void TC8_NightorganismCurrentWeatherCompassIconIsInGreyColor() {
 		testStart("Validate whether Night organism compass icon is grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -971,10 +1010,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 64, enabled = false)
+	
+	
+	@Test(priority = 64, enabled = true)
 	public void TC13_temperatureHistoryOrganismIsDisplayed() {
 		testStart("Validate whether Night organism temperature History Organism is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -987,7 +1026,6 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		for (int i = 0; i < 2; i++) {
 			conditionpage.scrollPage();
 		}
-
 		waitUntilElementIsDisplayedOrClickable();
 		try {
 			Assert.assertTrue(conditionpage.temperatureHistoryOrganism());
@@ -996,10 +1034,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 65, enabled = false)
+	
+	
+	@Test(priority = 65, enabled = true)
 	public void TC13_temperatureHistoryOrganismTitleIsDisplayed() {
 		testStart("Validate whether Night organism temperature History Organism Title is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1012,7 +1050,6 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		for (int i = 0; i < 2; i++) {
 			conditionpage.scrollPage();
 		}
-
 		waitUntilElementIsDisplayedOrClickable();
 		try {
 			Assert.assertTrue(conditionpage.temperatureHistoryOrganismTitle());
@@ -1021,10 +1058,11 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 66, enabled = false)
+	
+	
+	
+	@Test(priority = 66, enabled = true)
 	public void TC13_temperatureHistoryOrganismDateIsDisplayed() {
 		testStart("Validate whether Night organism temperature History Organism Date is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1037,7 +1075,6 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		for (int i = 0; i < 2; i++) {
 			conditionpage.scrollPage();
 		}
-
 		waitUntilElementIsDisplayedOrClickable();
 		try {
 			Assert.assertTrue(conditionpage.temperatureHistoryOrganismDate());
@@ -1046,10 +1083,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 67, enabled = false)
+	
+	
+	@Test(priority = 67, enabled = true)
 	public void TC13_temperatureHistoryOrganismTodayHeaderIsDisplayed() {
 		testStart("Validate whether Night organism temperature History Organism Today Header is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1062,7 +1099,6 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		for (int i = 0; i < 2; i++) {
 			conditionpage.scrollPage();
 		}
-
 		waitUntilElementIsDisplayedOrClickable();
 		try {
 			Assert.assertTrue(conditionpage.temperatureHistoryOrganismTodayHeader());
@@ -1071,10 +1107,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 68, enabled = false)
+	
+	
+	@Test(priority = 68, enabled = true)
 	public void TC13_temperatureHistoryOrganismNormalHeaderIsDisplayed() {
 		testStart("Validate whether Night organism temperature History Organism Normal Header is dispalyed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1087,7 +1123,6 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		for (int i = 0; i < 2; i++) {
 			conditionpage.scrollPage();
 		}
-
 		waitUntilElementIsDisplayedOrClickable();
 		try {
 			Assert.assertTrue(conditionpage.temperatureHistoryOrganismNormalHeader());
@@ -1096,10 +1131,10 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 69, enabled = false)
+	
+	
+	@Test(priority = 69, enabled = true)
 	public void TC13_temperatureHistoryOrganismRecordHeaderIsDisplayed() {
 		testStart("Validate whether Night organism temperature History Organism Record Header is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1112,7 +1147,6 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		for (int i = 0; i < 2; i++) {
 			conditionpage.scrollPage();
 		}
-
 		waitUntilElementIsDisplayedOrClickable();
 		try {
 			Assert.assertTrue(conditionpage.temperatureHistoryOrganismRecordHeader());
@@ -1121,10 +1155,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 70, enabled = false)
+	@Test(priority = 70, enabled = true)
 	public void TC13_temperatureHistoryOrganismLastYearHeaderIsDisplayed() {
 		testStart("Validate whether Night organism temperature History Organism Last Year Header is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1137,7 +1169,6 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		for (int i = 0; i < 3; i++) {
 			conditionpage.scrollPage();
 		}
-
 		waitUntilElementIsDisplayedOrClickable();
 		try {
 			Assert.assertTrue(conditionpage.temperatureHistoryOrganismLastYearHeader());
@@ -1146,10 +1177,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 71, enabled = false)
+	@Test(priority = 71, enabled = true)
 	public void TC13_temperatureHistoryOrganismTodayFirstRowValueIsDisplayed() {
 		testStart("Validate whether Night organism temperature History Organism Today First Row Value is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1162,7 +1191,6 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		for (int i = 0; i < 2; i++) {
 			conditionpage.scrollPage();
 		}
-
 		waitUntilElementIsDisplayedOrClickable();
 		try {
 			Assert.assertTrue(conditionpage.temperatureHistoryOrganismTodayFirstRowValue());
@@ -1171,10 +1199,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 72, enabled = false)
+	@Test(priority = 72, enabled = true)
 	public void TC13_temperatureHistoryOrganismTodaySecondRowValueIsDisplayed() {
 		testStart("Validate whether Night organism temperature History Organism Today Second Row Value is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1187,7 +1213,6 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		for (int i = 0; i < 2; i++) {
 			conditionpage.scrollPage();
 		}
-
 		waitUntilElementIsDisplayedOrClickable();
 		try {
 			Assert.assertTrue(conditionpage.temperatureHistoryOrganismTodaySecondRowValue());
@@ -1196,10 +1221,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 73, enabled = false)
+	@Test(priority = 73, enabled = true)
 	public void TC13_temperatureHistoryOrganismNormalFirstRowValueIsDisplayed() {
 		testStart("Validate whether Night organism temperature History Organism Normal First Row Values is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1212,7 +1235,6 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		for (int i = 0; i < 2; i++) {
 			conditionpage.scrollPage();
 		}
-
 		waitUntilElementIsDisplayedOrClickable();
 		try {
 			Assert.assertTrue(conditionpage.temperatureHistoryOrganismNormalFirstRowValue());
@@ -1221,10 +1243,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 74, enabled = false)
+	@Test(priority = 74, enabled = true)
 	public void TC13_temperatureHistoryOrganismNormalSecondRowValueIsDisplayed() {
 		testStart("Validate whether Night organism temperature History Organism Normal Second Row Value is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1237,7 +1257,6 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		for (int i = 0; i < 2; i++) {
 			conditionpage.scrollPage();
 		}
-
 		waitUntilElementIsDisplayedOrClickable();
 		try {
 			Assert.assertTrue(conditionpage.temperatureHistoryOrganismNormalSecondRowValue());
@@ -1246,10 +1265,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 75, enabled = false)
+	@Test(priority = 75, enabled = true)
 	public void TC13_temperatureHistoryOrganismRecordFirstRowValueIsDisplayed() {
 		testStart("Validate whether Night organism temperature History Organism Record First Row Value is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1262,7 +1279,6 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		for (int i = 0; i < 2; i++) {
 			conditionpage.scrollPage();
 		}
-
 		waitUntilElementIsDisplayedOrClickable();
 		try {
 			Assert.assertTrue(conditionpage.temperatureHistoryOrganismRecordFirstRowValue());
@@ -1271,10 +1287,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 76, enabled = false)
+	@Test(priority = 76, enabled = true)
 	public void TC13_temperatureHistoryOrganismRecordSecondRowValueIsDisplayed() {
 		testStart("Validate whether Night organism temperature History Organism Record Second Row Value is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1287,7 +1301,6 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		for (int i = 0; i < 2; i++) {
 			conditionpage.scrollPage();
 		}
-
 		waitUntilElementIsDisplayedOrClickable();
 		try {
 			Assert.assertTrue(conditionpage.temperatureHistoryOrganismRecordSecondRowValue());
@@ -1296,10 +1309,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 77, enabled = false)
+	@Test(priority = 77, enabled = true)
 	public void TC13_temperatureHistoryOrganismLastYearFirstRowValueIsDisplayed() {
 		testStart(
 				"Validate whether Night organism temperature History Organism Last Year First Row Value is displayed");
@@ -1313,7 +1324,6 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		for (int i = 0; i < 2; i++) {
 			conditionpage.scrollPage();
 		}
-
 		waitUntilElementIsDisplayedOrClickable();
 		try {
 			Assert.assertTrue(conditionpage.temperatureHistoryOrganismLastYearFirstRowValue());
@@ -1322,10 +1332,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 78, enabled = false)
+	@Test(priority = 78, enabled = true)
 	public void TC13_temperatureHistoryOrganismLastYearSecondRowValueIsDisplayed() {
 		testStart(
 				"Validate whether Night organism temperature History Organism Last Year Second Row Value is displayed");
@@ -1339,7 +1347,6 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		for (int i = 0; i < 2; i++) {
 			conditionpage.scrollPage();
 		}
-
 		waitUntilElementIsDisplayedOrClickable();
 		try {
 			Assert.assertTrue(conditionpage.temperatureHistoryOrganismLastYearSecondRowValue());
@@ -1348,10 +1355,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 79, enabled = false)
+	@Test(priority = 79, enabled = true)
 	public void TC18_ValidateRecentLocationLinkNavigatesToThreeDayForecastPage() {
 		testStart("Validate whether Night organism Today Three Day Forecast Page Is Displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1370,10 +1375,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 80, enabled = false)
+	@Test(priority = 80, enabled = true)
 	public void TC11_Elements_on_Sunrise_and_sunset_organism_Displayed() {
 		testStart("Validate Elements on Sunrise/sunset organism in current condition page ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1388,8 +1391,7 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		waitUntilElementIsDisplayedOrClickable();
 		Assert.assertTrue(conditionpage.Sunrisesunsetorganismdisplayed());
 	}
-
-	@Test(priority = 81, enabled = false)
+	@Test(priority = 81, enabled = true)
 	public void TC11_Sunrise_Title_Displayed_inGrey() {
 		String Expectedcolour = "#8f8f8f";
 		testStart("Validate Title Sunrise displayed in grey color ");
@@ -1411,10 +1413,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 82, enabled = false)
+	@Test(priority = 82, enabled = true)
 	public void TC11_Sunrise_Time_Displayed_inBlack() {
 		String Expectedblackcolour2 = "#1e1e1e";
 		testStart("Validate time displayed in Sunrise organism is in Black ");
@@ -1437,10 +1437,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 83, enabled = false)
+	@Test(priority = 83, enabled = true)
 	public void TC11_Sunrise_Time_Displayed_inBold() {
 		testStart("Validate time displayed in Sunrise organism is in Bold ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1461,10 +1459,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 84, enabled = false)
+	@Test(priority = 84, enabled = true)
 	public void TC11_Sunset_Title_Displayed_inGrey() {
 		String Expectedcolour = "#8f8f8f";
 		testStart("Validate Title Sunset displayed in grey color ");
@@ -1486,10 +1482,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 85, enabled = false)
+	@Test(priority = 85, enabled = true)
 	public void TC11_Sunset_Time_Displayed_inBlack() {
 		String Expectedblackcolour2 = "#1e1e1e";
 		testStart("Validate time displayed in Sunrise organism is in Black ");
@@ -1512,10 +1506,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 86, enabled = false)
+	@Test(priority = 86, enabled = true)
 	public void TC11_Sunset_Time_Displayed_inBold() {
 		testStart("Validate time displayed in Sunrise organism is in Bold ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1536,10 +1528,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 87, enabled = false)
+	@Test(priority = 87, enabled = true)
 	public void TC11_Duartion_Title_Displayed_inGrey() {
 		String Expectedcolour = "#8f8f8f";
 		testStart("Validate Title Sunset displayed in grey color ");
@@ -1561,10 +1551,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 88, enabled = false)
+	@Test(priority = 88, enabled = true)
 	public void TC11_Sunrise_Sunset_Duration_Displayed_inBlack() {
 		String Expectedblackcolour2 = "#1e1e1e";
 		testStart("Validating time displayed under duration title is Black ");
@@ -1587,10 +1575,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 89, enabled = false)
+	@Test(priority = 89, enabled = true)
 	public void TC11_Sunrise_Sunset_Duration_Displayed_inBold() {
 		testStart("Validating time displayed under duration title is in Bold ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1611,10 +1597,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 90, enabled = false)
+	@Test(priority = 90, enabled = true)
 	public void TC11_Sunrise_Sunset_sunIcondisplayed() {
 		testStart("Validating time displayed under duration title is in Bold ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1629,8 +1613,7 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		Assert.assertTrue(conditionpage.IssuniconDisplayed());
 		conditionpage.Sunicon();
 	}
-
-	@Test(priority = 91, enabled = false)
+	@Test(priority = 91, enabled = true)
 	public void T12_Moonrise_Title_Displayed_inGrey() {
 		String Expectedcolour = "#8f8f8f"; // Expected Colour display is Grey
 		testStart("Validate Title Moonrise displayed in grey color ");
@@ -1653,10 +1636,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 92, enabled = false)
+	@Test(priority = 92, enabled = true)
 	public void TC12_Moonrise_Time_Displayed_inBlack() {
 		String Expectedblackcolour2 = "#1e1e1e";
 		testStart("Validate time displayed in Sunrise organism is in Black ");
@@ -1679,10 +1660,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 93, enabled = false)
+	@Test(priority = 93, enabled = true)
 	public void TC12_Moonrise_Time_Displayed_inBold() {
 		testStart("Validate time displayed in Sunrise organism is in Bold ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1703,10 +1682,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 94, enabled = false)
+	@Test(priority = 94, enabled = true)
 	public void T12_Moonset_Title_Displayed_inGrey() {
 		String Expectedcolour = "#8f8f8f"; // Expected Colour display is Grey
 		testStart("Validate Title Moonset displayed in grey color ");
@@ -1728,10 +1705,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 95, enabled = false)
+	@Test(priority = 95, enabled = true)
 	public void TC12_Moonset_Time_Displayed_inBlack() {
 		String Expectedblackcolour2 = "#1e1e1e";
 		testStart("Validate time displayed in Moonset organism is in Black ");
@@ -1753,10 +1728,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 96, enabled = false)
+	@Test(priority = 96, enabled = true)
 	public void TC12_Moonset_Time_Displayed_inBold() {
 		testStart("Validate time displayed under Moonset organism is in Bold ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1777,10 +1750,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 97, enabled = false)
+	@Test(priority = 97, enabled = true)
 	public void TC12_Moonrise_Moonset_Duartion_Title_Displayed_inGrey() {
 		String Expectedcolour = "#8f8f8f";
 		testStart("Validate Title Duration displayed in grey color ");
@@ -1802,10 +1773,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 98, enabled = false)
+	@Test(priority = 98, enabled = true)
 	public void TC12_Moonrise_Moonset_Duration_Displayed_inBlack() {
 		String Expectedblackcolour2 = "#1e1e1e";
 		testStart("Validating Moonrise and Moonset time displayed under duration title is Black ");
@@ -1829,10 +1798,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 99, enabled = false)
+	@Test(priority = 99, enabled = true)
 	public void TC12_Moonrise_Moonset_Duration_Displayed_inBold() {
 		testStart("Validating time displayed under duration title is in Bold ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1853,10 +1820,8 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 			System.err.println(e.getMessage());
 			Assert.fail();
 		}
-
 	}
-
-	@Test(priority = 100, enabled = false)
+	@Test(priority = 100, enabled = true)
 	public void TC13_More_Historical_Weather_Datadisplayed() {
 		testStart("Validating Historical_Weather Data CTA displayed on Currentcondition page");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1871,5 +1836,4 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 		waitUntilElementIsDisplayedOrClickable();
 		Assert.assertTrue(conditionpage.Historicalweatherdata());
 	}
-
 }
