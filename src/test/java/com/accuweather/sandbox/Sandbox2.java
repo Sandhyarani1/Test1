@@ -1,4 +1,4 @@
-package com.accuweather.sandbox;
+/*package com.accuweather.sandbox;
 
 import static com.chameleon.selenium.DriverConstants.DEFAULT_CHROME_PAGE_LOAD_STRATEGY;
 import static com.chameleon.selenium.web.chromeDevTool.ChromeDevToolEmulator.DEVICE_NAME;
@@ -19,6 +19,7 @@ import com.accuweather.glacier.m.pages.SearchLocationsPage;
 import com.accuweather.glacier.m.pages.WeatherForecastCityPage;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.CurrentWeatherPage;
+import com.accuweather.glacier.www.pages.NavigationBar;
 //import com.accuweather.www.pages.CurrentWeatherPage2;
 import com.chameleon.api.restServices.RestResponse;
 import com.chameleon.selenium.DriverManager;
@@ -37,50 +38,49 @@ public class Sandbox2 extends AccuWeatherBaseTest {
     //private CurrentWeatherPage2 currentWeather = new CurrentWeatherPage2();
     
     
-    /*
-     * private NavBar navBar = new NavBar();
-     *
-     * @BeforeMethod
-     * public void start() {
-     * testStart("Sandbox");
-     * }
-     *
-     * @Test
-     * public void navigateToHome() {
-     * navBar.navigateToHome();
-     * TestReporter.assertTrue(navBar.validateNavigation("https://www.accuweather.com/"), "Assert navigated");
-     * }
-     *
-     * @Test
-     * public void navigateToRadarAndMaps() {
-     * navBar.navigateToRadarAndMaps();
-     * TestReporter.assertTrue(navBar.validateNavigation("/weather-radar"), "Assert navigated");
-     * }
-     *
-     * @Test
-     * public void navigateToNews() {
-     * navBar.navigateToNews();
-     * TestReporter.assertTrue(navBar.validateNavigation("/weather-news"), "Assert navigated");
-     * }
-     *
-     * @Test
-     * public void navigateToVideo() {
-     * navBar.navigateToVideo();
-     * TestReporter.assertTrue(navBar.validateNavigation("https://www.accuweather.com/en/videos"), "Assert navigated");
-     * }
-     *
-     * @Test
-     * public void navigateToSevereWeather() {
-     * navBar.navigateToSevereWeather();
-     * TestReporter.assertTrue(navBar.validateNavigation("/severe-weather"), "Assert navigated");
-     * }
-     *
-     * @Test
-     * public void locationSearch() {
-     * navBar.locationSearch("27127");
-     * TestReporter.assertTrue(navBar.validateNavigation("/search-locations"), "Assert navigated");
-     * }
-     */
+    
+     private NavigationBar navBar = new NavigationBar();
+     @BeforeMethod
+     public void start() {
+     testStart("Sandbox");
+     }
+     
+     @Test
+     public void navigateToHome() {
+     navBar.navigateToHome();
+     TestReporter.assertTrue(navBar.validateNavigation("https://www.accuweather.com/"), "Assert navigated");
+     }
+     
+     @Test
+     public void navigateToRadarAndMaps() {
+     navBar.navigateToRadarAndMaps();
+     TestReporter.assertTrue(navBar.validateNavigation("/weather-radar"), "Assert navigated");
+     }
+     
+     @Test
+     public void navigateToNews() {
+     navBar.navigateToNews();
+     TestReporter.assertTrue(navBar.validateNavigation("/weather-news"), "Assert navigated");
+     }
+     
+     @Test
+     public void navigateToVideo() {
+     navBar.navigateToVideo();
+     TestReporter.assertTrue(navBar.validateNavigation("https://www.accuweather.com/en/videos"), "Assert navigated");
+     }
+     
+     @Test
+     public void navigateToSevereWeather() {
+     navBar.navigateToSevereWeather();
+     TestReporter.assertTrue(navBar.validateNavigation("/severe-weather"), "Assert navigated");
+     }
+     
+     @Test
+     public void locationSearch() {
+     navBar.locationSearch("27127");
+     TestReporter.assertTrue(navBar.validateNavigation("/search-locations"), "Assert navigated");
+     }
+     
 
     //@Test(priority=1)
     public void googleMaps() throws IOException, WebSocketException, InterruptedException {
@@ -147,18 +147,19 @@ public class Sandbox2 extends AccuWeatherBaseTest {
 	  System.out.println(); }
 	 
 
-	/*
-	 * //@Test public void testWeb() { TestReporter.setDebugLevel(3); Condition
-	 * condition = testStartInCity("testStartInCity", "US", "Atlanta", "GA");
-	 * currentWeather.validateCurrentConditions(condition);
-	 * TestReporter.assertAll(); System.out.println(); }
-	 */
+	
+	 //@Test public void testWeb() { TestReporter.setDebugLevel(3); Condition
+	 condition = testStartInCity("testStartInCity", "US", "Atlanta", "GA");
+	 currentWeather.validateCurrentConditions(condition);
+	 TestReporter.assertAll(); System.out.println(); }
+	 
 
-	/*
-	 * // @Test public void test() { RestResponse rest =
-	 * AccuweatherRest.locations().v1("prod").topCities("50", false); Location[]
-	 * locations = rest.mapJSONToObject(Location[].class); System.out.println();
-	 * 
-	 * }
-	 */
+	
+	 // @Test public void test() { RestResponse rest =
+	 AccuweatherRest.locations().v1("prod").topCities("50", false); Location[]
+	 locations = rest.mapJSONToObject(Location[].class); System.out.println();
+	 
+	 }
+	 
 }
+*/

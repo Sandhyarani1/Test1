@@ -1,15 +1,14 @@
 package com.chameleon.selenium.web;
-
 import static com.chameleon.selenium.DriverConstants.DEFAULT_CHROME_PAGE_LOAD_STRATEGY;
 import static com.chameleon.selenium.web.chromeDevTool.ChromeDevToolEmulator.DEVICE_NAME;
-
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.apache.commons.lang3.StringUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
@@ -19,7 +18,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-
 import com.accuweather.glacier.Environment;
 import com.chameleon.AutomationException;
 import com.chameleon.BaseTest;
@@ -36,7 +34,6 @@ import com.chameleon.utils.TestReporter;
 import com.chameleon.utils.io.PropertiesManager;
 import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.saucerest.SauceREST;
-
 import io.appium.java_client.remote.MobileBrowserType;
 import io.appium.java_client.remote.MobilePlatform;
 
@@ -63,12 +60,10 @@ public class WebBaseTest extends BaseTest {
     protected static ThreadLocal<String> operatingSystem = new ThreadLocal<>();
     protected static ThreadLocal<String> runLocation = new ThreadLocal<>();
     protected static ThreadLocal<String> pageUrl = new ThreadLocal<>();
-
     /*
      * WebDriver Fields
      */
     protected static ThreadLocal<String> sessionId = new ThreadLocal<>();
-
     /*
      * URL and Credential Repository Field
      */
@@ -77,7 +72,6 @@ public class WebBaseTest extends BaseTest {
      * Selenium Grid Hub Field
      */
     protected String defaultSeleniumHubURL = appURLRepository.get("DEFAULT_SELENIUMGRID_HUB_URL");
-
     /*
      * Mobile Fields
      */
@@ -86,31 +80,27 @@ public class WebBaseTest extends BaseTest {
     protected String mobileHubKey = appURLRepository.get("MOBILE_HUB_ACCESS_KEY");
     protected static ThreadLocal<String> mobileOSVersion = new ThreadLocal<>();
     protected String mobileAppPath = appURLRepository.get("MOBILE_APP_PATH");
-
     /*
      * Sauce Labs Fields
      */
-
     /**
      * Constructs a {@link com.saucelabs.common.SauceOnDemandAuthentication}
+
      * instance using the supplied user name/access key. To use the
      * authentication supplied by environment variables or from an external
      * file, use the no-arg
-     * {@link com.saucelabs.common.SauceOnDemandAuthentication} constructor.
+     * {@link com.saucelabs.common.SauceOnDemandAuthentication}
+ constructor.
      */
-
     protected SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(
             Base64Coder.decodeString(appURLRepository.get("SAUCELABS_USERNAME")),
             Base64Coder.decodeString(appURLRepository.get("SAUCELABS_KEY")));
-
     protected String sauceLabsURL = "http://" + authentication.getUsername() + ":" + authentication.getAccessKey()
             + "@ondemand.saucelabs.com:80/wd/hub";
-
     /*
      * Mustard Fields
      */
     protected boolean reportToMustard = false;
-
     /*
      * Getters and setters
      */
@@ -133,9 +123,11 @@ public class WebBaseTest extends BaseTest {
     public void setBrowserUnderTest(String but) {
         if (but.equalsIgnoreCase("jenkinsParameter")) {
             browserUnderTest.set(System.getProperty("jenkinsBrowser").trim());
-        } else {
+        }
+ else {
             browserUnderTest.set(but);
         }
+
     }
 
     public String getBrowserUnderTest() {
@@ -147,12 +139,16 @@ public class WebBaseTest extends BaseTest {
             if (System.getProperty("jenkinsBrowserVersion") == null
                     || System.getProperty("jenkinsBrowserVersion") == "null") {
                 browserVersion.set("");
-            } else {
+            }
+ else {
                 browserVersion.set(System.getProperty("jenkinsBrowserVersion").trim());
             }
-        } else {
+
+        }
+ else {
             browserVersion.set(bv);
         }
+
     }
 
     public String getBrowserVersion() {
@@ -162,9 +158,11 @@ public class WebBaseTest extends BaseTest {
     protected void setRunLocation(String location) {
         if (location.equalsIgnoreCase("jenkinsParameter")) {
             runLocation.set(System.getProperty("jenkinsRunLocation".trim()));
-        } else {
+        }
+ else {
             runLocation.set(location);
         }
+
     }
 
     public String getRunLocation() {
@@ -174,9 +172,11 @@ public class WebBaseTest extends BaseTest {
     public void setOperatingSystem(String os) {
         if (os.equalsIgnoreCase("jenkinsParameter")) {
             operatingSystem.set(System.getProperty("jenkinsOperatingSystem").trim());
-        } else {
+        }
+ else {
             operatingSystem.set(os);
         }
+
     }
 
     public String getOperatingSystem() {
@@ -186,13 +186,17 @@ public class WebBaseTest extends BaseTest {
     public String getRemoteURL() {
         if (getRunLocation().equalsIgnoreCase("sauce")) {
             return sauceLabsURL;
-        } else if (getRunLocation().equalsIgnoreCase("grid")) {
+        }
+ else if (getRunLocation().equalsIgnoreCase("grid")) {
             return defaultSeleniumHubURL;
-        } else if (getRunLocation().equalsIgnoreCase("mobile")) {
+        }
+ else if (getRunLocation().equalsIgnoreCase("mobile")) {
             return mobileHubURL;
-        } else {
+        }
+ else {
             return "";
         }
+
     }
 
     protected void setSeleniumHubURL(String newHubURLName) {
@@ -218,7 +222,6 @@ public class WebBaseTest extends BaseTest {
     // ************************************
     // ************************************
     // ************************************
-
     /**
      * Doubling up to cover different threading between before test and before method
      *
@@ -319,9 +322,11 @@ public class WebBaseTest extends BaseTest {
         if (getPageURL() == null || getPageURL().isEmpty()) {
             launchApplication();
             // Otherwise if you have a specific page you want the test to start from
-        } else {
+        }
+ else {
             launchApplication(getPageURL());
         }
+
         return DriverManager.getWebDriver();
     }
 
@@ -333,13 +338,13 @@ public class WebBaseTest extends BaseTest {
      * test if reporting to sauce labs
      */
     protected void endTest(String testName, ITestResult testResults) {
-
         ExtendedWebDriver driver = null;
         try {
             driver = DriverManager.getWebDriver();
-        } catch (AutomationException e) {
-
         }
+ catch (AutomationException e) {
+        }
+
         if (driver != null && driver.getWebDriver() != null && !driver.getWebDriver().toString().contains("null") &&
                 DriverManager.getDriver().getWebDriver().getWindowHandles().size() > 0) {
             if (getRunLocation().equalsIgnoreCase("sauce")) {
@@ -347,11 +352,14 @@ public class WebBaseTest extends BaseTest {
                 if (getRunLocation().equalsIgnoreCase("sauce")) {
                     // reportToSauceLabs(testResults.getStatus());
                 }
+
             }
+
             // quit driver
             DriverManager.quitDriver();
             DriverManager.stopService();
         }
+
     }
 
     /**
@@ -365,18 +373,22 @@ public class WebBaseTest extends BaseTest {
         ExtendedDriver driver = null;
         try {
             driver = DriverManager.getDriver();
-        } catch (AutomationException e) {
-
         }
+ catch (AutomationException e) {
+        }
+
         if (driver != null && driver.getWebDriver() != null && !driver.getWebDriver().toString().contains("null") &&
                 DriverManager.getDriver().getWebDriver().getWindowHandles().size() > 0) {
             if (getRunLocation().equalsIgnoreCase("sauce")) {
                 if (testResults.getFailedTests().size() == 0) {
                     // reportToSauceLabs(ITestResult.SUCCESS);
-                } else {
+                }
+ else {
                     // reportToSauceLabs(ITestResult.FAILURE);
                 }
+
             }
+
             // quit driver
             DriverManager.quitDriver();
             DriverManager.stopService();
@@ -393,12 +405,13 @@ public class WebBaseTest extends BaseTest {
     private void reportToSauceLabs(int result) {
         Map<String, Object> updates = new HashMap<>();
         updates.put("name", getTestName());
-
         if (result == ITestResult.FAILURE) {
             updates.put("passed", false);
-        } else {
+        }
+ else {
             updates.put("passed", true);
         }
+
         SauceREST client = new SauceREST(authentication.getUsername(), authentication.getAccessKey());
         client.updateJobInfo(DriverManager.getDriver().getSessionId(), updates);
     }
@@ -417,19 +430,22 @@ public class WebBaseTest extends BaseTest {
         // local execution
         if (getRunLocation().equalsIgnoreCase("local")) {
             localDriverSetup();
-
             // Code for running on remote execution such as a selenium grid or saucelabs
-        } else if (getRunLocation().equalsIgnoreCase("grid") || getRunLocation().equalsIgnoreCase("sauce")) {
+        }
+ else if (getRunLocation().equalsIgnoreCase("grid") || getRunLocation().equalsIgnoreCase("sauce")) {
             remoteDriverSetup();
         }
+
         // Code for running on mobile devices
         else if (getRunLocation().equalsIgnoreCase("mobile")) {
             mobileDriverSetup();
         }
+
         // Code for running on mobile devices
         else if (getRunLocation().equalsIgnoreCase("mobile_emulator")) {
             mobileEmulatorDriverSetup();
-        } else {
+        }
+ else {
             throw new AutomationException(
                     "Parameter for run [Location] was not set to 'Local', 'Grid', 'Sauce', 'Mobile'");
         }
@@ -439,6 +455,7 @@ public class WebBaseTest extends BaseTest {
             DriverManager.getDriver().manage().deleteAllCookies();
             DriverManager.getDriver().manage().window().maximize();
         }
+
     }
 
     /**
@@ -455,9 +472,11 @@ public class WebBaseTest extends BaseTest {
             options.getFirefoxOptions().setHeadless(true);
             setBrowserUnderTest("firefox");
             DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest()), options).initalizeDriver();
-        } else {
+        }
+ else {
             DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest())).initalizeDriver();
         }
+
     }
 
     /**
@@ -470,7 +489,6 @@ public class WebBaseTest extends BaseTest {
     private void remoteDriverSetup() {
         DriverOptionsManager options = new DriverOptionsManager();
         DriverType type = DriverType.fromString(getBrowserUnderTest());
-
         if (!getBrowserVersion().isEmpty()) {
             // Setting Browser version if desired
             options.setBrowserVersion(type, getBrowserVersion());
@@ -485,6 +503,9 @@ public class WebBaseTest extends BaseTest {
             case INTERNETEXPLORER:
                 options.getInternetExplorerOptions().ignoreZoomSettings();
                 break;
+            case CHROME:
+            	options.getChromeOptions().setCapability(ChromeOptions.CAPABILITY, options.getChromeOptions());
+            	break;
             default:
                 break;
         }
@@ -496,10 +517,11 @@ public class WebBaseTest extends BaseTest {
         URL url = null;
         try {
             url = new URL(getRemoteURL());
-
-        } catch (MalformedURLException e) {
+        }
+ catch (MalformedURLException e) {
             throw new AutomationException("Failed to create Remote WebDriver", e);
         }
+
         DriverManagerFactory.getManager(type, options).initalizeDriver(url);
         // allows for local files to be uploaded via remote webdriver on grid machines
         DriverManager.getDriver().setFileDetector();
@@ -522,7 +544,6 @@ public class WebBaseTest extends BaseTest {
     private void mobileDriverSetup() {
         DriverOptionsManager options = new DriverOptionsManager();
         DriverType type = DriverType.fromString(getOperatingSystem());
-
         // Setting default Broswer options
         switch (type) {
             case IOS_WEB:
@@ -548,10 +569,11 @@ public class WebBaseTest extends BaseTest {
         URL url = null;
         try {
             url = new URL(getRemoteURL());
-
-        } catch (MalformedURLException e) {
+        }
+ catch (MalformedURLException e) {
             throw new AutomationException("Failed to create Remote WebDriver", e);
         }
+
         DriverManagerFactory.getManager(type, options).initalizeDriver(url);
     }
 
@@ -560,13 +582,11 @@ public class WebBaseTest extends BaseTest {
         ChromeDevToolEmulator emulator = ChromeDevToolEmulator.fromString(getOperatingSystem());
         Map<String, Object> mobileEmulation = new HashMap<>();
         mobileEmulation.put(DEVICE_NAME, emulator.getName());
-
         manager.getChromeOptions().setPageLoadStrategy(DEFAULT_CHROME_PAGE_LOAD_STRATEGY);
         manager.getChromeOptions().setAcceptInsecureCerts(true);
         manager.getChromeOptions().setExperimentalOption("useAutomationExtension", false);
         manager.getChromeOptions().setExperimentalOption("mobileEmulation", mobileEmulation);
         // manager.getChromeOptions().addArguments("--remote-debugging-port=9222");
-
         DriverManagerFactory.getManager(DriverType.CHROME, manager).initalizeDriver();
     }
 
