@@ -31,7 +31,7 @@ public class Test_AccuWeatherLandingPage extends AccuWeatherBaseTest
 	  actualLocationSize = landingpage.getAllLocationsSize();
 	  Assert.assertEquals(actualLocationSize, expectedLocationSize); }
 
-	  /*@Test(priority=2, enabled=true) public void
+	  @Test(priority=2, enabled=true) public void
 	  TC1_VerifyDefaultLocationNameAndAkamaiNameAreNotSame() {
 	  testStart("Default Location names are not same Under Recent Location Section"
 	  ); landingpage.isRecentLocationDisplayed(); actualLocationName =
@@ -43,7 +43,7 @@ public class Test_AccuWeatherLandingPage extends AccuWeatherBaseTest
 	  landingpage.isRecentLocationDisplayed(); actualLocationName =
 	  landingpage.getDefaultLocationName(); crumbLocationName =
 	  landingpage.getCrumbLocationName(); Assert.assertNotSame(actualLocationName,
-	  crumbLocationName); }*/
+	  crumbLocationName); }
 	  @Test(priority=4, enabled=true) public void TC2_VerifyRecentTwoLocationsAreDisplayed() {
 	  testStart("Are Two recent locations Displayed Under Recent Location Section"
 	  ); landingpage.enterZipcodeInSearchField(zip);
@@ -75,7 +75,7 @@ public class Test_AccuWeatherLandingPage extends AccuWeatherBaseTest
 	  actualLocationSize = landingpage.getAllLocationsSize();
 	  Assert.assertEquals(actualLocationSize, expectedLocationSize); }
 
-/*
+
 	  @Test(priority=6) public void TC2_VerifyCTATitleAreSame() {
 	  testStart("Verify CTA Title"); actualCTATitle =
 	  landingpage.getCTATitle(); Assert.assertEquals(actualCTATitle,
@@ -112,5 +112,5 @@ public class Test_AccuWeatherLandingPage extends AccuWeatherBaseTest
 	  WebPageLoaded.isDomInteractive(1000);
 	  waitUntilElementIsDisplayedOrClickable(); actualWeatherRadarTitle =
 	  getDriver().getTitle(); Assert.assertEquals(actualWeatherRadarTitle,
-	  expectedWeatherRadarTitle); }*/
+	  expectedWeatherRadarTitle); }
 }

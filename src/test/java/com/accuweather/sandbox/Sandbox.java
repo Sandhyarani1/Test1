@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.accuweather.glacier.api.AccuweatherRest;
@@ -18,6 +19,7 @@ import com.accuweather.glacier.m.pages.SearchLocationsPage;
 import com.accuweather.glacier.m.pages.WeatherForecastCityPage;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.CurrentWeatherPage;
+import com.accuweather.glacier.www.pages.NavigationBar;
 import com.chameleon.api.restServices.RestResponse;
 import com.chameleon.selenium.DriverManager;
 import com.chameleon.selenium.DriverManagerFactory;
@@ -32,50 +34,50 @@ public class Sandbox extends AccuWeatherBaseTest {
     private SearchLocationsPage searchLocation = new SearchLocationsPage();
     private WeatherForecastCityPage city = new WeatherForecastCityPage();
     private CurrentWeatherPage currentWeather = new CurrentWeatherPage();
-    /*
-     * private NavBar navBar = new NavBar();
-     *
-     * @BeforeMethod
-     * public void start() {
-     * testStart("Sandbox");
-     * }
-     *
-     * @Test
-     * public void navigateToHome() {
-     * navBar.navigateToHome();
-     * TestReporter.assertTrue(navBar.validateNavigation("https://www.accuweather.com/"), "Assert navigated");
-     * }
-     *
-     * @Test
-     * public void navigateToRadarAndMaps() {
-     * navBar.navigateToRadarAndMaps();
-     * TestReporter.assertTrue(navBar.validateNavigation("/weather-radar"), "Assert navigated");
-     * }
-     *
-     * @Test
-     * public void navigateToNews() {
-     * navBar.navigateToNews();
-     * TestReporter.assertTrue(navBar.validateNavigation("/weather-news"), "Assert navigated");
-     * }
-     *
-     * @Test
-     * public void navigateToVideo() {
-     * navBar.navigateToVideo();
-     * TestReporter.assertTrue(navBar.validateNavigation("https://www.accuweather.com/en/videos"), "Assert navigated");
-     * }
-     *
-     * @Test
-     * public void navigateToSevereWeather() {
-     * navBar.navigateToSevereWeather();
-     * TestReporter.assertTrue(navBar.validateNavigation("/severe-weather"), "Assert navigated");
-     * }
-     *
-     * @Test
-     * public void locationSearch() {
-     * navBar.locationSearch("27127");
-     * TestReporter.assertTrue(navBar.validateNavigation("/search-locations"), "Assert navigated");
-     * }
-     */
+    
+     private NavigationBar navBar = new NavigationBar();
+     
+     @BeforeMethod
+     public void start() {
+     testStart("Sandbox");
+     }
+     
+     @Test
+     public void navigateToHome() {
+     navBar.navigateToHome();
+     TestReporter.assertTrue(navBar.validateNavigation("https://www.accuweather.com/"), "Assert navigated");
+     }
+     
+     @Test
+     public void navigateToRadarAndMaps() {
+     navBar.navigateToRadarAndMaps();
+     TestReporter.assertTrue(navBar.validateNavigation("/weather-radar"), "Assert navigated");
+     }
+     
+     @Test
+     public void navigateToNews() {
+     navBar.navigateToNews();
+     TestReporter.assertTrue(navBar.validateNavigation("/weather-news"), "Assert navigated");
+     }
+     
+     @Test
+     public void navigateToVideo() {
+     navBar.navigateToVideo();
+     TestReporter.assertTrue(navBar.validateNavigation("https://www.accuweather.com/en/videos"), "Assert navigated");
+     }
+     
+     @Test
+     public void navigateToSevereWeather() {
+     navBar.navigateToSevereWeather();
+     TestReporter.assertTrue(navBar.validateNavigation("/severe-weather"), "Assert navigated");
+     }
+     
+     @Test
+     public void locationSearch() {
+     navBar.locationSearch("27127");
+     TestReporter.assertTrue(navBar.validateNavigation("/search-locations"), "Assert navigated");
+     }
+     
 
     // @Test
     public void googleMaps() throws IOException, WebSocketException, InterruptedException {

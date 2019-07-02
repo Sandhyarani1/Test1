@@ -25,8 +25,8 @@ private By byVideo = By.xpath("//div[contains(@class,'video-player')]/div[contai
 //private By byVideoAutoPlay = By.xpath("//div[contains(@class,'video-player')]/div[contains(@id,'jw-container-yYI3lbdK-L6hCQGol') and contains(@class,'jwplayer jw-reset jw-state')]");
 private By byVideoAutoPlay = By.xpath("//div[contains(@aria-label,'Video Player')]");
 //private By byVideoAutoPlay = By.xpath("//div[contains(@class,'video-player')]/div[contains(@id,'jw-container-yYI3lbdK-L6hCQGol')]");
-private By byWeatherImage = By.cssSelector("div.two-column-page-content > div.page-column-1 > a > img");
-private By byMoreMapsLink = By.cssSelector("div.two-column-page-content > div.page-column-1 > a > div.cta-text > div");
+private By byWeatherImage = By.cssSelector("div.two-column-page-content > div.page-column-1 > div > a > img");
+private By byMoreMapsLink = By.cssSelector("div.two-column-page-content > div.page-column-1 > div > a > div.cta-text > div");
 private By byMoreMapsIconLink = By.cssSelector("body > div.template-root > div.two-column-page-content > div.page-column-1 > a > div.cta-text > svg");
 
 /*
@@ -175,7 +175,7 @@ public String getVideoClassAttribute() throws InterruptedException {
 	WebElement classattribute = getDriver().findElement(byVideoAutoPlay);
 	getDriver().executeJavaScript("arguments[0].scrollIntoView(true);", classattribute);
 	//getDriver().executeJavaScript("window.scrollBy(0,document.body.scrollHeight || document.documentElement.scrollHeight)", "");
-	WebPageLoaded.isJQueryComplete(); 
+	//WebPageLoaded.isJQueryComplete(); 
 	String classattributes = getDriver().findElement(byVideoAutoPlay).getAttribute("class").substring(0, 35);
 	System.out.println("classattributes classattributes..... "+classattributes);
 	return classattributes;	
@@ -199,7 +199,7 @@ public String getStickyVideoClassAttribute() throws InterruptedException {
 	WebElement classattribute = getDriver().findElement(byVideoAutoPlay);
 	getDriver().executeJavaScript("arguments[0].scrollIntoView(true);", classattribute);
 	getDriver().executeJavaScript("window.scrollBy(0,document.body.scrollHeight || document.documentElement.scrollHeight)", "");
-	WebPageLoaded.isJQueryComplete(); 
+	//WebPageLoaded.isJQueryComplete(); 
 	String classattributes = getDriver().findElement(byVideoAutoPlay).getAttribute("class").substring(0, 35);
 	System.out.println("classattributes classattributes..... "+classattributes);
 	return classattributes;	

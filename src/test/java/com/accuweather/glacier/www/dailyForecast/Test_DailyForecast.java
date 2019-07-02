@@ -24,11 +24,11 @@ public class Test_DailyForecast extends AccuWeatherBaseTest
 	private LandingPage landingPage = new LandingPage();
 	private DailyForeCastPage dailyForecast = new DailyForeCastPage();
 	private SimpleDate currentDate = new SimpleDate();
-	/*static
+	static
 	{
 	}
 
-/*	@Test(priority=1)
+	@Test(priority=1)
 	public void TC1_verifyDailyText()
 	{
 		testStart("Validate the text on Daily Tab");
@@ -72,7 +72,7 @@ public class Test_DailyForecast extends AccuWeatherBaseTest
 		WebPageLoaded.isDomInteractive(1000);
 		Assert.assertEquals(dailyForecast.getColor_Of_DailyTab(), ACTIVE_TAB_COLOR);
 	}
-	*/
+	
 	@Test(priority=5)
 	public void TC2_getResponse()
 	{ 
@@ -88,4 +88,4 @@ public class Test_DailyForecast extends AccuWeatherBaseTest
 			System.out.println(dailyForecasts.get(i));
 		System.out.println("First JSON Object "+dailyForecasts.getJSONObject(0).getJSONObject("Minimum").getString("Unit"));
 	}
-}
+}
