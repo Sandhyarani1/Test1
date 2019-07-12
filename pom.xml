@@ -17,7 +17,7 @@
 		<jUnitVersion>4.12</jUnitVersion>    
 		<mariadbVersion>2.2.5</mariadbVersion>
 		<sauceLabsVersion>2.1.23</sauceLabsVersion>  	
-		<seleniumVersion>3.14.0</seleniumVersion>      	
+		<seleniumVersion>3.141.59</seleniumVersion>      	
 		<sqliteVersion>3.21.0.1</sqliteVersion>  
 		<testNgVersion>6.8.21</testNgVersion>    
 		<poiXmlVersion>3.12</poiXmlVersion>
