@@ -1,4 +1,4 @@
-package com.accuweather.glacier.www.Footer;
+/*package com.accuweather.glacier.www.Footer;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
@@ -588,3 +588,4 @@ public class Test_UniversalFooterpage extends AccuWeatherBaseTest
 	}
 
 }
+*/
