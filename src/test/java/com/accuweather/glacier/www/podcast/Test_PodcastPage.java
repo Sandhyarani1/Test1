@@ -1,7 +1,7 @@
 package com.accuweather.glacier.www.podcast;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.NavigationBar;
 import com.accuweather.glacier.www.pages.PodcastPage;
@@ -58,7 +58,7 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 		waitUntilWindowExistsWithTitle(PodcastTitle);
 		waitUntilElementIsDisplayedOrClickable();
 		podpage.clickOnAWLogo();
-		// Assert.assertTrue(navBar.isAWLogoDisplayed());
+		navBar.isAWLogoDisplayed();
 		ActualHomePageTitle = getDriver().getTitle();
 		Assert.assertEquals(ActualHomePageTitle, ExpectedHomePageTitle);
 	}
@@ -246,8 +246,6 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 	 
 	 Assert.assertTrue(podpage.isPopUpPauseIconeDisplayed());
 	 
-	 
-	 
 	 }
 
 	 
@@ -265,18 +263,13 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 	 
 	 waitUntilElementIsDisplayedOrClickable(); navBar.clickOnPodcastSubMenu();
 	 
-	 waitUntilWindowExistsWithTitle(PodcastTitle); podpage.clickOnShareIconLogo();
+	 waitUntilWindowExistsWithTitle(PodcastTitle); 
 	 
-	 waitUntilElementIsDisplayedOrClickable();
+	 podpage.clickOnShareIconLogo();
 	 
 	 waitUntilElementIsDisplayedOrClickable();
 	 
 	 Assert.assertTrue(podpage.isShareNotificationMsgDisplayed());
 	 
-	 
-	 
-	 }
-
-	 
-	 
+	 }	 
 }

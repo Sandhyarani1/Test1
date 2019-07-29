@@ -7,6 +7,8 @@ import org.openqa.selenium.support.Color;
 
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
+import com.chameleon.selenium.web.elements.WebElement;
+import com.chameleon.utils.Sleeper;
 
 public class BuildErrorPage extends BasePage
 {
@@ -24,7 +26,8 @@ public class BuildErrorPage extends BasePage
 	 
 	public String addtexttoEndURL() throws URISyntaxException
 	{
-		String currentURL ="https://development.accuweather.com";
+		WebPageLoaded.isDomInteractive();
+		String currentURL ="https://qualityassurance.accuweather.com";
 		URIBuilder uri = new URIBuilder(currentURL);
 		uri.setPath("tt");
 		return uri.toString();
@@ -32,7 +35,7 @@ public class BuildErrorPage extends BasePage
 
 	public String apendtexttoEndURL2() throws URISyntaxException
 	{
-		String currentURL ="https://development.accuweather.com";
+		String currentURL ="https://qualityassurance.accuweather.com";
 		URIBuilder uri = new URIBuilder(currentURL);
 		uri.setPath("throw-exception");
 		return uri.toString();
@@ -54,7 +57,9 @@ public class BuildErrorPage extends BasePage
 	public String errorpageTextDisplayed()
 	{
 		WebPageLoaded.isDomInteractive();
-		String errorText=getDriver().findElement(byerrorText).getText();
+		WebElement findErrorText = getDriver().findElement(byerrorText);
+		findErrorText.syncVisible(5);
+		String errorText = getDriver().findElement(byerrorText).getText();
 		return errorText;
 	}
 
@@ -62,6 +67,8 @@ public class BuildErrorPage extends BasePage
 	public String errortypeDisplayed()
 	{
 		WebPageLoaded.isDomInteractive();
+		WebElement errorType = getDriver().findElement(byerrorType);
+		errorType.syncVisible(5);
 		String errorText=getDriver().findElement(byerrorType).getText();
 		return errorText;
 	}
@@ -70,6 +77,8 @@ public class BuildErrorPage extends BasePage
 	public String CTABacktoAccuweatheisDisplayed()
 	{
 		WebPageLoaded.isDomInteractive();
+		WebElement backtoAccuweather = getDriver().findElement(byCTABacktoAccuweather);
+		backtoAccuweather.syncVisible(5);
 		String ctaText=getDriver().findElement(byCTABacktoAccuweather).getText();
 		return ctaText;
 	}
@@ -78,6 +87,8 @@ public class BuildErrorPage extends BasePage
 	public String CTABacktoAccuweathercolourDisplayed()
 	{
 		WebPageLoaded.isDomInteractive();
+		WebElement backtoAccuweather = getDriver().findElement(byCTABacktoAccuweather);
+		backtoAccuweather.syncVisible(5);
 		String ctaTextColour=getDriver().findElement(byCTABacktoAccuweather).getCssValue("color");
 	    String actualColour=Color.fromString(ctaTextColour).asHex();
 		return actualColour;
@@ -87,6 +98,8 @@ public class BuildErrorPage extends BasePage
 	public boolean CTABacktoAccuweatherwithArrowDisplayed()
 	{
 		WebPageLoaded.isDomInteractive();
+		WebElement backtoAccuweathertextwitharrow = getDriver().findElement(byCTABacktoAccuweathertextwitharrow);
+		backtoAccuweathertextwitharrow.syncVisible(5);
 		return getDriver().findElement(byCTABacktoAccuweathertextwitharrow).isDisplayed();
 	}
 
@@ -94,7 +107,10 @@ public class BuildErrorPage extends BasePage
 	public void CTABacktoAccuweatherisClicked()
 	{
 		WebPageLoaded.isDomInteractive();
-		 getDriver().findElement(byCTABacktoAccuweather).jsClick();
+		WebElement backtoAccuweather = getDriver().findElement(byCTABacktoAccuweather);
+		backtoAccuweather.syncVisible(5);
+		getDriver().findElement(byCTABacktoAccuweather).jsClick();
+		Sleeper.sleep(5);
 	}
 
 }

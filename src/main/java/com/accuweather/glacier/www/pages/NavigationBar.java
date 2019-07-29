@@ -20,14 +20,12 @@ import com.chameleon.utils.Sleeper;
 
 public class NavigationBar extends BasePage 
 {
-	private By byLogo = By.cssSelector("div > div.main-menu > div.logo-wrapper >div.icon-text > a > svg");
+    private By byLogo = By.cssSelector("div > div.main-menu > div.logo-wrapper >div.icon-text > a > svg");
     //private By byRadarMaps = By.id("navRadar");
     //private By byRadarMaps = By.xpath("//li[contains(@id,'navRadar')]/a/span");
-	private By bySatelliteSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(2) > a > h4");
-	private By byMapsSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(1) > a > h4");
-	private By byMaps = By.cssSelector("div.main-menu > ul > li:nth-child(1)");
     private By byMegaMenu = By.cssSelector("div.main-menu-content");
     private By byRadarMaps = By.cssSelector("div.main-menu > ul > li:nth-child(1)");
+    private By byMaps = By.cssSelector("div.main-menu > ul > li:nth-child(1)");
     private By byNews = By.cssSelector("div.main-menu > ul > li:nth-child(2)");
     private By byVideo = By.cssSelector("div.main-menu > ul > li:nth-child(3)");
     private By bySevereWeather = By.cssSelector("div.main-menu > ul > li:nth-child(4)");
@@ -36,15 +34,12 @@ public class NavigationBar extends BasePage
     private By bySettingCountry = By.cssSelector("div.settings-wrap > div.dropdown-select.fade-in-left > div.dropdown-select-wrapper > div.select-title");
     private By bySettingLanguage = By.cssSelector("div.settings-wrap > div.fade-in-left:nth-of-type(2) > div > div");
     private By bySettingTemperature = By.cssSelector("div.settings-wrap > div.temp-switcher.fade-in-left > span.temp-switcher-label");
-    private By bySettingCountryUpArrow = By.cssSelector("div > div > div.dropdown-select-wrapper > svg.hide-mobile.icon-chevron");
+    private By bySettingCountryUpArrow = By.cssSelector("div > div:nth-child(1) > div.dropdown-select-wrapper > svg.hide-mobile.icon-chevron");
     private By bySettingMyRecentCountries = By.cssSelector("div > div.dropdown-select.fade-in-left > div.dropdown-content > div.dropdown-content-title");
-    private By bySettingMoreCountries = By.cssSelector("div > div.dropdown-select.fade-in-left > div.dropdown-content > a.button-primary");
-    private By bySettingCountryName = By.cssSelector("div > div.dropdown-select.fade-in-left > div.dropdown-content > a.dropdown-content-item");
+    private By bySettingMoreCountries = By.cssSelector("div > div > div.dropdown-content > a.button-primary");
+    private By bySettingCountryName = By.cssSelector("div > div > div.dropdown-content > a.dropdown-content-item");
     private By bySettingLanguageArrow = By.cssSelector("div > div.fade-in-left:nth-of-type(2) > div > svg.hide-mobile.icon-chevron");
-    private By bySettingLangugaeList = By.cssSelector("div > div.dropdwon-select.locale-dropdown.fade-in-left > div.dropdown-content > div.dropdown-content-title");
-    //private By bySettingLangugaeList = By.cssSelector("div > div > div.dropdown-content > div.dropdown-content-title");
-    //private By bySettingLangugaeList = By.cssSelector("div > div.dropdwon-select.locale-dropdown.fade-in-left > div.dropdown-content > div.dropdown-content-title");
-    //private By bySettingLangugaeList = By.cssSelector("div > div > div.dropdwon-content > div.dropdown-content-item");
+    private By bySettingLangugaeList = By.cssSelector("div > div > div.dropdown-content");
     private By bySettingLanguageSelect = By.cssSelector("div > div.dropdown-select.locale-dropdown.fade-in-left > div.dropdown-content > div.dropdown-content-item:nth-child(3)");
     private By bySettingFarTempLabel = By.cssSelector("div > div.temp-switcher.fade-in-left > div.switcher-container > span.switcher-label");
     private By bySettingCentigradeLabel = By.cssSelector("div.settings-wrap > div.temp-switcher.fade-in-left > div.switcher-container.switch-right");
@@ -52,9 +47,9 @@ public class NavigationBar extends BasePage
     private By bySettingTempBar = By.cssSelector("div > div.temp-switcher.fade-in-left > div.switcher-container > div.switcher > div.bar" );
     private By byStartSearch = By.className("search-input");
     //private By byTopSearch = By.cssSelector("div.main-menu > div.header-right-container > div.search-wrapper.is-wide > svg.icon-search");
-    private By byTopSearch = By.xpath("//div[contains(@class,'header-right-container')]/div");
+    private By byTopSearch = By.xpath("//div[contains(@class,'header-right-container')]/div/div");
     //private By byTopSearchClose = By.xpath("//div[contains(@class,'header-right-container')]/svg");
-    private By byTopSearchClose = By.cssSelector("div.header-right-container > svg.icon-close");
+    private By byTopSearchClose = By.cssSelector("div.utility-bar-wrapper > svg.icon-close");
     //private By bySuperSearch = By.className("super-search-input");
     private By bySuperSearch = By.cssSelector("div.super-search-wrap > form.super-search-form > input");
     private By byBrowseLocation = By.cssSelector("div.mega-menu-search > div.content-column > a.super-search-browse");
@@ -78,14 +73,15 @@ public class NavigationBar extends BasePage
     private By byWeatherNewsSubMenu = By.cssSelector("div > div:nth-child(2) > a > h4");
     private By byPersonalitiesSubMenu = By.cssSelector("div > div:nth-child(3) > a > h4");
     private By byWeatherBlogsSubMenu = By.cssSelector("div:nth-child(4) > a > h4");
-    //private By byWeatherBlogsSubMenu = By.cssSelector("div.mega-menu-content.mega-menu-item.mega-menu-item-link.fade-in-left:nth-of-type(4) > a > h4");
-    //private By byClimateChangeSubMenu = By.cssSelector("div.mega-menu-content.mega-menu-item.mega-menu-item-link.fade-in-left:nth-of-type(5) > a > h4");
     private By byClimateChangeSubMenu = By.cssSelector("div:nth-child(5) > a > h4");
     private By byNewsSubMenu = By.cssSelector("div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(1) > h4");
     private By byHurricaneSubMenu = By.cssSelector("div > div:nth-child(2) > a > h4");
     private By byAWReadySubMenu = By.cssSelector("div > div:nth-child(3) > a > h4");
     private By byWinterWeatherSubMenu = By.cssSelector("div > div:nth-child(4) > a > h4");
     private By bySeverWeatherSubMenu = By.cssSelector("div.mega-menu > div > div.mega-menu-item.mega-menu-item-cta.fade-in-left > a > h4");
+    //Maps Submenu
+    private By byMapsSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(1) > a > h4");
+    private By bySatelliteSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(2) > a > h4");
     //private By byVideoSubMenu = By.cssSelector("div.menu-dropdown > div > div:nth-child(1) > div > a:nth-child(1) > h3");
     private By byVideoSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(1) > a:nth-child(1) > h4");
     private By byVideoDescription = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-cta.fade-in-left > p");
@@ -126,8 +122,7 @@ public class NavigationBar extends BasePage
     //private By byCouponsSubMenu = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(6) > h4");
     private By byCouponsSubMenu = By.cssSelector("div > div.mega-menu > div > div:nth-child(6) > a > h4");
     private By byCouponsText = By.cssSelector("div > div.mega-menu > div > div:nth-child(6) > p");
-    private By byFacebookIcon = By.cssSelector("div.mega-menu-content > div.header-social.fade-in-left > a > svg.icon-facebook > g > path");
-    //private By byFacebookIcon = By.cssSelector("div.mega-menu-content > div.header-social.fade-in-left:nth-of-type(7) > a > svg.icon-facebook > g > path");
+    private By byFacebookIcon = By.cssSelector("div.mega-menu-content > div.header-social.fade-in-left:nth-of-type(7) > a > svg.icon-facebook > g > path");
     //private By byFacebookIcon = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(7) > h4");
     //private By byFacebookIcon = By.cssSelector("div > div.mega-menu > div > div:nth-child(7) > a > h4");
     private By byTwitterIcon = By.cssSelector("div.mega-menu-content > div.header-social.fade-in-left:nth-of-type(7) > a > svg.icon-twitter > g > path");
@@ -166,6 +161,7 @@ public class NavigationBar extends BasePage
     //WebDriverWait wait = new WebDriverWait(getDriver(), 10);
     //wait.until(ExpectedConditions.visibilityOfElementLocated(byRadarSubMenu));
     getDriver().findElement(byRadarSubMenu).jsClick();
+    Sleeper.sleep(2);
     //clickVisibleElement(byRadarSubMenu);
     }
 
@@ -198,38 +194,11 @@ public class NavigationBar extends BasePage
 	 * txtSuperSearch.set(info); txtSuperSearch.sendKeys(Keys.RETURN); }
 	 */
     
-    
-	  public void locationSearch2Chars() { 
-	  WebElement element = getDriver().findElement(bySuperSearch);
-	  getDriver().executeJavaScript("arguments[0].setAttribute('value', 'st')", element);
-	 }
-	  
-	  public void satelliteCitylocationSearch() { 
-	  WebElement element = getDriver().findElement(bySuperSearch);
-	  getDriver().executeJavaScript("arguments[0].setAttribute('value', 'Rio de Janeiro, Rio De Janeiro, BR')", element);
-	  }
-	  
-	  public void locationSearchWithoutChars() { 
-		  WebElement element = getDriver().findElement(bySuperSearch);
-		  getDriver().executeJavaScript("arguments[0].setAttribute('value', '')", element);
-		 }	 
-    
     public void locationSearch(String info) {
         WebTextbox txtSuperSearch = getDriver().findTextbox(bySuperSearch);
         txtSuperSearch.syncVisible();
         txtSuperSearch.set(info);
         txtSuperSearch.sendKeys(Keys.RETURN);
-    }
-    
-    public void enterlocationSearch() throws AWTException, InterruptedException  {
-    	Robot robot = new Robot();
-    	robot.keyPress(KeyEvent.VK_ENTER);
-    	WebPageLoaded.isDomComplete(2000);
-    	//Thread.sleep(2000);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        WebPageLoaded.isDomComplete(2000);
-        //Thread.sleep(2000);
-    	
     }
 
     public boolean isSettingCountryDisplayed() {
@@ -265,21 +234,25 @@ public class NavigationBar extends BasePage
        	WebPageLoaded.isDomInteractive();
         WebTextbox settingicon = getDriver().findTextbox(bySettingIcon);
         settingicon.syncVisible(15);
-    	settingicon.click();     
+    	settingicon.click(); 
+    	Sleeper.sleep(10);
        }
     
     public void clickTopNavStartSearchIcon() {
        	WebPageLoaded.isDomInteractive();
         WebTextbox startsearch = getDriver().findTextbox(byTopSearch);
         startsearch.syncVisible(15);
-    	startsearch.click();     
+    	startsearch.click();   
+    	Sleeper.sleep(5);
        }
     
     public void clickBrowseYourLocationLink() {
        	WebPageLoaded.isDomInteractive();
+       	getDriver().findTextbox(byBrowseLocation).syncVisible();
         WebTextbox browselocation = getDriver().findTextbox(byBrowseLocation);
         browselocation.syncVisible(15);
-        browselocation.click();     
+        browselocation.click();   
+        Sleeper.sleep(3);
        }
 
     public boolean isMegaMenuContentDisplayed() {
@@ -432,7 +405,45 @@ public class NavigationBar extends BasePage
     	WebPageLoaded.isDomInteractive();
         WebElement radarandmaps = getDriver().findElement(byRadarMaps);
         radarandmaps.syncVisible(15);
+        Sleeper.sleep(10);
         radarandmaps.hover();
+        Sleeper.sleep(3);
+    }
+    
+    //Maps
+    public void mouseHoverOnMaps() {
+       WebPageLoaded.isDomInteractive();
+       WebElement maps = getDriver().findElement(byMaps);
+       maps.syncVisible(20);
+       Sleeper.sleep(10);
+       maps.hover();
+       Sleeper.sleep(3);
+   }
+   
+    //Maps categories - Maps Submenu
+    public boolean isMapsSubMenuDisplayed() {
+    	WebPageLoaded.isDomInteractive();
+        WebElement submenuMaps = getDriver().findElement(byMapsSubMenu);
+        submenuMaps.syncVisible(15);
+        return submenuMaps.isDisplayed();    	   	
+    }
+    
+    //Maps categories - Satellite Submenu
+    public boolean isSatelliteSubMenuDisplayed() {
+    	WebPageLoaded.isDomInteractive();
+        WebElement submenuSatellite = getDriver().findElement(bySatelliteSubMenu);
+        submenuSatellite.syncVisible(15);
+        return submenuSatellite.isDisplayed();    	   	
+    }
+    
+    //Click on maps submenu
+    public void clickOnMapsSubMenu() {
+    	getDriver().findElement(byMapsSubMenu).jsClick();          
+    }
+    
+    //Click on satelllite submenu
+    public void clickOnSatelliteSubMenu() {
+    	getDriver().findElement(bySatelliteSubMenu).jsClick();          
     }
 
         public void mouseHoverOnDescriptionLink() {
@@ -517,6 +528,7 @@ public class NavigationBar extends BasePage
 
             public void navigateToClimateChangePage() {
                 getDriver().findElement(byClimateChangeSubMenu).click();
+                Sleeper.sleep(2);
                 //clickVisibleElement(byRadarSubMenu);
                 }
 
@@ -526,7 +538,7 @@ public class NavigationBar extends BasePage
               }
 
             public void navigateToRadarPageFromDescritionLink() {
-                getDriver().findElement(byMainMenuDescriptionLink).click();
+                getDriver().findElement(byMainMenuDescriptionLink).jsClick();
                 //clickVisibleElement(byRadarSubMenu);
                 }
 
@@ -600,6 +612,7 @@ public class NavigationBar extends BasePage
             WebElement video = getDriver().findElement(byVideo);
             video.syncVisible(15);
             video.hover();
+            Sleeper.sleep(3);
         }
 
         public void mouseHoverOnVideoDescriptionLink() {
@@ -724,6 +737,7 @@ public class NavigationBar extends BasePage
             WebElement more = getDriver().findElement(byMore);
             more.syncVisible(15);
             more.hover();
+            Sleeper.sleep(2);
             }
         
         public void mouseHoverOnSettingsIcon() {
@@ -810,6 +824,7 @@ public class NavigationBar extends BasePage
         
         public void clickSettingCountryNameLink() {
             getDriver().findElement(bySettingCountryName).click();
+            Sleeper.sleep(2);
             }
         
         public String getSettingCountryNameLinkText() {
@@ -1131,38 +1146,29 @@ public class NavigationBar extends BasePage
     		
     }
         
-      //Maps
-        public void mouseHoverOnMaps() {
-           WebPageLoaded.isDomInteractive();
-           WebElement maps = getDriver().findElement(byMaps);
-           maps.syncVisible(20);
-           Sleeper.sleep(10);
-           maps.hover();
-       }
+        public void locationSearch2Chars() { 
+      	  WebElement element = getDriver().findElement(bySuperSearch);
+      	  getDriver().executeJavaScript("arguments[0].setAttribute('value', 'st')", element);
+      	 }
         
-      //Maps categories - Satellite Submenu
-        public boolean isSatelliteSubMenuDisplayed() {
-        	WebPageLoaded.isDomInteractive();
-            WebElement submenuSatellite = getDriver().findElement(bySatelliteSubMenu);
-            submenuSatellite.syncVisible(15);
-            return submenuSatellite.isDisplayed();    	   	
+        public void locationSearchWithoutChars() { 
+  		  WebElement element = getDriver().findElement(bySuperSearch);
+  		  getDriver().executeJavaScript("arguments[0].setAttribute('value', '')", element);
+  		 }
+
+        public void enterlocationSearch() throws AWTException, InterruptedException  {
+        	Robot robot = new Robot();
+        	robot.keyPress(KeyEvent.VK_ENTER);
+        	WebPageLoaded.isDomComplete(2000);
+        	//Thread.sleep(2000);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+            WebPageLoaded.isDomComplete(2000);
+            //Thread.sleep(2000);
+        	
         }
         
-      //Click on satelllite submenu
-        public void clickOnSatelliteSubMenu() {
-        	getDriver().findElement(bySatelliteSubMenu).jsClick();          
-        }
-        
-      //Maps categories - Maps Submenu
-        public boolean isMapsSubMenuDisplayed() {
-        	WebPageLoaded.isDomInteractive();
-            WebElement submenuMaps = getDriver().findElement(byMapsSubMenu);
-            submenuMaps.syncVisible(15);
-            return submenuMaps.isDisplayed();    	   	
-        }
-        
-      //Click on maps submenu
-        public void clickOnMapsSubMenu() {
-        	getDriver().findElement(byMapsSubMenu).jsClick();          
-        }
+        public void satelliteCitylocationSearch() { 
+      	  WebElement element = getDriver().findElement(bySuperSearch);
+      	  getDriver().executeJavaScript("arguments[0].setAttribute('value', 'Rio de Janeiro, Rio De Janeiro, BR')", element);
+      	  }
 }

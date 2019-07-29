@@ -75,8 +75,7 @@ public class LegalFooter extends BasePage
 		switchToPopUpWindow(window);
 		Sleeper.sleep(20);
 		WebPageLoaded.isDomInteractive();
-		getDriver().manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-		
+		getDriver().manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);	
 	}
 
 	/**
@@ -141,7 +140,6 @@ public class LegalFooter extends BasePage
 	{
 		clickTermsOfUse();
 		String color = getDriver().findElement(byTermsOfUseTab).getCssValue("border-top-color");
-		System.out.println("after color");
 		return Color.fromString(color).asHex();
 	}
 
