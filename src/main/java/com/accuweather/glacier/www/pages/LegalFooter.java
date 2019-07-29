@@ -8,6 +8,7 @@ import org.openqa.selenium.support.Color;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
+import com.chameleon.utils.Sleeper;
 
 public class LegalFooter extends BasePage
 {
@@ -23,10 +24,10 @@ public class LegalFooter extends BasePage
 	private By byPrivacyPolicyTab = By.cssSelector("body > div.template-root > div.page-subnav > div > div > div.subnav-items > a:nth-child(2)");
 	private By byCookiePolicyTab = By.cssSelector("body > div.template-root > div.page-subnav > div > div > div.subnav-items > a:nth-child(5)");
 	private By byTAGDisclosureTab = By.cssSelector("body > div.template-root > div.page-subnav > div > div > div.subnav-items > a:nth-child(6)");
-	private By byTermsOfUseHeading = By.cssSelector("body > div.template-root > div.page-content > div > div > h2");
-	private By byPrivacyPolicyHeading = By.cssSelector("body > div.template-root > div.page-content > div > div > h2");
-	private By byTAGDisclosureHeading = By.cssSelector("body > div.template-root > div.page-content > div > div > h2");
-	private By byCookiePolicyHeading = By.cssSelector("body > div.template-root > div.page-content > div > div > h2");
+	private By byTermsOfUseHeading = By.cssSelector("body > div.template-root > div > div.page-content > div > div > h2");
+	private By byPrivacyPolicyHeading = By.cssSelector("body > div.template-root > div > div.page-content > div > div > h2");
+	private By byTAGDisclosureHeading = By.cssSelector("body > div.template-root > div > div.page-content > div > div > h2");
+	private By byCookiePolicyHeading = By.cssSelector("body > div.template-root > div > div.page-content > div > div > h2");
 	private By bySettingsButton = By.cssSelector("div.main-menu > div.header-right-container > div.settings-button");
 	private By byLanguageSelector = By.cssSelector("div.utility-bar > div > div > div.dropdown-select.locale-dropdown.fade-in-left > div.dropdown-select-wrapper > div.select-title.non-touch");
 	private By bySpanish = By.cssSelector("div.utility-bar > div > div > div.dropdown-select.locale-dropdown.fade-in-left > div.dropdown-content > div:nth-child(3)");
@@ -69,10 +70,12 @@ public class LegalFooter extends BasePage
 		termsOfUseLink.syncVisible(30);
 		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		termsOfUseLink.jsClick();
+		Sleeper.sleep(20);
 		String window = getDriver().getWindowHandle();
 		switchToPopUpWindow(window);
+		Sleeper.sleep(20);
 		WebPageLoaded.isDomInteractive();
-		getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+		getDriver().manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);	
 	}
 
 	/**
@@ -169,8 +172,10 @@ public class LegalFooter extends BasePage
 		privacyPolicyLink.syncVisible(30);
 		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		privacyPolicyLink.jsClick();
+		Sleeper.sleep(20);
 		String window = getDriver().getWindowHandle();
 		switchToPopUpWindow(window);
+		Sleeper.sleep(20);
 		WebPageLoaded.isDomInteractive();
 		getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 	}
@@ -272,8 +277,10 @@ public class LegalFooter extends BasePage
 		cookiePolicyLink.syncVisible(30);
 		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		cookiePolicyLink.jsClick();
+		Sleeper.sleep(20);
 		String window = getDriver().getWindowHandle();
 		switchToPopUpWindow(window);
+		Sleeper.sleep(20);
 		WebPageLoaded.isDomInteractive();
 		getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 	}
@@ -375,8 +382,10 @@ public class LegalFooter extends BasePage
 		tagDisclosureLink.syncVisible(30);
 		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		tagDisclosureLink.jsClick();
+		Sleeper.sleep(20);
 		String window = getDriver().getWindowHandle();
 		switchToPopUpWindow(window);
+		Sleeper.sleep(20);
 		WebPageLoaded.isDomInteractive();
 		getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 	}

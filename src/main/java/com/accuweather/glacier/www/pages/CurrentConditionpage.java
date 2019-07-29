@@ -4,10 +4,10 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.Color;
-import org.testng.Assert;
+
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
@@ -19,7 +19,7 @@ public class CurrentConditionpage extends BasePage {
 	 * 
 	 */
 	private By bycurrentWeatherCard = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current");
+			"div > div.scroll > a.panel.panel-fade-in.card.current");
 	private By bycurrentWeatherTitle = By.cssSelector(
 			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current > div > p:nth-child(1)");
 	private By bycurrentconditiontime = By.cssSelector(

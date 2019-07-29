@@ -224,7 +224,7 @@ public class DayPartsPage extends BasePage {
 			"div.template-root:nth-child(1) div.two-column-page-content:nth-child(6) div.page-column-1 div.quarter-day-card-wrapper div.conditions-card.card.quarter-day-card div.temp-icon-wrapper:nth-child(3) div.temperatures > p.value");
 	//private By byTodayWeatherCard = By.cssSelector("body > div.template-root > div.two-column-page-content > div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(2)");
 	
-	private By byTodayWeatherCard = By.cssSelector(".day-panel"); 
+	private By byTodayWeatherCard = By.cssSelector("div.sliding-panel.three-day-panel.three-day-forecast.full-mobile-width > div > div.scroll > a:nth-child(2)"); 
 	
 	/**
 	 * Method to scroll into page

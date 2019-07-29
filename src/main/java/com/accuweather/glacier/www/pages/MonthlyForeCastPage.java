@@ -6,6 +6,7 @@ import org.openqa.selenium.support.Color;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
+import com.chameleon.utils.Sleeper;
 
 public class MonthlyForeCastPage extends BasePage 
 {
@@ -55,62 +56,59 @@ public class MonthlyForeCastPage extends BasePage
 	List<String> listofalldaysweek = new ArrayList<>();
 	private By byAWLogo = By.xpath("//div[1]/div[1]/div/div[2]/div[1]/div/a");
 	private By byGridViewRightArrow = By.cssSelector(
-			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.monthly-tools > div.card-button.monthly-nav.centered > a.arrow-wrap.is-next > svg");
-	private By byGridViewLeftArrow = By.cssSelector(
-			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.monthly-tools > div.card-button.monthly-nav.centered > a:nth-child(1) > svg");
+			"div.monthly-tools > div.card-button.monthly-nav.centered > a.arrow-wrap.is-next > svg");
+	private By byGridViewLeftArrow = By.cssSelector("div.monthly-tools > div.card-button.monthly-nav.centered > a:nth-child(1) > svg");
 	private By byListViewGridIcon = By
-			.cssSelector("div.page-column-1 > div.monthly-tools > div.layout-selector > a:nth-child(2)");
+			.cssSelector("div.monthly-tools > div.layout-selector > a:nth-child(2)");
 	private By byListViewIcon = By
-			.cssSelector("div.page-column-1 > div.monthly-tools > div.layout-selector > a:nth-child(2) > svg > path");
+			.cssSelector("div.layout-selector > a:nth-child(2) > svg > path");
 	private By byGridViewIconSelected = By
-			.cssSelector("div.page-column-1 > div.monthly-tools > div.layout-selector > a.grid-button");
-	private By byListViewIconSelected = By.cssSelector(
-			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.monthly-tools > div.layout-selector > a:nth-child(2)");
+			.cssSelector("div.page-column-1 > div > div.monthly-tools > div.layout-selector > a.grid-button");
+	private By byListViewIconSelected = By.cssSelector("div.monthly-tools > div.layout-selector > a:nth-child(2)");
 	private By byGridViewMonthYearText = By.cssSelector(
-			"div.two-column-page-content > div.page-column-1 > div.monthly-tools > div.card-button.monthly-nav.centered > span");
-	private By byGridViewTodayMonthPanel = By
-			.xpath("/html/body/div[1]/div[5]/div[1]/div[2]/div[2]/a[contains(@href,'_pc?day=0')]");
+			"div.two-column-page-content > div.page-column-1 > div > div.monthly-tools > div.card-button.monthly-nav.centered > span");
+	private By byGridViewTodayMonthPanel = By.xpath("//div[@class='monthly-grid-container monthly-component']/div[2]/a[contains(@href,'?day=0')]");
 	private By byGridIconColor = By.cssSelector(
-			"div.page-column-1 > div.monthly-tools > div.layout-selector > a.grid-button > svg > g > path.p2");
+			"div.layout-selector > a.grid-button > svg > g > path.p2");
 	private By byAllCurrentMonthDate = By
 			.xpath("//div[1]/div[2]/div[2]/a/div[contains(@class,'date') and not(contains(.,'/'))]");
 	private By byAllActiveDayPanel = By
-			.xpath("//div[5]/div[1]/div[2]/div[2]/a[not(contains(@class,'monthly-daypanel is-past'))]");
+			.xpath("//div[@class='monthly-grid-container monthly-component']/div[2]/a[not(contains(@class,'monthly-daypanel is-past'))]");
 	private By byAllActiveDayPanelIndex = By
-			.xpath("//div[5]/div[1]/div[2]/div[2]/a[not(contains(@class,'monthly-daypanel is-past'))][" + i + "]");
+			.xpath("//div[@class='monthly-grid-container monthly-component']/div[2]/a[not(contains(@class,'monthly-daypanel is-past'))][" + i + "]");
 	private By byAllActiveDatesInDayPanelIndex = By
 			.xpath("//div[5]/div[1]/div[2]/div[2]/a[not(contains(@class,'monthly-daypanel is-past'))][" + i
 					+ "]/div[contains(@class,'date')and not(contains(.,'/'))]");
 	private By byAllNonActivePastDates = By
-			.xpath("//div[5]/div[1]/div[2]/div[2]/a[(contains(@class,'monthly-daypanel is-past'))]");
+			.xpath("//div[@class='monthly-grid-container monthly-component']/div[2]/a[(contains(@class,'monthly-daypanel is-past'))]");
 	private By byAllTempOnTempGraph = By
-			.cssSelector("div.page-column-1 > div.temp-graph > div.chart-container > div.left-column > svg");
+			.cssSelector("div.temp-graph > div.chart-container > div.left-column > svg");
 	private By byAllDaysOnTempGraph = By
-			.cssSelector("div.page-column-1 > div.temp-graph > div.chart-container > div.chart > svg > g.x-labels");
+			.cssSelector("div.page-column-1 > div > div.temp-graph > div.chart-container > div.chart > svg > g.x-labels");
 	private By byOrangeThinLineOnTempGraph = By
 			.cssSelector("div.page-column-1 > div.temp-graph > div.chart-legend > div:nth-child(1) > svg > line");
 	private By byOrangeThickLineOnTempGraph = By
-			.cssSelector("div.page-column-1 > div.temp-graph > div.chart-legend > div:nth-child(2) > svg > line");
+			.cssSelector("div.page-column-1 > div > div.temp-graph > div.chart-legend > div:nth-child(2) > svg > line");
 	private By byOrangeDottedLineOnTempGraph = By
-			.cssSelector("div.page-column-1 > div.temp-graph > div.chart-legend > div:nth-child(3) > svg > line");
+			.cssSelector("div.temp-graph > div.chart-legend > div:nth-child(3) > svg > line");
 	private By byBlueThinLineOnTempGraph = By
-			.cssSelector("div.page-column-1 > div.temp-graph > div.chart-legend > div:nth-child(4) > svg > line");
+			.cssSelector("div.temp-graph > div.chart-legend > div:nth-child(4) > svg > line");
 	private By byBlueThickLineOnTempGraph = By
-			.cssSelector("div.page-column-1 > div.temp-graph > div.chart-legend > div:nth-child(5) > svg > line");
+			.cssSelector("div.temp-graph > div.chart-legend > div:nth-child(5) > svg > line");
 	private By byBlueDottedLineOnTempGraph = By
-			.cssSelector("div.page-column-1 > div.temp-graph > div.chart-legend > div:nth-child(6) > svg > line");
+			.cssSelector("div.temp-graph > div.chart-legend > div:nth-child(6) > svg > line");
 	private By byTodayMarkerOnTempGraph = By.cssSelector(
-			"div.page-column-1 > div.temp-graph > div.chart-container > div.chart > svg > g.indicator > text");
+			"div.page-column-1 > div > div.temp-graph > div.chart-container > div.chart > svg > g.indicator > text");
 	private By byBottomMonthlyNavOnGridView = By
-			.cssSelector("div.page-column-1 > div.card-button.monthly-nav.content-module.centered");
+			.cssSelector("div.page-column-1 > div >  div.card-button.monthly-nav.content-module.centered");
 	private By byTopMonthlyNavOnGridView = By
-			.cssSelector("div.page-column-1 > div.monthly-tools > div.card-button.monthly-nav.centered");
+			.cssSelector("div.page-column-1 > div > div.monthly-tools > div.card-button.monthly-nav.centered");
 	private By byListViewAllDaysOfWeek = By
 			.cssSelector("div.page-column-1 > div.monthly-component > a > div.date > p.dow");
 	private By byListViewAllDaysOfMonth = By
 			.cssSelector("div.page-column-1 > div.monthly-component > a > div.date > p.sub");
 	private By byListViewCurrentMonthYear = By
-			.cssSelector("div.page-column-1 > div.monthly-tools > div.card-button.monthly-nav.centered > span");
+			.cssSelector("div.page-column-1 > div > div.monthly-tools > div.card-button.monthly-nav.centered > span");
 	private By byGridViewAllDaysOfWeek = By.cssSelector(
 			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.monthly-grid-container.monthly-component > div.monthly-header > div");
 	/*
@@ -194,7 +192,7 @@ public class MonthlyForeCastPage extends BasePage
 	public boolean isOrangeBordersColorDislayed() {
 		bordercolor = true;
 		final WebElement test = getDriver().findElement(byGridViewTodayMonthPanel);
-		test.syncAttributeContainsValue("href", "12810_pc?day=0", "border-bottom-color:");
+		test.syncAttributeContainsValue("href", "?day=0");
 		return bordercolor;
 	}
 
@@ -224,6 +222,7 @@ public class MonthlyForeCastPage extends BasePage
 	 * 
 	 */
 	public boolean isGridIconDislayed() {
+		getDriver().findElement(byListViewGridIcon).syncVisible();
 		gridviewicon = getDriver().findElement(byListViewGridIcon).isDisplayed();
 		return gridviewicon;
 	}
@@ -246,18 +245,15 @@ public class MonthlyForeCastPage extends BasePage
 	 * 
 	 */
 	public String getGridIconColor() {
+		Sleeper.sleep(5);
 		WebPageLoaded.isDomInteractive();
 		final WebElement gridviewtodaymonthcolor = getDriver().findElement(byGridIconColor);
 		gridcolor = gridviewtodaymonthcolor.getCssValue("fill");
 		hex = Color.fromString(gridcolor).asHex();
-		numbers =
-				gridcolor.replaceAll("(rgba)|(rgb)|(\\()|(\\s)|(\\))", "").split(",");
-		r =
-				Integer.parseInt(numbers[0].trim());
-		g =
-				Integer.parseInt(numbers[1].trim());
-		b =
-				Integer.parseInt(numbers[2].trim());
+		numbers =gridcolor.replaceAll("(rgba)|(rgb)|(\\()|(\\s)|(\\))", "").split(",");
+		r =Integer.parseInt(numbers[0].trim());
+		g =Integer.parseInt(numbers[1].trim());
+		b =Integer.parseInt(numbers[2].trim());
 		hex = String.format("#%02x%02x%02x", r, g, b);
 		return hex;
 	}
@@ -436,8 +432,7 @@ public class MonthlyForeCastPage extends BasePage
 		String nonactivespantext;
 		i = getNonActiveDayPanelSize();
 		WebElement span = getDriver()
-				.findElement(By.xpath("//div[5]/div[1]/div[2]/div[2]/a[(contains(@class,'monthly-daypanel is-past'))]["
-						+ i + "]/div[2]/span"));
+				.findElement(By.xpath("//div[@class='monthly-grid-container monthly-component']/div[2]/a[(contains(@class,'monthly-daypanel is-past'))]["+ i + "]/div[2]/span"));
 		nonactivespantext = span.getText();
 		return nonactivespantext;
 	}
@@ -455,7 +450,7 @@ public class MonthlyForeCastPage extends BasePage
 		nonactivespanlist = true;
 		for (int i = 1; i < getNonActiveDayPanelSize() + 1; i++) {
 			WebElement span = getDriver().findElement(
-					By.xpath("//div[5]/div[1]/div[2]/div[2]/a[(contains(@class,'monthly-daypanel is-past'))][" + i
+					By.xpath("//div[@class='monthly-grid-container monthly-component']/div[2]/a[(contains(@class,'monthly-daypanel is-past'))][" + i
 							+ "]/div[2]/span"));
 			nonactivespanlist = span.syncVisible(10);
 		}
@@ -476,7 +471,7 @@ public class MonthlyForeCastPage extends BasePage
 		nonactivehightemp = true;
 		for (int i = 1; i < getNonActiveDayPanelSize() + 1; i++) {
 			WebElement span = getDriver().findElement(
-					By.xpath("//div[5]/div[1]/div[2]/div[2]/a[(contains(@class,'monthly-daypanel is-past'))][" + i
+					By.xpath("//div[@class='monthly-grid-container monthly-component']/div[2]/a[(contains(@class,'monthly-daypanel is-past'))][" + i
 							+ "]/div[3]/div[1]"));
 			nonactivehightemp = span.syncVisible(10);
 		}
@@ -497,7 +492,7 @@ public class MonthlyForeCastPage extends BasePage
 		nonactivelowtemp = true;
 		for (int i = 1; i < getNonActiveDayPanelSize() + 1; i++) {
 			WebElement span = getDriver().findElement(
-					By.xpath("//div[5]/div[1]/div[2]/div[2]/a[(contains(@class,'monthly-daypanel is-past'))][" + i
+					By.xpath("//div[@class='monthly-grid-container monthly-component']/div[2]/a[(contains(@class,'monthly-daypanel is-past'))][" + i
 							+ "]/div[3]/div[2]"));
 			nonactivelowtemp = span.syncVisible(10);
 		}
@@ -517,7 +512,7 @@ public class MonthlyForeCastPage extends BasePage
 		nonactiveavghighlowtemp = true;
 		for (int i = 1; i < getNonActiveDayPanelSize() + 1; i++) {
 			WebElement span = getDriver().findElement(
-					By.xpath("//div[5]/div[1]/div[2]/div[2]/a[(contains(@class,'monthly-daypanel is-past'))][" + i
+					By.xpath("//div[@class='monthly-grid-container monthly-component']/div[2]/a[(contains(@class,'monthly-daypanel is-past'))][" + i
 							+ "]/div[4]/div[2]"));
 			nonactiveavghighlowtemp = span.syncVisible(10);
 		}
@@ -537,7 +532,7 @@ public class MonthlyForeCastPage extends BasePage
 		activedatesweathericon = true;
 		for (int i = 1; i < getActiveDayPanelSize() + 1; i++) {
 			WebElement span = getDriver().findElement(
-					By.xpath("//div[5]/div[1]/div[2]/div[2]/a[not(contains(@class,'monthly-daypanel is-past'))][" + i
+					By.xpath("//div[@class='monthly-grid-container monthly-component']/div[2]/a[not(contains(@class,'monthly-daypanel is-past'))][" + i
 							+ "]/div[2]/img"));
 			activedatesweathericon = span.syncVisible(10);
 		}
@@ -556,11 +551,10 @@ public class MonthlyForeCastPage extends BasePage
 		WebPageLoaded.isDomInteractive();
 		i = getActiveDayPanelSize();
 		WebElement activedate = getDriver().findElement(By.cssSelector(
-				"div.two-column-page-content > div.page-column-1 > div.monthly-grid-container.monthly-component > div.monthly-grid > a:nth-child("
-						+ i + ")"));
+				"div.two-column-page-content > div.page-column-1 > div > div.monthly-grid-container.monthly-component > div.monthly-grid > a:nth-child("+ i + ")"));
 		activedate.syncVisible(15);
 		activedate.hover();
-		activedate.click();
+		activedate.jsClick();
 	}
 
 	/*

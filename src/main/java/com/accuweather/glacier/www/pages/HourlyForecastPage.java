@@ -11,6 +11,7 @@ import org.testng.Assert;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
+import com.chameleon.utils.Sleeper;
 import com.chameleon.utils.date.SimpleDate;
 
 public class HourlyForecastPage extends BasePage
@@ -30,8 +31,8 @@ public class HourlyForecastPage extends BasePage
 			.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(1) > div:nth-child(1) > div > div > div.precip");
 	private By byExpandTabIcon = By.cssSelector(" div.two-column-page-content > div > div > div > div > div > svg.");
 	private By byCompressTabIcon = By.cssSelector("");
-	private By byRealFeelValue = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(1) > p:nth-child(1)");
+	private By byRealFeelValue = By
+			.cssSelector("div.page-column-1 > div.content-module > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div.panel.left > p:nth-child(1)");
 	private By byWindValue = By.cssSelector(
 			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(1) > p:nth-child(2)");
 	private By byGustsValue = By.cssSelector(
@@ -55,8 +56,7 @@ public class HourlyForecastPage extends BasePage
 	private By byCeiling = By.cssSelector(
 			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(6)");
 	private By byNextDay = By.cssSelector("div.navigation.content-module > a.card-button.nav-card.next.centered");
-	private By byNextDayText = By
-			.cssSelector("div.navigation.content-module > a.card-button.nav-card.next.centered > span.text");
+	private By byNextDayText = By.cssSelector("div.navigation.content-module > a.card-button.nav-card.next.centered > span.text");
 	private By byRightArrowIcon = By.cssSelector(
 			"div.navigation.content-module > a.card-button.nav-card.next.centered > div > svg.arrow.icon-chevron.icon-chevron-right");
 	private By byLeftArrowIcon = By.cssSelector(
@@ -68,7 +68,7 @@ public class HourlyForecastPage extends BasePage
 	private By byPreviousDayText = By
 			.cssSelector("div.navigation.content-module > a.card-button.nav-card.prev.centered.has-next > span.text");
 	private By byPreviousDay = By
-			.cssSelector("div.navigation.content-module > a.card-button.nav-card.prev.centered.has-next");
+			.cssSelector("div.navigation.content-module > a.card-button.nav-card.prev.centered");
 	private By byLastDayCTATab = By.cssSelector(
 			"div.two-column-page-content > div.page-column-1 > div.navigation.content-module > a.card-button.nav-card.prev.centered");
 	private By byLastDayCTATabText = By.cssSelector(
@@ -104,7 +104,8 @@ public class HourlyForecastPage extends BasePage
 		return ENVIRONMENT_URL_CONFIG_FILE;
 	}
 
-	private static final String QA_URL = "ACCUWEATHER_WEB_QA";
+//	private static final String QA_URL = "ACCUWEATHER_WEB_QA";
+	private static final String QA_URL = "https://qualityassurance.accuweather.com";
 	public static String getQaUrl()
 	{
 		return (String) get(QA_URL);
@@ -176,9 +177,23 @@ public class HourlyForecastPage extends BasePage
 		WebElement hourlyTab = getDriver().findElement(byHourlyForecastPage);
 		hourlyTab.syncVisible(15);
 		hourlyTab.click();
+		WebElement reelFeel = getDriver().findElement(byRealFeelValue);
+		try 
+		{ 
+			reelFeel.syncVisible();
+		    System.out.println("Landed on hourly page");
+		}
+		catch(Exception e)
+		{
+			getDriver().navigate().refresh();
+			WebPageLoaded.isDomInteractive();
+			hourlyTab.syncVisible(15);
+			hourlyTab.click();
+			reelFeel.syncVisible();
+		}
 	}
 
-	/** Method to get the Hourly tab text */
+	/** Method to get the	 Hourly tab text */
 	public String getHourlyTabText()
 	{
 		WebPageLoaded.isDomInteractive();
@@ -263,8 +278,13 @@ public class HourlyForecastPage extends BasePage
 	{
 		WebPageLoaded.isDomInteractive();
 		WebElement cta = getDriver().findElement(byNextDay);
+		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		Sleeper.sleep(10);
+		System.out.println("Before click");
 		cta.syncVisible(15);
 		cta.jsClick();
+		System.out.println("after click");
+		Sleeper.sleep(10);
 	}
 
 	/** Method to verify if the ">" icon is displayed on CTA */
@@ -357,8 +377,11 @@ public class HourlyForecastPage extends BasePage
 	{
 		WebPageLoaded.isDomInteractive();
 		int counter = 0;
-		for (int i = 1; i <= 24; i++)
+		for (int i = 1; i <= 25; i++)
 		{
+			if( i == 15 ) {
+				i = i + 1;
+			}
 			WebElement hourTab = getDriver()
 					.findElement(By.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(" + i + ")"));
 			hourTab.syncVisible(30);
@@ -514,14 +537,14 @@ public class HourlyForecastPage extends BasePage
 	/** Method to validate day parameter in URL when next CTA is clicked */
 	public void validateDayParamInURLForNextDay()
 	{
-		for (int i = 0; i <= 6; i++)
+		for (int i = 0; i < 2; i++)
 		{
 			try
 			{
 				if (i == 0)
 				{
 					if ((getDriver().getCurrentUrl()
-							.equals(getQaUrl() + "en/us/mc-farland/53558/hourly-weather-forecast/23238_pc")))
+							.equals(getQaUrl() + "en/us/royal-oak/48073/hourly-weather-forecast/20813_pc")))
 						;
 					setHourlyTabURLState(true);
 				}
@@ -530,7 +553,7 @@ public class HourlyForecastPage extends BasePage
 				{
 					clickCTATab();
 					if (getDriver().getCurrentUrl()
-							.equals(getQaUrl() + "en/us/mc-farland/53558/hourly-weather-forecast/23238_pc?day=" + i))
+							.equals(getQaUrl() + "en/us/royal-oak/48073/hourly-weather-forecast/20813_pc?day=" + i))
 						;
 					setHourlyTabURLState(true);
 				}
@@ -550,7 +573,7 @@ public class HourlyForecastPage extends BasePage
 	/** Method to validate day parameter in URL when previous day CTA is clicked */
 	public void validateDayParamInURLForPreviousDay()
 	{
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 2; i++)
 		{
 			clickCTATab();
 		}
@@ -562,7 +585,7 @@ public class HourlyForecastPage extends BasePage
 				if (i == 6)
 				{
 					if (getDriver().getCurrentUrl()
-							.equals(getQaUrl() + "en/us/mc-farland/53558/hourly-weather-forecast/23238_pc?day=" + i))
+							.equals(getQaUrl() + "en/us/royal-oak/48073/hourly-weather-forecast/20813_pc?day=" + i))
 					{
 						setHourlyTabURLState(true);
 						clickLastDayCTATab();
@@ -573,7 +596,7 @@ public class HourlyForecastPage extends BasePage
 				else
 				{
 					if (getDriver().getCurrentUrl()
-							.equals(getQaUrl() + "en/us/mc-farland/53558/hourly-weather-forecast/23238_pc?day=" + i))
+							.equals("https://qualityassurance.accuweather.com/en/us/royal-oak/48073/hourly-weather-forecast/20813_pc?day=" + i))
 					{
 						clickPreviousDay();
 						setHourlyTabURLState(true);
@@ -750,7 +773,7 @@ public class HourlyForecastPage extends BasePage
 	/** Method to validate next days on next CTA tabs */
 	public void validateNextDays()
 	{
-		for (int i = 1; i <= 6; i++)
+		for (int i = 1; i <= 2; i++)
 		{
 			try
 			{
@@ -774,6 +797,7 @@ public class HourlyForecastPage extends BasePage
 	{
 		WebPageLoaded.isDomInteractive();
 		WebElement realFeel = getDriver().findElement(byRealFeelValue);
+		Sleeper.sleep(5);
 		realFeel.syncVisible(30);
 		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		return realFeel.isDisplayed();
@@ -1029,7 +1053,7 @@ public class HourlyForecastPage extends BasePage
 
 				else
 				{
-					if (currentHour < 12)
+					if (counter < 12)
 					{
 						if (getTimeForAllTabs(i).equals(counter + " AM"))
 						{
@@ -1046,7 +1070,7 @@ public class HourlyForecastPage extends BasePage
 
 					else
 					{
-						if (currentHour == 12)
+						if (counter == 12)
 						{
 							if (getTimeForAllTabs(i).equals(counter + " PM"))
 							{
@@ -1063,7 +1087,7 @@ public class HourlyForecastPage extends BasePage
 
 						else
 						{
-							if (getTimeForAllTabs(i).equals(counter + " PM"))
+							if (getTimeForAllTabs(i).equals(counter - 12 + " PM"))
 							{
 								setTimeValidation(true);
 								counter++;

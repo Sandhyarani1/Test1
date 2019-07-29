@@ -6,6 +6,10 @@ import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.accuweather.glacier.www.pages.LegalFooter;
 
+import io.appium.java_client.pagefactory.AndroidBy;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSFindBy;
+
 public class Test_LegalFooter extends AccuWeatherBaseTest
 {
 	private final static String ZIPCODE = "53558";
@@ -38,6 +42,7 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	private LandingPage landingPage = new LandingPage();
 	private LegalFooter legalFooter = new LegalFooter();
 	
+	@Test(priority=1)
 	public void TC1_verifyPresenceOfTermsOfUseInFooter()
 	{
 		testStart("Validate whether Terms of Use link is present in footer");
@@ -50,6 +55,7 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 		testStart("Validate whether Terms of Use is spelled correctly");
 		Assert.assertEquals(legalFooter.getTermsOfUseText(),TERMS_OF_USE);
 	}
+	
 	@Test(priority=3)
 	public void TC2_verifyTitleOfTermsOfUse()
 	{
@@ -62,7 +68,7 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	public void TC2_verifyURLOfTermsOfUse()
 	{
 		testStart("Validate whether the URL of Terms Of use page is correct");
-		Assert.assertEquals(legalFooter.getURLOfTermsOfUse(),TERMS_OF_USE_URL);
+		Assert.assertEquals(legalFooter.getURLOfTermsOfUse(),TERMS_OF_USE_URL);		
 	}
 
 	@Test(priority=5)
@@ -92,7 +98,7 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 		testStart("Validate whether Privacy Policy link is present in footer");
 		Assert.assertTrue(legalFooter.isPrivacyPolicyPresent());
 	}
-
+/*
 	@Test(priority=9)
 	public void TC3_verifyTheTextOfPrivacyPolicyInFooter()
 	{
@@ -269,5 +275,5 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	{
 		testStart("Validate the presence of footer when language changed");
 		Assert.assertTrue(legalFooter.legalFooterStatusWhenLangChanged());
-	}
+	}*/
 }

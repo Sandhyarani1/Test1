@@ -13,5 +13,5 @@ public class MobileBasePage extends BasePage {
         element.scrollIntoView();
         element.click();
     }
-
+    
 }
