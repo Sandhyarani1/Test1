@@ -1,12 +1,7 @@
 package com.accuweather.glacier.m;
 
-import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
@@ -19,6 +14,7 @@ import com.chameleon.selenium.DriverConstants;
 import com.chameleon.selenium.DriverManager;
 import com.chameleon.selenium.web.ExtendedWebDriver;
 import com.chameleon.selenium.web.WebBaseTest;
+import com.chameleon.selenium.web.WindowHandler;
 import com.chameleon.selenium.web.chromeDevTool.ChromeDevToolClient;
 import com.chameleon.selenium.web.chromeDevTool.ChromeDevToolCommands;
 import com.chameleon.utils.TestReporter;
@@ -77,6 +73,17 @@ public class AccuWeatherMobileBaseTest extends WebBaseTest {
         Condition condition = CurrentConditionsHelper.getCityCurrentCondition(Environment.getEnvironment(), countryName, cityName, adminAreaName);
         setPageURL(condition.getMobileLink());
         return testStart(testName);
+    }
+    
+    @SuppressWarnings("deprecation")
+	public void waitUntilElementIsDisplayedOrClickable() {
+    	WebDriverWait wait = new WebDriverWait(getDriver(),500);
+		  wait.pollingEvery(5,TimeUnit.SECONDS);
+    }
+
+    public void waitUntilWindowExistsWithTitle(String string) {
+    	ExtendedWebDriver driver = (ExtendedWebDriver) DriverManager.getDriver();
+  	  WindowHandler.waitUntilWindowExistsWithTitle(driver, string);
     }
     
 }

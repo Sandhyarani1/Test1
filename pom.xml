@@ -17,7 +17,7 @@
 		<jUnitVersion>4.12</jUnitVersion>    
 		<mariadbVersion>2.2.5</mariadbVersion>
 		<sauceLabsVersion>2.1.23</sauceLabsVersion>  	
-		<seleniumVersion>3.14.0</seleniumVersion>      	
+		<seleniumVersion>3.141.59</seleniumVersion>      	
 		<sqliteVersion>3.21.0.1</sqliteVersion>  
 		<testNgVersion>6.8.21</testNgVersion>    
 		<poiXmlVersion>3.12</poiXmlVersion>
@@ -50,7 +50,7 @@
 		<jenkinsBrowserVersion>${browserVersion}</jenkinsBrowserVersion>
 		<jenkinsRunLocation>${runLocation}</jenkinsRunLocation>
 		<testNGSourceDirectory>src/test/resources</testNGSourceDirectory>
-		<suiteXMLName>testProjectGlacier</suiteXMLName>
+		<suiteXMLName>testMobile</suiteXMLName>
 	</properties>
 	<repositories>
 		<repository>
@@ -74,7 +74,7 @@
 		<dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
-            <version>6.1.0</version>
+            <version>7.0.0</version>
         </dependency>
 	
 		<!-- Start Selenium requirements -->
@@ -214,6 +214,21 @@
 		    <artifactId>json</artifactId>
 		    <version>${jsonVersion}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core -->
+		<dependency>
+    		<groupId>org.hamcrest</groupId>
+    		<artifactId>hamcrest-core</artifactId>
+    		<version>2.1</version>
+    		<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+    		<groupId>org.apache.commons</groupId>
+    		<artifactId>commons-lang3</artifactId>
+    		<version>3.9</version>
+		</dependency>
+		
+		
 		
 		
 

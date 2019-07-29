@@ -17,7 +17,7 @@ public class PerformanceTests extends AccuWeatherBaseTest
 	String zipCode = "53558";
 	String expectedLandingPageTitle = "Mc Farland Weather - AccuWeather Forecast for WI 53558";
 	
-	@Test(invocationCount=10)
+	@Test(invocationCount=20)
 	public void testCityForecast()
 	{
 		testStart("Validate the navigation to Hourly tab");
