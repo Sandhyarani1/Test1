@@ -370,3 +370,8 @@
 [0627/160722.074:ERROR:process_memory_win.cc(73)] ReadMemory at 0x7fffcb1b4dca of 512 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
 [0627/160722.078:ERROR:file_io_win.cc(161)] CreateFile C:\Users\QUALIT~1\AppData\Local\Temp\scoped_dir68496_5311\Crashpad\settings.dat: The system cannot find the file specified. (0x2)
 [0627/160722.078:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0705/152817.287:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0705/152817.291:ERROR:exception_snapshot_win.cc(98)] thread ID 24272 not found in process
+[0731/175608.559:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0731/175608.569:ERROR:exception_snapshot_win.cc(98)] thread ID 55976 not found in process
+[0731/175608.569:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)

@@ -316,6 +316,7 @@ public class WebBaseTest extends BaseTest {
         // Uncomment the following line to have TestReporter outputs output to
         // the console
         TestReporter.setPrintToConsole(true);
+        TestReporter.setDebugLevel(3);
         setTestName(testName);
         driverSetup();
         // launch the application under test normally
@@ -504,6 +505,15 @@ public class WebBaseTest extends BaseTest {
                 options.getInternetExplorerOptions().ignoreZoomSettings();
                 break;
             case CHROME:
+            	options.getChromeOptions().addArguments("--headless");
+            	options.getChromeOptions().addArguments("--no-sandbox");
+            	options.getChromeOptions().addArguments("--disable-gpu");
+            	options.getChromeOptions().addArguments("--remote-debugin-port=9222");
+            	options.getChromeOptions().addArguments("--screen-size=1200x800");
+            	options.getChromeOptions().addArguments("--test-type=ui");
+            	options.getChromeOptions().addArguments("disable-impl-side-painting");
+            	options.getChromeOptions().addArguments("--disable-accelerated-2d-canvas");
+            	options.getChromeOptions().setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             	options.getChromeOptions().setCapability(ChromeOptions.CAPABILITY, options.getChromeOptions());
             	break;
             default:
@@ -544,7 +554,7 @@ public class WebBaseTest extends BaseTest {
     private void mobileDriverSetup() {
         DriverOptionsManager options = new DriverOptionsManager();
         DriverType type = DriverType.fromString(getOperatingSystem());
-        // Setting default Broswer options
+        // Setting default Browser options
         switch (type) {
             case IOS_WEB:
                 options.getIOSOptions().setCapability(CapabilityType.BROWSER_NAME, MobileBrowserType.SAFARI);

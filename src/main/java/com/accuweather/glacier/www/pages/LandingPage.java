@@ -1,9 +1,12 @@
 package com.accuweather.glacier.www.pages;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
+import com.chameleon.utils.Sleeper;
 
 public class LandingPage extends BasePage {
 
@@ -49,6 +52,19 @@ public void clickOnZipcodeSearchIcon() {
 	zipcodesearchicon.syncVisible(15);
 	zipcodesearchicon.hover();
 	zipcodesearchicon.click();
+	}
+
+/*
+ * Method to enter ZIPcode under ZipCode search field on the AccuWeather Landing page
+ */
+public void enterZipcodeInSearchFieldAndClick(String zip) {
+	WebPageLoaded.isDomInteractive();
+	WebElement zipcodetextfield = getDriver().findElement(byZipCodeSearchBox);
+	zipcodetextfield.syncVisible(15);
+	zipcodetextfield.hover();
+	zipcodetextfield.sendKeys(zip);
+	zipcodetextfield.sendKeys(Keys.ENTER);
+	Sleeper.sleep(8);
 	}
 
 /*
@@ -248,5 +264,4 @@ public void clickMoreMapsIconLink() {
 	moremapsiconlink.syncVisible(15);
 	moremapsiconlink.click();
 	}
-
 }

@@ -5,10 +5,10 @@
 		<parameter name="environment" value="qa" />
 		<parameter name="operatingSystem" value="windows" />
 		
-		<test name="Run Tests in Chrome">
+		<test name="ReRun Failure Tests in Chrome">
 			<parameter name="browserUnderTest" value="Chrome"/>
 			<packages>
-				<package name="com.accuweather.glacier.www.browseLocations.*" />
+				<package name="com.accuweather.glacier.www.PerformanceTests.*" />
 			</packages>
 		</test>
 	</suite>

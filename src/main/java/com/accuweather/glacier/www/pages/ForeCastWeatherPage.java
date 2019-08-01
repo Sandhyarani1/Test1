@@ -13,11 +13,14 @@ public class ForeCastWeatherPage extends BasePage {
 	
 	private By byForecastCityName = By.cssSelector("a:nth-child(3) > h1");
 	private By byNowTab = By.cssSelector("div > div > div.subnav-items > a.subnav-item.active");
+	private By bySatelliteTab = By.cssSelector("div > div > div.subnav-items > a:nth-child(2)");
 	private By byRadarTab = By.cssSelector("div > div > div.subnav-items > a:nth-child(2)");
 	private By byMinuteCastTab = By.cssSelector("div > div.subnav-items > a:nth-child(3)");
 	private By byHourlyTab = By.cssSelector("div > div.subnav-items > a:nth-child(4)");
 	private By byDailyTab = By.cssSelector("div > div.subnav-items > a:nth-child(5)");
-	private By byMonthlyTab = By.cssSelector("div > div.subnav-items > a:nth-child(6)");
+	//private By byMonthlyTab = By.cssSelector("body > div.template-root > div.page-subnav > div > div > div.subnav-items > a:nth-child(6)");
+	//private By byMonthlyTab = By.cssSelector("body > div.template-root > div.page-subnav > div > div > div.subnav-items > a:nth-child(6)");
+	private By byMonthlyTab = By.xpath("/html/body/div[1]/div[5]/div/div/div[3]/a[6]");
 
 
 	/*
@@ -42,15 +45,37 @@ public class ForeCastWeatherPage extends BasePage {
 		return nowtab.isEnabled();
 		}
 	
+	
+	/*
+	 * Method to verify Satellite tab is selected by default AW Monthly Forecast page
+	 */
+	public boolean isSatelliteTabEnabled() {
+		WebPageLoaded.isDomInteractive();
+		WebElement satellitetab = getDriver().findElement(bySatelliteTab);
+		satellitetab.syncVisible(15);
+		return satellitetab.isEnabled();
+		}
+	
+	/*
+	 * Method to click Satellite tab on the AW Monthly Forecast page
+	 */
+	public void clickOnSatelliteTab() {
+		WebPageLoaded.isDomInteractive();
+		WebElement SatelliteTab = getDriver().findElement(bySatelliteTab);
+		SatelliteTab.hover();
+		SatelliteTab.jsClick();
+		}
+	
+	
 	/*
 	 * Method to click Monthly tab on the AW Monthly Forecast page
 	 */
 	public void clickOnMonthlyTab() {
 		WebPageLoaded.isDomInteractive();
-		WebElement methodtab = getDriver().findElement(byMonthlyTab);
-		methodtab.syncVisible(15);
-		methodtab.hover();
-		methodtab.click();
+		WebElement monthtab = getDriver().findElement(byMonthlyTab);
+		//methodtab.syncVisible(15);
+		monthtab.hover();
+		monthtab.jsClick();
 		}
 	
 	/*
@@ -103,4 +128,14 @@ public class ForeCastWeatherPage extends BasePage {
         monthlytab.syncVisible(15);
         return monthlytab.isDisplayed();    	   	
     }
+	
+	/*
+	 * Method to verify Satellite tab displayed by default AW Monthly Forecast page
+	 */
+	public boolean isSatelliteTabDisplayed() {
+		WebPageLoaded.isDomInteractive();
+		WebElement satellitetab = getDriver().findElement(bySatelliteTab);
+		satellitetab.syncVisible(15);
+		return satellitetab.isDisplayed();
+		}
 }
