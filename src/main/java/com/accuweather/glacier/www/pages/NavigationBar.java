@@ -63,7 +63,7 @@ public class NavigationBar extends BasePage
     private By byTopNavCityList = By.cssSelector("div.mega-menu-search > div.content-column > a.recent-location-link");
     //private By bySuperSearchCityName = By.xpath("//nav[contains(@class,'header-refresh ')]/div[5]/div/div[1]/ul/li[1]/a[contains(@href,'select-city')]");
     private By bySuperSearchCityName = By.xpath("//body[contains(@id,'home')]/nav/div[5]/div/div[1]/ul/li/a");
-    private By byRadarSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(2) > a > h4");
+    private By byRadarSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(2) > a");
     private By bySevereSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(3) > a > h4");
     private By bySatelliteMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(4) > a > h4");
     private By byForecastMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(5) > a > h4");
@@ -401,10 +401,10 @@ public class NavigationBar extends BasePage
         radarandmaps.hover();
     }
 
-        public void mouseHoverOnRadarAndMaps() {
+    public void mouseHoverOnRadarAndMaps() {
     	WebPageLoaded.isDomInteractive();
         WebElement radarandmaps = getDriver().findElement(byRadarMaps);
-        radarandmaps.syncVisible(15);
+        radarandmaps.syncVisible(25);
         Sleeper.sleep(10);
         radarandmaps.hover();
         Sleeper.sleep(3);
