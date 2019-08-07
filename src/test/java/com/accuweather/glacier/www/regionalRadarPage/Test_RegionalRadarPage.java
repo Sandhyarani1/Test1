@@ -134,6 +134,7 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
 		WebPageLoaded.isDomInteractive(80000);
+		
 		Assert.assertTrue(radarPage.isSecondarymenuDisplayed(FORECAST_TAB));			
 	}
 	@Test(priority=7,enabled = true)

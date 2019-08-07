@@ -51,7 +51,6 @@ public class RadarPage extends BasePage
 	 private By bylegendSnowColors=By.xpath("//*[@class='key snow']//*[name()='rect']");
 	 private By bylegendIceColors=By.xpath("//*[@class='key ice']//*[name()='rect']");
 	 private By bylegendMixColors=By.xpath("//*[@class='key mix']//*[name()='rect']");
-
      private By byRainlegendtextLight=By.cssSelector("div.map-tools > div.radar-legend > div:nth-child(1) > div.range-label > span:nth-child(1)");
      private By byRainlegendtextSevere=By.cssSelector("div.map-tools > div.radar-legend > div:nth-child(1) > div.range-label > span:nth-child(2)");
     

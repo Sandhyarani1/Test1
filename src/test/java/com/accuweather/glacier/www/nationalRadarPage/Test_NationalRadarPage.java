@@ -29,7 +29,6 @@ public class Test_NationalRadarPage extends AccuWeatherBaseTest
 
 	private static final String EXPECTED_MAPTITLE="Texas Weather Radar";
 	private static final String EXPECTED_TOOLTIP_TEXT= "Weather radar map shows the location of precipitation, its type (rain, snow, and ice) and its recent movement to help you plan your day.";
-	
 	private static final String EXPECTED_RADARTAB_HIGHLIGHTED="#f05514";
 	private static final String EXPECTED_TOOLTIP_COLOR="#f59721";
 	private static final String EXPECTED_PASTCTA_COLOR="#f59721";
