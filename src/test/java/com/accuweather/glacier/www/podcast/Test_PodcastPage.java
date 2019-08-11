@@ -65,21 +65,19 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 
 	
 	 
-	 @Test (priority=4) public void TC6_isLatestEpisodeVideoDisplayed() {
-	 
-	 testStart("Is Latest Episode Video Displayed On PodCast Page");
-	 
-	 navBar.mouseHoverOnMoreMenu(); navBar.mouseHoverOnPodcastSubMenu();
-	 
-	 waitUntilElementIsDisplayedOrClickable(); navBar.clickOnPodcastSubMenu();
-	 
-	 waitUntilWindowExistsWithTitle(PodcastTitle); ActiveVideoTitle =
-	 
-	 podpage.getActiveVideoTitle(); PodcastListFirstVideoTitle =
-	 
-	 podpage.getFirstPodCastListTitle();
-	 
-	 Assert.assertEquals(ActiveVideoTitle,PodcastListFirstVideoTitle); }
+	 @Test(priority=4)
+	 public void TC6_isLatestEpisodeVideoDisplayed() 
+	 {
+		 testStart("Is Latest Episode Video Displayed On PodCast Page");
+		 navBar.mouseHoverOnMoreMenu();
+		 navBar.mouseHoverOnPodcastSubMenu();
+		 waitUntilElementIsDisplayedOrClickable();
+		 navBar.clickOnPodcastSubMenu();
+		 waitUntilWindowExistsWithTitle(PodcastTitle); 
+		 ActiveVideoTitle =	podpage.getActiveVideoTitle(); 
+		 PodcastListFirstVideoTitle = podpage.getFirstPodCastListTitle();
+		 Assert.assertEquals(ActiveVideoTitle,PodcastListFirstVideoTitle);
+	 }
 
 	 
 	 
