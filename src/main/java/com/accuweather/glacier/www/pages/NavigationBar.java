@@ -76,7 +76,7 @@ public class NavigationBar extends BasePage
     private By byClimateChangeSubMenu = By.cssSelector("div:nth-child(5) > a > h4");
     private By byNewsSubMenu = By.cssSelector("div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(1) > h4");
     private By byHurricaneSubMenu = By.cssSelector("div > div:nth-child(2) > a > h4");
-    private By byAWReadySubMenu = By.cssSelector("div > div:nth-child(3) > a > h4");
+    private By byAWReadySubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(3) > a > h4");
     private By byWinterWeatherSubMenu = By.cssSelector("div > div:nth-child(4) > a > h4");
     private By bySeverWeatherSubMenu = By.cssSelector("div.mega-menu > div > div.mega-menu-item.mega-menu-item-cta.fade-in-left > a > h4");
     //Maps Submenu

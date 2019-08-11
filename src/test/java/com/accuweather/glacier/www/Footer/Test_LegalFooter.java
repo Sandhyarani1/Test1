@@ -6,10 +6,6 @@ import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.accuweather.glacier.www.pages.LegalFooter;
 
-import io.appium.java_client.pagefactory.AndroidBy;
-import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.iOSFindBy;
-
 public class Test_LegalFooter extends AccuWeatherBaseTest
 {
 	private final static String ZIPCODE = "53558";
@@ -39,7 +35,6 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	private final static String COPYRIGHT_INFO = "© 2019 AccuWeather, Inc.";
 	private final static String REGISTERED_TRADEMARKS = "\"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc.";
 	private final static String ALL_RIGHTS_RESERVED = "All Rights Reserved.";
-	private LandingPage landingPage = new LandingPage();
 	private LegalFooter legalFooter = new LegalFooter();
 	
 	@Test(priority=1)
