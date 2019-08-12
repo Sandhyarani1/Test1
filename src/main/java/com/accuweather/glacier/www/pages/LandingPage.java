@@ -65,7 +65,7 @@ public void enterZipcodeInSearchFieldAndClick(String zip) {
 	zipcodetextfield.hover();
 	zipcodetextfield.sendKeys(zip);
 	zipcodetextfield.sendKeys(Keys.ENTER);
-	Sleeper.sleep(3);
+	Sleeper.sleep(8);
 	}
 
 /*
@@ -265,5 +265,4 @@ public void clickMoreMapsIconLink() {
 	moremapsiconlink.syncVisible(15);
 	moremapsiconlink.click();
 	}
-
 }

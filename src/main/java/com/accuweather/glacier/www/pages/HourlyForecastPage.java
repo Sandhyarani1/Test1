@@ -280,10 +280,8 @@ public class HourlyForecastPage extends BasePage
 		WebElement cta = getDriver().findElement(byNextDay);
 		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Sleeper.sleep(10);
-		System.out.println("Before click");
 		cta.syncVisible(15);
 		cta.jsClick();
-		System.out.println("after click");
 		Sleeper.sleep(10);
 	}
 

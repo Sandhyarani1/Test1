@@ -5,10 +5,12 @@
 		<parameter name="environment" value="qa" />
 		<parameter name="operatingSystem" value="LINUX" />
 		<parameter name="logLevel" value="3"/>
-		
+
 		<test name="Legal Footer in Chrome">
 			<parameter name="browserUnderTest" value="Chrome" />
+
 			<packages>
+				<package name="com.accuweather.glacier.www.browseLocations.*" />
 				<package name="com.accuweather.glacier.www.Footer.*" />
 			</packages>
 		</test>

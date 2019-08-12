@@ -372,3 +372,9 @@
 [0627/160722.078:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
 [0705/152817.287:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
 [0705/152817.291:ERROR:exception_snapshot_win.cc(98)] thread ID 24272 not found in process
+<<<<<<< HEAD
+[0731/175608.559:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0731/175608.569:ERROR:exception_snapshot_win.cc(98)] thread ID 55976 not found in process
+[0731/175608.569:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+=======
+>>>>>>> branch 'CityRadar' of https://github.com/AccuWeather-Inc/Web-GlacierSelenium.git

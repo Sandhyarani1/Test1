@@ -39,7 +39,10 @@ public class BasePage {
 	 * Method to switch to a different window
 	 * @author HFARAZ
 	 * */
-	public void switchToPopUpWindow(String webPage) {
+
+
+	public void switchToPopUpWindow(String webPage)
+	{
 		Set<String> windows = getDriver().getWindowHandles();
 		System.out.println(windows.size());
 		Iterator iterator = windows.iterator();
@@ -51,8 +54,7 @@ public class BasePage {
 				getDriver().switchTo().window(currentwindowId);
 		}
 
-	}
-	
+  }
 
 	/*
 	 * protected void validate(final By by, final String elementName, final Object
