@@ -98,7 +98,7 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 		testStart("Validate whether Privacy Policy link is present in footer");
 		Assert.assertTrue(legalFooter.isPrivacyPolicyPresent());
 	}
-
+/*
 	@Test(priority=9)
 	public void TC3_verifyTheTextOfPrivacyPolicyInFooter()
 	{
@@ -275,5 +275,5 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	{
 		testStart("Validate the presence of footer when language changed");
 		Assert.assertTrue(legalFooter.legalFooterStatusWhenLangChanged());
-	}
+	}*/
 }
