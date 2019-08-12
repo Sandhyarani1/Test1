@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
 import com.chameleon.selenium.DriverManager;
 import com.chameleon.selenium.web.ExtendedWebDriver;
@@ -39,6 +40,7 @@ public class BasePage {
 	 * @author HFARAZ
 	 * */
 
+
 	public void switchToPopUpWindow(String webPage)
 	{
 		Set<String> windows = getDriver().getWindowHandles();
@@ -51,7 +53,8 @@ public class BasePage {
 			if(!currentwindowId.equals(webPage))
 				getDriver().switchTo().window(currentwindowId);
 		}
-	}
+
+  }
 
 	/*
 	 * protected void validate(final By by, final String elementName, final Object
