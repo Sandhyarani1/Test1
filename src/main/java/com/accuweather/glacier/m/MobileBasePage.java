@@ -14,4 +14,10 @@ public class MobileBasePage extends BasePage {
         element.click();
     }
     
+    protected void findElementAndScrollToElement(By by) {
+        WebElement element = getDriver().findElement(by);
+        element.syncVisible();
+        element.scrollIntoView();
+    }
+
 }
