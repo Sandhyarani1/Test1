@@ -37,7 +37,6 @@ public class Test_NationalRadarPage extends AccuWeatherBaseTest
 	
 	private static final int EXPECTED_TOTAL_DIFFERENCE = 25;
 	private static final int EXPECTED_TIME_DIFFERENCE_FUTURECTA = 15;
-	
 	private static final String EXPECTED_LANDINGPAGE_URL="https://www.mapbox.com/";
 	
 	private RadarPage radarPage=new RadarPage();

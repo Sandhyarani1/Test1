@@ -71,7 +71,6 @@ public class RadarPage extends BasePage
      * Method to search city by name 
      * 
      **/ 
-
     public void searchCityByName(String cityName)
     { 
         WebPageLoaded.isDomInteractive(); 
