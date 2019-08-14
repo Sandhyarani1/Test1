@@ -10,6 +10,6 @@
 			<parameter name="browserUnderTest" value="Firefox" />
       <packages>
 				<package name="com.accuweather.glacier.www.browseLocations.*" />
-			<packages>
+			</packages>
 		</test>
 	</suite>
