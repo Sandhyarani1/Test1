@@ -6,12 +6,15 @@ import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.ForeCastWeatherPage;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.accuweather.glacier.www.pages.MonthlyForeCastPage;
+import com.accuweather.glacier.www.pages.NavigationBar;
 import com.chameleon.selenium.web.WebPageLoaded;
+import com.chameleon.utils.Sleeper;
 import com.chameleon.utils.date.SimpleDate;
 
 public class Test_MonthlyForecastPage extends AccuWeatherBaseTest 
 {
-	String zipcode = "16801";
+//	String zipcode = "16801";
+	String zipcode = "State College, PA";
 	String ActualForecastPageTitle;
 	String ExpectedForecastPageTitle = "State College Weather - AccuWeather Forecast for PA 16801";
 	int integercurrentyear;
@@ -38,16 +41,15 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	private MonthlyForeCastPage monthlyforecast = new MonthlyForeCastPage();
 	private SimpleDate simpledate = new SimpleDate();
 	
+
 	@Test(priority = 1)
 	public void TC1_navigateToAWWeatherForecastPage() {
 		testStart("Is AW Weather Forecast Page Displayed From Home Page");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		WebPageLoaded.isDomInteractive(1000);
-		ActualForecastPageTitle =
-				getDriver().getTitle();
+		ActualForecastPageTitle = getDriver().getTitle();
 		Assert.assertEquals(ActualForecastPageTitle,
 				ExpectedForecastPageTitle);
 	}
@@ -55,8 +57,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	@Test(priority = 2)
 	public void TC2_NowTabEnabledForeCasthtlyWeatherPage() {
 		testStart("Is Now Tab enabled on AW Weather Forecast Page");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		WebPageLoaded.isDomInteractive(1000);
@@ -67,8 +68,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	@Test(priority = 3)
 	public void TC2_isRadarTabDisplayed() {
 		testStart("Is Radar Tab displayed on AW Weather Forecast Page");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		WebPageLoaded.isDomInteractive(1000);
@@ -79,8 +79,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	@Test(priority = 4)
 	public void TC2_isMinuteCastTabDisplayed() {
 		testStart("Is Minute Cast Tab displayed on AW Weather Forecast Page");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		WebPageLoaded.isDomInteractive(1000);
@@ -91,8 +90,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	@Test(priority = 4)
 	public void TC2_isHourlyTabDisplayed() {
 		testStart("Is Hourly Tab displayed on AW Weather Forecast Page");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		WebPageLoaded.isDomInteractive(1000);
@@ -103,8 +101,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	@Test(priority = 5)
 	public void TC2_isDailyTabDisplayed() {
 		testStart("Is Daily Tab displayed on AW Weather Forecast Page");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		WebPageLoaded.isDomInteractive(1000);
@@ -115,8 +112,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	@Test(priority = 6)
 	public void TC2_isMonthlyTabDisplayed() {
 		testStart("Is Monthly Tab displayed on AW Weather Forecast Page");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		WebPageLoaded.isDomInteractive(1000);
@@ -128,8 +124,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	public void TC2_navigateToAWMonhtlyWeatherPage() {
 		testStart("Is AW Monthly Weather page Displayed From AW Weather Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		WebPageLoaded.isDomInteractive(1000);
@@ -140,8 +135,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	@Test(priority = 8)
 	public void TC2_isAWLogoDisplayed() {
 		testStart("Is AW Logo Displayed From AW Weather Forecast Page");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		WebPageLoaded.isDomInteractive(1000);
@@ -154,18 +148,15 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	public void TC3_NavigateToFutureMonthForeCast() throws
 	InterruptedException {
 		testStart("Navigate to future month forecast from current month forecast");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
 		monthlyforecast.clickOnRightArrowLink();
 		Thread.sleep(1000);
-		actualfuturemonth =
-				monthlyforecast.getGridViewMonthSubString();
+		actualfuturemonth =monthlyforecast.getGridViewMonthSubString();
 		months = simpledate.advanceMonth(1);
-		expectedfuturemonth
-				= months.getMonthString().toUpperCase();
+		expectedfuturemonth= months.getMonthString().toUpperCase();
 		Assert.assertEquals(actualfuturemonth, expectedfuturemonth);
 	}
 
@@ -173,27 +164,24 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	public void TC4_NavigateToPreviousMonthForeCast() throws
 	InterruptedException {
 		testStart("Navigate to previous month forecast from current month forecast");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
 		waitUntilElementIsDisplayedOrClickable();
 		monthlyforecast.clickOnLeftArrowLink();
 		Thread.sleep(1000);
-		actualprevmonth =
-				monthlyforecast.getGridViewMonthSubString();
+		actualprevmonth =monthlyforecast.getGridViewMonthSubString();
 		WebPageLoaded.isDomInteractive(10000);
 		previousmonth = simpledate.getMonth();
 		expectedpreviousmonth = Month.of(previousmonth).name().toUpperCase();
 		Assert.assertEquals(actualprevmonth, expectedpreviousmonth);
 	}
-
+	
 	@Test(priority = 11)
 	public void TC7_VerifyColorIsDisplayedOnActiveDate() {
 		testStart("Navigate to previous month forecast from current month forecast");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -205,8 +193,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	@Test(priority = 12)
 	public void TC8_VerifyColorIsDisplayedOnActiveDate() {
 		testStart("Navigate to previous month forecast from current month forecast");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -220,8 +207,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	public void TC5_VerifyGridViewIconIsDisplayed() {
 		testStart("Verify the Grid View Icon is displayed under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -232,8 +218,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	public void TC5_VerifyListViewIconIsDisplayed() {
 		testStart("Verify the List View Icon is displayed under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -244,13 +229,11 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	public void TC5_VerifyGirdViewIconColorAreSame() {
 		testStart("Verify the List View Icon is displayed under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
-		actualgridiconhexvalue =
-				monthlyforecast.getGridIconColor();
+		actualgridiconhexvalue =monthlyforecast.getGridIconColor();
 		Assert.assertEquals(actualgridiconhexvalue, expectedgridiconhexvalue);
 	}
 
@@ -258,8 +241,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	public void TC5_VerifyGirdViewIconColorDisplayed() {
 		testStart("Verify the List View Icon is displayed under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -272,11 +254,11 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	{
 		testStart("Verify All Active Day Panel sections are displayed under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
+		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		Assert.assertTrue(monthlyforecast.isActiveDayPanelDisplayed());
 	}
@@ -286,8 +268,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 			TC5_VerifyAllActiveDatesUnderDayPanelSectionDisplayed() {
 		testStart("Verify All Active Dates in Day Panel sections are displayed under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -300,8 +281,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	{
 		testStart("Verify All Active Dates in Day Panel sections are displayed under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -313,11 +293,11 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	@Test(priority = 21)
 	public void TC12_VerifyNonActiveSpanTextAreSame() {
 		testStart("Verify Actual Temp text are same under Monthly Forecast Page");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
+		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		ExpectedNonActiveSpanText = "Actual Temp";
 		ActualNonActiveSpanText = monthlyforecast.getLastSpanTextForNonActiveDays();
@@ -329,8 +309,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	public void TC12_VerifyAllNonActiveSpanTextDisplayed() {
 		testStart("Verify Actual Temp text displayed for All Non Active Days under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -344,14 +323,12 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 			TC12_VerifyAllNonActiveActualHighTempDisplayed() {
 		testStart("Verify Actual High Temp is displayed for All Non Active Days under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
 		waitUntilElementIsDisplayedOrClickable();
-		Assert.assertTrue(monthlyforecast.
-				isListOfActualHightempForNonActiveDaysDisplayed());
+		Assert.assertTrue(monthlyforecast.isListOfActualHightempForNonActiveDaysDisplayed());
 	}
 
 	@Test(priority = 24)
@@ -359,8 +336,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 			TC12_VerifyAllNonActiveActualLowTempDisplayed() {
 		testStart("Verify Actual Low Temp is displayed for All Non Active Days under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -374,22 +350,19 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 			TC12_VerifyAllNonActiveAvgHighLowTempDisplayed() {
 		testStart("Verify Avg High Low Temp is displayed for All Non Active Days under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
 		waitUntilElementIsDisplayedOrClickable();
-		Assert.assertTrue(monthlyforecast.
-				isListOfActualAvgHighLowtempForNonActiveDaysDisplayed());
+		Assert.assertTrue(monthlyforecast.isListOfActualAvgHighLowtempForNonActiveDaysDisplayed());
 	}
 
 	@Test(priority = 26)
 	public void TC13_VerifyAllWeatherIconsDisplayed() {
 		testStart("Verify Weather Icon is displayed for All Active Days under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -403,24 +376,23 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 			throws InterruptedException {
 		testStart("Verify Weather Icon is displayed for All Active Days under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
+		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		monthlyforecast.isDailyForecastPageDisplayed();
+		waitUntilElementIsDisplayedOrClickable();
 		actualdailyforcastpagetitle = getDriver().getTitle();
-		Assert.assertTrue(actualdailyforcastpagetitle.
-				contains("AccuWeather Forecast for"));
+		Assert.assertTrue(actualdailyforcastpagetitle.contains("AccuWeather Forecast for"));
 	}
 
 	@Test(priority = 28)
 	public void TC16_VerifyTempOnTempGraphIsDisplayed() {
 		testStart("Verify Temperature on Temperature Graph is displayed under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -432,8 +404,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	public void TC17_VerifyAllDaysOnTempGraphIsDisplayed() {
 		testStart("Verify All Days on Temperature Graph is displayed under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -446,8 +417,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 			TC18_VerifyOrangeThinLineOnTempGraphIsDisplayed() {
 		testStart("Verify Orange Thin Line on Temperature Graph is displayed under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -460,21 +430,18 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 			TC19_VerifyOrangeThickLineOnTempGraphIsDisplayed() {
 		testStart("Verify Orange Thick Line on Temperature Graph is displayed under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
 		waitUntilElementIsDisplayedOrClickable();
-		Assert.assertTrue(monthlyforecast.
-				isOrangeLineForActualHighOnTempGraphDislayed());
+		Assert.assertTrue(monthlyforecast.isOrangeLineForActualHighOnTempGraphDislayed());
 	}
 
 	@Test(priority = 32)
 	public void TC02_VerifyInGridViewTopMnthlyNavIsDisplayed() {
 		testStart("Verify Top Mnthly Nav is displayed under Monthly Forecast Page");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -486,8 +453,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	public void TC02_VerifyInGridViewBottomMnthlyNavIsDisplayed() {
 		testStart("Verify Bottom Mnthly Nav is displayed under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -500,8 +466,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 		testStart("Verify current Month in Grid View is same under Monthly Forecast Page"
 		);
 		expectecurrentmonth = simpledate.getMonthString().toUpperCase();
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -509,15 +474,14 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 		actualcurrentmonth = monthlyforecast.getGridViewMonthSubString();
 		Assert.assertEquals(actualcurrentmonth, expectecurrentmonth);
 	}
-
+	
 	@Test(priority = 35)
 	public void TC10_VerifyListOfDaysWeekDisplayed() throws
 	InterruptedException {
 		testStart("Verify List of Days of week in List View under Monthly Forecast Page"
 		);
 		expectecurrentmonth = simpledate.getMonthString().toUpperCase();
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -534,8 +498,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 		testStart("Verify List of Days of Month in List View under Monthly Forecast Page"
 		);
 		expectecurrentmonth = simpledate.getMonthString().toUpperCase();
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -552,20 +515,18 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 		testStart("Verify current Month in List View is same under Monthly Forecast Page"
 		);
 		expectecurrentmonth = simpledate.getMonthString().toUpperCase();
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
 		waitUntilElementIsDisplayedOrClickable();
 		monthlyforecast.clickOnListViewIcon();
-		Thread.sleep(1000);
+		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(5);
 		WebPageLoaded.isDomInteractive(10000);
-		actualcurrentmonth =
-				monthlyforecast.getGridViewMonthSubString();
+		actualcurrentmonth =monthlyforecast.getGridViewMonthSubString();
 		Assert.assertEquals(actualcurrentmonth, expectecurrentmonth);
 	}
-
 	@Test(priority = 38)
 	public void TC08_VerifyListViewCurrentYearAreSame() throws
 	InterruptedException {
@@ -574,8 +535,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 		integercurrentyear = simpledate.getYear();
 		expectedcurrentyear =
 				Integer.toString(integercurrentyear);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -593,8 +553,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 		testStart("Verify List of Week Days of Month Displayed in Grid View under Monthly Forecast Page"
 		);
 		expectecurrentmonth = simpledate.getMonthString().toUpperCase();
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -607,8 +566,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	public void TC20_VerifyOrangeDottedLineIsDisplayed() {
 		testStart("Verify Orange Dotted Line is displayed under Graph under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -620,8 +578,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	public void TC21_VerifyBlueThinLineIsDisplayed() {
 		testStart("Verify Blue Thin Line is displayed under Graph under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -633,8 +590,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	public void TC22_VerifyBlueThickLineIsDisplayed() {
 		testStart("Verify Blue Thick Line is displayed under Graph under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -647,8 +603,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	public void TC23_VerifyBlueDottedLineIsDisplayed() {
 		testStart("Verify Blue Dotted Line is displayed under Graph under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -660,8 +615,7 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 	public void TC24_VerifyTodayMarkerIsDisplayed() {
 		testStart("Verify Today Marker is displayed under Graph under Monthly Forecast Page"
 		);
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
@@ -675,13 +629,14 @@ public class Test_MonthlyForecastPage extends AccuWeatherBaseTest
 		testStart("Verify List View Icon is enabled by default under Monthly Forecast Page"
 		);
 		expectecurrentmonth = simpledate.getMonthString().toUpperCase();
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		forecastpage.clickOnMonthlyTab();
+		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		monthlyforecast.clickOnListViewIcon();
+		Sleeper.sleep(5);
 		WebPageLoaded.isDomInteractive(1000);
 		Assert.assertTrue(monthlyforecast.isListViewIconEnabled());
 	}

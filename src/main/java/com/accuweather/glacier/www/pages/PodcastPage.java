@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
+import com.chameleon.utils.Sleeper;
 
 public class PodcastPage extends BasePage {
 
@@ -40,7 +41,7 @@ public class PodcastPage extends BasePage {
 	private By byPopUpVideoPauseIcon = By.cssSelector("div.podcast-landing.popup > div > div.content > div.audio-player > div.icon-pause");
 	private By byLoadMoreEpisodesLink = By.cssSelector("div > div.load-more");
 	private By byShareImageIcon = By.cssSelector("div > div.content > div.share-container > div.share-text-icon > img");
-	private By byShareImageText = By.cssSelector("div > div.content > div.share-container > div.share-text-icon > span");
+	private By byShareImageText = By.cssSelector("div.share-text-icon > span");
 	private By byShareNotificationText = By.cssSelector("div > div.content > div.share-container > div.share-text-icon > div");
 	private By byListOfAllEpisodes = By.cssSelector("body > div.podcast-landing > div:nth-child(2) > div > div:nth-child(1)");
 
@@ -166,9 +167,11 @@ public class PodcastPage extends BasePage {
 	 * Method to click on the Play Icon next to the First Episode List PodCast page
 	 */
 	public void clickOnFirstEpisodePlayIcon() {
+		Sleeper.sleep(5);
 		WebPageLoaded.isDomInteractive();
 		WebElement playicon = getDriver().findElement(byPodcastListFirstEpisodePlayIcon);
 		playicon.syncVisible(15);
+		Sleeper.sleep(5);
 		playicon.jsClick();
 		
 	}
@@ -324,7 +327,7 @@ public class PodcastPage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		WebElement playicon = getDriver().findElement(byPopUpVideoPlayIcon);
 		playicon.syncVisible(15);
-		playicon.click();
+		playicon.jsClick();
 		
 	}
 	
@@ -344,7 +347,7 @@ public class PodcastPage extends BasePage {
 	 */
 	public void clickOnShareIconLogo() {
 		WebPageLoaded.isDomInteractive();
-		WebElement shareicon = getDriver().findElement(byShareImageIcon);
+		WebElement shareicon = getDriver().findElement(byShareImageText);
 		shareicon.syncVisible(15);
 		shareicon.hover();
 		shareicon.click();

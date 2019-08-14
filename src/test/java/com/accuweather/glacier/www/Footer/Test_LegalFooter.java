@@ -35,9 +35,9 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	private final static String COPYRIGHT_INFO = "© 2019 AccuWeather, Inc.";
 	private final static String REGISTERED_TRADEMARKS = "\"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc.";
 	private final static String ALL_RIGHTS_RESERVED = "All Rights Reserved.";
-	private LandingPage landingPage = new LandingPage();
 	private LegalFooter legalFooter = new LegalFooter();
 	
+	@Test(priority=1)
 	public void TC1_verifyPresenceOfTermsOfUseInFooter()
 	{
 		testStart("Validate whether Terms of Use link is present in footer");
@@ -50,6 +50,7 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 		testStart("Validate whether Terms of Use is spelled correctly");
 		Assert.assertEquals(legalFooter.getTermsOfUseText(),TERMS_OF_USE);
 	}
+	
 	@Test(priority=3)
 	public void TC2_verifyTitleOfTermsOfUse()
 	{
@@ -62,7 +63,7 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	public void TC2_verifyURLOfTermsOfUse()
 	{
 		testStart("Validate whether the URL of Terms Of use page is correct");
-		Assert.assertEquals(legalFooter.getURLOfTermsOfUse(),TERMS_OF_USE_URL);
+		Assert.assertEquals(legalFooter.getURLOfTermsOfUse(),TERMS_OF_USE_URL);		
 	}
 
 	@Test(priority=5)
@@ -92,7 +93,7 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 		testStart("Validate whether Privacy Policy link is present in footer");
 		Assert.assertTrue(legalFooter.isPrivacyPolicyPresent());
 	}
-
+/*
 	@Test(priority=9)
 	public void TC3_verifyTheTextOfPrivacyPolicyInFooter()
 	{

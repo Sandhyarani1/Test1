@@ -4,6 +4,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
+import com.chameleon.utils.Sleeper;
 
 public class UniversalFooterPage extends BasePage 
 {
@@ -51,7 +52,7 @@ public class UniversalFooterPage extends BasePage
 	private By byWindowsApp = By.cssSelector(
 			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(3)");
 	private By bySeeallAppsandDownloads = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(4)");
+			"div.footer-content-tablet > div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(3)");
 	private By byAccuWeatherPremium = By.cssSelector(
 			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(4) > div.footer-category-section.footer-category-section > a:nth-child(1)");
 	private By byAccuWeatherProfessional = By.cssSelector(
@@ -64,7 +65,7 @@ public class UniversalFooterPage extends BasePage
 			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(4) > div.footer-social.footer-social-tablet > a:nth-child(3)");
 	private By bysocialicontv = By.cssSelector(
 			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(4) > div.footer-social.footer-social-tablet > a:nth-child(4)");
-	private By bySettingicon = By.xpath("//div[@class='settings-button']");
+	private By bySettingicon = By.cssSelector("div.component-sticky-container.header > div > div.main-menu > div.header-right-container > div.settings-button > svg");
 	private By byenglishLanguage = By.xpath("//div[3]/div/div/div[2]/div/div");
 	private By byFrench = By.xpath("//div[4]");
 	private By byfooterBreadCrumbs = By.cssSelector("body > div.template-root > div.breadcrumbs-wrapper");
@@ -314,6 +315,7 @@ public class UniversalFooterPage extends BasePage
 		if (link.equalsIgnoreCase("Superior Accuracy in Action")) {
 			WebPageLoaded.isDomInteractive();
 			getDriver().findElement(bySuperiorAccuracyinAction).jsClick();
+			Sleeper.sleep(2);
 			WebPageLoaded.isDomInteractive();
 		}
 
@@ -476,8 +478,10 @@ public class UniversalFooterPage extends BasePage
 	 **/
 	public void changeLanguagefromSettingsicon() {
 		WebPageLoaded.isDomInteractive();
+		getDriver().findElement(bySettingicon).syncVisible();
 		getDriver().findElement(bySettingicon).click();
 		WebPageLoaded.isDomInteractive();
+		getDriver().findElement(byenglishLanguage).syncVisible();
 		getDriver().findElement(byenglishLanguage).click();
 		getDriver().findElement(byFrench).click();
 		WebPageLoaded.isDomComplete(8000);

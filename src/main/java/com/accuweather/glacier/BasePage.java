@@ -2,9 +2,12 @@ package com.accuweather.glacier;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Iterator;
+import java.util.Set;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
 import com.chameleon.selenium.DriverManager;
 import com.chameleon.selenium.web.ExtendedWebDriver;
@@ -31,6 +34,27 @@ public class BasePage {
         element.syncVisible();
         element.set(text);
         }
+    
+    /**
+	 * Method to switch to a different window
+	 * @author HFARAZ
+	 * */
+
+
+	public void switchToPopUpWindow(String webPage)
+	{
+		Set<String> windows = getDriver().getWindowHandles();
+		System.out.println(windows.size());
+		Iterator iterator = windows.iterator();
+		String currentwindowId;
+		while(iterator.hasNext()) 
+		{
+			currentwindowId = iterator.next().toString();
+			if(!currentwindowId.equals(webPage))
+				getDriver().switchTo().window(currentwindowId);
+		}
+
+  }
 
 	/*
 	 * protected void validate(final By by, final String elementName, final Object

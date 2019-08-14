@@ -6,6 +6,7 @@ import org.testng.Assert;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
+import com.chameleon.utils.Sleeper;
 import com.chameleon.utils.date.SimpleDate;
 
 public class ThreeDayForecastPage extends BasePage 
@@ -14,84 +15,78 @@ public class ThreeDayForecastPage extends BasePage
 			"body > div.template-root > div.page-subnav > div > div > div.subnav-items > a.subnav-item.active");
 	private By bycurrentWeatherCard = By.cssSelector(
 			"div.scroll > a.panel.panel-fade-in.card.current > div > p:nth-child(1)");
-	private By bycurrentTime=By.cssSelector("body > div > div.two-column-page-content > div.page-column-1 > div > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current.reverse > div > p.module-header.sub.date");
-	private By bytodaycardcurrentDate=By.cssSelector("div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(2) > div > p.module-header.sub.date");
-	private By bytonightcardCurrentDate=By.cssSelector("div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(3) > div > p.module-header.sub.date");
-	private By byTomorrowcardDate=By.cssSelector("div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(4) > div > p.module-header.sub.date");
+	private By bycurrentTime=By.cssSelector("div > div.scroll > a:nth-child(1) > div > p.module-header.sub.date");
+	private By bytodaycardcurrentDate=By.cssSelector("div > div.scroll > a:nth-child(2) > div > p.module-header.sub.date");
+	private By bytonightcardCurrentDate=By.cssSelector("div > div.scroll > a:nth-child(3) > div > p.module-header.sub.date");
+	private By byTomorrowcardDate=By.cssSelector("div > div.scroll > a:nth-child(4) > div > p.module-header.sub.date");
 	private By byCurrentWeatherTimeStamp = By.cssSelector(
-			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current > div > p.module-header.sub.date");
+			"div > div.scroll > a.panel.panel-fade-in.card.current > div > p.module-header.sub.date");
 	private By byCurrentWeatherIcon = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current > div > img");
+			"div > div.scroll > a.panel.panel-fade-in.card.current > div > img");
 	private By byCurrentWeatherTemperature = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current > div > div.temp > span");
+			"div > div.scroll > a.panel.panel-fade-in.card.current > div > div.temp > span");
 	private By byCurrentWeatherRealFeelTemperature = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current > div > div.real-feel");
+			"div > div.scroll > a.panel.panel-fade-in.card.current > div > div.real-feel");
 	private By byCurrentWeatherDescription = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current > div > div.cond");
+			"div > div.scroll > a.panel.panel-fade-in.card.current > div > div.cond");
 	private By byCurrentweatherwholecard = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current");
-	private By byTodayCard = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(2) > div > p:nth-child(1)");
+			"div > div.scroll > a.panel.panel-fade-in.card.current");
+	private By byTodayCard = By.cssSelector("div > div.scroll > a:nth-child(2) > div > p:nth-child(1)");
 	private By byTodaydate = By.cssSelector(
-			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(2) > div > p.module-header.sub.date");
+			"div > div.scroll > a:nth-child(2) > div > p.module-header.sub.date");
 	private By byTodayWeathericon = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(2) > div > img");
+			"div > div.scroll > a:nth-child(2) > div > img");
 	private By byTodayTemperature = By.cssSelector(
-			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(2) > div > div.temp.has-real-feel > span.high");
+			"div > div.scroll > a:nth-child(2) > div > div.temp.has-real-feel > span.high");
 	private By byTodayRealFeelTemprature = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(2) > div > div.real-feel");
+			"div > div.scroll > a:nth-child(2) > div > div.real-feel");
 	private By byTodayWeatherdescription = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(2) > div > div.cond");
+			"div > div.scroll > a:nth-child(2) > div > div.cond");
 	private By byTodayHighTemperature = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(2) > div > div.temp > span.low");
+			"div > a:nth-child(2) > div > div.temp > span.low");
 	private By byTodaywholecard = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(2)");
+			"div > div.scroll > a:nth-child(2)");
 	private By byTonightLowTemperatue = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(3) > div > div.temp > span.low");
+			"div > div.scroll > a:nth-child(3) > div > div.temp > span.low");
 	private By byTonightcard = By.cssSelector(
-			"div > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(3) > div > p:nth-child(1)");
+			"div > div.scroll > a:nth-child(3) > div > p:nth-child(1)");
 	private By byTonightdate = By.cssSelector(
-			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(3) > div > p.module-header.sub.date");
+			"div > div.scroll > a:nth-child(3) > div > p.module-header.sub.date");
 	private By byTonightWeathericon = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(3) > div > img");
+			"div > div.scroll > a:nth-child(3) > div > img");
 	private By byTonightTemperature = By.cssSelector(
-			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(3) > div > div.temp.has-real-feel > span.high");
+			"div > div.scroll > a:nth-child(3) > div > div.temp.has-real-feel > span.high");
 	private By byTonightRealFeelTemprature = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(3) > div > div.real-feel");
+			"div > div.scroll > a:nth-child(3) > div > div.real-feel");
 	private By byTonightWeatherdescription = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(3) > div > div.cond");
+			"div > div.scroll > a:nth-child(3) > div > div.cond");
 	private By byTomorrowcard = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(4) > div > p:nth-child(1)");
+			"div > div.scroll > a:nth-child(4) > div > p:nth-child(1)");
 	private By byTomorrowdate = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(4) > div > p.module-header.sub.date");
+			"div > div.scroll > a:nth-child(4) > div > p.module-header.sub.date");
 	private By byTomorrowWeathericon = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(4) > div > img");
+			"div > div.scroll > a:nth-child(4) > div > img");
 	private By byTomorrowTemperature = By.cssSelector(
-			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(4) > div > div.temp > span.high");
+			"div > div.scroll > a:nth-child(4) > div > div.temp > span.high");
 	private By byTomorrowWeatherdescription = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(4) > div > div.cond");
+			"div > div.scroll > a:nth-child(4) > div > div.cond");
 	private By bytommorowHiLotemp=By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(4) > div > div.temp > span.high");
-	private By byAnimationBarForward = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.next > div.arrow.top.card.active");
-	private By byAnimationBarBackward = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.next > div:nth-child(2)");
+			"div > div.scroll > a:nth-child(4) > div > div.temp > span.high");
+	private By byAnimationBarForward = By.cssSelector("div > div.next > div.arrow.top.card.active > svg");
+	private By byAnimationBarBackward = By.cssSelector("div > div.next > div:nth-child(2)");
 	private By bynextdayheader = By.cssSelector(
 			"div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(1) > div > p:nth-child(1)");
 	private By forwardarrow = By.cssSelector(
 			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.next > div.arrow.top.card.active > svg");
-	private By fourweathercards = By.cssSelector(
-			"div.page-column-1 > div > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll");
+	private By fourweathercards = By.cssSelector("div > div.flipper-panel  > div.scroll");
 	private By currentweathertext = By.cssSelector(
 			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current.reverse > div > p:nth-child(1)");
-	private By backarrow = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.next > div:nth-child(2) > svg");
-	private By forwadarrowhighlighted = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.next > div.arrow.top.card.active > svg > path");
+	private By backarrow = By.cssSelector("div.flipper-panel > div.next > div:nth-child(2) > svg");
+	private By forwadarrowhighlighted = By.cssSelector("div.flipper-panel > div.next > div:nth-child(1) > svg");
 	private By nextdayforecast = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width");
+			"div.content-module > div > div.flipper-panel");
 	private By backarrowhighlighted = By.cssSelector(
-			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.next > div:nth-child(2) > svg");
+			"div > div.next > div:nth-child(2) > svg");
 			
 	SimpleDate currentDate = new SimpleDate();
 	private final static String CURRENT_WEATHER = "Current Weather";
@@ -141,6 +136,7 @@ public class ThreeDayForecastPage extends BasePage
 	public Boolean timeValidationOnCurrentWeather()
 	{
 		WebPageLoaded.isDomInteractive();
+		System.out.println(getDriver().findElement(bycurrentTime).getText());
 		if(getDriver().findElement(bycurrentTime).getText().equals(currentDate.getCurrentTime()))
 			return true;
 		else
@@ -150,7 +146,7 @@ public class ThreeDayForecastPage extends BasePage
 	public Boolean dateValidationOnTodayCard()
 	{
 		WebPageLoaded.isDomInteractive();
-		if(getDriver().findElement(bytodaycardcurrentDate).getText().equals(SimpleDate.getCurrentDate("d/M")))
+		if(getDriver().findElement(bytodaycardcurrentDate).getText().equals(SimpleDate.getCurrentDate("M/d")))
 			return true;
 		else
 			return false;
@@ -159,7 +155,7 @@ public class ThreeDayForecastPage extends BasePage
 	public Boolean dateValidationOnTonightCard()
 	{
 		WebPageLoaded.isDomInteractive();
-		if(getDriver().findElement(bytonightcardCurrentDate).getText().equals(SimpleDate.getCurrentDate("d/M")))
+		if(getDriver().findElement(bytonightcardCurrentDate).getText().equals(SimpleDate.getCurrentDate("M/d")))
 			return true;
 		else
 			return false;
@@ -217,6 +213,7 @@ public class ThreeDayForecastPage extends BasePage
 	public void isclickedonCurrentWeather() {
 		WebPageLoaded.isDomInteractive();
 		getDriver().findElement(byCurrentweatherwholecard).click();
+		Sleeper.sleep(3);
 	}
 
 	public String CurrentWeatherurldisplayed() {
@@ -228,23 +225,26 @@ public class ThreeDayForecastPage extends BasePage
 	public void isclickedonTodayWeather() {
 		WebPageLoaded.isDomInteractive();
 		getDriver().findElement(byTodaywholecard).click();
+		Sleeper.sleep(3);
 	}
 
 	public String todayWeatherurldisplayed() {
 		WebPageLoaded.isDomInteractive();
 		getDriver().findElement(byTodaywholecard).click();
+		Sleeper.sleep(3);
 		return getDriver().getCurrentUrl();
 	}
 
 	public void isclickedonTomorrowWeather() {
 		WebPageLoaded.isDomInteractive();
 		getDriver().findElement(byTomorrowcard).click();
-		WebPageLoaded.isDomInteractive(3000);
+		Sleeper.sleep(3);
 	}
 
 	public String tomorrowWeatherurldisplayed() {
 		WebPageLoaded.isDomInteractive();
 		getDriver().findElement(byTomorrowcard).click();
+		Sleeper.sleep(3);
 		return getDriver().getCurrentUrl();
 	}
 
