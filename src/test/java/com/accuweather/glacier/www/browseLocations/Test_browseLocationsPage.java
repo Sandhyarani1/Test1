@@ -63,7 +63,7 @@ public class Test_browseLocationsPage extends AccuWeatherBaseTest {
 			Assert.fail("World Weather URL is not matching as the expected");
 		}
 	}
-	
+	/*
 	@Test(priority = 4)
 	public void RW_T213_WorldWeatherCTA_verifyWorldWeatherCTABackgroundColor()
 	{
@@ -391,5 +391,5 @@ public class Test_browseLocationsPage extends AccuWeatherBaseTest {
 	    browseLocationPage.clcikCountryFromAContinent();
 	    browseLocationPage.clcikStateFromCountry();
 	    Assert.assertTrue(browseLocationPage.verifyThreedayWeatherCard());
-	}
+	}*/
 }
