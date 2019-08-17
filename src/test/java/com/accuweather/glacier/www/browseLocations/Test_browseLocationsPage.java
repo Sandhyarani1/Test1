@@ -34,7 +34,7 @@ public class Test_browseLocationsPage extends AccuWeatherBaseTest {
 			Assert.fail("Browse for a location URL is not matching as the expected");
 		}
 	}
-	
+	/*
 	@Test(priority = 2)
 	public void RW_T212_verify_List_of_Regions_On_Browse_Location_Page()
 	{
@@ -63,7 +63,7 @@ public class Test_browseLocationsPage extends AccuWeatherBaseTest {
 			Assert.fail("World Weather URL is not matching as the expected");
 		}
 	}
-	/*
+	
 	@Test(priority = 4)
 	public void RW_T213_WorldWeatherCTA_verifyWorldWeatherCTABackgroundColor()
 	{
