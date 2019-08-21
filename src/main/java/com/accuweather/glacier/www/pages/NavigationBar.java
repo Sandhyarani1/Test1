@@ -132,7 +132,9 @@ public class NavigationBar extends BasePage
     private By byTwitterText = By.xpath("//div[contains(@class,'social')]/a[2]/h4");
     private By byInstagramText = By.xpath("//div[contains(@class,'social')]/a[3]/h4");
     private By byyoutubeText = By.xpath("//div[contains(@class,'social')]/a[4]/h4");
-	
+	//secondary tabs
+    private By byRadarTabSecondaryNavigation = By.cssSelector("div.page-subnav > div > div > div.subnav-items > a:nth-child(2)");
+    
     public void navigateToHome() {
         clickVisibleElement(byLogo);
     }
@@ -1098,7 +1100,20 @@ public class NavigationBar extends BasePage
         public void clickOnTwitterIcon() {
             getDriver().findElement(byTwitterIcon).click();                       
         }
-
+        
+        /**
+    	 * Method to click Radar Tab on secondary navigation [city forecast page]
+    	 * @author Sowmiya
+    	 * */
+    	public void clickRadarTabOnCityForecastPage()
+    	{
+    		WebPageLoaded.isDomInteractive();
+    		WebElement radarTabSecondaryNavigation = getDriver().findElement(byRadarTabSecondaryNavigation);
+    		radarTabSecondaryNavigation.syncVisible(15);
+    		radarTabSecondaryNavigation.jsClick();
+    		Sleeper.sleep(2);
+    	}
+    	
         /*
          * Method to get Video Sub Menu Description Text from Navigation Bar
          */
