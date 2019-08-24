@@ -8,6 +8,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.json.JSONArray;
@@ -15,6 +16,7 @@ import org.json.JSONObject;
 //import org.json.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.Color;
+import com.chameleon.utils.Sleeper;
 import com.accuweather.glacier.BasePage;
 import com.accuweather.glacier.api.dailyforecasts.DailyForecasts;
 import com.accuweather.glacier.api.objects1.Condition;
@@ -54,16 +56,16 @@ public class DailyForeCastPage extends BasePage{
 	private By byDailyForecastDayIce = By.cssSelector("div.block.day > div > div.column.detail > div:nth-child(6)");
 	private By byDailyForecastDayHrsOfPrecip = By.cssSelector("div.block.day > div > div.column.detail > div:nth-child(7)");
 	private By byDailyForecastDayHrsOfRain = By.cssSelector("div.block.day > div > div.column.detail > div:nth-child(8)");
-	private By byCurrentDay = By.cssSelector("body > div.template-root.daily-forecast > div.two-column-page-content > div.page-column-1 > div:nth-child(1) > a.forecast-list-card.forecast-card.today > div.date > p.dow");
-	private By byCurrentDate = By.cssSelector("body > div.template-root.daily-forecast > div.two-column-page-content > div.page-column-1 > div:nth-child(1) > a.forecast-list-card.forecast-card.today > div.date > p.sub");
-	private By byWeatherIcon = By.cssSelector("body > div.template-root.daily-forecast > div.two-column-page-content > div.page-column-1 > div:nth-child(1) > a.forecast-list-card.forecast-card.today > img.weather-icon.icon");
-	private By byHighTemp = By.cssSelector("body > div.template-root.daily-forecast > div.two-column-page-content > div.page-column-1 > div:nth-child(1) > a.forecast-list-card.forecast-card.today > div.temps > span.high");
-	private By byLowTemp = By.cssSelector("body > div.template-root.daily-forecast > div.two-column-page-content > div.page-column-1 > div:nth-child(1) > a.forecast-list-card.forecast-card.today > div.temps > span.low");
-	private By byWeatherDescription = By.cssSelector("body > div.template-root.daily-forecast > div.two-column-page-content > div.page-column-1 > div:nth-child(1) > a.forecast-list-card.forecast-card.today > span.phrase");
-	private By byPrecipitationText = By.cssSelector("body > div.template-root.daily-forecast > div.two-column-page-content > div.page-column-1 > div:nth-child(1) > a.forecast-list-card.forecast-card.today > div.info.precip > p:nth-child(1)");
-	private By byPrecipitationValue = By.cssSelector("body > div.template-root.daily-forecast > div.two-column-page-content > div.page-column-1 > div:nth-child(1) > a.forecast-list-card.forecast-card.today > div.info.precip > p:nth-child(2)");
-	private By byCurentDayCard = By.cssSelector("body > div.template-root.daily-forecast > div.two-column-page-content > div.page-column-1 > div:nth-child(1) > a.forecast-list-card.forecast-card.today");
-	private By byNextCTATab = By.cssSelector("body > div.template-root.daily-forecast > div.two-column-page-content > div.page-column-1 > div.navigation > a > span.text");
+	private By byCurrentDay = By.cssSelector("div:nth-child(1) > a.forecast-list-card.forecast-card.today > div.date > p.dow");
+	private By byCurrentDate = By.cssSelector("div:nth-child(1) > a.forecast-list-card.forecast-card.today > div.date > p.sub");
+	private By byWeatherIcon = By.cssSelector("div:nth-child(1) > a.forecast-list-card.forecast-card.today > img.weather-icon.icon");
+	private By byHighTemp = By.cssSelector("div:nth-child(1) > a.forecast-list-card.forecast-card.today > div.temps > span.high");
+	private By byLowTemp = By.cssSelector("div:nth-child(1) > a.forecast-list-card.forecast-card.today > div.temps > span.low");
+	private By byWeatherDescription = By.cssSelector("div:nth-child(1) > a.forecast-list-card.forecast-card.today > span.phrase");
+	private By byPrecipitationText = By.cssSelector("div:nth-child(1) > a.forecast-list-card.forecast-card.today > div.info.precip > p:nth-child(1)");
+	private By byPrecipitationValue = By.cssSelector("div:nth-child(1) > a.forecast-list-card.forecast-card.today > div.info.precip > p:nth-child(2)");
+	private By byCurentDayCard = By.cssSelector("div:nth-child(1) > a.forecast-list-card.forecast-card.today");
+	private By byNextCTATab = By.xpath("//a[@class='card-button nav-card next centered']");
 	private By byRightArrowIcon = By.cssSelector("body > div.template-root.daily-forecast > div.two-column-page-content > div.page-column-1 > div.navigation > a > div.arrow-wrap.is-next > svg.arrow.icon-chevron.icon-chevron-right");
 	
 	/*public void validateDailyForecast (Headline2 headline) {
@@ -157,6 +159,7 @@ public class DailyForeCastPage extends BasePage{
 		WebElement dailyTab = getDriver().findElement(byDailyTab);
 		dailyTab.syncVisible(15);
 		dailyTab.click();
+		Sleeper.sleep(2);
 	}
 
 	/**
@@ -269,12 +272,18 @@ public class DailyForeCastPage extends BasePage{
 	 * Method to get the current day from daily tab
 	 * @return : String - returns the day from the first tab in Daily forecast page
 	 * */
-	public String readCurrentDay()
+	public Boolean readCurrentDay()
 	{
 		WebPageLoaded.isDomInteractive();
 		WebElement currentDay = getDriver().findElement(byCurrentDay);
 		currentDay.syncVisible(15);
-		return currentDay.getText();
+		
+		//get current day from the calendar 
+		Calendar calendar = Calendar.getInstance();
+        String getTime = calendar.getTime().toString();
+        String getOnlyDay = getTime.substring(0, 3); 
+        
+		return currentDay.getText().equalsIgnoreCase(getOnlyDay);
 	}
 
 	/**
@@ -282,12 +291,21 @@ public class DailyForeCastPage extends BasePage{
 	 * Method to get the current date from first tab in Daily forecast page
 	 * @return : String - returns the date from the first tab in Daily forecast page
 	 * */
-	public String readCurrentDate()
+	public Boolean readCurrentDate()
 	{
 		WebPageLoaded.isDomInteractive();
 		WebElement currentDate = getDriver().findElement(byCurrentDate);
 		currentDate.syncVisible(15);
-		return currentDate.getText();
+		
+		//get currentdate from the calendar
+		Date date = new Date();
+		SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+		String getTime = formatter.format(date);
+		String getDateAndMonth = getTime.substring(6, 10);
+		String formatDateAndMonth = getDateAndMonth.replace("-", "/");
+		System.out.println(formatDateAndMonth);
+		
+		return currentDate.getText().equalsIgnoreCase(formatDateAndMonth);
 	}
 
 	/** Method to verify if the weather icon is displayed */
@@ -373,7 +391,7 @@ public class DailyForeCastPage extends BasePage{
 	public String getColor_Of_ActiveTab()
 	{
 		WebPageLoaded.isDomInteractive();
-		String color = getDriver().findElement(byCurentDayCard).getCssValue("border-left");
+		String color = getDriver().findElement(byCurentDayCard).getCssValue("border-left-color");
 		return Color.fromString(color).asHex();
 	}
 
@@ -441,8 +459,7 @@ public class DailyForeCastPage extends BasePage{
 		WebPageLoaded.isDomInteractive();
 		WebElement nextCTATab = getDriver().findElement(byNextCTATab);
 		nextCTATab.syncVisible(15);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		nextCTATab.jsClick();
+		Sleeper.sleep(2);
 	}
-
 }

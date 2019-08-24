@@ -47,7 +47,6 @@ public class CityRadarPage extends BasePage
 	private By byRadarTabColor = By.cssSelector("div.subnav-items > a.subnav-item.active");
 	private By byMapHeader = By.cssSelector("div.map-container.full-mobile-width.content-module > div.map-header > h2");
 	private By byNavigationMenusList = By.cssSelector("div.subnav-items > a");
-	private By byRadarNavigationMenu = By.cssSelector("div.subnav-items > a:nth-child(2)");
 	
 	/**
 	 * Method to verify severe text below the Mix legend
@@ -442,16 +441,4 @@ public class CityRadarPage extends BasePage
 		return flag;
 	}
 	
-	/**
-	 * Method to click radar navigation menu
-	 * @author SOWMIYA
-	 * */
-	public void clickRadarNavigationMenu()
-	{
-		WebPageLoaded.isDomInteractive();
-		WebElement radarTab = getDriver().findElement(byRadarNavigationMenu);
-		radarTab.syncVisible();
-		radarTab.jsClick();
-		Sleeper.sleep(3);
-	}
 }
