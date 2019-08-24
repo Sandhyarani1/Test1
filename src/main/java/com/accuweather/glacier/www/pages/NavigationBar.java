@@ -166,7 +166,8 @@ public class NavigationBar extends BasePage
     }
 
     public void navigateToHomePageByLogo() {
-        getDriver().findElement(byLogo).click();
+        getDriver().findElement(byLogo).jsClick();
+        Sleeper.sleep(5);
         //clickVisibleElement(byRadarSubMenu);
         }
 
