@@ -11,10 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
-import com.chameleon.utils.Sleeper;
 
 public class RadarPage extends BasePage {
-	boolean flag;
 	private By byfeaturedSearchbar = By
 			.cssSelector(" div.searchbar.featured-search > div.searchbar-content > form > input");
 	private By byRadarMaps = By.cssSelector("div.main-menu > ul > li:nth-child(1)");
@@ -36,19 +34,23 @@ public class RadarPage extends BasePage {
 	private By byMapboxattribution = By
 			.cssSelector("div.mapboxgl-control-container >div.mapboxgl-ctrl-bottom-left > div:nth-child(2) > a");
 
-	private By byFullscreenbutton = By.cssSelector("div.map-canvas.full-mobile-width > div.full-screen-button");
-	private By byFullscreeTimelinecontrol = By
-			.cssSelector("div.map-tools > div.radar-controls.timeline-container.is-full-screen");
-	private By bylegendonfullscreen = By.cssSelector("div.map-tools > div.radar-legend");
-	private By byclosebutton = By.cssSelector("div.map-canvas.full-mobile-width > div.close-button");
+	private By byFullscreenbutton = By.cssSelector(
+			"div.map-container.full-mobile-width.content-module > div.map-canvas.full-mobile-width > div.full-screen-button");
+	private By byFullscreeTimelinecontrol = By.cssSelector(
+			"div.map-container.full-mobile-width.content-module.full-screen > div.map-tools > div.radar-controls.timeline-container.is-full-screen");
+	private By bylegendonfullscreen = By.cssSelector(
+			"div.map-container.full-mobile-width.content-module.full-screen > div.map-tools > div.radar-legend");
+	private By byclosebutton = By.cssSelector(
+			"div.map-container.full-mobile-width.content-module.full-screen > div.map-canvas.full-mobile-width > div.close-button");
 
-	private By byTimelinecontrols = By.cssSelector("div.map-tools > div.radar-controls.timeline-container");
+	private By byTimelinecontrols = By.cssSelector(
+			"div.map-container.full-mobile-width.content-module > div.map-tools > div.radar-controls.timeline-container");
 	private By byPastCTA = By.cssSelector("div.map-tools > div.radar-controls.timeline-container > div:nth-child(2)");
 	private By byFutureCTAdisplayed = By
 			.cssSelector("div.map-tools > div.radar-controls.timeline-container > div:nth-child(3)");
 	private By bySliderwithPlaybutton = By.xpath("//div[@class='play-toggle-button icon-play']");
-	private By byTimestampdisplayed = By
-			.cssSelector("div.radar-controls.timeline-container > div.timeline-controls > div.time-stamp");
+	private By byTimestampdisplayed = By.cssSelector(
+			"div.map-tools > div.radar-controls.timeline-container > div.timeline-controls > div.time-stamp");
 
 	private By byLegendRain = By.xpath("//div[contains(text(),'Rain')]");
 	private By bylegendSnow = By.cssSelector("div.map-tools > div.radar-legend > div:nth-child(2) > div.label");
@@ -60,36 +62,34 @@ public class RadarPage extends BasePage {
 	private By bylegendIceColors = By.xpath("//*[@class='key ice']//*[name()='rect']");
 	private By bylegendMixColors = By.xpath("//*[@class='key mix']//*[name()='rect']");
 	private By byRainlegendtextLight = By
-			.cssSelector("div.radar-legend > div:nth-child(1) > div.range-label > span:nth-child(1)");
+			.cssSelector("div.map-tools > div.radar-legend > div:nth-child(1) > div.range-label > span:nth-child(1)");
 	private By byRainlegendtextSevere = By
-			.cssSelector("div.radar-legend > div:nth-child(1) > div.range-label > span:nth-child(2)");
+			.cssSelector("div.map-tools > div.radar-legend > div:nth-child(1) > div.range-label > span:nth-child(2)");
 
 	private By bySnowlegendtextLight = By
-			.cssSelector("div.radar-legend > div:nth-child(2) > div.range-label > span:nth-child(1)");
+			.cssSelector("div.map-tools > div.radar-legend > div:nth-child(2) > div.range-label > span:nth-child(1)");
 	private By bySnowlegendtextSevere = By
-			.cssSelector("div.radar-legend > div:nth-child(2) > div.range-label > span:nth-child(2)");
+			.cssSelector("div.map-tools > div.radar-legend > div:nth-child(2) > div.range-label > span:nth-child(2)");
 
 	private By byIceLegendTextLight = By
-			.cssSelector("div.radar-legend > div:nth-child(3) > div.range-label > span:nth-child(1)");
+			.cssSelector("div.map-tools > div.radar-legend > div:nth-child(3) > div.range-label > span:nth-child(1)");
 	private By byIceLegendTextSevere = By
-			.cssSelector("div.radar-legend > div:nth-child(3) > div.range-label > span:nth-child(2)");
+			.cssSelector("div.map-tools > div.radar-legend > div:nth-child(3) > div.range-label > span:nth-child(2)");
 
 	private By byMixLegendTextLight = By
-			.cssSelector("div.radar-legend > div:nth-child(4) > div.range-label > span:nth-child(1)");
+			.cssSelector(" div.map-tools > div.radar-legend > div:nth-child(4) > div.range-label > span:nth-child(1)");
 	private By byMixLegendTextSevere = By
-			.cssSelector("div.radar-legend > div:nth-child(4) > div.range-label > span:nth-child(2)");
+			.cssSelector("div.map-tools > div.radar-legend > div:nth-child(4) > div.range-label > span:nth-child(2)");
 
 	private By byzoomControls = By.cssSelector("div.mapboxgl-control-container > div.mapboxgl-ctrl-top-left");
 	private By byzoomInControl = By.cssSelector("div > button.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-in");
 	private By byzoomOutControl = By.cssSelector("div > button.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-out");
 
 	/**
-	 * Method to Search city by Name on Featured Search bar
-	 * @author sandhya.narayanarao
-	 * 
+	 * @author Sandhya Rani
+	 * Method to search city by its name from featured Search bar
 	 * 
 	 **/
-
 	public void searchCityByName(String cityName) {
 		WebPageLoaded.isDomInteractive();
 		WebElement searchBartextfield = getDriver().findElement(byfeaturedSearchbar);
@@ -101,20 +101,18 @@ public class RadarPage extends BasePage {
 	}
 
 	/**
-	 * Method to Search city by Name and select the city from the auto suggestion
-	 * @author sandhya.narayanarao
+	 * @author Sandhya Rani
+	 * Method to find auto suggestions and click on city 
 	 * 
-	 * 
-	 **/
-
+	 */
 	public void selectCityByName() {
 		getDriver().findElement(By.cssSelector("div.search-results > div:nth-child(2)")).click();
 	}
 
 	/**
+	 * @author Sandhya Rani
 	 * Method to hover over top level navigation menus on Homepage
-	 * @author sandhya.narayanarao
-	 *         
+	 *    
 	 * 
 	 **/
 
@@ -126,34 +124,39 @@ public class RadarPage extends BasePage {
 	}
 
 	/**
+	 * @author Sandhya Rani 
 	 * Method to hover over top level navigation menus on Radar Maps and to select Radar
-	 * @author sandhya.narayanarao  
-	 *       
+	 *      
 	 * 
 	 **/
 
 	public void navigateToRadar() {
+
 		WebElement radarsubmenu = getDriver().findElement(byRadarSubMenu);
+
 		radarsubmenu.syncVisible(9000);
+
 		radarsubmenu.jsClick();
 	}
 
 	/**
+	 * @author Sandhya Rani 
 	 * Method to Validate Secondary menus are displayed
-	 *@author sandhya.narayanarao
 	 * 
 	 **/
 
 	public boolean Secondarynavigationmenusdisplayed() {
-		WebDriverWait wait = new WebDriverWait(getDriver(), 800000);
-		wait.until(ExpectedConditions.presenceOfElementLocated(bysecondarynavMenus));
-		return getDriver().findElement(bysecondarynavMenus).isDisplayed();
+		getDriver().navigate().refresh();
 
+		WebElement secondarymenus = getDriver().findElement(bysecondarynavMenus);
+
+		return secondarymenus.isDisplayed();
 	}
 
 	/**
-	 * Method to Validated Secondary Navigation menus Displayed with following TAbs(Radar , Satellite ,Severe , Forecast)
-	 *@author sandhya.narayanarao
+	 * @author Sandhya Rani 
+	 * Method to Validated Secondary Navigation menus
+	 *         Displayed with following TAbs(Radar,Satellite,Severe,Forecast)
 	 *         
 	 * 
 	 **/
@@ -190,62 +193,79 @@ public class RadarPage extends BasePage {
 	}
 
 	/**
-	 * Method to Validated Radar Tab Highlighted by Default in orange colour at the border top
-	 * @author sandhya.narayanarao
-	 *         
+	 * @author Sandhya Rani 
+	 * Method to Validated Radar Tab Highlighted by Default in orange color at the border top
+	 * @return String Hex color         
 	 * 
 	 **/
 
 	public String RadartabHighlightedinOrange() {
 		getDriver().navigate().refresh();
+
 		String radartabTopColour = getDriver().findElement(bysecondarRadarTab).getCssValue("border-top-color");
+
 		return Color.fromString(radartabTopColour).asHex();
+
 	}
 
 	/**
+	 * @author Sandhya Rani 
 	 * Method to Validated Title of National Radar Page
-	 * @author sandhya.narayanarao
+	 * @return Title of the page
 	 * 
 	 **/
 	public String titleOfRadarMap() {
 		WebPageLoaded.isDomInteractive();
+
 		return getDriver().findElement(byTitleofNationalRadarpage).getText();
 	}
 
 	/**
+	 * @author Sandhya Rani 
 	 * Method to Validated Tool Tip of National Radar Page
-	 * @author sandhya.narayanarao
 	 * 
 	 **/
 
 	public boolean tooltipDisplayedonNationalRadarpage() {
 		WebPageLoaded.isDomInteractive();
+
 		return getDriver().findElement(byTooltiponNationalRadarpage).isDisplayed();
+
 	}
 
 	public void clickontooltipfromNationalRadarpage() {
 		WebPageLoaded.isDomInteractive();
+
 		WebElement tooltip = getDriver().findElement(byTooltiponNationalRadarpage);
+
 		WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
+
 		wait.until(ExpectedConditions.elementToBeClickable(tooltip));
+
 		tooltip.syncVisible(90000);
+
 		tooltip.jsClick();
+
 	}
 
 	public String colordisplayedwhenclickedonTooltip() {
 		getDriver().findElement(byTooltiponNationalRadarpage).jsClick();
+
 		String toolTipcolor = getDriver().findElement(bytooltipactive).getCssValue("background-color");
 		return Color.fromString(toolTipcolor).asHex();
 	}
 
 	public String textdisplayedwhenclickedonTooltip() {
 		getDriver().findElement(byTooltiponNationalRadarpage).jsClick();
+
 		return getDriver().findElement(bytooltiptextDisplayed).getText();
+
 	}
 
 	/**
+	 * @author Sandhya Rani 
 	 * Method to Validate and Click on Zoom Control buttons displayed at Top left corner of Radar Map
-	 * @author sandhya.narayanarao        
+	 *         
 	 * 
 	 **/
 
@@ -256,26 +276,38 @@ public class RadarPage extends BasePage {
 	public void zoominControls() {
 		for (int i = 0; i <= 5; i++) {
 			WebElement zoomIn = getDriver().findElement(byzoomInControl);
+
 			WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
+
 			wait.until(ExpectedConditions.elementToBeClickable(zoomIn));
+
 			zoomIn.jsClick();
+
 			wait.until(ExpectedConditions.elementToBeClickable(zoomIn));
+
 		}
 	}
 
 	public void zoomoutControls() {
 		for (int i = 0; i <= 5; i++) {
 			WebElement zoomOut = getDriver().findElement(byzoomOutControl);
+
 			WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
+
 			wait.until(ExpectedConditions.elementToBeClickable(zoomOut));
+
 			zoomOut.jsClick();
+
 			wait.until(ExpectedConditions.elementToBeClickable(zoomOut));
+
 		}
+
 	}
 
 	/**
+	 * @author Sandhya Rani 
 	 * Method to Validate Map Box atrribution of National Radar Page
-	 * @author sandhya.narayanarao        
+	 *         
 	 * 
 	 **/
 	public boolean MapboxattributionDisplayedBottomLeft() {
@@ -291,8 +323,9 @@ public class RadarPage extends BasePage {
 	}
 
 	/**
-	 *  Method to get the current url of the landing page in New  Tab
-	 *   @author Sandhya Rani     
+	 * @author Sandhya Rani 
+	 * Method to get the current url of the landing page in  New Tab
+	 *        
 	 * 
 	 **/
 
@@ -303,15 +336,19 @@ public class RadarPage extends BasePage {
 	}
 
 	/**
+	 * @author Sandhya Rani 
 	 * Method to validate Full Screen of National Radar Page
-	 * @author sandhya.narayanarao
+	 *         
+	 * 
 	 **/
 
 	public boolean fullScreenbuttonDisplayed() {
+
 		return getDriver().findElement(byFullscreenbutton).isDisplayed();
 	}
 
 	public int fullScreenbuttonDisplayedatbottomRight() {
+
 		return getDriver().findElement(byFullscreenbutton).getSize().getHeight();
 	}
 
@@ -322,8 +359,9 @@ public class RadarPage extends BasePage {
 	}
 
 	/**
+	 * @author Sandhya Rani 
 	 * Method to validate Time line controls and legends displayed on Full Screen of Radar Map
-	 * @author sandhya.narayanarao        
+	 *        
 	 * 
 	 **/
 
@@ -340,8 +378,9 @@ public class RadarPage extends BasePage {
 	}
 
 	/**
+	 * @author Sandhya Rani 
 	 * Method to validate Time line controls,legends,Slider with play button displayed on Radar Map
-	 * @author sandhya.narayanarao         
+	 *        
 	 * 
 	 **/
 
@@ -355,49 +394,64 @@ public class RadarPage extends BasePage {
 	}
 
 	public String FutureCtaNotHighlightedonRadarMap() {
-		WebElement futureCTA= getDriver().findElement(byFutureCTAdisplayed);
-		futureCTA.syncVisible(40);
-		String pastCTA = futureCTA.getCssValue("background-color");
+
+		String pastCTA = getDriver().findElement(byFutureCTAdisplayed).getCssValue("background-color");
 		return Color.fromString(pastCTA).asHex();
 	}
 
 	public void ClickonFutureCTAonRadarMap() {
+
 		WebElement futureCta = getDriver().findElement(byFutureCTAdisplayed);
+
 		WebDriverWait wait = new WebDriverWait(getDriver(), 8000);
+
 		wait.until(ExpectedConditions.elementToBeClickable(futureCta));
+
 		futureCta.jsClick();
+
 	}
 
 	public void ClickonPastCTAonRadarMap() {
 		WebDriverWait wait = new WebDriverWait(getDriver(), 8000);
+
 		wait.until(ExpectedConditions.elementToBeClickable(byPastCTA));
+
 		getDriver().findElement(byPastCTA).jsClick();
 
 	}
 
 	public boolean SliderwithPlayButtonDisplayed() {
 		WebElement playbutton = getDriver().findElement(bySliderwithPlaybutton);
+
 		playbutton.syncVisible(900);
+
 		return playbutton.isDisplayed();
 	}
 
 	public void clickonPlayButton() {
 		WebElement playbutton = getDriver().findElement(bySliderwithPlaybutton);
+
 		WebDriverWait wait = new WebDriverWait(getDriver(), 800);
+
 		wait.until(ExpectedConditions.elementToBeClickable(playbutton));
+
 		playbutton.jsClick();
 	}
 
 	public String timestampdisplayed() {
 		WebElement timestamp = getDriver().findElement(byTimestampdisplayed);
+
 		WebDriverWait wait = new WebDriverWait(getDriver(), 8000);
+
 		wait.until(ExpectedConditions.elementToBeClickable(timestamp));
+
 		return timestamp.getText();
 	}
 
 	/**
-	 *Method to validate following Legends displayed (Rain,Snow,Ice,Mix) on Radar Map
-	 * @author sandhya.narayanarao        
+	 * @author Sandhya Rani
+	 * Method to validate following Legends displayed (Rain,Snow,Ice,Mix) displayed on Radar Map
+	 *       
 	 * 
 	 **/
 
@@ -420,86 +474,80 @@ public class RadarPage extends BasePage {
 			WebPageLoaded.isDomInteractive(3000);
 			return getDriver().findElement(byLegendMix).isDisplayed();
 		}
+
 		return false;
 	}
 
 	/**
-	 * Method to validate Legend Rain Displayed with Text Light  and Severe
-	 * @author sandhya.narayanarao       
+	 * @author Sandhya Rani 
+	 * Method to validate Legend Rain Displayed with Text Light and Severe
+	 *       
 	 * 
 	 **/
 
-	public boolean legendRainDisplayedwithText() {
-		WebElement legendraintextLight=getDriver().findElement(byRainlegendtextLight);
-		legendraintextLight.syncVisible(60);
-		
-		WebElement legendraintextSevere=getDriver().findElement(byRainlegendtextSevere);
-		legendraintextSevere.syncVisible(60);
-		
-		return legendraintextLight.isDisplayed() && legendraintextSevere.isDisplayed();
-		
+	public boolean legendRainTextLightisDisplayed() {
+		return getDriver().findElement(byRainlegendtextLight).isDisplayed();
+
 	}
 
-	
+	public boolean legenRainTextSevereisDisplayed() {
+		return getDriver().findElement(byRainlegendtextSevere).isDisplayed();
+
+	}
+
 	/**
-	 * Method to validate Legend Snow Displayed with Text Light and Severe
-	 *  @author sandhya.narayanarao   
+	 * @author Sandhya Rani
+	 * Method to validate Legend Snow Displayed with Text  Light and Severe
+	 *        
 	 * 
 	 **/
-	public boolean legendSnowDisplayedwithtext() {
-		WebElement legendSnowtextLight=getDriver().findElement(bySnowlegendtextLight);
-		legendSnowtextLight.syncVisible(30);
-		
-		WebElement legendSnowtextSevere=getDriver().findElement(bySnowlegendtextSevere);
-		legendSnowtextSevere.syncVisible(30);
-		
-		return legendSnowtextLight.isDisplayed() && legendSnowtextSevere.isDisplayed();
-		
+	public boolean legendSnowDisplayedwithTextLight() {
+		return getDriver().findElement(bySnowlegendtextLight).isDisplayed();
 	}
-	
-	
+
+	public boolean legendSnowDisplayedwithTextSevere() {
+		return getDriver().findElement(bySnowlegendtextSevere).isDisplayed();
+	}
 
 	/**
+	 * @author Sandhya Rani 
 	 * Method to validate Legend Ice Displayed with Text Light and Severe
-	 *  @author sandhya.narayanarao       
+	 *         
+	 *  
+	 **/
+
+	public boolean legendICEDisplayedwithTextLight() {
+		return getDriver().findElement(byIceLegendTextLight).isDisplayed();
+	}
+
+	public boolean legendICEDisplayedwithTextSevere() {
+		return getDriver().findElement(byIceLegendTextSevere).isDisplayed();
+	}
+
+	/**
+	 * @author Sandhya Rani 
+	 * Method to validate Legend Mix Displayed with Text Light and Severe
+	 *
+	 * 
+	 **/
+	public boolean legendMixisplayedwithTextLight() {
+		return getDriver().findElement(byMixLegendTextLight).isDisplayed();
+	}
+
+	public boolean legendMixDisplayedwithTextSevere() {
+		return getDriver().findElement(byMixLegendTextSevere).isDisplayed();
+	}
+
+	/**
+	 * @author Sandhya Rani 
+	 * Method to validate Legend Rain Displayed with various colors
+	 *         
 	 * 
 	 **/
 
-	public boolean legendIceDisplayedwithtext() {
-		WebElement legendIcetextLight=getDriver().findElement(byIceLegendTextLight);
-		legendIcetextLight.syncVisible(30);
-		
-		WebElement legendIcetextSevere=getDriver().findElement(byIceLegendTextSevere);
-		legendIcetextSevere.syncVisible(30);
-		
-		return legendIcetextLight.isDisplayed() && legendIcetextSevere.isDisplayed();
-		
-	}
-	
-	/**
-	 * Method to validate Legend Mix Displayed with Text Light and Severe
-	 * @author sandhya.narayanarao      
-	 * 
-	 **/
-	
-	public boolean legendMixDisplayedwithtext() {
-		WebElement legendMixtextLight=getDriver().findElement(byMixLegendTextLight);
-		legendMixtextLight.syncVisible(30);
-		
-		WebElement legendMixtextSevere=getDriver().findElement(byMixLegendTextSevere);
-		legendMixtextSevere.syncVisible(30);
-		
-		return legendMixtextLight.isDisplayed() && legendMixtextSevere.isDisplayed();
-		
-	}
-	
-	/**
-	 * Method to validate Legend Rain Displayed with various colors
-	 * @author sandhya.narayanarao        
-	 * 
-	 **/
 	public void legendRaincoloursdisplayed() {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendRainColors);
+
 		for (int i = 1; i <= childrenElements.size(); i++) {
 			WebDriverWait wait = new WebDriverWait(getDriver(), 6000);
 			wait.until(ExpectedConditions.elementToBeClickable(bylegendRainColors));
@@ -507,31 +555,36 @@ public class RadarPage extends BasePage {
 					.findElement(By.xpath("//*[@class='key rain']//*[name()='rect' and @class='c-" + i + "']"))
 					.getCssValue("fill");
 			String colorinHex = Color.fromString(raincolour).asHex();
+
 			ArrayList<String> aList = new ArrayList<>();
 			aList.add(colorinHex);
 			for (String list : aList) {
 				System.out.println("Legend Rain has following colors displayed " + list);
+
 			}
+
 		}
+
 	}
 
 	/**
+	 * @author Sandhya Rani
 	 * Method to validate Legend Snow Displayed with various colors
-	 * @author sandhya.narayanarao       
-	 * 
+	 *         
 	 **/
 
 	public void legendSnowcoloursdisplayed() {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendSnowColors);
 
 		for (int i = 1; i <= childrenElements.size(); i++) {
-			Sleeper.sleep(5);
-			WebDriverWait wait = new WebDriverWait(getDriver(), 6000);
+
+			WebDriverWait wait = new WebDriverWait(getDriver(), 60);
 			wait.until(ExpectedConditions.elementToBeClickable(bylegendSnowColors));
 			String raincolour = getDriver()
 					.findElement(By.xpath("//*[@class='key snow']//*[name()='rect' and @class='c-" + i + "']"))
 					.getCssValue("fill");
 			String colorinHex = Color.fromString(raincolour).asHex();
+
 			List<String> aList = new ArrayList<>();
 			aList.add(colorinHex);
 			for (String list : aList) {
@@ -541,36 +594,41 @@ public class RadarPage extends BasePage {
 	}
 
 	/**
+	 * @author Sandhya Rani
 	 * Method to validate Legend Ice Displayed with various colors
-	 *  @author sandhya.narayanarao     
-	 * 
+	 *      
 	 **/
 	public void legendIcecoloursdisplayed() {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendIceColors);
-		for (int i = 1; i <= childrenElements.size(); i++) {
-			WebDriverWait wait = new WebDriverWait(getDriver(), 60);
 
+		for (int i = 1; i <= childrenElements.size(); i++) {
+
+			WebDriverWait wait = new WebDriverWait(getDriver(), 60);
 			wait.until(ExpectedConditions.elementToBeClickable(bylegendIceColors));
 			String raincolour = getDriver()
 					.findElement(By.xpath("//*[@class='key ice']//*[name()='rect' and @class='c-" + i + "']"))
 					.getCssValue("fill");
 			String colorinHex = Color.fromString(raincolour).asHex();
+
 			List<String> aList = new ArrayList<>();
 			aList.add(colorinHex);
-			for (String list : aList) {
+			for (String list : aList)
+
+			{
 				System.out.println("Legend Ice has following colors displayed " + list);
 			}
 		}
+
 	}
 
 	/**
+	 * @author Sandhya Rani 
 	 * Method to validate Legend Mix Displayed with various colors
-	 * @author sandhya.narayanarao     
-	 * 
+	 *         
 	 **/
-
 	public void legendMixcoloursdisplayed() {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendMixColors);
+
 		for (int i = 1; i <= childrenElements.size(); i++) {
 			WebDriverWait wait = new WebDriverWait(getDriver(), 60);
 			wait.until(ExpectedConditions.elementToBeClickable(bylegendMixColors));
@@ -578,11 +636,14 @@ public class RadarPage extends BasePage {
 					.findElement(By.xpath("//*[@class='key mix']//*[name()='rect' and @class='c-" + i + "']"))
 					.getCssValue("fill");
 			String colorinHex = Color.fromString(raincolour).asHex();
+
 			List<String> aList = new ArrayList<>();
 			aList.add(colorinHex);
 			for (String list : aList) {
 				System.out.println("Legend Mix has following colors displayed " + list);
+
 			}
+
 		}
 
 	}
