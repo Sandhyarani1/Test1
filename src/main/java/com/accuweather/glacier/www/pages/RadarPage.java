@@ -446,6 +446,17 @@ public class RadarPage extends BasePage
       playbutton.jsClick();
     }
     
+    public void clickonPauseButton()
+    {
+    	WebElement playbutton= getDriver().findElement(bySliderwithPlaybutton);
+    	
+       WebDriverWait wait = new WebDriverWait(getDriver(),800);
+   	 
+      wait.until(ExpectedConditions.elementToBeClickable(playbutton));
+        
+      playbutton.jsClick();
+    }
+    
     public String timestampdisplayed()
     {
     	WebElement timestamp= getDriver().findElement(byTimestampdisplayed);
