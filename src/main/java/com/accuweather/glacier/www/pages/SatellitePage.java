@@ -103,7 +103,7 @@ public class SatellitePage extends BasePage {
 	}
 
 	public String EnchancedTabHighlighted() {
-		String tabColour = getDriver().findElement(byEnhancedTab).getCssValue("border-top");
+		String tabColour = getDriver().findElement(byEnhancedTab).getCssValue("border-top")
 		String boarderColor = tabColour.substring(10);
 		return Color.fromString(boarderColor).asHex();
 
