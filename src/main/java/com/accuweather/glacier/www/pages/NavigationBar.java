@@ -75,10 +75,10 @@ public class NavigationBar extends BasePage
     private By byWeatherBlogsSubMenu = By.cssSelector("div:nth-child(4) > a > h4");
     private By byClimateChangeSubMenu = By.cssSelector("div:nth-child(5) > a > h4");
     private By byNewsSubMenu = By.cssSelector("div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(1) > h4");
-    private By byHurricaneSubMenu = By.cssSelector("div > div:nth-child(2) > a > h4");
-    private By byAWReadySubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(3) > a > h4");
+    private By byHurricaneSubMenu = By.xpath("//div[@class='mega-menu-content']/div[3]/a/h4[text()='Hurricane']");
+    private By byAWReadySubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(3) > a");
     private By byWinterWeatherSubMenu = By.cssSelector("div > div:nth-child(4) > a > h4");
-    private By bySeverWeatherSubMenu = By.cssSelector("div.mega-menu > div > div.mega-menu-item.mega-menu-item-cta.fade-in-left > a > h4");
+    private By bySeverWeatherSubMenu = By.xpath("//div[@class='mega-menu-content']/div[1]/a/h4[text()='Severe Weather']");
     //Maps Submenu
     private By byMapsSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(1) > a > h4");
     private By bySatelliteSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(2) > a > h4");
@@ -552,7 +552,7 @@ public class NavigationBar extends BasePage
         public boolean isHurricaneSubMenuDisplayed() {
         	WebPageLoaded.isDomInteractive();
             WebElement hurricane = getDriver().findElement(byHurricaneSubMenu);
-            hurricane.syncVisible(15);
+            hurricane.syncVisible(25);
             return hurricane.isDisplayed();       	   	
         }
 
@@ -605,6 +605,7 @@ public class NavigationBar extends BasePage
             WebElement severeweather = getDriver().findElement(bySevereWeather);
             severeweather.syncVisible(15);
             severeweather.hover();
+            Sleeper.sleep(5);
         }
 
         public void mouseHoverOnVideo() {
@@ -717,7 +718,7 @@ public class NavigationBar extends BasePage
                         }
 
         public void clickSeverWeatherSubMenu() {
-        getDriver().findElement(bySeverWeatherSubMenu).click();
+        getDriver().findElement(bySeverWeatherSubMenu).jsClick();
         }
 
         public void clickHurricaneSubMenu() {

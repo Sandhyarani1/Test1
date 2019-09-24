@@ -13,8 +13,8 @@ import com.chameleon.utils.Sleeper;
 public class LegalFooter extends BasePage
 {
 	private By byCopyRight = By.cssSelector("body > div.template-root > div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span:nth-child(1)");
-	private By byRegisteredTrademarks = By.cssSelector("body > div.template-root > div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span:nth-child(2)");
-	private By byRightsReserved = By.cssSelector("body > div.template-root > div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span:nth-child(3)");
+	private By byRegisteredTrademarks = By.cssSelector("body > div.template-root > div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span");
+	private By byRightsReserved = By.cssSelector("div.footer-legalese.footer-legalese > div.footer-copyright > span");
 	private By byTermsOfUse = By.cssSelector("body > div.template-root > div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-terms > a:nth-child(1)");
 	private By byTermsOfUseSpanish = By.cssSelector("body > div.template-root > div.base-footer > div > div.footer-terms > a:nth-child(1)");
 	private By byPrivacyPolicy = By.cssSelector("body > div.template-root > div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-terms > a:nth-child(2)");
@@ -546,6 +546,7 @@ public class LegalFooter extends BasePage
 	{
 		WebPageLoaded.isDomInteractive();
 		getDriver().findElement(bySettingsButton).click();
+		getDriver().findElement(byLanguageSelector).syncVisible(15);
 		getDriver().findElement(byLanguageSelector).click();
 		getDriver().findElement(bySpanish).click();
 		WebPageLoaded.isDomInteractive();

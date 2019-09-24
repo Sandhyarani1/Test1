@@ -5064,4 +5064,58 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		Assert.assertEquals((myResponse.getJSONObject("Temperature").getJSONObject("Maximum").get("Value").toString()),
 		dayPartsPage.morningOrganismCurrentTemperatureISdisplayed());
 	}
+	
+	@Test(priority = 8)
+	public void RW_T895_PaginationandDateonQuarterDays_verifyMorningMonthAndDateIsDisplayed() throws InterruptedException {
+		testStart("Validate whether Morning month and date");
+		landingpage.enterZipcodeInSearchField(ZIPCODE);
+		landingpage.clickOnZipcodeSearchIcon();
+		waitUntilElementIsDisplayedOrClickable();
+		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
+		dayPartsPage.isclickedonTodayweathercard();
+		dayPartsPage.scrollPagewithCounter(3);
+		dayPartsPage.currentweatherMorningLinkISClicked();
+		Assert.assertTrue(dayPartsPage.verifyDateAndMonthPresent());
+	}
+	
+	@Test(priority = 360)
+	public void RW_T895_PaginationandDateonQuarterDays_verifyOvernightMonthAndDateIsDisplayed()  throws InterruptedException {
+		testStart("Validate OverNight month and date");
+		landingpage.enterZipcodeInSearchField(ZIPCODE);
+		landingpage.clickOnZipcodeSearchIcon();
+		waitUntilElementIsDisplayedOrClickable();
+		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
+		dayPartsPage.isclickedonTodayweathercard();
+		dayPartsPage.currentweatherOverNightLinkISClicked();
+		dayPartsPage.scrollPagewithCounter(3);
+		waitUntilElementIsDisplayedOrClickable();
+		Assert.assertTrue(dayPartsPage.verifyDateAndMonthPresent());
+	}
+	
+	@Test(priority = 267)
+	public void RW_T895_PaginationandDateonQuarterDays_verifyEveningMonthAndDateIsDisplayed() throws InterruptedException {
+		testStart("Validate Evening month and date are present");
+		landingpage.enterZipcodeInSearchField(ZIPCODE);
+		landingpage.clickOnZipcodeSearchIcon();
+		waitUntilElementIsDisplayedOrClickable();
+		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
+		dayPartsPage.isclickedonTodayweathercard();
+		dayPartsPage.currentweatherEveningLinkISClicked();
+		dayPartsPage.scrollPagewithCounter(3);
+		waitUntilElementIsDisplayedOrClickable();
+		Assert.assertTrue(dayPartsPage.verifyDateAndMonthPresent());
+	}
+	
+	@Test(priority = 21)
+	public void RW_T895_PaginationandDateonQuarterDays_verifyAfternoonMonthAndDateIsDisplayed() throws InterruptedException {
+		testStart("Validate afternoon month and date");
+		landingpage.enterZipcodeInSearchField(ZIPCODE);
+		landingpage.clickOnZipcodeSearchIcon();
+		waitUntilElementIsDisplayedOrClickable();
+		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
+		dayPartsPage.isclickedonTodayweathercard();
+		dayPartsPage.currentweatherAfterNoonLinkISClicked();
+		Assert.assertTrue(dayPartsPage.verifyDateAndMonthPresent());
+	}
+	
 }

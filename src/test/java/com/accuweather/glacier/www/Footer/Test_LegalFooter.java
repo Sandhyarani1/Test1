@@ -10,31 +10,31 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 {
 	private final static String ZIPCODE = "53558";
 	private final static String EXPECTED_LANDING_PAGE_TITLE = "Mc Farland Weather - AccuWeather Forecast for WI 53558";
-	private final static String TERMS_OF_USE_TITLE = "Terms of Use - AccuWeather.com";
+	private final static String TERMS_OF_USE_TITLE = "Terms of Use | AccuWeather";
 	private final static String TERMS_OF_USE = "Terms of Use";
 	//private final static String TERMS_OF_USE_URL = "https://development.accuweather.com/en/legal";
 	private final static String TERMS_OF_USE_URL = "https://qualityassurance.accuweather.com/en/legal";
 	private final static String TERMS_OF_USE_CONTENT_HEADING = "AccuWeather Terms Of Use";
-	private final static String PRIVACY_POLICY_TITLE = "Privacy Statement & Policy - AccuWeather.com";
+	private final static String PRIVACY_POLICY_TITLE = "Privacy Statement & Policy | AccuWeather";
 	private final static String PRIVACY_POLICY = "Privacy Policy";
 	private final static String PRIVACY_POLICY_TAB = "Privacy Statement";
 	//private final static String PRIVACY_POLICY_URL = "https://development.accuweather.com/en/privacy";
 	private final static String PRIVACY_POLICY_URL = "https://qualityassurance.accuweather.com/en/privacy";
 	private final static String PRIVACY_POLICY_CONTENT_HEADING = "Privacy Policy";
-	private final static String COOKIE_POLICY_TITLE = "Cookie Policy - AccuWeather.com";
+	private final static String COOKIE_POLICY_TITLE = "Cookie Policy | AccuWeather";
 	private final static String COOKIE_POLICY = "Cookie Policy";
 	//private final static String COOKIE_POLICY_URL = "https://development.accuweather.com/en/cookiepolicy";
 	private final static String COOKIE_POLICY_URL = "https://qualityassurance.accuweather.com/en/cookiepolicy";
 	private final static String COOKIE_POLICY_CONTENT_HEADING = "Policy on Cookies, Web Beacons, Pixels, and Similar Technologies";
-	private final static String TAG_DISCLOSURE_TITLE = "TAG Disclosure - AccuWeather.com";
+	private final static String TAG_DISCLOSURE_TITLE = "TAG Disclosure | AccuWeather";
 	private final static String TAG_DISCLOSURE = "TAG Disclosure";
 	//private final static String TAG_DISCLOSURE_URL = "https://development.accuweather.com/en/tag-publisher-sourcing-disclosure";
 	private final static String TAG_DISCLOSURE_URL = "https://qualityassurance.accuweather.com/en/tag-publisher-sourcing-disclosure";
 	private final static String TAG_DISCLOSURE_CONTENT_HEADING = "TAG PUBLISHER SOURCE AND DISCLOSURE";
 	private final static String ACTIVE_TAB_COLOR = "#f05514";
-	private final static String COPYRIGHT_INFO = "Â© 2019 AccuWeather, Inc.";
-	private final static String REGISTERED_TRADEMARKS = "\"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc.";
-	private final static String ALL_RIGHTS_RESERVED = "All Rights Reserved.";
+	private final static String COPYRIGHT_INFO = "© 2019 AccuWeather, Inc. \"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc. All Rights Reserved.";
+	private final static String REGISTERED_TRADEMARKS = "© 2019 AccuWeather, Inc. \"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc. All Rights Reserved.";
+	private final static String ALL_RIGHTS_RESERVED = "© 2019 AccuWeather, Inc. \"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc. All Rights Reserved.";
 	private LegalFooter legalFooter = new LegalFooter();
 	
 	@Test(priority=1)
@@ -56,6 +56,7 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	{
 		testStart("Validate the title of Terms Of use page");
 		legalFooter.clickTermsOfUse();
+		System.out.println("getDriver(). getTitle():"+getDriver().getTitle());
 		Assert.assertEquals(getDriver().getTitle(),TERMS_OF_USE_TITLE);
 	}
 
@@ -87,13 +88,13 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 		Assert.assertEquals(legalFooter.getHeadingOfTermsOfUse(),TERMS_OF_USE_CONTENT_HEADING);
 	}
 
-	/*@Test(priority=8)
+	@Test(priority=8)
 	public void TC3_verifyPresenceOfPrivacyPolicyInFooter()
 	{
 		testStart("Validate whether Privacy Policy link is present in footer");
 		Assert.assertTrue(legalFooter.isPrivacyPolicyPresent());
 	}
-/*
+
 	@Test(priority=9)
 	public void TC3_verifyTheTextOfPrivacyPolicyInFooter()
 	{
@@ -106,6 +107,7 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	{
 		testStart("Validate the title of Terms Of use page");
 		legalFooter.clickPrivacyPolicy();
+		System.out.println("getDriver().getTitle():"+getDriver().getTitle());
 		Assert.assertEquals(getDriver().getTitle(),PRIVACY_POLICY_TITLE);
 	}
 
@@ -270,5 +272,5 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	{
 		testStart("Validate the presence of footer when language changed");
 		Assert.assertTrue(legalFooter.legalFooterStatusWhenLangChanged());
-	}*/
+	}
 }
