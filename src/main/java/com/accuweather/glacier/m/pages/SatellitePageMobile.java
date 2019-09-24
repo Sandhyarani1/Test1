@@ -1,4 +1,4 @@
-package com.accuweather.glacier.www.pages;
+package com.accuweather.glacier.m.pages;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,37 +7,39 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import com.accuweather.glacier.BasePage;
+import com.accuweather.glacier.m.MobileBasePage;
+import com.chameleon.selenium.DriverManager;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
 import com.chameleon.utils.Sleeper;
 
-public class SatellitePage extends BasePage {
+public class SatellitePageMobile extends MobileBasePage {
 	private By byRadarMaps = By.cssSelector("div.main-menu > ul > li:nth-child(1)");
 	private By bymegaMenuSatellite = By.cssSelector("div.mega-menu > div > div:nth-child(4) > a > h4");
 	private By bysatelliteTab = By
 			.cssSelector("div > div.subnav.secondary-nav.has-tertiary > div.subnav-items > a.subnav-item.active");
-	private By bySatelliteTab = By.cssSelector("div > div.subnav-items > a:nth-child(2) > span");
-	private By byEnhancedTab = By.cssSelector(" div.subnav.tertiary-nav > div.subnav-items > a.subnav-item.active");
+	private By byEnhancedTab = By.cssSelector("div.subnav.tertiary-nav > div.subnav-items > a.subnav-item.active");
 	private By byStandardTab = By.cssSelector("div.subnav.tertiary-nav > div.subnav-items > a:nth-child(2)");
 	private By byVisibleTab = By.cssSelector("div.subnav.tertiary-nav > div.subnav-items > a:nth-child(3)");
 	private By byWaterVaporTab = By.cssSelector("div.subnav.tertiary-nav > div.subnav-items > a:nth-child(4)");
-	private By byTitleofMap = By.cssSelector(" div.map-container.full-mobile-width.content-module > div.map-header > h2");
+	private By byTitleofMap = By
+			.cssSelector("div.map-container.full-mobile-width.content-module > div.map-header > h2");
 	private By byTooltip = By.cssSelector("div.map-header > div > div.icon-tooltip");
 	private By byTooltipText = By.cssSelector("div.map-header > div > div.tooltip-overlay > div.tooltip-content");
 
-	private By byTooltipActive = By.cssSelector("div.map-header > div > div.tooltip-overlay > div.tooltip-header > div");
+	private By byTooltipActive = By
+			.cssSelector("div.map-header > div > div.tooltip-overlay > div.tooltip-header > div");
 	private By byZoomcontrols = By.cssSelector("#map > div.mapboxgl-control-container > div.mapboxgl-ctrl-top-left");
 	private By byzoomInControl = By.cssSelector("div > button.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-in");
 	private By byzoomOutControl = By.cssSelector("div > button.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-out");
 
 	private By byMapboxattribution = By.cssSelector("div.mapboxgl-ctrl-bottom-left > div:nth-child(2) > a");
-	private By byFullScreenButton = By.cssSelector("div.map-canvas.full-mobile-width > div.full-screen-button");
+	private By byFullScreenButton = By.xpath("//div[@class='full-screen-button']");
 	private By byFullscreenVisble = By.cssSelector("div.map-canvas.full-mobile-width > div.full-screen-button");
 
 	private By byTimelineControl = By.cssSelector("div.map-tools > div.timeline-controls");
 	private By byPlaybutton = By.cssSelector("div.map-tools > div.timeline-controls > div.button-wrapper > div");
-	private By byslider = By.cssSelector( "div.map-tools > div.timeline-controls > input");
+	private By byslider = By.cssSelector("div.map-tools > div.timeline-controls > input");
 
 	private By byLegendsDisplayedonfullScreenMap = By.cssSelector("div.map-tools > div.satellite-legend > div");
 	private By byCloseButton = By.cssSelector("div.map-canvas.full-mobile-width > div.close-button > svg");
@@ -57,10 +59,20 @@ public class SatellitePage extends BasePage {
 	private By bylegendClouds = By.xpath("//*[@class='key enhanced']//*[name()='rect']");
 	private By bylegendCloudsforVisbile = By.xpath("//*[@class='key visible']//*[name()='rect']");
 	private By bylegendWaterVapor = By.xpath("//*[@class='key waterVapor']//*[name()='rect']");
+	private By byfeaturedSearchbar = By
+			.cssSelector(" div.searchbar.featured-search > div.searchbar-content > form > input");
+
+	private By byBreadCrumbMenu = By.cssSelector("div.icon-hamburger");
+	private By byBreadCrumbMenuRadarAndMaps = By
+			.cssSelector(".header-accordion > .accordion-item:nth-child(1) .accordion-item-header-content");
+	private By byBreadCrumbMenuSatellite = By.xpath("//a[contains(text(),'Satellite')]");
+	private By bySatelliteTab = By.cssSelector(
+			"body > div > div.page-subnav > div > div.subnav.secondary-nav.has-tertiary > div.subnav-items > a.subnav-item.active > h1");
 
 	/**
 	 * Method to click on City Satellite Page from Secondary Navigation menus
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 */
 	public void clickonSatelliteTab() {
@@ -72,7 +84,8 @@ public class SatellitePage extends BasePage {
 
 	/**
 	 * Method to Hover over megamenus and Select Satellite Tab
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 */
 
@@ -91,27 +104,37 @@ public class SatellitePage extends BasePage {
 	}
 
 	/**
-	 * Method to Validate Satellite Tab and Enchanced Tab Highlighted by default by orange color
-	 * @author sandhya.narayanarao
+	 * Method to Validate Satellite Tab and Enchanced Tab Highlighted by default by
+	 * orange color
+	 * 
+	 * @author Mohammed Siddiq
 	 * @return - Hex value of Satellite tab Top Border color
 	 */
 
 	public String satelliteTabHighlighted() {
-		String tabColour = getDriver().findElement(bysatelliteTab).getCssValue("border-top");
-		String boarderColor = tabColour.substring(10);
-		return Color.fromString(boarderColor).asHex();
+		WebElement ele = getDriver().findElement(bysatelliteTab);
+		String result = (String) DriverManager.getWebDriver().executeJavaScript(
+				"return getComputedStyle(document.querySelector(\"body > div > div.page-subnav > div > div.subnav.secondary-nav.has-tertiary > div.subnav-items > a.subnav-item.active\")).borderTopColor;",
+				ele);
+		String arrowcolourdisplayed = Color.fromString(result).asHex();
+		return arrowcolourdisplayed;
 	}
 
 	public String EnchancedTabHighlighted() {
-		String tabColour = getDriver().findElement(byEnhancedTab).getCssValue("border-top")
-		String boarderColor = tabColour.substring(10);
-		return Color.fromString(boarderColor).asHex();
 
+		WebElement ele = getDriver().findElement(byEnhancedTab);
+		String result = (String) DriverManager.getWebDriver().executeJavaScript(
+				"return getComputedStyle(document.querySelector(\"body > div > div.page-subnav > div > div.subnav.tertiary-nav > div.subnav-items > a.subnav-item.active\")).borderBottomColor;",
+				ele);
+		String arrowcolourdisplayed = Color.fromString(result).asHex();
+		return arrowcolourdisplayed;
 	}
 
 	/**
-	 * Method to Validate Tertiary navigation menus displayed on National satellite page
-	 * @author sandhya.narayanarao
+	 * Method to Validate Tertiary navigation menus displayed on National satellite
+	 * page
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 **/
 
@@ -149,7 +172,8 @@ public class SatellitePage extends BasePage {
 
 	/**
 	 * Method to get the Title of the National Satellite map
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * @return Title of Map displayed
 	 */
 	public String getTitleofMap() {
@@ -159,7 +183,8 @@ public class SatellitePage extends BasePage {
 
 	/**
 	 * Method to click on tertiary menus of National Satellite map
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 */
 
@@ -187,7 +212,8 @@ public class SatellitePage extends BasePage {
 
 	/**
 	 * Method to validate Tool Tip displayed on Satellite Map
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 */
 
@@ -195,48 +221,53 @@ public class SatellitePage extends BasePage {
 		WebPageLoaded.isDomInteractive();
 		WebElement tooltip = getDriver().findElement(byTooltip);
 		tooltip.syncVisible(15);
-		return tooltip.isDisplayed();
+		return getDriver().findElements(byTooltip).size() > 0;
 	}
 
 	/**
 	 * Method to Click on Tool Tip displayed at top right corner
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 */
 
 	public void clickOnToolTip() {
 		WebElement tooltip = getDriver().findElement(byTooltip);
-		tooltip.syncVisible(15);
 		tooltip.jsClick();
 	}
 
 	/**
-	 * Method to Click on Tool tip and Validate the text displayed on National Satellite map
-	 * @author sandhya.narayanarao
+	 * Method to Click on Tool tip and Validate the text displayed on National
+	 * Satellite map
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 */
 	public String toolTipTextdisplayed() {
 		WebElement tooltip = getDriver().findElement(byTooltip);
-		tooltip.syncVisible(60);
 		return getDriver().findElement(byTooltipText).getText();
 	}
 
 	/**
 	 * Method to validate Tooltip Highlighted in orange when Active
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * @return Tooltip Hex value
 	 * 
 	 */
 	public String toolTipActive() {
-		String toolTipColor = getDriver().findElement(byTooltipActive).getCssValue("background-color");
-
-		return Color.fromString(toolTipColor).asHex();
-
+		WebElement ele = getDriver().findElement(byTooltipActive);
+		String result = (String) DriverManager.getWebDriver().executeJavaScript(
+				"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-header > div > div.tooltip-overlay > div.tooltip-header > div\")).backgroundColor;",
+				ele);
+		String arrowcolourdisplayed = Color.fromString(result).asHex();
+		return arrowcolourdisplayed;
 	}
 
 	/**
 	 * Method to validate Zoom control buttons displayed on satellite Map
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 */
 	public boolean zoomControlsDisplayedonTopLeftCorner() {
@@ -245,39 +276,35 @@ public class SatellitePage extends BasePage {
 
 	/**
 	 * Method to ZoomIn Functionality on Satellite Map
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 */
 	public void zoominControls() {
 		for (int i = 0; i <= 5; i++) {
 
 			WebElement zoomIn = getDriver().findElement(byzoomInControl);
-
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
-
+			WebDriverWait wait = new WebDriverWait(getDriver(), 3);
 			wait.until(ExpectedConditions.elementToBeClickable(zoomIn));
-
-			zoomIn.jsClick();
-
+			zoomIn.click();
 			Sleeper.sleep(2);
-
 			wait.until(ExpectedConditions.elementToBeClickable(zoomIn));
-
 		}
 	}
 
 	/**
 	 * Method to Zoom out on Functionality on Satellite Map
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 */
 
 	public void zoomoutControls() {
 		for (int i = 0; i <= 5; i++) {
 			WebElement zoomOut = getDriver().findElement(byzoomOutControl);
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
+			WebDriverWait wait = new WebDriverWait(getDriver(), 3);
 			wait.until(ExpectedConditions.elementToBeClickable(zoomOut));
-			zoomOut.jsClick();
+			zoomOut.click();
 			Sleeper.sleep(2);
 			wait.until(ExpectedConditions.elementToBeClickable(zoomOut));
 		}
@@ -285,58 +312,64 @@ public class SatellitePage extends BasePage {
 
 	/**
 	 * Method to Validate Map Box atrribution of National Satellite Map
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 **/
 	public boolean MapboxattributionDisplayedBottomLeft() {
-		WebElement mapboxattribution = getDriver().findElement(byMapboxattribution);
-		mapboxattribution.syncVisible(900);
-		return mapboxattribution.isDisplayed();
+		getDriver().findElement(byMapboxattribution).scrollIntoView();
+		return getDriver().findElements(byMapboxattribution).size() > 0;
 	}
 
 	public void ClickonMapboxattribution() {
 		WebElement mapboxattribution = getDriver().findElement(byMapboxattribution);
-		mapboxattribution.syncVisible(9000);
-		mapboxattribution.jsClick();
+		mapboxattribution.click();
 	}
 
 	/**
 	 * Method to get the current url of the landing page redirected in New Tab
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * @return String Landing page URL
 	 * 
 	 **/
 
 	public String getlandingurltitle() {
 		List<String> browserTabs = new ArrayList<>(getDriver().getWindowHandles());
-		WebPageLoaded.isDomComplete(8000000);
+		WebPageLoaded.isDomComplete(5);
 		return getDriver().switchTo().window(browserTabs.get(1)).getCurrentUrl();
 	}
 
 	/**
-	 * Method to validate Full screen button displayed on Bottom Right corner of the Map
-	 * @author sandhya.narayanarao
+	 * Method to validate Full screen button displayed on Bottom Right corner of the
+	 * Map
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 */
 	public boolean fullScreenButtonDisplayed() {
 		WebElement fullScreenBtn = getDriver().findElement(byFullScreenButton);
 		fullScreenBtn.syncVisible(30);
 
-		return fullScreenBtn.isDisplayed();
+		return getDriver().findElements(byFullScreenButton).size() > 0;
 	}
 
 	/**
-	 * Method to validate Full screen button displayed on Bottom Right corner of the Map
-	 * @author sandhya.narayanarao
+	 * Method to validate Full screen button displayed on Bottom Right corner of the
+	 * Map
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 */
 	public void clikonFullScreen() {
-		getDriver().findElement(byFullscreenVisble).jsClick();
+		getDriver().findElement(byFullscreenVisble).click();
 	}
 
 	/**
-	 * Method to validate Timeline controls ,Timeslider with play button and legends displayed
-	 * @author sandhya.narayanarao
+	 * Method to validate Timeline controls ,Timeslider with play button and legends
+	 * displayed
+	 * 
+	 * @author Mohammed Siddiq
 	 * @return - Boolean value - "true if Displayed else false"
 	 */
 
@@ -361,8 +394,10 @@ public class SatellitePage extends BasePage {
 	}
 
 	/**
-	 * Method to validate Timeline controls Slider with Pla butoon Legends and close button displayed on Fullscreen Satellite Map
-	 * @author sandhya.narayanarao
+	 * Method to validate Timeline controls Slider with Pla butoon Legends and close
+	 * button displayed on Fullscreen Satellite Map
+	 * 
+	 * @author Mohammed Siddiq
 	 * @return - Boolean value - "true if Displayed else false"
 	 * 
 	 */
@@ -388,126 +423,108 @@ public class SatellitePage extends BasePage {
 
 		// click 'x' at the top right corner
 		WebElement closeButton = getDriver().findElement(byCloseButton);
-		closeButton.syncVisible(90);
+		closeButton.syncVisible(30);
 		closeButton.click();
 
 		Sleeper.sleep(2);
 
-		return timelineControl.isDisplayed() && slideBar.isDisplayed() && playButton.isDisplayed()
-				&& legends.isDisplayed();
+		return getDriver().findElements(byTimelineControl).size() > 0 && getDriver().findElements(byslider).size() > 0
+				&& getDriver().findElements(byPlaybutton).size() > 0
+				&& getDriver().findElements(byLegendsDisplayedonfullScreenMap).size() > 0;
 
 	}
 
 	public String timeStampdisplayed() {
 		WebElement timestamp = getDriver().findElement(bytimeStamp);
-		WebDriverWait wait = new WebDriverWait(getDriver(), 800000);
-		wait.until(ExpectedConditions.elementToBeClickable(timestamp));
+		WebDriverWait wait = new WebDriverWait(getDriver(), 3);
 		return timestamp.getText();
-
 	}
 
 	/**
 	 * Method to Click on Play pause button displayed Satellite Map
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 */
 
 	public void clickonPlayButton() {
 
-		getDriver().findElement(byPlaybutton).jsClick();
+		getDriver().findElement(byPlaybutton).click();
 	}
 
 	public void clickonPauseButton() {
-		getDriver().findElement(byPlaybutton).jsClick();
+		getDriver().findElement(byPlaybutton).click();
 		Sleeper.sleep(2);
 	}
 
 	/**
-	 * Method to validate text displayed for legend cloud for Enchanced Satellite Map
-	 * @author sandhya.narayanarao
+	 * Method to validate text displayed for legend cloud for Enchanced Satellite
+	 * Map
+	 * 
+	 * @author Mohammed Siddiq
 	 * @return - Boolean value - "true if Displayed else false"
 	 */
 
 	public boolean legendCloud_textLowandHigh_Displayed() {
-		WebElement satelliteMap = getDriver().findElement(bySatelliteMap);
-		satelliteMap.syncVisible(60);
-
-		WebElement textLow = getDriver().findElement(bytextLow);
-		textLow.syncVisible();
-
-		WebElement textHigh = getDriver().findElement(bytextHigh);
-		textHigh.syncVisible(30);
-
-		return satelliteMap.isDisplayed() && textLow.isDisplayed() && textHigh.isDisplayed();
+		return getDriver().findElements(bySatelliteMap).size() > 0 && getDriver().findElements(bytextLow).size() > 0
+				&& getDriver().findElements(bytextHigh).size() > 0;
 	}
 
 	/**
 	 * Method to validate text displayed for legend cloud for Visible Satellite Map
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * @return - Boolean value - "true if Displayed else false"
 	 * 
 	 */
 
 	public boolean legendClouds_with_text_ClearandClouds() {
-		WebElement satelliteMap = getDriver().findElement(bySatelliteMap);
-		satelliteMap.syncVisible(60);
-
-		WebElement textClear = getDriver().findElement(bytextClear);
-		textClear.syncVisible();
-
-		WebElement textClouds = getDriver().findElement(bytextClouds);
-		textClouds.syncVisible(30);
-
-		return satelliteMap.isDisplayed() && textClear.isDisplayed() && textClouds.isDisplayed();
+		return getDriver().findElements(bySatelliteMap).size() > 0 && getDriver().findElements(bytextClear).size() > 0
+				&& getDriver().findElements(bytextClouds).size() > 0;
 	}
 
 	/**
 	 * Method to validate text displayed for legend WaterVapor for WaterVapor Map
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * @return - Boolean value - "true if Displayed else false"
 	 * 
 	 */
 
 	public boolean legendWaterVapor_with_text_DryandMoist() {
-		WebElement satelliteMap = getDriver().findElement(bySatelliteMap);
-		satelliteMap.syncVisible(60);
-
-		WebElement textDry = getDriver().findElement(bytextDry);
-		textDry.syncVisible();
-
-		WebElement textMoist = getDriver().findElement(bytextMoist);
-		textMoist.syncVisible(30);
-
-		return satelliteMap.isDisplayed() && textDry.isDisplayed() && textMoist.isDisplayed();
+		return getDriver().findElements(bySatelliteMap).size() > 0 && getDriver().findElements(bytextDry).size() > 0
+				&& getDriver().findElements(bytextMoist).size() > 0;
 	}
 
 	/**
-	 * Method to validate Legend Cloud Displayed with various colors for Enhanced Satellite Map
-	 * @author sandhya.narayanarao
+	 * Method to validate Legend Cloud Displayed with various colors for Enhanced
+	 * Satellite Map
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 **/
 	public void coloursdisplayedforEnchacedSatelliteMap() {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendClouds);
-		for (int i = 1; i <= childrenElements.size(); i++) {
-			Sleeper.sleep(3);
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000);
-			wait.until(ExpectedConditions.elementToBeClickable(bylegendClouds));
-			String colorDisplayed = getDriver()
-					.findElement(By.xpath("//*[@class='key enhanced']//*[name()='rect' and @class='c-" + i + "']"))
-					.getCssValue("fill");
-			String colorinHex = Color.fromString(colorDisplayed).asHex();
-			ArrayList<String> aList = new ArrayList<>();
-			aList.add(colorinHex);
-			for (String list : aList) {
-				System.out.println("Legend Cloud has following colors displayed for Enchanced Satellite Map" + list);
-
-			}
+		for (int j = 1; j <= childrenElements.size(); j++) {
+			WebElement ele = null;
+			String result = null;
+			ele = getDriver().findElement(By.xpath("(//*[@class='key enhanced']//*[name()='rect'])[" + j + "]"));
+			ele.syncVisible(3);
+			result = (String) DriverManager.getWebDriver().executeJavaScript(
+					"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > "
+							+ "div.content-module > div.map-container.full-mobile-width.content-module > div.map-tools > div.satellite-legend > "
+							+ "div > svg > rect.c-" + j + "\")).fill;",
+					ele);
+			String arrowcolourdisplayed = Color.fromString(result).asHex();
+			System.out.println("color displayed :" + Color.fromString(result).asHex());
 		}
 	}
 
 	/**
-	 * Method to validate Legend Clouds Displayed with various colors for Standard Satellite Map
-	 * @author sandhya.narayanarao
+	 * Method to validate Legend Clouds Displayed with various colors for Standard
+	 * Satellite Map
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 **/
 	public void coloursdisplayedforStandardSatelliteMap() {
@@ -530,51 +547,95 @@ public class SatellitePage extends BasePage {
 	}
 
 	/**
-	 * Method to validate Legend Cloud Displayed with various colors for Visible  Satellite Map
-	 * @author sandhya.narayanarao
+	 * Method to validate Legend Cloud Displayed with various colors for Visible
+	 * Satellite Map
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 **/
 	public void colorsDisplayedforVisibleSatelliteMap() {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendCloudsforVisbile);
-		for (int i = 1; i <= childrenElements.size(); i++) {
-			Sleeper.sleep(4);
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000);
-			wait.until(ExpectedConditions.elementToBeClickable(bylegendCloudsforVisbile));
-			String colorDisplayed = getDriver()
-					.findElement(By.xpath("//*[@class='key visible']//*[name()='rect' and @class='c-" + i + "']"))
-					.getCssValue("fill");
-			String colorinHex = Color.fromString(colorDisplayed).asHex();
-			ArrayList<String> aList = new ArrayList<>();
-			aList.add(colorinHex);
-			for (String list : aList) {
-				System.out.println("Legend Cloud has following colors displayed for Visible Satellite Map" + list);
-
-			}
+		for (int j = 1; j <= childrenElements.size(); j++) {
+			WebElement ele = null;
+			String result = null;
+			ele = getDriver()
+					.findElement(By.xpath("//*[@class='key visible']//*[name()='rect' and @class='c-" + j + "']"));
+			ele.syncVisible(3);
+			result = (String) DriverManager.getWebDriver().executeJavaScript(
+					"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-tools > div.satellite-legend > div > svg > rect.c-"
+							+ j + "\")).fill;",
+					ele);
+			String arrowcolourdisplayed = Color.fromString(result).asHex();
 		}
+
 	}
 
 	/**
 	 * Method to validate Legend WaterVapor Displayed with various colors
-	 * @author sandhya.narayanarao
+	 * 
+	 * @author Mohammed Siddiq
 	 * 
 	 **/
 	public void colorsDisplayedforLegendWaterVapor() {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendWaterVapor);
-		for (int i = 1; i <= childrenElements.size(); i++) {
-			Sleeper.sleep(3);
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000);
-			wait.until(ExpectedConditions.elementToBeClickable(bylegendWaterVapor));
-			String colorDisplayed = getDriver()
-					.findElement(By.xpath("//*[@class='key waterVapor']//*[name()='rect' and @class='c-" + i + "']"))
-					.getCssValue("fill");
-			String colorinHex = Color.fromString(colorDisplayed).asHex();
-			ArrayList<String> aList = new ArrayList<>();
-			aList.add(colorinHex);
-			for (String list : aList) {
-				System.out.println("Legend Cloud has following colors displayed for WaterVapor Satellite Map" + list);
-
-			}
+		for (int j = 1; j <= childrenElements.size(); j++) {
+			WebElement ele = null;
+			String result = null;
+			ele = getDriver()
+					.findElement(By.xpath("//*[@class='key waterVapor']//*[name()='rect' and @class='c-" + j + "']"));
+			ele.syncVisible(3);
+			result = (String) DriverManager.getWebDriver().executeJavaScript(
+					"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-tools > div.satellite-legend > div > svg > rect.c-"
+							+ j + "\")).fill;",
+					ele);
+			String arrowcolourdisplayed = Color.fromString(result).asHex();
 		}
+
+	}
+
+	/**
+	 * Method to search city by name
+	 * 
+	 **/
+	public void searchCityByName(String cityName) {
+		WebPageLoaded.isDomInteractive();
+		WebElement searchBartextfield = getDriver().findElement(byfeaturedSearchbar);
+		searchBartextfield.syncVisible(15);
+		searchBartextfield.hover();
+		searchBartextfield.sendKeys(cityName);
+		WebDriverWait wait = new WebDriverWait(getDriver(), 90);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='search-results']//*")));
+	}
+
+	/**
+	 * Method to find auto suggestions
+	 * 
+	 * @throws InterruptedException
+	 * 
+	 */
+	public void selectCityByName() {
+		getDriver().findElement(By.cssSelector("div.search-results > div:nth-child(2)")).click();
+	}
+
+	public Boolean clickBreadCrumbMenu() {
+		WebPageLoaded.isDomInteractive();
+		getDriver().findElement(byBreadCrumbMenu).scrollIntoView();
+		getDriver().findElement(byBreadCrumbMenu).click();
+		return true;
+	}
+
+	public Boolean clickBreadCrumbMenuRadarAndMaps() {
+		WebPageLoaded.isDomInteractive();
+		getDriver().findElement(byBreadCrumbMenuRadarAndMaps).scrollIntoView();
+		getDriver().findElement(byBreadCrumbMenuRadarAndMaps).click();
+		return true;
+	}
+
+	public Boolean clickbyBreadCrumbMenuSatellite() {
+		WebPageLoaded.isDomInteractive();
+		getDriver().findElement(byBreadCrumbMenuSatellite).scrollIntoView();
+		getDriver().findElement(byBreadCrumbMenuSatellite).click();
+		getDriver().findElement(bySatelliteTab).syncVisible();
+		return true;
 	}
 }
-
