@@ -30,9 +30,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify severe and light present below the mix legend");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 	    Assert.assertTrue(cityRadar.verifyLightAndSeverFromMixLegend());
 	}
 	
@@ -41,9 +39,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify the color vary from light to dark");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 	    Assert.assertTrue(cityRadar.verifyColorVaryFromLightToDark());
 	}
 	
@@ -52,9 +48,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify severe and light present below the ice legend");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 	    Assert.assertTrue(cityRadar.verifyLightAndSeverFromIceLegend());
 	}
 	
@@ -63,9 +57,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify the color vary from light to dark");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 	    Assert.assertTrue(cityRadar.verifyColorVaryFromLightToDark());
 	}
 	
@@ -74,9 +66,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify severe and light present below the ice legend");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 	    Assert.assertTrue(cityRadar.verifyLightAndSeverFromSnowLegend());
 	}
 	
@@ -85,9 +75,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify the color vary from light to dark");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 	    Assert.assertTrue(cityRadar.verifyColorVaryFromLightToDark());
 	}
 	
@@ -96,9 +84,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify severe and light present below the ice legend");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 	    Assert.assertTrue(cityRadar.verifyLightAndSeverFromSnowLegend());
 	}
 	
@@ -107,9 +93,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify the color vary from light to dark");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 	    Assert.assertTrue(cityRadar.verifyColorVaryFromLightToDark());
 	}
 		
@@ -118,9 +102,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify timeline controls like Past and Future CTA below the map");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 	    Assert.assertTrue(cityRadar.verifyPastAndFutureCTABelowMap());
 	}
 	
@@ -129,9 +111,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Locate for Slider with Play button and time at the end of the slider bar");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 	    Assert.assertTrue(cityRadar.verifyPresenceOfSliderBarWithPlayButtonAndTime());
 	}
 	
@@ -140,9 +120,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Toggle between future and past cta");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 	    Assert.assertTrue(cityRadar.toggleBetweenPastAndFutureCTA());
 	}
 	
@@ -151,9 +129,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify PAST CTA highlighted by default on city Weather Radar page");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 	    Assert.assertTrue(cityRadar.locatePastCTAHighlightedByDefault());
 	}
 	
@@ -162,9 +138,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Click on the mapbox and verify the user is navigated to mapbox URL");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 	    defaultWindowid =getDriver().getWindowHandle();
 	    cityRadar.clickMapbox();
 	    navBar.switchToPopUpWindow(defaultWindowid);
@@ -185,9 +159,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Click on the openstreetmap and verify the user is navigated to openstreet map URL");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 	    defaultWindowid =getDriver().getWindowHandle();
 	    cityRadar.clickOpenStreetMap();
 	    navBar.switchToPopUpWindow(defaultWindowid);
@@ -208,9 +180,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Click on the improvethis map and verify the user is navigated to improve this map URL");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 	    defaultWindowid =getDriver().getWindowHandle();
 	    cityRadar.clickImproveThisMap();
 	    navBar.switchToPopUpWindow(defaultWindowid);
@@ -231,9 +201,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Click fullscreen button and verify Map opens up into full screen with timeline controls, slider with play button, and legend and if you click on x symbol the map switches back to normal.");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 		Assert.assertTrue(cityRadar.clickFullScreenButtonOfMap());
 	}
 	
@@ -242,9 +210,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify able to click zoom in and zoom out of the map");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 		cityRadar.clickZoomInAndZoomOut();
 	}
 	
@@ -253,9 +219,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify tooltip background color in orange");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 		String actualColor = cityRadar.verifyTootipBackgroundColor();
 		try
 		{
@@ -273,9 +237,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify tooltip header background color in orange");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 		String actualColor = cityRadar.verifyTootipHeaderBackgroundColor();
 		try
 		{
@@ -293,9 +255,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify tooltip description");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 		String actualDescription = cityRadar.verifyTooltipDescription();
 		try
 		{
@@ -313,9 +273,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify radar tab highlighted color");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 		String actualColor = cityRadar.verifyRadarTabHighlightedColor();
 		try
 		{
@@ -333,9 +291,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify tooltip description");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 		String actualHeader = cityRadar.getMapHeader();
 		try
 		{
@@ -353,9 +309,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	{
 		testStart("Verify on click of tooltip again, the tooltip closes");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.isRadarSubMenuDisplayed();
-		navBar.navigateToRadar();
+		navBar.clickRadarTabOnCityForecastPage();
 		String actualColor = cityRadar.verifyToolTipClosed();
 		try
 		{
@@ -382,7 +336,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 		testStart("Click on the Radar on city forecast page and verify the user is navigated to radar page");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
 	    defaultWindowid = getDriver().getWindowHandle();
-	    cityRadar.clickRadarNavigationMenu();
+	    navBar.clickRadarTabOnCityForecastPage();
 	    navBar.switchToPopUpWindow(defaultWindowid);
 	    System.out.println(getDriver().getCurrentUrl());
 	    try
