@@ -14,7 +14,7 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	String expectedMapbox_URL = "https://www.mapbox.com/about/maps/";
 	String expectedRadarPage_URL = "https://qualityassurance.accuweather.com/en/us/royal-oak/48073/weather-radar/20813_pc";
 	String expectedOpenStreetMap_URL = "https://www.openstreetmap.org/about/";
-	String expectedImproveThisMap_URL = "https://apps.mapbox.com/feedback/?owner=accuweather-inc-dev&id=cjfvtyj1h0e4p2rp95falted1&access_token=pk.eyJ1IjoiYWNjdXdlYXRoZXItaW5jLWRldiIsImEiOiJjanBpaXB1ZmgxNzU0M3dwZDd2dTVkYmFpIn0.IZ_I_4zFPzzc-VdC_d5JXg";
+	String expectedImproveThisMap_URL = "https://apps.mapbox.com/feedback/?owner=accuweather-inc-dev&id=cjzy4cywz2c5r1cuibiu8uutq&access_token=pk.eyJ1IjoiYWNjdXdlYXRoZXItaW5jLWRldiIsImEiOiJjanBpaXB1ZmgxNzU0M3dwZDd2dTVkYmFpIn0.IZ_I_4zFPzzc-VdC_d5JXg";
 	String expectedColor = "#f59721";
 	String expectedTooltipColor = "#878787";
 	String expectedRadarTabColor = "#f05514";

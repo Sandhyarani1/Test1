@@ -45,7 +45,7 @@ public class CityRadarPage extends BasePage
 	private By byTooltipHeader = By.cssSelector("div.map-header > div > div.tooltip-overlay > div.tooltip-header > span");
 	private By byTooltipDescription = By.cssSelector("div.map-header > div > div.tooltip-overlay > div.tooltip-content");
 	private By byRadarTabColor = By.cssSelector("div.subnav-items > a.subnav-item.active");
-	private By byMapHeader = By.cssSelector("div.map-container.full-mobile-width.content-module > div.map-header > h2");
+	private By byMapHeader = By.cssSelector("div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-header > h2");
 	private By byNavigationMenusList = By.cssSelector("div.subnav-items > a");
 	
 	/**
@@ -303,8 +303,6 @@ public class CityRadarPage extends BasePage
 	public void clickZoomInAndZoomOut()
 	{
 		WebPageLoaded.isDomInteractive();
-		WebElement radarTab = getDriver().findElement(byRadarTab);
-		radarTab.syncVisible();
 		WebElement zoomIn = getDriver().findElement(byZoomIn);
 		zoomIn.jsClick();
 		WebElement zoomOut = getDriver().findElement(byZoomOut);
@@ -319,8 +317,6 @@ public class CityRadarPage extends BasePage
 	public String verifyTootipBackgroundColor()
 	{
 		WebPageLoaded.isDomInteractive();
-		WebElement radarTab = getDriver().findElement(byRadarTab);
-		radarTab.syncVisible();
 		WebElement toolTip = getDriver().findElement(byTooltip);
 		toolTip.syncVisible();
 		toolTip.jsClick();
@@ -355,8 +351,6 @@ public class CityRadarPage extends BasePage
 	public String verifyTooltipDescription()
 	{
 		WebPageLoaded.isDomInteractive();
-		WebElement radarTab = getDriver().findElement(byRadarTab);
-		radarTab.syncVisible();
 		WebElement toolTip = getDriver().findElement(byTooltip);
 		toolTip.syncVisible();
 		toolTip.jsClick();
@@ -391,8 +385,6 @@ public class CityRadarPage extends BasePage
 	public String getMapHeader()
 	{
 		WebPageLoaded.isDomInteractive();
-		WebElement radarTab = getDriver().findElement(byRadarTab);
-		radarTab.syncVisible();
 		WebElement mapHeader = getDriver().findElement(byMapHeader);
 		mapHeader.syncVisible();
 		String mapHeaderText = mapHeader.getText();
@@ -407,8 +399,6 @@ public class CityRadarPage extends BasePage
 	public String verifyToolTipClosed()
 	{
 		WebPageLoaded.isDomInteractive();
-		WebElement radarTab = getDriver().findElement(byRadarTab);
-		radarTab.syncVisible();
 		WebElement toolTip = getDriver().findElement(byTooltip);
 		toolTip.syncVisible();
 		toolTip.jsClick();

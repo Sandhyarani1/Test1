@@ -6,11 +6,17 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.Color;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
+import com.chameleon.selenium.web.elements.WebElement;
 
 public class DayPartsPage extends BasePage {
 	private By byCurrentweatherMorningLink = By.cssSelector(".panel-1 .left");
@@ -225,6 +231,8 @@ public class DayPartsPage extends BasePage {
 	//private By byTodayWeatherCard = By.cssSelector("body > div.template-root > div.two-column-page-content > div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(2)");
 	
 	private By byTodayWeatherCard = By.cssSelector("div.sliding-panel.three-day-panel.three-day-forecast.full-mobile-width > div > div.scroll > a:nth-child(2)"); 
+	private By byMonthDateFromCTA = By.cssSelector("div.content-module > div.card-button.content-module.centered > span"); 
+	private By byMonthDate = By.cssSelector("div.quarter-day-card-wrapper > div.conditions-card.card.quarter-day-card > p.module-header.sub.date");
 	
 	/**
 	 * Method to scroll into page
@@ -1815,5 +1823,34 @@ public class DayPartsPage extends BasePage {
 		}
 		in.close();
 		return response.toString();
+	}
+	
+	/**
+	 * Method to get the date and month 
+	 * @author Sowmiya
+	 * @return-String - date and month
+	 **/
+	public Boolean verifyDateAndMonthPresent() {
+		
+		//get current date and month from calendar
+        Calendar c = Calendar.getInstance();
+        
+        Format monthNameAndDate = new SimpleDateFormat("MMMM d");
+        String getMonthNameWithDateFromCTA = monthNameAndDate.format(c.getTime());
+        
+        Format monthNumericAndDate = new SimpleDateFormat("M/d");
+        String getMonthNumberWithDate = monthNumericAndDate.format(c.getTime());
+        
+        //get current date and month from UI 
+        WebElement monthDateFromCTA = getDriver().findElement(byMonthDateFromCTA);
+        monthDateFromCTA.syncVisible();
+        String strMonthDateFromCTA = monthDateFromCTA.getText();
+        
+        WebElement monthDate = getDriver().findElement(byMonthDate);
+        monthDate.syncVisible();
+        String strMonthDate = monthDate.getText();
+        
+        return strMonthDateFromCTA.equalsIgnoreCase(getMonthNameWithDateFromCTA) 
+        		&& strMonthDate.equalsIgnoreCase(getMonthNumberWithDate);
 	}
 }

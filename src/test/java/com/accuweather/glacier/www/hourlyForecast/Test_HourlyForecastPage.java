@@ -1158,6 +1158,29 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 
 	     }
 
+	@Test(priority = 5)
+	public void TC1_verifyHourLimit()
+	{
+		testStart("Validate whether the Hourly tab has the name 'Hourly' ");
+		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
+		waitUntilElementIsDisplayedOrClickable();
+		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
+		WebPageLoaded.isDomInteractive(1000);
+		hourlyPage.clickOnHourlyTab();
+		WebPageLoaded.isDomInteractive(1000);
+		try
+		{
+			Assert.assertTrue(hourlyPage.verifyHourLimit());
+		}
+
+		catch (AssertionError ae)
+		{
+			System.out.println(ae.getMessage());
+			Assert.fail("There is some issues in showing 72 hour limit");
+		}
+
+	}
+	
 	public static void call_me() throws Exception {
 	     String url = "http://api.ipinfodb.com/v3/ip-city/?key=d64fcfdfacc213c7ddf4ef911dfe97b55e4696be3532bf8302876c09ebd06b&ip=74.125.45.100&format=json";
 	     URL obj = new URL(url);

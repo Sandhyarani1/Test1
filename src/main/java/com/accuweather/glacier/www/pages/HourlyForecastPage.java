@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
@@ -1376,6 +1377,7 @@ public class HourlyForecastPage extends BasePage
 
 	}
 
+	
 	public Boolean getDateValidation()
 	{
 		return dateValidation;
@@ -1384,6 +1386,51 @@ public class HourlyForecastPage extends BasePage
 	public void setDateValidation(Boolean dateValidation)
 	{
 		this.dateValidation = dateValidation;
+	}
+	
+	/**
+	 * Method to verify all 72 Hour tabs are present in next page of Hourly tab
+	 * @author SOWMIYA
+	 * return Boolean - true if 
+	 * */
+	public Boolean verifyHourLimit()
+	{
+		
+		Boolean flag = false;
+		int counter = 0;
+		List<WebElement> getCurentWeekCardList = getDriver().findElements(By.cssSelector("div.two-column-page-content > div > div > div.hourly-wrapper > div")); 
+		int sizeOfCurrentWeekCardsList = getCurentWeekCardList.size();
+		WebElement linkNextDay = getDriver().findElement(byNextDay);	
+		for (int i = 1; i <= 26; i++)
+		{
+			List<WebElement> getCardList = getDriver().findElements(By.cssSelector("div.two-column-page-content > div > div > div.hourly-wrapper > div"));
+			int totalCards = getCardList.size();
+			
+			if(i == totalCards + 1) {
+				try {
+					linkNextDay.syncVisible(5);
+					linkNextDay.jsClick();
+					WebElement hourlyTab = getDriver().findElement(byHourlyForecastPage);
+					if(hourlyTab.syncVisible(15))
+					i = 1;
+				} catch(Exception e) {
+					if( counter == sizeOfCurrentWeekCardsList+25+25 ) {
+						flag = true;
+				    	break; }
+				    	else {
+				    		flag = false;
+					        break;	
+				    	}
+				}
+			}
+			WebElement hourTab = getDriver().findElement(By.cssSelector("div.two-column-page-content > div > div > div.hourly-wrapper > div:nth-child(" + i + ")"));
+			hourTab.syncVisible(30);
+			
+			if (hourTab.isDisplayed())
+				counter++;
+	
+		}
+		return flag;  
 	}
 
 }
