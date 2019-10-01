@@ -23,7 +23,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 	String citySearchedByName="Chicago";
 	
 	String ExpectedForecastPageTitle="https://qualityassurance.accuweather.com/en/us/chicago/60608/weather-forecast/348308";
-	String ExpectedPageTitle="Chicago Minute by Minute™ Weather Forecast";
+	String ExpectedPageTitle="Chicago, IL MinuteCast(R) Weather | AccuWeather";
 	String expectedTabcolor="#f05514";
 	
 	private static final String expectedMapTitle= "Chicago Weather Radar";
@@ -185,7 +185,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
-	    Assert.assertEquals(minutecast.radarMapTitle(),expectedMapTitle);
+		Assert.assertTrue(minutecast.radarMapTitle().equalsIgnoreCase(expectedMapTitle));
 	}
 	
 	
@@ -269,8 +269,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.scrolldownpage();
 		minutecast.clickonTooltip();
 		String actualText=minutecast.tooltipTextDisplayed();
-		System.out.println("Tool tip text displayed is "+actualText);
-		Assert.assertEquals(actualText, EXPECTED_TOOLTIP_TEXT);
+		Assert.assertTrue(actualText.equalsIgnoreCase(EXPECTED_TOOLTIP_TEXT));
 	
 	}
 
@@ -656,7 +655,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 	    
 	}
 	
-	@Test(priority=42)
+	@Test(priority=42,enabled=false)
 	public void RW_TC87_validatingPastCTATimeframes() 
 	{
 		testStart("Navigate to Radarmap from Minutecast forecast page and validate the timeframe displayed for PAST CTA  ");
@@ -693,7 +692,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 	}
 	
 	
-	@Test(priority=43)
+	@Test(priority=43 ,enabled=false)
 	public void RW_TC87_validatingFutureCTATimeframes() 
 	{
 		testStart("Navigate to Radarmap from Minutecast forecast page and validate the timeframe displayed for FUTURE CTA  ");
