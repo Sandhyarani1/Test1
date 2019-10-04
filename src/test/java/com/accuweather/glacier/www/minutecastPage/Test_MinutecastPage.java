@@ -8,7 +8,6 @@ import com.accuweather.glacier.www.pages.CityRadarPage;
 import com.accuweather.glacier.www.pages.MinutecastPage;
 import com.accuweather.glacier.www.pages.RadarPage;
 import com.accuweather.glacier.www.pages.SatellitePage;
-import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.utils.Sleeper;
 
 import java.text.ParseException;
@@ -61,6 +60,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -74,6 +74,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -89,6 +90,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -103,6 +105,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -116,8 +119,10 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		Assert.assertNotNull(minutecast.isminutecastDialDisplayed());
 	}
@@ -129,8 +134,10 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
+		Sleeper.sleep(1);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		Assert.assertTrue(minutecast.minutecastDialWeathericonDisplayed());
 		
@@ -143,8 +150,10 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
+		Sleeper.sleep(1);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);;
 		Assert.assertNotNull(minutecast.minutecastDialshortWeatherDescriptionDisplayed());
 	}
@@ -156,6 +165,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -169,8 +179,9 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
-		minutecast.isminutecastTabDisplayed();
+		minutecast.isminutecastTabDisplayed();Sleeper.sleep(1);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		Assert.assertTrue(minutecast.radarMapDisplayed());
 	}
@@ -182,8 +193,9 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
-		minutecast.isminutecastTabDisplayed();
+		minutecast.isminutecastTabDisplayed();Sleeper.sleep(1);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		Assert.assertTrue(minutecast.radarMapTitle().equalsIgnoreCase(expectedMapTitle));
 	}
@@ -197,10 +209,11 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
-		minutecast.scrolldownpage();
+		minutecast.scrolldownpage();Sleeper.sleep(1);
 		Assert.assertEquals(minutecast.tooltipDefaultcolor(), GREY_COLOR_);
 	}
 	
@@ -211,6 +224,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -229,6 +243,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -247,6 +262,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);                     
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -263,6 +279,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -280,6 +297,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -295,6 +313,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -309,6 +328,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -323,6 +343,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();                                 
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -337,6 +358,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -368,6 +390,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -386,6 +409,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -401,6 +425,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -415,6 +440,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -429,6 +455,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -443,6 +470,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -457,6 +485,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -471,6 +500,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -485,6 +515,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -499,6 +530,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -527,6 +559,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -541,6 +574,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -556,6 +590,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -571,6 +606,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -585,6 +621,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -599,6 +636,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -614,6 +652,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -628,6 +667,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -643,6 +683,7 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
@@ -662,11 +703,12 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.scrolldownpage();
-		WebPageLoaded.isDomInteractive(8000);
+		Sleeper.sleep(3);
 		waitUntilElementIsDisplayedOrClickable();
 		String endTime=radar.timestampdisplayed();	
 		radar.clickonPlayButton();
@@ -699,11 +741,12 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.scrolldownpage();
-		WebPageLoaded.isDomInteractive(8000);
+		Sleeper.sleep(3);
 		waitUntilElementIsDisplayedOrClickable();
 		radar.ClickonFutureCTAonRadarMap();
 		Sleeper.sleep(3);
@@ -737,10 +780,12 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.scrolldownpage();
+		Sleeper.sleep(3);
 		Assert.assertTrue(minutecast.timestampDisplayed());
 		long difference=minutecast.timestamp();
 		System.out.println("Time Difference is "+difference/(1000*3));
@@ -754,10 +799,12 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.scrolldownpage();
+		Sleeper.sleep(3);
 		minutecast.timestampDisplayed();
 		Assert.assertEquals(minutecast.timestampCurrentTimeinOrange(), TIMESTAMP_COLOR);
 	}
@@ -769,10 +816,12 @@ public class Test_MinutecastPage  extends AccuWeatherBaseTest
 		minutecast.searchCityByName(citySearchedByName);    
 		minutecast.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.isminutecastTabDisplayed();
 		waitUntilWindowExistsWithTitle(ExpectedForecastPageTitle);
 		minutecast.scrolldownpage();
+		Sleeper.sleep(3);
 		minutecast.timestampDisplayed();
 		minutecast.clickonEachtimestampMolecule();
 		

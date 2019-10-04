@@ -49,7 +49,6 @@ public class MinutecastPage extends BasePage {
 	private By bytimeStampmolecule = By.cssSelector("div.minutecast-minute-by-minute.content-module > div.timestamps");
 	private By byTimedisplayed = By.xpath("//div[@class='timestamps']//div");
 	private By bytimeStampCurrentTime = By.cssSelector("div.timestamps > div:nth-child(1) > span");
-
 	/**
 	 * @author Sandhya Rani Method to Search City by its name from featured
 	 *         search bar
@@ -62,8 +61,8 @@ public class MinutecastPage extends BasePage {
 		searchBartextfield.syncVisible(15);
 		searchBartextfield.hover();
 		searchBartextfield.sendKeys(cityName);
-		WebDriverWait wait = new WebDriverWait(getDriver(), 90);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='search-results']//*")));
+		Sleeper.sleep(3);
+		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='search-results']//*")));
 	}
 
 	public void selectCityByName() {

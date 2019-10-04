@@ -20,7 +20,7 @@ import com.chameleon.utils.Sleeper;
 
 public class NavigationBar extends BasePage 
 {
-    private By byLogo = By.cssSelector("div > div.main-menu > div.logo-wrapper >div.icon-text > a > svg");
+    private By byLogo = By.cssSelector("div > div.main-menu-wrapper > div > div.logo-wrapper > div > a > img");
     //private By byRadarMaps = By.id("navRadar");
     //private By byRadarMaps = By.xpath("//li[contains(@id,'navRadar')]/a/span");
     private By byMegaMenu = By.cssSelector("div.main-menu-content");
@@ -41,7 +41,6 @@ public class NavigationBar extends BasePage
     private By bySettingLanguageArrow = By.cssSelector("div > div.fade-in-left:nth-of-type(2) > div > svg.hide-mobile.icon-chevron");
     private By bySettingLangugaeList = By.cssSelector("div > div > div.dropdown-content");
     private By bySettingLanguageSelect = By.cssSelector("div > div.dropdown-select.locale-dropdown.fade-in-left > div.dropdown-content > div.dropdown-content-item:nth-child(3)");
-    private By bySettingFarTempLabel = By.cssSelector("div > div.temp-switcher.fade-in-left > div.switcher-container > span.switcher-label");
     private By bySettingCentigradeLabel = By.cssSelector("div.settings-wrap > div.temp-switcher.fade-in-left > div.switcher-container.switch-right");
     private By bySettingTempBall = By.cssSelector("div > div.temp-switcher.fade-in-left > div.switcher-container > div.switcher > div.ball");
     private By bySettingTempBar = By.cssSelector("div > div.temp-switcher.fade-in-left > div.switcher-container > div.switcher > div.bar" );

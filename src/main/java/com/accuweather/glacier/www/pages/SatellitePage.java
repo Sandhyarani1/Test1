@@ -5,19 +5,18 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.Color;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
 import com.chameleon.utils.Sleeper;
 
-public class SatellitePage extends BasePage {
+    public class SatellitePage extends BasePage {
 	private By byRadarMaps = By.cssSelector("div.main-menu > ul > li:nth-child(1)");
 	private By bymegaMenuSatellite = By.cssSelector("div.mega-menu > div > div:nth-child(4) > a > h4");
 	private By bysatelliteTab = By
 			.cssSelector("div > div.subnav.secondary-nav.has-tertiary > div.subnav-items > a.subnav-item.active");
 	private By bySatelliteTab = By.cssSelector("div > div.subnav-items > a:nth-child(2) > span");
+	
 	private By byEnhancedTab = By.cssSelector(" div.subnav.tertiary-nav > div.subnav-items > a.subnav-item.active");
 	private By byStandardTab = By.cssSelector("div.subnav.tertiary-nav > div.subnav-items > a:nth-child(2)");
 	private By byVisibleTab = By.cssSelector("div.subnav.tertiary-nav > div.subnav-items > a:nth-child(3)");
@@ -64,7 +63,7 @@ public class SatellitePage extends BasePage {
 	 * 
 	 */
 	public void clickonSatelliteTab() {
-		WebPageLoaded.isDomInteractive();
+		WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
 		WebElement satelliteTab = getDriver().findElement(bySatelliteTab);
 		satelliteTab.syncVisible(30);
 		satelliteTab.jsClick();
@@ -77,7 +76,7 @@ public class SatellitePage extends BasePage {
 	 */
 
 	public void mouseHoverOnRadarAndMaps() {
-		WebPageLoaded.isDomInteractive();
+		WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
 		WebElement radarandmaps = getDriver().findElement(byRadarMaps);
 		radarandmaps.syncVisible(15);
 		radarandmaps.hover();
@@ -85,7 +84,7 @@ public class SatellitePage extends BasePage {
 
 	public void navigateToSatellite() {
 		WebElement radarsubmenu = getDriver().findElement(bymegaMenuSatellite);
-		radarsubmenu.syncVisible(9000);
+		radarsubmenu.syncVisible(900);
 		radarsubmenu.jsClick();
 
 	}
@@ -117,30 +116,30 @@ public class SatellitePage extends BasePage {
 
 	public boolean istertiarymenuhas(String link) {
 		if (link.equalsIgnoreCase("Enchanced")) {
-			WebPageLoaded.isDomInteractive();
+			WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
 			WebElement enhancedTab = getDriver().findElement(byEnhancedTab);
-			enhancedTab.syncVisible(6000);
+			enhancedTab.syncVisible(600);
 			return enhancedTab.isDisplayed();
 		}
 
 		if (link.equalsIgnoreCase("Standard")) {
-			WebPageLoaded.isDomInteractive();
+			WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
 			WebElement standardTab = getDriver().findElement(byStandardTab);
-			standardTab.syncVisible(6000);
+			standardTab.syncVisible(600);
 			return standardTab.isDisplayed();
 		}
 
 		if (link.equalsIgnoreCase("Visible")) {
-			WebPageLoaded.isDomInteractive();
+			WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
 			WebElement visibleTab = getDriver().findElement(byVisibleTab);
-			visibleTab.syncVisible(6000);
+			visibleTab.syncVisible(600);
 			return visibleTab.isDisplayed();
 
 		}
 		if (link.equalsIgnoreCase("WaterVapor")) {
-			WebPageLoaded.isDomInteractive();
+			WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
 			WebElement watervaporTab = getDriver().findElement(byWaterVaporTab);
-			watervaporTab.syncVisible(6000);
+			watervaporTab.syncVisible(600);
 			return watervaporTab.isDisplayed();
 		}
 
@@ -153,7 +152,7 @@ public class SatellitePage extends BasePage {
 	 * @return Title of Map displayed
 	 */
 	public String getTitleofMap() {
-		WebPageLoaded.isDomInteractive();
+		WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
 		return getDriver().findElement(byTitleofMap).getText();
 	}
 
@@ -165,19 +164,19 @@ public class SatellitePage extends BasePage {
 
 	public boolean clickOnTertiarymenus(String tabName) {
 		if (tabName.equalsIgnoreCase("Standard")) {
-			WebPageLoaded.isDomInteractive();
+			WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
 			WebElement standard = getDriver().findElement(byStandardTab);
 			standard.jsClick();
 		}
 
 		if (tabName.equalsIgnoreCase("Visible")) {
-			WebPageLoaded.isDomInteractive();
+			WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
 			WebElement visiblity = getDriver().findElement(byVisibleTab);
 			visiblity.jsClick();
 		}
 
 		if (tabName.equalsIgnoreCase("WaterVapor")) {
-			WebPageLoaded.isDomInteractive();
+			WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
 			WebElement watervapor = getDriver().findElement(byWaterVaporTab);
 			watervapor.jsClick();
 		}
@@ -192,7 +191,7 @@ public class SatellitePage extends BasePage {
 	 */
 
 	public boolean toolTipDisplayed() {
-		WebPageLoaded.isDomInteractive();
+		WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
 		WebElement tooltip = getDriver().findElement(byTooltip);
 		tooltip.syncVisible(15);
 		return tooltip.isDisplayed();
@@ -253,15 +252,11 @@ public class SatellitePage extends BasePage {
 
 			WebElement zoomIn = getDriver().findElement(byzoomInControl);
 
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
-
-			wait.until(ExpectedConditions.elementToBeClickable(zoomIn));
-
+             Sleeper.sleep(3);
+             
 			zoomIn.jsClick();
 
 			Sleeper.sleep(2);
-
-			wait.until(ExpectedConditions.elementToBeClickable(zoomIn));
 
 		}
 	}
@@ -275,11 +270,12 @@ public class SatellitePage extends BasePage {
 	public void zoomoutControls() {
 		for (int i = 0; i <= 5; i++) {
 			WebElement zoomOut = getDriver().findElement(byzoomOutControl);
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
-			wait.until(ExpectedConditions.elementToBeClickable(zoomOut));
+			Sleeper.sleep(3);
+			
 			zoomOut.jsClick();
+			
 			Sleeper.sleep(2);
-			wait.until(ExpectedConditions.elementToBeClickable(zoomOut));
+	
 		}
 	}
 
@@ -309,8 +305,9 @@ public class SatellitePage extends BasePage {
 
 	public String getlandingurltitle() {
 		List<String> browserTabs = new ArrayList<>(getDriver().getWindowHandles());
-		WebPageLoaded.isDomComplete(8000000);
-		return getDriver().switchTo().window(browserTabs.get(1)).getCurrentUrl();
+		String landingpageURL= getDriver().switchTo().window(browserTabs.get(1)).getCurrentUrl();
+		Sleeper.sleep(3);
+		return landingpageURL;
 	}
 
 	/**
@@ -400,8 +397,9 @@ public class SatellitePage extends BasePage {
 
 	public String timeStampdisplayed() {
 		WebElement timestamp = getDriver().findElement(bytimeStamp);
-		WebDriverWait wait = new WebDriverWait(getDriver(), 800000);
-		wait.until(ExpectedConditions.elementToBeClickable(timestamp));
+		
+		Sleeper.sleep(3);
+		
 		return timestamp.getText();
 
 	}
@@ -490,8 +488,7 @@ public class SatellitePage extends BasePage {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendClouds);
 		for (int i = 1; i <= childrenElements.size(); i++) {
 			Sleeper.sleep(3);
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000);
-			wait.until(ExpectedConditions.elementToBeClickable(bylegendClouds));
+			
 			String colorDisplayed = getDriver()
 					.findElement(By.xpath("//*[@class='key enhanced']//*[name()='rect' and @class='c-" + i + "']"))
 					.getCssValue("fill");
@@ -514,8 +511,7 @@ public class SatellitePage extends BasePage {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendClouds);
 		for (int i = 1; i <= childrenElements.size(); i++) {
 			Sleeper.sleep(3);
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000);
-			wait.until(ExpectedConditions.elementToBeClickable(bylegendClouds));
+			
 			String colorDisplayed = getDriver()
 					.findElement(By.xpath("//*[@class='key standard']//*[name()='rect' and @class='c-" + i + "']"))
 					.getCssValue("fill");
@@ -538,8 +534,7 @@ public class SatellitePage extends BasePage {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendCloudsforVisbile);
 		for (int i = 1; i <= childrenElements.size(); i++) {
 			Sleeper.sleep(4);
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000);
-			wait.until(ExpectedConditions.elementToBeClickable(bylegendCloudsforVisbile));
+
 			String colorDisplayed = getDriver()
 					.findElement(By.xpath("//*[@class='key visible']//*[name()='rect' and @class='c-" + i + "']"))
 					.getCssValue("fill");
@@ -562,8 +557,7 @@ public class SatellitePage extends BasePage {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendWaterVapor);
 		for (int i = 1; i <= childrenElements.size(); i++) {
 			Sleeper.sleep(3);
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000);
-			wait.until(ExpectedConditions.elementToBeClickable(bylegendWaterVapor));
+
 			String colorDisplayed = getDriver()
 					.findElement(By.xpath("//*[@class='key waterVapor']//*[name()='rect' and @class='c-" + i + "']"))
 					.getCssValue("fill");

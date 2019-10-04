@@ -10,8 +10,8 @@ import org.testng.annotations.Test;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.RadarPage;
 import com.accuweather.glacier.www.pages.SatellitePage;
-import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.utils.Sleeper;
+
 
 public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 {
@@ -54,11 +54,10 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.searchCityByName(citySearchedByName);    
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(5);
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedlandingpageURL);
 		
 	}
@@ -71,11 +70,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(5);
 		Assert.assertEquals(satellitePage.satelliteTabHighlighted(),EXPECTED_SATELLITETAB_HIGHLIGHTED);
 	}
 
@@ -87,11 +84,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(3);
 		Assert.assertTrue(satellitePage.istertiarymenuhas(ENCHANCED_TAB));
 		
 	}
@@ -104,11 +99,10 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(3);
 		Assert.assertTrue(satellitePage.istertiarymenuhas(STANDARD_TAB));
 		
 	}
@@ -121,11 +115,10 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(3);
 		Assert.assertTrue(satellitePage.istertiarymenuhas(VISIBLE_TAB));
 		
 	}
@@ -138,11 +131,10 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(3);
 		Assert.assertTrue(satellitePage.istertiarymenuhas(WATERVAPOR_TAB));	
 		
 	}
@@ -155,12 +147,11 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		WebPageLoaded.isDomInteractive(80000);
-		Assert.assertEquals(satellitePage.getTitleofMap(),EXPECTED_TITLE_OF_MAP_ENCHANCED);
+		Sleeper.sleep(3);
+		Assert.assertTrue(satellitePage.getTitleofMap().equalsIgnoreCase(EXPECTED_TITLE_OF_MAP_ENCHANCED));
 		
 	}
 
@@ -172,11 +163,10 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(3);
 		Assert.assertTrue(satellitePage.toolTipDisplayed());
 	}
 
@@ -188,11 +178,11 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
 		satellitePage.clickOnToolTip();
+		Sleeper.sleep(3);
 		String actualTooltipColor=satellitePage.toolTipActive();
 		Assert.assertEquals(actualTooltipColor, EXPECTED_TOOL_TIP_COLOR);
 	}
@@ -204,14 +194,14 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
 		satellitePage.clickOnToolTip();	
+		Sleeper.sleep(2);
 		String actualTooltipText=satellitePage.toolTipTextdisplayed();
-		Assert.assertEquals(actualTooltipText, EXPECTED_TOOL_TIPTEXT);	
+		Assert.assertTrue(actualTooltipText.equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT));
 	}
 
 	@Test(priority=11,enabled = true)
@@ -222,10 +212,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
 		satellitePage.clickOnToolTip();	
 		Sleeper.sleep(2);
@@ -240,10 +229,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		WebPageLoaded.isDomInteractive(8000); 
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
 		Assert.assertTrue(satellitePage.zoomControlsDisplayedonTopLeftCorner());
 	} 
@@ -256,10 +244,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		WebPageLoaded.isDomInteractive(8000); 
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
 		satellitePage.zoominControls();
 	} 
@@ -272,10 +259,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		WebPageLoaded.isDomInteractive(8000); 
+		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
 		satellitePage.zoomoutControls();
 	} 
@@ -289,11 +275,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		waitUntilElementIsDisplayedOrClickable(); 
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
+		Sleeper.sleep(3);
 		Assert.assertTrue(satellitePage.MapboxattributionDisplayedBottomLeft());
 	} 
 
@@ -306,14 +290,11 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		waitUntilElementIsDisplayedOrClickable(); 
 		satellitePage.ClickonMapboxattribution();
 		Sleeper.sleep(3);
-		waitUntilElementIsDisplayedOrClickable(); 
+		satellitePage.ClickonMapboxattribution();
 		String actualLandingpageUrl= satellitePage.getlandingurltitle();
 		Assert.assertEquals(actualLandingpageUrl, MAP_BOX_LANDING_PAGE_URL);
 	} 
@@ -326,11 +307,10 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		waitUntilElementIsDisplayedOrClickable(); 
+		Sleeper.sleep(2);
 		Assert.assertTrue(satellitePage.legendCloud_textLowandHigh_Displayed());
 	}
 
@@ -342,11 +322,10 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		waitUntilElementIsDisplayedOrClickable(); 
+		Sleeper.sleep(2);
 		satellitePage.coloursdisplayedforEnchacedSatelliteMap();
 	}
 
@@ -358,12 +337,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		waitUntilElementIsDisplayedOrClickable(); 
-
+		Sleeper.sleep(2);
 		String endTime=satellitePage.timeStampdisplayed();
 		satellitePage.clickonPlayButton();
 		satellitePage.clickonPauseButton();    
@@ -396,11 +372,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		waitUntilElementIsDisplayedOrClickable(); 
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		Assert.assertTrue(satellitePage.fullScreenButtonDisplayed());
 	} 
 
@@ -412,11 +386,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		waitUntilElementIsDisplayedOrClickable();
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		Assert.assertTrue(satellitePage.validateFullscreenMap());
 
 	} 
@@ -429,12 +401,10 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		waitUntilElementIsDisplayedOrClickable(); 
-		satellitePage.clikonFullScreen();
+		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 	
+		Sleeper.sleep(2);
 		Assert.assertTrue(satellitePage.legendCloud_textLowandHigh_Displayed());
 	}
 
@@ -446,11 +416,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		Sleeper.sleep(5);
-		waitUntilElementIsDisplayedOrClickable(); 
+		Sleeper.sleep(3);
 		satellitePage.clikonFullScreen();
 		satellitePage.coloursdisplayedforEnchacedSatelliteMap();
 	}
@@ -465,11 +433,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		WebPageLoaded.isDomInteractive(80000);
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		waitUntilWindowExistsWithTitle(EXPECTED_URL_FOR_SATELLITE);
 		Assert.assertEquals(getDriver().getCurrentUrl(), EXPECTED_URL_FOR_SATELLITE);
@@ -483,14 +449,12 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(3);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		waitUntilWindowExistsWithTitle(EXPECTED_URL_FOR_SATELLITE);
-		Assert.assertEquals(satellitePage.getTitleofMap(), EXPECTED_TITLE_OF_MAP_STANDARD);
+		Assert.assertTrue(satellitePage.getTitleofMap().equalsIgnoreCase(EXPECTED_TITLE_OF_MAP_STANDARD));
 	}
 
 	@Test(priority=26,enabled = true)
@@ -501,16 +465,14 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Assert.assertTrue(satellitePage.toolTipDisplayed());
 		satellitePage.clickOnToolTip();
-		waitUntilElementIsDisplayedOrClickable();
-		Assert.assertEquals(satellitePage.toolTipTextdisplayed(), EXPECTED_TOOL_TIPTEXT);
+		Sleeper.sleep(2);
+		Assert.assertTrue(satellitePage.toolTipTextdisplayed().equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT));
 	}
 
 	@Test(priority=27,enabled = true)
@@ -521,15 +483,13 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Assert.assertTrue(satellitePage.toolTipDisplayed());
 		satellitePage.clickOnToolTip();
-		waitUntilElementIsDisplayedOrClickable();
+		Sleeper.sleep(2);
 		satellitePage.toolTipActive();
 		String actualTooltipColor=satellitePage.toolTipActive();
 		Assert.assertEquals(actualTooltipColor, EXPECTED_TOOL_TIP_COLOR);
@@ -543,11 +503,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		satellitePage.clickOnToolTip();	
 		Sleeper.sleep(2);
@@ -562,11 +520,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Assert.assertTrue(satellitePage.zoomControlsDisplayedonTopLeftCorner());
 	} 
@@ -579,11 +535,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		satellitePage.zoominControls();
 	} 
@@ -596,11 +550,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		satellitePage.zoomoutControls();
 	} 
@@ -613,11 +565,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Assert.assertTrue(satellitePage.MapboxattributionDisplayedBottomLeft());
 	} 
@@ -631,21 +581,18 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		satellitePage.ClickonMapboxattribution();
 		Sleeper.sleep(3);
-		waitUntilElementIsDisplayedOrClickable(); 
 		String actualLandingpageUrl= satellitePage.getlandingurltitle();
 		Assert.assertEquals(actualLandingpageUrl, MAP_BOX_LANDING_PAGE_URL);
 	} 
 	
 
-	@Test(priority=34,enabled = true) 
+	@Test(priority=34,enabled = false) 
 	public void RW_TC222_Validate_Legend_Clouds_Text_LowandHigh_Displayed_for_Standard_SatelliteMap()
 	{ 
 		testStart("Navigate to Standard teritary tab from Satellite Map and Validate Mapbox attribution displayed on Bottom left corner of Map"); 
@@ -653,11 +600,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Assert.assertTrue(satellitePage.legendCloud_textLowandHigh_Displayed());
 	}
@@ -671,17 +616,15 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		waitUntilElementIsDisplayedOrClickable(); 
 		satellitePage.coloursdisplayedforStandardSatelliteMap();
 	}
 	
-	@Test(priority=36,enabled = true) 
+	@Test(priority=36,enabled = false) 
 	public void RW_TC222_Validate_TimeDisplayed_onTimelineControls_on_Standard_SatelliteMap()
 	{ 
 		testStart("Navigate to Standard teritary tab from Satellite Map  and Validate Timeline controls Time displayed for Full screen Map"); 
@@ -689,11 +632,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Sleeper.sleep(3);
 
@@ -731,11 +672,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		satellitePage.fullScreenButtonDisplayed();
 		Assert.assertTrue(satellitePage.fullScreenButtonDisplayed());
@@ -749,13 +688,12 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		satellitePage.fullScreenButtonDisplayed();
+		Sleeper.sleep(2);
 		Assert.assertTrue(satellitePage.legendCloud_textLowandHigh_Displayed());
 	}
 
@@ -767,14 +705,12 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
-		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
-		waitUntilElementIsDisplayedOrClickable(); 
+		Sleeper.sleep(2);
 		satellitePage.clikonFullScreen();
+		Sleeper.sleep(2);
 		satellitePage.coloursdisplayedforStandardSatelliteMap();
 	}
 
@@ -786,14 +722,12 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
-		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
-		waitUntilElementIsDisplayedOrClickable(); 
+		Sleeper.sleep(2);
 		satellitePage.clikonFullScreen();
+		Sleeper.sleep(1);
 		satellitePage.validateFullscreenMap();
 	} 
 	
@@ -807,14 +741,12 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		waitUntilWindowExistsWithTitle(expectedvisiblepageTitle);
-		Assert.assertEquals(satellitePage.getTitleofMap(),EXPECTED_TITLE_OF_MAP_VISIBLE);
+		Assert.assertTrue(satellitePage.getTitleofMap().equalsIgnoreCase(EXPECTED_TITLE_OF_MAP_VISIBLE));
 		
 	}
 
@@ -826,11 +758,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		Assert.assertTrue(satellitePage.toolTipDisplayed());
 		
@@ -844,11 +774,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		satellitePage.clickOnToolTip();
 		String actualTooltipColor=satellitePage.toolTipActive();
@@ -864,15 +792,13 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		satellitePage.clickOnToolTip();	
 		String actualTooltipText=satellitePage.toolTipTextdisplayed();
-		Assert.assertEquals(actualTooltipText, EXPECTED_TOOL_TIPTEXT_VISIBLE_TAB);	
+		Assert.assertTrue(actualTooltipText.equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT_VISIBLE_TAB));
 		
 	}
 
@@ -884,12 +810,10 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
-		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
+		waitUntilWindowExistsWithTitle(expectedlandingpageURL);		
+		Sleeper.sleep(2);
 		satellitePage.clickOnToolTip();	
 		Sleeper.sleep(2);
 		satellitePage.clickOnToolTip();	
@@ -903,11 +827,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();		
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		Assert.assertTrue(satellitePage.zoomControlsDisplayedonTopLeftCorner());
 		
@@ -921,11 +843,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();		
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		satellitePage.zoominControls();
 	} 
@@ -938,11 +858,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(3);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		satellitePage.zoomoutControls();
 	} 
@@ -955,12 +873,10 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.searchCityByName(citySearchedByName);    
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
+		Sleeper.sleep(2);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		Assert.assertTrue(satellitePage.MapboxattributionDisplayedBottomLeft());
 		
@@ -975,11 +891,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(3);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		satellitePage.ClickonMapboxattribution();
 		Sleeper.sleep(3);
@@ -997,11 +911,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();		
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		Assert.assertTrue(satellitePage.legendClouds_with_text_ClearandClouds());
 		
@@ -1016,16 +928,14 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(3);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB); 
 		satellitePage.colorsDisplayedforVisibleSatelliteMap();
 	}
 
-	@Test(priority=53,enabled = true) 
+	@Test(priority=53,enabled = false) 
 	public void RW_TC224_Validate_TimeDisplayed_onTimelineControls_for_Visible_SatelliteMap()
 	{ 
 		testStart("Navigate to Visible Satellite Map and Validate Time displayed on Timeline controls"); 
@@ -1033,11 +943,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB); 
 		
 		String endTime=satellitePage.timeStampdisplayed();
@@ -1073,11 +981,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		Assert.assertTrue(satellitePage.fullScreenButtonDisplayed());
 		
@@ -1091,11 +997,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB); 
 		satellitePage.clikonFullScreen();
 		Assert.assertTrue(satellitePage.validateFullscreenMap());
@@ -1110,11 +1014,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		satellitePage.clikonFullScreen();
 		Assert.assertTrue(satellitePage.legendClouds_with_text_ClearandClouds());
@@ -1129,7 +1031,6 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
@@ -1150,14 +1051,12 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
 		waitUntilWindowExistsWithTitle(expectedvisiblepageTitle);
-		Assert.assertEquals(satellitePage.getTitleofMap(),EXPECTED_TITLE_OF_MAP_WATERVAPOR);
+		Assert.assertTrue(satellitePage.getTitleofMap().equalsIgnoreCase(EXPECTED_TITLE_OF_MAP_WATERVAPOR));
 			
 	}
 
@@ -1169,11 +1068,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
 		Assert.assertTrue(satellitePage.toolTipDisplayed());
 		
@@ -1187,11 +1084,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
 		satellitePage.clickOnToolTip();
 		String actualTooltipColor=satellitePage.toolTipActive();
@@ -1207,15 +1102,13 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
 		satellitePage.clickOnToolTip();	
 		String actualTooltipText=satellitePage.toolTipTextdisplayed();
-		Assert.assertEquals(actualTooltipText, EXPECTED_TOOL_TIPTEXT_WATERVAPOR_TAB);
+		Assert.assertTrue(actualTooltipText.equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT_WATERVAPOR_TAB));
 		
 	}
 
@@ -1227,11 +1120,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
 		satellitePage.clickOnToolTip();	
 		Sleeper.sleep(2);
@@ -1246,11 +1137,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
 		Assert.assertTrue(satellitePage.zoomControlsDisplayedonTopLeftCorner());
 	
@@ -1264,11 +1153,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
 		satellitePage.zoominControls();
 	} 
@@ -1281,11 +1168,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
 		satellitePage.zoomoutControls();
 	} 
@@ -1299,11 +1184,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
 		Assert.assertTrue(satellitePage.MapboxattributionDisplayedBottomLeft());
 		
@@ -1317,15 +1200,12 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
 		satellitePage.ClickonMapboxattribution();
 		Sleeper.sleep(3);
-		waitUntilElementIsDisplayedOrClickable(); 
 		String actualLandingpageUrl= satellitePage.getlandingurltitle();
 		Assert.assertEquals(actualLandingpageUrl, MAP_BOX_LANDING_PAGE_URL);
 		
@@ -1339,11 +1219,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
 		Assert.assertTrue(satellitePage.legendWaterVapor_with_text_DryandMoist());
 		
@@ -1357,16 +1235,14 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB); 
 		satellitePage.colorsDisplayedforLegendWaterVapor();
 	}
 
-	@Test(priority=70,enabled = true) 
+	@Test(priority=70,enabled = false) 
 	public void RW_TC226_Validate_TimeDisplayed_onTimelineControls_for_WaterVapor_SatelliteMap()
 	{ 
 		testStart("Navigate to WaterVapor Satellite Map and Validate Time displayed on Timeline controls"); 
@@ -1374,11 +1250,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB); 
 		
 		String endTime=satellitePage.timeStampdisplayed();
@@ -1414,11 +1288,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);  
 		Assert.assertTrue(satellitePage.fullScreenButtonDisplayed());
 		
@@ -1432,13 +1304,11 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName(); 
 		waitUntilElementIsDisplayedOrClickable(); 
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		WebPageLoaded.isDomInteractive(80000); 
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);  
-		Sleeper.sleep(3);
+		Sleeper.sleep(2);
 		satellitePage.clikonFullScreen();
 		Assert.assertTrue(satellitePage.validateFullscreenMap());
 		
@@ -1452,11 +1322,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
-		WebPageLoaded.isDomInteractive(80000);
+		satellitePage.navigateToSatellite();	
+		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
 		Sleeper.sleep(3);
 		satellitePage.clikonFullScreen();
@@ -1472,9 +1340,9 @@ public class Test_NationalSatellitePage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
+		Sleeper.sleep(2);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL); 
 		Sleeper.sleep(2);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
