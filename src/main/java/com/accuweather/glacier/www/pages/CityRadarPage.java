@@ -45,7 +45,7 @@ public class CityRadarPage extends BasePage
 	private By byTooltipHeader = By.cssSelector("div.map-header > div > div.tooltip-overlay > div.tooltip-header > span");
 	private By byTooltipDescription = By.cssSelector("div.map-header > div > div.tooltip-overlay > div.tooltip-content");
 	private By byRadarTabColor = By.cssSelector("div.subnav-items > a.subnav-item.active");
-	private By byMapHeader = By.cssSelector("div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-header > h2");
+	private By byMapHeader = By.cssSelector("div.map-container.full-mobile-width.content-module > div.map-header > h2");
 	private By byNavigationMenusList = By.cssSelector("div.subnav-items > a");
 	
 	/**
@@ -386,7 +386,7 @@ public class CityRadarPage extends BasePage
 	{
 		WebPageLoaded.isDomInteractive();
 		WebElement mapHeader = getDriver().findElement(byMapHeader);
-		mapHeader.syncVisible();
+		mapHeader.syncVisible(25);
 		String mapHeaderText = mapHeader.getText();
 		return mapHeaderText;
 	}

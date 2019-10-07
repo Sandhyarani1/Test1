@@ -63,12 +63,12 @@ public class HomepageBreadcrumbs extends BasePage {
 		if(link.equalsIgnoreCase("Footer breadcrumb"))
 		{
 			getDriver().manage().deleteAllCookies();
-			return getDriver().findElement(byfooterbreadcrumbs).isDisplayed();
+			return getDriver().findElement(byfooterbreadcrumbs).syncVisible(25);
 		}
 		
 		if(link.equalsIgnoreCase("Breadcrumb World"))
 		{
-			return getDriver().findElement(bybreadcrumbforWorld).isDisplayed();
+			return getDriver().findElement(bybreadcrumbforWorld).syncVisible(25);
 		}
 		
 		if(link.equalsIgnoreCase("Breadcrumb Region"))
@@ -121,8 +121,8 @@ public class HomepageBreadcrumbs extends BasePage {
 			
 		if(link.equalsIgnoreCase("Breadcrumb State"))
 		{
-		    String currentUrl=getDriver().getCurrentUrl();		
-			getDriver().navigate().to(currentUrl);
+//		    String currentUrl=getDriver().getCurrentUrl();		
+//			getDriver().navigate().to(currentUrl);
 			getDriver().manage().deleteAllCookies();
 			getDriver().findElement(bybreadcrumbsforState).jsClick();
 		}
