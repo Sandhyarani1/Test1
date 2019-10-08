@@ -312,19 +312,23 @@ public class WebBaseTest extends BaseTest {
      * @version 12/16/2014
      * @author Jessica Marshall
      */
-    public ExtendedWebDriver testStart(String testName) {
+    public ExtendedWebDriver testStart(String testName) 
+    {
         // Uncomment the following line to have TestReporter outputs output to
         // the console
         TestReporter.setPrintToConsole(true);
         TestReporter.setDebugLevel(3);
         setTestName(testName);
         driverSetup();
+        
         // launch the application under test normally
-        if (getPageURL() == null || getPageURL().isEmpty()) {
+        if (getPageURL() == null || getPageURL().isEmpty())
+        {
             launchApplication();
             // Otherwise if you have a specific page you want the test to start from
         }
- else {
+        else
+        {
             launchApplication(getPageURL());
         }
 
@@ -338,20 +342,26 @@ public class WebBaseTest extends BaseTest {
      * Use ITestResult from @AfterMethod to determine run status before closing
      * test if reporting to sauce labs
      */
-    protected void endTest(String testName, ITestResult testResults) {
+    protected void endTest(String testName, ITestResult testResults) 
+    {
         ExtendedWebDriver driver = null;
-        try {
+        try
+        {
             driver = DriverManager.getWebDriver();
         }
- catch (AutomationException e) {
+        catch (AutomationException e) 
+        {
         }
 
         if (driver != null && driver.getWebDriver() != null && !driver.getWebDriver().toString().contains("null") &&
-                DriverManager.getDriver().getWebDriver().getWindowHandles().size() > 0) {
-            if (getRunLocation().equalsIgnoreCase("sauce")) {
+                DriverManager.getDriver().getWebDriver().getWindowHandles().size() > 0)
+        {
+            if (getRunLocation().equalsIgnoreCase("sauce")) 
+            {
                 // Sauce labs specific to end test
-                if (getRunLocation().equalsIgnoreCase("sauce")) {
-                    // reportToSauceLabs(testResults.getStatus());
+                if (getRunLocation().equalsIgnoreCase("sauce")) 
+                {
+                    reportToSauceLabs(testResults.getStatus());
                 }
 
             }
@@ -370,25 +380,31 @@ public class WebBaseTest extends BaseTest {
      * Use ITestContext from @AfterTest or @AfterSuite to determine run status
      * before closing test if reporting to sauce labs
      */
-    protected void endTest(String testName, ITestContext testResults) {
+    protected void endTest(String testName, ITestContext testResults)
+    {
         ExtendedDriver driver = null;
-        try {
+        try
+        {
             driver = DriverManager.getDriver();
         }
- catch (AutomationException e) {
+        catch (AutomationException e) 
+        {
         }
 
         if (driver != null && driver.getWebDriver() != null && !driver.getWebDriver().toString().contains("null") &&
-                DriverManager.getDriver().getWebDriver().getWindowHandles().size() > 0) {
-            if (getRunLocation().equalsIgnoreCase("sauce")) {
-                if (testResults.getFailedTests().size() == 0) {
-                    // reportToSauceLabs(ITestResult.SUCCESS);
+                DriverManager.getDriver().getWebDriver().getWindowHandles().size() > 0) 
+        {
+            if (getRunLocation().equalsIgnoreCase("sauce")) 
+            {
+                if (testResults.getFailedTests().size() == 0) 
+                {
+                    reportToSauceLabs(ITestResult.SUCCESS);
                 }
- else {
-                    // reportToSauceLabs(ITestResult.FAILURE);
+                else
+                {
+                    reportToSauceLabs(ITestResult.FAILURE);
                 }
-
-            }
+}
 
             // quit driver
             DriverManager.quitDriver();
@@ -427,32 +443,39 @@ public class WebBaseTest extends BaseTest {
      * @throws IOException
      * @throws InterruptedException
      */
-    private void driverSetup() {
+    private void driverSetup()
+    {
         // local execution
-        if (getRunLocation().equalsIgnoreCase("local")) {
+        if (getRunLocation().equalsIgnoreCase("local")) 
+        {
             localDriverSetup();
-            // Code for running on remote execution such as a selenium grid or saucelabs
         }
- else if (getRunLocation().equalsIgnoreCase("grid") || getRunLocation().equalsIgnoreCase("sauce")) {
+        
+        //Code for running on remote execution such as a selenium grid or saucelabs
+        else if (getRunLocation().equalsIgnoreCase("grid") || getRunLocation().equalsIgnoreCase("sauce")) 
+        {
             remoteDriverSetup();
         }
 
         // Code for running on mobile devices
-        else if (getRunLocation().equalsIgnoreCase("mobile")) {
+        else if (getRunLocation().equalsIgnoreCase("mobile")) 
+        {
             mobileDriverSetup();
         }
 
         // Code for running on mobile devices
-        else if (getRunLocation().equalsIgnoreCase("mobile_emulator")) {
+        else if (getRunLocation().equalsIgnoreCase("mobile_emulator")) 
+        {
             mobileEmulatorDriverSetup();
         }
- else {
+        else
+        {
             throw new AutomationException(
                     "Parameter for run [Location] was not set to 'Local', 'Grid', 'Sauce', 'Mobile'");
         }
 
-        // Microsoft Edge Browser
-        if (!getRunLocation().equalsIgnoreCase("mobile")) {
+        if (!getRunLocation().equalsIgnoreCase("mobile"))
+        {
             DriverManager.getDriver().manage().deleteAllCookies();
             DriverManager.getDriver().manage().window().maximize();
         }
@@ -467,17 +490,19 @@ public class WebBaseTest extends BaseTest {
      * @author jessica.marshall
      * @date 9/13/2016
      */
-    private void localDriverSetup() {
-        if (DriverType.HTML.equals(DriverType.fromString(getBrowserUnderTest()))) {
+    private void localDriverSetup() 
+    {
+        if (DriverType.HTML.equals(DriverType.fromString(getBrowserUnderTest())))
+        {
             DriverOptionsManager options = new DriverOptionsManager();
             options.getFirefoxOptions().setHeadless(true);
             setBrowserUnderTest("firefox");
             DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest()), options).initalizeDriver();
         }
- else {
+        else
+        {
             DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest())).initalizeDriver();
         }
-
     }
 
     /**
@@ -487,16 +512,20 @@ public class WebBaseTest extends BaseTest {
      * @author jessica.marshall
      * @date 9/13/2016
      */
-    private void remoteDriverSetup() {
+    private void remoteDriverSetup() 
+    {
         DriverOptionsManager options = new DriverOptionsManager();
         DriverType type = DriverType.fromString(getBrowserUnderTest());
-        if (!getBrowserVersion().isEmpty()) {
+        
+        if (!getBrowserVersion().isEmpty())
+        {
             // Setting Browser version if desired
             options.setBrowserVersion(type, getBrowserVersion());
         }
 
         // Setting default Broswer options
-        switch (DriverType.fromString(getBrowserUnderTest())) {
+        switch (DriverType.fromString(getBrowserUnderTest())) 
+        {
             case SAFARI:
                 // options.getSafariOptions().useCleanSession(true);
                 // options.getSafariOptions().setCapability(SafariOptions.CAPABILITY, options.getSafariOptions());
@@ -505,7 +534,9 @@ public class WebBaseTest extends BaseTest {
                 options.getInternetExplorerOptions().ignoreZoomSettings();
                 break;
             case CHROME:
-            	options.getChromeOptions().addArguments("--headless");
+//            	options.getChromeOptions().addArguments("--headless");
+            	options.getChromeOptions().addArguments("--disable-extensions");
+            	options.getChromeOptions().addArguments("--dns-prefetch-disable");      	
             	options.getChromeOptions().addArguments("--no-sandbox");
             	options.getChromeOptions().addArguments("--disable-gpu");
             	options.getChromeOptions().addArguments("--remote-debugin-port=9222");
@@ -523,16 +554,20 @@ public class WebBaseTest extends BaseTest {
         // Operating System
         options.setPlatform(type, getOperatingSystem());
         options.setCapability(type, "name", getTestName());
+        
         // Create the remote web driver
         URL url = null;
-        try {
+        try
+        {
             url = new URL(getRemoteURL());
         }
- catch (MalformedURLException e) {
+        catch (MalformedURLException e) 
+        {
             throw new AutomationException("Failed to create Remote WebDriver", e);
         }
 
         DriverManagerFactory.getManager(type, options).initalizeDriver(url);
+        
         // allows for local files to be uploaded via remote webdriver on grid machines
         DriverManager.getDriver().setFileDetector();
     }

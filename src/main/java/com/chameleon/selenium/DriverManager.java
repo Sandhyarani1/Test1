@@ -30,38 +30,49 @@ public abstract class DriverManager {
 
     protected abstract DriverType getDriverType();
 
-    public static void quitDriver() {
-        if (null != extendedDriver && null != extendedDriver.get()) {
+    public static void quitDriver() 
+    {
+        if (null != extendedDriver && null != extendedDriver.get()) 
+        {
             extendedDriver.get().quit();
             extendedDriver.remove();
         }
     }
 
-    public static File getLogFile() {
-        if (driverLogFile != null && driverLogFile.get() != null) {
+    public static File getLogFile() 
+    {
+        if (driverLogFile != null && driverLogFile.get() != null) 
+        {
             return driverLogFile.get();
         }
         return null;
     }
 
-    public static void stopService() {
-        if (null != driverService.get() && driverService.get().isRunning()) {
+    public static void stopService() 
+    {
+        if (null != driverService.get() && driverService.get().isRunning())
+        {
             driverService.get().stop();
             driverService.remove();
             System.gc();
         }
     }
 
-    public static void setDriver(ExtendedDriver driver) {
+    public static void setDriver(ExtendedDriver driver)
+    {
         extendedDriver.set(driver);
     }
 
-    public void initalizeDriver() {
-        try {
+    public void initalizeDriver() 
+    {
+        try
+        {
             startService();
             createDriver();
             createExtendedDriver();
-        } catch (WebDriverException e) {
+        }
+        catch (WebDriverException e) 
+        {
             // If driver or session fails to create, then it is possible for service to remain open.
             // Explicitly close driver service here to prevent orphaned processes
             stopService();
@@ -69,7 +80,8 @@ public abstract class DriverManager {
         }
     }
 
-    public void initalizeDriver(URL url) {
+    public void initalizeDriver(URL url) 
+    {
         createDriver(url);
         createExtendedDriver();
     }

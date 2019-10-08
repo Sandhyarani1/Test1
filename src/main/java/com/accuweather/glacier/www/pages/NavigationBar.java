@@ -20,7 +20,8 @@ import com.chameleon.utils.Sleeper;
 
 public class NavigationBar extends BasePage 
 {
-	private By byLogo = By.cssSelector("div > div.main-menu > div.logo-wrapper >div.icon-text > a");
+
+    private By byLogo = By.cssSelector("div > div.main-menu > div.logo-wrapper >div.icon-text > a");
     //private By byRadarMaps = By.id("navRadar");
     //private By byRadarMaps = By.xpath("//li[contains(@id,'navRadar')]/a/span");
     private By byMegaMenu = By.cssSelector("div.main-menu-content");

@@ -53,7 +53,7 @@ public void clickOnZipcodeSearchIcon() {
 	zipcodesearchicon.syncVisible(15);
 	zipcodesearchicon.hover();
 	zipcodesearchicon.click();
-	Sleeper.sleep(2);
+//	Sleeper.sleep(2);
 	}
 
 /*

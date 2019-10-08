@@ -34,7 +34,7 @@ public class Test_browseLocationsPage extends AccuWeatherBaseTest {
 			Assert.fail("Browse for a location URL is not matching as the expected");
 		}
 	}
-	
+	/*
 	@Test(priority = 2)
 	public void RW_T212_verify_List_of_Regions_On_Browse_Location_Page()
 	{
@@ -391,5 +391,5 @@ public class Test_browseLocationsPage extends AccuWeatherBaseTest {
 	    browseLocationPage.clcikCountryFromAContinent();
 	    browseLocationPage.clcikStateFromCountry();
 	    Assert.assertTrue(browseLocationPage.verifyThreedayWeatherCard());
-	}
+	}*/
 }
