@@ -17,6 +17,7 @@ import com.chameleon.selenium.DriverManager;
 import com.chameleon.selenium.web.ExtendedWebDriver;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.WindowHandler;
+import com.chameleon.utils.Sleeper;
 
 public class Test_UniversalNavigation extends AccuWeatherBaseTest 
 {
@@ -43,7 +44,7 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	String actualstormchaserstext;
 	String expectedstormchaserstext = "Our field teams brave the elements";
 	String actualforecastsurl;
-	String expectedforecastsurl = "https://qualityassurance.accuweather.com/en/videos/expert-forecasts";
+	String expectedforecastsurl = "https://qualityassurance.accuweather.com/en/videos/experts";
 	String expectedseverweaterurl = "https://qualityassurance.accuweather.com/en/us/severe-weather";
 	String actualseverweatherurl;
 	String actualhurricaneurl;
@@ -53,11 +54,11 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	String actualawreadyurl;
 	String expectedawreadyurl = "https://qualityassurance.accuweather.com/en/accuweather-ready";
 	String actualcitypagetitle;
-	String expectedcitypagetitle = "Local Weather from AccuWeather.com - Superior Accuracy&trade;";
+	String expectedcitypagetitle = "Local, National, & Global Daily Weather Forecast | AccuWeather";
 	String actuallocationsearchtitle;
 	String actualbrowselocationtitle;
-	String expectedlocationsearchtitle = "Weather Forecast Search - Find Your Location - AccuWeather.com";
-	String expectedbrowselocationtitle = "World Weather - Browse for your location - AccuWeather";
+	String expectedlocationsearchtitle = "Local, National, & Global Daily Weather Forecast | AccuWeather";
+	String expectedbrowselocationtitle = "Browse For Your Weather Location | AccuWeather";
 	String actualwebforecasttitle;
 	String expectedwebforecasttitle = " Weather - AccuWeather Forecast for ";
 	String zipcode = "56186";
@@ -289,13 +290,10 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	  testStart("TC47_Is Broadcast page displayed from Personalities Sub Menu");
 	  navBar.mouseHoverOnNews(); navBar.isPersonalitiesSubMenuDisplayed();
 	  navBar.navigateToPersonalitiesPage();
-	  getDriver().manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
 	  ExtendedWebDriver driver = (ExtendedWebDriver) DriverManager.getDriver();
 	  WindowHandler.waitUntilWindowExistsWithTitle(driver, AWBroadCastTitle);
 	  nwp.isBroadCasterTabeEnabled();
-	  getDriver().manage().timeouts().pageLoadTimeout(90, TimeUnit.SECONDS);
-	  getDriver().manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS); String
-	  actualpersonalitiesurl = getDriver().getCurrentUrl();
+	  String actualpersonalitiesurl = getDriver().getCurrentUrl();
 	  Assert.assertEquals(actualpersonalitiesurl,expectedpersonalitiesurl); }
 	  
 	  
@@ -322,9 +320,10 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	  
 	  
 	  @Test (priority=22) public void TC49_isStormChasersSubMenuDisplayed() {
-	  testStart("Is Storm Chasers Sub Menu Displayed"); navBar.mouseHoverOnVideo();
-	  WebPageLoaded.isDomComplete(3000); waitUntilElementIsDisplayedOrClickable();
-	  getDriver().manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+	  testStart("Is Storm Chasers Sub Menu Displayed"); 
+	  navBar.mouseHoverOnVideo();
+	  WebPageLoaded.isDomComplete(); 
+	  waitUntilElementIsDisplayedOrClickable();
 	  Assert.assertTrue(navBar.isStormChasersSubMenuDisplayed()); }
 	  
 	  
@@ -392,10 +391,10 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	  testStart("Is Video Page displayed from Expert Forecasts Sub Menu");
 	  navBar.mouseHoverOnVideo(); defaultWindowid = getDriver().getWindowHandle();
 	  navBar.clickExpertForecastSubMenu();
+	  Sleeper.sleep(2);
 	  waitUntilElementIsDisplayedOrClickable();
 	  navBar.switchToPopUpWindow(defaultWindowid);
-	  WebPageLoaded.isDomComplete(3000); actualforecastsurl =
-	  getDriver().getCurrentUrl();
+	  actualforecastsurl =  getDriver().getCurrentUrl();
 	  Assert.assertEquals(actualforecastsurl,expectedforecastsurl); }
 	 
 	  
@@ -446,9 +445,10 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	  @Test (priority=39) public void
 	  TC59_isAWReadyPageDisplayedFromAWReadySubMenu() {
 	  testStart("Is AW Ready Page displayed from AW Ready Sub Menu");
-	  navBar.mouseHoverOnSeverWeather(); navBar.clicAwReadySubMenu();
-	  waitUntilWindowExistsWithTitle(AWReadyPageTitle); actualawreadyurl =
-	  getDriver().getCurrentUrl();
+	  navBar.mouseHoverOnSeverWeather(); 
+	  navBar.clicAwReadySubMenu();
+	  waitUntilWindowExistsWithTitle(AWReadyPageTitle); 
+	  actualawreadyurl = getDriver().getCurrentUrl();
 	  Assert.assertEquals(actualawreadyurl,expectedawreadyurl); }
 	  
 	  
@@ -498,9 +498,8 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	  
 	  @Test (priority=45) public void TC60_isCouponsSubMenuDisplayed() {
 	  testStart("Is Coupons Sub Menu displayed Under More Main Menu");
-	  navBar.mouseHoverOnMoreMenu(); WebPageLoaded.isDomComplete(3000);
+	  navBar.mouseHoverOnMoreMenu();
 	  waitUntilElementIsDisplayedOrClickable();
-	  getDriver().manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
 	  Assert.assertTrue(navBar.isCouponsSubMenuDisplayed()); }
 	  
 	  
@@ -546,14 +545,16 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	  
 	  @Test (priority=49) public void TC04_isStartSearchIconDisplayed() {
 	  testStart("Is Start Search Icon displayed Under any Categories on Top Menu");
-	  navBar.mouseHoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
+	  navBar.mouseHoverOnMoreMenu(); 
+	  waitUntilElementIsDisplayedOrClickable();
 	  Assert.assertTrue(navBar.isStartSearchDisplayed()); }
 	  
 	  
 	  
 	  @Test (priority=50) public void TC06_isStartSearchCloseIconDisplayed() {
 	  testStart("Is Start Search Close Icon displayed Under any Categories on Top Menu"
-	  ); navBar.mouseHoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
+	  ); navBar.mouseHoverOnMoreMenu(); 
+	  navBar.clickStartSearch();
 	  Assert.assertTrue(navBar.isTopNavSearchCloseIconDisplayed()); }
 	  
 	  
@@ -659,7 +660,8 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	  @Test(priority = 58) public void TC09_isSearchLocationPageDisplayed() throws InterruptedException, AWTException {
 		  testStart("Is Search Location Page displayed upon entering 2 chars in Top Nav Search Fiel"
 		  ); navBar.mouseHoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
-		  navBar.clickTopNavStartSearchIcon();
+//		  navBar.clickTopNavStartSearchIcon();
+		  navBar.clickStartSearch();
 		  waitUntilElementIsDisplayedOrClickable(); 
 		  navBar.locationSearch2Chars();
 		  WebPageLoaded.isDomComplete(3000);
@@ -674,13 +676,14 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	  
 	  @Test(priority = 59) public void TC11_isBrowseLocationPageDisplayed() {
 	  testStart("Is Browse Location Page displayed upon entering 2 chars in Top Nav Search Field"
-	  ); WebPageLoaded.isDomComplete(2000);
+	  ); WebPageLoaded.isDomComplete();
 	  navBar.mouseHoverOnMoreMenu(); 
 	  waitUntilElementIsDisplayedOrClickable();
-	  navBar.clickTopNavStartSearchIcon();
+//	  navBar.clickTopNavStartSearchIcon();
+	  navBar.clickStartSearch();
 	  waitUntilElementIsDisplayedOrClickable();
 	  navBar.locationSearch2Chars();
-	  waitUntilElementIsDisplayedOrClickable(); WebPageLoaded.isDomComplete(5000);
+	  waitUntilElementIsDisplayedOrClickable(); WebPageLoaded.isDomComplete();
 	  navBar.clickBrowseYourLocationLink();
 	  waitUntilWindowExistsWithTitle(expectedbrowselocationtitle);
 	  waitUntilElementIsDisplayedOrClickable(); actualbrowselocationtitle =
@@ -692,10 +695,11 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	  @Test(priority = 60) public void TC12_isBrowseLocationPageDisplayed() {
 	  testStart("Is Browse Location Page displayed without chars in Top Nav Search Field"
 	  ); navBar.mouseHoverOnMoreMenu();waitUntilElementIsDisplayedOrClickable();
-	  navBar.clickTopNavStartSearchIcon();
+//	  navBar.clickTopNavStartSearchIcon();
+	  navBar.clickStartSearch();
 	  waitUntilElementIsDisplayedOrClickable();
 	  navBar.locationSearchWithoutChars();
-	  waitUntilElementIsDisplayedOrClickable(); WebPageLoaded.isDomComplete(5000);
+	  waitUntilElementIsDisplayedOrClickable(); WebPageLoaded.isDomComplete();
 	  navBar.clickBrowseYourLocationLink();
 	  waitUntilWindowExistsWithTitle(expectedbrowselocationtitle);
 	  waitUntilElementIsDisplayedOrClickable(); actualbrowselocationtitle =
@@ -779,23 +783,23 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	  @Test(priority = 65) public void TC18_isRecentCountriesHomePageDisplayed() {
 	  testStart("Is Recent Country HomePage displayed under Settings in Top Nav Search Field"
 	  ); navBar.mouseHoverOnSettingsIcon();
-	  waitUntilElementIsDisplayedOrClickable(); navBar.clickSettingsIcon();
+	  waitUntilElementIsDisplayedOrClickable(); 
+	  navBar.clickSettingsIcon();
 	  waitUntilElementIsDisplayedOrClickable();
 	  navBar.mouseHoverOnSettingCountryUpArrowIcon();
 	  navBar.clickSettingCountryUPArrow();
 	  waitUntilElementIsDisplayedOrClickable();
-	  WebPageLoaded.isDomInteractive(5000);
+	  WebPageLoaded.isDomInteractive();
 	  navBar.mouseHoverOnSettingCountryNameLink();
-	  waitUntilElementIsDisplayedOrClickable(); String countryname =
-	  navBar.getSettingCountryNameLinkText();
+	  waitUntilElementIsDisplayedOrClickable(); 
+	  String countryname = navBar.getSettingCountryNameLinkText();
 	  waitUntilElementIsDisplayedOrClickable();
 	  navBar.clickSettingCountryNameLink();
 	  waitUntilWindowExistsWithTitle(countryname);
-	  waitUntilElementIsDisplayedOrClickable();
-	  WebPageLoaded.isDomInteractive(5000);
-	  getDriver().manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS); String
-	  landingpagetitle = getDriver().getTitle();
-	  Assert.assertTrue(landingpagetitle.contains(countryname)); 
+	  String landingpageMapTitle = landingpage.getMapTitleName();
+	  System.out.println("landingpagetitle:"+landingpageMapTitle);
+	  System.out.println("countryname:"+countryname);
+	  Assert.assertTrue(landingpageMapTitle.contains(countryname.toUpperCase())); 
 	  }
 	  
 	  
@@ -810,8 +814,6 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	  navBar.clickSettingMoreCountriesLink();
 	  waitUntilWindowExistsWithTitle(expectedbrowselocationtitle);
 	  waitUntilElementIsDisplayedOrClickable();
-	  WebPageLoaded.isDomInteractive(5000);
-	  getDriver().manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
 	  actualbrowselocationtitle = getDriver().getTitle();
 	  Assert.assertEquals(actualbrowselocationtitle,expectedbrowselocationtitle);
 	  }

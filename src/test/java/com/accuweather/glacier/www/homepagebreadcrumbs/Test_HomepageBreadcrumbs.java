@@ -26,7 +26,7 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 	String expectedCountryForecastTitle = "https://qualityassurance.accuweather.com/en/us/united-states-weather";
 	String expectedStateForecastTitle = "https://qualityassurance.accuweather.com/en/us/pa/pennsylvania-weather";
 	String expectedCityForecastTitle = "https://qualityassurance.accuweather.com/en/us/state-college/16803/weather-forecast/6789_pc";
-			
+	
 	private LandingPage landingPage = new LandingPage();
 	private HomepageBreadcrumbs breadcrumbs = new HomepageBreadcrumbs();
 	
@@ -38,10 +38,10 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		testStart("Validate footer breadcrumbs displayed on Homepage" );
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-    	waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+		waitUntilElementIsDisplayedOrClickable();
+		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
-		Sleeper.sleep(3);
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_CRUMB));
 	}
 	
@@ -51,7 +51,7 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		testStart("Validate footer breadcrumbs displayed for World");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-   	    waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+   	waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		Sleeper.sleep(3);
@@ -77,6 +77,8 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		testStart("Validate footer breadcrumbs displayed for Country");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
+		waitUntilElementIsDisplayedOrClickable();
+		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		Sleeper.sleep(3);
@@ -116,11 +118,13 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		testStart("Validating user redirected url when clicked on World ");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-    	waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+    waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.isclickonFooterBreadcrumb(BREAD_CRUMB_WORLD);
 		Sleeper.sleep(3);
+		System.out.println("clicked on World breadcrump");
+		System.out.println("Landing page URL is >>>"+getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedWorldForecastTitle);
 	}
 		
@@ -134,8 +138,8 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_REGION);
-		waitUntilElementIsDisplayedOrClickable();
-	    Sleeper.sleep(2);
+		Sleeper.sleep(3);
+		System.out.println("Landing page URL is >>>"+getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedRegionForecastTitle);
 	}
 	
@@ -149,7 +153,8 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_COUNTRY);
-        Sleeper.sleep(3);
+		Sleeper.sleep(3);
+		System.out.println("Landing page URL is >>>"+getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedCountryForecastTitle);
 	}
 	
@@ -164,8 +169,8 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_STATE);
-		WebPageLoaded.isDomComplete(8000);
-	     Sleeper.sleep(3);
+		Sleeper.sleep(3);
+		System.out.println("Landing page URL is >>>"+getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedStateForecastTitle);
 	}
 	
@@ -180,7 +185,7 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_CITY);
-	    Sleeper.sleep(3);
+	  Sleeper.sleep(3);
 		System.out.println("Landing page URL is >>>"+getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedCityForecastTitle);
 	}

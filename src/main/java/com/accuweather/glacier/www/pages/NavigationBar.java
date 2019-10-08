@@ -20,6 +20,7 @@ import com.chameleon.utils.Sleeper;
 
 public class NavigationBar extends BasePage 
 {
+
     private By byLogo = By.cssSelector("div > div.main-menu > div.logo-wrapper >div.icon-text > a");
     //private By byRadarMaps = By.id("navRadar");
     //private By byRadarMaps = By.xpath("//li[contains(@id,'navRadar')]/a/span");
@@ -76,7 +77,7 @@ public class NavigationBar extends BasePage
     private By byClimateChangeSubMenu = By.cssSelector("div:nth-child(5) > a > h4");
     private By byNewsSubMenu = By.cssSelector("div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(1) > h4");
     private By byHurricaneSubMenu = By.xpath("//div[@class='mega-menu-content']/div[3]/a/h4[text()='Hurricane']");
-    private By byAWReadySubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(3) > a");
+    private By byAWReadySubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(4) > a");
     private By byWinterWeatherSubMenu = By.cssSelector("div > div:nth-child(4) > a > h4");
     private By bySeverWeatherSubMenu = By.xpath("//div[@class='mega-menu-content']/div[1]/a/h4[text()='Severe Weather']");
     //Maps Submenu
@@ -228,8 +229,7 @@ public class NavigationBar extends BasePage
     public boolean isStartSearchDisplayed() {
    	WebPageLoaded.isDomInteractive();
     WebTextbox txtSearch = getDriver().findTextbox(byTopSearch);
-    txtSearch.syncVisible(15);
-	return txtSearch.isDisplayed();     
+	return txtSearch.syncVisible(15);     
    }
     
     
@@ -332,7 +332,7 @@ public class NavigationBar extends BasePage
 
     public void clickStartSearch() {
     WebTextbox txtSearch = getDriver().findTextbox(byStartSearch);
-	txtSearch.syncEnabled();
+	txtSearch.syncVisible(15);
 	txtSearch.click();
     }
     
@@ -555,7 +555,7 @@ public class NavigationBar extends BasePage
         public boolean isHurricaneSubMenuDisplayed() {
         	WebPageLoaded.isDomInteractive();
             WebElement hurricane = getDriver().findElement(byHurricaneSubMenu);
-            hurricane.syncVisible(25);
+            hurricane.syncVisible(15);
             return hurricane.isDisplayed();       	   	
         }
 
@@ -608,7 +608,6 @@ public class NavigationBar extends BasePage
             WebElement severeweather = getDriver().findElement(bySevereWeather);
             severeweather.syncVisible(15);
             severeweather.hover();
-            Sleeper.sleep(5);
         }
 
         public void mouseHoverOnVideo() {
@@ -721,7 +720,7 @@ public class NavigationBar extends BasePage
                         }
 
         public void clickSeverWeatherSubMenu() {
-        getDriver().findElement(bySeverWeatherSubMenu).jsClick();
+        getDriver().findElement(bySeverWeatherSubMenu).click();
         }
 
         public void clickHurricaneSubMenu() {

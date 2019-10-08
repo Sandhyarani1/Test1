@@ -18,8 +18,8 @@ public class Test_cityRadar extends AccuWeatherBaseTest
 	String expectedColor = "#f59721";
 	String expectedTooltipColor = "#878787";
 	String expectedRadarTabColor = "#f05514";
-	String expectedMapHeader = "Michigan Weather Radar";
-	String expectedDescription = "Weather radar map shows the location of precipitation, its type (rain, snow, and ice) and its recent movement to help you plan your day.";
+	String expectedMapHeader = "ROYAL OAK WEATHER RADAR";
+	String expectedDescription = "WEATHER RADAR MAP SHOWS THE LOCATION OF PRECIPITATION, ITS TYPE (RAIN, SNOW, AND ICE) AND ITS RECENT MOVEMENT TO HELP YOU PLAN YOUR DAY.";
 	String defaultWindowid;
 	private LandingPage landingPage = new LandingPage();
 	private NavigationBar navBar = new NavigationBar();
