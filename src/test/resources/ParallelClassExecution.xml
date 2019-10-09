@@ -7,13 +7,13 @@
 		<parameter name="logLevel" value="3"/>
 
 		<test name="Browse Locations In Chrome">
-			<parameter name="browserUnderTest" value="Chrome" />
+			<parameter name="browserUnderTest" value="Firefox" />
       		<classes>
       			<class name="com.accuweather.glacier.www.browseLocations.Test_browseLocationsPage"/>
       		</classes>
 		</test>
 		<test name="Daily Lists In Chrome">
-			<parameter name="browserUnderTest" value="Chrome" />
+			<parameter name="browserUnderTest" value="Firefox" />
       		<classes>
       			<class name="com.accuweather.glacier.www.dailyList.Test_DailyListPage"/>
       		</classes>
