@@ -13,11 +13,11 @@ import com.chameleon.utils.Sleeper;
     public class SatellitePage extends BasePage {
 	private By byRadarMaps = By.cssSelector("div.main-menu > ul > li:nth-child(1)");
 	private By bymegaMenuSatellite = By.cssSelector("div.mega-menu > div > div:nth-child(4) > a > h4");
-	private By bysatelliteTab = By
+	private By bysatelliteTabActive = By
 			.cssSelector("div > div.subnav.secondary-nav.has-tertiary > div.subnav-items > a.subnav-item.active");
 	private By bySatelliteTab = By.cssSelector("div > div.subnav-items > a:nth-child(2) > span");
 	
-	private By byEnhancedTab = By.cssSelector(" div.subnav.tertiary-nav > div.subnav-items > a.subnav-item.active");
+	private By byEnhancedTab = By.cssSelector(" div > div.subnav.tertiary-nav > div.subnav-items > a.subnav-item.active");
 	private By byStandardTab = By.cssSelector("div.subnav.tertiary-nav > div.subnav-items > a:nth-child(2)");
 	private By byVisibleTab = By.cssSelector("div.subnav.tertiary-nav > div.subnav-items > a:nth-child(3)");
 	private By byWaterVaporTab = By.cssSelector("div.subnav.tertiary-nav > div.subnav-items > a:nth-child(4)");
@@ -26,12 +26,11 @@ import com.chameleon.utils.Sleeper;
 	private By byTooltipText = By.cssSelector("div.map-header > div > div.tooltip-overlay > div.tooltip-content");
 
 	private By byTooltipActive = By.cssSelector("div.map-header > div > div.tooltip-overlay > div.tooltip-header > div");
-	private By byZoomcontrols = By.cssSelector("#map > div.mapboxgl-control-container > div.mapboxgl-ctrl-top-left");
 	private By byzoomInControl = By.cssSelector("div > button.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-in");
 	private By byzoomOutControl = By.cssSelector("div > button.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-out");
 
 	private By byMapboxattribution = By.cssSelector("div.mapboxgl-ctrl-bottom-left > div:nth-child(2) > a");
-	private By byFullScreenButton = By.cssSelector("div.map-canvas.full-mobile-width > div.full-screen-button");
+	private By byFullScreenButton = By.cssSelector("div.map-container.full-mobile-width.content-module > div.map-canvas.full-mobile-width > div.full-screen-button");
 	private By byFullscreenVisble = By.cssSelector("div.map-canvas.full-mobile-width > div.full-screen-button");
 
 	private By byTimelineControl = By.cssSelector("div.map-tools > div.timeline-controls");
@@ -42,16 +41,14 @@ import com.chameleon.utils.Sleeper;
 	private By byCloseButton = By.cssSelector("div.map-canvas.full-mobile-width > div.close-button > svg");
 
 	private By bytimeStamp = By.cssSelector("div.map-tools > div.timeline-controls > div.time-stamp");
-	private By bySatelliteMap = By.cssSelector("div.map-tools > div.satellite-legend > div > div.label");
+	private By bytextLow = By.cssSelector("div > div.range-label > span:nth-child(1)");
+	private By bytextHigh = By.cssSelector("div > div.range-label > span:nth-child(2)");
 
-	private By bytextLow = By.cssSelector("div.range-label > span:nth-child(1)");
-	private By bytextHigh = By.cssSelector("div.range-label > span:nth-child(2)");
+	private By bytextClear = By.cssSelector("div > div.range-label > span:nth-child(1)");
+	private By bytextClouds = By.cssSelector("div > div > div.range-label > span:nth-child(2)");
 
-	private By bytextClear = By.cssSelector("div.range-label > span:nth-child(1)");
-	private By bytextClouds = By.cssSelector("div > div.range-label > span:nth-child(2)");
-
-	private By bytextDry = By.cssSelector("div.range-label > span:nth-child(1)");
-	private By bytextMoist = By.cssSelector("div.range-label > span:nth-child(2)");
+	private By bytextDry = By.cssSelector("div > div.range-label > span:nth-child(1)");
+	private By bytextMoist = By.cssSelector("div > div.range-label > span:nth-child(2)");
 
 	private By bylegendClouds = By.xpath("//*[@class='key enhanced']//*[name()='rect']");
 	private By bylegendCloudsforVisbile = By.xpath("//*[@class='key visible']//*[name()='rect']");
@@ -96,7 +93,7 @@ import com.chameleon.utils.Sleeper;
 	 */
 
 	public String satelliteTabHighlighted() {
-		String tabColour = getDriver().findElement(bysatelliteTab).getCssValue("border-top");
+		String tabColour = getDriver().findElement(bysatelliteTabActive).getCssValue("border-top");
 		String boarderColor = tabColour.substring(10);
 		return Color.fromString(boarderColor).asHex();
 	}
@@ -109,43 +106,34 @@ import com.chameleon.utils.Sleeper;
 	}
 
 	/**
-	 * Method to Validate Tertiary navigation menus displayed on National satellite page
+	 * Method to Validate Secondary navigation menus displayed on National satellite page
 	 * @author sandhya.narayanarao
 	 * 
 	 **/
+	
+	public boolean validateSecondaryMenusDisplayed() {
+		// Secondary menus has Enchanced Tab Displayed
+		WebElement enhancedTab = getDriver().findElement(byEnhancedTab);
+		enhancedTab.syncVisible(60);
 
-	public boolean istertiarymenuhas(String link) {
-		if (link.equalsIgnoreCase("Enchanced")) {
-			WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
-			WebElement enhancedTab = getDriver().findElement(byEnhancedTab);
-			enhancedTab.syncVisible(600);
-			return enhancedTab.isDisplayed();
-		}
+		// Secondary menus has Standard Tab Displayed
+		WebElement standardTab = getDriver().findElement(byStandardTab);
+		standardTab.syncVisible(60);
 
-		if (link.equalsIgnoreCase("Standard")) {
-			WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
-			WebElement standardTab = getDriver().findElement(byStandardTab);
-			standardTab.syncVisible(600);
-			return standardTab.isDisplayed();
-		}
+		
+		// Secondary menus has Enchanced Tab Displayed
+		WebElement visibleTab = getDriver().findElement(byVisibleTab);
+		visibleTab.syncVisible(60);
+		
+		// Secondary menus has Enchanced Tab Displayed
+		 WebElement waterVaporTab = getDriver().findElement(byWaterVaporTab);
+		 waterVaporTab.syncVisible(60);
 
-		if (link.equalsIgnoreCase("Visible")) {
-			WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
-			WebElement visibleTab = getDriver().findElement(byVisibleTab);
-			visibleTab.syncVisible(600);
-			return visibleTab.isDisplayed();
-
-		}
-		if (link.equalsIgnoreCase("WaterVapor")) {
-			WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
-			WebElement watervaporTab = getDriver().findElement(byWaterVaporTab);
-			watervaporTab.syncVisible(600);
-			return watervaporTab.isDisplayed();
-		}
-
-		return false;
+		return enhancedTab.isDisplayed() && standardTab.isDisplayed() && visibleTab.isDisplayed()
+				&& waterVaporTab.isDisplayed();
 	}
 
+	
 	/**
 	 * Method to get the Title of the National Satellite map
 	 * @author sandhya.narayanarao
@@ -184,18 +172,7 @@ import com.chameleon.utils.Sleeper;
 		return false;
 	}
 
-	/**
-	 * Method to validate Tool Tip displayed on Satellite Map
-	 * @author sandhya.narayanarao
-	 * 
-	 */
-
-	public boolean toolTipDisplayed() {
-		WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
-		WebElement tooltip = getDriver().findElement(byTooltip);
-		tooltip.syncVisible(15);
-		return tooltip.isDisplayed();
-	}
+	
 
 	/**
 	 * Method to Click on Tool Tip displayed at top right corner
@@ -233,14 +210,7 @@ import com.chameleon.utils.Sleeper;
 
 	}
 
-	/**
-	 * Method to validate Zoom control buttons displayed on satellite Map
-	 * @author sandhya.narayanarao
-	 * 
-	 */
-	public boolean zoomControlsDisplayedonTopLeftCorner() {
-		return getDriver().findElement(byZoomcontrols).isDisplayed();
-	}
+	
 
 	/**
 	 * Method to ZoomIn Functionality on Satellite Map
@@ -280,15 +250,11 @@ import com.chameleon.utils.Sleeper;
 	}
 
 	/**
-	 * Method to Validate Map Box atrribution of National Satellite Map
+	 * Method to Validate Map Box atrribution landing page for Satellite page
 	 * @author sandhya.narayanarao
 	 * 
 	 **/
-	public boolean MapboxattributionDisplayedBottomLeft() {
-		WebElement mapboxattribution = getDriver().findElement(byMapboxattribution);
-		mapboxattribution.syncVisible(900);
-		return mapboxattribution.isDisplayed();
-	}
+	
 
 	public void ClickonMapboxattribution() {
 		WebElement mapboxattribution = getDriver().findElement(byMapboxattribution);
@@ -310,17 +276,7 @@ import com.chameleon.utils.Sleeper;
 		return landingpageURL;
 	}
 
-	/**
-	 * Method to validate Full screen button displayed on Bottom Right corner of the Map
-	 * @author sandhya.narayanarao
-	 * 
-	 */
-	public boolean fullScreenButtonDisplayed() {
-		WebElement fullScreenBtn = getDriver().findElement(byFullScreenButton);
-		fullScreenBtn.syncVisible(30);
-
-		return fullScreenBtn.isDisplayed();
-	}
+	
 
 	/**
 	 * Method to validate Full screen button displayed on Bottom Right corner of the Map
@@ -427,8 +383,6 @@ import com.chameleon.utils.Sleeper;
 	 */
 
 	public boolean legendCloud_textLowandHigh_Displayed() {
-		WebElement satelliteMap = getDriver().findElement(bySatelliteMap);
-		satelliteMap.syncVisible(60);
 
 		WebElement textLow = getDriver().findElement(bytextLow);
 		textLow.syncVisible();
@@ -436,7 +390,7 @@ import com.chameleon.utils.Sleeper;
 		WebElement textHigh = getDriver().findElement(bytextHigh);
 		textHigh.syncVisible(30);
 
-		return satelliteMap.isDisplayed() && textLow.isDisplayed() && textHigh.isDisplayed();
+		return textLow.isDisplayed() && textHigh.isDisplayed();
 	}
 
 	/**
@@ -447,8 +401,6 @@ import com.chameleon.utils.Sleeper;
 	 */
 
 	public boolean legendClouds_with_text_ClearandClouds() {
-		WebElement satelliteMap = getDriver().findElement(bySatelliteMap);
-		satelliteMap.syncVisible(60);
 
 		WebElement textClear = getDriver().findElement(bytextClear);
 		textClear.syncVisible();
@@ -456,7 +408,7 @@ import com.chameleon.utils.Sleeper;
 		WebElement textClouds = getDriver().findElement(bytextClouds);
 		textClouds.syncVisible(30);
 
-		return satelliteMap.isDisplayed() && textClear.isDisplayed() && textClouds.isDisplayed();
+		return textClear.isDisplayed() && textClouds.isDisplayed();
 	}
 
 	/**
@@ -467,8 +419,6 @@ import com.chameleon.utils.Sleeper;
 	 */
 
 	public boolean legendWaterVapor_with_text_DryandMoist() {
-		WebElement satelliteMap = getDriver().findElement(bySatelliteMap);
-		satelliteMap.syncVisible(60);
 
 		WebElement textDry = getDriver().findElement(bytextDry);
 		textDry.syncVisible();
@@ -476,7 +426,7 @@ import com.chameleon.utils.Sleeper;
 		WebElement textMoist = getDriver().findElement(bytextMoist);
 		textMoist.syncVisible(30);
 
-		return satelliteMap.isDisplayed() && textDry.isDisplayed() && textMoist.isDisplayed();
+		return textDry.isDisplayed() && textMoist.isDisplayed();
 	}
 
 	/**
