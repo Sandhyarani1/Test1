@@ -31,6 +31,7 @@ private By byVideoAutoPlay = By.xpath("//div[contains(@aria-label,'Video Player'
 private By byWeatherImage = By.cssSelector("div.two-column-page-content > div.page-column-1 > div > a > img");
 private By byMoreMapsLink = By.cssSelector("div.two-column-page-content > div.page-column-1 > div > a > div.cta-text > div");
 private By byMoreMapsIconLink = By.cssSelector("body > div.template-root > div.two-column-page-content > div.page-column-1 > a > div.cta-text > svg");
+private By byMapTitle = By.cssSelector("div.page-column-1 > div.content-module > a > div.cta-title");
 
 /*
  * Method to enter ZIPcode under ZipCode search field on the AccuWeather Landing page
@@ -264,5 +265,16 @@ public void clickMoreMapsIconLink() {
 	WebElement moremapsiconlink = getDriver().findElement(byMoreMapsIconLink);
 	moremapsiconlink.syncVisible(15);
 	moremapsiconlink.click();
+	}
+
+/*
+ * Method to click More Maps Icon Link under Radar Section 
+ * on Landing page
+ */
+public String getMapTitleName() {
+	WebPageLoaded.isDomInteractive();
+	WebElement mapTitle = getDriver().findElement(byMapTitle);
+	mapTitle.syncVisible(15);
+	return mapTitle.getText();
 	}
 }

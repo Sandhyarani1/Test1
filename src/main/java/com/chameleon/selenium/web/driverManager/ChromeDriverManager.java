@@ -24,39 +24,48 @@ public class ChromeDriverManager extends DriverManager {
 
     private ChromeOptions options = null;
 
-    public ChromeDriverManager() {
+    public ChromeDriverManager() 
+    {
         options = new ChromeOptions();
         options.setPageLoadStrategy(DriverConstants.DEFAULT_CHROME_PAGE_LOAD_STRATEGY);
     }
 
-    public ChromeDriverManager(ChromeOptions options) {
+    public ChromeDriverManager(ChromeOptions options) 
+    {
         this.options = options;
     }
 
     @Override
-    public void startService() {
-        if (null == driverService.get()) {
+    public void startService() 
+    {
+        if (null == driverService.get()) 
+        {
             final String driverLocation = getDriverLocation(DRIVER_EXE_NAME_CHROME);
             boolean verbose = false;
 
             File logFile = null;
-            if (DriverConstants.ENABLE_CHROME_LOGS) {
+            if (DriverConstants.ENABLE_CHROME_LOGS)
+            {
                 // System.setProperty(CHROME_DRIVER_LOG_PROPERTY, CHROME_LOG_LOCATION);
                 String logFileName = UUID.randomUUID().toString();
                 String logFilePath = CURRENT_DIR + "target" + DIR_SEPARATOR + "ChromeLogs" + DIR_SEPARATOR + logFileName + ".log";
                 // File.createTempFile(logFileName, "log", Files.);
-                try {
+                try 
+                {
                     logFile = new File(logFilePath);
                     logFile.deleteOnExit();
                     FileUtils.touch(logFile);
-                } catch (IOException e1) {
+                }
+                catch (IOException e1)
+                {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
                 verbose = true;
             }
 
-            try {
+            try 
+            {
                 driverService.set(new ChromeDriverService.Builder()
                         .usingDriverExecutable(new File(driverLocation))
                         .usingAnyFreePort()
@@ -64,7 +73,9 @@ public class ChromeDriverManager extends DriverManager {
                         .withVerbose(verbose)
                         .build());
                 driverService.get().start();
-            } catch (Exception e) {
+            }
+            catch (Exception e) 
+            {
                 throw new WebException("Failed to start Chrome driver service", e);
             }
 

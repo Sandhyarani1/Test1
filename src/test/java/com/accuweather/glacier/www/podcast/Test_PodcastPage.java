@@ -8,8 +8,8 @@ import com.accuweather.glacier.www.pages.PodcastPage;
 
 public class Test_PodcastPage extends AccuWeatherBaseTest 
 {
-	String PodcastTitle = "Everything Under the Sun - AccuWeather Podcast on Weekly Weather News & Stories";
-	String ExpectedHomePageTitle = "Local Weather from AccuWeather.com - Superior Accuracy&trade;";
+	String PodcastTitle = "Everything Under the Sun & Daily Weather Podcasts | AccuWeather";
+	String ExpectedHomePageTitle = "Local, National, & Global Daily Weather Forecast | AccuWeather";
 	String ActualHomePageTitle;
 	String ActiveVideoTitle;
 	String PodcastListFirstVideoTitle;
@@ -212,7 +212,8 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 	 
 	 waitUntilWindowExistsWithTitle(PodcastTitle); PodCastPageID =
 	 
-	 getDriver().getWindowHandle(); podpage.clickOnPopUpFirstEpisodePlayIcon();
+	 getDriver().getWindowHandle(); 
+	 podpage.clickOnPopUpFirstEpisodePlayIcon();
 	 
 	 podpage.switchToPopUpWindow(PodCastPageID);
 	 

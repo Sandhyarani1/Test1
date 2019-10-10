@@ -18,7 +18,7 @@ import com.chameleon.utils.Sleeper;
 
 public class PodcastPage extends BasePage {
 
-	private By byAWSunLogo = By.cssSelector("div.podcast-landing > div.container-wrapper.lead > div.container > a > svg > g > g > path");
+	private By byAWSunLogo = By.cssSelector("div.podcast-landing > div.container-wrapper.lead > div.container > a");
 	private By byAWTextLogo = By.cssSelector("div.container > a > svg > g > path");
 	private By byActiveVideoDate = By.xpath("/html/body/div[1]/div[1]/div[2]/div/div[2]/div[1]/span[contains(.,'minutes')]/..");
 	private By byActiveVideoMinuteText = By.cssSelector("div.container > div > div.content > div.meta > span");
@@ -186,7 +186,7 @@ public class PodcastPage extends BasePage {
 		WebElement playicon = getDriver().findElement(byActiveVideoPopUpImage);
 		playicon.syncVisible(15);
 		playicon.jsClick();
-		
+		Sleeper.sleep(2);
 	}
 	
 	/*

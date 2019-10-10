@@ -14,11 +14,13 @@ import com.chameleon.selenium.windows.driverManager.WindowsDriverManager;
 
 public class DriverManagerFactory {
 
-    public static DriverManager getManager(DriverType type) {
+    public static DriverManager getManager(DriverType type) 
+    {
 
         DriverManager driverManager;
 
-        switch (type) {
+        switch (type)
+        {
             case CHROME:
                 driverManager = new ChromeDriverManager();
                 break;
@@ -56,11 +58,13 @@ public class DriverManagerFactory {
 
     }
 
-    public static DriverManager getManager(DriverType type, DriverOptionsManager options) {
+    public static DriverManager getManager(DriverType type, DriverOptionsManager options) 
+    {
 
         DriverManager driverManager;
 
-        switch (type) {
+        switch (type) 
+        {
             case CHROME:
                 driverManager = new ChromeDriverManager(options.getChromeOptions());
                 break;

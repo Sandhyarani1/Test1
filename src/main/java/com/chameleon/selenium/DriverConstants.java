@@ -19,7 +19,7 @@ public class DriverConstants {
     public static final String DRIVER_EXE_NAME_SAFARI = "IEDriverServer";
 
     public static final String SCREENSHOT_FOLDER = CURRENT_DIR + "selenium-reports" + DIR_SEPARATOR + "html" + DIR_SEPARATOR + "screenshots";
-    public static final long DEFAULT_GLOBAL_DRIVER_TIMEOUT = 10000;
+    public static final long DEFAULT_GLOBAL_DRIVER_TIMEOUT = 100000;
     public static final long ELEMENT_TIMEOUT = 15000;
     public static final long PAGE_TIMEOUT = 15000;
     public static final int MILLISECONDS_TO_POLL_FOR_ELEMENT = 250;
