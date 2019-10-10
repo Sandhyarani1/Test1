@@ -179,7 +179,7 @@ public class ArticlesPage extends BasePage
 	
 	public String getlandingPageUrlTitle() {
 		List<String> browserTabs = new ArrayList<String>(getDriver().getWindowHandles());
-		WebPageLoaded.isDomComplete(8000000);
+	    Sleeper.sleep(4);
 		return getDriver().switchTo().window(browserTabs.get(1)).getCurrentUrl();
 	}
 		

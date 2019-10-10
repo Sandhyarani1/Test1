@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.HomepageBreadcrumbs;
 import com.accuweather.glacier.www.pages.LandingPage;
-import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.utils.Sleeper;
 
 public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
@@ -38,8 +37,12 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		testStart("Validate footer breadcrumbs displayed on Homepage" );
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
+    	waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+    	Sleeper.sleep(3);
+
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_CRUMB));
@@ -52,6 +55,9 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
    	waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+   	Sleeper.sleep(3);
+
+   	//waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		Sleeper.sleep(3);
@@ -65,6 +71,7 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+		Sleeper.sleep(3);
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		Sleeper.sleep(3);
@@ -77,8 +84,11 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		testStart("Validate footer breadcrumbs displayed for Country");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
+
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+		Sleeper.sleep(3);
+		/*waitUntilElementIsDisplayedOrClickable();
+		waitUntilWindowExistsWithTitle(expectedHomePageTitle);*/
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		Sleeper.sleep(3);
@@ -93,6 +103,7 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+		Sleeper.sleep(3);
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		Sleeper.sleep(3);
@@ -106,6 +117,7 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+		Sleeper.sleep(3);
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		Sleeper.sleep(3);
@@ -118,7 +130,10 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		testStart("Validating user redirected url when clicked on World ");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-    waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+    	waitUntilWindowExistsWithTitle(expectedHomePageTitle);  
+    	Sleeper.sleep(3);
+    //waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.isclickonFooterBreadcrumb(BREAD_CRUMB_WORLD);
@@ -135,6 +150,7 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+		Sleeper.sleep(3);
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_REGION);
@@ -150,6 +166,7 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+		Sleeper.sleep(3);
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_COUNTRY);
@@ -166,10 +183,11 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+		Sleeper.sleep(3);
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_STATE);
-		Sleeper.sleep(3);
+	  Sleeper.sleep(3);
 		System.out.println("Landing page URL is >>>"+getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedStateForecastTitle);
 	}
@@ -182,6 +200,7 @@ public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
+		Sleeper.sleep(3);
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_CITY);

@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
+import com.chameleon.utils.Sleeper;
 
 public class HomepageBreadcrumbs extends BasePage {
 	
@@ -48,7 +49,7 @@ public class HomepageBreadcrumbs extends BasePage {
 	
 	public String getlandingurltitle() {
 		List<String> browserTabs = new ArrayList<String>(getDriver().getWindowHandles());
-		WebPageLoaded.isDomComplete(8000000);
+		Sleeper.sleep(3);
 		return getDriver().switchTo().window(browserTabs.get(1)).getCurrentUrl();
 	}
 		
@@ -62,32 +63,43 @@ public class HomepageBreadcrumbs extends BasePage {
 	{
 		if(link.equalsIgnoreCase("Footer breadcrumb"))
 		{
-			getDriver().manage().deleteAllCookies();
-			return getDriver().findElement(byfooterbreadcrumbs).syncVisible(25);
+			Sleeper.sleep(3);
+			return getDriver().findElement(byfooterbreadcrumbs).isDisplayed();
+      
+			//getDriver().manage().deleteAllCookies();
+			//return getDriver().findElement(byfooterbreadcrumbs).syncVisible(25);
+
 		}
 		
 		if(link.equalsIgnoreCase("Breadcrumb World"))
 		{
-			return getDriver().findElement(bybreadcrumbforWorld).syncVisible(25);
+			Sleeper.sleep(3);
+			return getDriver().findElement(bybreadcrumbforWorld).isDisplayed();
+
+			//return getDriver().findElement(bybreadcrumbforWorld).syncVisible(25);
 		}
 		
 		if(link.equalsIgnoreCase("Breadcrumb Region"))
 		{
+			Sleeper.sleep(3);
 			return getDriver().findElement(bybreadcrumbsforRegion).isDisplayed();
 		}
 		
 		if(link.equalsIgnoreCase("Breadcrumb Country"))
 		{
+			Sleeper.sleep(3);
 			return getDriver().findElement(bybreadcrumbsforCountry).isDisplayed();
 		}
 		
 		if(link.equalsIgnoreCase("Breadcrumb State"))
 		{
+			Sleeper.sleep(3);
 			return getDriver().findElement(bybreadcrumbsforState).isDisplayed();
 		}
 		
 		if(link.equalsIgnoreCase("Breadcrumb City"))
 		{
+			Sleeper.sleep(3);
 			return getDriver().findElement(bybreadcrumbsforCity).isDisplayed();
 		}
 		return false;
@@ -103,24 +115,27 @@ public class HomepageBreadcrumbs extends BasePage {
 	 {
 		if(link.equalsIgnoreCase("Breadcrumb World"))
 		{
-			getDriver().manage().deleteAllCookies();
+			Sleeper.sleep(3);
 			getDriver().findElement(bybreadcrumbforWorld).jsClick();
 		}
 			
 		if(link.equalsIgnoreCase("Breadcrumb Region"))
 		{
-			getDriver().manage().deleteAllCookies();
+			Sleeper.sleep(3);
 			getDriver().findElement(bybreadcrumbsforRegion).jsClick();
 			}
 			
 		if(link.equalsIgnoreCase("Breadcrumb Country"))
 		{
-			getDriver().manage().deleteAllCookies();
+			Sleeper.sleep(3);
 			getDriver().findElement(bybreadcrumbsforCountry).jsClick();
 		}
 			
 		if(link.equalsIgnoreCase("Breadcrumb State"))
 		{
+
+			Sleeper.sleep(3);
+
 //		    String currentUrl=getDriver().getCurrentUrl();		
 //			getDriver().navigate().to(currentUrl);
 			getDriver().manage().deleteAllCookies();
@@ -129,7 +144,7 @@ public class HomepageBreadcrumbs extends BasePage {
 			
 		if(link.equalsIgnoreCase("Breadcrumb City"))
 		{
-			getDriver().manage().deleteAllCookies();
+			Sleeper.sleep(3);
 			getDriver().findElement(bybreadcrumbsforCity).jsClick();
 		}
 	}

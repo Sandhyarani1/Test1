@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
+import com.chameleon.utils.Sleeper;
 
 public class RadarPage extends BasePage {
 	private By byfeaturedSearchbar = By
@@ -200,7 +201,6 @@ public class RadarPage extends BasePage {
 	 **/
 
 	public String RadartabHighlightedinOrange() {
-		getDriver().navigate().refresh();
 
 		String radartabTopColour = getDriver().findElement(bysecondarRadarTab).getCssValue("border-top-color");
 
@@ -216,6 +216,7 @@ public class RadarPage extends BasePage {
 	 **/
 	public String titleOfRadarMap() {
 		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(3);
 
 		return getDriver().findElement(byTitleofNationalRadarpage).getText();
 	}
@@ -228,7 +229,7 @@ public class RadarPage extends BasePage {
 
 	public boolean tooltipDisplayedonNationalRadarpage() {
 		WebPageLoaded.isDomInteractive();
-
+		Sleeper.sleep(3);
 		return getDriver().findElement(byTooltiponNationalRadarpage).isDisplayed();
 
 	}
@@ -238,11 +239,9 @@ public class RadarPage extends BasePage {
 
 		WebElement tooltip = getDriver().findElement(byTooltiponNationalRadarpage);
 
-		WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
+		Sleeper.sleep(4);
 
-		wait.until(ExpectedConditions.elementToBeClickable(tooltip));
-
-		tooltip.syncVisible(90000);
+		tooltip.syncVisible(900);
 
 		tooltip.jsClick();
 
@@ -277,13 +276,9 @@ public class RadarPage extends BasePage {
 		for (int i = 0; i <= 5; i++) {
 			WebElement zoomIn = getDriver().findElement(byzoomInControl);
 
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
-
-			wait.until(ExpectedConditions.elementToBeClickable(zoomIn));
+			Sleeper.sleep(4);
 
 			zoomIn.jsClick();
-
-			wait.until(ExpectedConditions.elementToBeClickable(zoomIn));
 
 		}
 	}
@@ -292,13 +287,9 @@ public class RadarPage extends BasePage {
 		for (int i = 0; i <= 5; i++) {
 			WebElement zoomOut = getDriver().findElement(byzoomOutControl);
 
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
-
-			wait.until(ExpectedConditions.elementToBeClickable(zoomOut));
+			Sleeper.sleep(4);
 
 			zoomOut.jsClick();
-
-			wait.until(ExpectedConditions.elementToBeClickable(zoomOut));
 
 		}
 
@@ -331,7 +322,7 @@ public class RadarPage extends BasePage {
 
 	public String getlandingurltitle() {
 		List<String> browserTabs = new ArrayList<>(getDriver().getWindowHandles());
-		WebPageLoaded.isDomComplete(8000000);
+		Sleeper.sleep(2);
 		return getDriver().switchTo().window(browserTabs.get(1)).getCurrentUrl();
 	}
 
@@ -354,7 +345,7 @@ public class RadarPage extends BasePage {
 
 	public void ClikonFullScreenButton() {
 		WebElement fullscreenbutton = getDriver().findElement(byFullscreenbutton);
-		getDriver().manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+		Sleeper.sleep(5);
 		fullscreenbutton.jsClick();
 	}
 
@@ -403,18 +394,14 @@ public class RadarPage extends BasePage {
 
 		WebElement futureCta = getDriver().findElement(byFutureCTAdisplayed);
 
-		WebDriverWait wait = new WebDriverWait(getDriver(), 8000);
-
-		wait.until(ExpectedConditions.elementToBeClickable(futureCta));
+		Sleeper.sleep(3);
 
 		futureCta.jsClick();
 
 	}
 
 	public void ClickonPastCTAonRadarMap() {
-		WebDriverWait wait = new WebDriverWait(getDriver(), 8000);
-
-		wait.until(ExpectedConditions.elementToBeClickable(byPastCTA));
+		Sleeper.sleep(5);
 
 		getDriver().findElement(byPastCTA).jsClick();
 
@@ -431,9 +418,7 @@ public class RadarPage extends BasePage {
 	public void clickonPlayButton() {
 		WebElement playbutton = getDriver().findElement(bySliderwithPlaybutton);
 
-		WebDriverWait wait = new WebDriverWait(getDriver(), 800);
-
-		wait.until(ExpectedConditions.elementToBeClickable(playbutton));
+		Sleeper.sleep(3);
 
 		playbutton.jsClick();
 	}
@@ -441,9 +426,7 @@ public class RadarPage extends BasePage {
 	public String timestampdisplayed() {
 		WebElement timestamp = getDriver().findElement(byTimestampdisplayed);
 
-		WebDriverWait wait = new WebDriverWait(getDriver(), 8000);
-
-		wait.until(ExpectedConditions.elementToBeClickable(timestamp));
+		Sleeper.sleep(3);
 
 		return timestamp.getText();
 	}
@@ -457,21 +440,22 @@ public class RadarPage extends BasePage {
 
 	public boolean isLegendDisplayedbelowRadarMap(String link) {
 		if (link.equalsIgnoreCase("Rain")) {
-			WebPageLoaded.isDomInteractive(3000);
+			
+			Sleeper.sleep(3);
 			return getDriver().findElement(byLegendRain).isDisplayed();
 		}
 
 		if (link.equalsIgnoreCase("Snow")) {
-			WebPageLoaded.isDomInteractive(3000);
+			Sleeper.sleep(3);
 			return getDriver().findElement(bylegendSnow).isDisplayed();
 		}
 
 		if (link.equalsIgnoreCase("Ice")) {
-			WebPageLoaded.isDomInteractive(3000);
+			Sleeper.sleep(3);
 			return getDriver().findElement(bylegendIce).isDisplayed();
 		}
 		if (link.equalsIgnoreCase("Mix")) {
-			WebPageLoaded.isDomInteractive(3000);
+			Sleeper.sleep(3);
 			return getDriver().findElement(byLegendMix).isDisplayed();
 		}
 
@@ -549,8 +533,8 @@ public class RadarPage extends BasePage {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendRainColors);
 
 		for (int i = 1; i <= childrenElements.size(); i++) {
-			WebDriverWait wait = new WebDriverWait(getDriver(), 6000);
-			wait.until(ExpectedConditions.elementToBeClickable(bylegendRainColors));
+
+			Sleeper.sleep(2);
 			String raincolour = getDriver()
 					.findElement(By.xpath("//*[@class='key rain']//*[name()='rect' and @class='c-" + i + "']"))
 					.getCssValue("fill");
@@ -578,8 +562,8 @@ public class RadarPage extends BasePage {
 
 		for (int i = 1; i <= childrenElements.size(); i++) {
 
-			WebDriverWait wait = new WebDriverWait(getDriver(), 60);
-			wait.until(ExpectedConditions.elementToBeClickable(bylegendSnowColors));
+			Sleeper.sleep(2);
+			
 			String raincolour = getDriver()
 					.findElement(By.xpath("//*[@class='key snow']//*[name()='rect' and @class='c-" + i + "']"))
 					.getCssValue("fill");
@@ -602,9 +586,8 @@ public class RadarPage extends BasePage {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendIceColors);
 
 		for (int i = 1; i <= childrenElements.size(); i++) {
-
-			WebDriverWait wait = new WebDriverWait(getDriver(), 60);
-			wait.until(ExpectedConditions.elementToBeClickable(bylegendIceColors));
+			
+			Sleeper.sleep(2);
 			String raincolour = getDriver()
 					.findElement(By.xpath("//*[@class='key ice']//*[name()='rect' and @class='c-" + i + "']"))
 					.getCssValue("fill");
@@ -630,8 +613,8 @@ public class RadarPage extends BasePage {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendMixColors);
 
 		for (int i = 1; i <= childrenElements.size(); i++) {
-			WebDriverWait wait = new WebDriverWait(getDriver(), 60);
-			wait.until(ExpectedConditions.elementToBeClickable(bylegendMixColors));
+			
+			Sleeper.sleep(3);
 			String raincolour = getDriver()
 					.findElement(By.xpath("//*[@class='key mix']//*[name()='rect' and @class='c-" + i + "']"))
 					.getCssValue("fill");
