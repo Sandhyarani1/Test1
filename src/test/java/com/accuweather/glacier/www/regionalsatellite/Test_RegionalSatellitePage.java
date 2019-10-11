@@ -56,7 +56,7 @@ public class Test_RegionalSatellitePage extends AccuWeatherBaseTest
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-        Sleeper.sleep(5);
+        Sleeper.sleep(9);
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedlandingpageURL);
 		
 	}
@@ -329,7 +329,9 @@ public class Test_RegionalSatellitePage extends AccuWeatherBaseTest
 		satellitePage.navigateToSatellite();
 		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
+		Sleeper.sleep(5);
 		satellitePage.clickOnToolTip();
+		Sleeper.sleep(3);
 		waitUntilElementIsDisplayedOrClickable();
 		Sleeper.sleep(5);
 		Assert.assertTrue(satellitePage.toolTipTextdisplayed().equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT));
@@ -551,10 +553,11 @@ public class Test_RegionalSatellitePage extends AccuWeatherBaseTest
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();	
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
+		Sleeper.sleep(4);
 		satellitePage.clickOnToolTip();	
-		Sleeper.sleep(1);
+		Sleeper.sleep(3);
 		String actualTooltipText=satellitePage.toolTipTextdisplayed();
 		Assert.assertTrue(actualTooltipText.equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT_VISIBLE_TAB));
 		
@@ -728,11 +731,11 @@ public class Test_RegionalSatellitePage extends AccuWeatherBaseTest
 		radarPage.searchCityByName(citySearchedByName);    
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.mouseHoverOnRadarAndMaps();
 		satellitePage.navigateToSatellite();	
 		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
+		Sleeper.sleep(5);
 		satellitePage.clickOnToolTip();
 		Sleeper.sleep(3);
 		String actualTooltipColor=satellitePage.toolTipActive();

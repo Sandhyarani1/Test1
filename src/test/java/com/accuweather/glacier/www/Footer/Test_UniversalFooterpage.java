@@ -43,7 +43,7 @@ public class Test_UniversalFooterpage extends AccuWeatherBaseTest
 	private static final String EXPECTED_URL_FOR_ABOUT_ACCUWEATHER="https://corporate.accuweather.com/about";
 	private static final String EXPECTED_URL_FOR_MEDIAKIT="https://mediakit.accuweather.com/";
 	private static final String EXPECTED_URL_FOR_CARRERS="https://careers.accuweather.com/";
-	private static final String EXPECTED_URL_FOR_PRESS="https://qualityassurance.accuweather.com/en/press/";
+	private static final String EXPECTED_URL_FOR_PRESS="https://qualityassurance.accuweather.com/en/press";
 	private static final String EXPECTED_URL_FOR_COUPONS="https://www.accuweather.com/coupons";            //Landing for Production URL 
 	private static final String EXPECTED_URL_FOR_CONTACTUS="https://qualityassurance.accuweather.com/en/contact";
 	private static final String EXPECTED_URL_FOR_ENTERPRISE_SOLUTIONS="https://enterprisesolutions.accuweather.com/";
@@ -58,8 +58,8 @@ public class Test_UniversalFooterpage extends AccuWeatherBaseTest
 	private static final String EXPECTED_URL_FOR_ANDROID_APP="https://play.google.com/store/apps/details?id=com.accuweather.android&referrer=af_tranid";
 	private static final String EXPECTED_URL_FOR_WINDOWS_APP="https://downloads.accuweather.com/?shortlink=aba0397&pid=accuweatherDADC&c=Downloads";
 	private static final String EXPECTED_URL_FOR_APPS_AND_DOWNLOAD="https://downloads.accuweather.com/?shortlink=aba0397&pid=accuweatherDADC&c=Downloads";
-	private static final String EXPECTED_URL_FOR_ACCUWEATHER_PREMIUM="https://wwwl.accuweather.com/premium_login.php";  
-	private static final String EXPECTED_URL_FOR_ACCUWEATHER_PROFESSIONAL="https://wwwl.accuweather.com/pro_login.php";
+	private static final String EXPECTED_URL_FOR_ACCUWEATHER_PREMIUM="https://wwwl.accuweather.com/premium_login.php?url=qualityassurance.accuweather.com/premium";  
+	private static final String EXPECTED_URL_FOR_ACCUWEATHER_PROFESSIONAL="https://wwwl.accuweather.com/pro_login.php?url=qualityassurance.accuweather.com/professional";
 	private static final String EXPECTED_URL_FOR_ACCUWEATHER_SOCIAL_ICON_DOWNLOAD="https://downloads.accuweather.com/";
 	private static final String EXPECTED_URL_FOR_ACCUWEATHER_SOCIAL_ICON_FACEBOOK="https://www.facebook.com/AccuWeather";
 	private static final String EXPECTED_URL_FOR_ACCUWEATHER_SOCIAL_ICON_TWITTER="https://twitter.com/BreakingWeather";
@@ -133,7 +133,7 @@ public class Test_UniversalFooterpage extends AccuWeatherBaseTest
 		}
 
 	  @Test(priority=6,enabled=true)
-		public void TC6_validatingCompanyFooterhasSuperiorAccuracyinActionlinkDisplayed(){
+		public void TC6_validatinglinksDisplayedunderCompanyFooter(){
 			testStart("Navigating to  test application and validating whether Company Footer has Superior Accuracy in Action link Displayed");	
 			waitUntilElementIsDisplayedOrClickable();
 			WebPageLoaded.isDomInteractive(800);
@@ -142,86 +142,10 @@ public class Test_UniversalFooterpage extends AccuWeatherBaseTest
 			footerpage.scrolldownpage();
 			footerpage.scrolldownpage();
 			Sleeper.sleep(2);
-			Assert.assertTrue(footerpage.companyFooterContainsLink(SUPERIOR_ACCURACY_ACTION));	
+			Assert.assertTrue(footerpage.validatelinksforCompanyHeader());	
 	  }
 
-	  @Test(priority=7,enabled=true)
-		public void TC6_validatingCompanyFooterhasAboutAccuWeatherlinkDisplayed()  {
-			testStart("Navigating to  test application and validating whether Company Footer has About AccuWeather link Displayed");	
-			waitUntilElementIsDisplayedOrClickable();
-			WebPageLoaded.isDomInteractive(800);
-			Sleeper.sleep(2);
-			footerpage.scrolldownpage();
-			footerpage.scrolldownpage();
-			footerpage.scrolldownpage();
-			Sleeper.sleep(2);
-			Assert.assertTrue(footerpage.companyFooterContainsLink(ABOUT_ACCUWEATHER));	
-	  }
-
-	  @Test(priority=8,enabled=true)
-		public void TC6_validatingCompanyFooterhasMediakitlinkDisplayed()  {
-			testStart("Navigating to  test application and validating whether Company Footer has Media kit link Displayed");
-			waitUntilElementIsDisplayedOrClickable();
-			WebPageLoaded.isDomInteractive(800);
-			Sleeper.sleep(2);
-			footerpage.scrolldownpage();
-			footerpage.scrolldownpage();
-			footerpage.scrolldownpage();
-			Sleeper.sleep(2);
-			Assert.assertTrue(footerpage.companyFooterContainsLink(MEDIA_KIT));	
-	  }
-
-	  @Test(priority=9,enabled=true)
-		public void TC6_validatingCompanyFooterhasCarrerslinkDisplayed()  {
-			testStart("Navigating to  test application and validating whether Company Footer has Carrers link Displayed");	
-			waitUntilElementIsDisplayedOrClickable();
-			WebPageLoaded.isDomInteractive(800);
-			Sleeper.sleep(2);
-			footerpage.scrolldownpage();
-			footerpage.scrolldownpage();
-			footerpage.scrolldownpage();
-			Sleeper.sleep(2);
-			footerpage.scrolldownpage();
-			Assert.assertTrue(footerpage.companyFooterContainsLink(CARRERS));	
-	  }
-
-	  @Test(priority=10,enabled=true)
-		public void TC6_validatingCompanyFooterhasPresslinkDisplayed()  {
-			testStart("Navigating to  test application and validating whether Company Footer has Press link Displayed");	
-			waitUntilElementIsDisplayedOrClickable();
-			WebPageLoaded.isDomInteractive(800);
-			Sleeper.sleep(2);
-			footerpage.scrolldownpage();
-			footerpage.scrolldownpage();
-			footerpage.scrolldownpage();
-			Sleeper.sleep(2);
-			footerpage.scrolldownpage();
-			Assert.assertTrue(footerpage.companyFooterContainsLink(PRESS));	
-	  }
-
-	  @Test(priority=11,enabled=true)
-		public void TC6_validatingCompanyFooterhasCouponslinkDisplayed() {
-			testStart("Navigating to  test application and validating whether Company Footer has Coupons link Displayed");	
-			waitUntilElementIsDisplayedOrClickable();
-			WebPageLoaded.isDomInteractive(800);
-			Sleeper.sleep(2);
-			footerpage.scrolldownpage();
-			footerpage.scrolldownpage();
-			footerpage.scrolldownpage();
-			Sleeper.sleep(2);
-			Assert.assertTrue(footerpage.companyFooterContainsLink(COUPONS));	
-	  }
-
-	  @Test(priority=12,enabled=true)
-		public void TC6_validatingCompanyFooterhasContactUslinkDisplayed()  {
-			testStart("Navigating to  test application and validating whether Company Footer has Contact Us link Displayed");	
-			footerpage.scrolldownpage();
-			footerpage.scrolldownpage();
-			footerpage.scrolldownpage();
-			Sleeper.sleep(2);
-			Assert.assertTrue(footerpage.companyFooterContainsLink(CONTACT_US));	
-	  }
-
+	  
 	 @Test(priority=13,enabled=true)
 	    public void TC7_validatingurlwhenclickedonSuperiorAccuracylink(){
 		testStart("Navigating to test application and clicking on SuperiorAccuracyinAction");	
@@ -294,21 +218,7 @@ public class Test_UniversalFooterpage extends AccuWeatherBaseTest
 		Assert.assertEquals(landingPageURL,EXPECTED_URL_FOR_PRESS);		 		
 	}
 
-	@Test(priority=18,enabled=true)
-	    public void TC12_validatingurlwhenclickedonCoupons()  {
-		testStart("Navigating to  test application and clicking on Coupons");	
-		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(800);
-		Sleeper.sleep(2);
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.isclickedonfooterlink(COUPONS);
-		Sleeper.sleep(2);
-		landingPageURL=footerpage.getlandingurltitle();
-		Assert.assertEquals(landingPageURL,EXPECTED_URL_FOR_COUPONS);	    		
-	}
-
+	
 	@Test(priority=19,enabled=true)
 	public void TC13_validatingurlwhenclickedonContactUs() {
 		testStart("Navigating to  test application and clicking on Contact Us");	
@@ -324,108 +234,18 @@ public class Test_UniversalFooterpage extends AccuWeatherBaseTest
 	}
 
 	@Test(priority=20,enabled=true)
-	    public void TC14_validatingProductandServiceshasEnterpriseSolutionslinkDisplayed() {
-		testStart("Navigating to  test application and validating whether Company Footer has Enterprise Solutions link Displayed");	
+	    public void TC14_validatinglinksDisplayedunderProductandServices() {
+		testStart("Navigating to  test application and validating links displayed under ProductandServices Header ");	
 		waitUntilElementIsDisplayedOrClickable();
 		WebPageLoaded.isDomInteractive(800);
 		Sleeper.sleep(2);
 		footerpage.scrolldownpage();
 		footerpage.scrolldownpage();
 		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.productandServicesContainsLink(ENTERPRISE_SOLUTIONS));	
+		Assert.assertTrue(footerpage.validatelinksforProductsandServicesHeader());
+		
   }
 
-	@Test(priority=21,enabled=true)
-	public void TC14_validatingProductandServiceshasD3DataDrivenDecisionsDisplayed() {
-		testStart("Navigating to  test application and validating whether Company Footer has D3 Data Driven Decisions link Displayed");	
-		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(800);
-		Sleeper.sleep(2);
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.productandServicesContainsLink(D3_DATA_DRIVEN_DECISION));	
-  }
-
-	@Test(priority=22,enabled=true)
-	    public void TC14_validatingProductandServiceshasAccuWeatherNetworkDisplayed() {
-		testStart("Navigating to  test application and validating whether Company Footer has AccuWeather Network link Displayed");	
-		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(800);
-		Sleeper.sleep(2);
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.productandServicesContainsLink(ACCUWEATHER_NETWORK));	
-  }
-
-	@Test(priority=23,enabled=true)
-	public void TC14_validatingProductandServiceshasStoryTellerDisplayed() {
-		testStart("Navigating to  test application and validating whether Company Footer has Story Teller link Displayed");	
-		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(800);
-		Sleeper.sleep(2);
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.productandServicesContainsLink(STORY_TELLER));	
-  }
-
-	@Test(priority=24,enabled=true)
-	public void TC14_validatingProductandServiceshasToolsforBroadcastDisplayed() {
-		testStart("Navigating to  test application and validating whether Company Footer has Tools for Broadcast link Displayed");	
-		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(800);
-		Sleeper.sleep(2);
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.productandServicesContainsLink(TOOLS_BROADCAST));	
-  }
-
-	@Test(priority=25,enabled=true)
-	    public void TC14_validatingProductandServiceshasRadioandNewspaperDisplayed(){
-		testStart("Navigating to  test application and validating whether Company Footer has Radio and Newspaper link Displayed");	
-		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(800);
-		Sleeper.sleep(2);
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.productandServicesContainsLink(RADIO_AND_NEWSPAPER));	
-  }
-
-	@Test(priority=26,enabled=true)
-	public void TC14_validatingProductandServiceshasAccuWeatherAPIsDisplayed()  {
-		testStart("Navigating to  test application and validating whether Company Footer has AccuWeather APIs link Displayed");	
-		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(800);
-		Sleeper.sleep(2);
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.productandServicesContainsLink(ACCUWEATHER_APIS));	
-  }
-
-
-	@Test(priority=28,enabled=true)
-	    public void TC14_validatingProductandServiceshasPodcastDisplayed() {
-		testStart("Navigating to  test application and validating whether Company Footer has Podcast link Displayed");	
-		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(800);
-		Sleeper.sleep(2);
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.productandServicesContainsLink(PODCAST));	
-  }
 
 	@Test(priority=29,enabled=true)
 	    public void TC15_validatingurlwhenclickedonEnterpriseSolutions(){
@@ -545,8 +365,8 @@ public class Test_UniversalFooterpage extends AccuWeatherBaseTest
 	}
 
 	@Test(priority=37,enabled=true)
-	    public void TC24_validatingAppsandDownloadhasiPhoneAppDisplayed(){
-		testStart("Navigating to  test application and validating whether Apps & Download Footer has iPhoneApp link Displayed");
+	    public void TC24_validatinglinksDisplayedunderAppsandDownloads(){
+		testStart("Navigating to  test application and validating links Displayed underAppsandDownloads ");
 		waitUntilElementIsDisplayedOrClickable();
 		WebPageLoaded.isDomInteractive(800);
 		Sleeper.sleep(2);
@@ -554,48 +374,9 @@ public class Test_UniversalFooterpage extends AccuWeatherBaseTest
 		footerpage.scrolldownpage();
 		footerpage.scrolldownpage();
 		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.appsandDownloadContainsLink(IPHONEAPP));	
+		Assert.assertTrue(footerpage.validatelinksDisplayedunderAppsandDownloads());	
   }
-
-	@Test(priority=38,enabled=true)
-	    public void TC24_validatingAppsandDownloadhasAndroidAppDisplayed() {
-		testStart("Navigating to  test application and validating whether Apps & Download Footer has Android App link Displayed");	
-		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(800);
-		Sleeper.sleep(2);
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.appsandDownloadContainsLink(ANDROIDAPP));	
-  }
-
-	@Test(priority=39,enabled=true)
-	    public void TC24_validatingAppsandDownloadhasWindowsAppDisplayed() {
-		testStart("Navigating to  test application and validating whether Apps & Download Footer has Windows App link Displayed");	
-		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(800);
-		Sleeper.sleep(2);
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.appsandDownloadContainsLink(WINDOWSAPP));	
-  }
-
-	@Test(priority=40,enabled=true)
-	    public void TC24_validatingAppsandDownloadhasSeeallAppsandDownloadsDisplayed() {
-		testStart("Navigating to  test application and validating whether Apps & Download Footer has See all Apps & Downloadslink Displayed");	
-		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(800);
-		Sleeper.sleep(2);
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.appsandDownloadContainsLink(APPS_AND_DOWNLOAD));	
-  }
-
+	
 	@Test(priority=41,enabled=true)
 	    public void TC25_validatingurlwhenclickedoniphoneapp() {
 		testStart("Navigating to  test application and clicking on iphone app");	
@@ -626,21 +407,7 @@ public class Test_UniversalFooterpage extends AccuWeatherBaseTest
 		landingPageURL.contains(EXPECTED_URL_FOR_ANDROID_APP);
 	}
 
-	@Test(priority=43,enabled=true)
-	    public void TC27_validatingurlwhenclickedonWindowsapp() {
-		testStart("Navigating to  test application and clicking on Windows app");	
-		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(800);
-		Sleeper.sleep(2);
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.isclickedonfooterlink(WINDOWSAPP);
-		Sleeper.sleep(2);
-		landingPageURL=footerpage.getlandingurltitle();
-		Assert.assertEquals(landingPageURL,EXPECTED_URL_FOR_WINDOWS_APP);	
-	}
-
+	
 	@Test(priority=44,enabled=true)
 	    public void TC28_validatingurlwhenclickedonappsanddownload() {
 		testStart("Navigating to  test application and clicking on apps and download");
@@ -721,47 +488,9 @@ public class Test_UniversalFooterpage extends AccuWeatherBaseTest
 		footerpage.scrolldownpage();
 		footerpage.scrolldownpage();
 		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.socailmedialinkContains(ICON_DOWNLOAD));	
+		Assert.assertTrue(footerpage.validateSocailMedialinksDisplayed());
   }
 
-	@Test(priority=50,enabled=true)
-	public void TC32_validatingSocailmedialinkshasFacebookiconDisplayed()  {
-		testStart("Navigating to  test application and validating whether Socail media links has facebook icon Displayed");
-		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(800);
-		Sleeper.sleep(2);
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.socailmedialinkContains(ICON_FACEBOOK));	
-  }
-
-	@Test(priority=51,enabled=true)
-		public void TC32_validatingSocailmedialinkshasTwittericonDisplayed() {
-		testStart("Navigating to  test application and validating whether Socail media links has twitter icon Displayed");	
-		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(800);
-		Sleeper.sleep(2);
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.socailmedialinkContains(ICON_TWITTER));	
-  }
-
-	@Test(priority=52,enabled=true)
-		public void TC32_validatingSocailmedialinkshasTVconDisplayed()  {
-		testStart("Navigating to  test application and validating whether Socail media links has TV icon Displayed");	
-		waitUntilElementIsDisplayedOrClickable();
-		WebPageLoaded.isDomInteractive(800);
-		Sleeper.sleep(2);
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		footerpage.scrolldownpage();
-		Sleeper.sleep(2);
-		Assert.assertTrue(footerpage.socailmedialinkContains(ICON_TV));	
-  }
 
 	@Test(priority=53,enabled=true)
 		public void TC33_validatingurlwhenclickedoniconDownload()  {
