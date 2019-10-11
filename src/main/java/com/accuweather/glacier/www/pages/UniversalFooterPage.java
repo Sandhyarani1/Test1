@@ -4,6 +4,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
+import com.chameleon.selenium.web.elements.WebElement;
 import com.chameleon.utils.Sleeper;
 
 public class UniversalFooterPage extends BasePage 
@@ -19,9 +20,7 @@ public class UniversalFooterPage extends BasePage
 	private By byCareers = By.cssSelector("div:nth-child(1) > div.footer-category-section.footer-category-section > a:nth-child(4)");
 	private By byPress = By.xpath(
 			"//div[@class='footer-content-category']//a[@class='footer-category-section-link'][contains(text(),'Press')]");
-	private By byCoupons = By.cssSelector("div:nth-child(1) > div.footer-category-section.footer-category-section > a:nth-child(6)");
-	private By byContactUs = By.cssSelector("div:nth-child(1) > div.footer-category-section.footer-category-section > a:nth-child(7)");
-	
+	private By byContactUs = By.cssSelector("div:nth-child(1) > div.footer-category-section.footer-category-section > a:nth-child(6)");
 	private By byEnterpriseSolutions = By.cssSelector("div.footer-content-tablet >div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(1)");
 	private By byD3DataDrivenDecisions = By.cssSelector("div.footer-content-tablet > div:nth-child(2) > div.footer-category-section > a:nth-child(2)");
 	
@@ -33,8 +32,9 @@ public class UniversalFooterPage extends BasePage
 	private By byPodcast = By.cssSelector("div.footer-content-tablet >div:nth-child(2) > div.footer-category-section > a:nth-child(8)");
 	private By byiPhoneApp = By.cssSelector("div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(1)");
 	private By byAndroidApp = By.cssSelector("div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(2)");
-	private By byWindowsApp = By.cssSelector("div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(3)");
+	//private By byWindowsApp = By.cssSelector("div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(3)");
 	private By bySeeallAppsandDownloads = By.cssSelector("div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(3)");
+	
 	private By byAccuWeatherPremium = By.cssSelector("div:nth-child(4) > div.footer-category-section.footer-category-section > a:nth-child(1)");
 	private By byAccuWeatherProfessional = By.cssSelector("div:nth-child(4) > div.footer-category-section.footer-category-section > a:nth-child(2)");
 	private By bysocialicondownload = By.cssSelector("div:nth-child(4) > div.footer-social.footer-social-tablet > a:nth-child(1)");
@@ -109,128 +109,122 @@ public class UniversalFooterPage extends BasePage
 	}
 
 	/**
-	 * Method to verify footer all the links present under the Header "Company"
+	 * Method to verify footer links present under the Header "Company"
 	 * @author Sandhya Rani
 	 * @return- Boolean value - "true  If company header Displayed with the following links"
 	 **/
-	public boolean companyFooterContainsLink(String link) {
-		if (link.equalsIgnoreCase("Superior Accuracy in Action")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(bySuperiorAccuracyinAction).isDisplayed();
-		}
+	
+public boolean validatelinksforCompanyHeader() {
+		
+		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(5);
+		 
+		WebElement companyHeader = getDriver().findElement(bycompany);
+		companyHeader.syncVisible(15);
+		
+		WebElement superiorAccuracyinAction = getDriver().findElement(bySuperiorAccuracyinAction);
+		superiorAccuracyinAction.syncVisible(15);
+		
+		WebElement aboutAccuWeather = getDriver().findElement(byAboutAccuWeather);
+		aboutAccuWeather.syncVisible(60);
+		
 
-		if (link.equalsIgnoreCase("About AccuWeather")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byAboutAccuWeather).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Media kit")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byMediaKit).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Carrers")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byCareers).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Press")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byPress).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Coupons")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byCoupons).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Contact Us")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byContactUs).isDisplayed();
-		}
-
-		return false;
-	}
+		WebElement mediaKit = getDriver().findElement(byMediaKit);
+		mediaKit.syncVisible(60);
+		
+		
+		WebElement careers = getDriver().findElement(byCareers);
+		careers.syncVisible(60);
+		
+		WebElement press = getDriver().findElement(byPress);
+		press.syncVisible(60);
+		
+		WebElement contactUs = getDriver().findElement(byContactUs);
+		contactUs.syncVisible(60);
+		
+		
+		return companyHeader.isDisplayed() && superiorAccuracyinAction.isDisplayed() && aboutAccuWeather.isDisplayed() 
+				&& mediaKit.isDisplayed() && careers.isDisplayed()  && contactUs.isDisplayed();
+   }
+	
+	
+	
 
 	/**
 	 * Method to verify footer links present under the Header "Products & Services"
 	 * @author Sandhya Rani
 	 * @return- Boolean value - "true  If  product and Services header Displayed with the following links"
 	 **/
-	public boolean productandServicesContainsLink(String link) {
-		if (link.equalsIgnoreCase("Enterprise Solutions")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byEnterpriseSolutions).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("D3 Data Driven Decisions")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byD3DataDrivenDecisions).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("AccuWeather Network")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byAccuWeatherNetwork).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Story Teller")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byStoryTeller).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Tools for Broadcast")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byToolsforBroadcast).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Radio and Newspaper")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byRadioandNewspaper).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("AccuWeather APIs")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byAccuWeatherAPIs).isDisplayed();
-		}
 
 
-		if (link.equalsIgnoreCase("Podcast")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byPodcast).isDisplayed();
-		}
+public boolean validatelinksforProductsandServicesHeader() {
+	
+	WebPageLoaded.isDomInteractive();
+	Sleeper.sleep(5);
+	
+	WebElement productandservice = getDriver().findElement(byproductandservice);
+	productandservice.syncVisible(15);
+	
+	WebElement enterpriseSolutions = getDriver().findElement(byEnterpriseSolutions);
+	enterpriseSolutions.syncVisible(15);
+	
+	WebElement d3dataDrivenDecisions = getDriver().findElement(byD3DataDrivenDecisions);
+	d3dataDrivenDecisions.syncVisible(60);
+	
 
-		return false;
-	}
-
+	WebElement accuWeatherNetwork = getDriver().findElement(byAccuWeatherNetwork);
+	accuWeatherNetwork.syncVisible(60);
+	
+	
+	WebElement storyTeller = getDriver().findElement(byStoryTeller);
+	storyTeller.syncVisible(60);
+	
+	WebElement toolsforBroadcast = getDriver().findElement(byToolsforBroadcast);
+	toolsforBroadcast.syncVisible(60);
+	
+	WebElement radioandNewspaper = getDriver().findElement(byRadioandNewspaper);
+	radioandNewspaper.syncVisible(60);
+	
+	WebElement accuWeatherAPIs = getDriver().findElement(byAccuWeatherAPIs);
+	accuWeatherAPIs.syncVisible(60);
+	
+	WebElement podcast = getDriver().findElement(byPodcast);
+	podcast.syncVisible(60);
+	
+	
+	return productandservice.isDisplayed() && enterpriseSolutions.isDisplayed() && d3dataDrivenDecisions.isDisplayed()
+			&& accuWeatherNetwork.isDisplayed() && storyTeller.isDisplayed()  &&toolsforBroadcast.isDisplayed() 
+			&& radioandNewspaper.isDisplayed() && accuWeatherAPIs.isDisplayed()  && podcast.isDisplayed();
+}
+	
 	/**
 	 * Method to verify footer links present under the "Apps & Download"
 	 * @author Sandhya Rani 
 	 * @return- Boolean value - "true  If  Apps and Download header Displayed with the following links"
 	 */
-	public boolean appsandDownloadContainsLink(String link) {
-		if (link.equalsIgnoreCase("iPhone App")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byiPhoneApp).isDisplayed();
-		}
 
-		if (link.equalsIgnoreCase("Android App")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byAndroidApp).isDisplayed();
-		}
 
-		if (link.equalsIgnoreCase("Windows App")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byWindowsApp).isDisplayed();
-		}
+public boolean validatelinksDisplayedunderAppsandDownloads() {
+	
+	WebPageLoaded.isDomInteractive();
+	Sleeper.sleep(3);
+	
+	WebElement iPhoneApp = getDriver().findElement(byiPhoneApp);
+	iPhoneApp.syncVisible(15);
+	
+	WebElement androidApp = getDriver().findElement(byAndroidApp);
+	androidApp.syncVisible(60);
+		
+	
+	WebElement seeallAppsandDownloads = getDriver().findElement(bySeeallAppsandDownloads);
+	seeallAppsandDownloads.syncVisible(60);
+	
+	
+	return iPhoneApp.isDisplayed() && androidApp.isDisplayed() && seeallAppsandDownloads.isDisplayed(); 
+			
+}
 
-		if (link.equalsIgnoreCase("See all Apps & Downloads")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(byWindowsApp).isDisplayed();
-		}
-
-		return false;
-	}
-
+	
 	/**
 	 * Method to verify footer links present under Subscription Services
 	 * @author Sandhya Rani 
@@ -255,30 +249,32 @@ public class UniversalFooterPage extends BasePage
 	 * @author Sandhya Rani
 	 * @return- Boolean value - "true  If  Subscription Services header Displayed with the following links"
 	 **/
-	public boolean socailmedialinkContains(String link) {
-		if (link.equalsIgnoreCase("Social icon download")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(bysocialicondownload).isDisplayed();
-		}
+	
+	public boolean validateSocailMedialinksDisplayed() {
+		
+		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(3);
+		
+		WebElement socialicondownload = getDriver().findElement(bysocialicondownload);
+		socialicondownload.syncVisible(15);
+		
+		WebElement socialiconfacebook = getDriver().findElement(bysocialiconfacebook);
+		socialiconfacebook.syncVisible(60);
+		
 
-		if (link.equalsIgnoreCase("Social icon facebook")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(bysocialiconfacebook).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Social icon twitter")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(bysocialicontwitter).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Social icon tv")) {
-			 Sleeper.sleep(4);
-			return getDriver().findElement(bysocialicontv).isDisplayed();
-		}
-
-		return false;
-	}
-
+		WebElement socialicontwitter = getDriver().findElement(bysocialicontwitter);
+		socialicontwitter.syncVisible(60);
+		
+		
+		WebElement socialicontv = getDriver().findElement(bysocialicontv);
+		socialicontv.syncVisible(60);
+		
+		
+		return socialicondownload.isDisplayed() && socialiconfacebook.isDisplayed() && socialicontwitter.isDisplayed() 
+				&& socialicontv.isDisplayed();
+   }
+	
+	
 	/**
 	 *  Method to click on the links available from the footers
 	 * @author Sandhya Rani
@@ -316,13 +312,6 @@ public class UniversalFooterPage extends BasePage
 			WebPageLoaded.isDomInteractive();
 			 Sleeper.sleep(4);
 			getDriver().findElement(byPress).jsClick();
-			WebPageLoaded.isDomInteractive();
-		}
-
-		if (link.equalsIgnoreCase("Coupons")) {
-			WebPageLoaded.isDomInteractive();
-			 Sleeper.sleep(4);
-			getDriver().findElement(byCoupons).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
 
@@ -401,11 +390,11 @@ public class UniversalFooterPage extends BasePage
 			WebPageLoaded.isDomInteractive();
 		}
 
-		if (link.equalsIgnoreCase("Windows App")) {
-			WebPageLoaded.isDomInteractive();
-			getDriver().findElement(byWindowsApp).jsClick();
-			WebPageLoaded.isDomInteractive(6000);
-		}
+//		if (link.equalsIgnoreCase("Windows App")) {
+//			WebPageLoaded.isDomInteractive();
+//			getDriver().findElement(byWindowsApp).jsClick();
+//			WebPageLoaded.isDomInteractive(6000);
+//		}
 
 		if (link.equalsIgnoreCase("See all Apps & Downloads")) {
 			WebPageLoaded.isDomInteractive();

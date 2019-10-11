@@ -41,8 +41,9 @@ import com.chameleon.utils.Sleeper;
 	private By byCloseButton = By.cssSelector("div.map-canvas.full-mobile-width > div.close-button > svg");
 
 	private By bytimeStamp = By.cssSelector("div.map-tools > div.timeline-controls > div.time-stamp");
-	private By bytextLow = By.cssSelector("div > div.range-label > span:nth-child(1)");
-	private By bytextHigh = By.cssSelector("div > div.range-label > span:nth-child(2)");
+	
+	private By bytextLow = By.cssSelector("div.map-tools > div.satellite-legend > div > div.range-label > span:nth-child(1)");
+	private By bytextHigh = By.cssSelector("div.map-tools > div.satellite-legend > div > div.range-label > span:nth-child(2)");
 
 	private By bytextClear = By.cssSelector("div > div.range-label > span:nth-child(1)");
 	private By bytextClouds = By.cssSelector("div > div > div.range-label > span:nth-child(2)");
@@ -99,8 +100,8 @@ import com.chameleon.utils.Sleeper;
 	}
 
 	public String EnchancedTabHighlighted() {
-		String tabColour = getDriver().findElement(byEnhancedTab).getCssValue("border-top");
-		String boarderColor = tabColour.substring(10);
+		String tabColour = getDriver().findElement(byEnhancedTab).getCssValue("border-bottom");
+		String boarderColor = tabColour.substring(9);
 		return Color.fromString(boarderColor).asHex();
 
 	}
@@ -113,6 +114,9 @@ import com.chameleon.utils.Sleeper;
 	
 	public boolean validateSecondaryMenusDisplayed() {
 		// Secondary menus has Enchanced Tab Displayed
+		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(8);
+		
 		WebElement enhancedTab = getDriver().findElement(byEnhancedTab);
 		enhancedTab.syncVisible(60);
 

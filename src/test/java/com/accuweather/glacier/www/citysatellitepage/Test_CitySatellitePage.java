@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.RadarPage;
 import com.accuweather.glacier.www.pages.SatellitePage;
-import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.utils.Sleeper;
 
 
@@ -54,7 +53,7 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(8);
 		waitUntilElementIsDisplayedOrClickable();
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedlandingpageURL);
 	}
@@ -67,7 +66,7 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		Assert.assertEquals(satellitePage.satelliteTabHighlighted(), EXPECTED_SATELLITETAB_HIGHLIGHTED);
 	}
@@ -80,7 +79,7 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		Assert.assertEquals(satellitePage.EnchancedTabHighlighted(), EXPECTED_ENCHANCEDTAB_HIGHLIGHTED_BYDEFAULT);
 	}
@@ -93,7 +92,7 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		Assert.assertTrue(satellitePage.validateSecondaryMenusDisplayed());		
 	}	
 	
@@ -105,7 +104,7 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		Assert.assertTrue(satellitePage.getTitleofMap().equalsIgnoreCase(EXPECTED_TITLE_OF_MAP_ENCHANCED));
 	}
 
@@ -117,8 +116,9 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.clickOnToolTip();
+		Sleeper.sleep(5);
 		String actualTooltipColor = satellitePage.toolTipActive();
 		Assert.assertEquals(actualTooltipColor, EXPECTED_TOOL_TIP_COLOR);
 	}
@@ -131,7 +131,7 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.clickOnToolTip();
 		String actualTooltipText = satellitePage.toolTipTextdisplayed();
 		Assert.assertTrue(actualTooltipText.equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT));
@@ -149,7 +149,7 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		satellitePage.clickOnToolTip();
 		Sleeper.sleep(5);
 		satellitePage.clickOnToolTip();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 	}
 
 	@Test(priority = 9, enabled = true)
@@ -176,10 +176,10 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
 		satellitePage.ClickonMapboxattribution();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		String actualLandingpageUrl = satellitePage.getlandingurltitle();
 		Assert.assertEquals(actualLandingpageUrl, MAP_BOX_LANDING_PAGE_URL);
 	}
@@ -192,7 +192,7 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
 		waitUntilElementIsDisplayedOrClickable();
 		Assert.assertTrue(satellitePage.legendCloud_textLowandHigh_Displayed());
@@ -206,7 +206,7 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
 		waitUntilElementIsDisplayedOrClickable();
 		satellitePage.coloursdisplayedforEnchacedSatelliteMap();
@@ -220,7 +220,7 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
 
 		String endTime = satellitePage.timeStampdisplayed();
@@ -254,7 +254,7 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
 		Assert.assertTrue(satellitePage.validateFullscreenMap());
 
@@ -270,9 +270,9 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
+		satellitePage.clickOnTertiarymenus(STANDARD_TAB);satellitePage.clickOnTertiarymenus(STANDARD_TAB);Sleeper.sleep(2);
 		waitUntilWindowExistsWithTitle(EXPECTED_URL_FOR_SATELLITE);
 		Assert.assertEquals(getDriver().getCurrentUrl(), EXPECTED_URL_FOR_SATELLITE);
 	}
@@ -286,9 +286,9 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
+		satellitePage.clickOnTertiarymenus(STANDARD_TAB);satellitePage.clickOnTertiarymenus(STANDARD_TAB);Sleeper.sleep(2);
 		waitUntilWindowExistsWithTitle(EXPECTED_TITLE_OF_MAP_STANDARD);
 		Assert.assertTrue(satellitePage.getTitleofMap().equalsIgnoreCase(EXPECTED_TITLE_OF_MAP_STANDARD));
 	}
@@ -302,9 +302,9 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
+		satellitePage.clickOnTertiarymenus(STANDARD_TAB);satellitePage.clickOnTertiarymenus(STANDARD_TAB);Sleeper.sleep(2);
 		satellitePage.clickOnToolTip();
 		Sleeper.sleep(5);
 		String actualTooltipText=satellitePage.toolTipTextdisplayed();
@@ -320,11 +320,11 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
+		satellitePage.clickOnTertiarymenus(STANDARD_TAB);satellitePage.clickOnTertiarymenus(STANDARD_TAB);Sleeper.sleep(2);
 		satellitePage.clickOnToolTip();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.toolTipActive();
 		String actualTooltipColor = satellitePage.toolTipActive();
 		Assert.assertEquals(actualTooltipColor, EXPECTED_TOOL_TIP_COLOR);
@@ -339,14 +339,14 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
+		satellitePage.clickOnTertiarymenus(STANDARD_TAB);satellitePage.clickOnTertiarymenus(STANDARD_TAB);Sleeper.sleep(2);
 		waitUntilWindowExistsWithTitle(EXPECTED_TITLE_OF_MAP_STANDARD);
 		satellitePage.clickOnToolTip();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.clickOnToolTip();
-		Sleeper.sleep(2);
+		Sleeper.sleep(5);
 	}
 
 
@@ -359,8 +359,8 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
-		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
+		Sleeper.sleep(5);
+		satellitePage.clickOnTertiarymenus(STANDARD_TAB);satellitePage.clickOnTertiarymenus(STANDARD_TAB);Sleeper.sleep(2);
 		waitUntilWindowExistsWithTitle(EXPECTED_TITLE_OF_MAP_STANDARD);
 		satellitePage.zoominControls();
 		Sleeper.sleep(5);
@@ -378,11 +378,11 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
+		satellitePage.clickOnTertiarymenus(STANDARD_TAB);satellitePage.clickOnTertiarymenus(STANDARD_TAB);Sleeper.sleep(2);
 		satellitePage.ClickonMapboxattribution();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		String actualLandingpageUrl = satellitePage.getlandingurltitle();
 		Assert.assertEquals(actualLandingpageUrl, MAP_BOX_LANDING_PAGE_URL);
 	}
@@ -396,8 +396,8 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
-		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
+		Sleeper.sleep(5);
+		satellitePage.clickOnTertiarymenus(STANDARD_TAB);satellitePage.clickOnTertiarymenus(STANDARD_TAB);Sleeper.sleep(2);
 		waitUntilWindowExistsWithTitle(EXPECTED_TITLE_OF_MAP_STANDARD);
 		Assert.assertTrue(satellitePage.legendCloud_textLowandHigh_Displayed());
 	}
@@ -410,9 +410,9 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
+		satellitePage.clickOnTertiarymenus(STANDARD_TAB);satellitePage.clickOnTertiarymenus(STANDARD_TAB);Sleeper.sleep(2);
 		satellitePage.coloursdisplayedforStandardSatelliteMap();
 	}
 
@@ -424,10 +424,10 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
-		Sleeper.sleep(3);
+		satellitePage.clickOnTertiarymenus(STANDARD_TAB);satellitePage.clickOnTertiarymenus(STANDARD_TAB);Sleeper.sleep(2);
+		Sleeper.sleep(5);
 
 		String endTime = satellitePage.timeStampdisplayed();
 
@@ -461,11 +461,11 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
+		satellitePage.clickOnTertiarymenus(STANDARD_TAB);satellitePage.clickOnTertiarymenus(STANDARD_TAB);Sleeper.sleep(2);
 		satellitePage.clikonFullScreen();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.validateFullscreenMap();
 	}
 
@@ -479,10 +479,10 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
-		Sleeper.sleep(3);
+		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);Sleeper.sleep(2);
+		Sleeper.sleep(5);
 		Assert.assertTrue(satellitePage.getTitleofMap().equalsIgnoreCase(EXPECTED_TITLE_OF_MAP_VISIBLE));
 
 	}
@@ -494,11 +494,11 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		radarPage.selectCityByName();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
+		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);Sleeper.sleep(2);
 		satellitePage.clickOnToolTip();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		String actualTooltipColor = satellitePage.toolTipActive();
 		Assert.assertEquals(actualTooltipColor, EXPECTED_TOOL_TIP_COLOR);
 
@@ -512,11 +512,11 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
+		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);Sleeper.sleep(2);
 		satellitePage.clickOnToolTip();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		String actualTooltipText = satellitePage.toolTipTextdisplayed();
 		Assert.assertTrue(actualTooltipText.equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT_VISIBLE_SATELLITE_MAP));
 
@@ -530,9 +530,9 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
+		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);Sleeper.sleep(2);
 		satellitePage.clickOnToolTip();
 		Sleeper.sleep(2);
 		satellitePage.clickOnToolTip();
@@ -546,9 +546,9 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		radarPage.selectCityByName();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
-		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
+		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);Sleeper.sleep(2);
+		Sleeper.sleep(5);
 		satellitePage.zoominControls();
 		Sleeper.sleep(5);
 		satellitePage.zoomoutControls();	
@@ -562,11 +562,11 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
+		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);Sleeper.sleep(2);
 		satellitePage.ClickonMapboxattribution();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		String actualLandingpageUrl = satellitePage.getlandingurltitle();
 		Assert.assertEquals(actualLandingpageUrl, MAP_BOX_LANDING_PAGE_URL);
@@ -582,9 +582,9 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
+		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);Sleeper.sleep(2);
 		Assert.assertTrue(satellitePage.legendClouds_with_text_ClearandClouds());
 
 	}
@@ -597,9 +597,9 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
+		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);Sleeper.sleep(2);
 		satellitePage.colorsDisplayedforVisibleSatelliteMap();
 
 	}
@@ -612,9 +612,9 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
+		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);Sleeper.sleep(2);
 
 		String endTime = satellitePage.timeStampdisplayed();
 
@@ -648,10 +648,10 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		WebPageLoaded.isDomInteractive(80000);
-		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
+		Sleeper.sleep(3);
+		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);Sleeper.sleep(2);
 		satellitePage.clikonFullScreen();
 		Assert.assertTrue(satellitePage.validateFullscreenMap());
 
@@ -667,9 +667,9 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
+		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);Sleeper.sleep(2);
 		waitUntilWindowExistsWithTitle(expectedvisiblepageTitle);
 		Assert.assertTrue(satellitePage.getTitleofMap().equalsIgnoreCase(EXPECTED_TITLE_OF_MAP_WATERVAPOR));
 
@@ -683,11 +683,11 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
+		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);Sleeper.sleep(2);
 		satellitePage.clickOnToolTip();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		String actualTooltipColor = satellitePage.toolTipActive();
 		Assert.assertEquals(actualTooltipColor, EXPECTED_TOOL_TIP_COLOR);
 
@@ -701,11 +701,11 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
+		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);Sleeper.sleep(2);
 		satellitePage.clickOnToolTip();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		String actualTooltipText = satellitePage.toolTipTextdisplayed();
 		Assert.assertTrue(actualTooltipText.equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT_WATERVAPOR_SATELLITE_MAP));
 
@@ -721,9 +721,9 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		satellitePage.clickonSatelliteTab();
 		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
+		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);Sleeper.sleep(2);
 		satellitePage.clickOnToolTip();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.clickOnToolTip();
 		Sleeper.sleep(2);
 	}
@@ -736,10 +736,10 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.clickonSatelliteTab();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
-		Sleeper.sleep(3);
+		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);Sleeper.sleep(2);
+		Sleeper.sleep(5);
 		satellitePage.zoominControls();
 		Sleeper.sleep(5);
 		satellitePage.zoomoutControls();
@@ -756,11 +756,11 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.navigateToSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
+		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);Sleeper.sleep(2);
 		satellitePage.ClickonMapboxattribution();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		String actualLandingpageUrl = satellitePage.getlandingurltitle();
 		Assert.assertEquals(actualLandingpageUrl, MAP_BOX_LANDING_PAGE_URL);
@@ -776,9 +776,10 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.navigateToSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
+		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);Sleeper.sleep(2);
+		Sleeper.sleep(2);
 		Assert.assertTrue(satellitePage.legendWaterVapor_with_text_DryandMoist());
 
 	}
@@ -792,9 +793,10 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.navigateToSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
+		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);Sleeper.sleep(2);
+		Sleeper.sleep(2);
 		satellitePage.colorsDisplayedforLegendWaterVapor();
 	}
 
@@ -806,9 +808,9 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.navigateToSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
-		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
+		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);Sleeper.sleep(2);
 
 		String endTime = satellitePage.timeStampdisplayed();
 
@@ -844,11 +846,12 @@ public class Test_CitySatellitePage extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		satellitePage.navigateToSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.clikonFullScreen();
+		Sleeper.sleep(2);
 		Assert.assertTrue(satellitePage.validateFullscreenMap());
 
 	}

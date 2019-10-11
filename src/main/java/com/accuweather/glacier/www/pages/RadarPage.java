@@ -2,8 +2,6 @@ package com.accuweather.glacier.www.pages;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -155,44 +153,37 @@ public class RadarPage extends BasePage {
 	}
 
 	/**
-	 * @author Sandhya Rani 
-	 * Method to Validated Secondary Navigation menus
-	 *         Displayed with following TAbs(Radar,Satellite,Severe,Forecast)
-	 *         
+	 * Method to Validate Secondary navigation menus displayed on Radar page
+	 * @author sandhya.narayanarao
 	 * 
 	 **/
-	public boolean isSecondarymenuDisplayed(String link) {
-		if (link.equalsIgnoreCase("Radar")) {
-			WebPageLoaded.isDomInteractive();
-			WebElement radarTab = getDriver().findElement(bysecondarymenuRadar);
-			radarTab.syncVisible(6000);
-			return radarTab.isDisplayed();
-		}
+	
+	public boolean validateSecondaryMenusDisplayed() {
+		// Secondary menus has Radar Tab Displayed
+		
+		WebElement radarTab = getDriver().findElement(bysecondarymenuRadar);
+		radarTab.syncVisible(60);
 
-		if (link.equalsIgnoreCase("Satellite")) {
-			WebPageLoaded.isDomInteractive();
-			WebElement satelliteTab = getDriver().findElement(bysecondarymenuSatellite);
-			satelliteTab.syncVisible(6000);
-			return satelliteTab.isDisplayed();
-		}
+		// Secondary menus has Satellite Tab Displayed
+		WebElement satelliteTab = getDriver().findElement(bysecondarymenuSatellite);
+		satelliteTab.syncVisible(60);
 
-		if (link.equalsIgnoreCase("SEVERE")) {
-			WebPageLoaded.isDomInteractive();
-			WebElement severeTab = getDriver().findElement(bysecondarymenuSevere);
-			severeTab.syncVisible(6000);
-			return severeTab.isDisplayed();
+		
+		// Secondary menus has Severe Tab Displayed
+		WebElement severeTab = getDriver().findElement(bysecondarymenuSevere);
+		severeTab.syncVisible(60);
+		
+		// Secondary menus has Forecast Tab Displayed
+		 WebElement forecastTab = getDriver().findElement(bysecondarymenuForecast);
+		 forecastTab.syncVisible(60);
 
-		}
-		if (link.equalsIgnoreCase("FORECAST")) {
-			WebPageLoaded.isDomInteractive();
-			WebElement forecastTab = getDriver().findElement(bysecondarymenuForecast);
-			forecastTab.syncVisible(6000);
-			return forecastTab.isDisplayed();
-		}
-
-		return false;
+		return radarTab.isDisplayed() && satelliteTab.isDisplayed() && severeTab.isDisplayed()
+				&& forecastTab.isDisplayed();
 	}
 
+	
+	
+	
 	/**
 	 * @author Sandhya Rani 
 	 * Method to Validated Radar Tab Highlighted by Default in orange color at the border top
@@ -309,7 +300,7 @@ public class RadarPage extends BasePage {
 
 	public void ClickonMapboxattribution() {
 		WebElement mapboxattribution = getDriver().findElement(byMapboxattribution);
-		mapboxattribution.syncVisible(9000);
+		mapboxattribution.syncVisible(60);
 		mapboxattribution.jsClick();
 	}
 
@@ -469,15 +460,18 @@ public class RadarPage extends BasePage {
 	 * 
 	 **/
 
-	public boolean legendRainTextLightisDisplayed() {
-		return getDriver().findElement(byRainlegendtextLight).isDisplayed();
+	public boolean RainlegendtextLightandSevereDisplayed() {
 
+		WebElement RainlegendtextLight = getDriver().findElement(byRainlegendtextLight);
+		RainlegendtextLight.syncVisible(30);
+
+		WebElement RainlegendtextSevere = getDriver().findElement(byRainlegendtextSevere);
+		RainlegendtextSevere.syncVisible(30);
+
+		return RainlegendtextLight.isDisplayed() && RainlegendtextSevere.isDisplayed();
 	}
 
-	public boolean legenRainTextSevereisDisplayed() {
-		return getDriver().findElement(byRainlegendtextSevere).isDisplayed();
-
-	}
+	
 
 	/**
 	 * @author Sandhya Rani
@@ -485,42 +479,57 @@ public class RadarPage extends BasePage {
 	 *        
 	 * 
 	 **/
-	public boolean legendSnowDisplayedwithTextLight() {
-		return getDriver().findElement(bySnowlegendtextLight).isDisplayed();
-	}
+	
+	public boolean legendSnowDisplayedwithTextLightandSevere() {
 
-	public boolean legendSnowDisplayedwithTextSevere() {
-		return getDriver().findElement(bySnowlegendtextSevere).isDisplayed();
-	}
+		WebElement SnowlegendtextLight = getDriver().findElement(bySnowlegendtextLight);
+		SnowlegendtextLight.syncVisible(30);
 
+		WebElement SnowlegendtextSevere = getDriver().findElement(bySnowlegendtextSevere);
+		SnowlegendtextSevere.syncVisible(30);
+
+		return SnowlegendtextLight.isDisplayed() && SnowlegendtextSevere.isDisplayed();
+	}
+	
+	
 	/**
 	 * @author Sandhya Rani 
 	 * Method to validate Legend Ice Displayed with Text Light and Severe
 	 *         
 	 *  
 	 **/
+	public boolean legendIceDisplayedwithTextLightandSevere() {
 
-	public boolean legendICEDisplayedwithTextLight() {
-		return getDriver().findElement(byIceLegendTextLight).isDisplayed();
+		WebElement IceLegendTextLight = getDriver().findElement(byIceLegendTextLight);
+		IceLegendTextLight.syncVisible(30);
+
+		WebElement IceLegendTextSevere = getDriver().findElement(byIceLegendTextSevere);
+		IceLegendTextSevere.syncVisible(30);
+
+		return IceLegendTextLight.isDisplayed() && IceLegendTextSevere.isDisplayed();
 	}
+	
 
-	public boolean legendICEDisplayedwithTextSevere() {
-		return getDriver().findElement(byIceLegendTextSevere).isDisplayed();
-	}
-
+	
 	/**
 	 * @author Sandhya Rani 
 	 * Method to validate Legend Mix Displayed with Text Light and Severe
 	 *
 	 * 
 	 **/
-	public boolean legendMixisplayedwithTextLight() {
-		return getDriver().findElement(byMixLegendTextLight).isDisplayed();
+	public boolean legendMixDisplayedwithTextLightandSevere() {
+
+		WebElement MixLegendTextLight = getDriver().findElement(byMixLegendTextLight);
+		MixLegendTextLight.syncVisible(30);
+
+		WebElement MixLegendTextSevere = getDriver().findElement(byMixLegendTextSevere);
+		MixLegendTextSevere.syncVisible(30);
+
+		return MixLegendTextLight.isDisplayed() && MixLegendTextSevere.isDisplayed();
 	}
 
-	public boolean legendMixDisplayedwithTextSevere() {
-		return getDriver().findElement(byMixLegendTextSevere).isDisplayed();
-	}
+	
+
 
 	/**
 	 * @author Sandhya Rani 

@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.RadarPage;
-import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.utils.Sleeper;
 
 public class Test_RegionalRadarPage extends AccuWeatherBaseTest 
@@ -18,11 +17,6 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 	String citySearchedByName = "Austin";
 	String expectedHomePageTitle = "Weather Forecast Search - Find Your Location - AccuWeather.com";
 	String expectedRegionalWeatherRadarpage="https://qualityassurance.accuweather.com/en/us/texas/weather-radar";
-
-	private static final String RADAR_TAB="Radar";  
-	private static final String SATELLITE_TAB="Satellite";  
-	private static final String SEVERE_TAB="Severe";  
-	private static final String FORECAST_TAB="Forecast"; 
 
 	private static final String LEGEND_RAIN="Rain";
 	private static final String LEGEND_SNOW="Snow";
@@ -52,10 +46,11 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		testStart("Validate Regional Radar page is loaded successfully");
 		radarPage.searchCityByName(citySearchedByName);    
 		radarPage.selectCityByName();
-		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
+		waitUntilElementIsDisplayedOrClickable();
 		Sleeper.sleep(3);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
+		Sleeper.sleep(8);
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedRegionalWeatherRadarpage);		
 	}
@@ -71,70 +66,27 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
-		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
+		Sleeper.sleep(5);
+		waitUntilElementIsDisplayedOrClickable();
 		Assert.assertTrue(radarPage.Secondarynavigationmenusdisplayed());			
 	}
 
 	@Test(priority=3,enabled = true)
-	public void RW_TC107_a_Validate_Secondary_Navigation_menus_for_Radar_page_has_Radar_tab_Displayed()
+	public void RW_TC107_a_Validate_Secondary_Navigation_menus_Radar_Displayed_for_RegionalRadarpage()
 	{
-		testStart("Validate Secondary Navigation menus displayed for Radar Page has Radar tab ");
+		testStart("Validate Secondary Navigation menus displayed for Regional  Page");
 		radarPage.searchCityByName(citySearchedByName);    
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
-		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
-		Sleeper.sleep(3);
-		Assert.assertTrue(radarPage.isSecondarymenuDisplayed(RADAR_TAB));			
+		Sleeper.sleep(5);
+		Assert.assertTrue(radarPage.validateSecondaryMenusDisplayed());		
 	}
 
-	@Test(priority=4,enabled = true)
-	public void RW_TC107_b_Validate_Secondary_Navigation_menus_for_Radar_page_has_Satellite_tab_Displayed()
-	{
-		testStart("Validate Secondary Navigation menus displayed for Radar Page has Satellite tab ");
-		radarPage.searchCityByName(citySearchedByName);    
-		radarPage.selectCityByName();
-		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
-		Sleeper.sleep(3);
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		radarPage.mouseHoverOnRadarAndMaps();
-		radarPage.navigateToRadar();
-		Sleeper.sleep(3);
-		Assert.assertTrue(radarPage.isSecondarymenuDisplayed(SATELLITE_TAB));			
-	}
-
-	@Test(priority=5,enabled = true)
-	public void RW_TC107_c_Validate_Secondary_Navigation_menus_for_Radar_page_has_Severe_tab_Displayed()
-	{
-		testStart("Validate Secondary Navigation menus displayed for Radar Page has Severe tab");
-		radarPage.searchCityByName(citySearchedByName);    
-		radarPage.selectCityByName();
-		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
-		Sleeper.sleep(3);
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		radarPage.mouseHoverOnRadarAndMaps();
-		radarPage.navigateToRadar();
-		Sleeper.sleep(3);
-		Assert.assertTrue(radarPage.isSecondarymenuDisplayed(SEVERE_TAB));			
-	}
-
-	@Test(priority=6,enabled = true)
-	public void RW_TC107_d_Validate_Secondary_Navigation_menus_for_Radar_page_has_Forecast_tab_Displayed()
-	{
-		testStart("Validate Secondary Navigation menus displayed for Radar Page has Forecast tab");
-		radarPage.searchCityByName(citySearchedByName);    
-		radarPage.selectCityByName();
-		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
-		Sleeper.sleep(3);
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		radarPage.mouseHoverOnRadarAndMaps();
-		radarPage.navigateToRadar();
-		Sleeper.sleep(3);
-		Assert.assertTrue(radarPage.isSecondarymenuDisplayed(FORECAST_TAB));			
-	}
-	@Test(priority=7,enabled = true)
+	@Test(priority=4
+			,enabled = true)
 	public void RW_TC107_e__Validate_Radar_Tab_Highlighted_byDefault_on_Regional_Radar_Page()
 	{
 		testStart("Validate Radar TAb from Secondary Navigation menus is Highlighted on Radar Page");
@@ -149,6 +101,7 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		String actualRadarTabcolour= radarPage.RadartabHighlightedinOrange();
 		Assert.assertEquals(actualRadarTabcolour, EXPECTED_RADARTAB_HIGHLIGHTED);		
 	}
+
 
 	@Test(priority=8,enabled = true)
 	public void RW_TC108_Validate_Title_of_Map_on_Regional_Radar_Page()
@@ -165,20 +118,7 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		Assert.assertTrue(radarPage.titleOfRadarMap().equalsIgnoreCase(EXPECTED_MAP_TITLE));
 	}
 
-	@Test(priority=9,enabled = true)
-	public void RW_TC109_Validate_ToolTip_Displayed_of_Regional_Radar_Page()
-	{
-		testStart("Navigate to Regional Radar page and Validate Tooltip displayed on the Map ");
-		radarPage.searchCityByName(citySearchedByName);    
-		radarPage.selectCityByName();
-		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
-		Sleeper.sleep(3);
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		radarPage.mouseHoverOnRadarAndMaps();
-		radarPage.navigateToRadar();
-		Sleeper.sleep(3);
-		Assert.assertTrue(radarPage.tooltipDisplayedonNationalRadarpage());
-	}
+
 
 	@Test(priority=10,enabled = true)
 	public void RW_TC109_a_Validate_Tool_Highlighted_inOranage_whenClicked()
@@ -230,23 +170,9 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
 	}
 
-	@Test(priority=13,enabled = true) 
-	public void RW_TC110_Validate_Zoom_Control_Buttons_displayed_onTop_leftcorner_of_Radar_Map() 
-	{ 
-		testStart("Validate Zoom Control Buttons displayed on Top leftcorner of Regional Radar Map"); 
-		radarPage.searchCityByName(citySearchedByName);    
-		radarPage.selectCityByName(); 
-		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3); 
-		Sleeper.sleep(3);
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		radarPage.mouseHoverOnRadarAndMaps(); 
-		radarPage.navigateToRadar(); 
-		Sleeper.sleep(3);
-		Assert.assertTrue(radarPage.zoomControlsDisplayedonTopLeftCorner());
-	} 
 
 	@Test(priority=14,enabled = true) 
-	public void RW_TC110_a_Validate_Zoomin_Button_onRegional_RadarMap() 
+	public void RW_TC110_a_Validate_Zoom_Button_functioning_onRegional_RadarMap() 
 	{ 
 		testStart("Validate Zoom in Control buttons working as expeceted on Radar Map"); 
 		radarPage.searchCityByName(citySearchedByName);    
@@ -256,42 +182,12 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
 		radarPage.mouseHoverOnRadarAndMaps(); 
 		radarPage.navigateToRadar(); 
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		radarPage.zoominControls();
-
-	} 
-
-	@Test(priority=15,enabled = true) 
-	public void RW_TC110_b_Validate_Zoomout_Button_onRegional_RadarMap() 
-	{ 
-		testStart("Validate Zoom out Control buttons working as expeceted on Radar Map"); 
-		radarPage.searchCityByName(citySearchedByName);    
-		radarPage.selectCityByName(); 
-		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3); 
-		Sleeper.sleep(3);
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle); 
-		radarPage.mouseHoverOnRadarAndMaps(); 
-		radarPage.navigateToRadar(); 
 		Sleeper.sleep(3);
 		radarPage.zoomoutControls();
-
 	} 
 
-	@Test(priority=16,enabled = true)
-	public void RW_TC111_Validate_Mapbox_attribution_displayed_BottomLeft_RadarMap()
-	{
-		testStart("Navigate to Regional Radar page and Validate Mapbox attribution displayed on Radar Map");
-		radarPage.searchCityByName(citySearchedByName);    
-		radarPage.selectCityByName();
-		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
-		Sleeper.sleep(3);
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		radarPage.mouseHoverOnRadarAndMaps();
-		radarPage.navigateToRadar();
-		Sleeper.sleep(3);
-		Assert.assertTrue(radarPage.MapboxattributionDisplayedBottomLeft());
-
-	}
 
 	@Test(priority=17,enabled = true)
 	public void RW_TC111_a_Click_onMapbox_attribution_displayed_BottomLeft_onNationalRadarpage()
@@ -325,7 +221,7 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		Assert.assertEquals(actualFullScreenbuttonHeight, EXPECTED_FULLSCREEN_BUTTONHEIGHT);		
 	}
 
-	@Test(priority=19,enabled = true)
+	@Test(priority=19,enabled = false)
 	public void RW_TC112_a_Validate_Timeline_controls_onFull_Screen_RadarMap() 
 	{
 		testStart("Navigate to Regional Radar page and validate timeline controls displayed on fullscreen Radar Map ");
@@ -350,7 +246,7 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		radarPage.ClikonFullScreenButton();
 		Assert.assertTrue(radarPage.legendsdisplayedonFullscreenRadarMap());
 	}
@@ -455,7 +351,7 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(5);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
 		Sleeper.sleep(3);
@@ -544,43 +440,29 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(5);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
-		WebPageLoaded.isDomInteractive(8000);
+		Sleeper.sleep(5);
 		Assert.assertTrue(radarPage.isLegendDisplayedbelowRadarMap(LEGEND_RAIN));	
 	}
 
 	@Test(priority=31,enabled = true)
-	public void RW_TC_117_a_Validate_Rain_Legend_displayed_with_Text_Light() 
+	public void RW_TC_117_a_Validate_Rain_Legend_displayed_with_Text_Light_andSevere() 
 	{
-		testStart("Validate Legend Rain displayed with Text Light");
+		testStart("Validate Legend Rain displayed with Text Light and Severe");
 		radarPage.searchCityByName(citySearchedByName);    
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(5);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
-		WebPageLoaded.isDomInteractive(8000);
-		Assert.assertTrue(radarPage.legendRainTextLightisDisplayed());
+		Sleeper.sleep(5);
+		Assert.assertTrue(radarPage.RainlegendtextLightandSevereDisplayed());
 	}
 
-	@Test(priority=32,enabled = true)
-	public void RW_TC_117_b_Validate_Rain_Legends_displayed_with_Text_Severe() 
-	{
-		testStart("Validate Legend Rain displayed with Text Severe");
-		radarPage.searchCityByName(citySearchedByName);    
-		radarPage.selectCityByName();
-		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
-		radarPage.mouseHoverOnRadarAndMaps();
-		radarPage.navigateToRadar();
-		WebPageLoaded.isDomInteractive(8000);
-		radarPage.legenRainTextSevereisDisplayed();
-		Assert.assertTrue(radarPage.legenRainTextSevereisDisplayed());
-	}
+
 
 	@Test(priority=33,enabled = true)
 	public void RW_TC_117_c_Validate_Legend_Rain_displayed_with_Following_Colors() 
@@ -590,7 +472,7 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(5);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
 		radarPage.legendRaincoloursdisplayed();
@@ -604,43 +486,27 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(5);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
-		WebPageLoaded.isDomInteractive(8000);
+		Sleeper.sleep(4);
 		Assert.assertTrue(radarPage.isLegendDisplayedbelowRadarMap(LEGEND_SNOW));
 
 	}
 
 	@Test(priority=35,enabled = true)
-	public void RW_TC_118_a_Validate_Snow_Legend_displayed_with_Text_Light() 
+	public void RW_TC_118_a_Validate_Snow_Legend_displayed_with_Text_Light_andSevere() 
 	{
-		testStart("Validate Legend Snow displayed with Text Light");
+		testStart("Validate Legend Snow displayed with Text Light and Severe");
 		radarPage.searchCityByName(citySearchedByName);    
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(5);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
-		WebPageLoaded.isDomInteractive(8000);
-		Assert.assertTrue(radarPage.legendSnowDisplayedwithTextLight());	
-	}
-
-	@Test(priority=36,enabled = true)
-	public void RW_TC_118_b_Validate_Legend_Snow_displayed_with_Text_Severe() 
-	{
-		testStart("Validate Legend Snow displayed with Text Severe");
-		radarPage.searchCityByName(citySearchedByName);    
-		radarPage.selectCityByName();
-		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
-		radarPage.mouseHoverOnRadarAndMaps();
-		radarPage.navigateToRadar();
-		WebPageLoaded.isDomInteractive(8000);
-		radarPage.legendSnowDisplayedwithTextSevere();
-		Assert.assertTrue(radarPage.legendSnowDisplayedwithTextSevere());	
+		Sleeper.sleep(4);
+		Assert.assertTrue(radarPage.legendSnowDisplayedwithTextLightandSevere());	
 	}
 
 
@@ -652,7 +518,7 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(5);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
 		radarPage.legendSnowcoloursdisplayed();
@@ -668,42 +534,29 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(5);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
-		WebPageLoaded.isDomInteractive(8000);
+		Sleeper.sleep(4);
 		Assert.assertTrue(radarPage.isLegendDisplayedbelowRadarMap(LEGEND_ICE));
 	}
 
 	@Test(priority=39,enabled = true)
-	public void RW_TC_119_a_Validate_Legend_ICE_displayed_with_Text_Light() 
+	public void RW_TC_119_a_Validate_Legend_ICE_displayed_with_Text_Light_andSevere() 
 	{
-		testStart("Validate Legend Ice displayed with Text Light");
+		testStart("Validate Legend Ice displayed with Text Light and Severe");
 		radarPage.searchCityByName(citySearchedByName);    
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(5);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
-		WebPageLoaded.isDomInteractive(8000);
-		Assert.assertTrue(radarPage.legendICEDisplayedwithTextLight());	
+		Sleeper.sleep(4);
+		Assert.assertTrue(radarPage.legendIceDisplayedwithTextLightandSevere());
 	}
 
-	@Test(priority=40,enabled = true)
-	public void RW_TC_119_b_Validate_Legend_ICE_displayed_with_Text_Severe() 
-	{
-		testStart("Validate Legend ICE displayed with Text Severe");
-		radarPage.searchCityByName(citySearchedByName);    
-		radarPage.selectCityByName();
-		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
-		radarPage.mouseHoverOnRadarAndMaps();
-		radarPage.navigateToRadar();
-		WebPageLoaded.isDomInteractive(8000);
-		Assert.assertTrue(radarPage.legendICEDisplayedwithTextSevere());	
-	}
+
 
 	@Test(priority=41,enabled = true)
 	public void RW_TC_119_c_Validate_Legend_ICE_displayed_with_Following_Colors() 
@@ -713,7 +566,7 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(5);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
 		radarPage.legendIcecoloursdisplayed();
@@ -728,43 +581,29 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(5);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
-		WebPageLoaded.isDomInteractive(8000);
+		Sleeper.sleep(4);
 		Assert.assertTrue(radarPage.isLegendDisplayedbelowRadarMap(LEGEND_MIX));
 
 	}
 
 	@Test(priority=43,enabled = true)
-	public void RW_TC_120_a_Validate_Legend_Mix_displayed_with_Text_Light_() 
+	public void RW_TC_120_a_Validate_Legend_Mix_displayed_with_Text_Light_andSevee() 
 	{
 		testStart("Validate Legend Mix displayed with Text Light");
 		radarPage.searchCityByName(citySearchedByName);    
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(5);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
-		WebPageLoaded.isDomInteractive(8000);
-		Assert.assertTrue(radarPage.legendMixisplayedwithTextLight());	
+		Sleeper.sleep(4);
+		Assert.assertTrue(radarPage.legendMixDisplayedwithTextLightandSevere());	
 	}
 
-	@Test(priority=44,enabled = true)
-	public void RW_TC_120_b_Validate_Legend_Mix_displayed_with_Text_Severe() 
-	{
-		testStart("Validate Legend Mix displayed with Text Severe");
-		radarPage.searchCityByName(citySearchedByName);    
-		radarPage.selectCityByName();
-		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
-		radarPage.mouseHoverOnRadarAndMaps();
-		radarPage.navigateToRadar();
-		WebPageLoaded.isDomInteractive(8000);
-		Assert.assertTrue(radarPage.legendMixDisplayedwithTextSevere());	
-	}
 
 	@Test(priority=45,enabled = true)
 	public void RW_TC_120_c_Validate_Legend_Mix_displayed_with_Following_Colors() 
@@ -774,7 +613,7 @@ public class Test_RegionalRadarPage extends AccuWeatherBaseTest
 		radarPage.selectCityByName();
 		waitUntilElementIsDisplayedOrClickable();Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
+		Sleeper.sleep(5);
 		radarPage.mouseHoverOnRadarAndMaps();
 		radarPage.navigateToRadar();
 		radarPage.legendMixcoloursdisplayed();
