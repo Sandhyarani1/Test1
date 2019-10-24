@@ -34,10 +34,6 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validate footer breadcrumbs displayed on Homepage");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
-		WebPageLoaded.isDomInteractive(80000);
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_CRUMB));
 	}
 
@@ -46,9 +42,6 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validate footer breadcrumbs displayed for World");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
-		WebPageLoaded.isDomInteractive(80000);
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(BREAD_CRUMB_WORLD));
 	}
 
@@ -57,9 +50,6 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validate footer breadcrumbs displayed for Region");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
-		WebPageLoaded.isDomInteractive(80000);
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_REGION));
 	}
 
@@ -68,10 +58,6 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validate footer breadcrumbs displayed for Country");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
-		WebPageLoaded.isDomInteractive(80000);
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_COUNTRY));
 	}
 
@@ -80,10 +66,6 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validate footer breadcrumbs displayed for State");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
-		WebPageLoaded.isDomInteractive(80000);
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_STATE));
 	}
 
@@ -92,10 +74,6 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validate footer breadcrumbs displayed for City");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
-		WebPageLoaded.isDomInteractive(80000);
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_CITY));
 	}
 
@@ -104,14 +82,9 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validating user redirected url when clicked on World ");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.isclickonFooterBreadcrumb(BREAD_CRUMB_WORLD);
 		System.out.println("clicked on World breadcrump");
-		WebPageLoaded.isDomInteractive(800000);
-		WebPageLoaded.isDomComplete(800000);
-		System.out.println("Landing page URL is >>>" + getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedWorldForecastTitle);
 	}
 
@@ -120,14 +93,8 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validating user redirected url when clicked on region");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_REGION);
-		waitUntilElementIsDisplayedOrClickable();
 		breadcrumbs.scrolldownpage();
-		WebPageLoaded.isDomInteractive(80000);
-		System.out.println("Landing page URL is >>>" + getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedRegionForecastTitle);
 	}
 
@@ -136,14 +103,8 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validating user redirected url when clicked on Country");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_COUNTRY);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.scrolldownpage();
-		WebPageLoaded.isDomInteractive(80000);
-		System.out.println("Landing page URL is >>>" + getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedCountryForecastTitle);
 	}
 
@@ -152,14 +113,8 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validating user redirected url when clicked on State");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_STATE);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.scrolldownpage();
-		WebPageLoaded.isDomInteractive(80000);
-		System.out.println("Landing page URL is >>>" + getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedStateForecastTitle);
 	}
 
@@ -168,14 +123,8 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validating user redirected url when clicked on City");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_CITY);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.scrolldownpage();
-		WebPageLoaded.isDomInteractive(80000);
-		System.out.println("Landing page URL is >>>" + getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedCityForecastTitle);
 	}
 }

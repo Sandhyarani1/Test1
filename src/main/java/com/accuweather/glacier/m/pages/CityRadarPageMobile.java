@@ -78,14 +78,46 @@ public class CityRadarPageMobile extends MobileBasePage {
 	private By byBreadCrumbMenu = By.cssSelector("div.icon-hamburger");
 	private By byBreadCrumbMenuRadarAndMaps = By
 			.cssSelector(".accordion-item:nth-child(1) .accordion-item-header-content");
+	private By byBreadCrumbMenuMaps = By.cssSelector(".accordion-item:nth-child(1) .accordion-item-header-content");
+
+	private By byBreadCrumbTemperatureToggleMenu = By.cssSelector(".bar");
+
 	private By byBreadCrumbMenuRadar = By.cssSelector(".accordion-item:nth-child(1) a:nth-child(1)");
+	private By byBreadCrumbMenuSevere = By.cssSelector(".accordion-item:nth-child(1) a:nth-child(2)");
+	private By byBreadCrumbMenuSatellite = By.cssSelector(".accordion-item:nth-child(1) a:nth-child(1)");
 
 	private By byPastButton = By.cssSelector(".toggle-button");
+
+	private By bySevereTab = By
+			.cssSelector("body > div > div.page-subnav > div > div > div.subnav-items > a.subnav-item.active");
+
+	public Boolean clickbyBreadCrumbMenuSatellite() {
+		WebPageLoaded.isDomInteractive();
+		getDriver().findElement(byBreadCrumbMenuSatellite).scrollIntoView();
+		getDriver().findElement(byBreadCrumbMenuSatellite).click();
+		return true;
+	}
+
+	public Boolean clickBreadCrumbMenuMaps() {
+		WebPageLoaded.isDomInteractive();
+		getDriver().findElement(byBreadCrumbMenuMaps).scrollIntoView();
+		getDriver().findElement(byBreadCrumbMenuMaps).click();
+		return true;
+	}
+
+	public Boolean clickBreadcrumbTemperatureToggleMenu() {
+		WebPageLoaded.isDomInteractive();
+		getDriver().findElement(byBreadCrumbTemperatureToggleMenu).scrollIntoView();
+		getDriver().findElement(byBreadCrumbTemperatureToggleMenu).click();
+		Sleeper.sleep(4);
+		return true;
+	}
 
 	public Boolean clickBreadCrumbMenu() {
 		WebPageLoaded.isDomInteractive();
 		getDriver().findElement(byBreadCrumbMenu).scrollIntoView();
 		getDriver().findElement(byBreadCrumbMenu).click();
+		Sleeper.sleep(4);
 		return true;
 	}
 
@@ -100,8 +132,17 @@ public class CityRadarPageMobile extends MobileBasePage {
 		WebPageLoaded.isDomInteractive();
 		getDriver().findElement(byBreadCrumbMenuRadar).scrollIntoView();
 		getDriver().findElement(byBreadCrumbMenuRadar).click();
-		getDriver().findElement(byRadarTab).syncVisible();
 		return true;
+	}
+
+	public Boolean clickbyBreadCrumbMenuSevere() {
+		WebPageLoaded.isDomInteractive();
+		getDriver().findElement(byBreadCrumbMenuSevere).scrollIntoView();
+		getDriver().findElement(byBreadCrumbMenuSevere).click();
+		if (getDriver().findElements(bySevereTab).size() > 0)
+			return true;
+		else
+			return false;
 	}
 
 	/**
@@ -219,7 +260,6 @@ public class CityRadarPageMobile extends MobileBasePage {
 		WebPageLoaded.isDomInteractive();
 		WebElement radarTab = getDriver().findElement(byRadarTab);
 		radarTab.syncVisible();
-		// past cta
 		getDriver().findElement(byPastButton).scrollIntoView();
 		WebElement ctaPast = getDriver().findElement(byPastButton);
 		ctaPast.jsClick();

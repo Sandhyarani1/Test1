@@ -45,7 +45,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	public void RW_T101_VerifyPageTitleTermsOfUseText() {
 		testStart("Is Page tilte : Terms of Use - AccuWeather.com");
 		legalFooterMob.clicktermsOfUseText();
-		Assert.assertEquals(legalFooterMob.getTitlePageTermsOfUse(), "Terms of Use - AccuWeather.com",
+		Assert.assertEquals(legalFooterMob.getTitlePageTermsOfUse(), "Terms of Use | AccuWeather",
 				"Page title incorrect");
 	}
 
@@ -95,7 +95,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	public void RW_T102_VerifyPageTitlePrivacyAndPolicy() {
 		testStart("Is Page tilte : Privacy Statement & Policy - AccuWeather.com");
 		legalFooterMob.clickPrivacyAndPolicyFooterLink();
-		Assert.assertEquals(legalFooterMob.getTitlePrivacyAndPolicy(), "Privacy Statement & Policy - AccuWeather.com",
+		Assert.assertEquals(legalFooterMob.getTitlePrivacyAndPolicy(), "Privacy Statement & Policy | AccuWeather",
 				"Page title incorrect");
 	}
 
@@ -153,7 +153,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	public void RW_T103_VerifyPageTitleCookiePolicy() {
 		testStart("Is Page tilte : Privacy Statement & Policy - AccuWeather.com");
 		legalFooterMob.clickCookiePolicyFooterLink();
-		Assert.assertEquals(legalFooterMob.getTitleCookiePolicy(), "Cookie Policy - AccuWeather.com",
+		Assert.assertEquals(legalFooterMob.getTitleCookiePolicy(), "Cookie Policy | AccuWeather",
 				"Page title incorrect");
 
 	}
@@ -213,7 +213,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	public void RW_T104_VerifyPageTitleTagDisclosure() {
 		testStart("Is Page tilte : Privacy Statement & Policy - AccuWeather.com");
 		legalFooterMob.clickTagDisclosureFooterLink();
-		Assert.assertEquals(legalFooterMob.getTitleTagDisclosure(), "TAG Disclosure - AccuWeather.com",
+		Assert.assertEquals(legalFooterMob.getTitleTagDisclosure(), "TAG Disclosure | AccuWeather",
 				"Page title incorrect");
 	}
 

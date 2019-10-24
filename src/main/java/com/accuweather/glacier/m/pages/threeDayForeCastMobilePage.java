@@ -3,11 +3,10 @@ package com.accuweather.glacier.m.pages;
 import org.openqa.selenium.By;
 
 import com.accuweather.glacier.m.AccuWeatherMobileBaseTest;
-import com.accuweather.glacier.m.MobileBasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
 
-public class threeDayForeCastMobilePage extends MobileBasePage {
+public class threeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 
 	private By bynowTab = By.cssSelector("div.subnav-items > a.subnav-item.active");
 	private By byTodayWeatherCard = By.cssSelector(
@@ -48,13 +47,15 @@ public class threeDayForeCastMobilePage extends MobileBasePage {
 	private By byTodayWeatherCardLink = By.cssSelector(
 			"div.sliding-panel.three-day-panel.three-day-forecast.full-mobile-width > div > div.scroll > a:nth-child(2)");
 	private By byTonightWeatherCardLink = By.cssSelector(
-			"div.sliding-panel.three-day-panel.three-day-forecast.full-mobile-width > div > div.scroll > a:nth-child(3)");
+			"div.template-root:nth-child(1) div.two-column-page-content div.page-column-1 div.content-module div.sliding-panel.three-day-panel.three-day-forecast.full-mobile-width:nth-child(1) div.flipper-panel div.scroll > a.panel.panel-fade-in.card:nth-child(3)");
+	private By byTonightWeatherCardLink1 = By.cssSelector(
+			"div.template-root:nth-child(1) div.two-column-page-content div.page-column-1 div.content-module div.sliding-panel.three-day-panel.three-day-forecast.full-mobile-width:nth-child(1) div.flipper-panel div.scroll > a.panel.panel-fade-in.card:nth-child(2)");
 	private By byTomorrowWeatherCardLink = By.xpath("(//a[@class='panel panel-fade-in card'])[3]");
 
 	private By byTomorrowWeatherCardTitle = By.xpath("//p[contains(text(),'Tomorrow')]");
 	private By byTomorrowWeatherCardDate = By
 			.xpath("(//div[@class='day-panel']/p[@class='module-header sub date'])[3]");
-	private By byTomorrowWeatherCardWeatherIcon = By.cssSelector("(//img[@class='weather-icon icon'])[4]");
+	private By byTomorrowWeatherCardWeatherIcon = By.xpath("(//img[@class='weather-icon icon'])[4]");
 	private By byTomorrowWeatherCardHighTemp = By.cssSelector(
 			"body > div > div:nth-child(4) > div > div.page-column-1 > div > div.sliding-panel.three-day-panel.three-day-forecast.full-mobile-width > div > div.scroll > a:nth-child(4) > div > div.temp > span.high");
 	private By byTomorrowWeatherCardLowTemp = By.cssSelector(
@@ -204,8 +205,7 @@ public class threeDayForeCastMobilePage extends MobileBasePage {
 
 	public boolean isTonghtWeatherCardTitleDisplayed() {
 		WebPageLoaded.isDomInteractive();
-		return getDriver().findElement(byTonightWeatherCardTitle).isDisplayed();
-	}
+		return getDriver().findElements(byTonightWeatherCardTitle).size()>0;	}
 
 	/**
 	 * Method to verify whether tonight Weather card current temperature is
@@ -272,7 +272,7 @@ public class threeDayForeCastMobilePage extends MobileBasePage {
 
 	public boolean isTonightWeatherCardReelFeelTemeratureDisplayed() {
 		WebPageLoaded.isDomInteractive();
-		return getDriver().findElement(byTonightWeatherCardReelFeelTemp).isDisplayed();
+		return getDriver().findElements(byTonightWeatherCardReelFeelTemp).size()>0;
 	}
 
 	/**
@@ -286,7 +286,7 @@ public class threeDayForeCastMobilePage extends MobileBasePage {
 
 	public boolean isTonightWeatherCardReelWeatherDescriptionDisplayed() {
 		WebPageLoaded.isDomInteractive();
-		return getDriver().findElement(byTonightWeatherCardWeatherDescription).isDisplayed();
+		return getDriver().findElements(byTonightWeatherCardWeatherDescription).size()>0;
 	}
 
 	/**
@@ -315,7 +315,7 @@ public class threeDayForeCastMobilePage extends MobileBasePage {
 
 	public String isclickedOnTonightWeatherCard() {
 		WebPageLoaded.isDomInteractive();
-		getDriver().findElement(byTonightWeatherCardLink).click();
+		getDriver().findElement(byTonightWeatherCardLink1).click();
 		WebPageLoaded.isDomInteractive(5000);
 		return getDriver().getCurrentUrl();
 
@@ -375,7 +375,7 @@ public class threeDayForeCastMobilePage extends MobileBasePage {
 
 	public boolean isTomorrowWeatherCardIconDisplayed() {
 		WebPageLoaded.isDomInteractive();
-		return getDriver().findElement(byTomorrowWeatherCardWeatherIcon).isDisplayed();
+		return getDriver().findElements(byTomorrowWeatherCardWeatherIcon).size()>0;
 	}
 
 	/**
@@ -388,7 +388,7 @@ public class threeDayForeCastMobilePage extends MobileBasePage {
 
 	public boolean isTomorrowWeatherCardLowTemeratureDisplayed() {
 		WebPageLoaded.isDomInteractive();
-		return getDriver().findElement(byTomorrowWeatherCardLowTemp).isDisplayed();
+		return getDriver().findElements(byTomorrowWeatherCardLowTemp).size()>0;
 	}
 
 	/**
@@ -401,7 +401,7 @@ public class threeDayForeCastMobilePage extends MobileBasePage {
 
 	public boolean isTomorrowWeatherCardHighTempTemeratureDisplayed() {
 		WebPageLoaded.isDomInteractive();
-		return getDriver().findElement(byTomorrowWeatherCardHighTemp).isDisplayed();
+		return getDriver().findElements(byTomorrowWeatherCardHighTemp).size()>0;
 	}
 
 	/**
@@ -444,7 +444,7 @@ public class threeDayForeCastMobilePage extends MobileBasePage {
 
 	public String isclickedOnThreeDayForcastLandingPageBackwardArrowLink() {
 		WebPageLoaded.isDomInteractive();
-		return getDriver().findElement(byBackWardArrowlinkCityForecastPage).getAttribute("class");
+		return getDriver().findElement(byBackWardArrowlinkCityForecastPage2).getAttribute("class");
 
 	}
 

@@ -360,13 +360,12 @@ public class CityRadarPageMobileAndroid extends MobileBasePage {
 		toolTip.jsClick();
 		WebElement ele = getDriver().findElement(byTooltipActive);
 		String result = (String) DriverManager.getWebDriver().executeJavaScript(
-				"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-header > div > div.tooltip-overlay > div.tooltip-header > div\")).backgroundColor;",
+				"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(4) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-header > div > div.tooltip-overlay > div.tooltip-header > div\")).backgroundColor;",
 				ele);
 		System.out.println("result > > > > " + result);
 		String arrowcolourdisplayed = Color.fromString(result).asHex();
 		return arrowcolourdisplayed;
 	}
-
 	/**
 	 * Method to verify tooltip background color in orange
 	 * 
@@ -379,7 +378,7 @@ public class CityRadarPageMobileAndroid extends MobileBasePage {
 		toolTip.jsClick();
 		WebElement ele = getDriver().findElement(byTooltipHeader);
 		String result = (String) DriverManager.getWebDriver().executeJavaScript(
-				"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-header > div > div.tooltip-overlay > div.tooltip-header > span\")).color;",
+				"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(4) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-header > div > div.tooltip-overlay > div.tooltip-header > span\")).color;",
 				ele);
 		System.out.println("result > > > > " + result);
 		String arrowcolourdisplayed = Color.fromString(result).asHex();
@@ -413,7 +412,7 @@ public class CityRadarPageMobileAndroid extends MobileBasePage {
 		getDriver().findElement(byRadarTabColor).scrollIntoView();
 		WebElement ele = getDriver().findElement(byRadarTabColor);
 		String radarBoarderColor = (String) DriverManager.getWebDriver().executeJavaScript(
-				"return getComputedStyle(document.querySelector(\"body > div > div.page-subnav > div > div > div.subnav-items > a.subnav-item.active\")).borderTop;",
+				"return getComputedStyle(document.querySelector(\"body > div > div.page-subnav > div > div > div.subnav-items > a.subnav-item.active\")).borderTopColor;",
 				ele);
 		System.out.println("result > > > > " + radarBoarderColor);
 		String boarderColor = radarBoarderColor.substring(10);

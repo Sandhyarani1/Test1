@@ -175,7 +175,6 @@ package com.accuweather.glacier.m.pages;
 		getDriver().manage().timeouts().setScriptTimeout(250, TimeUnit.SECONDS);
 		WebElement classattribute = getDriver().findElement(byVideoAutoPlay);
 		getDriver().executeJavaScript("arguments[0].scrollIntoView(true);", classattribute);
-		//getDriver().executeJavaScript("window.scrollBy(0,document.body.scrollHeight || document.documentElement.scrollHeight)", "");
 		WebPageLoaded.isJQueryComplete(); 
 		String classattributes = getDriver().findElement(byVideoAutoPlay).getAttribute("class").substring(0, 35);
 		System.out.println("classattributes classattributes..... "+classattributes);

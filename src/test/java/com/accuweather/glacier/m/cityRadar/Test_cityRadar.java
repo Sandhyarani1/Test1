@@ -178,7 +178,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 			System.err.println(ae.getMessage());
 			Assert.fail();
 		}
-	}
+	} 
 
 	@Test(priority = 14, enabled = true)
 	public void RW_T259_MapboxAttribution_clickOpenStreetMap() {
@@ -198,16 +198,17 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 			System.err.println(ae.getMessage());
 			Assert.fail();
 		}
-	}
+	} 
 
 	@Test(priority = 15, enabled = true)
 	public void RW_T259_MapboxAttribution_clickImproveThisMap() {
 		testStart("Click on the improvethis map and verify the user is navigated to improve this map URL");
-		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		landingPage.clickOnZipcodeSearchIcon();
-		cityRadar.clickBreadCrumbMenu();
-		cityRadar.clickBreadCrumbMenuRadarAndMaps();
-		cityRadar.clickbyBreadCrumbMenuRadar();
+		
+		  landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
+		  landingPage.clickOnZipcodeSearchIcon(); cityRadar.clickBreadCrumbMenu();
+		  cityRadar.clickBreadCrumbMenuRadarAndMaps();
+		  cityRadar.clickbyBreadCrumbMenuRadar();
+		 
 		defaultWindowid = getDriver().getWindowHandle();
 		cityRadar.clickImproveThisMap();
 		cityRadar.switchToPopUpWindow(defaultWindowid);
@@ -218,7 +219,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 			System.err.println(ae.getMessage());
 			Assert.fail();
 		}
-	}
+	} 
 
 	@Test(priority = 16, enabled = true)
 	public void RW_T258_FullScreenButton_ClickFullScreenButton() {
@@ -258,7 +259,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 			System.err.println(ae.getMessage());
 			Assert.fail();
 		}
-	}
+	} 
 
 	@Test(priority = 19, enabled = true)
 	public void RW_T256_ToolTip_verifyTooltipHeaderBackgroundColor() {
@@ -270,12 +271,12 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		cityRadar.clickbyBreadCrumbMenuRadar();
 		String actualColor = cityRadar.verifyTootipHeaderBackgroundColor();
 		try {
-			Assert.assertEquals(expectedColor, actualColor);
+			Assert.assertEquals(actualColor,expectedColor);
 		} catch (AssertionError ae) {
 			System.err.println(ae.getMessage());
 			Assert.fail();
 		}
-	}
+	} 
 
 	@Test(priority = 20, enabled = true)
 	public void RW_T256_ToolTip_verifyTooltipDescription() {
@@ -287,12 +288,12 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		cityRadar.clickbyBreadCrumbMenuRadar();
 		String actualDescription = cityRadar.verifyTooltipDescription();
 		try {
-			Assert.assertEquals(expectedDescription, actualDescription);
+			Assert.assertEquals(actualDescription,"WEATHER RADAR MAP SHOWS THE LOCATION OF PRECIPITATION, ITS TYPE (RAIN, SNOW, AND ICE) AND ITS RECENT MOVEMENT TO HELP YOU PLAN YOUR DAY.");
 		} catch (AssertionError ae) {
 			System.err.println(ae.getMessage());
 			Assert.fail();
 		}
-	}
+	} 
 
 	@Test(priority = 21, enabled = true)
 	public void RW_T256_ToolTip_verifyRadarTabHighlightedColor() {
@@ -321,12 +322,12 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		cityRadar.clickbyBreadCrumbMenuRadar();
 		String actualHeader = cityRadar.getMapHeader();
 		try {
-			Assert.assertEquals("Michigan Weather Radar", actualHeader);
+			Assert.assertEquals(actualHeader,"MICHIGAN WEATHER RADAR");
 		} catch (AssertionError ae) {
 			System.err.println(ae.getMessage());
 			Assert.fail();
 		}
-	}
+	} 
 
 	@Test(priority = 23, enabled = true)
 	public void RW_T256_ToolTip_verifyToolTipClosed() {
@@ -343,7 +344,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 			System.err.println(ae.getMessage());
 			Assert.fail();
 		}
-	}
+	}  
 
 	@Test(priority = 24, enabled = true)
 	public void RW_T253_CityRadarPage_verifyNavigationMenusOnCityForecastPage() {

@@ -3,12 +3,11 @@
 	<suite name="Core-Regression" parallel="methods" thread-count="1">
 		<parameter name="runLocation" value="mobile" />
 		<parameter name="environment" value="qa" />
-		<parameter name="operatingSystem" value="ANDROID_WEB" />
-		
+		<parameter name="operatingSystem" value="IOS_WEB" />
 		<test name="ReRun Failure Tests in Chrome">
-			<parameter name="browserUnderTest" value="Chrome"/>
+			<parameter name="browserUnderTest" value="Internet"/>
 			<packages>
-				<package name="com.accuweather.glacier.m.LandingPage.*" />
+				<package name="com.accuweather.glacier.m.dailyList.*" />
 			</packages>
 		</test>
 	</suite>

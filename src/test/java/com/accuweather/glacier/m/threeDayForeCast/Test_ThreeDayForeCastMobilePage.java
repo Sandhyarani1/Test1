@@ -17,19 +17,18 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	threeDayForeCastMobilePage threeDayForecastMobPage = new threeDayForeCastMobilePage();
 
 	@Test(priority = 1, enabled = true)
-	public void RW_T302_nowTabOnCityForecastPage() {
+	public void TC1_nowTabOnCityForecastPage() {
 		String Expectedactive = "subnav-item active";
 		testStart("Navigate to city forecast page and Verfiy Now Tab highlighted");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
-		// waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
 		Assert.assertEquals(threeDayForecastMobPage.isnowTabHighlighted(), ExpectedactiveMobile,
 				"Now tab is not active ");
 	}
 
 	@Test(priority = 2, enabled = true)
-	public void RW_T302_VerifyTodayWeatherCardsIsDisplayed() {
+	public void TC2_VerifyTodayWeatherCardsIsDisplayed() {
 		testStart("Validate whether current, Today and Tomorrow weather cards are displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -38,7 +37,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 3, enabled = true)
-	public void RW_T302_VerifyTonightWeatherCardsIsDisplayed() {
+	public void TC2_VerifyTonightWeatherCardsIsDisplayed() {
 		testStart("Validate whether current, Today and Tomorrow weather cards are displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -47,7 +46,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 4, enabled = true)
-	public void RW_T302_VerifyTomorrowWeatherCardsIsDisplayed() {
+	public void TC2_VerifyTomorrowWeatherCardsIsDisplayed() {
 		testStart("Validate whether current, Today and Tomorrow weather cards are displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -56,7 +55,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 5, enabled = true)
-	public void RW_T303_VerifyTodayWeatherCardTitleIsDisplayed() {
+	public void TC5_VerifyTodayWeatherCardTitleIsDisplayed() {
 		testStart("Validate whether Today weather card title is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -65,7 +64,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 6, enabled = true)
-	public void RW_T303_VerifyTodayWeatherCardIconIsDisplayed() {
+	public void TC5_VerifyTodayWeatherCardIconIsDisplayed() {
 		testStart("Validate whether Today weather card icon is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -74,7 +73,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 7, enabled = true)
-	public void RW_T303_VerifyTodayWeatherCardTimeStampIsDisplayed() {
+	public void TC5_VerifyTodayWeatherCardTimeStampIsDisplayed() {
 		testStart("Validate whether Today weather card Time Stamp is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -83,7 +82,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 8, enabled = true)
-	public void RW_T303_VerifyTodayWeatherCardCurrentTemperatureIsDisplayed() {
+	public void TC5_VerifyTodayWeatherCardCurrentTemperatureIsDisplayed() {
 		testStart("Validate whether Today weather card current temperature is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -92,7 +91,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 9, enabled = true)
-	public void RW_T303_VerifyTodayWeatherCardReelFeelTemperatureIsDisplayed() {
+	public void TC5_VerifyTodayWeatherCardReelFeelTemperatureIsDisplayed() {
 		testStart("Validate whether Today weather card Reel Feel temperature is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -101,7 +100,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 10, enabled = true)
-	public void RW_T303_VerifyTodayWeatherCardDescriptionIsDisplayed() {
+	public void TC5_VerifyTodayWeatherCardDescriptionIsDisplayed() {
 		testStart("Validate whether Today weather card description is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -109,8 +108,10 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		threeDayForecastMobPage.isTodayWeatherCardDescriptionDisplayed();
 	}
 
+	// test case 6
+
 	@Test(priority = 11, enabled = true)
-	public void RW_T303_VerifyTonightWeatherCardTitleIsDisplayed() {
+	public void TC6_VerifyTonightWeatherCardTitleIsDisplayed() {
 		testStart("Validate whether tonight weather card Title is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -119,7 +120,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 12, enabled = true)
-	public void RW_T303_VerifyTonightWeatherCardCurrentDateIsDisplayed() {
+	public void TC6_VerifyTonightWeatherCardCurrentDateIsDisplayed() {
 		testStart("Validate whether tonight weather card Current date is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -128,7 +129,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 13, enabled = true)
-	public void RW_T303_VerifyTonightWeatherCardWeatherIconIsDisplayed() {
+	public void TC6_VerifyTonightWeatherCardWeatherIconIsDisplayed() {
 		testStart("Validate whether tonight weather card Weather icon is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -137,7 +138,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 14, enabled = true)
-	public void RW_T303_VerifyTonightWeatherCardLowTempIsDisplayed() {
+	public void TC6_VerifyTonightWeatherCardLowTempIsDisplayed() {
 		testStart("Validate whether tonight weather card Low Temerature is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -146,7 +147,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 15, enabled = true)
-	public void RW_T303_VerifyTonightWeatherCardLowTextTempIsDisplayed() {
+	public void TC6_VerifyTonightWeatherCardLowTextTempIsDisplayed() {
 		testStart("Validate whether tonight weather card Low Temerature text is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -155,7 +156,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 16, enabled = true)
-	public void RW_T303_VerifyTonightWeatherCardReelFeelTempIsDisplayed() {
+	public void TC6_VerifyTonightWeatherCardReelFeelTempIsDisplayed() {
 		testStart("Validate whether tonight weather card Reel  Temerature text is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -164,7 +165,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 17, enabled = true)
-	public void RW_T304_VerifyTonightWeatherCardWeatherDescriptionIsDisplayed() {
+	public void TC6_VerifyTonightWeatherCardWeatherDescriptionIsDisplayed() {
 		testStart("Validate whether tonight weather card Weather Description text is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -172,8 +173,10 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		threeDayForecastMobPage.isTonightWeatherCardReelWeatherDescriptionDisplayed();
 	}
 
+	// test case 7
+
 	@Test(priority = 18, enabled = true)
-	public void RW_T303_VerifyTodayWeatherPageIsDipslayed() {
+	public void TC7_VerifyTodayWeatherPageIsDipslayed() {
 		testStart("Validate whether Today weather page is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -185,18 +188,20 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 19, enabled = true)
-	public void RW_T303_VerifyTonightWeatherPageIsDipslayed() {
+	public void TC7_VerifyTonightWeatherPageIsDipslayed() {
 		testStart("Validate whether tonight weather page is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		Assert.assertEquals(threeDayForecastMobPage.isclickedOnTonightWeatherCard(),
-				"https://qualityassurance.accuweather.com/en/us/mc-farland/53558/daily-weather-forecast/23238_pc?day=1",
+				"https://qualityassurance.accuweather.com/en/us/mc-farland/53558/current-weather/23238_pc",
 				"On Tonight Weather page");
 	}
 
+	// Test case 8
+
 	@Test(priority = 20, enabled = true)
-	public void RW_T303_VerifyTomorrowWeatherCardTitleIsDisplayed() {
+	public void TC6_VerifyTomorrowWeatherCardTitleIsDisplayed() {
 		testStart("Validate whether tonight weather card Title is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -205,7 +210,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 21, enabled = true)
-	public void RW_T303_VerifyTomorrowWeatherCardCurrentDateIsDisplayed() {
+	public void TC6_VerifyTomorrowWeatherCardCurrentDateIsDisplayed() {
 		testStart("Validate whether tonight weather card Current date is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -214,7 +219,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 22, enabled = true)
-	public void RW_T303_VerifyTomorrowWeatherCardWeatherIconIsDisplayed() {
+	public void TC6_VerifyTomorrowWeatherCardWeatherIconIsDisplayed() {
 		testStart("Validate whether tonight weather card Weather icon is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -223,8 +228,8 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 23, enabled = true)
-	public void RW_T303_VerifyTomorrowWeatherCardLowTempIsDisplayed() {
-		testStart("Validate whether tonight weather card Low Temerature is displayed");
+	public void TC6_VerifyTomorrowWeatherCardLowTempIsDisplayed() {
+		testStart("Validate whether Tomorrow weather card Low Temerature is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
@@ -232,8 +237,8 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 24, enabled = true)
-	public void RW_T303_VerifyTomorrowWeatherCardHighTempIsDisplayed() {
-		testStart("Validate whether tonight weather card high Temerature is displayed");
+	public void TC6_VerifyTomorrowWeatherCardHighTempIsDisplayed() {
+		testStart("Validate whether Tomorrow weather card high Temerature is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
@@ -241,7 +246,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 25, enabled = true)
-	public void RW_T303_VerifyTomorrowWeatherCardWeatherDescriptionIsDisplayed() {
+	public void TC6_VerifyTomorrowWeatherCardWeatherDescriptionIsDisplayed() {
 		testStart("Validate whether tonight weather card Weather Description text is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -249,19 +254,22 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		threeDayForecastMobPage.isTonightWeatherCardReelWeatherDescriptionDisplayed();
 	}
 
+	// test case 9
+
 	@Test(priority = 25, enabled = true)
-	public void RW_T303_VerifyTonightWeatherCardWeatherDescriptionIsDisplayed() {
+	public void TC7_VerifyTonightWeatherCardWeatherDescriptionIsDisplayed() {
 		testStart("Validate whether tomorrow weather page is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		Assert.assertEquals(threeDayForecastMobPage.isclickedOnTomorrowWeatherCard(),
-				"https://qualityassurance.accuweather.com/en/us/mc-farland/53558/daily-weather-forecast/23238_pc?day=1",
+				"https://qualityassurance.accuweather.com/en/us/mc-farland/53558/daily-weather-forecast/23238_pc?day=2",
 				"On tomorrow Weather page");
 	}
 
+	// test case 10
 	@Test(priority = 26, enabled = true)
-	public void RW_T304_VerifyThreeDayLandingPageForwardArrowLinkIsEnabled() {
+	public void TC7_VerifyThreeDayLandingPageForwardArrowLinkIsEnabled() {
 		testStart("Validate whether tomorrow weather page is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -271,17 +279,18 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 27, enabled = true)
-	public void RW_T304_VerifyThreeDayLandingPageBackwardArrowLinkIsDisabled() {
+	public void TC7_VerifyThreeDayLandingPageBackwardArrowLinkIsDisabled() {
 		testStart("Validate whether tomorrow weather page is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
-		Assert.assertEquals(threeDayForecastMobPage.isclickedOnThreeDayForcastLandingPageForwardArrowLink(), "arrow",
+		Assert.assertEquals(threeDayForecastMobPage.isclickedOnThreeDayForcastLandingPageBackwardArrowLink(), "arrow",
 				"Backward Arrow is enabled");
 	}
 
+	// test case 11
 	@Test(priority = 26, enabled = true)
-	public void RW_T304_VerifyThreeDayLandingPageClickForwardArrowLink() {
+	public void TC7_VerifyThreeDayLandingPageClickForwardArrowLink() {
 		testStart("Validate whether tomorrow weather page is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
@@ -291,7 +300,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	@Test(priority = 26, enabled = true)
-	public void RW_T304_VerifyThreeDayLandingPageClickBackwardArrowLink() {
+	public void TC7_VerifyThreeDayLandingPageClickBackwardArrowLink() {
 		testStart("Validate whether tomorrow weather page is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
