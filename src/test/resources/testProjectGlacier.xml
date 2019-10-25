@@ -6,10 +6,10 @@
 		<parameter name="operatingSystem" value="WINDOWS" />
 		<parameter name="logLevel" value="3"/>
 
-		<test name="Regional Satellite page in Chrome">
+		<test name="Legal Footer page in Chrome">
 			<parameter name="browserUnderTest" value="Chrome" />
       		<classes>
-      			<class name="com.accuweather.glacier.www.citysatellitepage.Test_CitySatellitePage"/>
+      			<class name="com.accuweather.glacier.www.Footer.Test_LegalFooter"/>
       		</classes>
 		</test>>
 	</suite>
