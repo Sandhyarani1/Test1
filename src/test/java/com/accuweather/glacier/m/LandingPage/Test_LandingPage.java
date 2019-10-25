@@ -26,7 +26,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 	private LandingPage landingpage = new LandingPage();
 	private NavigationBar navBar = new NavigationBar();
 
-	@Test(priority = 1, enabled = true)
+	@Test(priority = 1, enabled = false)
 	public void TC1_VerifyRecentFirstLocationIsDisplayed() {
 		testStart("Is First Location Displayed Under Recent Location Section");
 		landingpage.isRecentLocationDisplayed();
@@ -35,7 +35,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualLocationSize, expectedLocationSize);
 	}
 
-	@Test(priority = 2, enabled = true)
+	@Test(priority = 2, enabled = false)
 	public void TC1_VerifyDefaultLocationNameAndAkamaiNameAreNotSame() {
 		testStart("Default Location names are not same Under Recent Location Section");
 		landingpage.isRecentLocationDisplayed();
@@ -43,7 +43,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 		Assert.assertNotSame(actualLocationName, locationName);
 	}
 
-	@Test(priority = 3, enabled = true)
+	@Test(priority = 3, enabled = false)
 	public void TC1_VerifyDefaultLocationAndCrumbNamesAreSame() {
 		testStart("Are Default Location and Crumb names are same");
 		landingpage.isRecentLocationDisplayed();
@@ -52,7 +52,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 		Assert.assertNotSame(actualLocationName, crumbLocationName);
 	}
 
-	@Test(priority = 4, enabled = true)
+	@Test(priority = 4, enabled = false)
 	public void TC2_VerifyRecentTwoLocationsAreDisplayed() {
 		testStart("Are Two recent locations Displayed Under Recent Location Section");
 		landingpage.enterZipcodeInSearchField(zip);
@@ -69,7 +69,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualLocationSize, expectedLocationSize);
 	}
 
-	@Test(priority = 5, enabled = true)
+	@Test(priority = 5, enabled = false)
 	public void TC3_VerifyRecentThreeLocationsAreDisplayed() {
 		testStart("Are Three recent locations Displayed Under Recent Location Section");
 		landingpage.enterZipcodeInSearchField(zip);
@@ -99,7 +99,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualCTATitle, expectedCtaTitle);
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void TC9_IsVideoAutoPlayedOnHomePage() throws InterruptedException {
 		testStart("Verify Video is autoplayed on the landing page");
 		WebPageLoaded.isDomInteractive(5000);
