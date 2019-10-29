@@ -35,6 +35,11 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	private final static String COPYRIGHT_INFO = "© 2019 AccuWeather, Inc. \"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc. All Rights Reserved.";
 	private final static String REGISTERED_TRADEMARKS = "© 2019 AccuWeather, Inc. \"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc. All Rights Reserved.";
 	private final static String ALL_RIGHTS_RESERVED = "© 2019 AccuWeather, Inc. \"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc. All Rights Reserved.";
+	//Providers
+	private final static String EXPECTED_LIVERAMP_PAGE_URL = "https://liveramp.com/privacy/";
+	private final static String EXPECTED_CUEBIQ_PAGE_URL = "https://www.cuebiq.com/privacypolicy/";
+	private final static String EXPECTED_INTERSECTION_PAGE_URL = "https://www.intersection.com/privacy-policy/";
+	
 	private LegalFooter legalFooter = new LegalFooter();
 	
 	@Test(priority=1)
@@ -272,5 +277,36 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	{
 		testStart("Validate the presence of footer when language changed");
 		Assert.assertTrue(legalFooter.legalFooterStatusWhenLangChanged());
+	}
+	
+	@Test(priority=33)
+	public void RW_T761_ValidateDataProviderListupdatedontheProviderlistPage_verifyAdvertisingSectionHaveUpdatedProviders()
+	{
+		testStart("Verify Advertising section have updated code");
+		Assert.assertTrue(legalFooter.verifyAdvertisingSectionHaveUpdatedProviders());
+	}
+	
+	@Test(priority=33)
+	public void RW_T761_ValidateDataProviderListupdatedontheProviderlistPage_verifyLiveRampLinkAndPage()
+	{
+		testStart("Verify LiveRampPolicy URL and page");
+		String actualURL = legalFooter.verifyLiveRampLinkAndPage();
+	    Assert.assertEquals(actualURL, EXPECTED_LIVERAMP_PAGE_URL);
+	}
+	
+	@Test(priority=33)
+	public void RW_T761_ValidateDataProviderListupdatedontheProviderlistPage_verifyCuebiqLinkAndPage()
+	{
+		testStart("Verify Cuebiq URL and page");
+		String actualURL = legalFooter.verifyCuebiqLinkAndPage();
+	    Assert.assertEquals(actualURL, EXPECTED_CUEBIQ_PAGE_URL);
+	}
+	
+	@Test(priority=33)
+	public void RW_T761_ValidateDataProviderListupdatedontheProviderlistPage_verifyIntersectionAndPage()
+	{
+		testStart("Verify Intersection URL and page");
+		String actualURL = legalFooter.verifyIntersectionLinkAndPage();
+	    Assert.assertEquals(actualURL, EXPECTED_INTERSECTION_PAGE_URL);
 	}
 }

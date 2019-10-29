@@ -36,9 +36,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		waitUntilWindowExistsWithTitle(expectedHourlyForecastTitle);
 		try
 		{
@@ -60,9 +60,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertTrue(hourlyPage.isAccuWeatherLogoDisplayed());
@@ -106,9 +106,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertEquals(hourlyPage.getColor_Of_ActiveTab(), ORANGE_COLOR);
@@ -129,9 +129,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertEquals(hourlyPage.getHourlyTabText(), HOURLY_TAB);
@@ -152,9 +152,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertTrue(hourlyPage.isCurrentHourTabExpanded_WhenFirstPageLoaded());
@@ -176,9 +176,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			if (getDateTime.getHour() > 12)
@@ -220,9 +220,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertTrue(hourlyPage.isUpArrowIconDisplayed());
@@ -244,9 +244,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.validateCurrentHour_InfoTab_Collapse_When_Clicked_On_CurrentHourTab();
@@ -268,9 +268,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.clickCurrentHourTab();
@@ -293,9 +293,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertEquals(hourlyPage.getDate(), SimpleDate.getCurrentDate("M/d"));
@@ -317,9 +317,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertNotNull(hourlyPage.getTemperature());
@@ -340,9 +340,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertNotNull(hourlyPage.getWeather());
@@ -363,9 +363,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertNotNull(hourlyPage.getPrecipitation());
@@ -386,9 +386,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertTrue(hourlyPage.isWeatherIconDisplayed());
@@ -410,9 +410,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.validateCurrentHour_InfoTab_Expands_When_Clicked_On_CurrentHourTab();
@@ -434,9 +434,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertEquals(hourlyPage.getCTA(), getDateTime.getTomorrowsDay());
@@ -457,9 +457,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertTrue(hourlyPage.isRightArrowDisplayedOnCTA());
@@ -480,11 +480,11 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(10000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickCTATab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertEquals(getDriver().getTitle(), expectedHourlyForecastTitle);
@@ -506,11 +506,11 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickCTATab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertEquals(hourlyPage.readPreviousDay(), getDateTime.getCurrentDay());
@@ -531,11 +531,11 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickCTATab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertTrue(hourlyPage.isLeftArrowIconDisplayed());
@@ -556,11 +556,11 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickCTATab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertTrue(hourlyPage.isRightArrowDisplayedOnCTA());
@@ -581,11 +581,11 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickCTATab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertTrue(hourlyPage.isAllHourTabsPresent());
@@ -606,13 +606,13 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickCTATab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickPreviousDay();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertEquals(getDriver().getTitle(), expectedHourlyForecastTitle);
@@ -634,9 +634,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.validateDayParamInURLForNextDay();
@@ -658,9 +658,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.validateDayParamInURLForPreviousDay();
@@ -740,9 +740,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickWeatherIconAtTheTop();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
 		Assert.assertEquals(getDriver().getTitle(), expectedLandingPageTitle);
@@ -756,10 +756,10 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
-		Thread.sleep(5000);
+		WebPageLoaded.isDomInteractive();
+		Thread.sleep(10);
 		hourlyPage.clickTemperatureIconAtTheTop();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
 		Assert.assertEquals(getDriver().getTitle(), expectedLandingPageTitle);
@@ -772,9 +772,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.validatePreviousDays();
@@ -796,9 +796,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.validateNextDays();
@@ -820,9 +820,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.isRealFeelDisplayed();
@@ -844,9 +844,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.isWindDisplayed();
@@ -868,9 +868,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.isGustsDisplayed();
@@ -892,9 +892,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.isRealFeelDisplayed();
@@ -916,9 +916,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.isRealFeelDisplayed();
@@ -940,9 +940,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.isRealFeelDisplayed();
@@ -964,9 +964,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.isRealFeelDisplayed();
@@ -988,9 +988,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.isRealFeelDisplayed();
@@ -1012,9 +1012,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.isRealFeelDisplayed();
@@ -1036,9 +1036,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.isRealFeelDisplayed();
@@ -1060,9 +1060,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.isRealFeelDisplayed();
@@ -1084,9 +1084,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.isRealFeelDisplayed();
@@ -1109,9 +1109,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.validateTimeForAllHourTabs();
@@ -1132,9 +1132,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			hourlyPage.validateDateForAllHourTabs();
@@ -1165,9 +1165,9 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomInteractive(1000);
+		WebPageLoaded.isDomInteractive();
 		try
 		{
 			Assert.assertTrue(hourlyPage.verifyHourLimit());
@@ -1177,6 +1177,25 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		{
 			System.out.println(ae.getMessage());
 			Assert.fail("There is some issues in showing 72 hour limit");
+		}
+
+	}
+	
+	@Test(priority = 5)
+	public void RW_T1319_PresentFutureLinkValidation3Day_verifyDayParameterInURL()
+	{
+		testStart("Verify day parameter in the URL");
+		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
+		waitUntilElementIsDisplayedOrClickable();
+		try
+		{
+			Assert.assertTrue(hourlyPage.verifyDayParameterInURL());
+		}
+
+		catch (AssertionError ae)
+		{
+			System.out.println(ae.getMessage());
+			Assert.fail("There is some issues in with day parameter in URL");
 		}
 
 	}

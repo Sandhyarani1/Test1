@@ -8,7 +8,7 @@
 		<test name="Run Tests in Chrome">
 			<parameter name="browserUnderTest" value="Chrome"/>
 			<packages>
-				<package name="com.accuweather.glacier.www.podcast.*" />
+				<package name="com.accuweather.glacier.www.nationalRadarPage.*" />
 			</packages>
 		</test>
 	</suite>

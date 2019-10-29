@@ -84,7 +84,10 @@ public class HourlyForecastPage extends BasePage
 			"div.page-subheader.content-module > div.page-subheader-wrap > div.recent-locations-label > a.recent-location-display > span:nth-child(2)");
 	private By byWeatherIconAtTheTop = By.cssSelector(
 			"div.page-subheader.content-module > div.page-subheader-wrap > div.recent-locations-label > a.recent-location-display > img.weather-icon");
-			
+	private By byTommorowWeatherCard = By.cssSelector("div > div.scroll > a:nth-child(4)");
+	private By byRightArrowIconFromTomorrowCard = By.cssSelector("div.page-column-1 > div > div.card-button.content-module.centered > a.arrow-wrap.is-next");
+	private By byLeftArrowIconFromTomorrowCard = By.cssSelector("div.page-column-1 > div > div.card-button.content-module.centered > a:nth-child(1)");
+				
 	private static final String ENVIRONMENT_URL_CONFIG_FILE = "EnvironmentURLs.properties";
 	private Calendar calendar = Calendar.getInstance();
 	SimpleDate day = new SimpleDate();
@@ -1377,6 +1380,51 @@ public class HourlyForecastPage extends BasePage
 
 	}
 
+	/** Verify day parameter in URL. 
+	 * Day parameter in the URL should increase by 1 every time when next arrow is tapped and decrease by 1 every time when previous arrow is tapped
+	 * @author Sowmiya
+	 * return Boolean - value true if day parameter value matches the expected number
+	 */
+	public Boolean verifyDayParameterInURL()
+	{
+		Boolean flag;
+		//click tomorrow weather card
+		WebElement tommorowWeatherCard = getDriver().findElement(byTommorowWeatherCard);    
+		tommorowWeatherCard.jsClick();
+		
+		//verify next day parameter URL
+		WebElement rightArrowIcon = getDriver().findElement(byRightArrowIconFromTomorrowCard);    
+		rightArrowIcon.jsClick();
+		String nextDayURL = getDriver().getCurrentUrl();
+		System.out.println("currentURL::"+nextDayURL);
+        String strNextDayParameter = nextDayURL.substring(nextDayURL.length()-1);
+        int intNextDayParameter = Integer.parseInt(strNextDayParameter);
+        
+        //verify previous day parameter URL
+        WebElement previousArrowIcon = getDriver().findElement(byLeftArrowIconFromTomorrowCard);
+        previousArrowIcon.syncVisible(15);
+        previousArrowIcon.jsClick();
+      	String previousDayURL = getDriver().getCurrentUrl();
+      	System.out.println("currentURL::"+previousDayURL);
+        String strPreviousDayParameter = previousDayURL.substring(previousDayURL.length()-1);
+        int intPreviousDayParameter = Integer.parseInt(strPreviousDayParameter);
+        
+        //verify current day parameter URL
+        WebElement previousArrowIconCurrentDay = getDriver().findElement(byLeftArrowIconFromTomorrowCard);
+        previousArrowIconCurrentDay.syncVisible(15);
+        previousArrowIconCurrentDay.jsClick();
+      	String currentDayURL = getDriver().getCurrentUrl();
+      	System.out.println("currentURL::"+currentDayURL);
+        String strCurrentDayParameter = currentDayURL.substring(currentDayURL.length()-1);
+        int currentDayParameter = Integer.parseInt(strCurrentDayParameter);
+        
+        if(intNextDayParameter == 3 && intPreviousDayParameter == 2 && currentDayParameter == 1)
+        	flag = true;
+        else
+        	flag = false;
+        
+        return flag;
+	}
 	
 	public Boolean getDateValidation()
 	{
