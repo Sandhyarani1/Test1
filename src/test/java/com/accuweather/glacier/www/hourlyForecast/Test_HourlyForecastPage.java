@@ -17,8 +17,8 @@ import com.chameleon.utils.date.SimpleDate;
 public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 {
     String zipCode = "48073";
-	String expectedLandingPageTitle = "Royal Oak Weather - AccuWeather Forecast for MI 48073";
-	String expectedHourlyForecastTitle = "Royal Oak Hourly Weather - AccuWeather Forecast for MI 48073";
+	String expectedLandingPageTitle = "Royal Oak, MI Three Day Weather Forecast | AccuWeather";
+	String expectedHourlyForecastTitle = "Royal Oak, MI Hourly Weather | AccuWeather";
 	private String expectedHourlyPage_URL = "https://qualityassurance.accuweather.com/en/us/royal-oak/48073/hourly-weather-forecast/20813_pc";
 	private static final String ORANGE_COLOR = "#f05514";
 	private static final String BLACK_COLOR = "#1f1f1f";
@@ -183,6 +183,8 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		{
 			if (getDateTime.getHour() > 12)
 			{
+				System.out.println("One:"+hourlyPage.getTime());
+				System.out.println("Two:"+getDateTime.getHour());
 				Assert.assertEquals(hourlyPage.getTime(), getDateTime.getHour() - 12 + " PM");
 			}
 			
@@ -296,6 +298,8 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 		WebPageLoaded.isDomInteractive();
 		hourlyPage.clickOnHourlyTab();
 		WebPageLoaded.isDomInteractive();
+		System.out.println("getdate:"+hourlyPage.getDate());
+		System.out.println("getCurrentdate:"+SimpleDate.getCurrentDate("M/d"));
 		try
 		{
 			Assert.assertEquals(hourlyPage.getDate(), SimpleDate.getCurrentDate("M/d"));

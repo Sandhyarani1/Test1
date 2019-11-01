@@ -17,76 +17,76 @@ import com.chameleon.utils.date.SimpleDate;
 
 public class HourlyForecastPage extends BasePage
 {
-	private By byHourlyForecastPage = By.cssSelector("div.page-subnav > div > div > div.subnav-items > a:nth-child(4)");
+	private By byHourlyForecastPage = By.cssSelector("div > div > div.subnav-items > a:nth-child(4)");
 	private By byTime = By
-			.cssSelector("div.two-column-page-content > div > div > div > div > div > div > div > div.date > p:nth-child(1)");
+			.cssSelector("div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div > div.date > p:nth-child(1)");
 	private By byDate = By
-			.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(1) > div:nth-child(1) > div > div > div.date > p:nth-child(2)");
+			.cssSelector("div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div > div.date > p.sub");
 	private By byWeatherIcon = By
-			.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(1) > div:nth-child(1) > div > div > img.weather-icon.icon");
+			.cssSelector("div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div > img");
 	private By byTemperature = By
-			.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(1) > div:nth-child(1) > div > div > div.temp");
+			.cssSelector("div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div > div.temp");
 	private By byWeatherText = By
-			.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(1) > div:nth-child(1) > div > div > span.phrase");
+			.cssSelector("div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div > span");
 	private By byPrecipitation = By
-			.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(1) > div:nth-child(1) > div > div > div.precip");
+			.cssSelector("div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div > div.precip");
 	private By byExpandTabIcon = By.cssSelector(" div.two-column-page-content > div > div > div > div > div > svg.");
 	private By byCompressTabIcon = By.cssSelector("");
 	private By byRealFeelValue = By
-			.cssSelector("div.page-column-1 > div.content-module > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div.panel.left > p:nth-child(1)");
+			.cssSelector("div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div.panel.left > p:nth-child(1)");
 	private By byWindValue = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(1) > p:nth-child(2)");
+			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div.panel.left > p:nth-child(2)");
 	private By byGustsValue = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(1) > p:nth-child(3)");
+			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div.panel.left > p:nth-child(3)");
 	private By byHumidityValue = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(1) > p:nth-child(4)");
+			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div.panel.left > p:nth-child(4)");
 	private By byDewPointValue = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(1) > p:nth-child(5)");
+			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div.panel.left > p:nth-child(5)");
 	private By byMaxUVIndex = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(1) > p:nth-child(6)");
+			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div.panel.left > p:nth-child(6)");
 	private By byCloudCover = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(1)");
+			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(1)");
 	private By byRain = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(2)");
+			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(2)");
 	private By bySnow = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(3)");
+			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(3)");
 	private By byIce = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(4)");
+			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(4)");
 	private By byVisibility = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(5)");
+			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(5)");
 	private By byCeiling = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div.accordion-item.hourly-forecast-card.hour > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(6)");
-	private By byNextDay = By.cssSelector("div.navigation.content-module > a.card-button.nav-card.next.centered");
-	private By byNextDayText = By.cssSelector("div.navigation.content-module > a.card-button.nav-card.next.centered > span.text");
+			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(6)");
+	private By byNextDay = By.cssSelector("div.navigation.content-module > div.card-button.centered.nav-card.next > a");
+	private By byNextDayText = By.cssSelector("div.page-column-1 > div.navigation.content-module > div.card-button.centered.nav-card.next > span");
 	private By byRightArrowIcon = By.cssSelector(
-			"div.navigation.content-module > a.card-button.nav-card.next.centered > div > svg.arrow.icon-chevron.icon-chevron-right");
+			"div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div > a > svg");
 	private By byLeftArrowIcon = By.cssSelector(
-			"div.navigation.content-module > a.card-button.nav-card.prev.centered.has-next > div > svg.arrow.icon-chevron.icon-chevron-left");
+			"div.navigation.content-module > div.card-button.centered.nav-card.prev.has-next > a > svg");
 	private By byUpArrowIcon = By.cssSelector(
-			"div.two-column-page-content > div > div > div > div > div > div.header-wrapper.card > svg.icon-chevron.icon-chevron.icon-chevron-up");
+			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > svg");
 	private By byDownArrowIcon = By
-			.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(1) > div:nth-child(1) > div > svg.icon-chevron.icon-chevron");
+			.cssSelector("div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > svg");
 	private By byPreviousDayText = By
-			.cssSelector("div.navigation.content-module > a.card-button.nav-card.prev.centered.has-next > span.text");
+			.cssSelector("div.navigation.content-module > div.card-button.centered.nav-card.prev.has-next > span");
 	private By byPreviousDay = By
-			.cssSelector("div.navigation.content-module > a.card-button.nav-card.prev.centered");
+			.cssSelector("div.navigation.content-module > div > a");
 	private By byLastDayCTATab = By.cssSelector(
 			"div.two-column-page-content > div.page-column-1 > div.navigation.content-module > a.card-button.nav-card.prev.centered");
 	private By byLastDayCTATabText = By.cssSelector(
 			"div.two-column-page-content > div.page-column-1 > div.navigation.content-module > a.card-button.nav-card.prev.centered > span.text");
 	private By byAccuWeatherLogo = By
-			.cssSelector("div.main-menu > div > div.icon-text > a:nth-child(1) > svg.icon-logo");
+			.cssSelector("div.main-menu > div > div.icon-text > a:nth-child(1)");
 	private By byCurrentHourTab = By
-			.cssSelector("div.two-column-page-content > div > div > div.hourly-wrapper > div:nth-child(1) > div > div.header-wrapper.card");
+			.cssSelector("div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div");
 	private By byCurrentHourInfoTab = By.cssSelector(
-			"div.two-column-page-content > div > div > div.hourly-wrapper > div:nth-child(1) > div:nth-child(2) > div.hourly-forecast-card-content.hourly-forecast-content");
+			"div.two-column-page-content > div.page-column-1 > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div");
 	private By byTemperatureAtTheTop = By.cssSelector(
 			"div.page-subheader.content-module > div.page-subheader-wrap > div.recent-locations-label > a.recent-location-display > span:nth-child(2)");
 	private By byWeatherIconAtTheTop = By.cssSelector(
 			"div.page-subheader.content-module > div.page-subheader-wrap > div.recent-locations-label > a.recent-location-display > img.weather-icon");
-	private By byTommorowWeatherCard = By.cssSelector("div > div.scroll > a:nth-child(4)");
-	private By byRightArrowIconFromTomorrowCard = By.cssSelector("div.page-column-1 > div > div.card-button.content-module.centered > a.arrow-wrap.is-next");
-	private By byLeftArrowIconFromTomorrowCard = By.cssSelector("div.page-column-1 > div > div.card-button.content-module.centered > a:nth-child(1)");
+	private By byTommorowWeatherCard = By.cssSelector("div > div.three-day-panel.three-day-forecast.full-mobile-width > a:nth-child(4)");
+	private By byRightArrowIconFromTomorrowCard = By.cssSelector("div > div.card-button.content-module.centered > a.arrow-wrap.is-next");
+	private By byLeftArrowIconFromTomorrowCard = By.cssSelector("div > div.card-button.content-module.centered > a:nth-child(1)");
 				
 	private static final String ENVIRONMENT_URL_CONFIG_FILE = "EnvironmentURLs.properties";
 	private Calendar calendar = Calendar.getInstance();
@@ -184,7 +184,7 @@ public class HourlyForecastPage extends BasePage
 		WebElement reelFeel = getDriver().findElement(byRealFeelValue);
 		try 
 		{ 
-			reelFeel.syncVisible();
+			reelFeel.syncVisible(25);
 		    System.out.println("Landed on hourly page");
 		}
 		catch(Exception e)
@@ -286,7 +286,7 @@ public class HourlyForecastPage extends BasePage
 		Sleeper.sleep(10);
 		cta.syncVisible(15);
 		cta.jsClick();
-		Sleeper.sleep(10);
+		Sleeper.sleep(5);
 	}
 
 	/** Method to verify if the ">" icon is displayed on CTA */
@@ -385,7 +385,7 @@ public class HourlyForecastPage extends BasePage
 				i = i + 1;
 			}
 			WebElement hourTab = getDriver()
-					.findElement(By.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(" + i + ")"));
+					.findElement(By.cssSelector("div.page-column-1 > div.hourly-wrapper > div:nth-child(" + i + ")"));
 			hourTab.syncVisible(30);
 			getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			if (hourTab.isDisplayed())
@@ -779,6 +779,10 @@ public class HourlyForecastPage extends BasePage
 		{
 			try
 			{
+				String nextday = readNextDay();
+				System.out.println("readnextday:"+nextday);
+				String getnextday = getNextDay_ForCTATab(i);
+				System.out.println("getnextday:"+getnextday);
 				Assert.assertEquals(readNextDay(), getNextDay_ForCTATab(i));
 				setNextDayTextValidation(true);
 				clickCTATab();
@@ -940,8 +944,10 @@ public class HourlyForecastPage extends BasePage
 	public String getTimeForAllTabs(int i)
 	{
 		WebPageLoaded.isDomInteractive();
+		if(i==3)
+			i=i+1;
 		WebElement time = getDriver()
-				.findElement(By.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(" + i
+				.findElement(By.cssSelector("div.two-column-page-content > div > div > div:nth-child(" + i
 						+ ") > div > div > div > div.date > p:nth-child(1)"));
 		time.syncVisible(15);
 		return time.getText();
@@ -951,8 +957,10 @@ public class HourlyForecastPage extends BasePage
 	public String getDateForAllTabs(int i)
 	{
 		WebPageLoaded.isDomInteractive();
+		if (i==3)
+			i=i+1;
 		WebElement date = getDriver()
-				.findElement(By.cssSelector("div.two-column-page-content > div > div > div > div:nth-child(" + i
+				.findElement(By.cssSelector("div.two-column-page-content > div > div > div:nth-child(" + i
 						+ ") > div > div > div > div.date > p.sub"));
 		date.syncVisible(15);
 		return date.getText();
@@ -1445,24 +1453,25 @@ public class HourlyForecastPage extends BasePage
 	{
 		
 		Boolean flag = false;
-		int counter = 0;
-		List<WebElement> getCurentWeekCardList = getDriver().findElements(By.cssSelector("div.two-column-page-content > div > div > div.hourly-wrapper > div")); 
+		int counter = 3;
+		List<WebElement> getCurentWeekCardList = getDriver().findElements(By.cssSelector("div.two-column-page-content > div > div.hourly-wrapper > div")); 
 		int sizeOfCurrentWeekCardsList = getCurentWeekCardList.size();
 		WebElement linkNextDay = getDriver().findElement(byNextDay);	
-		for (int i = 1; i <= 26; i++)
+		for (int i = 1; i <= 27; i++)
 		{
-			List<WebElement> getCardList = getDriver().findElements(By.cssSelector("div.two-column-page-content > div > div > div.hourly-wrapper > div"));
+			List<WebElement> getCardList = getDriver().findElements(By.cssSelector("div.two-column-page-content > div > div.hourly-wrapper > div"));
 			int totalCards = getCardList.size();
 			
-			if(i == totalCards + 1) {
+			if(i == totalCards+1) {
 				try {
 					linkNextDay.syncVisible(5);
 					linkNextDay.jsClick();
+					Sleeper.sleep(3);
 					WebElement hourlyTab = getDriver().findElement(byHourlyForecastPage);
 					if(hourlyTab.syncVisible(15))
 					i = 1;
 				} catch(Exception e) {
-					if( counter == sizeOfCurrentWeekCardsList+25+25 ) {
+					if( counter == sizeOfCurrentWeekCardsList+26+26 ) {
 						flag = true;
 				    	break; }
 				    	else {
@@ -1471,7 +1480,9 @@ public class HourlyForecastPage extends BasePage
 				    	}
 				}
 			}
-			WebElement hourTab = getDriver().findElement(By.cssSelector("div.two-column-page-content > div > div > div.hourly-wrapper > div:nth-child(" + i + ")"));
+			if(i==3)
+				i=i+1;
+			WebElement hourTab = getDriver().findElement(By.cssSelector("div.two-column-page-content > div > div.hourly-wrapper > div:nth-child(" + i + ")"));
 			hourTab.syncVisible(30);
 			
 			if (hourTab.isDisplayed())
