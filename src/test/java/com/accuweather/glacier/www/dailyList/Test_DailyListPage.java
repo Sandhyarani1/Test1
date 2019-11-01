@@ -46,7 +46,7 @@ public class Test_DailyListPage extends AccuWeatherBaseTest
 		Assert.assertTrue(dailyListPage.verifyLimitedNumberOfDaysInCurrentWeek());
 		
 	}
-	
+	/*
 	@Test(priority=3)
 	public void RW_187_DailyListPageItemsPresent_locateDayOfAWeek()
 	{
@@ -229,6 +229,6 @@ public class Test_DailyListPage extends AccuWeatherBaseTest
 		
 		dailyForeCastPage.clickNextCTA();
 		Assert.assertTrue(dailyListPage.confirmUserAbleToNavigateTo4PagesForward());
-	}
+	}*/
 
 }

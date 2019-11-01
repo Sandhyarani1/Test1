@@ -378,3 +378,52 @@
 [0731/175608.569:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
 =======
 >>>>>>> branch 'CityRadar' of https://github.com/AccuWeather-Inc/Web-GlacierSelenium.git
+[1004/153016.516:ERROR:process_reader_win.cc(182)] ResumeThread: The parameter is incorrect. (0x57)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1004/153016.517:ERROR:exception_snapshot_win.cc(98)] thread ID 21552 not found in process
+[1004/154736.283:ERROR:process_info.cc(329)] VirtualQueryEx: Access is denied. (0x5)
+[1004/154736.283:ERROR:process_info.cc(556)] ReadMemoryInfo failed
+[1004/154736.283:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[1006/104206.950:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1006/104206.966:ERROR:exception_snapshot_win.cc(98)] thread ID 34056 not found in process
+[1006/112013.854:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1006/112013.854:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1006/112013.854:ERROR:exception_snapshot_win.cc(98)] thread ID 30408 not found in process
+[1006/190657.768:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1006/190657.769:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1006/190657.769:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1006/190657.769:ERROR:exception_snapshot_win.cc(98)] thread ID 40532 not found in process
+[1007/100851.388:ERROR:process_info.cc(329)] VirtualQueryEx: Access is denied. (0x5)
+[1007/100851.388:ERROR:process_info.cc(556)] ReadMemoryInfo failed
+[1007/100851.388:ERROR:process_memory_win.cc(39)] Failed to initialize ProcessInfo.
+[1007/100851.388:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[1009/074819.788:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1009/074819.790:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1009/074819.790:ERROR:exception_snapshot_win.cc(98)] thread ID 10624 not found in process
+[1009/080111.669:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1009/080111.670:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1009/080111.670:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1009/080111.670:ERROR:exception_snapshot_win.cc(98)] thread ID 9692 not found in process
+[1010/080125.648:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1010/080125.648:ERROR:exception_snapshot_win.cc(98)] thread ID 21288 not found in process
+[1010/080125.648:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[1010/155636.120:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1010/155636.120:ERROR:exception_snapshot_win.cc(98)] thread ID 23724 not found in process
+[1010/165715.022:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1010/165715.022:ERROR:exception_snapshot_win.cc(98)] thread ID 16464 not found in process
+[1011/075723.068:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports

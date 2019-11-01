@@ -4,6 +4,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
+import com.chameleon.selenium.web.elements.WebElement;
 import com.chameleon.utils.Sleeper;
 
 public class UniversalFooterPage extends BasePage 
@@ -13,59 +14,34 @@ public class UniversalFooterPage extends BasePage
 	private By byproductandservice = By.xpath("//div[contains(text(),'Products & Services')]");
 	private By byappsAndDownload = By.xpath("//div[contains(text(),'Apps & Downloads')]");
 	private By bysubscriptionServices = By.xpath("//div[contains(text(),'Subscription Services')]");
-	private By bySuperiorAccuracyinAction = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(1) > div.footer-category-section.footer-category-section > a:nth-child(1)");
-	private By byAboutAccuWeather = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(1) > div.footer-category-section.footer-category-section > a:nth-child(2)");
-	private By byMediaKit = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(1) > div.footer-category-section.footer-category-section > a:nth-child(3)");
-	private By byCareers = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(1) > div.footer-category-section.footer-category-section > a:nth-child(4)");
+	private By bySuperiorAccuracyinAction = By.cssSelector("div:nth-child(1) >div.footer-category-section.footer-category-section > a:nth-child(1)");
+	private By byAboutAccuWeather = By.cssSelector("div:nth-child(1) > div.footer-category-section.footer-category-section > a:nth-child(2)");
+	private By byMediaKit = By.cssSelector("div:nth-child(1) > div.footer-category-section.footer-category-section > a:nth-child(3)");
+	private By byCareers = By.cssSelector("div:nth-child(1) > div.footer-category-section.footer-category-section > a:nth-child(4)");
 	private By byPress = By.xpath(
 			"//div[@class='footer-content-category']//a[@class='footer-category-section-link'][contains(text(),'Press')]");
-	private By byCoupons = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(1) > div.footer-category-section.footer-category-section > a:nth-child(6)");
-	private By byContactUs = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(1) > div.footer-category-section.footer-category-section > a:nth-child(7)");
-	private By byEnterpriseSolutions = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(1)");
-	private By byD3DataDrivenDecisions = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(2)");
-	private By byAccuWeatherNetwork = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(3)");
-	private By byStoryTeller = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(4)");
-	private By byToolsforBroadcast = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(5)");
-	private By byRadioandNewspaper = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(6)");
-	private By byAccuWeatherAPIs = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(7)");
-	private By byAccuWeatherStatus = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(8)");
-	private By byPodcast = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(9)");
-	private By byiPhoneApp = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(1)");
-	private By byAndroidApp = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(2)");
-	private By byWindowsApp = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(3)");
-	private By bySeeallAppsandDownloads = By.cssSelector(
-			"div.footer-content-tablet > div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(3)");
-	private By byAccuWeatherPremium = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(4) > div.footer-category-section.footer-category-section > a:nth-child(1)");
-	private By byAccuWeatherProfessional = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(4) > div.footer-category-section.footer-category-section > a:nth-child(2)");
-	private By bysocialicondownload = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(4) > div.footer-social.footer-social-tablet > a:nth-child(1)");
-	private By bysocialiconfacebook = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(4) > div.footer-social.footer-social-tablet > a:nth-child(2)");
-	private By bysocialicontwitter = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(4) > div.footer-social.footer-social-tablet > a:nth-child(3)");
-	private By bysocialicontv = By.cssSelector(
-			"body > div.template-root > div.base-footer.is-en > div.footer-content > div.footer-content-tablet > div:nth-child(4) > div.footer-social.footer-social-tablet > a:nth-child(4)");
-	private By bySettingicon = By.cssSelector("div.component-sticky-container.header > div > div.main-menu > div.header-right-container > div.settings-button > svg");
+	private By byContactUs = By.cssSelector("div:nth-child(1) > div.footer-category-section.footer-category-section > a:nth-child(6)");
+	private By byEnterpriseSolutions = By.cssSelector("div.footer-content-tablet >div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(1)");
+	private By byD3DataDrivenDecisions = By.cssSelector("div.footer-content-tablet > div:nth-child(2) > div.footer-category-section > a:nth-child(2)");
+	
+	private By byAccuWeatherNetwork = By.cssSelector("div.footer-content-tablet >div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(3)");
+	private By byStoryTeller = By.cssSelector("div.footer-content-tablet >div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(4)");
+	private By byToolsforBroadcast = By.cssSelector("div.footer-content-tablet >div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(5)");
+	private By byRadioandNewspaper = By.cssSelector("div.footer-content-tablet >div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(6)");
+	private By byAccuWeatherAPIs = By.cssSelector("div.footer-content-tablet >div:nth-child(2) > div.footer-category-section.footer-category-section > a:nth-child(7)");
+	private By byPodcast = By.cssSelector("div.footer-content-tablet >div:nth-child(2) > div.footer-category-section > a:nth-child(8)");
+	private By byiPhoneApp = By.cssSelector("div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(1)");
+	private By byAndroidApp = By.cssSelector("div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(2)");
+	//private By byWindowsApp = By.cssSelector("div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(3)");
+	private By bySeeallAppsandDownloads = By.cssSelector("div:nth-child(3) > div.footer-category-section.footer-category-section > a:nth-child(3)");
+	
+	private By byAccuWeatherPremium = By.cssSelector("div:nth-child(4) > div.footer-category-section.footer-category-section > a:nth-child(1)");
+	private By byAccuWeatherProfessional = By.cssSelector("div:nth-child(4) > div.footer-category-section.footer-category-section > a:nth-child(2)");
+	private By bysocialicondownload = By.cssSelector("div:nth-child(4) > div.footer-social.footer-social-tablet > a:nth-child(1)");
+	private By bysocialiconfacebook = By.cssSelector("div:nth-child(4) > div.footer-social.footer-social-tablet > a:nth-child(2)");
+	private By bysocialicontwitter = By.cssSelector("div:nth-child(4) > div.footer-social.footer-social-tablet > a:nth-child(3)");
+	private By bysocialicontv = By.cssSelector("div:nth-child(4) > div.footer-social.footer-social-tablet > a:nth-child(4)");
+	private By bySettingicon = By.cssSelector("div.main-menu > div.header-right-container > div.settings-button > svg");
 	private By byenglishLanguage = By.xpath("//div[3]/div/div/div[2]/div/div");
 	private By byFrench = By.xpath("//div[4]");
 	private By byfooterBreadCrumbs = By.cssSelector("body > div.template-root > div.breadcrumbs-wrapper");
@@ -76,7 +52,8 @@ public class UniversalFooterPage extends BasePage
 	 * @return - Boolean value - "true  If Footer content is Displayed "
 	 **/
 	public boolean footerisDisplayed() {
-		WebPageLoaded.isDomInteractive(3000);
+
+        Sleeper.sleep(4);
 		return getDriver().findElement(byfooterContent).isDisplayed();
 	}
 
@@ -86,7 +63,7 @@ public class UniversalFooterPage extends BasePage
 	 * 
 	 **/
 	public void scrolldownpage() {
-		WebPageLoaded.isDomInteractive();
+		 Sleeper.sleep(4);
 		getDriver().executeJavaScript("window.scrollBy(0,2103)");
 	}
 
@@ -97,7 +74,7 @@ public class UniversalFooterPage extends BasePage
 	 **/
 	public String getlandingurltitle() {
 		List<String> browserTabs = new ArrayList<String>(getDriver().getWindowHandles());
-		WebPageLoaded.isDomComplete(8000000);
+		Sleeper.sleep(2);
 		return getDriver().switchTo().window(browserTabs.get(1)).getCurrentUrl();
 	}
 
@@ -109,22 +86,22 @@ public class UniversalFooterPage extends BasePage
 	 **/
 	public boolean isbaseFooterContainsLink(String link) {
 		if (link.equalsIgnoreCase("Company")) {
-			WebPageLoaded.isDomInteractive(3000);
+			 Sleeper.sleep(4);
 			return getDriver().findElement(bycompany).isDisplayed();
 		}
 
 		if (link.equalsIgnoreCase("Products & Services")) {
-			WebPageLoaded.isDomInteractive(3000);
+			 Sleeper.sleep(4);
 			return getDriver().findElement(byproductandservice).isDisplayed();
 		}
 
 		if (link.equalsIgnoreCase("Apps & Download")) {
-			WebPageLoaded.isDomInteractive(3000);
+			 Sleeper.sleep(4);
 			return getDriver().findElement(byappsAndDownload).isDisplayed();
 		}
 
 		if (link.equalsIgnoreCase("Subscription Services")) {
-			WebPageLoaded.isDomInteractive(3000);
+			 Sleeper.sleep(4);
 			return getDriver().findElement(bysubscriptionServices).isDisplayed();
 		}
 
@@ -132,132 +109,122 @@ public class UniversalFooterPage extends BasePage
 	}
 
 	/**
-	 * Method to verify footer all the links present under the Header "Company"
+	 * Method to verify footer links present under the Header "Company"
 	 * @author Sandhya Rani
 	 * @return- Boolean value - "true  If company header Displayed with the following links"
 	 **/
-	public boolean companyFooterContainsLink(String link) {
-		if (link.equalsIgnoreCase("Superior Accuracy in Action")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(bySuperiorAccuracyinAction).isDisplayed();
-		}
+	
+public boolean validatelinksforCompanyHeader() {
+		
+		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(5);
+		 
+		WebElement companyHeader = getDriver().findElement(bycompany);
+		companyHeader.syncVisible(15);
+		
+		WebElement superiorAccuracyinAction = getDriver().findElement(bySuperiorAccuracyinAction);
+		superiorAccuracyinAction.syncVisible(15);
+		
+		WebElement aboutAccuWeather = getDriver().findElement(byAboutAccuWeather);
+		aboutAccuWeather.syncVisible(60);
+		
 
-		if (link.equalsIgnoreCase("About AccuWeather")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byAboutAccuWeather).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Media kit")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byMediaKit).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Carrers")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byCareers).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Press")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byPress).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Coupons")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byCoupons).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Contact Us")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byContactUs).isDisplayed();
-		}
-
-		return false;
-	}
+		WebElement mediaKit = getDriver().findElement(byMediaKit);
+		mediaKit.syncVisible(60);
+		
+		
+		WebElement careers = getDriver().findElement(byCareers);
+		careers.syncVisible(60);
+		
+		WebElement press = getDriver().findElement(byPress);
+		press.syncVisible(60);
+		
+		WebElement contactUs = getDriver().findElement(byContactUs);
+		contactUs.syncVisible(60);
+		
+		
+		return companyHeader.isDisplayed() && superiorAccuracyinAction.isDisplayed() && aboutAccuWeather.isDisplayed() 
+				&& mediaKit.isDisplayed() && careers.isDisplayed()  && contactUs.isDisplayed();
+   }
+	
+	
+	
 
 	/**
 	 * Method to verify footer links present under the Header "Products & Services"
 	 * @author Sandhya Rani
 	 * @return- Boolean value - "true  If  product and Services header Displayed with the following links"
 	 **/
-	public boolean productandServicesContainsLink(String link) {
-		if (link.equalsIgnoreCase("Enterprise Solutions")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byEnterpriseSolutions).isDisplayed();
-		}
 
-		if (link.equalsIgnoreCase("D3 Data Driven Decisions")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byD3DataDrivenDecisions).isDisplayed();
-		}
 
-		if (link.equalsIgnoreCase("AccuWeather Network")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byAccuWeatherNetwork).isDisplayed();
-		}
+public boolean validatelinksforProductsandServicesHeader() {
+	
+	WebPageLoaded.isDomInteractive();
+	Sleeper.sleep(5);
+	
+	WebElement productandservice = getDriver().findElement(byproductandservice);
+	productandservice.syncVisible(15);
+	
+	WebElement enterpriseSolutions = getDriver().findElement(byEnterpriseSolutions);
+	enterpriseSolutions.syncVisible(15);
+	
+	WebElement d3dataDrivenDecisions = getDriver().findElement(byD3DataDrivenDecisions);
+	d3dataDrivenDecisions.syncVisible(60);
+	
 
-		if (link.equalsIgnoreCase("Story Teller")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byStoryTeller).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Tools for Broadcast")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byToolsforBroadcast).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Radio and Newspaper")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byRadioandNewspaper).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("AccuWeather APIs")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byAccuWeatherAPIs).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("AccuWeather Status")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byAccuWeatherStatus).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Podcast")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byPodcast).isDisplayed();
-		}
-
-		return false;
-	}
-
+	WebElement accuWeatherNetwork = getDriver().findElement(byAccuWeatherNetwork);
+	accuWeatherNetwork.syncVisible(60);
+	
+	
+	WebElement storyTeller = getDriver().findElement(byStoryTeller);
+	storyTeller.syncVisible(60);
+	
+	WebElement toolsforBroadcast = getDriver().findElement(byToolsforBroadcast);
+	toolsforBroadcast.syncVisible(60);
+	
+	WebElement radioandNewspaper = getDriver().findElement(byRadioandNewspaper);
+	radioandNewspaper.syncVisible(60);
+	
+	WebElement accuWeatherAPIs = getDriver().findElement(byAccuWeatherAPIs);
+	accuWeatherAPIs.syncVisible(60);
+	
+	WebElement podcast = getDriver().findElement(byPodcast);
+	podcast.syncVisible(60);
+	
+	
+	return productandservice.isDisplayed() && enterpriseSolutions.isDisplayed() && d3dataDrivenDecisions.isDisplayed()
+			&& accuWeatherNetwork.isDisplayed() && storyTeller.isDisplayed()  &&toolsforBroadcast.isDisplayed() 
+			&& radioandNewspaper.isDisplayed() && accuWeatherAPIs.isDisplayed()  && podcast.isDisplayed();
+}
+	
 	/**
 	 * Method to verify footer links present under the "Apps & Download"
 	 * @author Sandhya Rani 
 	 * @return- Boolean value - "true  If  Apps and Download header Displayed with the following links"
 	 */
-	public boolean appsandDownloadContainsLink(String link) {
-		if (link.equalsIgnoreCase("iPhone App")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byiPhoneApp).isDisplayed();
-		}
 
-		if (link.equalsIgnoreCase("Android App")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byAndroidApp).isDisplayed();
-		}
 
-		if (link.equalsIgnoreCase("Windows App")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byWindowsApp).isDisplayed();
-		}
+public boolean validatelinksDisplayedunderAppsandDownloads() {
+	
+	WebPageLoaded.isDomInteractive();
+	Sleeper.sleep(3);
+	
+	WebElement iPhoneApp = getDriver().findElement(byiPhoneApp);
+	iPhoneApp.syncVisible(15);
+	
+	WebElement androidApp = getDriver().findElement(byAndroidApp);
+	androidApp.syncVisible(60);
+		
+	
+	WebElement seeallAppsandDownloads = getDriver().findElement(bySeeallAppsandDownloads);
+	seeallAppsandDownloads.syncVisible(60);
+	
+	
+	return iPhoneApp.isDisplayed() && androidApp.isDisplayed() && seeallAppsandDownloads.isDisplayed(); 
+			
+}
 
-		if (link.equalsIgnoreCase("See all Apps & Downloads")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(byWindowsApp).isDisplayed();
-		}
-
-		return false;
-	}
-
+	
 	/**
 	 * Method to verify footer links present under Subscription Services
 	 * @author Sandhya Rani 
@@ -265,12 +232,12 @@ public class UniversalFooterPage extends BasePage
 	 **/
 	public boolean subscriptionServicesContainsLink(String link) {
 		if (link.equalsIgnoreCase("AccuWeather Premium")) {
-			WebPageLoaded.isDomInteractive(3000);
+			 Sleeper.sleep(4);
 			return getDriver().findElement(byAccuWeatherPremium).isDisplayed();
 		}
 
 		if (link.equalsIgnoreCase("AccuWeather Professional")) {
-			WebPageLoaded.isDomInteractive(3000);
+			 Sleeper.sleep(4);
 			return getDriver().findElement(byAccuWeatherProfessional).isDisplayed();
 		}
 
@@ -282,30 +249,32 @@ public class UniversalFooterPage extends BasePage
 	 * @author Sandhya Rani
 	 * @return- Boolean value - "true  If  Subscription Services header Displayed with the following links"
 	 **/
-	public boolean socailmedialinkContains(String link) {
-		if (link.equalsIgnoreCase("Social icon download")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(bysocialicondownload).isDisplayed();
-		}
+	
+	public boolean validateSocailMedialinksDisplayed() {
+		
+		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(3);
+		
+		WebElement socialicondownload = getDriver().findElement(bysocialicondownload);
+		socialicondownload.syncVisible(15);
+		
+		WebElement socialiconfacebook = getDriver().findElement(bysocialiconfacebook);
+		socialiconfacebook.syncVisible(60);
+		
 
-		if (link.equalsIgnoreCase("Social icon facebook")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(bysocialiconfacebook).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Social icon twitter")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(bysocialicontwitter).isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Social icon tv")) {
-			WebPageLoaded.isDomInteractive(3000);
-			return getDriver().findElement(bysocialicontv).isDisplayed();
-		}
-
-		return false;
-	}
-
+		WebElement socialicontwitter = getDriver().findElement(bysocialicontwitter);
+		socialicontwitter.syncVisible(60);
+		
+		
+		WebElement socialicontv = getDriver().findElement(bysocialicontv);
+		socialicontv.syncVisible(60);
+		
+		
+		return socialicondownload.isDisplayed() && socialiconfacebook.isDisplayed() && socialicontwitter.isDisplayed() 
+				&& socialicontv.isDisplayed();
+   }
+	
+	
 	/**
 	 *  Method to click on the links available from the footers
 	 * @author Sandhya Rani
@@ -321,6 +290,7 @@ public class UniversalFooterPage extends BasePage
 
 		if (link.equalsIgnoreCase("About AccuWeather")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(byAboutAccuWeather).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
@@ -333,30 +303,28 @@ public class UniversalFooterPage extends BasePage
 
 		if (link.equalsIgnoreCase("carrers")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(byCareers).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
 
 		if (link.equalsIgnoreCase("Press")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(byPress).jsClick();
-			WebPageLoaded.isDomInteractive();
-		}
-
-		if (link.equalsIgnoreCase("Coupons")) {
-			WebPageLoaded.isDomInteractive();
-			getDriver().findElement(byCoupons).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
 
 		if (link.equalsIgnoreCase("Contact Us")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(byContactUs).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
 
 		if (link.equalsIgnoreCase("Enterprise Solutions")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(byEnterpriseSolutions).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
@@ -369,6 +337,7 @@ public class UniversalFooterPage extends BasePage
 
 		if (link.equalsIgnoreCase("AccuWeather Network")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(byAccuWeatherNetwork).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
@@ -381,30 +350,29 @@ public class UniversalFooterPage extends BasePage
 
 		if (link.equalsIgnoreCase("Tools for Broadcast")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(byToolsforBroadcast).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
 
 		if (link.equalsIgnoreCase("Radio and Newspaper")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(byRadioandNewspaper).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
 
 		if (link.equalsIgnoreCase("AccuWeather APIs")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(byAccuWeatherAPIs).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
 
-		if (link.equalsIgnoreCase("AccuWeather Status")) {
-			WebPageLoaded.isDomInteractive();
-			getDriver().findElement(byAccuWeatherStatus).jsClick();
-			WebPageLoaded.isDomInteractive();
-		}
 
 		if (link.equalsIgnoreCase("Podcast")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(byPodcast).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
@@ -417,18 +385,20 @@ public class UniversalFooterPage extends BasePage
 
 		if (link.equalsIgnoreCase("Android App")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(byAndroidApp).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
 
-		if (link.equalsIgnoreCase("Windows App")) {
-			WebPageLoaded.isDomInteractive();
-			getDriver().findElement(byWindowsApp).jsClick();
-			WebPageLoaded.isDomInteractive(6000);
-		}
+//		if (link.equalsIgnoreCase("Windows App")) {
+//			WebPageLoaded.isDomInteractive();
+//			getDriver().findElement(byWindowsApp).jsClick();
+//			WebPageLoaded.isDomInteractive(6000);
+//		}
 
 		if (link.equalsIgnoreCase("See all Apps & Downloads")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(bySeeallAppsandDownloads).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
@@ -441,12 +411,14 @@ public class UniversalFooterPage extends BasePage
 
 		if (link.equalsIgnoreCase("AccuWeather Professional")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(byAccuWeatherProfessional).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
 
 		if (link.equalsIgnoreCase("Social icon download")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(bysocialicondownload).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
@@ -459,12 +431,14 @@ public class UniversalFooterPage extends BasePage
 
 		if (link.equalsIgnoreCase("Social icon twitter")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(bysocialicontwitter).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
 
 		if (link.equalsIgnoreCase("Social icon tv")) {
 			WebPageLoaded.isDomInteractive();
+			 Sleeper.sleep(4);
 			getDriver().findElement(bysocialicontv).jsClick();
 			WebPageLoaded.isDomInteractive();
 		}
@@ -480,12 +454,13 @@ public class UniversalFooterPage extends BasePage
 		WebPageLoaded.isDomInteractive();
 		getDriver().findElement(bySettingicon).syncVisible();
 		getDriver().findElement(bySettingicon).click();
-		WebPageLoaded.isDomInteractive();
+		 Sleeper.sleep(4);
 		getDriver().findElement(byenglishLanguage).syncVisible();
 		getDriver().findElement(byenglishLanguage).click();
 		getDriver().findElement(byFrench).click();
-		WebPageLoaded.isDomComplete(8000);
+		 Sleeper.sleep(4);
 	}
+	
 
 	/**
 	 * Method to verify footer bread crumbs are displayed when changed the Language other than English.
@@ -493,7 +468,7 @@ public class UniversalFooterPage extends BasePage
 	 * 
 	 **/
 	public boolean footerbreadcrumbsDisplayed() {
-		WebPageLoaded.isDomInteractive(3000);
+		 Sleeper.sleep(4);
 		return getDriver().findWebElement(byfooterBreadCrumbs).isDisplayed();
 	}
 

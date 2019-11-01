@@ -12,11 +12,4 @@
       			<class name="com.accuweather.glacier.www.browseLocations.Test_browseLocationsPage"/>
       		</classes>
 		</test>
-		<test name="Daily Lists In Chrome">
-			<parameter name="browserUnderTest" value="Chrome" />
-      		<classes>
-      			<class name="com.accuweather.glacier.www.dailyList.Test_DailyListPage"/>
-      		</classes>
-		</test>
-		
 	</suite>

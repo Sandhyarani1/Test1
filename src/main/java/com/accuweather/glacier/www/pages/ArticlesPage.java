@@ -179,7 +179,7 @@ public class ArticlesPage extends BasePage
 	
 	public String getlandingPageUrlTitle() {
 		List<String> browserTabs = new ArrayList<String>(getDriver().getWindowHandles());
-		WebPageLoaded.isDomComplete(8000000);
+	    Sleeper.sleep(4);
 		return getDriver().switchTo().window(browserTabs.get(1)).getCurrentUrl();
 	}
 		
@@ -261,6 +261,7 @@ public class ArticlesPage extends BasePage
 	public boolean twitterIconDisplayed()
 	{
 		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(3);
 		WebElement facebook=getDriver().findElement(byTwitterIcon);
 		facebook.syncVisible(30);
 		
@@ -270,6 +271,7 @@ public class ArticlesPage extends BasePage
 	public void clickontwitterIcon()
 	{
 		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(3);
 		WebElement facebook=getDriver().findElement(byTwitterIcon);
 		facebook.click();
 		facebook.focusClick();
@@ -292,6 +294,7 @@ public class ArticlesPage extends BasePage
 	public void clickonEmailIcon()
 	{
 		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(3);
 		WebElement facebook=getDriver().findElement(byEmailIcon);
 		facebook.syncVisible(30);
 		facebook.click();
@@ -306,6 +309,7 @@ public class ArticlesPage extends BasePage
 	public boolean printIconDisplayed()
 	{
 		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(3);
 		WebElement printIcon=getDriver().findElement(byprintIcon);
 		printIcon.syncVisible(30);
 		
@@ -315,6 +319,7 @@ public class ArticlesPage extends BasePage
 	public void clickonPrintIcon()
 	{
 		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(3);
 		WebElement printIcon=getDriver().findElement(byprintIcon);
 		printIcon.syncVisible(30);
 		printIcon.click();
@@ -353,7 +358,7 @@ public class ArticlesPage extends BasePage
 	
 	public String getlandingurltitle() {
 		List<String> browserTabs = new ArrayList<String>(getDriver().getWindowHandles());
-		WebPageLoaded.isDomComplete(8000000);
+		Sleeper.sleep(3);
 		return getDriver().switchTo().window(browserTabs.get(1)).getCurrentUrl();
 	}
 	

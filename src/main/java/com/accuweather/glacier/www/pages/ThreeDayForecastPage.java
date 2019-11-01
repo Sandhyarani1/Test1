@@ -276,7 +276,7 @@ public class ThreeDayForecastPage extends BasePage
 
 	 public String gettodaycardDate()
 	 {
-	   WebPageLoaded.isDomInteractive();
+	 WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
        WebElement time = getDriver().findElement(bytodaycardcurrentDate);
        time.syncVisible(15);
        return time.getText();
@@ -284,7 +284,7 @@ public class ThreeDayForecastPage extends BasePage
 
 	 public String gettonightcardDate()
 	 {
-	   WebPageLoaded.isDomInteractive();
+	 WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
        WebElement time = getDriver().findElement(bytonightcardCurrentDate);
        time.syncVisible(15);
        return time.getText();
@@ -292,7 +292,7 @@ public class ThreeDayForecastPage extends BasePage
 
 	 public String gettomorrowcardDate()
 	 {
-	   WebPageLoaded.isDomInteractive();
+	 WebPageLoaded.isDomInteractive();Sleeper.sleep(3);
        WebElement time = getDriver().findElement(byTomorrowcardDate);
        time.syncVisible(15);
        return time.getText();
