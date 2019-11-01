@@ -5,6 +5,7 @@ import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.ForeCastWeatherPage;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.accuweather.glacier.www.pages.MonthlyForeCastPage;
+import com.accuweather.glacier.www.pages.NavigationBar;
 import com.accuweather.glacier.www.pages.ThreeDayForecastPage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.utils.Sleeper;
@@ -16,8 +17,17 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 	String actualForecastPageTitle;
 	String expectedForecastPageTitle = "Royal Oak Weather - AccuWeather Forecast for MI 48073";
 	String pageTitle3day = "Weather in Mc Farland - AccuWeather Forecast for WI 53558";
+	private final static String EXPECTED_TAB_REFLECTS_CITY = "Cannondale, CT Three Day Weather Forecast | AccuWeather";
+	private final static String EXPECTED_TAB_REFLECTS_CITY_COUNTRY = "Salvador, Bahia, Brazil Three Day Weather Forecast | AccuWeather";
+	private final static String EXPECTED_TAB_REFLECTS_SEVEREWEAHTER = "Severe Weather Warnings & Watches | AccuWeather";
+
+	private NavigationBar navBar = new NavigationBar();
 	private LandingPage landingpage = new LandingPage();
 	ThreeDayForecastPage threeDayForecastPage = new ThreeDayForecastPage();
+
+
+	private SimpleDate getDateTime = new SimpleDate();
+  
 	@Test(priority = 1)
 	public void TC1_nowTabOnCityForecastPage() {
 		String Expectedactive="subnav-item active";
@@ -567,5 +577,36 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
 		Assert.assertTrue(threeDayForecastPage.dateValidationOnTomorrowsCard());
+	}
+	
+	@Test(priority = 48, enabled = true)
+	public void TC1186_VerifyIndexTabsforThreeDayPageDisplayed_verifyTabReflectsFormatOfCity()
+	{
+		testStart("Verify tab reflects format of city");
+		landingpage.enterZipcodeInSearchFieldAndClick("Cannondale, CT");
+		String actualTabReflectsCity = getDriver().getTitle();
+		Assert.assertEquals(actualTabReflectsCity, EXPECTED_TAB_REFLECTS_CITY);
+	}
+	
+	@Test(priority = 48, enabled = true)
+	public void TC1188_VerifyIndexTabsforThreeDayPageDisplayed_verifyTabReflectsFormatOfCityAndCountry()
+	{
+		testStart("Verify tab reflects format of city and country");
+		landingpage.enterZipcodeInSearchFieldAndClick("Salvador, Bahia, Brazil");
+		String actualTabReflectsCityCountry = getDriver().getTitle();
+		Assert.assertEquals(actualTabReflectsCityCountry, EXPECTED_TAB_REFLECTS_CITY_COUNTRY);
+	}
+	
+	@Test(priority = 48, enabled = true)
+	public void TC1190_VerifyIndexTabsforThreeDayPageDisplayed_verifyTabReflectsFormatOfCityAndCountry()
+	{
+		testStart("Verify tab reflects severe weather warnings");
+		navBar.mouseHoverOnSeverWeather();
+		navBar.isSeverWeatherSubMenuDisplayed();
+		navBar.clickSeverWeatherSubMenu();
+		Sleeper.sleep(2);
+		String actualTabReflectsSevereWeather = getDriver().getTitle();
+		System.out.println("actualTabReflectsSevereWeather:"+actualTabReflectsSevereWeather);
+		Assert.assertEquals(actualTabReflectsSevereWeather, EXPECTED_TAB_REFLECTS_SEVEREWEAHTER);
 	}
 }

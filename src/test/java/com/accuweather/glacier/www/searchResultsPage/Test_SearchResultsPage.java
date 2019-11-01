@@ -8,6 +8,7 @@ import com.accuweather.glacier.www.pages.LandingPage;
 import com.accuweather.glacier.www.pages.SeachResultsPage;
 import com.accuweather.glacier.www.pages.ThreeDayForecastPage;
 import com.chameleon.utils.Randomness;
+import com.chameleon.utils.Sleeper;
 
 public class Test_SearchResultsPage extends AccuWeatherBaseTest
 {
@@ -20,125 +21,101 @@ public class Test_SearchResultsPage extends AccuWeatherBaseTest
 	private SeachResultsPage seachResultsPage = new SeachResultsPage();
 	private ThreeDayForecastPage threedayForecastPage = new ThreeDayForecastPage();
 	
-	@Test(priority=1)
-	public void RW_T245_UniversalNavigation_navigateSearchResultPage()
-	{
-		testStart("Validate user successfullly navigated to search result page");
-		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
-		try
-		{
-			getDriver().getCurrentUrl().contains(expectedSearchlocation_URL);
-		}
-		catch(AssertionError ae)
-		{
-			System.err.println(ae.getMessage());
-			Assert.fail();
-		}
-	}
-	
-	@Test(priority=2)
-	public void RW_T247_SearchResultPageComponents_verifySearchResultPageWithAddedLocation()
-	{
-		testStart("Validate user navigated to search result page with added location");
-		landingPage.enterZipcodeInSearchFieldAndClick("Aspen");
-		try
-		{
-			Assert.assertEquals(getDriver().getCurrentUrl(), expectedSearchResultPageWithAddedLocation_URL);
-		}
-		catch(AssertionError ae)
-		{
-			System.err.println(ae.getMessage());
-			Assert.fail();
-		}
-	}
-	
-//	@Test(priority=3)
-//	public void RW_T247_SearchResultPageComponents_verifyBrowseForLocationIsPresent()
+//	@Test(priority=1)
+//	public void RW_T245_UniversalNavigation_navigateSearchResultPage()
 //	{
-//		testStart("Verify browse for location CTA is present");
-//	    landingPage.enterZipcodeInSearchFieldAndClick("Aspen");
-//		//check it once the merge is complete. BrowseForlocation is present browse location class.
-//	}
-//	
-	@Test(priority=4)
-	public void RW_T249_Search5DigitNumericZipcode_verifySearchResultPageWithAddedZipcode()
-	{
-		testStart("Validate user navigated to search result page with added zipcode");
-		landingPage.enterZipcodeInSearchFieldAndClick("06901");
-		try
-		{
-			Assert.assertEquals(getDriver().getCurrentUrl(), expectedSearchResultPageWithAddedZipcode_URL);
-		}
-		catch(AssertionError ae)
-		{
-			System.err.println(ae.getMessage());
-			Assert.fail();
-		}
-	}
-//	
-//	@Test(priority=5)
-//	public void RW_T249_Search5DigitNumericZipcode_verifyBrowseForLocationIsPresent()
-//	{
-//		testStart("Verify browse for location CTA is present");
-//		landingPage.enterZipcodeInSearchFieldAndClick("06901");
-		//check it once the merge is complete. BrowseForlocation is present browse location class.
-//	}
-	
-//	@Test(priority=6)
-//	public void RW_T250_SearchWith2AlphabeticCharacters_verifyBrowseForLocationIsPresent()
-//	{
-//		testStart("Verify browse for location CTA is present");
+//		testStart("Validate user successfullly navigated to search result page");
 //		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
-		//check it once the merge is complete. BrowseForlocation is present browse location class.
+//		try
+//		{
+//			getDriver().getCurrentUrl().contains(expectedSearchlocation_URL);
+//		}
+//		catch(AssertionError ae)
+//		{
+//			System.err.println(ae.getMessage());
+//			Assert.fail();
+//		}
 //	}
-	
-	@Test(priority=7)
-	public void RW_T251_SearchForLocationWithoutAnyMatch_verifySearchResultPage()
-	{
-		testStart("Validate user navigated to expected search result page");
-		landingPage.enterZipcodeInSearchFieldAndClick("rubbish");
-		try
-		{
-			Assert.assertEquals(getDriver().getCurrentUrl(), expectedSearchResultPageForLocationWithNoMatch_URL);
-		}
-		catch(AssertionError ae)
-		{
-			System.err.println(ae.getMessage());
-			Assert.fail();
-		}
-	}
-	
-//	@Test(priority=8)
-//	public void RW_T251_SearchForLocationWithoutAnyMatch_verifyBrowseForLocationIsPresent()
+//	
+//	@Test(priority=2)
+//	public void RW_T247_SearchResultPageComponents_verifySearchResultPageWithAddedLocation()
 //	{
-//		testStart("Verify browse for location CTA is present");
-//		landingPage.enterZipcodeInSearchFieldAndClick("rubbish");
-//		check it once the merge is complete. BrowseForlocation is present browse location class.
+//		testStart("Validate user navigated to search result page with added location");
+//		landingPage.enterZipcodeInSearchFieldAndClick("Aspen");
+//		try
+//		{
+//			Assert.assertEquals(getDriver().getCurrentUrl(), expectedSearchResultPageWithAddedLocation_URL);
+//		}
+//		catch(AssertionError ae)
+//		{
+//			System.err.println(ae.getMessage());
+//			Assert.fail();
+//		}
 //	}
-
-	@Test(priority=2)
-	public void RW_T252_NavigationTo3dayForecastPageFromSearchResults_navigationTo3dayForecastPage()
+//	
+//	@Test(priority=4)
+//	public void RW_T249_Search5DigitNumericZipcode_verifySearchResultPageWithAddedZipcode()
+//	{
+//		testStart("Validate user navigated to search result page with added zipcode");
+//		landingPage.enterZipcodeInSearchFieldAndClick("06901");
+//		try
+//		{
+//			Assert.assertEquals(getDriver().getCurrentUrl(), expectedSearchResultPageWithAddedZipcode_URL);
+//		}
+//		catch(AssertionError ae)
+//		{
+//			System.err.println(ae.getMessage());
+//			Assert.fail();
+//		}
+//	}
+//	
+//	@Test(priority=7)
+//	public void RW_T251_SearchForLocationWithoutAnyMatch_verifySearchResultPage()
+//	{
+//		testStart("Validate user navigated to expected search result page");
+//		landingPage.enterZipcodeInSearchFieldAndClick("rubbish");
+//		try
+//		{
+//			Assert.assertEquals(getDriver().getCurrentUrl(), expectedSearchResultPageForLocationWithNoMatch_URL);
+//		}
+//		catch(AssertionError ae)
+//		{
+//			System.err.println(ae.getMessage());
+//			Assert.fail();
+//		}
+//	}
+//	
+//	@Test(priority=2)
+//	public void RW_T252_NavigationTo3dayForecastPageFromSearchResults_navigationTo3dayForecastPage()
+//	{
+//		testStart("Validate user navigated to 3 day forecast page when clicked on any of the location from the search results");
+//		landingPage.enterZipcodeInSearchFieldAndClick("Aspen");
+//		seachResultsPage.clickLocationFromSearchResults();
+//		Assert.assertTrue(threedayForecastPage.fourWeathercardisDisplayed());
+//	}
+//	
+//	@Test(priority=2)
+//	public void RW_T610_NonUSLocations_verifyListofSuggestedLocations()
+//	{
+//		testStart("Verify the list of suggested of locations based on the characters entered appears");
+//		landingPage.enterZipcodeInSearchFieldAndClick("Royal Oak");
+//		seachResultsPage.verifyListofSuggestedLocations("Royal Oak");
+//	}
+//	
+//	@Test(priority=2)
+//	public void RW_T609_USLocations_verifyListofSuggestedLocations()
+//	{
+//		testStart("Verify the list of suggested of locations based on the characters entered appears");
+//		landingPage.enterZipcodeInSearchFieldAndClick("Mumbai");
+//		seachResultsPage.verifyListofSuggestedLocations("Mumbai");
+//	}
+//	
+	@Test(priority=1)
+	public void RW_T763_ValidateArrowKeysEnabledForUseOnFeaturedSearch_navigateSearchResultsUsingArrowKeys()
 	{
 		testStart("Validate user navigated to 3 day forecast page when clicked on any of the location from the search results");
-		landingPage.enterZipcodeInSearchFieldAndClick("Aspen");
-		seachResultsPage.clickLocationFromSearchResults();
-		Assert.assertTrue(threedayForecastPage.fourWeathercardisDisplayed());
+		landingPage.enterZipcodeInSearchField("ff");
+		Sleeper.sleep(3);
+		seachResultsPage.navigateSearchResultsUsingArrowKeys();
 	}
-	
-	@Test(priority=2)
-	public void RW_T610_NonUSLocations_verifyListofSuggestedLocations()
-	{
-		testStart("Verify the list of suggested of locations based on the characters entered appears");
-		landingPage.enterZipcodeInSearchFieldAndClick("Royal Oak");
-		seachResultsPage.verifyListofSuggestedLocations("Royal Oak");
-	}
-	
-	@Test(priority=2)
-	public void RW_T609_USLocations_verifyListofSuggestedLocations()
-	{
-		testStart("Verify the list of suggested of locations based on the characters entered appears");
-		landingPage.enterZipcodeInSearchFieldAndClick("Mumbai");
-		seachResultsPage.verifyListofSuggestedLocations("Mumbai");
-	}
-	
 }

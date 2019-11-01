@@ -552,5 +552,74 @@ public class LegalFooter extends BasePage
 		WebPageLoaded.isDomInteractive();
 		return getDriver().findElement(byTermsOfUseSpanish).isDisplayed();
 	}
+	
+	/**
+	 * Method to verify advertising section have updated providers 
+	 * @author Sowmiya
+	 * Boolean return true if providers are available
+	 * */
+	public Boolean verifyAdvertisingSectionHaveUpdatedProviders()
+	{
+		WebPageLoaded.isDomInteractive();
+		//Advertising section should have live ramp, cuebiq, Intersection
+		return getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='LiveRamp']")).syncVisible(15)
+		&& getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='Cuebiq']")).syncVisible(15)
+		&& getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='Intersection']")).syncVisible(15);
+	
+	}
+	
+	/**
+	 * Method to verify Liveramp providers URL and Page 
+	 * @author Sowmiya
+	 * Boolean return true if providers URL
+	 * */
+	public String verifyLiveRampLinkAndPage()
+	{
+		WebPageLoaded.isDomInteractive();
+		//Advertising section should have live ramp, cuebiq, Intersection
+		getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='LiveRamp']/../td/a[text()='https://liveramp.com/privacy/']")).syncVisible(15);
+		getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='LiveRamp']/../td/a[text()='https://liveramp.com/privacy/']")).jsClick();
+		//return the URL
+		Sleeper.sleep(2);
+		String window = getDriver().getWindowHandle();
+		switchToPopUpWindow(window);
+		return getDriver().getCurrentUrl();
+	}
+	
+	/**
+	 * Method to verify Cuebiq providers URL and Page 
+	 * @author Sowmiya
+	 * Boolean return true if providers URL
+	 * */
+	public String verifyCuebiqLinkAndPage()
+	{
+		WebPageLoaded.isDomInteractive();
+		//Advertising section should have live ramp, cuebiq, Intersection
+		getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='Cuebiq']/../td/a[text()='https://www.cuebiq.com/privacypolicy/']")).syncVisible(15);
+		getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='Cuebiq']/../td/a[text()='https://www.cuebiq.com/privacypolicy/']")).jsClick();
+		//return the URL
+		Sleeper.sleep(2);
+		String window = getDriver().getWindowHandle();
+		switchToPopUpWindow(window);
+		return getDriver().getCurrentUrl();
+	}
+	
+	/**
+	 * Method to verify Intersection providers URL and Page 
+	 * @author Sowmiya
+	 * Boolean return true if providers URL
+	 * */
+	public String verifyIntersectionLinkAndPage()
+	{
+		WebPageLoaded.isDomInteractive();
+		//Advertising section should have live ramp, cuebiq, Intersection
+		getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='Intersection']/../td/a[text()='https://www.intersection.com/privacy-policy/']")).syncVisible(15);
+		getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='Intersection']/../td/a[text()='https://www.intersection.com/privacy-policy/']")).jsClick();
+		//return the URL
+		Sleeper.sleep(2);
+		String window = getDriver().getWindowHandle();
+		switchToPopUpWindow(window);
+		return getDriver().getCurrentUrl();
+	}
 
 }

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+	<suite name="Core-Regression" verbose="5" parallel="methods" thread-count="4">
+		<parameter name="runLocation" value="grid" />
+		<parameter name="environment" value="qa" />
+		<parameter name="operatingSystem" value="WINDOWS" />
+		<parameter name="logLevel" value="3"/>
+
+        <!-- <test name="MonthlyForecast In Chrome">
+			<parameter name="browserUnderTest" value="Chrome" />
+      		<classes>
+      			<class name="com.accuweather.glacier.www.monthlyforecast.Test_MonthlyForecastPage"/>
+      		</classes>
+		</test> -->
+		
+		<test name="CurrentCondition In Chrome">
+			<parameter name="browserUnderTest" value="Chrome" />
+      		<classes>
+      			<class name="com.accuweather.glacier.www.currentCondition.Test_CurrentCondition"/>
+      		</classes>
+		</test>
+		
+		<!-- <test name="UniversalNavigation In Chrome">
+			<parameter name="browserUnderTest" value="Chrome" />
+      		<classes>
+      			<class name="com.accuweather.glacier.www.universalnavigation.Test_UniversalNavigation"/>
+      		</classes>
+		</test> -->
+		
+		<!-- <test name="CurrentCondition In Chrome">
+			<parameter name="browserUnderTest" value="Chrome" />
+      		<classes>
+      			<class name="com.accuweather.glacier.www.currentCondition.Test_CurrentCondition"/>
+      		</classes>
+		</test>
+		
+		 <test name="DailyList In Chrome">
+			<parameter name="browserUnderTest" value="Chrome" />
+      		<classes>
+      			<class name="com.accuweather.glacier.www.dailyList.Test_DailyListPage"/>
+      		</classes>
+		</test>
+		
+		<test name="HomepageNonUs In Chrome">
+			<parameter name="browserUnderTest" value="Chrome" />
+      		<classes>
+      			<class name="com.accuweather.glacier.www.homePageNonUS.Test_HomePageNonUs"/>
+      		</classes>
+		</test>
+		<test name="Hourlyforecast In Chrome">
+			<parameter name="browserUnderTest" value="Chrome" />
+      		<classes>
+      			<class name="com.accuweather.glacier.www.hourlyForecast.Test_HourlyForecastPage"/>
+      		</classes>
+		</test>
+		<test name="Podcast In Chrome">
+			<parameter name="browserUnderTest" value="Chrome" />
+      		<classes>
+      			<class name="com.accuweather.glacier.www.podcast.Test_PodcastPage"/>
+      		</classes>
+		</test> -->
+	</suite>

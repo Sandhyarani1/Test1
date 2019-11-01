@@ -1,9 +1,11 @@
 package com.accuweather.glacier.www.homePageNonUS;
 import org.testng.Assert;
+import com.chameleon.utils.Sleeper;
 import org.testng.annotations.Test;
 
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.HomePageNonUS;
+import com.accuweather.glacier.www.pages.HomepageBreadcrumbs;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.accuweather.glacier.www.pages.NavigationBar;
 import com.accuweather.glacier.www.pages.ThreeDayForecastPage;
@@ -26,6 +28,7 @@ public class Test_HomePageNonUs extends AccuWeatherBaseTest
 	private NavigationBar navBar = new NavigationBar();
 	private HomePageNonUS homePage = new HomePageNonUS();
 	private ThreeDayForecastPage threedayForecastPage = new ThreeDayForecastPage();
+	private HomepageBreadcrumbs homepageBreadcrumbs = new HomepageBreadcrumbs();
 	
 	@Test(priority=1)
 	public void RW_T745_ValidateTranslationOnBreadcrumbs_verifyCityPageTranslatedInSelectedLanguage()
@@ -91,6 +94,7 @@ public class Test_HomePageNonUs extends AccuWeatherBaseTest
 	{
 		testStart("Change the language to non-english and verify 20 locations of the country");
 		navBar.clickSettingsIcon();
+		homePage.changeLanguage();
 		Assert.assertTrue(homePage.verify20LocationsOfCountry());
 	}
 	
@@ -166,6 +170,7 @@ public class Test_HomePageNonUs extends AccuWeatherBaseTest
 		testStart("Change the language to non-english and verify 20 locations of the country");
 		landingPage.enterZipcodeInSearchFieldAndClick(satelliteRadarCountry);
 		navBar.clickSettingsIcon();
+		homePage.changeLanguage();
 		Assert.assertTrue(homePage.verify20LocationsOfCountry());
 	}
 	
@@ -310,5 +315,65 @@ public class Test_HomePageNonUs extends AccuWeatherBaseTest
 			Assert.fail();
 		}
 		
+	}
+	
+	@Test(priority=4)
+	public void RW_T1172_validateCurrentConditionsWhenuserSearchForALocation_verfiy20CitiesLocatedUnderMaps()
+	{
+		testStart("International Home page should have list of top 20 cities located under Maps");
+		landingPage.enterZipcodeInSearchFieldAndClick("Salvador, Bahia, BR");
+		navBar.navigateToHomePageByLogo();
+		navBar.clickSettingsIcon();
+		homePage.changeLanguage();
+		Assert.assertTrue(homePage.verify20LocationsOfCountry());
+	}
+	
+
+	@Test(priority=4)
+	public void RW_T1167_validateCurrentConditionsTopCitiesOnAdminStateWeatherPage_verfiy20CitiesLocatedUnderStateWeatherConditions()
+	{
+		testStart("User should see the list of Top 20 cities on world-weather page under STATE WEATHER CONDITIONS header.");
+		homepageBreadcrumbs.scrolldownpage();
+		homepageBreadcrumbs.scrolldownpage();
+		homepageBreadcrumbs.scrolldownpage();
+		homepageBreadcrumbs.scrolldownpage();
+		homePage.clickStateOnHomePage();
+		Assert.assertTrue(homePage.verify20LocationsOfCountry());
+	}
+	
+	@Test(priority=4)
+	public void RW_T1165_validateCurrentConditionsTopCitiesOnAdminStateWeatherPage_verfiy20CitiesLocatedUnderCountryWeatherConditions()
+	{
+		testStart("User should see the list of Top 20 cities on world-weather page under COUNTRY WEATHER CONDITIONS header.");
+		homepageBreadcrumbs.scrolldownpage();
+		homepageBreadcrumbs.scrolldownpage();
+		homepageBreadcrumbs.scrolldownpage();
+		homepageBreadcrumbs.scrolldownpage();
+		homePage.clickCountryOnHomePage();
+		Assert.assertTrue(homePage.verify20LocationsOfCountry());
+	}
+	
+	@Test(priority=4)
+	public void RW_T1162_validateCurrentConditionsTopCitiesOnAdminStateWeatherPage_verfiy20CitiesLocatedUnderContinentWeatherConditions()
+	{
+		testStart("User should see the list of Top 20 cities on world-weather page under CONTINENT WEATHER CONDITIONS header.");
+		homepageBreadcrumbs.scrolldownpage();
+		homepageBreadcrumbs.scrolldownpage();
+		homepageBreadcrumbs.scrolldownpage();
+		homepageBreadcrumbs.scrolldownpage();
+		homePage.clickContinentOnHomePage();
+		Assert.assertTrue(homePage.verify20LocationsOfCountry());
+	}
+	
+	@Test(priority=4)
+	public void RW_T1153_validateCurrentConditionsTopCitiesOnAdminStateWeatherPage_verfiy20CitiesLocatedUnderWorldWeatherConditions()
+	{
+		testStart("User should see the list of Top 20 cities on world-weather page under WORLD WEATHER CONDITIONS header.");
+		homepageBreadcrumbs.scrolldownpage();
+		homepageBreadcrumbs.scrolldownpage();
+		homepageBreadcrumbs.scrolldownpage();
+		homepageBreadcrumbs.scrolldownpage();
+		homePage.clickWorldOnHomePage();
+		Assert.assertTrue(homePage.verify20LocationsOfCountry());
 	}
 }
