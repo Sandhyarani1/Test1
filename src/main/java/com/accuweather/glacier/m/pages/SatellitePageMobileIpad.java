@@ -7,24 +7,24 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import com.accuweather.glacier.m.MobileBasePage;
+import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.DriverManager;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
 import com.chameleon.utils.Sleeper;
 
-
-public class SatellitePageMobile extends MobileBasePage {
+public class SatellitePageMobileIpad extends BasePage {
 	private By byRadarMaps = By.cssSelector("div.main-menu > ul > li:nth-child(1)");
 	private By bymegaMenuSatellite = By.cssSelector("div.mega-menu > div > div:nth-child(4) > a > h4");
 	private By bysatelliteTab = By
 			.cssSelector("div > div.subnav.secondary-nav.has-tertiary > div.subnav-items > a.subnav-item.active");
-	private By byEnhancedTab = By.cssSelector("div.subnav.tertiary-nav > div.subnav-items > a.subnav-item.active");
+	private By bySatelliteTab = By.cssSelector("div > div.subnav-items > a:nth-child(2) > span");
+	private By byEnhancedTab = By.cssSelector(" div.subnav.tertiary-nav > div.subnav-items > a.subnav-item.active");
 	private By byStandardTab = By.cssSelector("div.subnav.tertiary-nav > div.subnav-items > a:nth-child(2)");
 	private By byVisibleTab = By.cssSelector("div.subnav.tertiary-nav > div.subnav-items > a:nth-child(3)");
 	private By byWaterVaporTab = By.cssSelector("div.subnav.tertiary-nav > div.subnav-items > a:nth-child(4)");
 	private By byTitleofMap = By
-			.cssSelector("div.map-container.full-mobile-width.content-module > div.map-header > h2");
+			.cssSelector(" div.map-container.full-mobile-width.content-module > div.map-header > h2");
 	private By byTooltip = By.cssSelector("div.map-header > div > div.icon-tooltip");
 	private By byTooltipText = By.cssSelector("div.map-header > div > div.tooltip-overlay > div.tooltip-content");
 
@@ -35,7 +35,7 @@ public class SatellitePageMobile extends MobileBasePage {
 	private By byzoomOutControl = By.cssSelector("div > button.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-out");
 
 	private By byMapboxattribution = By.cssSelector("div.mapboxgl-ctrl-bottom-left > div:nth-child(2) > a");
-	private By byFullScreenButton = By.xpath("//div[@class='full-screen-button']");
+	private By byFullScreenButton = By.cssSelector("div.map-canvas.full-mobile-width > div.full-screen-button");
 	private By byFullscreenVisble = By.cssSelector("div.map-canvas.full-mobile-width > div.full-screen-button");
 
 	private By byTimelineControl = By.cssSelector("div.map-tools > div.timeline-controls");
@@ -60,13 +60,9 @@ public class SatellitePageMobile extends MobileBasePage {
 	private By bylegendClouds = By.xpath("//*[@class='key enhanced']//*[name()='rect']");
 	private By bylegendCloudsforVisbile = By.xpath("//*[@class='key visible']//*[name()='rect']");
 	private By bylegendWaterVapor = By.xpath("//*[@class='key waterVapor']//*[name()='rect']");
+
 	private By byfeaturedSearchbar = By
 			.cssSelector(" div.searchbar.featured-search > div.searchbar-content > form > input");
-
-	private By byBreadCrumbMenu = By.cssSelector("div.icon-hamburger");
-	private By byBreadCrumbMenuRadarAndMaps = By
-			.cssSelector(".header-accordion > .accordion-item:nth-child(1) .accordion-item-header-content");
-	private By byBreadCrumbMenuSatellite = By.xpath("//a[contains(text(),'Satellite')]");
 
 	/**
 	 * Method to click on City Satellite Page from Secondary Navigation menus
@@ -76,7 +72,7 @@ public class SatellitePageMobile extends MobileBasePage {
 	 */
 	public void clickonSatelliteTab() {
 		WebPageLoaded.isDomInteractive();
-		WebElement satelliteTab = getDriver().findElement(bysatelliteTab);
+		WebElement satelliteTab = getDriver().findElement(bySatelliteTab);
 		satelliteTab.syncVisible(30);
 		satelliteTab.jsClick();
 	}
@@ -92,14 +88,15 @@ public class SatellitePageMobile extends MobileBasePage {
 		WebPageLoaded.isDomInteractive();
 		WebElement radarandmaps = getDriver().findElement(byRadarMaps);
 		radarandmaps.syncVisible(15);
-		radarandmaps.hover();
+		radarandmaps.click();
 	}
 
 	public void navigateToSatellite() {
 		WebElement radarsubmenu = getDriver().findElement(bymegaMenuSatellite);
-	    Sleeper.sleep(3);
-		radarsubmenu.jsClick();
-
+		radarsubmenu.syncVisible(4);
+		radarsubmenu.click();
+		WebElement satTab = getDriver().findElement(bysatelliteTab);
+		satTab.syncVisible(5);
 	}
 
 	/**
@@ -120,7 +117,6 @@ public class SatellitePageMobile extends MobileBasePage {
 	}
 
 	public String EnchancedTabHighlighted() {
-
 		WebElement ele = getDriver().findElement(byEnhancedTab);
 		String result = (String) DriverManager.getWebDriver().executeJavaScript(
 				"return getComputedStyle(document.querySelector(\"body > div > div.page-subnav > div > div.subnav.tertiary-nav > div.subnav-items > a.subnav-item.active\")).borderBottomColor;",
@@ -134,9 +130,8 @@ public class SatellitePageMobile extends MobileBasePage {
 	 * page
 	 * 
 	 * @author Sandhya Narayanarao
-	 * @return true if displayed
+	 * 
 	 **/
-
 	public boolean validateTeritaryMenusDisplayed()
 	{
 		WebPageLoaded.isDomInteractive();
@@ -159,6 +154,9 @@ public class SatellitePageMobile extends MobileBasePage {
 				&& visibleTab.isDisplayed() && waterVaporTab.isDisplayed() ;
 	}
 
+
+	
+
 	/**
 	 * Method to get the Title of the National Satellite map
 	 * 
@@ -167,7 +165,6 @@ public class SatellitePageMobile extends MobileBasePage {
 	 */
 	public String getTitleofMap() {
 		WebPageLoaded.isDomInteractive();
-	    Sleeper.sleep(3);
 		return getDriver().findElement(byTitleofMap).getText();
 	}
 
@@ -210,7 +207,7 @@ public class SatellitePageMobile extends MobileBasePage {
 	public boolean toolTipDisplayed() {
 		WebPageLoaded.isDomInteractive();
 		WebElement tooltip = getDriver().findElement(byTooltip);
-	    Sleeper.sleep(3);
+		//tooltip.syncVisible(15);
 		return getDriver().findElements(byTooltip).size() > 0;
 	}
 
@@ -248,10 +245,10 @@ public class SatellitePageMobile extends MobileBasePage {
 	public String toolTipActive() {
 		WebElement ele = getDriver().findElement(byTooltipActive);
 		String result = (String) DriverManager.getWebDriver().executeJavaScript(
-				"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > div.content-module > "
-				+ "div.map-container.full-mobile-width.content-module > div.map-header > div > div.tooltip-overlay > div.tooltip-header > div\")).backgroundColor;",
+				"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-header > div > div.tooltip-overlay > div.tooltip-header > div\")).backgroundColor;",
 				ele);
-	return Color.fromString(result).asHex();
+		String arrowcolourdisplayed = Color.fromString(result).asHex();
+		return arrowcolourdisplayed;
 	}
 
 	/**
@@ -272,12 +269,11 @@ public class SatellitePageMobile extends MobileBasePage {
 	 */
 	public void zoominControls() {
 		for (int i = 0; i <= 5; i++) {
-
 			WebElement zoomIn = getDriver().findElement(byzoomInControl);
-		    Sleeper.sleep(3);
-			zoomIn.click();
-			Sleeper.sleep(2);
+			//WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
 			//wait.until(ExpectedConditions.elementToBeClickable(zoomIn));
+			zoomIn.jsClick();
+			Sleeper.sleep(10);
 		}
 	}
 
@@ -291,12 +287,10 @@ public class SatellitePageMobile extends MobileBasePage {
 	public void zoomoutControls() {
 		for (int i = 0; i <= 5; i++) {
 			WebElement zoomOut = getDriver().findElement(byzoomOutControl);
-		    Sleeper.sleep(3);
-			//WebDriverWait wait = new WebDriverWait(getDriver(), 3);
+			//WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
 			//wait.until(ExpectedConditions.elementToBeClickable(zoomOut));
-			zoomOut.click();
-			Sleeper.sleep(2);
-			//wait.until(ExpectedConditions.elementToBeClickable(zoomOut));
+			zoomOut.jsClick();
+			Sleeper.sleep(10);
 		}
 	}
 
@@ -307,21 +301,13 @@ public class SatellitePageMobile extends MobileBasePage {
 	 * 
 	 **/
 	public boolean MapboxattributionDisplayedBottomLeft() {
-		getDriver().findElement(byMapboxattribution).scrollIntoView();
-		return getDriver().findElements(byMapboxattribution).size() > 0;
+		WebElement mapboxattribution = getDriver().findElement(byMapboxattribution);
+		return getDriver().findElements(byMapboxattribution).size()>0;
 	}
 
 	public void ClickonMapboxattribution() {
 		WebElement mapboxattribution = getDriver().findElement(byMapboxattribution);
 		mapboxattribution.jsClick();
-		
-		Sleeper.sleep(5);
-		
-		
-		WebDriverWait wait = new WebDriverWait(getDriver(), 5);
-		wait.until(ExpectedConditions.alertIsPresent());
-		getDriver().switchTo().alert().accept();
-		
 	}
 
 	/**
@@ -334,7 +320,7 @@ public class SatellitePageMobile extends MobileBasePage {
 
 	public String getlandingurltitle() {
 		List<String> browserTabs = new ArrayList<>(getDriver().getWindowHandles());
-	    Sleeper.sleep(3);
+		Sleeper.sleep(3);
 		return getDriver().switchTo().window(browserTabs.get(1)).getCurrentUrl();
 	}
 
@@ -347,8 +333,6 @@ public class SatellitePageMobile extends MobileBasePage {
 	 */
 	public boolean fullScreenButtonDisplayed() {
 		WebElement fullScreenBtn = getDriver().findElement(byFullScreenButton);
-		//fullScreenBtn.syncVisible(30);
-
 		return getDriver().findElements(byFullScreenButton).size() > 0;
 	}
 
@@ -360,7 +344,7 @@ public class SatellitePageMobile extends MobileBasePage {
 	 * 
 	 */
 	public void clikonFullScreen() {
-		getDriver().findElement(byFullscreenVisble).click();
+		getDriver().findElement(byFullscreenVisble).jsClick();
 	}
 
 	/**
@@ -412,7 +396,7 @@ public class SatellitePageMobile extends MobileBasePage {
 		WebElement slideBar = getDriver().findElement(byslider);
 		WebElement playButton = getDriver().findElement(byPlaybutton);
 
-		//slideBar.syncVisible();
+		slideBar.syncVisible();
 		//playButton.syncVisible();
 
 		// Legends Displayed
@@ -434,8 +418,9 @@ public class SatellitePageMobile extends MobileBasePage {
 
 	public String timeStampdisplayed() {
 		WebElement timestamp = getDriver().findElement(bytimeStamp);
-		WebDriverWait wait = new WebDriverWait(getDriver(), 3);
+		WebDriverWait wait = new WebDriverWait(getDriver(), 800000);
 		return timestamp.getText();
+
 	}
 
 	/**
@@ -494,9 +479,6 @@ public class SatellitePageMobile extends MobileBasePage {
 				&& getDriver().findElements(bytextMoist).size() > 0;
 	}
 
-	
-
-	
 	/**
 	 * Method to validate Legend Clouds Displayed with various colors for Enchanced
 	 * Satellite Map
@@ -602,6 +584,7 @@ public class SatellitePageMobile extends MobileBasePage {
 			}
 		}
 	}
+
 	/**
 	 * Method to search city by name
 	 * 
@@ -609,12 +592,9 @@ public class SatellitePageMobile extends MobileBasePage {
 	public void searchCityByName(String cityName) {
 		WebPageLoaded.isDomInteractive();
 		WebElement searchBartextfield = getDriver().findElement(byfeaturedSearchbar);
-	    Sleeper.sleep(3);
-		//searchBartextfield.syncVisible(15);
-		//searchBartextfield.hover();
-		searchBartextfield.click();
+		searchBartextfield.syncVisible(15);
+		searchBartextfield.hover();
 		searchBartextfield.sendKeys(cityName);
-	    Sleeper.sleep(3);
 		//WebDriverWait wait = new WebDriverWait(getDriver(), 90);
 		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='search-results']//*")));
 	}
@@ -629,24 +609,6 @@ public class SatellitePageMobile extends MobileBasePage {
 		getDriver().findElement(By.cssSelector("div.search-results > div:nth-child(2)")).click();
 	}
 
-	public Boolean clickBreadCrumbMenu() {
-		WebPageLoaded.isDomInteractive();
-		getDriver().findElement(byBreadCrumbMenu).scrollIntoView();
-		getDriver().findElement(byBreadCrumbMenu).click();
-		return true;
-	}
+	
 
-	public Boolean clickBreadCrumbMenuRadarAndMaps() {
-		WebPageLoaded.isDomInteractive();
-		getDriver().findElement(byBreadCrumbMenuRadarAndMaps).scrollIntoView();
-		getDriver().findElement(byBreadCrumbMenuRadarAndMaps).click();
-		return true;
-	}
-
-	public Boolean clickbyBreadCrumbMenuSatellite() {
-		WebPageLoaded.isDomInteractive();
-		getDriver().findElement(byBreadCrumbMenuSatellite).scrollIntoView();
-		getDriver().findElement(byBreadCrumbMenuSatellite).click();
-		return true;
-	}
 }
