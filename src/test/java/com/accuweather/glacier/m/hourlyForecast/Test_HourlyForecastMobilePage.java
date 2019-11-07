@@ -46,7 +46,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 		Sleeper.sleep(3);
 		hourlyPage.clickOnHourlyTab();
 		Sleeper.sleep(3);
-		waitUntilWindowExistsWithTitle(expectedHourlyForecastTitle);
+//		waitUntilWindowExistsWithTitle(expectedHourlyForecastTitle);
 		try
 		{
 			Assert.assertEquals(getDriver().getTitle(), expectedHourlyForecastTitle);
