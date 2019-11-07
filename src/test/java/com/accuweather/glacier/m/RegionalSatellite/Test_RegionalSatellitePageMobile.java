@@ -1,4 +1,4 @@
-package com.accuweather.glacier.m.NationalSatellite;
+package com.accuweather.glacier.m.RegionalSatellite;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,53 +9,59 @@ import org.testng.annotations.Test;
 
 import com.accuweather.glacier.m.AccuWeatherMobileBaseTest;
 import com.accuweather.glacier.m.pages.SatellitePageMobile;
+import com.accuweather.glacier.www.AccuWeatherBaseTest;
+import com.accuweather.glacier.www.pages.SatellitePage;
+import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.utils.Sleeper;
 
-public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
-
-	String citySearchedByName = "Washington";
+public class Test_RegionalSatellitePageMobile extends AccuWeatherMobileBaseTest {
+	String citySearchedByName = "Chicago";
 	String expectedHomePageTitle = "Weather Forecast Search - Find Your Location - AccuWeather.com";
-	String expectedlandingpageURL = "https://qualityassurance.accuweather.com/en/us/national/satellite";
-	String expectedSatellitepageTitle = "United States Enhanced Weather Satellite Map - AccuWeather.com";
-	String expectedvisiblepageTitle = "https://qualityassurance.accuweather.com/en/us/national/satellite-vis";
+	String expectedlandingpageURL = "https://qualityassurance.accuweather.com/en/us/illinois/satellite";
+	String expectedSatellitepageTitle = "https://qualityassurance.accuweather.com/en/us/illinois/satellite";
+	String expectedvisiblepageTitle = "qualityassurance.accuweather.com/en/us/illinois/satellite-vis";
 
 	private static final String EXPECTED_SATELLITETAB_HIGHLIGHTED = "#f05514";
+	private static final String EXPECTED_ENCHANCEDTAB_HIGHLIGHTED_BYDEFAULT = "#ec5f17";
+	private static final String EXPECTED_TOOL_TIP_COLOR = "#f59721";
+
+	private static final String ENCHANCED_TAB = "Enchanced";
 	private static final String STANDARD_TAB = "Standard";
 	private static final String VISIBLE_TAB = "Visible";
 	private static final String WATERVAPOR_TAB = "WaterVapor";
 
-	private static final String EXPECTED_TITLE_OF_MAP_STANDARD = "Standard Satellite for United States";
-	private static final String EXPECTED_TITLE_OF_MAP_VISIBLE = "Visible Satellite for United States";
-	private static final String EXPECTED_TITLE_OF_MAP_WATERVAPOR = "Water Vapor Satellite for United States";
+	private static final String EXPECTED_TITLE_OF_MAP_ENCHANCED = "Enhanced Satellite for Illinois";
+	private static final String EXPECTED_TITLE_OF_MAP_STANDARD = "Standard Satellite for Illinois";
+	private static final String EXPECTED_TITLE_OF_MAP_VISIBLE = "Visible Satellite for Illinois";
+	private static final String EXPECTED_TITLE_OF_MAP_WATERVAPOR = "Water Vapor Satellite for Illinois";
 
-	private static final String EXPECTED_TOOL_TIP_COLOR = "#f59721";
-
-	private static final String EXPECTED_TOOL_TIPTEXT = "This map displays the infrared band of light and show relative warmth of objects. Infrared imagery is useful for determining clouds both at day and night. Colder objects are brighter and warmer objects are darker. It displays the weather systems and patterns that may affect your area.";
+	private static final String EXPECTED_TOOL_TIPTEXT = "This map displays the infrared band of light and show relative warmth of objects. Infrared imagery is useful for determining clouds both at day and night. Colder objects are brighter and warmer objects are darker. It displays the weather systems and patterns that may affect your area.";
 	private static final String EXPECTED_TOOL_TIPTEXT_VISIBLE_TAB = "This map shows how the human eye would see the atmosphere from the satellite. It displays the weather systems and patterns that may affect your area.";
 	private static final String EXPECTED_TOOL_TIPTEXT_WATERVAPOR_TAB = "This image is taken using a wavelength sensitive to the content of water vapor in the atmosphere. Water vapor imagery is useful for both determining locations of moisture and atmospheric circulations that may affect your area.";
 
 	private static final int EXPECTED_DIFFERENCE = 5;
 	private static final String MAP_BOX_LANDING_PAGE_URL = "https://www.mapbox.com/";
-	private static final String EXPECTED_URL_FOR_SATELLITE = "https://qualityassurance.accuweather.com/en/us/national/satellite-ir";
+	private static final String EXPECTED_URL_FOR_SATELLITE = "https://qualityassurance.accuweather.com/en/us/illinois/satellite-ir";
 
 	private SatellitePageMobile satellitePage = new SatellitePageMobile();
 
 	@Test(priority = 1, enabled = true)
-	public void RW_TC218_National_Satellite_page_loads_succesfully() {
-		testStart("Validate National Satellite page is loaded successfully");
+	public void RW_TC313_Regional_Satellite_page_loads_succesfully() {
+		testStart("Validate Regional Satellite page is loaded successfully");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(6);
+		Sleeper.sleep(5);
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedlandingpageURL);
+
 	}
 
-
-	@Test(priority = 2, enabled = true)
-	public void RW_TC218_validate_Satellite_tab_Highlighted_byDefault_onSecondary_navigations_menus_on_National_Satellite_page() {
-		testStart("Validate Satellite highlighted in orange by default on secondary navigations on national satellite page.");
+	@Test(priority = 2, enabled = false)
+	public void RW_TC313_Validate_Satellite_tab_Highlighted_byDefault_onSecondary_Navigations_menus_ofRegional_Satellite_Map() {
+		testStart(
+				"Validate Satellite tab highlighted in orange by default on secondary navigations menus of satellite map.");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -64,11 +70,21 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		Sleeper.sleep(5);
 		Assert.assertEquals(satellitePage.satelliteTabHighlighted(), EXPECTED_SATELLITETAB_HIGHLIGHTED);
 	}
-	
-	
 
+	@Test(priority = 3, enabled = false)
+	public void RW_TC313_Validate_Enchanced_tab_Highlighted_byDefault_onTeritary_Navigations_menus_ofRegional_Satellite_Map() {
+		testStart(
+				"Validate Enchaced Tab highlighted in orange by default on Teritary navigations menus of satellite map.");
+		satellitePage.searchCityByName(citySearchedByName);
+		satellitePage.selectCityByName();
+		satellitePage.clickBreadCrumbMenu();
+		satellitePage.clickBreadCrumbMenuRadarAndMaps();
+		satellitePage.clickbyBreadCrumbMenuSatellite();
+		Sleeper.sleep(5);
+		Assert.assertEquals(satellitePage.EnchancedTabHighlighted(), EXPECTED_ENCHANCEDTAB_HIGHLIGHTED_BYDEFAULT);
+	}
 	
-	@Test(priority = 3, enabled = true)
+	@Test(priority = 4, enabled = false)
 	public void RW_TC218_Validate_Tertiary_menus_displayed_for_National_Satellite_Map() {
 		testStart("Validate Tertiary menus displayed  on national satellite page.");
 		satellitePage.searchCityByName(citySearchedByName);
@@ -82,24 +98,23 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 	}
 	
 
-	@Test(priority = 4, enabled = true)
-	public void RW_TC219_Validate_ToolTip_Active_when_Clicked_for_Enchanced_Satellite_Map() {
-		testStart("Navigate to National Satellite page and Validate Tooltip Active when Clicked ");
+	@Test(priority = 5, enabled = false)
+	public void RW_TC313_Validate_Title_of_map_displayed_on_Regional_Satellite_page() {
+		testStart("Validate Title of the map displayed on Regional Satellite Map.");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(3);
-		satellitePage.clickOnToolTip();
-		Sleeper.sleep(6);
-		String actualTooltipColor = satellitePage.toolTipActive();
-		Assert.assertEquals(actualTooltipColor, EXPECTED_TOOL_TIP_COLOR);
+		Sleeper.sleep(5);
+		Assert.assertTrue(satellitePage.getTitleofMap().equalsIgnoreCase(EXPECTED_TITLE_OF_MAP_ENCHANCED));
+
 	}
 
-	@Test(priority = 5, enabled = true)
-	public void RW_TC219_Validate_ToolTip_Text_Displayed_for_Enchanced_Satellite_Map() {
-		testStart("Navigate to National Satellite page and Validate text displayed ");
+	
+	@Test(priority = 6, enabled = false)
+	public void RW_TC314_Validate_ToolTip_Active_when_Clicked_for_Enchanced_Satellite_Map() {
+		testStart("Navigate to Regional Satellite page and Validate Tooltip Active when Clicked ");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -107,30 +122,45 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickbyBreadCrumbMenuSatellite();
 		Sleeper.sleep(5);
 		satellitePage.clickOnToolTip();
-		Sleeper.sleep(6);
-		String actualTooltipText = satellitePage.toolTipTextdisplayed();
-		Assert.assertTrue(actualTooltipText.equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT));
+		Sleeper.sleep(3);
+		String actualTooltipColor = satellitePage.toolTipActive();
+		Assert.assertEquals(actualTooltipColor, EXPECTED_TOOL_TIP_COLOR);
 	}
 
-	@Test(priority = 6, enabled = true)
-	public void RW_TC219_Validate_ToolTip_Closes_when_Clicked_Twice_for_Enchanced_Satellite_Map() {
-		testStart("Navigate to National Satellite page and Validate Tooltip closes when clicked twice ");
+	@Test(priority = 7, enabled = false)
+	public void RW_TC314_Validate_ToolTip_Text_Displayed_for_Enchanced_Satellite_Map() {
+		testStart("Navigate to Regional Satellite page and Validate Tool tip text displayed ");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.clickOnToolTip();
-		Sleeper.sleep(2);
-		satellitePage.clickOnToolTip();
-		Sleeper.sleep(2);
+		Sleeper.sleep(5);
+		String actualTooltipText = satellitePage.toolTipTextdisplayed();
+		Assert.assertTrue(actualTooltipText.equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT));
 	}
 
-	
-	@Test(priority = 7, enabled = true)
-	public void RW_TC219_Validate_Zoom_Button_working_onNational_satellitePage_For_Enchanced_Tab() {
-		testStart("Navigate to National satellite page and Validate Zoom Control button Functioning as expeceted");
+	@Test(priority = 8, enabled = false)
+	public void RW_TC314_Validate_ToolTip_Closes_when_Clicked_Twice_for_Enchanced_Satellite_Map() {
+		testStart("Navigate to Regional Satellite page and Validate Tooltip closes when clicked twice ");
+		satellitePage.searchCityByName(citySearchedByName);
+		satellitePage.selectCityByName();
+		satellitePage.clickBreadCrumbMenu();
+		satellitePage.clickBreadCrumbMenuRadarAndMaps();
+		satellitePage.clickbyBreadCrumbMenuSatellite();
+		Sleeper.sleep(5);
+		satellitePage.clickOnToolTip();
+		Sleeper.sleep(2);
+		satellitePage.clickOnToolTip();
+		Sleeper.sleep(5);
+	}
+
+
+	@Test(priority = 9, enabled = false)
+	public void RW_TC314_Validate_Zoom_Button_working_onRegional_satellitePage_For_Enchanced_Tab() {
+		testStart("Navigate to Regional satellite page and Validate Zoom In Control button Functioning as expeceted");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -138,64 +168,65 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickbyBreadCrumbMenuSatellite();
 		Sleeper.sleep(5);
 		satellitePage.zoominControls();
-		Sleeper.sleep(6);
+		Sleeper.sleep(3);
 		satellitePage.zoomoutControls();
-	} 
+	}
 
-
-	@Test(priority = 8, enabled = true)
-	public void RW_TC220_Validate_Mapbox_Attribution_Landing_Page_UrlFor_Enchanced_Tab() {
-		testStart("Navigate to National satellite page and Validate Mapbox landing page For Enchanced Tab");
+	
+	@Test(priority = 10, enabled = false)
+	public void RW_TC315_Validate_Mapbox_Attribution_Landing_Page_UrlFor_Enchanced_Tab() {
+		testStart("Navigate to Regional satellite page and Validate Mapbox landing page For Enchanced Tab");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.ClickonMapboxattribution();
-		Sleeper.sleep(4);
+		Sleeper.sleep(6);
+		waitUntilElementIsDisplayedOrClickable();
 		String actualLandingpageUrl = satellitePage.getlandingurltitle();
 		Assert.assertEquals(actualLandingpageUrl, MAP_BOX_LANDING_PAGE_URL);
-	} 
+	}
 
-	@Test(priority = 9, enabled = true)
-	public void RW_TC220_Validate_Legend_Clouds_Displayed_withText_LowandHigh_for_National_SatelliteMapFor_Enchanced_Tab() {
-		testStart("Navigate to National Satellite Map and Validate Legend cloud displayed and text High and Low For Enchanced Tab");
+	@Test(priority = 11, enabled = false)
+	public void RW_TC220_Validate_Legend_Clouds_Displayed_withText_LowandHigh_for_Regional_SatelliteMapFor_Enchanced_Tab() {
+		testStart(
+				"Navigate to Regional Satellite Map and Validate Legend cloud displayed with text High and Low For Enchanced Tab");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(6);
+		Sleeper.sleep(5);
 		Assert.assertTrue(satellitePage.legendCloud_textLowandHigh_Displayed());
-	} 
+	}
 
-	@Test(priority = 10, enabled = true)
-	public void RW_TC220_Validate_Legend_Clouds_Displayed_with_colors_SatelliteMapFor_Enchanced_Tab() {
-		testStart("Navigate to National Satellite Map and Validate legend cloud displayed with colors ");
+	@Test(priority = 12, enabled = false)
+	public void RW_TC315_Validate_Legend_Clouds_Displayed_with_colors_RegionalMapFor_Enchanced_Tab() {
+		testStart("Navigate to Regional Satellite Map and Validate legend cloud displayed with colors ");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(6);
-		
+		Sleeper.sleep(5);
 		satellitePage.coloursdisplayedforEnchacedSatelliteMap();
 	}
-	
 
-	@Test(priority = 11, enabled = true)
-	public void RW_TC220_Validate_TimeDisplayed_onTimelineControls_of_SatelliteMapFor_Enchanced_Tab() {
-		testStart("Navigate to satellite page and Validate time displayed on Timeline controls");
+	@Test(priority = 13, enabled = false)
+	public void RW_TC315_Validate_TimeDisplayed_onTimelineControls_of_RegionalMapFor_Enchanced_Tab() {
+		testStart("Navigate to Regional page and Validate time displayed on Timeline controls");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		String endTime = satellitePage.timeStampdisplayed();
 		satellitePage.clickonPlayButton();
 		satellitePage.clickonPauseButton();
+
 		String startTime = satellitePage.timeStampdisplayed();
 
 		SimpleDateFormat format = new SimpleDateFormat("HH:mm");
@@ -213,40 +244,54 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 			e.getMessage();
 		}
 	}
-
-
-	@Test(priority = 12, enabled = true)
-	public void RW_TC220_Validate_Legend_Clouds_Text_LowandHigh_Displayed_for_fullScreen_SatelliteMapFor_Enchanced_Tab() {
-		testStart("Navigate to National Satellite full screen page and Validate Legend Clouds displayed with text Low and High");
+	
+	@Test(priority = 14, enabled = false)
+	public void RW_TC315_Validate_FullScreen_Displayed_with_Timeslider_legends_with_textFor_Enchanced_Tab() {
+		testStart(
+				"Navigate to Regional Satellite full screen page and Validate Timeline control ,Timeslider with play button and legend displayed");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(6);
+		Sleeper.sleep(5);
+		Assert.assertTrue(satellitePage.validateFullscreenMap());
+
+	} 
+
+	@Test(priority = 15, enabled = false)
+	public void RW_TC315_Validate_Legend_Clouds_Text_LowandHigh_Displayed_for_fullScreen_SatelliteMapFor_Enchanced_Tab() {
+		testStart(
+				"Navigate to Regional Satellite full screen page and Validate Legend Clouds displayed with text Low and High");
+		satellitePage.searchCityByName(citySearchedByName);
+		satellitePage.selectCityByName();
+		satellitePage.clickBreadCrumbMenu();
+		satellitePage.clickBreadCrumbMenuRadarAndMaps();
+		satellitePage.clickbyBreadCrumbMenuSatellite();
+		Sleeper.sleep(5);
 		satellitePage.clikonFullScreen();
 		Sleeper.sleep(3);
 		Assert.assertTrue(satellitePage.legendCloud_textLowandHigh_Displayed());
-	}
+	} 
 
-	@Test(priority = 13, enabled = true)
-	public void RW_TC220_Validate_Legend_Clouds_Displayed_with_colors_onfullScreen_SatelliteMapFor_Enchanced_Tab() {
-		testStart("Navigate to National Satellite page and Validate legend cloud displayed with colors");
+	@Test(priority = 16, enabled = false)
+	public void RW_TC315_Validate_Legend_Clouds_Displayed_with_colors_onfullScreen_SatelliteMapFor_Enchanced_Tab() {
+		testStart("Navigate to Regional Satellite page and Validate legend cloud displayed with colors");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(6);
+		Sleeper.sleep(5);
 		satellitePage.clikonFullScreen();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.coloursdisplayedforEnchacedSatelliteMap();
-	}
+	} 
 
-	// ******Validating Standard Satellite Map *************//
+	// ***** Validation of Standard Satellite Map ******//
 
-	@Test(priority = 14, enabled = true)
-	public void RW_TC221_Navigate_to_Standard_Stalellite_Map_From_Teritarytab_validate_Landing_page_URL() {
+	@Test(priority = 17, enabled = false)
+	public void RW_TC316_Navigate_to_Standard_Satellite_Map_From_Teritarytab_validate_Landing_page_URL() {
 		testStart("Navigate to Standard Satellite Map from teritary tab and Validate Landing page URL ");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
@@ -257,10 +302,10 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Sleeper.sleep(3);
 		Assert.assertEquals(getDriver().getCurrentUrl(), EXPECTED_URL_FOR_SATELLITE);
-	}
+	} 
 
-	@Test(priority = 15, enabled = true)
-	public void RW_TC221_a_Navigate_to_Standard_tertiary_from_National_Stalellite_Map_validate_Title() {
+	@Test(priority = 18, enabled = false)
+	public void RW_TC316_Navigate_to_Standard_Satellite_Map_from_tertiaryTab_validate_MapTitle() {
 		testStart("Navigate to Standard Satellite Map from teritary tab and Validate Title displayed on the  Map ");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
@@ -271,11 +316,12 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Sleeper.sleep(3);
 		Assert.assertTrue(satellitePage.getTitleofMap().equalsIgnoreCase(EXPECTED_TITLE_OF_MAP_STANDARD));
-	}
+	} 
 
-	@Test(priority = 16, enabled = true)
-	public void RW_TC221_b_Validate_ToolTip_textDisplayed_for_Standard_Satellite_Map() {
-		testStart("Navigate to Standard Satellite Map from teritary tab and Validate Tooltip text displayed on the  Map ");
+	@Test(priority = 19, enabled = false)
+	public void RW_TC316_Validate_ToolTip_textDisplayed_for_Standard_SatelliteMap() {
+		testStart(
+				"Navigate to Standard Satellite Map from teritary tab and Validate Tooltip text displayed on the  Map ");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -287,29 +333,29 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickOnToolTip();
 		Sleeper.sleep(3);
 		Assert.assertTrue(satellitePage.toolTipTextdisplayed().equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT));
-	}
+	} 
 
-	@Test(priority = 17, enabled = true)
-	public void RW_TC221_c_Validate_ToolTip_highlighted_inOrange_when_clicked_for_Standard_SatelliteMap() {
-		testStart("Navigate to Standard Satellite Map from teritary tab and Validate Tooltip Highlighted when Active");
+	@Test(priority = 20, enabled = false)
+	public void RW_TC316_Validate_ToolTip_highlighted_inOrange_for_Standard_SatelliteMap() {
+		testStart("Navigate to Standard satellite Map from teritary tab and Validate Tooltip Highlighted when Active");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Sleeper.sleep(3);
 		satellitePage.clickOnToolTip();
 		Sleeper.sleep(3);
-		satellitePage.toolTipActive();
 		String actualTooltipColor = satellitePage.toolTipActive();
 		Assert.assertEquals(actualTooltipColor, EXPECTED_TOOL_TIP_COLOR);
 	} 
 
-	@Test(priority = 18, enabled = true)
-	public void RW_TC221_d_Validate_ToolTip_Closes_when_Clicked_Twice_for_Standard_Satellite_Map() {
-		testStart("Navigate to Standard Satellite Map from teritary tab and Validate Tooltip Closes when clicked Twice ");
+	@Test(priority = 21, enabled = false)
+	public void RW_TC316_Validate_ToolTip_Closes_when_Clicked_Twice_for_Standarad_Satellite_Map() {
+		testStart(
+				"Navigate to Standard Satellite Map from teritary tab and Validate Tooltip Closes when clicked Twice ");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -323,15 +369,17 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickOnToolTip();
 	} 
 
-	@Test(priority = 19, enabled = true)
-	public void RW_TC221_f_Validate_Zoom_Button_Functions_onStandard_satelliteMap() {
-		testStart("Navigate to Standard Satellite Map from teritary tab and Validate Zoom Control button functions as expected");
+
+	@Test(priority = 22, enabled = false)
+	public void RW_TC316_Validate_Zoom_Button_Functions_forStandard_SatelliteMap() {
+		testStart(
+				"Navigate to Standard Satellite Map from teritary tab and Validate ZoomIn Control button functions as expected");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Sleeper.sleep(3);
 		satellitePage.zoominControls();
@@ -340,9 +388,10 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 	} 
 
 
-	@Test(priority = 20, enabled = true)
-	public void RW_TC222_Validate_Landingpage_URL_when_clicked_onMapbox_Attribution_onBottomLeft_Corner_for_Standard_SatelliteMap() {
-		testStart("Navigate to Standard Satellite Map from teritary tab and Validate Mapbox attribution displayed on Bottom left corner of Map");
+	@Test(priority = 23, enabled = false)
+	public void RW_TC317_Validate_Landingpage_URL_when_clicked_Mapbox_Attribution_onBottomLeft_Corner_for_Standard_SatelliteMap() {
+		testStart(
+				"Navigate to Standard Satellite Map from teritary tab and Validate Mapbox attribution displayed on Bottom left corner of Map");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -352,14 +401,15 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Sleeper.sleep(3);
 		satellitePage.ClickonMapboxattribution();
-		Sleeper.sleep(3);
+		Sleeper.sleep(8);
 		String actualLandingpageUrl = satellitePage.getlandingurltitle();
 		Assert.assertEquals(actualLandingpageUrl, MAP_BOX_LANDING_PAGE_URL);
-	}
+	} 
 
-	@Test(priority = 21, enabled = true)
-	public void RW_TC222_Validate_Legend_Clouds_Text_LowandHigh_Displayed_for_Standard_SatelliteMap() {
-		testStart("Navigate to Standard teritary tab from Satellite Map and Validate Mapbox attribution displayed on Bottom left corner of Map");
+	@Test(priority = 24, enabled = false)
+	public void RW_TC317_Validate_Legend_Clouds_Text_LowandHigh_Displayed_for_Standard_SatelliteMap() {
+		testStart(
+				"Navigate to Standard teritary tab from Satellite Map and Validate Mapbox attribution displayed on Bottom left corner of Map");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -369,31 +419,32 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Sleeper.sleep(3);
 		Assert.assertTrue(satellitePage.legendCloud_textLowandHigh_Displayed());
-	}
+	} 
 
-	@Test(priority = 22, enabled = true)
-	public void RW_TC222_Validate_Legend_Clouds_Displayed_with_colors_on_StandardMap() {
-		testStart("Navigate to National Satellite page and Validate Tooltip displayed on the  Map ");
+	@Test(priority = 25, enabled = false)
+	public void RW_TC317_Validate_Legend_Clouds_Displayed_with_colors_on_StandardMap() {
+		testStart("Navigate to National Satellite page and Validate Clors displayed under legend Cloud ");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.coloursdisplayedforStandardSatelliteMap();
-	}
+	} 
 
-	@Test(priority = 23, enabled = true)
-	public void RW_TC222_Validate_TimeDisplayed_onTimelineControls_on_Standard_SatelliteMap() {
-		testStart("Navigate to Standard teritary tab from Satellite Map  and Validate Timeline controls Time displayed for Full screen Map");
+	@Test(priority = 26, enabled = false)
+	public void RW_TC317_Validate_TimeDisplayed_onTimelineControls_on_Standard_SatelliteMap() {
+		testStart(
+				"Navigate to Standard teritary tab from Satellite Map  and Validate Timeline controls Time displayed for Full screen Map");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Sleeper.sleep(3);
 
@@ -421,10 +472,10 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 	}
 
 
-
-	@Test(priority = 24, enabled = true)
-	public void RW_TC222_Validate_Legend_Clouds_DisplayedwithText_LowandHigh_for_fullScreen_StandardMap() {
-		testStart("Navigate to Standard teritary tab from Satellite Map and Validate legend Cloud displayed with text High and Low");
+	@Test(priority = 27, enabled = false)
+	public void RW_TC317_Validate_Legend_Clouds_Text_LowandHigh_Displayed_for_fullScreen_StandardMap() {
+		testStart(
+				"Navigate to Standard teritary tab from Satellite Map and Validate legend Cloud displayed with text High and Low");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -433,14 +484,14 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Sleeper.sleep(3);
-		satellitePage.fullScreenButtonDisplayed();
+		satellitePage.clikonFullScreen();
 		Sleeper.sleep(3);
 		Assert.assertTrue(satellitePage.legendCloud_textLowandHigh_Displayed());
-	}
+	} 
 
-	@Test(priority = 25, enabled = true)
-	public void RW_TC222_Validate_Legend_Clouds_Displayed_with_colors_onfullScreen_StandardMap() {
-		testStart("Navigate to National Satellite page and Validate Tooltip displayed on the  Map ");
+	@Test(priority = 28, enabled = false)
+	public void RW_TC317_Validate_Legend_Clouds_Displayed_with_colors_onfullScreen_StandardMap() {
+		testStart("Navigate to National Satellite Standard Map page and Validate colors displayed under legend Cloud ");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -449,14 +500,16 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Sleeper.sleep(3);
+		waitUntilElementIsDisplayedOrClickable();
 		satellitePage.clikonFullScreen();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.coloursdisplayedforStandardSatelliteMap();
-	}
+	} 
 
-	@Test(priority = 26, enabled = true)
-	public void RW_TC222_Validate_FullScreen_Standard_SatelliteMap_hasTimelineControl_Slider_legend() {
-		testStart("Navigate to Standard satellite Full Screen Map and Validate Timeline control ,Timeslider with play button and legend displayed ");
+	@Test(priority = 29, enabled = false)
+	public void RW_TC317_Validate_FullScreen_Standard_SatelliteMap_hasTimelineControl_Slider_legend() {
+		testStart(
+				"Navigate to Standard satellite Full Screen Map and Validate Timeline control ,Timeslider with play button and legend displayed ");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -466,14 +519,13 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickOnTertiarymenus(STANDARD_TAB);
 		Sleeper.sleep(3);
 		satellitePage.clikonFullScreen();
-		Sleeper.sleep(3);
 		satellitePage.validateFullscreenMap();
-	}
+	} 
 
-	// ******Validating Visible Satellite Map *************//
+	// ****** Validation for Visible Satellite Map *******//
 
-	@Test(priority = 27, enabled = true)
-	public void RW_TC223_Navigate_Visible_Satellite_Map_Validate_Title() {
+	@Test(priority = 30, enabled = false)
+	public void RW_TC318_Validate_Visible_Satellite_Map_Title() {
 		testStart("Navigate to Visible Satellite Map from teritary tab and Validate Title of the map");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
@@ -482,15 +534,15 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickbyBreadCrumbMenuSatellite();
 		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
-		Sleeper.sleep(3);
-		waitUntilWindowExistsWithTitle(expectedvisiblepageTitle);
+		Sleeper.sleep(5);
 		Assert.assertTrue(satellitePage.getTitleofMap().equalsIgnoreCase(EXPECTED_TITLE_OF_MAP_VISIBLE));
 
-	}
+	} 
 
 
-	@Test(priority = 28, enabled = true)
-	public void RW_TC223_Validate_ToolTip_Active_when_Clicked_for_Visible_Satellite_Map() {
+
+	@Test(priority = 31, enabled = false)
+	public void RW_TC318_Validate_ToolTip_Active_when_Clicked_for_Visible_Satellite_Map() {
 		testStart("Navigate to Visible Satellite Map and Validate Tooltip active when clicked");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
@@ -505,10 +557,10 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		String actualTooltipColor = satellitePage.toolTipActive();
 		Assert.assertEquals(actualTooltipColor, EXPECTED_TOOL_TIP_COLOR);
 
-	}
+	}  
 
-	@Test(priority = 29, enabled = true)
-	public void RW_TC223_Validate_ToolTip_Text_Displayed_for_Visible_Satellite_Map() {
+	@Test(priority = 32, enabled = false)
+	public void RW_TC318_Validate_ToolTip_Text_Displayed_for_Visible_Satellite_Map() {
 		testStart("Navigate to Visible Satellite Map and Validate Tooltip text displayed");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
@@ -523,28 +575,27 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		String actualTooltipText = satellitePage.toolTipTextdisplayed();
 		Assert.assertTrue(actualTooltipText.equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT_VISIBLE_TAB));
 
-	}
+	} 
 
-	@Test(priority = 30, enabled = true)
-	public void RW_TC223_Validate_ToolTip_Closes_when_Clicked_Twice_for_Visible_Satellite_Map() {
+	@Test(priority = 33, enabled = false)
+	public void RW_TC318_Validate_ToolTip_Closes_when_Clicked_Twice_for_Visible_Satellite_Map() {
 		testStart("Navigate to Visible Satellite Map and Validate Tooltip Closes when clicked Twice ");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		Sleeper.sleep(3);
 		satellitePage.clickOnToolTip();
 		Sleeper.sleep(2);
 		satellitePage.clickOnToolTip();
-		Sleeper.sleep(3);
-	}
+	} 
 
-
-	@Test(priority = 31, enabled = true)
-	public void RW_TC223_Validate_Zoom_Button_Functioning_onVisible_satelliteMap() {
+	
+	@Test(priority = 34, enabled = false)
+	public void RW_TC318_Validate_Zoom_Button_Functioning_onVisible_satelliteMap() {
 		testStart("Navigate to Visible Satellite Map and Validate Zoom  Control button Funtions on Map");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
@@ -557,69 +608,67 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.zoominControls();
 		Sleeper.sleep(3);
 		satellitePage.zoomoutControls();
-	}
+	} 
 
-
-
-	@Test(priority = 32, enabled = true)
-	public void RW_TC224_Validate_when_clicked_Mapbox_Attribution_onBottomLeft_Corner_ofVisible_SatelliteMap() {
+	
+	@Test(priority = 35, enabled = false)
+	public void RW_TC319_Validate_when_clicked_Mapbox_Attribution_onBottomLeft_Corner_ofVisible_SatelliteMap() {
 		testStart("Navigate to Visible satellite Map and Validate Mapbox landing page");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		Sleeper.sleep(3);
 		satellitePage.ClickonMapboxattribution();
-		Sleeper.sleep(3);
+		Sleeper.sleep(6);
 		String actualLandingpageUrl = satellitePage.getlandingurltitle();
 		Assert.assertEquals(actualLandingpageUrl, MAP_BOX_LANDING_PAGE_URL);
 
 	}
 
-	@Test(priority = 33, enabled = true)
-	public void RW_TC224_Validate_Legend_Clouds_Text_LowandHigh_Displayed_for_Visible_SatelliteMap() {
+	@Test(priority = 36, enabled = false)
+	public void RW_TC319_Validate_Legend_Clouds_Text_LowandHigh_Displayed_for_Visible_SatelliteMap() {
 		testStart("Navigate to Visible Satellite Map and Validate Legend cloud displayed  and text Clouds and Clear");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		Sleeper.sleep(3);
 		Assert.assertTrue(satellitePage.legendClouds_with_text_ClearandClouds());
 
-	}
+	} 
 
-	@Test(priority = 34, enabled = true)
-	public void RW_TC224_Validate_Legend_Clouds_Displayed_with_colors_for_Visible_SatelliteMap() {
+	@Test(priority = 37, enabled = false)
+	public void RW_TC319_Validate_Legend_Clouds_Displayed_with_colors_for_Visible_SatelliteMap() {
 		testStart("Navigate to Visible Satellite Map and Validate various colors displayed under legend cloud ");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.colorsDisplayedforVisibleSatelliteMap();
-	}
+	} 
 
-	@Test(priority = 35, enabled = true)
-	public void RW_TC224_Validate_TimeDisplayed_onTimelineControls_for_Visible_SatelliteMap() {
+	@Test(priority = 38, enabled = false)
+	public void RW_TC319_Validate_TimeDisplayed_onTimelineControls_for_Visible_SatelliteMap() {
 		testStart("Navigate to Visible Satellite Map and Validate Time displayed on Timeline controls");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		Sleeper.sleep(3);
-		satellitePage.mouseHoverOnRadarAndMaps();
-		satellitePage.navigateToSatellite();
-		waitUntilWindowExistsWithTitle(expectedlandingpageURL);
+		satellitePage.clickBreadCrumbMenu();
+		satellitePage.clickBreadCrumbMenuRadarAndMaps();
+		satellitePage.clickbyBreadCrumbMenuSatellite();
+		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
+		Sleeper.sleep(3);
 
 		String endTime = satellitePage.timeStampdisplayed();
 
@@ -645,10 +694,10 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 	}
 
 
-
-	@Test(priority = 36, enabled = true)
-	public void RW_TC224_Validate_FullScreen_Visible_SatelliteMap_Displayed_with_Timeslider_Timeline_Controls_andLegend() {
-		testStart("Navigate to Visible satellite Full Screen View and Validate Timeline control ,Timeslider with play button and legend displayed on Full screen Map");
+	@Test(priority = 39, enabled = false)
+	public void RW_TC319_Validate_FullScreen_Visible_SatelliteMap_Displayed_with_Timeslider_Timeline_Controls_andLegend() {
+		testStart(
+				"Navigate to Visible satellite Full Screen View and Validate Timeline control ,Timeslider with play button and legend displayed on Full screen Map");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -658,14 +707,15 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		Sleeper.sleep(3);
 		satellitePage.clikonFullScreen();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		Assert.assertTrue(satellitePage.validateFullscreenMap());
 
 	}
 
-	@Test(priority = 37, enabled = true)
-	public void RW_TC224_Validate_FullScreen_Visble_SatelliteMap_display_Legend_Clouds_andText_ClearandClouds() {
-		testStart("Navigate to Visible Satellite Full screen view and Validate Legend cloud with text clouds and clear");
+	@Test(priority = 40, enabled = false)
+	public void RW_TC319_Validate_FullScreen_Visble_SatelliteMap_display_Legend_Clouds_andText_ClearandClouds() {
+		testStart(
+				"Navigate to Visible Satellite Full screen view and Validate Legend cloud with text clouds and clear");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -675,13 +725,13 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		Sleeper.sleep(3);
 		satellitePage.clikonFullScreen();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		Assert.assertTrue(satellitePage.legendClouds_with_text_ClearandClouds());
 
 	}
 
-	@Test(priority = 38, enabled = true)
-	public void RW_TC224_Validate_FullScreen_Visbile_SatelliteMap_Displayed_with_legend_colors() {
+	@Test(priority = 41, enabled = false)
+	public void RW_TC319_Validate_FullScreen_Visbile_SatelliteMap_Displayed_with_legend_colors() {
 		testStart("Navigate to Visible Satellite full screen view and Validate legends colors displayed");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
@@ -692,14 +742,14 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickOnTertiarymenus(VISIBLE_TAB);
 		Sleeper.sleep(2);
 		satellitePage.clikonFullScreen();
-		Sleeper.sleep(3);
+		Sleeper.sleep(5);
 		satellitePage.coloursdisplayedforEnchacedSatelliteMap();
 	}
 
 	// ******Validating WaterVapor Satellite Map *************//
 
-	@Test(priority = 39, enabled = true)
-	public void RW_TC225_Navigate_WaterVapor_Satellite_Map_Validate_Title_() {
+	@Test(priority = 42, enabled = false)
+	public void RW_TC320_Navigation_toWaterVapor_Satellite_Map_Validate_Title_() {
 		testStart("Navigate to WaterVapor Satellite Map from teritary tab and Validate Title of the map");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
@@ -708,13 +758,15 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickbyBreadCrumbMenuSatellite();
 		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
-		Sleeper.sleep(3);
-		Assert.assertTrue(satellitePage.getTitleofMap().equalsIgnoreCase(EXPECTED_TITLE_OF_MAP_WATERVAPOR));
+		Sleeper.sleep(5);
+		Assert.assertTrue(satellitePage.getTitleofMap().equalsIgnoreCase(EXPECTED_TITLE_OF_MAP_WATERVAPOR) );
 
 	}
 
-	@Test(priority = 40, enabled = true)
-	public void RW_TC225_Validate_ToolTip_Active_when_Clicked_for_WaterVapor_Satellite_Map() {
+	
+
+	@Test(priority = 43, enabled = false)
+	public void RW_TC320_Validate_ToolTip_Active_when_Clicked_for_WaterVapor_Satellite_Map() {
 		testStart("Navigate to WaterVapor Satellite Map and Validate Tooltip active when clicked");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
@@ -731,8 +783,8 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 41, enabled = true)
-	public void RW_TC225_Validate_ToolTip_Text_Displayed_for_WaterVapor_Satellite_Map() {
+	@Test(priority = 44, enabled = false)
+	public void RW_TC320_Validate_ToolTip_Text_Displayed_for_WaterVapor_Satellite_Map() {
 		testStart("Navigate to WaterVapor Satellite Map and Validate Tooltip text displayed");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
@@ -749,8 +801,8 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 42, enabled = true)
-	public void RW_TC225_Validate_ToolTip_Closes_when_Clicked_Twice_for_WaterVapor_Satellite_Map() {
+	@Test(priority = 45, enabled = false)
+	public void RW_TC320_Validate_ToolTip_Closes_when_Clicked_Twice_for_WaterVapor_Satellite_Map() {
 		testStart("Navigate to WaterVapor Satellite Map and Validate Tooltip Closes when clicked Twice ");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
@@ -765,11 +817,10 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickOnToolTip();
 	}
 
-
-
-	@Test(priority = 43, enabled = true)
-	public void RW_TC225_Validate_Zoom_Button_Functioning_onWaterVapor_satelliteMap() {
-		testStart("Navigate to WaterVapor Satellite Map and Validate Zoom  Control button Funtions on Map");
+	
+	@Test(priority = 46, enabled = false)
+	public void RW_TC320_Validate_Zoom_Button_Functioning_onWaterVapor_satelliteMap() {
+		testStart("Navigate to WaterVapor Satellite Map and Validate Zoom In Control button Funtions on Map");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -781,10 +832,11 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.zoominControls();
 		Sleeper.sleep(3);
 		satellitePage.zoomoutControls();
-	}
+	} 
 
-	@Test(priority = 44, enabled = true)
-	public void RW_TC226_Validate_when_clicked_Mapbox_Attribution_onBottomLeft_Corner_forWaterVapor_SatelliteMap() {
+	
+	@Test(priority = 47, enabled = false)
+	public void RW_TC321_Validate_when_clicked_Mapbox_Attribution_onBottomLeft_Corner_forWaterVapor_SatelliteMap() {
 		testStart("Navigate to WaterVapor satellite Map and Validate Mapbox landing page");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
@@ -795,15 +847,16 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
 		Sleeper.sleep(3);
 		satellitePage.ClickonMapboxattribution();
-		Sleeper.sleep(3);
+		Sleeper.sleep(8);
 		String actualLandingpageUrl = satellitePage.getlandingurltitle();
 		Assert.assertEquals(actualLandingpageUrl, MAP_BOX_LANDING_PAGE_URL);
 
 	}
 
-	@Test(priority = 45, enabled = true)
-	public void RW_TC226_Validate_Legend_WaterVapor_Displayed_withtext_DryandMoist() {
-		testStart("Navigate to WaterVapor Satellite Map and Validate Legend WaterVapor displayed with text Dry and Moist");
+	@Test(priority = 48, enabled = false)
+	public void RW_TC321_Validate_Legend_WaterVapor_Displayed_withtext_DryandMoist() {
+		testStart(
+				"Navigate to WaterVapor Satellite Map and Validate Legend WaterVapor displayed with text Dry and Moist");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -811,14 +864,15 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickbyBreadCrumbMenuSatellite();
 		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
-		Sleeper.sleep(3);
+		Sleeper.sleep(2);
 		Assert.assertTrue(satellitePage.legendWaterVapor_with_text_DryandMoist());
 
 	}
 
-	@Test(priority = 46, enabled = true)
-	public void RW_TC226_Validate_Legend_WaterVapor_Displayed_with_colors_forWaterVapor_SatelliteMap() {
-		testStart("Navigate to WaterVapor Satellite Map and Validate various colors displayed under legend WaterVapor ");
+	@Test(priority = 49, enabled = false)
+	public void RW_TC321_Validate_Legend_WaterVapor_Displayed_with_colors_forWaterVapor_SatelliteMap() {
+		testStart(
+				"Navigate to WaterVapor Satellite Map and Validate various colors displayed under legend WaterVapor ");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -830,16 +884,17 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.colorsDisplayedforLegendWaterVapor();
 	}
 
-	@Test(priority = 47, enabled = true)
-	public void RW_TC226_Validate_TimeDisplayed_onTimelineControls_for_WaterVapor_SatelliteMap() {
+	@Test(priority = 50, enabled = false)
+	public void RW_TC321_Validate_TimeDisplayed_onTimelineControls_for_WaterVapor_SatelliteMap() {
 		testStart("Navigate to WaterVapor Satellite Map and Validate Time displayed on Timeline controls");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
+		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
-
+		Sleeper.sleep(3);
 		String endTime = satellitePage.timeStampdisplayed();
 
 		satellitePage.clickonPlayButton();
@@ -863,11 +918,11 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 		}
 	}
 
-
-
-	@Test(priority = 48, enabled = true)
-	public void RW_TC226_Validate_FullScreen_WaterVapor_SatelliteMap_Displayed_with_Timeslider_Timeline_Controls_andLegend() {
-		testStart("Navigate to WaterVapor Satellite Map for fullscreen and Validate Timeline control ,Timeslider with play button and legend displayed on Full screen Map");
+	
+	@Test(priority = 51, enabled = false)
+	public void RW_TC321_Validate_FullScreen_WaterVapor_SatelliteMap_Displayed_with_Timeslider_Timeline_Controls_andLegend() {
+		testStart(
+				"Navigate to WaterVapor Satellite Map for fullscreen and Validate Timeline control ,Timeslider with play button and legend displayed on Full screen Map");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -882,9 +937,10 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 49, enabled = true)
-	public void RW_TC226_Validate_FullScreen_WaterVapor_SatelliteMap_display_Legend_WaterVapor_andText_DryandMoist() {
-		testStart("Navigate to WaterVapor Satellite map Full screen view and Validate Legend WaterVapor with text Dry and Moist");
+	@Test(priority = 52, enabled = false)
+	public void RW_TC321_Validate_FullScreen_WaterVapor_SatelliteMap_display_Legend_WaterVapor_andText_DryandMoist() {
+		testStart(
+				"Navigate to WaterVapor Satellite map Full screen view and Validate Legend WaterVapor with text Dry and Moist");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
@@ -899,19 +955,19 @@ public class Test_NationalSatellitePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 50, enabled = true)
-	public void RW_TC226_Validate_FullScreen_WaterVapor_SatelliteMap_Displayed_with_legend_and_colors() {
+	@Test(priority = 53, enabled = false)
+	public void RW_TC321_Validate_FullScreen_WaterVapor_SatelliteMap_Displayed_with_legend_and_colors() {
 		testStart("Navigate to WaterVapor Satellite full screen view and Validate legends colors displayed");
 		satellitePage.searchCityByName(citySearchedByName);
 		satellitePage.selectCityByName();
 		satellitePage.clickBreadCrumbMenu();
 		satellitePage.clickBreadCrumbMenuRadarAndMaps();
 		satellitePage.clickbyBreadCrumbMenuSatellite();
-		Sleeper.sleep(2);
+		Sleeper.sleep(5);
 		satellitePage.clickOnTertiarymenus(WATERVAPOR_TAB);
 		Sleeper.sleep(2);
 		satellitePage.clikonFullScreen();
-		Sleeper.sleep(3);
+		Sleeper.sleep(2);
 		satellitePage.colorsDisplayedforLegendWaterVapor();
 	}
 
