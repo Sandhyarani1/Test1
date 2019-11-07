@@ -9,9 +9,6 @@ import org.testng.annotations.Test;
 
 import com.accuweather.glacier.m.AccuWeatherMobileBaseTest;
 import com.accuweather.glacier.m.pages.SatellitePageMobile;
-import com.accuweather.glacier.www.AccuWeatherBaseTest;
-import com.accuweather.glacier.www.pages.SatellitePage;
-import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.utils.Sleeper;
 
 public class Test_RegionalSatellitePageMobile extends AccuWeatherMobileBaseTest {

@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 
 import com.accuweather.glacier.m.pages.SatellitePageMobileIpad;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
-import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.utils.Sleeper;
 
 public class Test_RegionalSatellitePageIpad extends AccuWeatherBaseTest {
