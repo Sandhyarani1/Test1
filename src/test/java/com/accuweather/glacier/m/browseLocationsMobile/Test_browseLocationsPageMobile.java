@@ -59,7 +59,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		}
 	}
 
-	@Test(priority = 4, enabled = true)
+	@Test(priority = 4, enabled = false)
 	public void RW_T213_WorldWeatherCTA_verifyWorldWeatherCTABackgroundColor() {
 		testStart("Verify World Weather CTA is present below the list of regions in orange");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -74,7 +74,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		}
 	}
 
-	@Test(priority = 5, enabled = true)
+	@Test(priority = 5, enabled = false)
 	public void RW_T213_WorldWeatherCTA_verifyWorldWeatherCTAArrow() {
 		testStart("Verify World Weather CTA arrow");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -98,7 +98,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		}
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void RW_T214_ContinentLevel_verifyWorldRegionAppearAboveSelectedRegion() {
 		testStart("Verify world region should appear above the header with region selected");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -108,7 +108,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(browseLocationPage.verifyWorldRegionAboveSelectedRegion());
 	}
 
-	@Test(priority = 8, enabled = true)
+	@Test(priority = 8, enabled = false)
 	public void RW_T214_ContinentLevel_verifySelectedRegionAppearBelowWorldRegion() {
 		testStart("Verify selected region should appear below world region");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -118,7 +118,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(browseLocationPage.verifySelectedRegionAppearBelowWorldRegion());
 	}
 
-	@Test(priority = 9, enabled = true)
+	@Test(priority = 9, enabled = false)
 	public void RW_T214_ContinentLevel_verifySelectedRegionWeatherCTAColor() {
 		testStart("Verify Weather CTA is present below the list of regions in orange");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -134,7 +134,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		}
 	}
 
-	@Test(priority = 10, enabled = true)
+	@Test(priority = 10, enabled = false)
 	public void RW_T214_ContinentLevel_weatherCTAArrow() {
 		testStart("Verify seleceted region Weather CTA arrow");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -154,7 +154,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(browseLocationPage.verifyListOfRegionsFromSelectedRegion());
 	}
 
-	@Test(priority = 12, enabled = true)
+	@Test(priority = 12, enabled = false)
 	public void RW_T214_ContinentLevel_navigationToWorldRegionPage() {
 		testStart("Navigate to World Region page");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -170,7 +170,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		}
 	}
 
-	@Test(priority = 13, enabled = true)
+	@Test(priority = 13, enabled = false)
 	public void RW_T215_CountryLevel_verifyContinentAppearAboveSelectedCountry() {
 		testStart("Verify continent should appear above the header with Country selected");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -180,7 +180,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(browseLocationPage.verifyContinentApperaAboveCountrySelected());
 	}
 
-	@Test(priority = 14, enabled = true)
+	@Test(priority = 14, enabled = false)
 	public void RW_T215_CountryLevel_verifyCountryAppearBelowWorldContinent() {
 		testStart("Verify country should appear below the continent");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -201,7 +201,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(browseLocationPage.verifyListOfStatesFromSelectedCountry());
 	}
 
-	@Test(priority = 16, enabled = true)
+	@Test(priority = 16, enabled = false)
 	public void RW_T215_CountryLevel_verifyCountryWeatherCTABackgroundColor() {
 		testStart("Verify country Weather CTA is present below the list of states in orange");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -218,7 +218,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		}
 	}
 
-	@Test(priority = 17, enabled = true)
+	@Test(priority = 17, enabled = false)
 	public void RW_T215_CountryLevel_verifyCountryWeatherCTAArrow() {
 		testStart("Verify country weather CTA arrow");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -229,7 +229,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(browseLocationPage.verifyCountryWeatherCTAArrow());
 	}
 
-	@Test(priority = 18, enabled = true)
+	@Test(priority = 18, enabled = false)
 	public void RW_T215_CountryLevel_navigateToContinentPage() {
 		testStart("Click on of the continent CTA and verify the user navigated to world region page");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -246,7 +246,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		}
 	}
 
-	@Test(priority = 19, enabled = true)
+	@Test(priority = 19, enabled = false)
 	public void RW_T216_StateLevel_verifyCountryAppearAboveSelectedState() {
 		testStart("Verify country should appear above the header with selected state");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -258,7 +258,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		browseLocationPage.verifyCountryApperaAboveStateSelected();
 	}
 
-	@Test(priority = 20, enabled = true)
+	@Test(priority = 20, enabled = false)
 	public void RW_T216_StateLevel_verifyStateAppearBelowCountry() {
 		testStart("Verify state should appear below country");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -282,7 +282,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(browseLocationPage.verifyListOfCitiesFromSelectedState());
 	}
 
-	@Test(priority = 22, enabled = true)
+	@Test(priority = 22, enabled = false)
 	public void RW_T216_StateLevel_verifyStateWeatherCTABackgroundColor() {
 		testStart("Verify country Weather CTA is present below the list of states in orange");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -300,7 +300,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		}
 	}
 
-	@Test(priority = 23, enabled = true)
+	@Test(priority = 23, enabled = false)
 	public void RW_T216_StateLevel_verifyStateWeatherCTAArrow() {
 		testStart("Verify country weather CTA arrow");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));
@@ -330,7 +330,7 @@ public class Test_browseLocationsPageMobile extends AccuWeatherMobileBaseTest {
 		}
 	}
 
-	@Test(priority = 25, enabled = true)
+	@Test(priority = 25, enabled = false)
 	public void RW_T217_CityLevel_verifyThreeDayForecastPage() {
 		testStart("Verify the user directed to three day forecast page of the city");
 		landingPage.enterZipcodeInSearchFieldAndClick(Randomness.randomString(2));

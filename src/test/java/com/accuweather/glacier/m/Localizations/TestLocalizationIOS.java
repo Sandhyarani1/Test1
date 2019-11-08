@@ -5,12 +5,13 @@ import org.testng.annotations.Test;
 
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.LandingPage;
+import com.accuweather.glacier.m.AccuWeatherMobileBaseTest;
 import com.accuweather.glacier.m.pages.CityRadarPageMobile;
 import com.accuweather.glacier.m.pages.LandingPageMobile;
 import com.accuweather.glacier.m.pages.LocalizationsMobileIos;
 import com.accuweather.glacier.www.pages.NavigationBar;
 
-public class TestLocalizationIOS extends AccuWeatherBaseTest {
+public class TestLocalizationIOS extends AccuWeatherMobileBaseTest {
 	String location = "Mumbai, MH, IN";
 	String locationMunich = "Munich, Germany";
 	String locationRio = "Rio de Janeiro, Brazil";

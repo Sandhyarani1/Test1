@@ -206,7 +206,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 		homePage.clickBreadCrumbMenulanguageSelectMobileEnglish();
 	}
 
-	@Test(priority = 12, enabled = true)
+	@Test(priority = 12, enabled = false)
 	public void RW_T741_SatelliteAndRadarCountry_verifyTemperatureForAllLocationsOfCountry() {
 		testStart("Verify temperature for all 20 locations of the country");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcodeJapan);
@@ -249,7 +249,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 15, enabled = true)
+	@Test(priority = 15, enabled = false)
 	public void RW_T740_SatelliteCountryWithEnglish_verifyMapsCTAIsEnglishLanguage() {
 		testStart("Verify map cta is in English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(satelliteCountry);
@@ -270,7 +270,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(expectedMapTitleOfRadarCountry, actualMapTitle);
 	}
 
-	@Test(priority = 17, enabled = true)
+	@Test(priority = 17, enabled = false)
 	public void RW_T739_RadarCountryCountryWithEnglish_verifyMapsCTAIsEnglishLanguage() {
 		testStart("Verify map cta is in English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(satelliteRadarCountry);
@@ -292,7 +292,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 19, enabled = true)
+	@Test(priority = 19, enabled = false)
 	public void RW_T742_UsHomePageWithEnglish_verifyMapsCTAIsEnglishLanguage() {
 		testStart("Verify map cta is in English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);

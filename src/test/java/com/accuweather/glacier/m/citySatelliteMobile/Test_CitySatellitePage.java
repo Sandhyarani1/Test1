@@ -98,7 +98,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(satellitePage.validateTeritaryMenusDisplayed());
 	}
 
-	@Test(priority = 5, enabled = true)
+	@Test(priority = 5, enabled = false)
 	public void RW_TC293_Validate_Title_of_map_displayed_on_Enchanced_City_Satellite_page() {
 		testStart("Validate Title of the map displayed on City Satellite Page.");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -112,7 +112,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 	}
 
 
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = false)
 	public void RW_TC294_Validate_ToolTip_Active_when_Clicked_for_Enchanced_City_Satellite_Map() {
 		testStart("Navigate to Enchanced Satellite page and Validate Tooltip Active when Clicked ");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -127,7 +127,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualTooltipColor, EXPECTED_TOOL_TIP_COLOR);
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void RW_TC294_Validate_ToolTip_Text_Displayed_for_Enchanced_City_Satellite_Map() {
 		testStart("Navigate to Enchanced Satellite page and Validate Tool tip text displayed ");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -142,7 +142,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(actualTooltipText.equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT));
 	}
 
-	@Test(priority = 8, enabled = true)
+	@Test(priority = 8, enabled = false)
 	public void RW_TC294_Validate_ToolTip_Closes_when_Clicked_Twice_for_Enchanced_City_Satellite_Map() {
 		testStart("Navigate to Enchanced Satellite page and Validate Tooltip closes when clicked twice ");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -173,7 +173,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	
 
-	@Test(priority = 10, enabled = true)
+	@Test(priority = 10, enabled = false)
 	public void RW_TC315_Validate_Mapbox_Attribution_Landing_Page_UrlFor_Enchanced_Tab() {
 		testStart("Navigate to City satellite page and Validate Mapbox landing page For Enchanced Tab");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -190,7 +190,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualLandingpageUrl, MAP_BOX_LANDING_PAGE_URL);
 	}
 
-	@Test(priority = 11, enabled = true)
+	@Test(priority = 11, enabled = false)
 	public void RW_TC295_Validate_Legend_Clouds_Displayed_withText_LowandHigh_for_City_SatelliteMapFor_Enchanced_Tab() {
 		testStart(
 				"Navigate to City Satellite Map and Validate Legend cloud displayed with text High and Low For Enchanced Tab");
@@ -204,7 +204,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(satellitePage.legendCloud_textLowandHigh_Displayed());
 	}
 
-	@Test(priority = 12, enabled = true)
+	@Test(priority = 12, enabled = false)
 	public void RW_TC295_Validate_Legend_Clouds_Displayed_with_colors_CitySatelliteMapFor_Enchanced_Tab() {
 		testStart("Navigate to City Satellite Map and Validate legend cloud displayed with colors ");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -217,7 +217,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.coloursdisplayedforEnchacedSatelliteMap();
 	}
 
-	@Test(priority = 13, enabled = true)
+	@Test(priority = 13, enabled = false)
 	public void RW_TC295_Validate_TimeDisplayed_onTimelineControls_of_CitySatelliteMapFor_Enchanced_Tab() {
 		testStart("Navigate City page and Validate time displayed on Timeline controls");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -246,7 +246,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 	}
 
 	
-	@Test(priority = 14, enabled = true)
+	@Test(priority = 14, enabled = false)
 	public void RW_TC295_Validate_FullScreen_Displayed_with_Timeslider_legends_with_textFor_Enchanced_Tab() {
 		testStart(
 				"Navigate to City Satellite full screen page and Validate Timeline control ,Timeslider with play button and legend displayed");
@@ -261,7 +261,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 15, enabled = true)
+	@Test(priority = 15, enabled = false)
 	public void RW_TC295_Validate_Legend_Clouds_Text_LowandHigh_Displayed_for_fullScreen_SatelliteMapFor_Enchanced_Tab() {
 		testStart(
 				"Navigate to City Satellite full screen page and Validate Legend Clouds displayed with text Low and High");
@@ -277,7 +277,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(satellitePage.legendCloud_textLowandHigh_Displayed());
 	}
 
-	@Test(priority = 16, enabled = true)
+	@Test(priority = 16, enabled = false)
 	public void RW_TC295_Validate_Legend_Clouds_Displayed_with_colors_onfullScreen_SatelliteMapFor_Enchanced_Tab() {
 		testStart("Navigate to City Satellite page and Validate legend cloud displayed with colors");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -294,7 +294,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	// ***** Validation of Standard Satellite Map ******//
 
-	@Test(priority = 17, enabled = true)
+	@Test(priority = 17, enabled = false)
 	public void RW_TC296_Navigate_to_Standard_CitySatellite_Map_From_Teritarytab_validate_Landing_page_URL() {
 		testStart("Navigate to Standard City Satellite Map from teritary tab and Validate Landing page URL ");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -308,7 +308,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(getDriver().getCurrentUrl(), EXPECTED_URL_FOR_SATELLITE);
 	}
 
-	@Test(priority = 18, enabled = true)
+	@Test(priority = 18, enabled = false)
 	public void RW_TC296_Navigate_to_Standard_CitySatellite_Map_from_tertiaryTab_validate_MapTitle() {
 		testStart(
 				"Navigate to Standard City Satellite Map from teritary tab and Validate Title displayed on the  Map ");
@@ -324,7 +324,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(satellitePage.getTitleofMap().equalsIgnoreCase(EXPECTED_TITLE_OF_MAP_STANDARD));
 	}
 
-	@Test(priority = 19, enabled = true)
+	@Test(priority = 19, enabled = false)
 	public void RW_TC296_Validate_ToolTip_textDisplayed_for_Standard_CitySatelliteMap() {
 		testStart(
 				"Navigate to Standard City Satellite Map from teritary tab and Validate Tooltip text displayed on the  Map ");
@@ -342,7 +342,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(satellitePage.toolTipTextdisplayed().equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT));
 	}
 
-	@Test(priority = 20, enabled = true)
+	@Test(priority = 20, enabled = false)
 	public void RW_TC296_Validate_ToolTip_highlighted_inOrange_for_Standard_CitySatelliteMap() {
 		testStart(
 				"Navigate to Standard City satellite Map from teritary tab and Validate Tooltip Highlighted when Active");
@@ -360,7 +360,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualTooltipColor, EXPECTED_TOOL_TIP_COLOR);
 	}
 
-	@Test(priority = 21, enabled = true)
+	@Test(priority = 21, enabled = false)
 	public void RW_TC296_Validate_ToolTip_Closes_when_Clicked_Twice_for_Standarad_CitySatellite_Map() {
 		testStart(
 				"Navigate to Standard City Satellite Map from teritary tab and Validate Tooltip Closes when clicked Twice ");
@@ -397,7 +397,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 	}
 
 	
-	@Test(priority = 23, enabled = true)
+	@Test(priority = 23, enabled = false)
 	public void RW_TC297_Validate_Landingpage_URL_when_clicked_Mapbox_Attribution_onBottomLeft_Corner_for_Standard_CitySatelliteMap() {
 		testStart(
 				"Navigate to City Standard Satellite Map from teritary tab and Validate Mapbox attribution displayed on Bottom left corner of Map");
@@ -431,7 +431,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(satellitePage.legendCloud_textLowandHigh_Displayed());
 	}
 
-	@Test(priority = 25, enabled = true)
+	@Test(priority = 25, enabled = false)
 	public void RW_TC317_Validate_Legend_Clouds_Displayed_with_colors_on_Standard_City_SatelliteMap() {
 		testStart("Navigate to City Standards Satellite page and Validate Colors displayed below the legend Cloud ");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -446,7 +446,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.coloursdisplayedforStandardSatelliteMap();
 	}
 
-	@Test(priority = 26, enabled = true)
+	@Test(priority = 26, enabled = false)
 	public void RW_TC317_Validate_TimeDisplayed_onTimelineControls_on_Standard_City_SatelliteMap() {
 		testStart(
 				"Navigate to City Standard Satellite Map  and Validate Timeline controls Time displayed for Full screen Map");
@@ -494,7 +494,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(satellitePage.legendCloud_textLowandHigh_Displayed());
 	}
 
-	@Test(priority = 28, enabled = true)
+	@Test(priority = 28, enabled = false)
 	public void RW_TC317_Validate_Legend_Clouds_Displayed_with_colors_onfullScreen_Standard_City_SatelliteMap() {
 		testStart("Navigate to City Satellite Standard Map and Validate colors displayed under legend Cloud ");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -543,7 +543,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 31, enabled = true)
+	@Test(priority = 31, enabled = false)
 	public void RW_TC318_Validate_ToolTip_Active_when_Clicked_for_Visible_City_Satellite_Map() {
 		testStart("Navigate to Visible City Satellite Map and Validate Tooltip active when clicked");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -561,7 +561,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 32, enabled = true)
+	@Test(priority = 32, enabled = false)
 	public void RW_TC318_Validate_ToolTip_Text_Displayed_for_Visible_City_Satellite_Map() {
 		testStart("Navigate to Visible City Satellite Map and Validate Tooltip text displayed");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -579,7 +579,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 33, enabled = true)
+	@Test(priority = 33, enabled = false)
 	public void RW_TC318_Validate_ToolTip_Closes_when_Clicked_Twice_for_Visible_City_Satellite_Map() {
 		testStart("Navigate to Visible City Satellite Map and Validate Tooltip Closes when clicked Twice ");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -614,7 +614,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	
 	
-	@Test(priority = 35, enabled = true)
+	@Test(priority = 35, enabled = false)
 	public void RW_TC299_Validate_when_clicked_Mapbox_Attribution_onBottomLeft_Corner_ofVisible_City_SatelliteMap() {
 		testStart("Navigate to Visible City Satellite Map and Validate Mapbox landing page");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -633,7 +633,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 36, enabled = true)
+	@Test(priority = 36, enabled = false)
 	public void RW_TC299_Validate_Legend_Clouds_Text_LowandHigh_Displayed_for_Visible_City_SatelliteMap() {
 		testStart(
 				"Navigate to Visible City Satellite Map and Validate Legend cloud displayed  and text Clouds and Clear");
@@ -649,7 +649,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 37, enabled = true)
+	@Test(priority = 37, enabled = false)
 	public void RW_TC299_Validate_Legend_Clouds_Displayed_with_colors_for_Visible_City_SatelliteMap() {
 		testStart("Navigate to Visible City Satellite Map and Validate various colors displayed under legend cloud ");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -664,7 +664,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 38, enabled = true)
+	@Test(priority = 38, enabled = false)
 	public void RW_TC299_Validate_TimeDisplayed_onTimelineControls_for_Visible_City_SatelliteMap() {
 		testStart("Navigate to Visible City Satellite Map and Validate Time displayed on Timeline controls");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -694,7 +694,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 	}
 
 	
-	@Test(priority = 39, enabled = true)
+	@Test(priority = 39, enabled = false)
 	public void RW_TC299_Validate_FullScreen_Visible_City_SatelliteMap_Displayed_with_Timeslider_Timeline_Controls_andLegend() {
 		testStart(
 				"Navigate to Visible City satellite Full Screen View and Validate Timeline control ,Timeslider with play button and legend displayed on Full screen Map");
@@ -728,7 +728,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(satellitePage.legendClouds_with_text_ClearandClouds());
 	}
 
-	@Test(priority = 41, enabled = true)
+	@Test(priority = 41, enabled = false)
 	public void RW_TC299_Validate_FullScreen_Visbile_City_SatelliteMap_Displayed_with_legend_colors() {
 		testStart("Navigate to Visible City Satellite full screen view and Validate legends colors displayed");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -746,7 +746,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	// ******Validating WaterVapor Satellite Map *************//
 
-	@Test(priority = 42, enabled = true)
+	@Test(priority = 42, enabled = false)
 	public void RW_TC300_Navigation_toWaterVapor_City_Satellite_Map_Validate_Title_() {
 		testStart("Navigate to WaterVapor City Satellite Map from teritary tab and Validate Title of the map");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -763,7 +763,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 
 
-	@Test(priority = 43, enabled = true)
+	@Test(priority = 43, enabled = false)
 	public void RW_TC300_Validate_ToolTip_Active_when_Clicked_for_WaterVapor_City_Satellite_Map() {
 		testStart("Navigate to WaterVapor City Satellite Map and Validate Tooltip active when clicked");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -780,7 +780,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualTooltipColor, EXPECTED_TOOL_TIP_COLOR);
 	}
 
-	@Test(priority = 44, enabled = true)
+	@Test(priority = 44, enabled = false)
 	public void RW_TC300_Validate_ToolTip_Text_Displayed_for_WaterVapor_City_Satellite_Map() {
 		testStart("Navigate to WaterVapor City Satellite Map and Validate Tooltip text displayed");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -797,7 +797,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(actualTooltipText.equalsIgnoreCase(EXPECTED_TOOL_TIPTEXT_WATERVAPOR_SATELLITE_MAP));
 	}
 
-	@Test(priority = 45, enabled = true)
+	@Test(priority = 45, enabled = false)
 	public void RW_TC300_Validate_ToolTip_Closes_when_Clicked_Twice_for_WaterVapor_City_Satellite_Map() {
 		testStart("Navigate to WaterVapor City Satellite Map and Validate Tooltip Closes when clicked Twice ");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -813,7 +813,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.clickOnToolTip();
 	}
 
-	@Test(priority = 46, enabled = true)
+	@Test(priority = 46, enabled = false)
 	public void RW_TC300_Validate_Zoom_Button_Functioning_onWaterVapor_City_SatelliteMap() {
 		testStart("Navigate to WaterVapor City Satellite Map and Validate Zoom  Control button Funtions on Map");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -830,7 +830,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 	}
 
 	
-	@Test(priority = 47, enabled = true)
+	@Test(priority = 47, enabled = false)
 	public void RW_TC301_Validate_when_clicked_Mapbox_Attribution_onBottomLeft_Corner_forWaterVapor_SatelliteMap() {
 		testStart("Navigate to WaterVapor City  Satellite Map and Validate Mapbox landing page");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -849,7 +849,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 48, enabled = true)
+	@Test(priority = 48, enabled = false)
 	public void RW_TC301_Validate_Legend_WaterVapor_Displayed_withtext_DryandMoist() {
 		testStart(
 				"Navigate to WaterVapor CitySatellite Map and Validate Legend WaterVapor displayed with text Dry and Moist");
@@ -865,7 +865,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 49, enabled = true)
+	@Test(priority = 49, enabled = false)
 	public void RW_TC301_Validate_Legend_WaterVapor_Displayed_with_colors_forWaterVapor_SatelliteMap() {
 		testStart(
 				"Navigate to WaterVapor City Satellite Map and Validate various colors displayed under legend WaterVapor ");
@@ -880,7 +880,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.colorsDisplayedforLegendWaterVapor();
 	}
 
-	@Test(priority = 50, enabled = true)
+	@Test(priority = 50, enabled = false)
 	public void RW_TC301_Validate_TimeDisplayed_onTimelineControls_for_WaterVapor_SatelliteMap() {
 		testStart("Navigate to WaterVapor City Satellite Map and Validate Time displayed on Timeline controls");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -910,7 +910,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 	}
 
 	
-	@Test(priority = 51, enabled = true)
+	@Test(priority = 51, enabled = false)
 	public void RW_TC301_Validate_FullScreen_WaterVapor_SatelliteMap_Displayed_with_Timeslider_Timeline_Controls_andLegend() {
 		testStart(
 				"Navigate to WaterVapor City Satellite Map for fullscreen and Validate Timeline control ,Timeslider with play button and legend displayed on Full screen Map");
@@ -928,7 +928,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 52, enabled = true)
+	@Test(priority = 52, enabled = false)
 	public void RW_TC301_Validate_FullScreen_WaterVapor_City_SatelliteMap_display_Legend_WaterVapor_andText_DryandMoist() {
 		testStart(
 				"Navigate to WaterVapor City Satellite Full screen view and Validate Legend WaterVapor with text Dry and Moist");
@@ -945,7 +945,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 53, enabled = true)
+	@Test(priority = 53, enabled = false)
 	public void RW_TC301_Validate_FullScreen_WaterVapor_SatelliteMap_Displayed_with_legend_and_colors() {
 		testStart("Navigate to WaterVapor City Satellte Map Full Screen view and Validate legends colors displayed");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
