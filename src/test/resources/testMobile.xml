@@ -13,6 +13,7 @@
 				<package name="com.accuweather.glacier.m.currentCondition.*" />
 				<package name="com.accuweather.glacier.m.currentConditions.*" />
 				<package name="com.accuweather.glacier.m.dailyList.*" />
+				<package name="com.accuweather.glacier.m.DayParts.*" />
 				<package name="com.accuweather.glacier.m.homepagebreadcrumbs.*" />
 				<package name="com.accuweather.glacier.m.homePageNonUS.*" />
 				<package name="com.accuweather.glacier.m.hourlyForecast.*" />
