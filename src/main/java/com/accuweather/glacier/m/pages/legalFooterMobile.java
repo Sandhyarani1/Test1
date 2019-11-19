@@ -356,4 +356,63 @@ public class legalFooterMobile extends MobileBasePage {
 		return getDriver().findElement(allRightsReserved).getText().contains("All Rights Reserved.");
 
 	}
+	
+	/**
+	 * Method to verify Liveramp providers URL and Page 
+	 * @author Sowmiya
+	 * Boolean return true if providers URL
+	 * */
+	public String verifyLiveRampLinkAndPage()
+	{
+		WebPageLoaded.isDomInteractive(2);
+		WebElement LiveRampLink = getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='LiveRamp']/../td/a[text()='https://liveramp.com/privacy/']"));
+		getDriver().executeJavaScript("seetest:client.swipeWhileNotFound(\"Up\", 0, 800, \"WEB\", \"xpath=//a[text()='https://liveramp.com/privacy/']\", 0, 1000, 5, true))");
+		LiveRampLink.jsClick();
+		getDriver().switchTo().alert().accept(); 
+		//return the URL
+		Sleeper.sleep(3);
+		String window = getDriver().getWindowHandle();
+		switchToPopUpWindow(window);
+		return getDriver().getCurrentUrl();
+	}
+	
+	/**
+	 * Method to verify Cuebiq providers URL and Page 
+	 * @author Sowmiya
+	 * Boolean return true if providers URL
+	 * */
+	public String verifyCuebiqLinkAndPage()
+	{
+		WebPageLoaded.isDomInteractive(2);
+		WebElement LiveRampLink = getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='LiveRamp']/../td/a[text()='https://liveramp.com/privacy/']"));
+		getDriver().executeJavaScript("seetest:client.swipeWhileNotFound(\"Up\", 0, 800, \"WEB\", \"xpath=//a[text()='https://liveramp.com/privacy/']\", 0, 1000, 5, true))");
+		LiveRampLink.jsClick();
+		getDriver().switchTo().alert().accept(); 
+		//return the URL
+		Sleeper.sleep(3);
+		String window = getDriver().getWindowHandle();
+		switchToPopUpWindow(window);
+		return getDriver().getCurrentUrl();
+	}
+	
+	
+	/**
+	 * Method to verify Intersection providers URL and Page 
+	 * @author Sowmiya
+	 * Boolean return true if providers URL
+	 * */
+	public String verifyIntersectionLinkAndPage()
+	{
+		WebPageLoaded.isDomInteractive();
+		//Advertising section should have live ramp, cuebiq, Intersection
+		  WebElement policyLink = getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='Intersection']/../td/a[text()='https://www.intersection.com/privacy-policy/']"));
+		getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='Intersection']/../td/a[text()='https://www.intersection.com/privacy-policy/']")).jsClick();
+		policyLink.jsClick();
+		getDriver().switchTo().alert().accept(); 
+		//return the URL
+		Sleeper.sleep(3);
+		String window = getDriver().getWindowHandle();
+		switchToPopUpWindow(window);
+		return getDriver().getCurrentUrl();
+	}		
 }
