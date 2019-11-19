@@ -18,30 +18,34 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	public final static String EXPECTED_PRIVACYANDPOLICY_TEXT_COLOR = "1f1f1f";
 	public final static String EXPECTED_CCOOKIEPOLICY_TEXT_COLOR = "1f1f1f";
 	public final static String EXPECTED_TAGDISCLOSURE_TEXT_COLOR = "1f1f1f";
+	
+	private final static String EXPECTED_LIVERAMP_PAGE_URL = "https://liveramp.com/privacy/";
+	private final static String EXPECTED_CUEBIQ_PAGE_URL = "https://www.cuebiq.com/privacypolicy/";
+	private final static String EXPECTED_INTERSECTION_PAGE_URL = "https://www.intersection.com/privacy-policy/";
 
 	private LandingPage landingpage = new LandingPage();
 	private NavigationBar navBar = new NavigationBar();
 	private legalFooterMobile legalFooterMob = new legalFooterMobile();
 
-	@Test(priority = 1, enabled=true)
+	@Test(priority = 1, enabled=false)
 	public void RW_T100_VerifylegalFooterSectionIsDisplayed() {
 		testStart("Is legal footer section is displayed");
 		Assert.assertTrue(legalFooterMob.legalFooterSectionIsDisplayed());
 	}
 
-	@Test(priority = 2, enabled=true)
+	@Test(priority = 2, enabled=false)
 	public void RW_T101_VerifytermsOfUseTextIsDisplayed() {
 		testStart("Is terms Of Use Text");
 		Assert.assertTrue(legalFooterMob.termsOfUseTextIsDisplayed());
 	}
 
-	@Test(priority = 3, enabled=true)
+	@Test(priority = 3, enabled=false)
 	public void RW_T101_VerifyclicktermsOfUseText() {
 		testStart("Is terms Of Use Text");
 		Assert.assertTrue(legalFooterMob.clicktermsOfUseText());
 	}
 
-	@Test(priority = 4, enabled=true)
+	@Test(priority = 4, enabled=false)
 	public void RW_T101_VerifyPageTitleTermsOfUseText() {
 		testStart("Is Page tilte : Terms of Use - AccuWeather.com");
 		legalFooterMob.clicktermsOfUseText();
@@ -49,7 +53,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 				"Page title incorrect");
 	}
 
-	@Test(priority = 5, enabled=true)
+	@Test(priority = 5, enabled=false)
 	public void RW_T101_VerifyTabNameTermsOfUseTextIsInUpperCase() {
 		testStart("Tab Name Terms Of Use Text Is In UpperCase");
 		legalFooterMob.clicktermsOfUseText();
@@ -58,7 +62,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	/*
-	 * @Test(priority=6, enabled=true) public void
+	 * @Test(priority=6, enabled=false) public void
 	 * TC1_VerifyTabNameTermsOfUseTextIsInOrangeColor() {
 	 * testStart("Tab Name Terms Of Use Text Is In orange Color");
 	 * landingpage.isRecentLocationDisplayed();
@@ -68,7 +72,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	 */
 
 	/*
-	 * @Test(priority=7, enabled=true) public void
+	 * @Test(priority=7, enabled=false) public void
 	 * TC1_VerifyHeadingNameTermsOfUseText() {
 	 * testStart("Heading Name for Terms of Use is displayed");
 	 * landingpage.isRecentLocationDisplayed();
@@ -79,19 +83,19 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 
 	// Test case 2
 
-	@Test(priority = 8, enabled=true)
+	@Test(priority = 8, enabled=false)
 	public void RW_T102_VerifyPrivacyAndPolicyFooterLinkIsDisplayed() {
 		testStart("Privacy And Policy Footer Link Is Displayed");
 		Assert.assertTrue(legalFooterMob.clickPrivacyAndPolicyFooterLinkIsDisplayed());
 	}
 
-	@Test(priority = 9, enabled=true)
+	@Test(priority = 9, enabled=false)
 	public void RW_T102_VerifyPrivacyAndPolicyFooterLink() {
 		testStart("Privacy And Policy Footer Link is clicked");
 		Assert.assertTrue(legalFooterMob.clickPrivacyAndPolicyFooterLink());
 	}
 
-	@Test(priority = 10, enabled=true)
+	@Test(priority = 10, enabled=false)
 	public void RW_T102_VerifyPageTitlePrivacyAndPolicy() {
 		testStart("Is Page tilte : Privacy Statement & Policy - AccuWeather.com");
 		legalFooterMob.clickPrivacyAndPolicyFooterLink();
@@ -99,7 +103,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 				"Page title incorrect");
 	}
 
-	@Test(priority = 11, enabled=true)
+	@Test(priority = 11, enabled=false)
 	public void RW_T102_VerifyPageTitlePrivacyAndPolicyPageCurrentUrl() {
 		testStart("Is Page tilte : Privacy Statement & Policy - AccuWeather.com");
 		legalFooterMob.clickPrivacyAndPolicyFooterLink();
@@ -107,7 +111,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 				"https://qualityassurance.accuweather.com/en/privacy", "Page url incorrect");
 	}
 
-	@Test(priority = 12, enabled=true)
+	@Test(priority = 12, enabled=false)
 	public void RW_T102_VerifyTabNamePolicyandPrivacyTabTextIsInUpperCase() {
 		testStart("Tab Name Terms Of Use Text Is In UpperCase");
 		legalFooterMob.clickPrivacyAndPolicyFooterLink();
@@ -116,7 +120,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	/*
-	 * @Test(priority=13, enabled=true) public void
+	 * @Test(priority=13, enabled=false) public void
 	 * TC2_VerifyTabNamePrivacyAndPolicyTabTextIsInOrangeColor() {
 	 * testStart("Tab Name Terms Of Use Text Is In orange Color");
 	 * landingpage.isRecentLocationDisplayed();
@@ -126,7 +130,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	 */
 
 	/*
-	 * @Test(priority=14, enabled=true) public void
+	 * @Test(priority=14, enabled=false) public void
 	 * TC1_VerifyHeadingNamePrivacyAndPolicyText() {
 	 * testStart("Heading Name for privacy and Policy is displayed");
 	 * landingpage.isRecentLocationDisplayed();
@@ -137,19 +141,19 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 
 	// Test case 3
 
-	@Test(priority = 15, enabled=true)
+	@Test(priority = 15, enabled=false)
 	public void RW_T103_VerifyCookiePolicyFooterLinkIsDisplayed() {
 		testStart("Cookie Policy Footer Link Is Displayed");
 		Assert.assertTrue(legalFooterMob.clickCookiePolicyFooterLinkIsDisplayed());
 	}
 
-	@Test(priority = 16, enabled=true)
+	@Test(priority = 16, enabled=false)
 	public void RW_T102_VerifyCookiePolicyFooterLink() {
 		testStart("Privacy And Policy Footer Link is clicked");
 		Assert.assertTrue(legalFooterMob.clickCookiePolicyFooterLink());
 	}
 
-	@Test(priority = 17, enabled=true)
+	@Test(priority = 17, enabled=false)
 	public void RW_T103_VerifyPageTitleCookiePolicy() {
 		testStart("Is Page tilte : Privacy Statement & Policy - AccuWeather.com");
 		legalFooterMob.clickCookiePolicyFooterLink();
@@ -158,7 +162,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 18, enabled=true)
+	@Test(priority = 18, enabled=false)
 	public void RW_T103_VerifyPageTitleCookiePolicyPageCurrentUrl() {
 		testStart("Is Page tilte : Privacy Statement & Policy - AccuWeather.com");
 		legalFooterMob.clickCookiePolicyFooterLink();
@@ -166,7 +170,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 				"https://qualityassurance.accuweather.com/en/cookiepolicy", "Page url incorrect");
 	}
 
-	@Test(priority = 19, enabled=true)
+	@Test(priority = 19, enabled=false)
 	public void RW_T103_VerifyTabNamecookiePolicyTabTextIsInUpperCase() {
 		testStart("Tab Name Terms Of Use Text Is In UpperCase");
 		legalFooterMob.clickCookiePolicyFooterLink();
@@ -175,7 +179,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	/*
-	 * @Test(priority=20, enabled=true) public void
+	 * @Test(priority=20, enabled=false) public void
 	 * TC2_VerifyTabNameCookiePolicyTabTextIsInOrangeColor() {
 	 * testStart("Tab Name Terms Of Use Text Is In orange Color");
 	 * landingpage.isRecentLocationDisplayed();
@@ -185,7 +189,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	 */
 
 	/*
-	 * @Test(priority=21, enabled=true) public void
+	 * @Test(priority=21, enabled=false) public void
 	 * TC1_VerifyHeadingNameCookiePolicyText() {
 	 * testStart("Heading Name for Terms of Use is displayed");
 	 * landingpage.isRecentLocationDisplayed();
@@ -197,19 +201,19 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 
 	// Test case 4 TagDisclosure
 
-	@Test(priority = 22, enabled=true)
+	@Test(priority = 22, enabled=false)
 	public void RW_T104_VerifyTagDisclosureFooterLinkIsDisplayed() {
 		testStart("Cookie Policy Footer Link Is Displayed");
 		Assert.assertTrue(legalFooterMob.clickTagDisclosureFooterLinkIsDisplayed());
 	}
 
-	@Test(priority = 23, enabled=true)
+	@Test(priority = 23, enabled=false)
 	public void RW_T104_VerifyTagDisclosureFooterLink() {
 		testStart("Privacy And Policy Footer Link is clicked");
 		Assert.assertTrue(legalFooterMob.clickTagDisclosureFooterLink());
 	}
 
-	@Test(priority = 24, enabled=true)
+	@Test(priority = 24, enabled=false)
 	public void RW_T104_VerifyPageTitleTagDisclosure() {
 		testStart("Is Page tilte : Privacy Statement & Policy - AccuWeather.com");
 		legalFooterMob.clickTagDisclosureFooterLink();
@@ -217,7 +221,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 				"Page title incorrect");
 	}
 
-	@Test(priority = 25, enabled=true)
+	@Test(priority = 25, enabled=false)
 	public void RW_T104_VerifyPageTitleTagDisclosurePageCurrentUrl() {
 		testStart("Is Page tilte : Privacy Statement & Policy - AccuWeather.com");
 		legalFooterMob.clickTagDisclosureFooterLink();
@@ -225,7 +229,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 				"https://qualityassurance.accuweather.com/en/tag-publisher-sourcing-disclosure", "Page url incorrect");
 	}
 
-	@Test(priority = 26, enabled=true)
+	@Test(priority = 26, enabled=false)
 	public void RW_T104_VerifyTabNameTagDisclosureTabTextIsInUpperCase() {
 		testStart("Tab Name Terms Of Use Text Is In UpperCase");
 		legalFooterMob.clickTagDisclosureFooterLink();
@@ -234,7 +238,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	/*
-	 * @Test(priority=27, enabled=true) public void
+	 * @Test(priority=27, enabled=false) public void
 	 * TC4_VerifyTabNameTagDisclosureTabTextIsInOrangeColor() {
 	 * testStart("Tab Name Terms Of Use Text Is In orange Color");
 	 * landingpage.isRecentLocationDisplayed();
@@ -244,7 +248,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	 */
 
 	/*
-	 * @Test(priority=28, enabled=true) public void
+	 * @Test(priority=28, enabled=false) public void
 	 * TC4_VerifyHeadingNameTagDisclosureText() {
 	 * testStart("Heading Name for Terms of Use is displayed");
 	 * landingpage.isRecentLocationDisplayed();
@@ -255,23 +259,48 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 
 	// Test case 5 All rights reserved
 
-	@Test(priority = 29, enabled=true)
+	@Test(priority = 29, enabled=false)
 	public void RW_T105_Verifycopyrightinformationhas2019AccuWeatherIncTextIsDisplayed() {
 		testStart("Cookie Policy Footer Link Is Displayed");
 		Assert.assertTrue(legalFooterMob.copyrightinformationhas2019AccuWeatherIncTextIsDisplayed());
 	}
 
-	@Test(priority = 30, enabled=true)
+	@Test(priority = 30, enabled=false)
 	public void RW_T105_VerifycopyrightinformationTextIsDisplayed() {
 		testStart("Cookie Policy Footer Link Is Displayed");
 		Assert.assertTrue(legalFooterMob
 				.copyrightAccuWeatherandsundesignareregisteredtrademarksofAccuWeatherIncTextIsDisplayed());
 	}
 
-	@Test(priority = 31, enabled=true)
+	@Test(priority = 31, enabled=false)
 	public void RW_T105_VerifycopyrightReservedinformationTextIsDisplayed() {
 		testStart("Cookie Policy Footer Link Is Displayed");
 		Assert.assertTrue(legalFooterMob.copyrightAllRightsReservedTextIsDisplayed());
+	}
+	
+	@Test(priority=33, enabled=true)
+	public void RW_T761_ValidateDataProviderListupdatedontheProviderlistPage_verifyLiveRampLinkAndPage()
+	{
+		testStart("Verify LiveRampPolicy URL and page");
+		getDriver().get("https://qualityassurance.accuweather.com/en/provider-list");
+		String actualURL = legalFooterMob.verifyLiveRampLinkAndPage();
+	    Assert.assertEquals(actualURL, EXPECTED_LIVERAMP_PAGE_URL);
+	}
+	
+	@Test(priority=33, enabled=false)
+	public void RW_T761_ValidateDataProviderListupdatedontheProviderlistPage_verifyCuebiqLinkAndPage()
+	{
+		testStart("Verify Cuebiq URL and page");
+		String actualURL = legalFooterMob.verifyCuebiqLinkAndPage();
+	    Assert.assertEquals(actualURL, EXPECTED_CUEBIQ_PAGE_URL);
+	}
+	
+	@Test(priority=33, enabled=false)
+	public void RW_T761_ValidateDataProviderListupdatedontheProviderlistPage_verifyIntersectionAndPage()
+	{
+		testStart("Verify Intersection URL and page");
+		String actualURL = legalFooterMob.verifyIntersectionLinkAndPage();
+	    Assert.assertEquals(actualURL, EXPECTED_INTERSECTION_PAGE_URL);
 	}
 
 }
