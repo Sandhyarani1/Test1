@@ -591,20 +591,24 @@ public class WebBaseTest extends BaseTest {
         DriverType type = DriverType.fromString(getOperatingSystem());
         // Setting default Browser options
         switch (type) {
-            case IOS_WEB:
-                options.getIOSOptions().setCapability(CapabilityType.BROWSER_NAME, MobileBrowserType.SAFARI);
-                options.getIOSOptions().setCapability(CapabilityType.VERSION, "Any");
-                options.getIOSOptions().setCapability(CapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
-                options.getIOSOptions().setCapability("testName", getTestName());
-                options.getIOSOptions().setCapability("accessKey", mobileHubKey);
-                break;
-            case ANDROID_WEB:
-                options.getSafariOptions().setCapability(CapabilityType.BROWSER_NAME, MobileBrowserType.CHROME);
-                options.getSafariOptions().setCapability(CapabilityType.VERSION, "Any");
-                options.getSafariOptions().setCapability(CapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
-                options.getIOSOptions().setCapability("testName", getTestName());
-                options.getIOSOptions().setCapability("accessKey", mobileHubKey);
-                break;
+        case IOS_WEB:
+                    options.getIOSOptions().setCapability(CapabilityType.BROWSER_NAME, MobileBrowserType.SAFARI);
+                    options.getIOSOptions().setCapability(CapabilityType.VERSION, "Any");
+                    options.getIOSOptions().setCapability(CapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
+                    options.getIOSOptions().setCapability("accessKey", mobileHubKey);
+                    options.getIOSOptions().setCapability("deviceCategory", "PHONE");
+                    options.getIOSOptions().setCapability("autoAcceptAlerts", "True");
+                    break;
+                case ANDROID_WEB:
+                    options.getSafariOptions().setCapability(CapabilityType.BROWSER_NAME, MobileBrowserType.CHROME);
+                    options.getSafariOptions().setCapability(CapabilityType.VERSION, "Any");
+                    options.getSafariOptions().setCapability(CapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
+                    options.getIOSOptions().setCapability("testName", getTestName());
+                    options.getIOSOptions().setCapability("accessKey", mobileHubKey);
+                    options.getIOSOptions().setCapability("deviceCategory", "PHONE");
+                    options.getIOSOptions().setCapability("autoAcceptAlerts", "True");
+                 
+                    break;
             default:
                 break;
         }
