@@ -61,6 +61,14 @@ public class legalFooterMobile extends MobileBasePage {
 			"div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span:nth-child(1)");
 	private By allRightsReserved = By.cssSelector(
 			"div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span:nth-child(1)");
+	
+	private By ByPrivacyPolicyBanner = By.cssSelector("body > div > div.privacy-policy-banner");
+	private By ByPrivacyPolicyBannerContents = By.cssSelector("body > div > div.privacy-policy-banner > div > p");
+	private By ByPrivacyPolicyBannerIUnderstand = By.cssSelector("body > div > div.privacy-policy-banner > div > div");
+	private By ByPrivacyPolicyLink = By.cssSelector("body > div > div.privacy-policy-banner > div > p > a:nth-child(1)");
+	private By ByCookiePolicyLink = By.cssSelector("body > div > div.privacy-policy-banner > div > p > a:nth-child(2)");
+	private By ByPrivacyPolicyIUnderstandButton = By.cssSelector("body > div > div.privacy-policy-banner > div > div");
+	private By ByPrivacyPolicyTabInspanish = By.cssSelector("body > div > div.page-subnav > div > div > div.subnav-items > a.subnav-item.active > h1");
 
 	/** Method to get legal footer section is displayed */
 	public boolean legalFooterSectionIsDisplayed() {
@@ -152,7 +160,7 @@ public class legalFooterMobile extends MobileBasePage {
 		Sleeper.sleep(5);
         getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
         Sleeper.sleep(5);
-        getDriver().findElement(privacyAndPolicyfooterLink).jsClick();
+        getDriver().findElement(privacyAndPolicyfooterLink).click();
         Sleeper.sleep(5);
 		return true;
 	}
@@ -364,15 +372,26 @@ public class legalFooterMobile extends MobileBasePage {
 	 * */
 	public String verifyLiveRampLinkAndPage()
 	{
+		/*
+		 * WebPageLoaded.isDomInteractive(2); WebElement LiveRampLink =
+		 * getDriver().findElement(By.xpath(
+		 * "//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='LiveRamp']/../td/a[text()='https://liveramp.com/privacy/']"
+		 * )); getDriver().
+		 * executeJavaScript("seetest:client.swipeWhileNotFound(\"Up\", 0, 800, \"WEB\", \"xpath=//a[text()='https://liveramp.com/privacy/']\", 0, 1000, 5, true))"
+		 * ); LiveRampLink.jsClick(); getDriver().switchTo().alert().accept(); //return
+		 * the URL Sleeper.sleep(3); String window = getDriver().getWindowHandle();
+		 * switchToPopUpWindow(window); return getDriver().getCurrentUrl();
+		 */
+		
 		WebPageLoaded.isDomInteractive(2);
 		WebElement LiveRampLink = getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='LiveRamp']/../td/a[text()='https://liveramp.com/privacy/']"));
-		getDriver().executeJavaScript("seetest:client.swipeWhileNotFound(\"Up\", 0, 800, \"WEB\", \"xpath=//a[text()='https://liveramp.com/privacy/']\", 0, 1000, 5, true))");
-		LiveRampLink.jsClick();
-		getDriver().switchTo().alert().accept(); 
-		//return the URL
+		int x = LiveRampLink.getLocation().getX();
+		int y = LiveRampLink.getLocation().getY();
+		getDriver().executeJavaScript("window.scrollBy(" +x +", " +y +")");
+		getDriver().executeJavaScript("window.scrollBy(" +x +",-400)");
+		Sleeper.sleep(5);
+		LiveRampLink.click();
 		Sleeper.sleep(3);
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
 		return getDriver().getCurrentUrl();
 	}
 	
@@ -384,14 +403,14 @@ public class legalFooterMobile extends MobileBasePage {
 	public String verifyCuebiqLinkAndPage()
 	{
 		WebPageLoaded.isDomInteractive(2);
-		WebElement LiveRampLink = getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='LiveRamp']/../td/a[text()='https://liveramp.com/privacy/']"));
-		getDriver().executeJavaScript("seetest:client.swipeWhileNotFound(\"Up\", 0, 800, \"WEB\", \"xpath=//a[text()='https://liveramp.com/privacy/']\", 0, 1000, 5, true))");
-		LiveRampLink.jsClick();
-		getDriver().switchTo().alert().accept(); 
-		//return the URL
+		WebElement CuebiqLink = getDriver().findElement(By.xpath("//a[contains(text(),'https://www.cuebiq.com/privacypolicy/')]"));
+		int x = CuebiqLink.getLocation().getX();
+		int y = CuebiqLink.getLocation().getY();
+		getDriver().executeJavaScript("window.scrollBy(" +x +", " +y +")");
+		getDriver().executeJavaScript("window.scrollBy(" +x +",-600)");
+		Sleeper.sleep(5);
+		CuebiqLink.click();
 		Sleeper.sleep(3);
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
 		return getDriver().getCurrentUrl();
 	}
 	
@@ -406,13 +425,86 @@ public class legalFooterMobile extends MobileBasePage {
 		WebPageLoaded.isDomInteractive();
 		//Advertising section should have live ramp, cuebiq, Intersection
 		  WebElement policyLink = getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='Intersection']/../td/a[text()='https://www.intersection.com/privacy-policy/']"));
-		getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='Intersection']/../td/a[text()='https://www.intersection.com/privacy-policy/']")).jsClick();
-		policyLink.jsClick();
-		getDriver().switchTo().alert().accept(); 
-		//return the URL
-		Sleeper.sleep(3);
-		String window = getDriver().getWindowHandle();
-		switchToPopUpWindow(window);
+		  int x = policyLink.getLocation().getX();
+			int y = policyLink.getLocation().getY();
+			getDriver().executeJavaScript("window.scrollBy(" +x +", " +y +")");
+			getDriver().executeJavaScript("window.scrollBy(" +x +",-450)");
+			Sleeper.sleep(5);
+			policyLink.click();
+			Sleeper.sleep(3);
+			return getDriver().getCurrentUrl();
+	}
+
+	public Boolean IsBannerDislayed() {
+		WebPageLoaded.isDomInteractive(5);
+		return getDriver().findElements(ByPrivacyPolicyBanner).size()>0;
+		
+	}
+
+	public String IsBannerColorDarkGrey() {
+		WebPageLoaded.isDomInteractive(5);
+		getDriver().findElement(ByPrivacyPolicyBanner).scrollIntoView();
+		WebElement ele = getDriver().findElement(ByPrivacyPolicyBanner);
+		String result = (String) DriverManager.getWebDriver().executeJavaScript(
+				"return getComputedStyle(document.querySelector(\"body > div > div.privacy-policy-banner\")).backgroundColor;",
+				ele);
+		String arrowcolourdisplayed = Color.fromString(result).asHex();
+		return arrowcolourdisplayed;
+		
+	}
+
+	public String BannerConetentsText() {
+		WebPageLoaded.isDomInteractive(5);
+		return getDriver().findElement(ByPrivacyPolicyBannerContents).getText();
+	}
+
+	public String BannerConetentsIUnderstandBackGroundColor() {
+		WebPageLoaded.isDomInteractive(5);
+		getDriver().findElement(ByPrivacyPolicyBannerIUnderstand).scrollIntoView();
+		WebElement ele = getDriver().findElement(ByPrivacyPolicyBannerIUnderstand);
+		String result = (String) DriverManager.getWebDriver().executeJavaScript(
+				"return getComputedStyle(document.querySelector(\"body > div > div.privacy-policy-banner > div > div\")).backgroundColor;",
+				ele);
+		String arrowcolourdisplayed = Color.fromString(result).asHex();
+		return arrowcolourdisplayed;
+	}
+
+	public String BannerConetentsIUnderstandText() {
+		WebPageLoaded.isDomInteractive(5);
+		return getDriver().findElement(ByPrivacyPolicyBannerIUnderstand).getText();
+	}
+
+	public String IsclickedOnPrivacyPolicyLink() {
+		WebPageLoaded.isDomInteractive(5);
+		getDriver().findElement(ByPrivacyPolicyLink).click();
+		Sleeper.sleep(5);
 		return getDriver().getCurrentUrl();
+	}
+
+	public String IsclickedOnCookiePolicyLink() {
+		WebPageLoaded.isDomInteractive(5);
+		getDriver().findElement(ByCookiePolicyLink).click();
+		Sleeper.sleep(5);
+		return getDriver().getCurrentUrl();
+	}
+
+	public String IsPrivacyPolicyBanner320pxWidth() {
+		WebPageLoaded.isDomInteractive(5);
+		getDriver().findElement(ByPrivacyPolicyBanner).scrollIntoView();
+		WebElement ele = getDriver().findElement(ByPrivacyPolicyBanner);
+		String result = (String) DriverManager.getWebDriver().executeJavaScript(
+				"return getComputedStyle(document.querySelector(\"body > div > div.privacy-policy-banner\")).width;",
+				ele);
+		return result;
+	}
+
+	public Boolean TapPrivacyPolicyIUnderstandButton() {
+		getDriver().findElement(ByPrivacyPolicyIUnderstandButton).click();
+		return true;
+	}
+
+	public String checkPrivacyAndPolicyTabIsinSpanish() {
+		return getDriver().findElement(ByPrivacyPolicyTabInspanish).getText();
+		
 	}		
 }
