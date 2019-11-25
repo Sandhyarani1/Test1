@@ -25,6 +25,9 @@ public class NewsWeatherPageIOS extends MobileBasePage {
 	private By byLatestNewsBelowSecondaryNavigation = By
 			.xpath("//div[@class='page-subnav']/following::div/p[contains(text(),'Latest Weather News')]");
 	
+	private By byCenterWellOrganism = By
+			.xpath("//div[@class='content-recirc']");
+	
 	private By byBreadCrumbMenu = By.cssSelector("div.icon-hamburger");
 	private By byBreadCrumbMenuNews = By.cssSelector(".accordion-item:nth-child(2) .accordion-item-header-content");
 	private By byBreadCrumbMenuWeatherNews = By.xpath("//a[contains(text(),'Weather News')]");
@@ -127,6 +130,12 @@ public class NewsWeatherPageIOS extends MobileBasePage {
 	public Boolean verifyLatestNewsPresent() {
 		WebPageLoaded.isDomInteractive();
 		return getDriver().findElements(byLatestNewsBelowSecondaryNavigation).size()>0;
+	}
+
+	public Boolean verifyCenterWellOrganismIsDisplayed() {
+		WebPageLoaded.isDomInteractive();
+		return getDriver().findElements(byLatestNewsBelowSecondaryNavigation).size()>0;
+		
 	}
 
 }
