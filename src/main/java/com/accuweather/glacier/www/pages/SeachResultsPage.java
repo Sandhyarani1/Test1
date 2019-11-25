@@ -21,7 +21,10 @@ public class SeachResultsPage extends BasePage
     Boolean flag;
 	private By byLocation = By.cssSelector("div.search-results > a:nth-child(1)");
     private By byListOfSuggestedLocaions = By.cssSelector("div.search-results > a");
-	
+    private By bySelectLocationFromSearchResult = By.cssSelector("div > div.search-results > a:nth-child(1)");
+    private By byRecentLocationUnderNavigationalMenu = By.cssSelector(".div.hero.page-hero.content-module.hero-4 > div.featured-locations > a:nth-child(1) > span.recent-location-name");
+    private By bySelectFirstLocationFromSearchedResults = By.cssSelector("div > div.search-results > a:nth-child(1)");
+    
 	/**
 	 * Method to Validate user navigated to 3 day forecast page when clicked on any of the location from the search results
 	 * @author SOWMIYA
@@ -73,9 +76,36 @@ public class SeachResultsPage extends BasePage
 	        robot.keyPress(java.awt.event.KeyEvent.VK_DOWN);
 	        robot.keyRelease(java.awt.event.KeyEvent.VK_DOWN);
 	        Sleeper.sleep(5);
-	        robot.keyPress(java.awt.event.KeyEvent.VK_ENTER);
-	        robot.keyPress(java.awt.event.KeyEvent.VK_ENTER);
+	        WebElement locationFromSearchResults = getDriver().findElement(bySelectLocationFromSearchResult);
+			locationFromSearchResults.syncVisible(15);
+			locationFromSearchResults.click();
+//	        robot.keyPress(java.awt.event.KeyEvent.VK_ENTER);
+//	        robot.keyPress(java.awt.event.KeyEvent.VK_ENTER);
 	        Sleeper.sleep(5);
 
+	}
+	
+	 /**
+	 * Method to return city appears in the recent location under universal navigation menu 
+	 * @author Sowmiya
+	 * return - String - city name
+	 * */
+	public String cityAppearsInRecentLocationUnderUniversalNavigationalMenu(int i)
+	{
+		WebPageLoaded.isDomInteractive();
+		String getLocationUnderUniversalNavigationSearchField = getDriver().findElement(By.cssSelector("div.featured-locations > a:nth-child("+i+") > span.recent-location-name")).getText();
+		return getLocationUnderUniversalNavigationSearchField;
+	}
+	
+	/**
+	 * Method to select first location from the searched results
+	 * @author Sowmiya
+	 * */
+	public void selectFirstLocationFromSearchedResults()
+	{
+		WebPageLoaded.isDomInteractive();
+		WebElement locationFromSearchResults = getDriver().findElement(bySelectLocationFromSearchResult);
+		locationFromSearchResults.syncVisible(15);
+		locationFromSearchResults.jsClick(); 
 	}
 }

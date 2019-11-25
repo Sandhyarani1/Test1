@@ -8,6 +8,7 @@ import com.accuweather.glacier.www.pages.MonthlyForeCastPage;
 import com.accuweather.glacier.www.pages.NavigationBar;
 import com.accuweather.glacier.www.pages.ThreeDayForecastPage;
 import com.chameleon.selenium.web.WebPageLoaded;
+import com.chameleon.selenium.web.elements.WebElement;
 import com.chameleon.utils.Sleeper;
 import com.chameleon.utils.date.SimpleDate;
 
@@ -15,12 +16,19 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 {
 	String zipcode = "48073";
 	String actualForecastPageTitle;
-	String expectedForecastPageTitle = "Royal Oak Weather - AccuWeather Forecast for MI 48073";
+	String expectedForecastPageTitle = "Royal Oak, MI Three Day Weather Forecast | AccuWeather";
 	String pageTitle3day = "Weather in Mc Farland - AccuWeather Forecast for WI 53558";
 	private final static String EXPECTED_TAB_REFLECTS_CITY = "Cannondale, CT Three Day Weather Forecast | AccuWeather";
 	private final static String EXPECTED_TAB_REFLECTS_CITY_COUNTRY = "Salvador, Bahia, Brazil Three Day Weather Forecast | AccuWeather";
 	private final static String EXPECTED_TAB_REFLECTS_SEVEREWEAHTER = "Severe Weather Warnings & Watches | AccuWeather";
-
+	private final static String EXPECTED_REGIONAL_WEATHER_RADAR_TITLE = "TEXAS WEATHER RADAR";
+	private final static String EXPECTED_NATIONAL_WEATHER_RADAR_TITLE = "UNITED STATES WEATHER RADAR";
+	private final static String EXPECTED_NATIONAL_SATELLITE_TITLE = "INDIA SATELLITE";
+	private final static String EXPECTED_NATIONAL_WEATHER_RADAR_URL= "https://qualityassurance.accuweather.com/en/us/national/weather-radar";
+	private final static String EXPECTED_CITY_WEATHER_RADAR_URL= "https://qualityassurance.accuweather.com/en/us/georgia/weather-radar";
+	private final static String EXPECTED_NATIONAL_SATELLITE_URL= "https://qualityassurance.accuweather.com/en/in/national/satellite";
+	private final static String EXPECTED_DAILY_WEATHER_FORECAST_URL= "https://qualityassurance.accuweather.com/en/in/mumbai/204842/daily-weather-forecast/204842";
+	private final static String EXPECTED_CURRENTDAY_HIGHLIGHTED_COLOR = "#f05514";
 	private NavigationBar navBar = new NavigationBar();
 	private LandingPage landingpage = new LandingPage();
 	ThreeDayForecastPage threeDayForecastPage = new ThreeDayForecastPage();
@@ -450,7 +458,7 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 	
 	@Test(priority = 38, enabled = true)
 	public void TC9_verfyingisclickedonTomorrowweathercard() {
-		String ExpectedUrl="https://qualityassurance.accuweather.com/en/us/royal-oak/48073/daily-weather-forecast/20813_pc?day=1";
+		String ExpectedUrl="https://qualityassurance.accuweather.com/en/us/royal-oak/48073/daily-weather-forecast/20813_pc?day=2";
 		testStart("Navigate to city day forecast page and click on Current weather card and validating URL");
 		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
@@ -463,14 +471,14 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 	
 	@Test(priority = 39, enabled = true)
 	public void TC9_verifyingnavigatingtoCurrentWeatherlocationpage() {
-		String ExpectedUrl = "https://qualityassurance.accuweather.com/en/us/royal-oak/48073/daily-weather-forecast/20813_pc?day=1";
+		String ExpectedUrl = "https://qualityassurance.accuweather.com/en/us/royal-oak/48073/daily-weather-forecast/20813_pc?day=2";
 		testStart("Navigate to city day forecast page and click on Current weather card and validating URL");
 		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
 		waitUntilElementIsDisplayedOrClickable();
 		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
 		String ActualUrldisplayed=threeDayForecastPage.tomorrowWeatherurldisplayed();
-		WebPageLoaded.isDomInteractive(3000);
+		WebPageLoaded.isDomInteractive();
 		Assert.assertEquals(ActualUrldisplayed, ExpectedUrl);
 	}
 	
@@ -486,16 +494,16 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 	}
 	
 	
-	@Test(priority = 41, enabled = true)
-	public void TC10_VerifyingnForwardactiveandBackArrowinactiveonThreeDayForecast() {
-		String ExpectedBackarrowGreyColour = "#878787"; // Back arrow Grey Inactive on City forecast page
-		testStart("Navigate city forecast page and verfiying Backward arrow inactive and displayed in Grey ");
-		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
-		Sleeper.sleep(3);
-		String backarowcolour = threeDayForecastPage.Backarrowcolour();
-		System.out.println("Back arrow colour displayed is" + backarowcolour);
-		Assert.assertEquals(backarowcolour, ExpectedBackarrowGreyColour);
-	}
+//	@Test(priority = 41, enabled = true)
+//	public void TC10_VerifyingnForwardactiveandBackArrowinactiveonThreeDayForecast() {
+//		String ExpectedBackarrowGreyColour = "#878787"; // Back arrow Grey Inactive on City forecast page
+//		testStart("Navigate city forecast page and verfiying Backward arrow inactive and displayed in Grey ");
+//		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
+//		Sleeper.sleep(3);
+//		String backarowcolour = threeDayForecastPage.Backarrowcolour();
+//		System.out.println("Back arrow colour displayed is" + backarowcolour);
+//		Assert.assertEquals(backarowcolour, ExpectedBackarrowGreyColour);
+//	}
 	
 	
 	@Test(priority = 42, enabled = true)
@@ -505,33 +513,33 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 		Sleeper.sleep(3);
 		threeDayForecastPage.animationforwardarrowclick();
 		Sleeper.sleep(3);
-		Assert.assertTrue(threeDayForecastPage.nextfourdaysforecast());
+		Assert.assertTrue(threeDayForecastPage.verifyLimitedNumberOfDaysInCurrentWeek());
 	}
 	
 	
-	@Test(priority = 43, enabled = true)
-	public void TC11_VerifyingnbackarrowActive() {
-		String ExpectedForwardarroworange = "#f59721"; // Back arrow active and enabled after forward click
-		testStart("Navigate to city forecast city page and Click on forward arrow verfiy Backarrow enabled and displayed in orange colour");
-		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
-		threeDayForecastPage.animationforwardarrowclick();
-		Sleeper.sleep(3);
-		String backarowcolour2 = threeDayForecastPage.Backarrowcolour2();
-		Assert.assertEquals(backarowcolour2, ExpectedForwardarroworange);
-	}
-	
-	
-	@Test(priority = 44, enabled = true)
-	public void TC11_VerifyingpastfourdaysDisplayed() {
-		testStart("Navigate to city forecast city page,Click on forward arrow verfiy future days displayed,click on Back arrow to  past days ");
-		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
-		threeDayForecastPage.animationforwardarrowclick();
-		Sleeper.sleep(3);
-		threeDayForecastPage.animationBackwardarrowclick();
-		Sleeper.sleep(3);
-		Assert.assertTrue(threeDayForecastPage.fourWeathercardisDisplayed());
-	}
-	
+//	@Test(priority = 43, enabled = true)
+//	public void TC11_VerifyingnbackarrowActive() {
+//		String ExpectedForwardarroworange = "#f59721"; // Back arrow active and enabled after forward click
+//		testStart("Navigate to city forecast city page and Click on forward arrow verfiy Backarrow enabled and displayed in orange colour");
+//		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
+//		threeDayForecastPage.animationforwardarrowclick();
+//		Sleeper.sleep(3);
+//		String backarowcolour2 = threeDayForecastPage.Backarrowcolour2();
+//		Assert.assertEquals(backarowcolour2, ExpectedForwardarroworange);
+//	}
+//	
+//	
+//	@Test(priority = 44, enabled = true)
+//	public void TC11_VerifyingpastfourdaysDisplayed() {
+//		testStart("Navigate to city forecast city page,Click on forward arrow verfiy future days displayed,click on Back arrow to  past days ");
+//		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
+//		threeDayForecastPage.animationforwardarrowclick();
+//		Sleeper.sleep(3);
+//		threeDayForecastPage.animationBackwardarrowclick();
+//		Sleeper.sleep(3);
+//		Assert.assertTrue(threeDayForecastPage.fourWeathercardisDisplayed());
+//	}
+//	
 	
 	
 	
@@ -554,7 +562,7 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 		Sleeper.sleep(3);
 		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
 		Assert.assertTrue(threeDayForecastPage.dateValidationOnTodayCard());
-	}
+	} 
 	
 	
 	@Test(priority = 47, enabled = true)
@@ -608,5 +616,85 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 		String actualTabReflectsSevereWeather = getDriver().getTitle();
 		System.out.println("actualTabReflectsSevereWeather:"+actualTabReflectsSevereWeather);
 		Assert.assertEquals(actualTabReflectsSevereWeather, EXPECTED_TAB_REFLECTS_SEVEREWEAHTER);
+	}
+	
+	@Test(priority = 48, enabled = true)
+	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyRegionalWeatherRadarTitle()
+	{
+		testStart("Verify regional weather radar title");
+		landingpage.enterZipcodeInSearchFieldAndClick("Houston, TX, US");
+		String actualradarWeatherTitle = threeDayForecastPage.verifyRegionalWeatherRadarTitle();
+		Assert.assertEquals(actualradarWeatherTitle, EXPECTED_REGIONAL_WEATHER_RADAR_TITLE);
+	}
+	
+	@Test(priority = 48, enabled = true)
+	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyNationalWeatherRadarTitle()
+	{
+		testStart("Verify national weather radar title");
+		landingpage.enterZipcodeInSearchFieldAndClick("Washington, DC, US");
+		String actualNationalWeatherRadarTitle = threeDayForecastPage.verifyNationalWeatherRadarTitle();
+		Assert.assertEquals(actualNationalWeatherRadarTitle, EXPECTED_NATIONAL_WEATHER_RADAR_TITLE);
+	}
+	
+	@Test(priority = 48, enabled = true)
+	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyNationalSatelliteTitle()
+	{
+		testStart("Verify national satellite title");
+		landingpage.enterZipcodeInSearchFieldAndClick("Mumbai, Maharashtra, IN");
+		String actualNationalSatelliteTitle = threeDayForecastPage.verifyNationalSatelliteTitle();
+		Assert.assertEquals(actualNationalSatelliteTitle, EXPECTED_NATIONAL_SATELLITE_TITLE);
+	}
+	
+	@Test(priority = 48, enabled = true)
+	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyUserIsDirectedToNationalWeatherRadarPageOnClickofMoreMapsCTA()
+	{
+		testStart("Verify user is directed to national weather radar page on click of more maps CTA");
+		landingpage.enterZipcodeInSearchFieldAndClick("Washington, DC");
+		String actualNationalWeatherRadarURL = threeDayForecastPage.verifyUserIsDirectedToNationalWeatherRadarPageOnClickofMoreMapsCTA();
+		Assert.assertEquals(actualNationalWeatherRadarURL, EXPECTED_NATIONAL_WEATHER_RADAR_URL);
+	}
+	
+	@Test(priority = 48, enabled = true)
+	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyUserIsDirectedToCityWeatherRadarPageOnClickofMoreMapsCTA()
+	{
+		testStart("Verify user is directed to city weather radar page on click of more maps CTA");
+		landingpage.enterZipcodeInSearchFieldAndClick("30076");
+		String actualCityWeatherRadarURL = threeDayForecastPage.verifyUserIsDirectedToCityWeatherRadarPageOnClickofMoreMapsCTA();
+		Assert.assertEquals(actualCityWeatherRadarURL, EXPECTED_CITY_WEATHER_RADAR_URL);
+	}
+	
+	@Test(priority = 48, enabled = true)
+	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyUserIsDirectedToNationalSatellitePageOnClickofMoreMapsCTA()
+	{
+		testStart("Verify user is directed to national satellite page on click of more maps CTA");
+		landingpage.enterZipcodeInSearchFieldAndClick("Mumbai, Maharashtra, IN");
+		String actualCityWeatherRadarURL = threeDayForecastPage.verifyUserIsDirectedToNationalSatellitePageOnClickofMoreMapsCTA();
+		Assert.assertEquals(actualCityWeatherRadarURL, EXPECTED_NATIONAL_SATELLITE_URL);
+	}
+	
+	@Test(priority = 48, enabled = true)
+	public void RW_T1548_ValidateArrow3DayNowPageDirectsUserstoDailyPage_verifyURLReflectsDailyWeatherForecast()
+	{
+		testStart("Verify URl reflects daily weather forecast on click of forward arrrow");
+		landingpage.enterZipcodeInSearchFieldAndClick("Mumbai, Maharashtra, IN");
+		String actualURL = threeDayForecastPage.verifyURLReflectsDailyWeatherForecast();
+		Assert.assertEquals(actualURL, EXPECTED_DAILY_WEATHER_FORECAST_URL);
+	}
+	
+	@Test(priority = 48, enabled = true)
+	public void RW_T1549_ValidateArrow3DayNowPageDirectsUserstoDailyPage_verifyURLReflectsDailyWeatherForecast()
+	{
+		testStart("Verify URl reflects daily weather forecast on click of forward arrrow");
+		landingpage.enterZipcodeInSearchFieldAndClick("Mumbai, Maharashtra, IN");
+		String actualURL = threeDayForecastPage.verifyURLReflectsDailyWeatherForecast();
+		Assert.assertEquals(actualURL, EXPECTED_DAILY_WEATHER_FORECAST_URL);
+	}
+	
+	@Test(priority = 48, enabled = true)
+	public void RW_T1550_ValidateUserIsNotAbleToSeeAdditionalDaysvia3DayModule_verifyCurrentDayIsHiglighted()
+	{
+		testStart("Verify User is directed to the Daily Page where the current day is highlighted.");
+		landingpage.enterZipcodeInSearchFieldAndClick("48073");
+		Assert.assertEquals(threeDayForecastPage.verifyCurrentDayIsHiglighted(), EXPECTED_CURRENTDAY_HIGHLIGHTED_COLOR);
 	}
 }

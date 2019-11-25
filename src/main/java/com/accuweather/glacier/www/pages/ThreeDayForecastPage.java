@@ -1,4 +1,10 @@
 package com.accuweather.glacier.www.pages;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.Color;
 //import org.openqa.selenium.support.Color;
@@ -13,81 +19,92 @@ public class ThreeDayForecastPage extends BasePage
 {
 	private By bynowTab = By.cssSelector(
 			"body > div.template-root > div.page-subnav > div > div > div.subnav-items > a.subnav-item.active");
-	private By bycurrentWeatherCard = By.cssSelector(
-			"div.scroll > a.panel.panel-fade-in.card.current > div > p:nth-child(1)");
-	private By bycurrentTime=By.cssSelector("div > div.scroll > a:nth-child(1) > div > p.module-header.sub.date");
-	private By bytodaycardcurrentDate=By.cssSelector("div > div.scroll > a:nth-child(2) > div > p.module-header.sub.date");
-	private By bytonightcardCurrentDate=By.cssSelector("div > div.scroll > a:nth-child(3) > div > p.module-header.sub.date");
-	private By byTomorrowcardDate=By.cssSelector("div > div.scroll > a:nth-child(4) > div > p.module-header.sub.date");
+	private By bycurrentWeatherCard = By.cssSelector("div > div.three-day-panel.three-day-forecast.full-mobile-width > a.panel.panel-fade-in.card.current > div > p:nth-child(1)");
+	private By bycurrentTime=By.cssSelector("div > div.three-day-panel.three-day-forecast.full-mobile-width > a.panel.panel-fade-in.card.current > div > p.module-header.sub.date");
+	private By bytodaycardcurrentDate=By.cssSelector("div.three-day-panel.three-day-forecast.full-mobile-width > a:nth-child(2) > div > p.module-header.sub.date");
+	private By bytonightcardCurrentDate=By.cssSelector("div.three-day-panel.three-day-forecast.full-mobile-width > a:nth-child(3) > div > p.module-header.sub.date");
+	private By byTomorrowcardDate=By.cssSelector("div > div.three-day-panel.three-day-forecast.full-mobile-width > a:nth-child(4) > div > p.module-header.sub.date");
 	private By byCurrentWeatherTimeStamp = By.cssSelector(
 			"div > div.scroll > a.panel.panel-fade-in.card.current > div > p.module-header.sub.date");
 	private By byCurrentWeatherIcon = By.cssSelector(
-			"div > div.scroll > a.panel.panel-fade-in.card.current > div > img");
+			"div >div > a.panel.panel-fade-in.card.current > div > img");
 	private By byCurrentWeatherTemperature = By.cssSelector(
-			"div > div.scroll > a.panel.panel-fade-in.card.current > div > div.temp > span");
+			"div > div > a.panel.panel-fade-in.card.current > div > div.temp > span.high");
 	private By byCurrentWeatherRealFeelTemperature = By.cssSelector(
-			"div > div.scroll > a.panel.panel-fade-in.card.current > div > div.real-feel");
+			"div > div > a.panel.panel-fade-in.card.current > div > div.real-feel");
 	private By byCurrentWeatherDescription = By.cssSelector(
-			"div > div.scroll > a.panel.panel-fade-in.card.current > div > div.cond");
+			"div.three-day-panel.three-day-forecast.full-mobile-width > a.panel.panel-fade-in.card.current > div > div.cond");
 	private By byCurrentweatherwholecard = By.cssSelector(
-			"div > div.scroll > a.panel.panel-fade-in.card.current");
-	private By byTodayCard = By.cssSelector("div > div.scroll > a:nth-child(2) > div > p:nth-child(1)");
+			"div > div > a.panel.panel-fade-in.card.current");
+	private By byTodayCard = By.cssSelector("div > div.three-day-panel.three-day-forecast.full-mobile-width > a:nth-child(2)");
+	private By byTodayCardTitle = By.cssSelector(" div > div.three-day-panel.three-day-forecast.full-mobile-width > a:nth-child(2) > div > p:nth-child(1)");
 	private By byTodaydate = By.cssSelector(
-			"div > div.scroll > a:nth-child(2) > div > p.module-header.sub.date");
+			"div > div.three-day-panel.three-day-forecast.full-mobile-width > a:nth-child(2) > div > p.module-header.sub.date");
 	private By byTodayWeathericon = By.cssSelector(
-			"div > div.scroll > a:nth-child(2) > div > img");
+			"div > div.three-day-panel.three-day-forecast.full-mobile-width > a:nth-child(2) > div > img");
 	private By byTodayTemperature = By.cssSelector(
-			"div > div.scroll > a:nth-child(2) > div > div.temp.has-real-feel > span.high");
+			"div > div.three-day-panel.three-day-forecast.full-mobile-width > a:nth-child(2) > div > div.temp > span.high");
 	private By byTodayRealFeelTemprature = By.cssSelector(
-			"div > div.scroll > a:nth-child(2) > div > div.real-feel");
+			"div > div > a:nth-child(2) > div > div.real-feel");
 	private By byTodayWeatherdescription = By.cssSelector(
-			"div > div.scroll > a:nth-child(2) > div > div.cond");
+			"div > div > a:nth-child(2) > div > div.cond");
 	private By byTodayHighTemperature = By.cssSelector(
 			"div > a:nth-child(2) > div > div.temp > span.low");
 	private By byTodaywholecard = By.cssSelector(
-			"div > div.scroll > a:nth-child(2)");
+			"div > div.page-column-1 > div > div > a:nth-child(2)");
 	private By byTonightLowTemperatue = By.cssSelector(
-			"div > div.scroll > a:nth-child(3) > div > div.temp > span.low");
+			"div > div > a:nth-child(3) > div > div.temp > span.low");
 	private By byTonightcard = By.cssSelector(
-			"div > div.scroll > a:nth-child(3) > div > p:nth-child(1)");
+			"div > div.three-day-panel.three-day-forecast.full-mobile-width > a:nth-child(3)");
+	private By byTonightcardTitle = By.cssSelector(
+			"div > div.three-day-panel.three-day-forecast.full-mobile-width > a:nth-child(3) > div > p:nth-child(1)");
 	private By byTonightdate = By.cssSelector(
-			"div > div.scroll > a:nth-child(3) > div > p.module-header.sub.date");
+			"div > div.three-day-panel.three-day-forecast.full-mobile-width > a:nth-child(3) > div > p.module-header.sub.date");
 	private By byTonightWeathericon = By.cssSelector(
-			"div > div.scroll > a:nth-child(3) > div > img");
+			"div > div > a:nth-child(3) > div > img");
 	private By byTonightTemperature = By.cssSelector(
-			"div > div.scroll > a:nth-child(3) > div > div.temp.has-real-feel > span.high");
+			"div > div > a:nth-child(3) > div > div.temp > span.high");
 	private By byTonightRealFeelTemprature = By.cssSelector(
-			"div > div.scroll > a:nth-child(3) > div > div.real-feel");
+			"div > div > a:nth-child(3) > div > div.real-feel");
 	private By byTonightWeatherdescription = By.cssSelector(
-			"div > div.scroll > a:nth-child(3) > div > div.cond");
+			"div > div > a:nth-child(3) > div > div.cond");
 	private By byTomorrowcard = By.cssSelector(
-			"div > div.scroll > a:nth-child(4) > div > p:nth-child(1)");
+			"div > div.three-day-panel.three-day-forecast.full-mobile-width > a:nth-child(4) > div");
+	private By byTomorrowcardTitle = By.cssSelector(
+			"div > div > a:nth-child(4) > div > p:nth-child(1)");
 	private By byTomorrowdate = By.cssSelector(
-			"div > div.scroll > a:nth-child(4) > div > p.module-header.sub.date");
+			"div > div > a:nth-child(4) > div > p.module-header.sub.date");
 	private By byTomorrowWeathericon = By.cssSelector(
-			"div > div.scroll > a:nth-child(4) > div > img");
+			"div > div > a:nth-child(4) > div > img");
 	private By byTomorrowTemperature = By.cssSelector(
-			"div > div.scroll > a:nth-child(4) > div > div.temp > span.high");
+			"div > div > a:nth-child(4) > div > div.temp > span.high");
 	private By byTomorrowWeatherdescription = By.cssSelector(
-			"div > div.scroll > a:nth-child(4) > div > div.cond");
+			"div > div > a:nth-child(4) > div > div.cond");
 	private By bytommorowHiLotemp=By.cssSelector(
-			"div > div.scroll > a:nth-child(4) > div > div.temp > span.high");
-	private By byAnimationBarForward = By.cssSelector("div > div.next > div.arrow.top.card.active > svg");
+			"div > div > a:nth-child(4) > div > div.temp > span.high");
+	private By byAnimationBarForward = By.cssSelector("div > div > a.next-arrow.card");
 	private By byAnimationBarBackward = By.cssSelector("div > div.next > div:nth-child(2)");
 	private By bynextdayheader = By.cssSelector(
 			"div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a:nth-child(1) > div > p:nth-child(1)");
-	private By forwardarrow = By.cssSelector(
-			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.next > div.arrow.top.card.active > svg");
-	private By fourweathercards = By.cssSelector("div > div.flipper-panel  > div.scroll");
+	private By byForwardarrow = By.cssSelector("div > div.page-column-1 > div > div.three-day-panel.three-day-forecast.full-mobile-width > a.next-arrow.card");
+	private By fourweathercards = By.cssSelector("div > div.three-day-panel.three-day-forecast.full-mobile-width");
 	private By currentweathertext = By.cssSelector(
 			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current.reverse > div > p:nth-child(1)");
 	private By backarrow = By.cssSelector("div.flipper-panel > div.next > div:nth-child(2) > svg");
-	private By forwadarrowhighlighted = By.cssSelector("div.flipper-panel > div.next > div:nth-child(1) > svg");
+	private By forwadarrowhighlighted = By.cssSelector("div.three-day-panel.three-day-forecast.full-mobile-width > a.next-arrow.card > svg");
 	private By nextdayforecast = By.cssSelector(
 			"div.content-module > div > div.flipper-panel");
 	private By backarrowhighlighted = By.cssSelector(
 			"div > div.next > div:nth-child(2) > svg");
-			
+	
+	private By byRegionalWeatherRadarTitle = By.cssSelector("div:nth-child(5) > div > div.page-column-1 > div > a.base-map-cta.content-module > div.cta-title");
+	private By byNationalWeatherRadarTitle = By.cssSelector("div:nth-child(5) > div > div.page-column-1 > div > a > div.cta-title");
+	private By byNationalSatelliteTitle = By.cssSelector("div:nth-child(5) > div > div.page-column-1 > div > a > div.cta-title");
+	private By byMoreMapsCTA = By.cssSelector("div:nth-child(5) > div > div.page-column-1 > div > a > div.cta-text > div");
+	private By byCurrentDay = By.cssSelector("div.page-column-1 > div > div:nth-child(1) > a.forecast-list-card.forecast-card.today > div.date > p.dow");
+	private By byCurrentDayIsHighlighted = By.cssSelector("body > div > div > div.page-column-1 > div > div:nth-child(1) > a.forecast-list-card.forecast-card.today");
+	
+	
 	SimpleDate currentDate = new SimpleDate();
 	private final static String CURRENT_WEATHER = "Current Weather";
 	private final static String CURRENT_WEATHER_TIME_STAMP= "Current Weather Time Stamp";
@@ -110,6 +127,7 @@ public class ThreeDayForecastPage extends BasePage
 	private final static String TOMORROW_WEATHER_ICON = "Tomorrow Weather icon";
 	private final static String TOMORROW_HIGH_AND_LOW_TEMP = "Tomorrow High and Low Temperature";
 	private final static String TOMORROW_WEATHER_DESCRIPTION = "Tomorrow  Weather Description";
+	Boolean flag;
 	
 	public String isnowTabHighlighted() {
 		WebPageLoaded.isDomInteractive();
@@ -137,6 +155,7 @@ public class ThreeDayForecastPage extends BasePage
 	{
 		WebPageLoaded.isDomInteractive();
 		System.out.println(getDriver().findElement(bycurrentTime).getText());
+		System.out.println("currentDate.getCurrentTime():"+currentDate.getCurrentTime());
 		if(getDriver().findElement(bycurrentTime).getText().equals(currentDate.getCurrentTime()))
 			return true;
 		else
@@ -197,17 +216,17 @@ public class ThreeDayForecastPage extends BasePage
 
 	public String TodayweathercardTitle() {
 		WebPageLoaded.isDomInteractive();
-		return getDriver().findElement(byTodayCard).getText();
+		return getDriver().findElement(byTodayCardTitle).getText();
 	}
 
 	public String tonightweathercardTitle() {
 		WebPageLoaded.isDomInteractive();
-		return getDriver().findElement(byTonightcard).getText();
+		return getDriver().findElement(byTonightcardTitle).getText();
 	}
 
 	public String tomorrowweathercardTitle() {
 		WebPageLoaded.isDomInteractive();
-		return getDriver().findElement(byTomorrowcard).getText();
+		return getDriver().findElement(byTomorrowcardTitle).getText();
 	}
 
 	public void isclickedonCurrentWeather() {
@@ -268,7 +287,7 @@ public class ThreeDayForecastPage extends BasePage
 
 	 public String getcurentTime()
 	 {
-		 WebPageLoaded.isDomInteractive(3000);
+		 WebPageLoaded.isDomInteractive();
         WebElement time = getDriver().findElement(bycurrentTime);
          time.syncVisible(15);
        return time.getText();
@@ -450,7 +469,7 @@ public class ThreeDayForecastPage extends BasePage
 			WebElement currentWeatherCard = getDriver().findElement(bycurrentWeatherCard);
 			currentWeatherCard.click();
 			WebPageLoaded.isDomInteractive();
-			String Expectedurl = "https://qualityassurance.accuweather.com/en/us/state-college/16801/current-weather/6787_pc";
+			String Expectedurl = "https://qualityassurance.accuweather.com/en/us/royal-oak/48073/current-weather/20813_pc";
 			WebPageLoaded.isDomInteractive();
 			String actualUrl = getDriver().getCurrentUrl();
 			WebPageLoaded.isDomInteractive();
@@ -462,7 +481,7 @@ public class ThreeDayForecastPage extends BasePage
 			WebElement currentWeatherCard = getDriver().findElement(byTodayCard);
 			currentWeatherCard.click();
 			WebPageLoaded.isDomInteractive();
-			String Expectedurl = "https://development.accuweather.com/en/us/state-college/16801/current-weather/6787_pc";
+			String Expectedurl = "https://qualityassurance.accuweather.com/en/us/royal-oak/48073/current-weather/20813_pc";
 			WebPageLoaded.isDomInteractive();
 			String actualUrl = getDriver().getCurrentUrl();
 			WebPageLoaded.isDomInteractive();
@@ -474,7 +493,7 @@ public class ThreeDayForecastPage extends BasePage
 			WebElement currentWeatherCard = getDriver().findElement(byTonightcard);
 			currentWeatherCard.click();
 			WebPageLoaded.isDomInteractive();
-			String Expectedurl = "https://development.accuweather.com/en/us/state-college/16801/current-weather/6787_pc";
+			String Expectedurl = "https://qualityassurance.accuweather.com/en/us/royal-oak/48073/current-weather/20813_pc";
 			WebPageLoaded.isDomInteractive();
 			String actualUrl = getDriver().getCurrentUrl();
 			WebPageLoaded.isDomInteractive();
@@ -486,7 +505,7 @@ public class ThreeDayForecastPage extends BasePage
 			WebElement currentWeatherCard = getDriver().findElement(byTomorrowcard);
 			currentWeatherCard.click();
 			WebPageLoaded.isDomInteractive();
-			String Expectedurl = "https://development.accuweather.com/en/us/state-college/16801/daily-weather-forecast/6787_pc?day=1";
+			String Expectedurl = "https://qualityassurance.accuweather.com/en/us/royal-oak/48073/daily-weather-forecast/20813_pc?day=2";
 			WebPageLoaded.isDomInteractive();
 			String actualUrl = getDriver().getCurrentUrl();
 			WebPageLoaded.isDomInteractive();
@@ -548,11 +567,6 @@ public class ThreeDayForecastPage extends BasePage
 		return Actualarrowcolour;
 	}
 
-	public boolean nextfourdaysforecast() {
-		WebPageLoaded.isDomInteractive();
-		return getDriver().findElement(nextdayforecast).isDisplayed();
-	}
-
 	String toBrowserHexValue(int number) {
 		StringBuilder builder = new StringBuilder(Integer.toHexString(number & 0xff));
 		while (builder.length() < 2) {
@@ -561,5 +575,169 @@ public class ThreeDayForecastPage extends BasePage
 
 		return builder.toString().toUpperCase();
 	}
+		
+	/**
+	 * Method to verify forecast list for the current week should be displayed and limited to number of days in the current week
+	 * @author SOWMIYA
+	 * Boolean - return value - "true if two arraylist matches else false"
+	 * */
+	public Boolean verifyLimitedNumberOfDaysInCurrentWeek()
+	{
+        //Pull the list of week from UI
+        List<WebElement> actualArray = getDriver().findElements(By.cssSelector("div.page-column-1 > div > div:nth-child(1) > a"));
+        int sizeOfActualArray = actualArray.size();
+        
+        ArrayList<String> actualDays = new ArrayList<String>();
+        
+        //get day from UI and assign it to arraylist
+        for(int i=1; i<=actualArray.size(); i++)
+        {
+        	String getDay = getDriver().findElement(By.cssSelector("div.page-column-1 > div > div:nth-child(1) > a:nth-child("+i+") > div > p.dow")).getText();
+        	actualDays.add(getDay);
+        }
+        
+        //Userdefined days of a week
+        ArrayList<String> daysUserDefined = new ArrayList<String>(Arrays.asList("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"));
+        int sizeOfuserDefinedArray = daysUserDefined.size();
+        
+        //substract userdefined array size and actualArray size
+        int noOfdysToRemoveFromUserdefinedArray = sizeOfuserDefinedArray-sizeOfActualArray;
+        
+        //Userdefined new array
+        for(int i=0; i<noOfdysToRemoveFromUserdefinedArray; i++) {
+        	daysUserDefined.remove(0);
+        }
+        
+        System.out.println("daysUserDefined:"+daysUserDefined);
+        
+        //Compare 2 arraylist
+        for(int i=0;i<actualDays.size();i++) {
+        		if(actualDays.get(i).equalsIgnoreCase(daysUserDefined.get(i))) {
+        			flag = true;
+        			continue;
+        		}else 
+        			flag = false;
+        			break;
+        }
+	return flag;
+	}
+	
+	/**
+	 * Method to get weather radar title
+	 * @author SOWMIYA
+	 * Boolean - return radar title
+	 * */
+	public String verifyRegionalWeatherRadarTitle() {
+		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(3);
+		WebElement regionalWeatherRadarTitle = getDriver().findElement(byRegionalWeatherRadarTitle);
+		regionalWeatherRadarTitle.syncVisible(25);
+		return regionalWeatherRadarTitle.getText().toUpperCase();
+	}
+	
+	/**
+	 * Method to get national weather radar title
+	 * @author SOWMIYA
+	 * Boolean - return national weather title
+	 * */
+	public String verifyNationalWeatherRadarTitle() {
+		WebPageLoaded.isDomInteractive();
+		WebElement nationalWeatherRadarTitle = getDriver().findElement(byNationalWeatherRadarTitle);
+		nationalWeatherRadarTitle.syncVisible(25);
+		return nationalWeatherRadarTitle.getText().toUpperCase();
+	}
+	
+	/**
+	 * Method to get national satellite title
+	 * @author SOWMIYA
+	 * Boolean - return national satellite title
+	 * */
+	public String verifyNationalSatelliteTitle() {
+		WebPageLoaded.isDomInteractive();
+		WebElement nationalSatelliteTitle = getDriver().findElement(byNationalSatelliteTitle);
+		nationalSatelliteTitle.syncVisible(100);
+		return nationalSatelliteTitle.getText().toUpperCase();
+	}
+	
+	/**
+	 * Method to verify user is directed to national weather radar page on click of more maps CTA
+	 * @author SOWMIYA
+	 * Boolean - return national weather URL
+	 * */
+	public String verifyUserIsDirectedToNationalWeatherRadarPageOnClickofMoreMapsCTA() {
+		WebPageLoaded.isDomInteractive();
+		WebElement moreMapsCTA = getDriver().findElement(byMoreMapsCTA);
+		moreMapsCTA.syncVisible(100);
+		moreMapsCTA.click();
+		Sleeper.sleep(2);
+		return getDriver().getCurrentUrl();
+	}
+	
+	/**
+	 * Method to verify user is directed to city weather radar page on click of more maps CTA
+	 * @author SOWMIYA
+	 * Boolean - return city weather URL
+	 * */
+	public String verifyUserIsDirectedToCityWeatherRadarPageOnClickofMoreMapsCTA() {
+		WebPageLoaded.isDomInteractive();
+		WebElement moreMapsCTA = getDriver().findElement(byMoreMapsCTA);
+		moreMapsCTA.syncVisible(100);
+		moreMapsCTA.click();
+		Sleeper.sleep(2);
+		return getDriver().getCurrentUrl();
+	}
+	
+	/**
+	 * Method to verify user is directed to national satellite page on click of more maps CTA
+	 * @author SOWMIYA
+	 * Boolean - return national satellite URL
+	 * */
+	public String verifyUserIsDirectedToNationalSatellitePageOnClickofMoreMapsCTA() {
+		WebPageLoaded.isDomInteractive();
+		WebElement moreMapsCTA = getDriver().findElement(byMoreMapsCTA);
+		moreMapsCTA.syncVisible(100);
+		moreMapsCTA.click();
+		Sleeper.sleep(2);
+		return getDriver().getCurrentUrl();
+	}
+	
+	/**
+	 * Method to verify URl reflects daily weather forecast on click of forward arrrow
+	 * @author SOWMIYA
+	 * Boolean - return national satellite URL
+	 * */
+	public String verifyURLReflectsDailyWeatherForecast() {
+		WebPageLoaded.isDomInteractive();
+		WebElement forwardarrow = getDriver().findElement(byForwardarrow);
+		forwardarrow.syncVisible(100);
+		forwardarrow.click();
+		Sleeper.sleep(2);
+		return getDriver().getCurrentUrl();
+	}
+	
+	/**
+	 * Method to verify User is directed to the Daily Page where the current day is highlighted
+	 * @author SOWMIYA
+	 * Boolean - return color
+	 * */
+	public String verifyCurrentDayIsHiglighted() {
+		WebPageLoaded.isDomInteractive();
+		WebElement forwardarrow = getDriver().findElement(byForwardarrow);
+		forwardarrow.syncVisible(100);
+		forwardarrow.click();
+	    //verify current day
+		Date now = new Date();
+	    SimpleDateFormat simpleDateformat = new SimpleDateFormat("E"); // the day of the week abbreviated
+	    String expectedDay = simpleDateformat.format(now);
+	    WebElement actualDayOnPage = getDriver().findElement(byCurrentDay);
+	    actualDayOnPage.syncVisible(15);
+	    expectedDay.equalsIgnoreCase(actualDayOnPage.getText());
+	    
+	    String currentDayIsHighlighted = getDriver().findElement(byCurrentDayIsHighlighted).getCssValue("border-left");
+	    String highlightColorRGB = currentDayIsHighlighted.substring(10);
+		String higlightedColor = Color.fromString(highlightColorRGB).asHex();
+		return higlightedColor;
+	}
+
 
 }

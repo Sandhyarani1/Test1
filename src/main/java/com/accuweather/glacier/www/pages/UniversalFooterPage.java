@@ -45,7 +45,13 @@ public class UniversalFooterPage extends BasePage
 	private By byenglishLanguage = By.xpath("//div[3]/div/div/div[2]/div/div");
 	private By byFrench = By.xpath("//div[4]");
 	private By byfooterBreadCrumbs = By.cssSelector("body > div.template-root > div.breadcrumbs-wrapper");
+	private By byAboutFromPressMenu = By.xpath("//div[@class='subnav-items']/a/span[contains(text(),'About')]");
+	private By byPressFromPressMenu = By.xpath("//div[@class='subnav-items']/a/h1[contains(text(),'Press')]");
+	private By byCareersFromPressMenu = By.xpath("//div[@class='subnav-items']/a/span[contains(text(),'Careers')]");
+	private By byFAQFromPressMenu = By.xpath("//div[@class='subnav-items']/a/span[contains(text(),'FAQ')]");
+	private By byContactUsFromPressMenu = By.xpath("//div[@class='subnav-items']/a/span[contains(text(),'Contact Us')]");
 	
+	String[] expectedPressSecondaryNavigationMenus = {"ABOUT", "PRESS", "CAREERS", "FAQ", "CONTACT US"};
 	/**
 	 * @ author Sandhya Rani
 	 * Method to verify footer is displayed for English Language
@@ -472,4 +478,20 @@ public boolean validatelinksDisplayedunderAppsandDownloads() {
 		return getDriver().findWebElement(byfooterBreadCrumbs).isDisplayed();
 	}
 
+	/**
+	 * Method to validate press navigation secondary menus
+	 * @author SOWMIYA
+	 * return Boolean value - "true if list of press menus are present else false"
+	 * */
+	public Boolean verifyPressSecondaryNavigationMenus()
+	{
+		WebElement aboutFromPressMenu = getDriver().findElement(byAboutFromPressMenu);
+		WebElement pressFromPressMenu = getDriver().findElement(byPressFromPressMenu);
+		WebElement careersFromPressMenu = getDriver().findElement(byCareersFromPressMenu);
+		WebElement fAQFromPressMenu = getDriver().findElement(byFAQFromPressMenu);
+		WebElement contactUsFromPressMenu = getDriver().findElement(byContactUsFromPressMenu);
+		
+		return aboutFromPressMenu.syncVisible(20) && pressFromPressMenu.syncVisible(20) && careersFromPressMenu.syncVisible(20) &&
+				fAQFromPressMenu.syncVisible(20) && contactUsFromPressMenu.syncVisible(20);
+	}
 }

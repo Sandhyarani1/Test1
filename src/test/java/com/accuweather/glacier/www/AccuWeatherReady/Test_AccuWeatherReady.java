@@ -8,7 +8,6 @@ import com.accuweather.glacier.www.pages.AccuWeatherReady;
 
 
 
-
 public class Test_AccuWeatherReady extends AccuWeatherBaseTest
 {
 	private AccuWeatherReady awReady = new AccuWeatherReady();
@@ -16,18 +15,18 @@ public class Test_AccuWeatherReady extends AccuWeatherBaseTest
 	private final static String ACCUWEATHER_READY_URL = "https://qualityassurance.accuweather.com/en/accuweather-ready";
 	private final static String ACCUWEATHER_READY_TITLE = "AccuWeather Ready";
 	private final static String CHECKLIST_DOWNLOAD = "CHECKLISTS & DOWNLOADS";
-	private final static String CHECKLIST1 = "Keep pets safe during winter storms";
-	private final static String CHECKLIST2 = "Be prepared for winter holidays";
-	private final static String CHECKLIST3 = "Be prepared for winter travel";
-	private final static String CHECKLIST4 = "Winter vehicle preparation checklist";
-	private final static String CHECKLIST5 = "What to include in your winter weather preparedness kit";
-	private final static String CHECKLIST6 = "Winter Dry Skin Preparedness Infographic";
-	private final static String CHECKLIST1_URL = "https://qualityassurance.accuweather.com/pdfs/accuweather-ready/winter-storms-prepare-your-pets.pdf";
-	private final static String CHECKLIST2_URL = "https://qualityassurance.accuweather.com/pdfs/accuweather-ready/be-prepared-for-winter-holidays.pdf";
-	private final static String CHECKLIST3_URL = "https://qualityassurance.accuweather.com/pdfs/accuweather-ready/be-prepared-for-winter-travel.pdf";
-	private final static String CHECKLIST4_URL = "https://qualityassurance.accuweather.com/pdfs/accuweather-ready/winter-vehicle-preparation-checklist.pdf";
-	private final static String CHECKLIST5_URL = "https://qualityassurance.accuweather.com/pdfs/accuweather-ready/family-home-preparedness-kit-checklist.pdf";
-	private final static String CHECKLIST6_URL = "https://qualityassurance.accuweather.com/pdfs/accuweather-ready/winter-dry-skin-preparedness-infographic.pdf";
+	private final static String CHECKLIST1 = "Be prepared for power outages";
+	private final static String CHECKLIST2 = "Hurricane preparedness checklist";
+	private final static String CHECKLIST3 = "How to plan and recover from a hurricane";
+	private final static String CHECKLIST4 = "The psychological impacts of disasters";
+	private final static String CHECKLIST5 = "What you don’t know about CSCC";
+	private final static String CHECKLIST6 = "Be prepared when thunderstorms strike";
+	private final static String CHECKLIST1_URL = "https://qualityassurance.accuweather.com/pdfs/accuweather-ready/be-prepared-for-power-outages.pdf";
+	private final static String CHECKLIST2_URL = "https://qualityassurance.accuweather.com/pdfs/accuweather-ready/hurricane-preparedness-checklist.pdf";
+	private final static String CHECKLIST3_URL = "https://qualityassurance.accuweather.com/en/weather-news/how-to-plan-and-recover-from-a-hurricane/531909";
+	private final static String CHECKLIST4_URL = "https://qualityassurance.accuweather.com/pdfs/accuweather-ready/the-psychological-impacts-of-disasters.pdf";
+	private final static String CHECKLIST5_URL = "https://qualityassurance.accuweather.com/en/weather-news/what-you-dont-know-about-the-2nd-most-common-skin-cancer-in-the-us/70008473";
+	private final static String CHECKLIST6_URL = "https://qualityassurance.accuweather.com/pdfs/accuweather-ready/be-prepared-when-thunderstorms-strike.pdf";
 	
 	@Test(priority=1)
 	public void RW_T354_ValidationOfAWReadyURL()
