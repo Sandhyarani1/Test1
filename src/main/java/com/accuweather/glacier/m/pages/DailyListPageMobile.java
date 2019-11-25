@@ -25,7 +25,7 @@ public class DailyListPageMobile extends MobileBasePage {
 	private By byNextWeekDate = By.xpath("(//p[@class='module-title'])[1]");
 	private By byNextCTA = By.xpath("//a[@class='card-button nav-card next centered']");
 	private By byPreviousCTA = By.xpath("//a[@class='card-button nav-card prev centered has-next']");
-	private By byArrowTabs = By.cssSelector("body > div > div.page-subnav > div > div > div.overflow.overflow-right > svg");
+	private By byArrowTabs = By.cssSelector("div.subnav.overflow-right > div.overflow.overflow-right > svg");
 	private By byDailyTab = By.xpath("//a[@href=\"/en/us/royal-oak/48073/daily-weather-forecast/20813_pc\"]");
 	private By byNextCTATab = By.xpath("//a[@class='card-button nav-card next centered']");
 	private By byCurrentDay = By.cssSelector("a.forecast-list-card.forecast-card.today > div.date > p.dow");

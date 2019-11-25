@@ -9,6 +9,7 @@ import com.chameleon.selenium.DriverManager;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
 import com.chameleon.utils.Sleeper;
+import com.chameleon.utils.date.SimpleDate;
 
 public class MonthlyForeCastPageMobile extends BasePage {
 	private int i;
@@ -52,10 +53,13 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	String listviewyear;
 	String listviewmonth;
 	String substringmonthname;
+	public static final String MONTHS[] = { "January", "February", "March", "April", "May", "June", "July", "August",
+			"September", "October", "November", "December" };
 	List<String> addalldays = new ArrayList<>();
 	List<String> nonactivespan = new ArrayList<>();
 	List<String> listofalldaysweek = new ArrayList<>();
-	private By byAWLogo = By.cssSelector("body > div > div.component-sticky-container.header > div > div.main-menu-wrapper > div > div.logo-wrapper > div > a > img");
+	private By byAWLogo = By.cssSelector(
+			"body > div > div.component-sticky-container.header > div > div.main-menu-wrapper > div > div.logo-wrapper > div > a > img");
 	private By byGridViewRightArrow = By
 			.cssSelector("div.monthly-tools > div.card-button.monthly-nav.centered > a.arrow-wrap.is-next > svg");
 	private By byGridViewLeftArrow = By
@@ -67,8 +71,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	private By byListViewIconSelected = By.cssSelector("div.monthly-tools > div.layout-selector > a:nth-child(2)");
 	private By byGridViewMonthYearText = By.cssSelector(
 			"div.two-column-page-content > div.page-column-1 > div > div.monthly-tools > div.card-button.monthly-nav.centered > span");
-	private By byGridViewTodayMonthPanel = By
-			.xpath("//a[@class='monthly-daypanel is-today']");
+	private By byGridViewTodayMonthPanel = By.xpath("//a[@class='monthly-daypanel is-today']");
 	private By byGridIconColor = By.cssSelector("div.layout-selector > a.grid-button > svg > g > path.p2");
 	private By byAllCurrentMonthDate = By
 			.xpath("//div[1]/div[2]/div[2]/a/div[contains(@class,'date') and not(contains(.,'/'))]");
@@ -111,6 +114,17 @@ public class MonthlyForeCastPageMobile extends BasePage {
 			.cssSelector("div.page-column-1 > div > div.monthly-tools > div.card-button.monthly-nav.centered > span");
 	private By byGridViewAllDaysOfWeek = By.cssSelector(
 			"body > div.template-root > div.two-column-page-content > div.page-column-1 > div.monthly-grid-container.monthly-component > div.monthly-header > div");
+
+	private By byMonthDropDown = By.cssSelector(
+			"div.monthly-tools > div.card-button.monthly-nav.centered > div > div:nth-child(1) > div.displayed-item > svg");
+	private By ByYearDropDown = By
+			.cssSelector("div.card-button.monthly-nav.centered > div > div:nth-child(2) > div.displayed-item > svg");
+
+	private By byYearDropDownPastYear = By.cssSelector(
+			"div.template-root:nth-child(1) div.two-column-page-content div.page-column-1 div.content-module div.monthly-tools div.card-button.monthly-nav.centered div.date-buttons div.dropdown:nth-child(2) div.items.active a.item:nth-child(1) > span:nth-child(1)");
+	private By ByyearDisplayed = By.cssSelector(
+			"body > div > div:nth-child(4) > div > div.page-column-1 > div > div.monthly-tools > div.card-button.monthly-nav.centered > div > div:nth-child(2) > div.displayed-item > span");
+	private SimpleDate simpledate = new SimpleDate();
 
 	/*
 	 * 
@@ -217,7 +231,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	 */
 	public boolean isGridIconDislayed() {
 		getDriver().findElement(byListViewGridIcon).syncVisible();
-		return getDriver().findElements(byListViewGridIcon).size()>0;
+		return getDriver().findElements(byListViewGridIcon).size() > 0;
 	}
 
 	/*
@@ -228,7 +242,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	 * 
 	 */
 	public boolean isListViewIconDislayed() {
-		return  getDriver().findElements(byListViewIcon).size()>0;
+		return getDriver().findElements(byListViewIcon).size() > 0;
 	}
 
 	/*
@@ -269,7 +283,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 		allactivedaypanel = true;
 		for (i = 1; i > getActiveDayPanelSize(); i--) {
 			WebPageLoaded.isDomInteractive();
-			activedaypanel = getDriver().findElements(byAllActiveDayPanelIndex).size()>0;
+			activedaypanel = getDriver().findElements(byAllActiveDayPanelIndex).size() > 0;
 		}
 
 		return allactivedaypanel;
@@ -338,7 +352,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 		activedatesdaypanel = true;
 		for (int i = 1; i > getActiveDayPanelSize(); i--) {
 			@SuppressWarnings("unused")
-			boolean activedatedaypanel = getDriver().findElements(byAllActiveDatesInDayPanelIndex).size()>0;
+			boolean activedatedaypanel = getDriver().findElements(byAllActiveDatesInDayPanelIndex).size() > 0;
 		}
 
 		return activedatesdaypanel;
@@ -380,11 +394,11 @@ public class MonthlyForeCastPageMobile extends BasePage {
 				"//div[5]/div[1]/div[2]/div[2]/a[not(contains(@class,'monthly-daypanel is-past'))]/div[contains(@class,'date')and not(contains(.,'/'))]"));
 		noOfdates = alldates.size() + 1;
 		for (int i = 1; i < noOfdates; i++) {
-			 boolean value = getDriver().findElements(
+			boolean value = getDriver().findElements(
 					By.xpath("//div[5]/div[1]/div[2]/div[2]/a[not(contains(@class,'monthly-daypanel is-past'))][" + i
-							+ "]/div[contains(@class,'date')and not(contains(.,'/'))]")).size()>0;
-							
-			
+							+ "]/div[contains(@class,'date')and not(contains(.,'/'))]"))
+					.size() > 0;
+
 		}
 
 		return alldays;
@@ -461,10 +475,11 @@ public class MonthlyForeCastPageMobile extends BasePage {
 		nonactivehightemp = true;
 		Boolean value = null;
 		for (int i = 1; i < getNonActiveDayPanelSize() + 1; i++) {
-		value	= getDriver().findElements(By.xpath(
+			value = getDriver().findElements(By.xpath(
 					"//div[@class='monthly-grid-container monthly-component']/div[2]/a[(contains(@class,'monthly-daypanel is-past'))]["
-							+ i + "]/div[3]/div[1]")).size()>0;
-			
+							+ i + "]/div[3]/div[1]"))
+					.size() > 0;
+
 		}
 
 		return value;
@@ -481,11 +496,12 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	public boolean isListOfActualLowtempForNonActiveDaysDisplayed() {
 		WebPageLoaded.isDomInteractive();
 		nonactivelowtemp = true;
-		Boolean value ;
+		Boolean value;
 		for (int i = 1; i < getNonActiveDayPanelSize() + 1; i++) {
-			 value = getDriver().findElements(By.xpath(
+			value = getDriver().findElements(By.xpath(
 					"//div[@class='monthly-grid-container monthly-component']/div[2]/a[(contains(@class,'monthly-daypanel is-past'))]["
-							+ i + "]/div[3]/div[2]")).size()>0;
+							+ i + "]/div[3]/div[2]"))
+					.size() > 0;
 			nonactivelowtemp = value;
 		}
 
@@ -526,7 +542,8 @@ public class MonthlyForeCastPageMobile extends BasePage {
 		for (int i = 1; i < getActiveDayPanelSize() + 1; i++) {
 			value = getDriver().findElements(By.xpath(
 					"//div[@class='monthly-grid-container monthly-component']/div[2]/a[not(contains(@class,'monthly-daypanel is-past'))]["
-							+ i + "]/div[2]/img")).size()>0;
+							+ i + "]/div[2]/img"))
+					.size() > 0;
 			activedatesweathericon = value;
 		}
 
@@ -558,7 +575,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	 * 
 	 */
 	public boolean isAllTempOnTempGraphDislayed() {
-		return getDriver().findElements(byAllTempOnTempGraph).size()>0;
+		return getDriver().findElements(byAllTempOnTempGraph).size() > 0;
 	}
 
 	/*
@@ -570,7 +587,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	 * 
 	 */
 	public boolean isAllDaysOnTempGraphDislayed() {
-		return  getDriver().findElements(byAllDaysOnTempGraph).size()>0;
+		return getDriver().findElements(byAllDaysOnTempGraph).size() > 0;
 	}
 
 	/*
@@ -593,7 +610,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	 * 
 	 */
 	public boolean isOrangeLineForActualHighOnTempGraphDislayed() {
-		return getDriver().findElements(byOrangeThickLineOnTempGraph).size()>0;
+		return getDriver().findElements(byOrangeThickLineOnTempGraph).size() > 0;
 	}
 
 	/*
@@ -604,7 +621,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	 * 
 	 */
 	public boolean isOrangeDottedLineOnTempGraphDislayed() {
-		return getDriver().findElements(byOrangeDottedLineOnTempGraph).size()>0;
+		return getDriver().findElements(byOrangeDottedLineOnTempGraph).size() > 0;
 	}
 
 	/*
@@ -615,7 +632,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	 * 
 	 */
 	public boolean isBlueLineForAvgLowOnTempGraphDislayed() {
-		return getDriver().findElements(byBlueThinLineOnTempGraph).size()>0;
+		return getDriver().findElements(byBlueThinLineOnTempGraph).size() > 0;
 	}
 
 	/*
@@ -626,7 +643,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	 * 
 	 */
 	public boolean isBlueLineForActualLowOnTempGraphDislayed() {
-		return getDriver().findElements(byBlueThickLineOnTempGraph).size()>0;
+		return getDriver().findElements(byBlueThickLineOnTempGraph).size() > 0;
 	}
 
 	/*
@@ -637,7 +654,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	 * 
 	 */
 	public boolean isBlueDottedLineOnTempGraphDislayed() {
-		return getDriver().findElements(byBlueDottedLineOnTempGraph).size()>0;
+		return getDriver().findElements(byBlueDottedLineOnTempGraph).size() > 0;
 	}
 
 	/*
@@ -648,7 +665,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	 * 
 	 */
 	public boolean isTodayMarkerOnTempGraphDislayed() {
-		return getDriver().findElements(byTodayMarkerOnTempGraph).size()>0;
+		return getDriver().findElements(byTodayMarkerOnTempGraph).size() > 0;
 	}
 
 	/*
@@ -659,7 +676,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	 * 
 	 */
 	public boolean isTopMnthlyNavOnGridViewDislayed() {
-		return  getDriver().findElements(byTopMonthlyNavOnGridView).size()>0;
+		return getDriver().findElements(byTopMonthlyNavOnGridView).size() > 0;
 	}
 
 	/*
@@ -670,7 +687,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	 * 
 	 */
 	public boolean isBottomMnthlyNavOnGridViewDislayed() {
-		return getDriver().findElements(byBottomMonthlyNavOnGridView).size()>0;
+		return getDriver().findElements(byBottomMonthlyNavOnGridView).size() > 0;
 	}
 
 	/*
@@ -709,8 +726,10 @@ public class MonthlyForeCastPageMobile extends BasePage {
 		listofdaysweek = true;
 		Boolean value;
 		for (int i = 1; i < getListOfDaysWeekSize() + 1; i++) {
-		value =	getDriver().findElements(By.cssSelector(
-					"div.page-column-1 > div.monthly-component > a:nth-child(" + i + ") > div.date > p.dow")).size()>0;
+			value = getDriver()
+					.findElements(By.cssSelector(
+							"div.page-column-1 > div.monthly-component > a:nth-child(" + i + ") > div.date > p.dow"))
+					.size() > 0;
 			listofdaysweek = value;
 		}
 
@@ -740,10 +759,12 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	public boolean isListOfDaysMonthForCurrentMonthDisplayed() {
 		WebPageLoaded.isDomInteractive();
 		listofdaysmonth = true;
-		Boolean value ;
+		Boolean value;
 		for (int i = 1; i < getListOfDaysMonthSize() + 1; i++) {
-			value =getDriver().findElements(By.cssSelector(
-					"div.page-column-1 > div.monthly-component > a:nth-child(" + i + ") > div.date > p.sub")).size()>0;
+			value = getDriver()
+					.findElements(By.cssSelector(
+							"div.page-column-1 > div.monthly-component > a:nth-child(" + i + ") > div.date > p.sub"))
+					.size() > 0;
 			listofdaysmonth = value;
 		}
 
@@ -813,7 +834,8 @@ public class MonthlyForeCastPageMobile extends BasePage {
 		for (int i = 1; i < getListOfWeekDaysSize() + 1; i++) {
 			value = getDriver().findElements(By.cssSelector(
 					"div.page-column-1 > div.monthly-grid-container.monthly-component > div.monthly-header > div:nth-child("
-							+ i + ") > span.day-name")).size()>0;
+							+ i + ") > span.day-name"))
+					.size() > 0;
 			listofweekdaysofmonth = value;
 		}
 
@@ -829,8 +851,8 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	 */
 	public boolean isGridViewIconSelected() {
 		WebPageLoaded.isDomInteractive(5);
-		return getDriver().findElements(byGridViewIconSelected).size()>0;
-		
+		return getDriver().findElements(byGridViewIconSelected).size() > 0;
+
 	}
 
 	/*
@@ -842,7 +864,7 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	 */
 	public boolean isAWLogoDisplayed() {
 		WebPageLoaded.isDomInteractive(5);
-		return getDriver().findElements(byAWLogo).size()>0;
+		return getDriver().findElements(byAWLogo).size() > 0;
 	}
 
 	/*
@@ -853,7 +875,77 @@ public class MonthlyForeCastPageMobile extends BasePage {
 	 * 
 	 */
 	public boolean isListViewIconEnabled() {
-		return getDriver().findElements(byListViewIconSelected).size()>0;
+		return getDriver().findElements(byListViewIconSelected).size() > 0;
+	}
+
+	public boolean clickMonthDropDown() {
+		getDriver().findElement(byMonthDropDown).click();
+		return true;
+	}
+
+	public boolean clickYearDropDown() {
+		getDriver().findElement(ByYearDropDown).click();
+		return true;
+	}
+
+	public void clickYearDropDownAndSelectYear() {
+		getDriver().findElement(byYearDropDownPastYear).click();
+
+	}
+
+	public boolean validatemonthDislayedAfterMonthselected() {
+		String src = getDriver().findElement(ByyearDisplayed).getText();
+		getDriver().findElement(byYearDropDownPastYear).click();
+		String dest = getDriver().findElement(byYearDropDownPastYear).getText();
+		return src.equalsIgnoreCase(dest);
+
+	}
+
+	public void clickAdvance3Months(String advanceThreeMonth) {
+		Sleeper.sleep(5);
+		getDriver().findElement(By.xpath("//span[contains(text(),'" + advanceThreeMonth + "')]")).click();
+	}
+
+	public Boolean ValidateThreeMonthsForecast() {
+		String expectecurrentmonth = simpledate.getMonthString();
+		String AdvanceThreeMonth = simpledate.advanceMonth(3).getMonthString();
+		int expectedCurrentyear = simpledate.getYear();
+		int AdvanceYear = simpledate.advanceMonth(3).getYear();
+		if (AdvanceYear > expectedCurrentyear) {
+			getDriver().findElement(byMonthDropDown).click();
+			Sleeper.sleep(5);
+			getDriver().findElement(By.xpath("//span[contains(text(),'" + AdvanceThreeMonth + "')]")).click();
+			Sleeper.sleep(5);
+			getDriver().findElement(ByYearDropDown).click();
+			Sleeper.sleep(5);
+			getDriver().findElement(By.cssSelector(
+					"div.card-button.monthly-nav.centered > div > div:nth-child(2) > div.items.active > a:nth-child(3) > span"))
+					.click();
+			Sleeper.sleep(5);
+		} else {
+			getDriver().findElement(byMonthDropDown).click();
+			Sleeper.sleep(5);
+			getDriver().findElement(By.xpath("//span[contains(text(),'" + AdvanceThreeMonth + "')]")).click();
+			Sleeper.sleep(5);
+		}
+		return getDriver().findElements(By.cssSelector(
+				"div.monthly-grid-container.monthly-component > div.monthly-grid > a:nth-child(4) > div.temp > div.low"))
+				.size() > 0;
+	}
+
+	public Boolean ValidateMonthDropDownOpionsInEnglish() {
+		boolean isEqual = true;
+		getDriver().findElement(byMonthDropDown).click();
+		Sleeper.sleep(5);
+		for (int i = 1; i < 13; i++) 
+		{
+			String UIActString = getDriver().findElement(By.xpath("(//div[@class='items active']/a/span)[" + i + "]")).getText();
+			if (UIActString != (MONTHS[i - 1])) {
+				isEqual = false;
+			}
+		}
+
+		return isEqual;
 	}
 
 }

@@ -706,5 +706,37 @@ public class Test_MonthlyForecastPageIOS extends AccuWeatherBaseTest {
 		WebPageLoaded.isDomInteractive(5);
 		Assert.assertTrue(monthlyforecast.isListViewIconEnabled());
 	}
+	
+	
+	@Test(priority = 45, enabled = true)
+	public void TCRW_T1523_VerifyDropdownisaddedformonthandyear() throws InterruptedException {
+		testStart("Verify Drop down is added for month and year under Monthly Forecast Page");
+		  landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
+		  landingpage.clickOnZipcodeSearchIcon();
+		  waitUntilElementIsDisplayedOrClickable();
+		  dailyListPage.navigateToDailyListTab(); 
+		  WebPageLoaded.isDomInteractive(5);
+		  forecastpage.clickOnMonthlyTab();
+		  Sleeper.sleep(5);
+		  waitUntilElementIsDisplayedOrClickable();
+		  monthlyforecast.ValidateThreeMonthsForecast();
+	}
+	
+	@Test(priority = 45, enabled = true)
+	public void TCRW_T1547_VerifyMonthDropdownAreDiplayedInEnglish() throws InterruptedException {
+		testStart("Verify Drop down is added for month and year under Monthly Forecast Page");
+		  landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
+		  landingpage.clickOnZipcodeSearchIcon();
+		  waitUntilElementIsDisplayedOrClickable();
+		  dailyListPage.navigateToDailyListTab(); 
+		  WebPageLoaded.isDomInteractive(5);
+		  forecastpage.clickOnMonthlyTab();
+		  Sleeper.sleep(5);
+		  waitUntilElementIsDisplayedOrClickable();
+		  monthlyforecast.ValidateMonthDropDownOpionsInEnglish();
+	}
+	
+	
+	
 
 }
