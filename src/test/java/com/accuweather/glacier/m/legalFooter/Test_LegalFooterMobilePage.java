@@ -12,6 +12,7 @@ import com.accuweather.glacier.m.AccuWeatherMobileBaseTest;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.accuweather.glacier.www.pages.NavigationBar;
 import com.chameleon.selenium.web.WebPageLoaded;
+import com.chameleon.utils.Sleeper;
 
 public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 
@@ -31,6 +32,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	private final static String EXPECTED_LIVERAMP_PAGE_URL = "https://liveramp.com/privacy/";
 	private final static String EXPECTED_CUEBIQ_PAGE_URL = "https://www.cuebiq.com/privacypolicy/";
 	private final static String EXPECTED_INTERSECTION_PAGE_URL = "https://www.intersection.com/privacy-policy/";
+	private final static String EXPECTED_PRIVACY_POLICY_HEADER = "Privacy Policy";
 
 	private LandingPage landingpage = new LandingPage();
 	private NavigationBar navBar = new NavigationBar();
@@ -425,6 +427,33 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	 * homePage.clickBreadCrumbMenulanguageSelectMobileEnglish(); }
 	 */
 	
+	@Test(priority = 42, enabled = true)
+	public void RW_T1433_ValidateBannerCenteredOnScreen360px() {
+		testStart("Validate Banner Centered On Screen 360 px");
+		Assert.assertEquals(legalFooterMob.IsPrivacyPolicyBanner320pxWidth(), EXPECTED_PRIVACY_POLICY_BANNER_WIDTH);
+	}
+	
+	@Test(priority = 42, enabled = true)
+	public void RW_T1694_ValidatethePrivacyPolicyPageTranslated() {
+		testStart("Validate the Privacy Policy Page is not Translated in spanish");
+		  legalFooterMob.TapPrivacyPolicyIUnderstandButton(); 
+		  Sleeper.sleep(3);
+		  legalFooterMob.clickPrivacyAndPolicyFooterLink();
+		  cityRadar.clickBreadCrumbMenu();
+		  homePage.clickBreadCrumbMenulanguageSelect();
+		  homePage.clickBreadCrumbMenulanguageSelectMobile();
+		  legalFooterMob.clickTabs();
+		  Sleeper.sleep(5);
+		  legalFooterMob.clickCLoseChildTab();
+		  Sleeper.sleep(5);
+		  legalFooterMob.clickDone();
+		  Sleeper.sleep(5);
+		  legalFooterMob.clickPrivacyAndPolicyFooterLink();
+		  Assert.assertEquals(legalFooterMob.getPrivacyAndPolicyPageHeading(),
+		  EXPECTED_PRIVACY_POLICY_HEADER);
+		 
+		 
+	}
 	
 	
 
