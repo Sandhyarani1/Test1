@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-	<suite name="Core-Regression" parallel="methods" thread-count="4">
+	<suite name="Core-Regression" parallel="methods" thread-count="3">
 		<parameter name="runLocation" value="mobile" />
 		<parameter name="environment" value="qa" />
-		<parameter name="operatingSystem" value="IOS_WEB" />
+		<parameter name="operatingSystem" value="ANDROID_WEB" />
 		<test name="AccuWeather Mobile Test Suite on IOS ">
 			<parameter name="browserUnderTest" value="Internet"/>
 			<packages>
+			<package name="com.accuweather.glacier.m.BuildError.*" />
+				<!-- <package name="com.accuweather.glacier.m.legalFooter.*" />
 				<package name="com.accuweather.glacier.m.browseLocationsMobile.*" />
 				<package name="com.accuweather.glacier.m.cityRadar.*" />
 				<package name="com.accuweather.glacier.m.citySatelliteMobile.*" />
@@ -17,14 +19,13 @@
 				<package name="com.accuweather.glacier.m.homepagebreadcrumbs.*" />
 				<package name="com.accuweather.glacier.m.homePageNonUS.*" />
 				<package name="com.accuweather.glacier.m.hourlyForecast.*" />
-				<package name="com.accuweather.glacier.m.legalFooter.*" />
 				<package name="com.accuweather.glacier.m.Localizations.*" />
 				<package name="com.accuweather.glacier.m.monthlyForecast.*" />
 				<package name="com.accuweather.glacier.m.NatiionalRadar.*" />
 				<package name="com.accuweather.glacier.m.NationalSatellite.*" />
 				<package name="com.accuweather.glacier.m.SearchResultsPage.*" />
 				<package name="com.accuweather.glacier.m.threeDayForeCast.*" />
-				<package name="com.accuweather.glacier.m.UniversalNavigation.*" />
+				<package name="com.accuweather.glacier.m.UniversalNavigation.*" /> -->
 			</packages>
 		</test>
 	</suite>

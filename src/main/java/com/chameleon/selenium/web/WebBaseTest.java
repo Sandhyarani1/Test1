@@ -600,14 +600,21 @@ public class WebBaseTest extends BaseTest {
                     options.getIOSOptions().setCapability("autoAcceptAlerts", "True");
                     break;
                 case ANDROID_WEB:
-                    options.getSafariOptions().setCapability(CapabilityType.BROWSER_NAME, MobileBrowserType.CHROME);
-                    options.getSafariOptions().setCapability(CapabilityType.VERSION, "Any");
-                    options.getSafariOptions().setCapability(CapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
-                    options.getIOSOptions().setCapability("testName", getTestName());
+                    options.getAndroidOptions().setCapability(CapabilityType.BROWSER_NAME, MobileBrowserType.BROWSER);
+                    options.getAndroidOptions().setCapability(CapabilityType.VERSION, "Any");
+                    options.getAndroidOptions().setCapability(CapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
+                    options.getAndroidOptions().setCapability("testName", getTestName());
+                    options.getAndroidOptions().setCapability("accessKey", mobileHubKey);
+                    options.getAndroidOptions().setCapability("deviceCategory", "PHONE");
+                    options.getAndroidOptions().setCapability("autoAcceptAlerts", "True");
+                    break;
+                case IPAD_WEB:
+                	options.getIOSOptions().setCapability(CapabilityType.BROWSER_NAME, MobileBrowserType.SAFARI);
+                    options.getIOSOptions().setCapability(CapabilityType.VERSION, "Any");
+                    options.getIOSOptions().setCapability(CapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
                     options.getIOSOptions().setCapability("accessKey", mobileHubKey);
-                    options.getIOSOptions().setCapability("deviceCategory", "PHONE");
+                    options.getIOSOptions().setCapability("deviceCategory", "TABLET");
                     options.getIOSOptions().setCapability("autoAcceptAlerts", "True");
-                 
                     break;
             default:
                 break;

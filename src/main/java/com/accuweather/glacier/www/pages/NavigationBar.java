@@ -450,7 +450,7 @@ public class NavigationBar extends BasePage {
 	public boolean isAWLogoDisplayed() {
 		WebPageLoaded.isDomInteractive();
 		WebElement awlogo = getDriver().findElement(byLogo);
-		awlogo.syncVisible(15);
+		//awlogo.syncVisible(15);
 		return awlogo.isDisplayed();
 	}
 

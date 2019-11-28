@@ -95,6 +95,9 @@ public class DriverManagerFactory {
                 break;
             case ANDROID_APP:
                 driverManager = new AndroidAppDriverManager(options.getAndroidOptions());
+            case IPAD_WEB:
+                driverManager = new IOSWebDriverManager(options.getIOSOptions());
+                break;
 
             default:
                 throw new WebException("Not a valid DriverType [ " + type + " ]");
