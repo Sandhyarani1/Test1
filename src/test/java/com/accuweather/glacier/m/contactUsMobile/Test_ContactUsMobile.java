@@ -51,7 +51,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 		Assert.assertEquals(contactUs.getContactUsURL(), CONTACT_US_URL);
 	}
 	
-	//fixed
+	
 
 	@Test(priority = 3, enabled = false)
 	private void RW_T510_Validate_Title_Of_ContactUs_Page() {
@@ -63,7 +63,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 		Assert.assertEquals(contactUs.getContactUsTitle(), CONTACT_US_TITLE);
 	}
 	
-	//fixed
+	
 
 	@Test(priority = 4, enabled = false)
 	private void RW_T510_Validate_Heading_Of_ContactUs_Tab() {
@@ -75,7 +75,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 		Assert.assertEquals(contactUs.getHeadingOfContactUsTab().toUpperCase(), CONTACT_US_TAB_HEADING);
 	}
 	
-	//fixed
+	
 
 	@Test(priority = 5, enabled = false)
 	private void RW_T510_Validate_BorderColor_Of_ContactUs_Tab() {
@@ -87,7 +87,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 		Assert.assertEquals(contactUs.getTopBorderColor_Of_ContactUsTab(), CONTACT_US_BORDER_COLOR);
 	}
 	
-	//fixed
+	
 
 	@Test(priority = 6, enabled = false)
 	private void RW_T510_Validate_BorderColor_Of_GeneralSupport_Tab() {
@@ -99,7 +99,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 		Assert.assertEquals(contactUs.getBottom_BorderColor_Of_GeneralSupport_Link(),
 				GENERAL_SUPPORT_BOTTOM_BORDER_COLOR);
 	}
-	//fixed
+	
 
 	@Test(priority = 7, enabled = false)
 	private void RW_T510_Validate_BorderColor_Of_IPhoneApps_Tab() {
@@ -111,7 +111,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 		Assert.assertEquals(contactUs.getBottom_BorderColor_Of_IPhoneApps_Link(), IPHONE_APPS_BOTTOM_BORDER_COLOR);
 	}
 	
-	//fixed
+	
 
 	@Test(priority = 8, enabled = false)
 	private void RW_T510_Validate_Presence_Of_IPhoneApps_Tab() {
@@ -123,7 +123,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 		Assert.assertEquals(contactUs.getTextOfIPhoneAppsTab(), IPHONE_APPS);
 	}
 	
-	//fixed
+	
 
 	@Test(priority = 9, enabled = false)
 	private void RW_T510_Validate_Presence_Of_GeneralSupport_Tab() {
@@ -135,7 +135,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 		Assert.assertEquals(contactUs.getTextOfGeneralSupportTab(), GENERAL_SUPPORT);
 	}
 	
-	//fixed
+	
 
 	@Test(priority = 10, enabled = false)
 	private void RW_T510_Validate_URL_WhenClickedOn_HelpLink_From_GeneralSupport_Tab() {
@@ -147,7 +147,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 		Assert.assertEquals(contactUs.getHelpURLWhenClickedFromGeneralSupport(), HELP_URL);
 	}
 	
-	//fixed
+	
 
 	@Test(priority = 11, enabled = false)
 	private void RW_T510_Validate_URL_WhenClickedOn_ClickHereLink_From_GeneralSupport_Tab() {
@@ -159,7 +159,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 		Assert.assertEquals(contactUs.getClickHereURLWhenClickedFromGeneralSupport(), PRIVACY_POLICY_URL);
 	}
 	
-	//fixed
+	
 
 	@Test(priority = 12, enabled = false)
 	private void RW_T510_Validate_URL_WhenClickedOn_HelpLink_From_IPhoneApps_Tab() {
@@ -171,7 +171,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 		Assert.assertEquals(contactUs.getHelpURLWhenClickedFromIPhoneApps(), HELP_URL);
 	}
 	
-	//fixed
+	
 
 	@Test(priority = 13, enabled = true)
 	private void RW_T510_Validate_URL_WhenClickedOn_ClickHereLink_From_IPhoneApps_Tab() {
@@ -183,7 +183,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 		Assert.assertEquals(contactUs.getClickHereURLWhenClickedFromIPhoneApps(), PRIVACY_POLICY_URL);
 	}
 	
-	//fixed
+	
 
 	/*
 	 * @Test(priority=14) private void

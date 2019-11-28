@@ -80,7 +80,6 @@ import com.chameleon.selenium.web.WebPageLoaded;
 		 * */
 		public String getContactUsURL()
 		{
-			//switchToContactUs();
 			Sleeper.sleep(1);
 			return getDriver().getCurrentUrl();
 		}
@@ -92,7 +91,6 @@ import com.chameleon.selenium.web.WebPageLoaded;
 		 * */
 		public String getContactUsTitle()
 		{
-			//switchToContactUs();
 			return getDriver().getTitle();
 		}
 		
@@ -103,7 +101,6 @@ import com.chameleon.selenium.web.WebPageLoaded;
 		 * */
 		public String getHeadingOfContactUsTab()
 		{
-			//switchToContactUs();
 			WebElement contactUsTab = getDriver().findElement(byContactUsTabHeading);
 			return contactUsTab.getText();
 		}
@@ -115,14 +112,6 @@ import com.chameleon.selenium.web.WebPageLoaded;
 		 * */
 		public String getTopBorderColor_Of_ContactUsTab()
 		{
-		/*
-		 * switchToContactUs(); String color =
-		 * getDriver().findElement(byContactUsTabHeading).getCssValue("border-top-color"
-		 * ); System.out.println(color); String hexValue =
-		 * Color.fromString(color).asHex(); System.out.println(hexValue); return
-		 * hexValue;
-		 */
-			
 			WebPageLoaded.isDomInteractive(5);
 			getDriver().findElement(byContactUsTab).scrollIntoView();
 			WebElement ele = getDriver().findElement(byContactUsTab);
@@ -151,7 +140,6 @@ import com.chameleon.selenium.web.WebPageLoaded;
 		 * */
 		public String getTextOfIPhoneAppsTab()
 		{
-			//switchToContactUs();
 			WebElement generalSupportTab = getDriver().findElement(byIPhoneAppsLink);
 			return generalSupportTab.getText();
 		}
@@ -164,11 +152,6 @@ import com.chameleon.selenium.web.WebPageLoaded;
 		 * */
 		public String getBottom_BorderColor_Of_GeneralSupport_Link()
 		{
-		/*
-		 * String color = getDriver().findElement(byGeneralSupportLink).getCssValue(
-		 * "border-bottom-color"); return Color.fromString(color).asHex();
-		 */
-			
 			WebPageLoaded.isDomInteractive(5);
 			getDriver().findElement(byGeneralSupportLink).scrollIntoView();
 			WebElement ele = getDriver().findElement(byGeneralSupportLink);
@@ -185,7 +168,6 @@ import com.chameleon.selenium.web.WebPageLoaded;
 		 * */
 		public void click_GeneralSupportTab()
 		{
-			//switchToContactUs();
 			WebElement generalSupportTab = getDriver().findElement(byGeneralSupportLink);
 			generalSupportTab.click();
 		}
@@ -196,7 +178,6 @@ import com.chameleon.selenium.web.WebPageLoaded;
 		 * */
 		public void click_IPhoneAppsTab()
 		{
-			//switchToContactUs();
 			WebElement iPhoneApsTab = getDriver().findElement(byIPhoneAppsLink);
 			iPhoneApsTab.click();
 		}
@@ -208,12 +189,6 @@ import com.chameleon.selenium.web.WebPageLoaded;
 		 * */
 		public String getBottom_BorderColor_Of_IPhoneApps_Link()
 		{
-		/*
-		 * switchToContactUs(); String color =
-		 * getDriver().findElement(byIPhoneAppsLink).getCssValue("border-bottom-color");
-		 * return Color.fromString(color).asHex();
-		 */
-			
 			WebPageLoaded.isDomInteractive(5);
 			getDriver().findElement(byIPhoneAppsLink).scrollIntoView();
 			WebElement ele = getDriver().findElement(byIPhoneAppsLink);
@@ -230,7 +205,6 @@ import com.chameleon.selenium.web.WebPageLoaded;
 		 * */
 		public void clickHelpLinkFromGeneralSupport()
 		{
-			//click_GeneralSupportTab();
 			WebElement helpLink = getDriver().findElement(byHelpLink);
 			helpLink.jsClick();
 		}
@@ -241,7 +215,6 @@ import com.chameleon.selenium.web.WebPageLoaded;
 		 * */
 		public void clickClickHereLinkFromGeneralSupport()
 		{
-			//click_GeneralSupportTab();
 			WebElement clickHereLink = getDriver().findElement(byClickHereLink);
 			clickHereLink.jsClick();
 			
@@ -402,7 +375,6 @@ import com.chameleon.selenium.web.WebPageLoaded;
 		{
 			getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
 			Sleeper.sleep(2);
-			//getDriver().executeJavaScript("window.scrollTo(0, -100)");
 			Sleeper.sleep(2);
 			getDriver().findElement(byCompanyDropDown).jsClick();
 		}
@@ -413,7 +385,6 @@ import com.chameleon.selenium.web.WebPageLoaded;
 		 * */
 		public void clickOnContactUSlink()
 		{
-			//getDriver().executeJavaScript("window.scrollTo(0, -100)");
 			Sleeper.sleep(2);
 			getDriver().findElement(byContactUSLinkMObile).click();
 		}
