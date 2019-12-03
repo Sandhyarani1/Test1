@@ -8,6 +8,7 @@ import com.accuweather.glacier.www.pages.LandingPage;
 import com.accuweather.glacier.www.pages.MonthlyForeCastPage;
 import com.accuweather.glacier.www.pages.ThreeDayForecastPage;
 import com.chameleon.selenium.web.WebPageLoaded;
+import com.chameleon.utils.Sleeper;
 
 public class Test_CurrentCondition extends AccuWeatherBaseTest 
 {
@@ -17,132 +18,137 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 	String currentWeatherPageTitle = "Mc Farland Current Weather - AccuWeather Forecast for WI 53558";
 	String expectedTimecolourgrey = "#878787";
 	String expectedblackcolour = "#1f1f1f";
+	private final static String EXPECTED_TAB_REFLECTS_SEVEREWEAHTER = "Severe Weather Warnings & Watches | AccuWeather";
+	private final static String EXPECTED_EVENING_FORECAST_URL = "https://qualityassurance.accuweather.com/en/us/mc-farland/53558/evening-weather-forecast/23238_pc";
+	private final static String EXPECTED_OVENIGHT_FORECAST_URL = "https://qualityassurance.accuweather.com/en/us/mc-farland/53558/overnight-weather-forecast/23238_pc?day=1";
 	private LandingPage landingpage = new LandingPage();
 	private ForeCastWeatherPage forecastpage = new ForeCastWeatherPage();
 	private MonthlyForeCastPage monthlyforecast = new MonthlyForeCastPage();
 	private ThreeDayForecastPage threedayforecast = new ThreeDayForecastPage();
 	private CurrentConditionpage conditionpage = new CurrentConditionpage();
 	
-	@Test(priority = 1, enabled = true)
-	public void TC1_CityForecastPageCurrentWeatherCardIsDisplayed() throws InterruptedException {
-		testStart("Validate curent weather card is displayed");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+	
+//	
+//	@Test(priority = 1, enabled = true)
+//	public void TC1_CityForecastPageCurrentWeatherCardIsDisplayed() throws InterruptedException {
+//		testStart("Validate curent weather card is displayed");
+//		landingpage.enterZipcodeInSearchField(zipcode);
+//		landingpage.clickOnZipcodeSearchIcon();
 //		waitUntilElementIsDisplayedOrClickable();
 //		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-		Assert.assertTrue(threedayforecast.weatherCardIsDisplayed("currentWeather"));
-	}
-	@Test(priority = 2, enabled = true)
-	public void TC1_CityForecastPageTodayCardIsDisplayed() throws InterruptedException {
-		testStart("Validate Today card is displayed ");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+//		Assert.assertTrue(threedayforecast.weatherCardIsDisplayed("currentWeather"));
+//	}
+//	@Test(priority = 2, enabled = true)
+//	public void TC1_CityForecastPageTodayCardIsDisplayed() throws InterruptedException {
+//		testStart("Validate Today card is displayed ");
+//		landingpage.enterZipcodeInSearchField(zipcode);
+//		landingpage.clickOnZipcodeSearchIcon();
 //		waitUntilElementIsDisplayedOrClickable();
 //		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-		Assert.assertTrue(threedayforecast.weatherCardIsDisplayed("Today"));
-	}
-	
-	
-	@Test(priority = 3, enabled = true)
-	public void TC1_CityForecastPageTonightCardIsDisplayed() throws InterruptedException {
-		testStart("Validate Tonight card is displayed ");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+//		Assert.assertTrue(threedayforecast.weatherCardIsDisplayed("Today"));
+//	}
+//	
+//	
+//	@Test(priority = 3, enabled = true)
+//	public void TC1_CityForecastPageTonightCardIsDisplayed() throws InterruptedException {
+//		testStart("Validate Tonight card is displayed ");
+//		landingpage.enterZipcodeInSearchField(zipcode);
+//		landingpage.clickOnZipcodeSearchIcon();
 //		waitUntilElementIsDisplayedOrClickable();
 //		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-		Assert.assertTrue(threedayforecast.weatherCardIsDisplayed("Tonight"));
-	}
-	
-	
-	@Test(priority = 4, enabled = true)
-	public void TC1_CityForecastPageTomorrowCardIsDisplayed() throws InterruptedException {
-		testStart("Validate Tomorrow card is displayed ");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+//		Assert.assertTrue(threedayforecast.weatherCardIsDisplayed("Tonight"));
+//	}
+//	
+//	
+//	@Test(priority = 4, enabled = true)
+//	public void TC1_CityForecastPageTomorrowCardIsDisplayed() throws InterruptedException {
+//		testStart("Validate Tomorrow card is displayed ");
+//		landingpage.enterZipcodeInSearchField(zipcode);
+//		landingpage.clickOnZipcodeSearchIcon();
 //		waitUntilElementIsDisplayedOrClickable();
 //		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-		Assert.assertTrue(threedayforecast.weatherCardIsDisplayed("Tomorrow"));
-	}
-	
-	
-	@Test(priority = 5, enabled = true)
-	public void TC1_CityForecastPageCurrentWeatherURL() throws InterruptedException {
-		testStart("Validate curent weather Url ");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
+//		Assert.assertTrue(threedayforecast.weatherCardIsDisplayed("Tomorrow"));
+//	}
+//	
+//	
+//	@Test(priority = 5, enabled = true)
+//	public void TC1_CityForecastPageCurrentWeatherURL() throws InterruptedException {
+//		testStart("Validate curent weather Url ");
+//		landingpage.enterZipcodeInSearchField(zipcode);
+//		landingpage.clickOnZipcodeSearchIcon();
 //		waitUntilElementIsDisplayedOrClickable();
 //		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-		Thread.sleep(10);
-		//conditionpage.isclickedonCurrentweathercard();
-		String ActualForecastPageTitle = conditionpage.isclickedonCurrentweathercard2();
-		String expectedForecastPageTitle = "https://qualityassurance.accuweather.com/en/us/mc-farland/53558/weather-forecast/23238_pc";
-		Assert.assertEquals(ActualForecastPageTitle, expectedForecastPageTitle);
-	}
-	
-	
-	@Test(priority = 6, enabled = true)
-	public void TC2_Currentweather() {
-		testStart("Validate curent condition page current weather card is displayed ");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
+//		Thread.sleep(10);
+//		conditionpage.isclickedonCurrentweathercard();
+//		String ActualForecastPageTitle = conditionpage.isclickedonCurrentweathercard2();
+//		String expectedForecastPageTitle = "https://qualityassurance.accuweather.com/en/us/mc-farland/53558/weather-forecast/23238_pc";
+//		Assert.assertEquals(ActualForecastPageTitle, expectedForecastPageTitle);
+//	}
+//	
+//	
+//	@Test(priority = 6, enabled = true)
+//	public void TC2_Currentweather() {
+//		testStart("Validate curent condition page current weather card is displayed ");
+//		landingpage.enterZipcodeInSearchField(zipcode);
+//		landingpage.clickOnZipcodeSearchIcon();
+//		waitUntilElementIsDisplayedOrClickable();
 //		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-		String ActualForecastPageTitle = conditionpage.isclickedonCurrentweathercard2();
-		conditionpage.TitleofCurrentweathercard();
-	}
-	
-	
-	@Test(priority = 7, enabled = true)
-	public void TC3_TimeDisplayedingrey() throws InterruptedException {
-		testStart("Validate curent weather Time is displayed ");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
+//		String ActualForecastPageTitle = conditionpage.isclickedonCurrentweathercard2();
+//		conditionpage.TitleofCurrentweathercard();
+//	}
+//	
+//	
+//	@Test(priority = 7, enabled = true)
+//	public void TC3_TimeDisplayedingrey() throws InterruptedException {
+//		testStart("Validate curent weather Time is displayed ");
+//		landingpage.enterZipcodeInSearchField(zipcode);
+//		landingpage.clickOnZipcodeSearchIcon();
+//		waitUntilElementIsDisplayedOrClickable();
 //		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-		Thread.sleep(10);
-		conditionpage.isclickedonCurrentweathercard();
-		conditionpage.timeoncurrentconditionpage();
-		String Actualtimecolour = conditionpage.Timedisplayedcolour();
-		Assert.assertEquals(Actualtimecolour, expectedTimecolourgrey);
-	}
-	
-	@Test(priority = 8, enabled = true)
-	public void TC3_Weatherdisplayed() throws InterruptedException {
-		testStart("Validate curent weather icon is displayed");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
+//		Thread.sleep(10);
+//		conditionpage.isclickedonCurrentweathercard();
+//		conditionpage.timeoncurrentconditionpage();
+//		String Actualtimecolour = conditionpage.Timedisplayedcolour();
+//		Assert.assertEquals(Actualtimecolour, expectedTimecolourgrey);
+//	}
+//	
+//	@Test(priority = 8, enabled = true)
+//	public void TC3_Weatherdisplayed() throws InterruptedException {
+//		testStart("Validate curent weather icon is displayed");
+//		landingpage.enterZipcodeInSearchField(zipcode);
+//		landingpage.clickOnZipcodeSearchIcon();
+//		waitUntilElementIsDisplayedOrClickable();
 //		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-		Thread.sleep(10);
-		conditionpage.isclickedonCurrentweathercard();
-		Assert.assertTrue(conditionpage.weathericondisplayed());
-	}
-	
-	
-	@Test(priority = 9, enabled = true)
-	public void TC3_Temperaturedisplayedinfont() throws InterruptedException {
-		testStart("Validate curent weather Temperature is displayed in bold");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
+//		Thread.sleep(10);
+//		conditionpage.isclickedonCurrentweathercard();
+//		Assert.assertTrue(conditionpage.weathericondisplayed());
+//	}
+//	
+//	
+//	@Test(priority = 9, enabled = true)
+//	public void TC3_Temperaturedisplayedinfont() throws InterruptedException {
+//		testStart("Validate curent weather Temperature is displayed in bold");
+//		landingpage.enterZipcodeInSearchField(zipcode);
+//		landingpage.clickOnZipcodeSearchIcon();
+//		waitUntilElementIsDisplayedOrClickable();
 //		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-		conditionpage.isclickedonCurrentweathercard();
-		Assert.assertTrue(Integer.parseInt(conditionpage.temperatureinbold()) > 290);
-	}
-	
-	
-	@Test(priority = 11, enabled = true)
-	public void TC4_currentWeatherTimeisDisplayedinGrey() {
-		testStart("Validate curent weather time is displayed in Grey color");
-		landingpage.enterZipcodeInSearchField(zipcode);
-		landingpage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
+//		conditionpage.isclickedonCurrentweathercard();
+//		Assert.assertTrue(Integer.parseInt(conditionpage.temperatureinbold()) > 290);
+//	}
+//	
+//	
+//	@Test(priority = 11, enabled = true)
+//	public void TC4_currentWeatherTimeisDisplayedinGrey() {
+//		testStart("Validate curent weather time is displayed in Grey color");
+//		landingpage.enterZipcodeInSearchField(zipcode);
+//		landingpage.clickOnZipcodeSearchIcon();
+//		waitUntilElementIsDisplayedOrClickable();
 //		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-		conditionpage.isclickedonCurrentweathercard();
-		Assert.assertEquals(conditionpage.validateElementIsGrey("time displayed"), expectedTimecolourgrey);
-	}
-	
-	
+//		conditionpage.isclickedonCurrentweathercard();
+//		Assert.assertEquals(conditionpage.validateElementIsGrey("time displayed"), expectedTimecolourgrey);
+//	}
+//	
+//	
 //	@Test(priority = 12, enabled = true)
 //	public void TC4_currentWeatherRealFeelTemperatureisDisplayedinGrey() {
 //		testStart("Validate current Weather Real Feel Temperature is Displayed in Grey");
@@ -291,67 +297,67 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 //	}
 //	
 //	
-////	@Test(priority = 24, enabled = true)
-////	public void TC5_CurrentConditionDayOrganism() throws InterruptedException {
-////		String ExpectedRightArrowcolour = "#f59721";
-////		String ExpectedHourlyforecasturl = "https://qualityassurance.accuweather.com/en/us/mc-farland/53558/hourly-weather-forecast/23238_pc";
-////		testStart("Validate curent condition Day Organism is displayed ");
-////		landingpage.enterZipcodeInSearchField(zipcode);
-////		landingpage.clickOnZipcodeSearchIcon();
-////		waitUntilElementIsDisplayedOrClickable();
-////		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-////		conditionpage.isclickedonCurrentweathercard();
-////		conditionpage.HourlyCTAdisplayed();
-////		String Actualarrowcolour = conditionpage.rightarrowcolour();
-////		Assert.assertEquals(conditionpage.clickonHourlyCTA(), ExpectedHourlyforecasturl);
-////	}
-////	
-////	
-////	@Test(priority = 25, enabled = true)
-////	public void TC6_currentDateDisplayed() throws InterruptedException {
-////		String ExpectedRightArrowcolour = "#f59721";
-////		String ExpectedHourlyforecasturl = "https://qualityassurance.accuweather.com/en/us/state-college/16801/daily-weather-forecast/6787_pc?day=1";
-////		testStart("Validate curent condition current Date is displayed");
-////		landingpage.enterZipcodeInSearchField(zipcode);
-////		landingpage.clickOnZipcodeSearchIcon();
-////		waitUntilElementIsDisplayedOrClickable();
-////		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-////		conditionpage.isclickedonCurrentweathercard();
-////		conditionpage.currentDateonAccPage();
-////		Assert.assertEquals(conditionpage.currentDateonAccPage(), conditionpage.currentDateonAccPage());
-////		String ActualarrowcolournexttoDate = conditionpage.arrownexttodate();
-////	}
-////	
-////	
-////	@Test(priority = 26, enabled = true)
-////	public void TC6_currentWeatherRightArrowNextToDateIsDisplayed() throws InterruptedException {
-////		String ExpectedRightArrowcolour = "#f59721";
-////		String ExpectedHourlyforecasturl = "https://qualityassurance.accuweather.com/en/us/state-college/16801/daily-weather-forecast/6787_pc?day=1";
-////		testStart("Validate curent condition page Right Arrow colour is displayed");
-////		landingpage.enterZipcodeInSearchField(zipcode);
-////		landingpage.clickOnZipcodeSearchIcon();
-////		waitUntilElementIsDisplayedOrClickable();
-////		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-////		conditionpage.isclickedonCurrentweathercard();
-////		conditionpage.currentDateonAccPage();
-////		String ActualarrowcolournexttoDate = conditionpage.arrownexttodate();
-////		Assert.assertEquals(ActualarrowcolournexttoDate, ExpectedRightArrowcolour);
-////	}
-////	
-////	
-////	@Test(priority = 27, enabled = true)
-////	public void TC7_DayorganismIsDisplayed() throws InterruptedException {
-////		testStart("Validate curent condition page day organism title is displayed");
-////		landingpage.enterZipcodeInSearchField(zipcode);
-////		landingpage.clickOnZipcodeSearchIcon();
-////		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-////		conditionpage.isclickedonCurrentweathercard();
-////		waitUntilWindowExistsWithTitle(currentWeatherPageTitle);
-////		Assert.assertTrue(conditionpage.todayOrganism());
-////		conditionpage.scrollPage();
-////	}
-////	
-////	
+//	@Test(priority = 24, enabled = true)
+//	public void TC5_CurrentConditionDayOrganism() throws InterruptedException {
+//		String ExpectedRightArrowcolour = "#f59721";
+//		String ExpectedHourlyforecasturl = "https://qualityassurance.accuweather.com/en/us/mc-farland/53558/hourly-weather-forecast/23238_pc";
+//		testStart("Validate curent condition Day Organism is displayed ");
+//		landingpage.enterZipcodeInSearchField(zipcode);
+//		landingpage.clickOnZipcodeSearchIcon();
+//		waitUntilElementIsDisplayedOrClickable();
+//		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
+//		conditionpage.isclickedonCurrentweathercard();
+//		conditionpage.HourlyCTAdisplayed();
+//		String Actualarrowcolour = conditionpage.rightarrowcolour();
+//		Assert.assertEquals(conditionpage.clickonHourlyCTA(), ExpectedHourlyforecasturl);
+//	}
+//	
+//	
+//	@Test(priority = 25, enabled = true)
+//	public void TC6_currentDateDisplayed() throws InterruptedException {
+//		String ExpectedRightArrowcolour = "#f59721";
+//		String ExpectedHourlyforecasturl = "https://qualityassurance.accuweather.com/en/us/state-college/16801/daily-weather-forecast/6787_pc?day=1";
+//		testStart("Validate curent condition current Date is displayed");
+//		landingpage.enterZipcodeInSearchField(zipcode);
+//		landingpage.clickOnZipcodeSearchIcon();
+//		waitUntilElementIsDisplayedOrClickable();
+//		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
+//		conditionpage.isclickedonCurrentweathercard();
+//		conditionpage.currentDateonAccPage();
+//		Assert.assertEquals(conditionpage.currentDateonAccPage(), conditionpage.currentDateonAccPage());
+//		String ActualarrowcolournexttoDate = conditionpage.arrownexttodate();
+//	}
+//	
+//	
+//	@Test(priority = 26, enabled = true)
+//	public void TC6_currentWeatherRightArrowNextToDateIsDisplayed() throws InterruptedException {
+//		String ExpectedRightArrowcolour = "#f59721";
+//		String ExpectedHourlyforecasturl = "https://qualityassurance.accuweather.com/en/us/state-college/16801/daily-weather-forecast/6787_pc?day=1";
+//		testStart("Validate curent condition page Right Arrow colour is displayed");
+//		landingpage.enterZipcodeInSearchField(zipcode);
+//		landingpage.clickOnZipcodeSearchIcon();
+//		waitUntilElementIsDisplayedOrClickable();
+//		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
+//		conditionpage.isclickedonCurrentweathercard();
+//		conditionpage.currentDateonAccPage();
+//		String ActualarrowcolournexttoDate = conditionpage.arrownexttodate();
+//		Assert.assertEquals(ActualarrowcolournexttoDate, ExpectedRightArrowcolour);
+//	}
+//	
+//	
+//	@Test(priority = 27, enabled = true)
+//	public void TC7_DayorganismIsDisplayed() throws InterruptedException {
+//		testStart("Validate curent condition page day organism title is displayed");
+//		landingpage.enterZipcodeInSearchField(zipcode);
+//		landingpage.clickOnZipcodeSearchIcon();
+//		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
+//		conditionpage.isclickedonCurrentweathercard();
+//		waitUntilWindowExistsWithTitle(currentWeatherPageTitle);
+//		Assert.assertTrue(conditionpage.todayOrganism());
+//		conditionpage.scrollPage();
+//	}
+//	
+//	
 //	@Test(priority = 28, enabled = true)
 //	public void TC7_DayorganismTitleInUpperCaseISDisplayed() throws InterruptedException {
 //		testStart("Validate curent condition page day organism title is in uppercase");
@@ -1836,4 +1842,123 @@ public class Test_CurrentCondition extends AccuWeatherBaseTest
 //		waitUntilElementIsDisplayedOrClickable();
 //		Assert.assertTrue(conditionpage.Historicalweatherdata());
 //	}
+//	
+//	@Test(priority = 1, enabled = true)
+//	public void RW_T1522_AddedMoreAndLessButtonOnDayNightCards_isMoreButtonPresent() throws InterruptedException {
+//		testStart("A button will be displayed that says “MORE” at the bottom of each card");
+//		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
+//		conditionpage.isclickedonCurrentweathercard();
+//		conditionpage.isMoreButtonPresent();
+//	}
+//	
+//	@Test(priority = 1, enabled = true)
+//	public void RW_T1522_AddedMoreAndLessButtonOnDayNightCards_verifyLessIsShownOnClickOfMoreButtonOnDayCard() throws InterruptedException {
+//		testStart("User should see LESS and an arrow that points up in the bottom right corner of day card");
+//		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
+//		conditionpage.isclickedonCurrentweathercard();
+//		conditionpage.verifyLessIsShownOnClickOfMoreButtonOnDayCard();
+//	}
+//	
+//	@Test(priority = 1, enabled = true)
+//	public void RW_T1522_AddedMoreAndLessButtonOnDayNightCards_verifyDataPointsOnDayCard() throws InterruptedException {
+//		testStart("Day card expand to show forecast data points");
+//		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
+//		conditionpage.isclickedonCurrentweathercard();
+//		conditionpage.verifyLessIsShownOnClickOfMoreButtonOnDayCard();
+//		Assert.assertTrue(conditionpage.dayOrganismCurrentWeatherPrecipitationdisplayed());
+//		Assert.assertTrue(conditionpage.dayOrganismCurrentWeatherMaxUVIndexdisplayed());
+//		Assert.assertTrue(conditionpage.dayOrganismCurrentWeatherThunderstormsdisplayed());
+//		Assert.assertTrue(conditionpage.dayOrganismCurrentWeatherPrecipitation2displayed());
+//		Assert.assertTrue(conditionpage.dayOrganismCurrentWeatherRaindisplayed());
+//		Assert.assertTrue(conditionpage.dayOrganismCurrentWeatherSnowdisplayed());
+//		Assert.assertTrue(conditionpage.dayOrganismCurrentWeatherIcedisplayed());
+//		Assert.assertTrue(conditionpage.dayOrganismCurrentWeatherHoursOfPrecipitationdisplayed());
+//		Assert.assertTrue(conditionpage.dayOrganismCurrentWeatherHoursOfRaindisplayed());
+//		Assert.assertTrue(conditionpage.dayOrganismCurrentWeatherWeatherWinddisplayed());
+//		Assert.assertTrue(conditionpage.dayOrganismCurrentWeatherGustsdisplayed());
+//		Assert.assertTrue(conditionpage.dayOrganismCurrentWeatherCompassIcondisplayed());
+//	}
+//	
+//	@Test(priority = 1, enabled = true)
+//	public void RW_T1522_AddedMoreAndLessButtonOnDayNightCards_verifyLessIsShownOnClickOfMoreButtonOnNightCard() throws InterruptedException {
+//		testStart("User should see LESS and an arrow that points up in the bottom right corner of nigght card");
+//		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
+//		conditionpage.isclickedonCurrentweathercard();
+//		conditionpage.verifyLessIsShownOnClickOfMoreButtonOnNightCard();
+//	}
+//	
+//	@Test(priority = 1, enabled = true)
+//	public void RW_T1522_AddedMoreAndLessButtonOnDayNightCards_verifyDataPointsOnNightCard() throws InterruptedException {
+//		testStart("Night card expand to show forecast data points");
+//		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
+//		conditionpage.isclickedonCurrentweathercard();
+//		conditionpage.verifyLessIsShownOnClickOfMoreButtonOnNightCard();
+//		Assert.assertTrue(conditionpage.nightOrganismCurrentWeatherPrecipitationdisplayed());
+//		Assert.assertTrue(conditionpage.nightOrganismCurrentWeatherThunderstormdisplayed());
+//		Assert.assertTrue(conditionpage.nightOrganismCurrentWeatherPrecipitationtowdisplayed());
+//		Assert.assertTrue(conditionpage.nightOrganismCurrentWeatherRaindisplayed());
+//		Assert.assertTrue(conditionpage.nightOrganismCurrentWeatherSnowdisplayed());
+//		Assert.assertTrue(conditionpage.nightOrganismCurrentWeatherIcedisplayed());
+//		Assert.assertTrue(conditionpage.nightOrganismCurrentWeatherHoursOfPrecipitationdisplayed());
+//		Assert.assertTrue(conditionpage.nightOrganismCurrentWeatherHoursOfRaindisplayed());
+//		Assert.assertTrue(conditionpage.nightOrganismCurrentWeatherWinddisplayed());
+//		Assert.assertTrue(conditionpage.nightOrganismCurrentWeatherGustsdisplayed());
+//		Assert.assertTrue(conditionpage.nightOrganismCurrentWeatherCompassiondisplayed());
+//	}
+//	
+//
+//	@Test(priority = 48, enabled = true)
+//	public void RW_T241_ValidatingElementsOnNightcard_verifyNightOrganism()
+//	{
+//		testStart("Verify night organisam on today's weather card");
+//		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
+//		conditionpage.isclickedonTodayWeathercard();
+//		Assert.assertTrue(conditionpage.nightOrganismTextTitleisBold());
+//		Assert.assertTrue(conditionpage.nightOrganismDateIsDisplayed());
+//		Assert.assertTrue(conditionpage.nightOrganismWeatheIconIsDisplayed());
+//		Assert.assertTrue(conditionpage.nightOrganismCurrentTemparatureisBold());
+//		Assert.assertTrue(conditionpage.nightOrganismDateIsDisplayed());
+//		Assert.assertTrue(conditionpage.nightCurrentWeatherReelFeelTemperatureGetText().contains("RealFeel®"));
+//		Assert.assertTrue(conditionpage.bynightOrganismCurrentWeatherDescriptionIsDisplayed());
+//	}
+//	
+//	@Test(priority = 48, enabled = true)
+//	public void RW_T241_ValidatingElementsOnNightcard_verifyNightOrganismDataPoints()
+//	{
+//		testStart("Verify night organisam on today's weather card");
+//		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
+//		conditionpage.isclickedonTodayWeathercard();
+//		conditionpage.verifyLessIsShownOnClickOfMoreButtonOnNightCard();
+//		Assert.assertTrue(conditionpage.nightOrganismCurrentWeatherPrecipitationdisplayed());
+//		Assert.assertEquals(conditionpage.validateElementIsGrey("night Organism Current Weather Thunderstorms"), expectedblackcolour);
+//		Assert.assertEquals(conditionpage.validateElementIsGrey("night Organism Current Weather Precipitation"), expectedblackcolour);
+//		Assert.assertEquals(conditionpage.validateElementIsGrey("night Organism Current Weather Rain"), expectedblackcolour);
+//		Assert.assertEquals(conditionpage.validateElementIsGrey("night Organism Current Weather Snow"), expectedblackcolour);
+//		Assert.assertEquals(conditionpage.validateElementIsGrey("night Organism Current Weather Ice"), expectedblackcolour);
+//		Assert.assertEquals(conditionpage.validateElementIsGrey("night Organism Current Weather Hours of Precipitation"), expectedblackcolour);
+//		Assert.assertEquals(conditionpage.validateElementIsGrey("night Organism Current Weather Hours of Rain"), expectedblackcolour);
+//		Assert.assertEquals(conditionpage.validateElementIsGrey("night Organism Current Weather wind"), expectedblackcolour);
+//		Assert.assertEquals(conditionpage.validateElementIsGrey("night Organism Current Weather Gusts"), expectedblackcolour);
+//		Assert.assertEquals(conditionpage.validateElementIsGrey("night Organism Current Weather compass icon"), expectedblackcolour);
+//	}
+//	
+//	@Test(priority = 48, enabled = true)
+//	public void RW_T241_ValidatingElementsOnNightcard_verifyEveningForecastPage()
+//	{
+//		testStart("Verify evening forecast page");
+//		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
+//		conditionpage.isclickedonTodayWeathercard();
+//		conditionpage.verifyLessIsShownOnClickOfMoreButtonOnNightCard();
+//		Assert.assertEquals(conditionpage.clickEveningCTA(), EXPECTED_EVENING_FORECAST_URL);
+//	}
+//	
+	@Test(priority = 48, enabled = true)
+	public void RW_T241_ValidatingElementsOnNightcard_verifyOvernightForecastPage()
+	{
+		testStart("Verify overnight forecastpage");
+		landingpage.enterZipcodeInSearchFieldAndClick(zipcode);
+		conditionpage.isclickedonTodayWeathercard();
+		conditionpage.verifyLessIsShownOnClickOfMoreButtonOnNightCard();
+		Assert.assertEquals(conditionpage.clickOvernightCTA(), EXPECTED_OVENIGHT_FORECAST_URL);
+	}
 }

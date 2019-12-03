@@ -21,7 +21,7 @@ import com.chameleon.utils.Sleeper;
 public class NavigationBar extends BasePage 
 {
 
-    private By byLogo = By.cssSelector("div > div.main-menu-wrapper > div > div.logo-wrapper > div > a > img");
+    private By byLogo = By.cssSelector("#base-header > div > div.main-menu > div > div > a");
     //private By byRadarMaps = By.id("navRadar");
     //private By byRadarMaps = By.xpath("//li[contains(@id,'navRadar')]/a/span");
     private By byMegaMenu = By.cssSelector("div.main-menu-content");
@@ -46,6 +46,7 @@ public class NavigationBar extends BasePage
     private By bySettingTempBall = By.cssSelector("div > div.temp-switcher.fade-in-left > div.switcher-container > div.switcher > div.ball");
     private By bySettingTempBar = By.cssSelector("div > div.temp-switcher.fade-in-left > div.switcher-container > div.switcher > div.bar" );
     private By byStartSearch = By.className("search-input");
+    private By byCityNameOnCityPage = By.cssSelector("#sub-header-recent-location > a.recent-location-display > span.recent-location-display-label.location-label");
     //private By byTopSearch = By.cssSelector("div.main-menu > div.header-right-container > div.search-wrapper.is-wide > svg.icon-search");
     private By byTopSearch = By.xpath("//div[contains(@class,'header-right-container')]/div/div");
     //private By byTopSearchClose = By.xpath("//div[contains(@class,'header-right-container')]/svg");
@@ -64,7 +65,7 @@ public class NavigationBar extends BasePage
     //private By bySuperSearchCityName = By.xpath("//nav[contains(@class,'header-refresh ')]/div[5]/div/div[1]/ul/li[1]/a[contains(@href,'select-city')]");
     private By bySuperSearchCityName = By.xpath("//body[contains(@id,'home')]/nav/div[5]/div/div[1]/ul/li/a");
     private By byRadarSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(2) > a");
-    private By bySevereSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(3) > a > h4");
+    private By bySevereSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(3) > a");
     private By bySatelliteMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(4) > a > h4");
     private By byForecastMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(5) > a > h4");
     private By byMainMenuDescriptionLink = By.cssSelector("a > figure > figcaption");
@@ -77,7 +78,7 @@ public class NavigationBar extends BasePage
     private By byNewsSubMenu = By.cssSelector("div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(1) > h4");
     private By byHurricaneSubMenu = By.xpath("//div[@class='mega-menu-content']/div[3]/a/h4[text()='Hurricane']");
     private By byAWReadySubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(4) > a");
-    private By byWinterWeatherSubMenu = By.cssSelector("div > div:nth-child(4) > a > h4");
+    private By byWinterWeatherSubMenu = By.xpath("//div[@class='mega-menu-content']/div[5]/a/h4[text()='Winter Weather']");
     private By bySeverWeatherSubMenu = By.xpath("//div[@class='mega-menu-content']/div[1]/a/h4[text()='Severe Weather']");
     //Maps Submenu
     private By byMapsSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(1) > a > h4");
@@ -568,7 +569,7 @@ public class NavigationBar extends BasePage
         public boolean isWinterWeatherSubMenuDisplayed() {
         	WebPageLoaded.isDomInteractive();
             WebElement winterweather = getDriver().findElement(byWinterWeatherSubMenu);
-            winterweather.syncVisible(15);
+            winterweather.syncVisible(25);
             return winterweather.isDisplayed();       	   	
         }
 
@@ -1186,4 +1187,17 @@ public class NavigationBar extends BasePage
       	  WebElement element = getDriver().findElement(bySuperSearch);
       	  getDriver().executeJavaScript("arguments[0].setAttribute('value', 'Rio de Janeiro, Rio De Janeiro, BR')", element);
       	  }
+        
+        /**
+    	 * Method to verify city page has correct searched location 
+    	 * @author Sowmiya
+    	 * return - String - city name
+    	 * */
+    	public String verifyCityPageHasSearchedLocation()
+    	{
+    		WebPageLoaded.isDomInteractive();
+    		WebElement cityNameOnCityPage = getDriver().findElement(byCityNameOnCityPage);
+    		cityNameOnCityPage.syncVisible(15);
+    		return cityNameOnCityPage.getText();
+    	}
 }

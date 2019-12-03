@@ -43,7 +43,7 @@ public class Test_UniversalFooterpage extends AccuWeatherBaseTest
 	private static final String EXPECTED_URL_FOR_ABOUT_ACCUWEATHER="https://corporate.accuweather.com/about";
 	private static final String EXPECTED_URL_FOR_MEDIAKIT="https://mediakit.accuweather.com/";
 	private static final String EXPECTED_URL_FOR_CARRERS="https://careers.accuweather.com/";
-	private static final String EXPECTED_URL_FOR_PRESS="https://qualityassurance.accuweather.com/en/press";
+	private static final String EXPECTED_URL_FOR_PRESS="https://qualityassurance.accuweather.com/en/press/";
 	private static final String EXPECTED_URL_FOR_COUPONS="https://www.accuweather.com/coupons";            //Landing for Production URL 
 	private static final String EXPECTED_URL_FOR_CONTACTUS="https://qualityassurance.accuweather.com/en/contact";
 	private static final String EXPECTED_URL_FOR_ENTERPRISE_SOLUTIONS="https://enterprisesolutions.accuweather.com/";
@@ -64,6 +64,7 @@ public class Test_UniversalFooterpage extends AccuWeatherBaseTest
 	private static final String EXPECTED_URL_FOR_ACCUWEATHER_SOCIAL_ICON_FACEBOOK="https://www.facebook.com/AccuWeather";
 	private static final String EXPECTED_URL_FOR_ACCUWEATHER_SOCIAL_ICON_TWITTER="https://twitter.com/BreakingWeather";
 	private static final String EXPECTED_URL_FOR_ACCUWEATHER_SOCIAL_ICON_TV="https://getaccuweather.tv/?utm_source=adc&utm_medium=icon&utm_campaign=footer";
+	private static final String EXPECTED_PRESS_TITLE="Press Room | AccuWeather";
 	
 	
 	  @Test(priority=1,enabled=true)
@@ -561,5 +562,31 @@ public class Test_UniversalFooterpage extends AccuWeatherBaseTest
 		footerpage.scrolldownpage();
 		WebPageLoaded.isDomInteractive();		
 		Assert.assertTrue(footerpage.footerbreadcrumbsDisplayed());
+	}
+
+    @Test(priority=17,enabled=true)
+	public void TC11_validatePressTitle() {
+		testStart("Navigating to  test application and clicking on Press");	
+		footerpage.scrolldownpage();
+		footerpage.scrolldownpage();
+		footerpage.scrolldownpage();
+		footerpage.isclickedonfooterlink(PRESS);
+		Sleeper.sleep(2);
+		landingPageURL=footerpage.getlandingurltitle();
+		Assert.assertEquals(landingPageURL,EXPECTED_URL_FOR_PRESS);		
+		Assert.assertEquals(getDriver().getTitle(), EXPECTED_PRESS_TITLE);
+	}
+    
+    @Test(priority=17,enabled=true)
+	public void T464_SecondaryNavigationMenuDisplayedOnPressPage_verifySecondaryNavigationMenus() {
+		testStart("Verify secondary navigation menus");	
+		footerpage.scrolldownpage();
+		footerpage.scrolldownpage();
+		footerpage.scrolldownpage();
+		footerpage.isclickedonfooterlink(PRESS);
+		Sleeper.sleep(2);
+		landingPageURL=footerpage.getlandingurltitle();
+		Assert.assertEquals(landingPageURL,EXPECTED_URL_FOR_PRESS);		
+		Assert.assertTrue(footerpage.verifyPressSecondaryNavigationMenus());
 	}
 }
