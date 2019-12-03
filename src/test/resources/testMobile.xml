@@ -7,8 +7,9 @@
 		<test name="AccuWeather Mobile Test Suite on IOS ">
 			<parameter name="browserUnderTest" value="Internet"/>
 			<packages>
-			<package name="com.accuweather.glacier.m.contactUsMobile.*" />
-				<!-- <package name="com.accuweather.glacier.m.legalFooter.*" />
+			<package name="com.accuweather.glacier.m.lifeStyleMobile.*" />
+				<!-- <package name="com.accuweather.glacier.m.contactUsMobile.*" />
+				<package name="com.accuweather.glacier.m.legalFooter.*" />
 				<package name="com.accuweather.glacier.m.BuildError.*" />
 				<package name="com.accuweather.glacier.m.browseLocationsMobile.*" />
 				<package name="com.accuweather.glacier.m.cityRadar.*" />
