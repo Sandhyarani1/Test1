@@ -3,6 +3,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.ForeCastWeatherPage;
+import com.accuweather.glacier.www.pages.HomepageBreadcrumbs;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.accuweather.glacier.www.pages.MonthlyForeCastPage;
 import com.accuweather.glacier.www.pages.NavigationBar;
@@ -29,10 +30,11 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 	private final static String EXPECTED_NATIONAL_SATELLITE_URL= "https://qualityassurance.accuweather.com/en/in/national/satellite";
 	private final static String EXPECTED_DAILY_WEATHER_FORECAST_URL= "https://qualityassurance.accuweather.com/en/in/mumbai/204842/daily-weather-forecast/204842";
 	private final static String EXPECTED_CURRENTDAY_HIGHLIGHTED_COLOR = "#f05514";
+	
 	private NavigationBar navBar = new NavigationBar();
 	private LandingPage landingpage = new LandingPage();
-	ThreeDayForecastPage threeDayForecastPage = new ThreeDayForecastPage();
-
+	private ThreeDayForecastPage threeDayForecastPage = new ThreeDayForecastPage();
+	private HomepageBreadcrumbs breadcrumbs = new HomepageBreadcrumbs();
 
 	private SimpleDate getDateTime = new SimpleDate();
   
@@ -618,59 +620,59 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 		Assert.assertEquals(actualTabReflectsSevereWeather, EXPECTED_TAB_REFLECTS_SEVEREWEAHTER);
 	}
 	
-	@Test(priority = 48, enabled = true)
-	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyRegionalWeatherRadarTitle()
-	{
-		testStart("Verify regional weather radar title");
-		landingpage.enterZipcodeInSearchFieldAndClick("Houston, TX, US");
-		String actualradarWeatherTitle = threeDayForecastPage.verifyRegionalWeatherRadarTitle();
-		Assert.assertEquals(actualradarWeatherTitle, EXPECTED_REGIONAL_WEATHER_RADAR_TITLE);
-	}
-	
-	@Test(priority = 48, enabled = true)
-	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyNationalWeatherRadarTitle()
-	{
-		testStart("Verify national weather radar title");
-		landingpage.enterZipcodeInSearchFieldAndClick("Washington, DC, US");
-		String actualNationalWeatherRadarTitle = threeDayForecastPage.verifyNationalWeatherRadarTitle();
-		Assert.assertEquals(actualNationalWeatherRadarTitle, EXPECTED_NATIONAL_WEATHER_RADAR_TITLE);
-	}
-	
-	@Test(priority = 48, enabled = true)
-	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyNationalSatelliteTitle()
-	{
-		testStart("Verify national satellite title");
-		landingpage.enterZipcodeInSearchFieldAndClick("Mumbai, Maharashtra, IN");
-		String actualNationalSatelliteTitle = threeDayForecastPage.verifyNationalSatelliteTitle();
-		Assert.assertEquals(actualNationalSatelliteTitle, EXPECTED_NATIONAL_SATELLITE_TITLE);
-	}
-	
-	@Test(priority = 48, enabled = true)
-	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyUserIsDirectedToNationalWeatherRadarPageOnClickofMoreMapsCTA()
-	{
-		testStart("Verify user is directed to national weather radar page on click of more maps CTA");
-		landingpage.enterZipcodeInSearchFieldAndClick("Washington, DC");
-		String actualNationalWeatherRadarURL = threeDayForecastPage.verifyUserIsDirectedToNationalWeatherRadarPageOnClickofMoreMapsCTA();
-		Assert.assertEquals(actualNationalWeatherRadarURL, EXPECTED_NATIONAL_WEATHER_RADAR_URL);
-	}
-	
-	@Test(priority = 48, enabled = true)
-	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyUserIsDirectedToCityWeatherRadarPageOnClickofMoreMapsCTA()
-	{
-		testStart("Verify user is directed to city weather radar page on click of more maps CTA");
-		landingpage.enterZipcodeInSearchFieldAndClick("30076");
-		String actualCityWeatherRadarURL = threeDayForecastPage.verifyUserIsDirectedToCityWeatherRadarPageOnClickofMoreMapsCTA();
-		Assert.assertEquals(actualCityWeatherRadarURL, EXPECTED_CITY_WEATHER_RADAR_URL);
-	}
-	
-	@Test(priority = 48, enabled = true)
-	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyUserIsDirectedToNationalSatellitePageOnClickofMoreMapsCTA()
-	{
-		testStart("Verify user is directed to national satellite page on click of more maps CTA");
-		landingpage.enterZipcodeInSearchFieldAndClick("Mumbai, Maharashtra, IN");
-		String actualCityWeatherRadarURL = threeDayForecastPage.verifyUserIsDirectedToNationalSatellitePageOnClickofMoreMapsCTA();
-		Assert.assertEquals(actualCityWeatherRadarURL, EXPECTED_NATIONAL_SATELLITE_URL);
-	}
+//	@Test(priority = 48, enabled = true)
+//	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyRegionalWeatherRadarTitle()
+//	{
+//		testStart("Verify regional weather radar title");
+//		landingpage.enterZipcodeInSearchFieldAndClick("Houston, TX, US");
+//		String actualradarWeatherTitle = threeDayForecastPage.verifyRegionalWeatherRadarTitle();
+//		Assert.assertEquals(actualradarWeatherTitle, EXPECTED_REGIONAL_WEATHER_RADAR_TITLE);
+//	}
+//	
+//	@Test(priority = 48, enabled = true)
+//	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyNationalWeatherRadarTitle()
+//	{
+//		testStart("Verify national weather radar title");
+//		landingpage.enterZipcodeInSearchFieldAndClick("Washington, DC, US");
+//		String actualNationalWeatherRadarTitle = threeDayForecastPage.verifyNationalWeatherRadarTitle();
+//		Assert.assertEquals(actualNationalWeatherRadarTitle, EXPECTED_NATIONAL_WEATHER_RADAR_TITLE);
+//	}
+//	
+//	@Test(priority = 48, enabled = true)
+//	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyNationalSatelliteTitle()
+//	{
+//		testStart("Verify national satellite title");
+//		landingpage.enterZipcodeInSearchFieldAndClick("Mumbai, Maharashtra, IN");
+//		String actualNationalSatelliteTitle = threeDayForecastPage.verifyNationalSatelliteTitle();
+//		Assert.assertEquals(actualNationalSatelliteTitle, EXPECTED_NATIONAL_SATELLITE_TITLE);
+//	}
+//	
+//	@Test(priority = 48, enabled = true)
+//	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyUserIsDirectedToNationalWeatherRadarPageOnClickofMoreMapsCTA()
+//	{
+//		testStart("Verify user is directed to national weather radar page on click of more maps CTA");
+//		landingpage.enterZipcodeInSearchFieldAndClick("Washington, DC");
+//		String actualNationalWeatherRadarURL = threeDayForecastPage.verifyUserIsDirectedToNationalWeatherRadarPageOnClickofMoreMapsCTA();
+//		Assert.assertEquals(actualNationalWeatherRadarURL, EXPECTED_NATIONAL_WEATHER_RADAR_URL);
+//	}
+//	
+//	@Test(priority = 48, enabled = true)
+//	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyUserIsDirectedToCityWeatherRadarPageOnClickofMoreMapsCTA()
+//	{
+//		testStart("Verify user is directed to city weather radar page on click of more maps CTA");
+//		landingpage.enterZipcodeInSearchFieldAndClick("30076");
+//		String actualCityWeatherRadarURL = threeDayForecastPage.verifyUserIsDirectedToCityWeatherRadarPageOnClickofMoreMapsCTA();
+//		Assert.assertEquals(actualCityWeatherRadarURL, EXPECTED_CITY_WEATHER_RADAR_URL);
+//	}
+//	
+//	@Test(priority = 48, enabled = true)
+//	public void RW_T305_ValidateWeatherMapOn3DayPage_verifyUserIsDirectedToNationalSatellitePageOnClickofMoreMapsCTA()
+//	{
+//		testStart("Verify user is directed to national satellite page on click of more maps CTA");
+//		landingpage.enterZipcodeInSearchFieldAndClick("Mumbai, Maharashtra, IN");
+//		String actualCityWeatherRadarURL = threeDayForecastPage.verifyUserIsDirectedToNationalSatellitePageOnClickofMoreMapsCTA();
+//		Assert.assertEquals(actualCityWeatherRadarURL, EXPECTED_NATIONAL_SATELLITE_URL);
+//	}
 	
 	@Test(priority = 48, enabled = true)
 	public void RW_T1548_ValidateArrow3DayNowPageDirectsUserstoDailyPage_verifyURLReflectsDailyWeatherForecast()

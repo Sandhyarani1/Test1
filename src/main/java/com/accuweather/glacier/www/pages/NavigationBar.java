@@ -78,7 +78,7 @@ public class NavigationBar extends BasePage
     private By byNewsSubMenu = By.cssSelector("div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(1) > h4");
     private By byHurricaneSubMenu = By.xpath("//div[@class='mega-menu-content']/div[3]/a/h4[text()='Hurricane']");
     private By byAWReadySubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(4) > a");
-    private By byWinterWeatherSubMenu = By.cssSelector("div > div:nth-child(4) > a > h4");
+    private By byWinterWeatherSubMenu = By.xpath("//div[@class='mega-menu-content']/div[5]/a/h4[text()='Winter Weather']");
     private By bySeverWeatherSubMenu = By.xpath("//div[@class='mega-menu-content']/div[1]/a/h4[text()='Severe Weather']");
     //Maps Submenu
     private By byMapsSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(1) > a > h4");
@@ -569,7 +569,7 @@ public class NavigationBar extends BasePage
         public boolean isWinterWeatherSubMenuDisplayed() {
         	WebPageLoaded.isDomInteractive();
             WebElement winterweather = getDriver().findElement(byWinterWeatherSubMenu);
-            winterweather.syncVisible(15);
+            winterweather.syncVisible(25);
             return winterweather.isDisplayed();       	   	
         }
 
