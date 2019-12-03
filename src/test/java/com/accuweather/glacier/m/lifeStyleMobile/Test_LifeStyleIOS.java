@@ -20,167 +20,161 @@ public class Test_LifeStyleIOS extends AccuWeatherMobileBaseTest {
 	private LandingPageMobile landingPage = new LandingPageMobile();
 	private CityRadarPageMobile cityRadar = new CityRadarPageMobile();
 
-	@Test(priority = 1, enabled=false)
+	@Test(priority = 1, enabled = true)
 	public void RW_T1029_ValidateValidatePersonalizedforecastCTAInThenavigation() {
 		testStart("Validate the Personalized forecast CTA in the navigation");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
-		lifeStylePage.verifyPersonalizedmenuOptions();
+		Assert.assertTrue(lifeStylePage.verifyPersonalizedmenuOptions());
 	}
-	
-	@Test(priority = 2, enabled=false)
+
+	@Test(priority = 2, enabled = true)
 	public void RW_T1030_ValidateValidatePersonalizedforecastCTAInThenavigationClickonForeCast() {
 		testStart("Validate the Personalized forecast CTA in the navigation");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
-		lifeStylePage.ClickOnForecastPage();
+		Assert.assertTrue(lifeStylePage.ClickOnForecastPage());
+
 	}
-	
-	
-	@Test(priority = 3, enabled=false)
+
+	@Test(priority = 3, enabled = true)
 	public void RW_T1030_ValidatetheCategoriesAndSubcategorieUunderPersonalizedForecastAMPlannerPickerValues() {
 		testStart("Validate the categories and subcategories under Personalized Forecast for AM planner picker values");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
 		lifeStylePage.clickOnAMPlannerOptionMenu();
-		lifeStylePage.AMPlannerPickerValues();
+		Assert.assertTrue(lifeStylePage.AMPlannerPickerValues());
+
 	}
-	
-	@Test(priority = 4, enabled=false)
+
+	@Test(priority = 4, enabled = true)
 	public void RW_T1030_ValidatetheCategoriesAndSubcategorieUunderPersonalizedForecastHomeAndGardenPickerValues() {
-		testStart("Validate the categories and subcategories under Personalized Forecast for Home and garden Picker values");
+		testStart(
+				"Validate the categories and subcategories under Personalized Forecast for Home and garden Picker values");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
 		lifeStylePage.clickOnHomeAndGardenOptionMenu();
-		lifeStylePage.HomeAndGardenPickerValues();
+		Assert.assertTrue(lifeStylePage.HomeAndGardenPickerValues());
 	}
-	
-	@Test(priority = 5, enabled=false)
+
+	@Test(priority = 5, enabled = true)
 	public void RW_T1030_ValidatetheCategoriesAndSubcategorieUunderPersonalizedForecastSportsAndRecreationPickerValues() {
-		testStart("Validate the categories and subcategories under Personalized Forecast for sports and recreation Picker values");
+		testStart(
+				"Validate the categories and subcategories under Personalized Forecast for sports and recreation Picker values");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
 		lifeStylePage.clickOnSportsAndRecreationOptionMenu();
 		lifeStylePage.clickOnSportsAndRecreationOptionMenu();
-		lifeStylePage.sportsAndRecreationPickerValues();
+		Assert.assertTrue(lifeStylePage.sportsAndRecreationPickerValues());
 	}
-	
-	@Test(priority = 6, enabled=false)
+
+	@Test(priority = 6, enabled = true)
 	public void RW_T1030_ValidatetheCategoriesAndSubcategorieUunderPersonalizedForecastMiscellaneousPickerValues() {
-		testStart("Validate the categories and subcategories under Personalized Forecast for Miscellaneous Picker values");
+		testStart(
+				"Validate the categories and subcategories under Personalized Forecast for Miscellaneous Picker values");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
 		lifeStylePage.clickOnMiscellaneousOptionMenu();
 		lifeStylePage.clickOnMiscellaneousOptionMenu();
-		lifeStylePage.miscellaneousPickerValues();
+		Assert.assertTrue(lifeStylePage.miscellaneousPickerValues());
 	}
-	
-	
-	@Test(priority = 7, enabled=false)
+
+	@Test(priority = 7, enabled = true)
 	public void RW_T1031_ValidateTheabilityToAddEditFavoritePersonalizedForecast() {
 		testStart("Validate the ability to add/edit favorite Personalized Forecast");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
 		Assert.assertTrue(lifeStylePage.ClickOnForecastPage());
 	}
-	
-	@Test(priority = 8, enabled=false)
+
+	@Test(priority = 8, enabled = true)
 	public void RW_T1032_ValidateTheDataFor3DayIndexPanels() {
 		testStart("Validate the data for 3-day index panels");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
 		lifeStylePage.ClickOnForecastPage();
-		lifeStylePage.check3DayPageShowUpto3Days();
+		Assert.assertTrue(lifeStylePage.check3DayPageShowUpto3Days());
 	}
-	
-	
-	@Test(priority = 8, enabled=false)
+
+	@Test(priority = 9, enabled = true)
 	public void RW_T1032_ValidateTheDataFor3DayIndexPanels2() {
 		testStart("Validate the data for 3-day index panels");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
 		lifeStylePage.ClickOnForecastPage();
-		lifeStylePage.validateDateElementsOfEachPanel();
+		Assert.assertTrue(lifeStylePage.validateDateElementsOfEachPanel());
 	}
-	
-	@Test(priority = 8, enabled=false)
+
+	@Test(priority = 10, enabled = true)
 	public void RW_T1032_ValidateTheDataFor3DayIndexPanels3() {
 		testStart("Validate the data for 3-day index panels");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
 		lifeStylePage.ClickOnForecastPage();
-		lifeStylePage.validateIndexDialOfEachPanel();
+		Assert.assertTrue(lifeStylePage.validateIndexDialOfEachPanel());
 	}
-	
-	@Test(priority = 8, enabled=false)
+
+	@Test(priority = 11, enabled = true)
 	public void RW_T1032_ValidateTheDataFor3DayIndexPanels4() {
 		testStart("Validate the data for 3-day index panels");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
 		lifeStylePage.ClickOnForecastPage();
-		lifeStylePage.validateWeatherDescriptionOfEachPanel();
+		Assert.assertTrue(lifeStylePage.validateWeatherDescriptionOfEachPanel());
 	}
-	
-	
-	@Test(priority = 8, enabled=false)
+
+	@Test(priority = 12, enabled = true)
 	public void RW_T1032_ValidateTheDataFor3DayIndexPanels5() {
 		testStart("Validate the data for 3-day index panels");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
 		lifeStylePage.ClickOnForecastPage();
-		lifeStylePage.validateWeatherIconOfEachPanel();
+		Assert.assertTrue(lifeStylePage.validateWeatherIconOfEachPanel());
 	}
-	
-	@Test(priority = 8, enabled=false)
+
+	@Test(priority = 13, enabled = true)
 	public void RW_T1032_ValidateTheDataFor3DayIndexPanels6() {
 		testStart("Validate the data for 3-day index panels");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
 		lifeStylePage.ClickOnForecastPage();
-		lifeStylePage.validateHighTempOfEachPanel();
+		Assert.assertTrue(lifeStylePage.validateHighTempOfEachPanel());
 	}
-	
-	
-	@Test(priority = 8, enabled=false)
+
+	@Test(priority = 14, enabled = true)
 	public void RW_T1032_ValidateTheDataFor3DayIndexPanels7() {
 		testStart("Validate the data for 3-day index panels");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
 		lifeStylePage.ClickOnForecastPage();
-		lifeStylePage.validateLowTempOfEachPanel();
+		Assert.assertTrue(lifeStylePage.validateLowTempOfEachPanel());
 	}
-	
-	@Test(priority = 8, enabled=false)
+
+	@Test(priority = 15, enabled = true)
 	public void RW_T1032_ValidateTheDataFor3DayIndexPanelsClickForwardArrow() {
 		testStart("Validate the data for 3-day index panels");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
 		lifeStylePage.ClickOnForecastPage();
-		lifeStylePage.clickForwardArrowAndUserIsShownNextThreeDays();
+		Assert.assertTrue(lifeStylePage.clickForwardArrowAndUserIsShownNextThreeDays());
 	}
-	
-	@Test(priority = 8, enabled=false)
+
+	@Test(priority = 16, enabled = true)
 	public void RW_T1032_ValidateTheDataFor3DayIndexPanelsClickBackWardArrow() {
 		testStart("Validate the data for 3-day index panels");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
 		lifeStylePage.ClickOnForecastPage();
-		lifeStylePage.clickForwardArrowAndUserIsShownNextThreeDays();
+		Assert.assertTrue(lifeStylePage.clickBackwardArrowAndUserIsShownPreviousThreeDays());
 	}
-	
-	@Test(priority = 8, enabled=false)
+
+	@Test(priority = 17, enabled = true)
 	public void RW_T1743_VerifyPersonalizedForecastMenuExitWhenUsersClicksOutsideThePersonalizedForecastMenu() {
 		testStart("Verify Personalized Forecast menu exit, when users clicks outside the Personalized Forecast menu");
 		cityRadar.clickBreadCrumbMenu();
 		lifeStylePage.clickOnPersonalizedForecastMenu();
-		cityRadar.clickBreadCrumbMenuRadarAndMaps();
-		
+		Assert.assertTrue(cityRadar.clickBreadCrumbMenuRadarAndMaps());
+
 	}
-	
-}	
-	
-	
-	
-	
-	
-	
+
+}
