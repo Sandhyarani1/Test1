@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-	<suite name="Core-Regression" parallel="methods" thread-count="1">
+	<suite name="Core-Regression" parallel="methods" thread-count="3">
 		<parameter name="runLocation" value="mobile" />
 		<parameter name="environment" value="qa" />
-		<parameter name="operatingSystem" value="IPAD_WEB" />
+		<parameter name="operatingSystem" value="Android_WEB" />
 		<test name="AccuWeather Mobile Test Suite on IOS ">
 			<parameter name="browserUnderTest" value="Internet"/>
 			<packages>
-			<package name="com.accuweather.glacier.m.lifeStyleMobile.*" />
-				<!-- <package name="com.accuweather.glacier.m.contactUsMobile.*" />
+				<package name="com.accuweather.glacier.m.WinterWeatherIOS.*" />
+				<!-- <package name="com.accuweather.glacier.m.lifeStyleMobile.*" />
+				<package name="com.accuweather.glacier.m.contactUsMobile.*" />
 				<package name="com.accuweather.glacier.m.legalFooter.*" />
 				<package name="com.accuweather.glacier.m.BuildError.*" />
 				<package name="com.accuweather.glacier.m.browseLocationsMobile.*" />
