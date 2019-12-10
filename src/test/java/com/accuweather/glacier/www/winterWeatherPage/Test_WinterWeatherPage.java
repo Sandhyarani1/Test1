@@ -6,10 +6,8 @@ import org.testng.annotations.Test;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.accuweather.glacier.www.pages.NavigationBar;
-import com.accuweather.glacier.www.pages.SeachResultsPage;
-import com.accuweather.glacier.www.pages.ThreeDayForecastPage;
+import com.accuweather.glacier.www.pages.UniversalFooterPage;
 import com.accuweather.glacier.www.pages.WinterWeatherPage;
-import com.chameleon.utils.Randomness;
 import com.chameleon.utils.Sleeper;
 
 public class Test_WinterWeatherPage extends AccuWeatherBaseTest 
@@ -24,6 +22,7 @@ public class Test_WinterWeatherPage extends AccuWeatherBaseTest
 	private LandingPage landingPage = new LandingPage();
 	private NavigationBar navigationBar = new NavigationBar();
 	private WinterWeatherPage winterWeatherPage = new WinterWeatherPage();
+	private UniversalFooterPage universalFooterPage = new UniversalFooterPage();
 	
 	@Test(priority=1)
 	public void RW_T1570_VerifyPageNavigationMenuSevereWeatherAndSubMenuWinterWeather_verifyWinterWeatherPage()
@@ -135,5 +134,66 @@ public class Test_WinterWeatherPage extends AccuWeatherBaseTest
 		String actualColor = winterWeatherPage.verifyWinterHomeTabIsPresentAndColor();
 		Assert.assertEquals(actualColor, EXPECTED_COLOR);
 		
+	}
+	
+	@Test(priority=1)
+	public void RW_T1571_verifyWinterWeatherFooterForEnglishAndFollowsStandardFooterRules_verifyHeadersUnderCompany()
+	{
+		testStart("Verify headers under company on winter weather page");
+		navigationBar.mouseHoverOnSeverWeather();
+		navigationBar.isWinterWeatherSubMenuDisplayed();
+		navigationBar.clickWinterWeatherSubMenu();
+		Sleeper.sleep(2);
+		universalFooterPage.scrolldownpage();
+		universalFooterPage.scrolldownpage();
+		universalFooterPage.scrolldownpage();
+		Assert.assertEquals(getDriver().getCurrentUrl(), EXPECTED_WINTERWEATHER_URL);
+		universalFooterPage.validatelinksforCompanyHeader();
+	}
+	
+	@Test(priority=1)
+	public void RW_T1571_verifyWinterWeatherFooterForEnglishAndFollowsStandardFooterRules_validatelinksforProductsandServicesHeader()
+	{
+		testStart("Verify headers under company on winter weather page");
+		navigationBar.mouseHoverOnSeverWeather();
+		navigationBar.isWinterWeatherSubMenuDisplayed();
+		navigationBar.clickWinterWeatherSubMenu();
+		Sleeper.sleep(2);
+		universalFooterPage.scrolldownpage();
+	    universalFooterPage.scrolldownpage();
+	    universalFooterPage.scrolldownpage();
+	    Assert.assertEquals(getDriver().getCurrentUrl(), EXPECTED_WINTERWEATHER_URL);
+		universalFooterPage.validatelinksforProductsandServicesHeader();
+	}
+	
+	@Test(priority=1)
+	public void RW_T1571_verifyWinterWeatherFooterForEnglishAndFollowsStandardFooterRules_validatelinksDisplayedunderAppsandDownloads()
+	{
+		testStart("Verify headers under company on winter weather page");
+		navigationBar.mouseHoverOnSeverWeather();
+		navigationBar.isWinterWeatherSubMenuDisplayed();
+		navigationBar.clickWinterWeatherSubMenu();
+		Sleeper.sleep(2);
+	    universalFooterPage.scrolldownpage();
+	    universalFooterPage.scrolldownpage();
+	    universalFooterPage.scrolldownpage();
+		Assert.assertEquals(getDriver().getCurrentUrl(), EXPECTED_WINTERWEATHER_URL);
+		universalFooterPage.validatelinksDisplayedunderAppsandDownloads();
+	}
+	
+	@Test(priority=1)
+	public void RW_T1571_verifyWinterWeatherFooterForEnglishAndFollowsStandardFooterRules_subscriptionServicesContainsLink()
+	{
+		testStart("Verify headers under company on winter weather page");
+		navigationBar.mouseHoverOnSeverWeather();
+		navigationBar.isWinterWeatherSubMenuDisplayed();
+		navigationBar.clickWinterWeatherSubMenu();
+		Sleeper.sleep(2);
+     	universalFooterPage.scrolldownpage();
+	    universalFooterPage.scrolldownpage();
+	    universalFooterPage.scrolldownpage();
+		Assert.assertEquals(getDriver().getCurrentUrl(), EXPECTED_WINTERWEATHER_URL);
+		universalFooterPage.subscriptionServicesContainsLink("AccuWeather Premium");
+		universalFooterPage.subscriptionServicesContainsLink("AccuWeather Professional");
 	}
 }
