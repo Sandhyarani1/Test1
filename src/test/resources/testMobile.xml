@@ -3,12 +3,13 @@
 	<suite name="Core-Regression" parallel="methods" thread-count="1">
 		<parameter name="runLocation" value="mobile" />
 		<parameter name="environment" value="qa" />
-		<parameter name="operatingSystem" value="IPAD_WEB" />
+		<parameter name="operatingSystem" value="IOS_WEB" />
 		<test name="AccuWeather Mobile Test Suite on IOS ">
 			<parameter name="browserUnderTest" value="Internet"/>
 			<packages>
-				<package name="com.accuweather.glacier.m.WinterWeatherIOS.*" />
-				<!-- <package name="com.accuweather.glacier.m.lifeStyleMobile.*" />
+			<package name="com.accuweather.glacier.m.severeWeather.*" />
+				<!-- <package name="com.accuweather.glacier.m.WinterWeatherIOS.*" />
+				<package name="com.accuweather.glacier.m.lifeStyleMobile.*" />
 				<package name="com.accuweather.glacier.m.contactUsMobile.*" />
 				<package name="com.accuweather.glacier.m.legalFooter.*" />
 				<package name="com.accuweather.glacier.m.BuildError.*" />
