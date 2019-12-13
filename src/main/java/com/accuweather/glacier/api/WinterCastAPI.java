@@ -1,30 +1,19 @@
 package com.accuweather.glacier.api;
 
-import static io.restassured.RestAssured.given;
-
 import java.util.Map;
 
 import com.chameleon.utils.DataIOOperations.ExcelUtilities;
 import com.chameleon.utils.io.PropertiesManager;
 
-import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
-public class WinterCastAPI 
+public class WinterCastAPI extends APIUtilities
 {
 	public static ExcelUtilities readExcel = new ExcelUtilities();
 	public static Map<String, String> apiProperties = PropertiesManager.properties(APIConstants.API_PROPERTIES);
 	public static String responseString="";
-	
-	/**
-	 * @author HFARAZ
-	 * Method to read the location_keys.xlsx file
-	 * **/
-	public static void readLocationKeysFile()
-	{
-		ExcelUtilities.readExcelFile(apiProperties.get(APIConstants.LOCATION_KEYS_FILE_PATH), apiProperties.get(APIConstants.US_SHEET));
-	}
+	public static int rowNo = 0;
 	
 	/**
 	 * @author HFARAZ
@@ -33,38 +22,20 @@ public class WinterCastAPI
 	 * **/
 	public static int getRowNumber()
 	{
-		readLocationKeysFile();
+		APIUtilities.readLocationKeysFile();
 		
-		int i=0;
-		for(i=1;i<=ExcelUtilities.getLastRow();i++)
+		for(rowNo=1;rowNo<=ExcelUtilities.getLastRow();rowNo++)
 		{
-			int locationKey = ExcelUtilities.getNumericData(i, 0);
-			
-			RestAssured.baseURI = apiProperties.get(APIConstants.BASE_URI);
-			Response response =
-			given().
-				param("apikey",apiProperties.get(APIConstants.API_KEY)).
-				param("language",apiProperties.get(APIConstants.LANGUAGE)).
-				param("details",apiProperties.get(APIConstants.DETAILS)).
-				param("metric",apiProperties.get(APIConstants.METRIC)).
-			when().
-				get(apiProperties.get(APIConstants.SNOW_RESOURCE)+locationKey+".json").
-			then().
-				assertThat().statusCode(200).and().
-			extract().response();
-			
+			Response response = getWinterCastDetails(getLocationKey(rowNo));
 			responseString = response.asString();
 			 
-			
-			int responseStatus = response.getStatusCode();
-			System.out.println("Status Code:"+responseStatus);
-			if(responseStatus==200 && !responseString.equals("null"))
+			if(getStatusCode(response)==200 && !responseString.equals("null"))
 			{
 				break;
 			}
 		}
-		System.out.println("i is "+i);
-		return i;
+		
+		return rowNo;
 	}
 	
 	/**
@@ -90,37 +61,16 @@ public class WinterCastAPI
 		JsonPath jsonObject = new JsonPath(responseString);
 		return jsonObject.get("ForecastAmount.Value");
 	}
-	
-	/**
-	 * @author HFARAZ
-	 * Method to fetch the zipcode from the location_keys.xlsx file based on the location key which has snow predictions
-	 * @return zipcode
-	 * */
-	  public static String getZipCode()
-	  {
-		  int zipCode = ExcelUtilities.getNumericData(getRowNumber(), 4);
-		  return zipCode+"";
-	  }
 	  
-	  /**
-	   * @author HFARAZ
-	   * Method to get the City Name having snow
-	   * @return String value: The city name having the snow prediction
-	   * **/
-	  public static String getCityName()
-	  {
-		  String cityName = ExcelUtilities.getStringData(getRowNumber(), 2);
-		  return cityName;
-	  }
-	  
-	  
-	  
-	  public static void main(String[] args)
-	  {
-		System.out.println(getZipCode());
-		System.out.println(getCityName());
-		getWinterCastAPIResponse();
-		System.out.println(getForecastAmountValue(responseString));
+	public static void main(String[] args)
+	{
+		/**
+		 * Usage: Call getRowNumber() method and store the value in an integer variable and use it other methods like getCityName(rowNo), getZipCode(rowNo) etc.
+		 * */
+		  
+		  int rowNo = getRowNumber();
+		  getZipCode(rowNo);
+		  getWinterCastAPIResponse();
 	  }
 	
 }

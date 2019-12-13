@@ -22,4 +22,7 @@ public class APIConstants
 	public static final String DETAILS = "DETAILS";
 	public static final String METRIC = "METRIC";
 	public static final String SNOW_RESOURCE = "SNOW_RESOURCE";
+	public static final String NO_OF_ALERTS_URI = "NO_OF_ALERTS_URI";
+	public static final String ALERTS_DETAILS = "ALERTS_DETAILS";
+	public static final String NO_OF_ALERTS = "NO_OF_ALERTS";
 }
