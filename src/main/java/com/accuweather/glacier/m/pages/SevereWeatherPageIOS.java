@@ -48,6 +48,12 @@ public class SevereWeatherPageIOS extends MobileBasePage {
 	private By byTooltipActive = By.cssSelector("div.tooltip-overlay > div.tooltip-header > div");
 	private By byMapHeader = By.cssSelector(
 			"body > div > div:nth-child(4) > div > div.page-column-1 > div:nth-child(1) > div.map-severe.content-module > div > div.map-header > h2");
+	
+	private By byHurricaneTab = By.xpath("//div[@class='page-subnav']//a[1]");
+	private By bySevereWeatherTab = By.xpath("//a[@class='subnav-item active']");
+	private By byAccuweatherReady = By.xpath("//div[@class='page-subnav']//a[3]");
+	private By bysevereWeatherRightArrowNavigation = By.xpath("//*[@class='arrow icon-chevron icon-chevron-right']");
+
 
 	public void isSevereTabEnabled() {
 		WebPageLoaded.isDomInteractive();
@@ -285,6 +291,19 @@ public class SevereWeatherPageIOS extends MobileBasePage {
 		WebElement mapHeader = getDriver().findElement(byMapHeader);
 		String mapHeaderText = mapHeader.getText();
 		return mapHeaderText;
+	}
+
+	public boolean validateSevereWeatherTabs() {
+		return getDriver().findElements(byHurricaneTab).size()>0 &&
+		getDriver().findElements(bySevereWeatherTab).size()>0 ;
+		
+	}
+	
+	public boolean validateSevereWeatherTabsAccuWeatherReady() {
+		  getDriver().findElement(bysevereWeatherRightArrowNavigation).click();
+		  Sleeper.sleep(1);
+		  return getDriver().findElements(byAccuweatherReady).size()>0;
+		
 	}
 
 }
