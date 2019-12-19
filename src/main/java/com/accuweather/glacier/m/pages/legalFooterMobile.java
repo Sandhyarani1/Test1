@@ -61,14 +61,6 @@ public class legalFooterMobile extends MobileBasePage {
 			"div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span:nth-child(1)");
 	private By allRightsReserved = By.cssSelector(
 			"div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span:nth-child(1)");
-	
-	private By ByPrivacyPolicyBanner = By.cssSelector("body > div > div.privacy-policy-banner");
-	private By ByPrivacyPolicyBannerContents = By.cssSelector("body > div > div.privacy-policy-banner > div > p");
-	private By ByPrivacyPolicyBannerIUnderstand = By.cssSelector("body > div > div.privacy-policy-banner > div > div");
-	private By ByPrivacyPolicyLink = By.cssSelector("body > div > div.privacy-policy-banner > div > p > a:nth-child(1)");
-	private By ByCookiePolicyLink = By.cssSelector("body > div > div.privacy-policy-banner > div > p > a:nth-child(2)");
-	private By ByPrivacyPolicyIUnderstandButton = By.cssSelector("body > div > div.privacy-policy-banner > div > div");
-	private By ByPrivacyPolicyTabInspanish = By.cssSelector("body > div > div.page-subnav > div > div > div.subnav-items > a.subnav-item.active > h1");
 
 	private By ByPrivacyPolicyBanner = By.cssSelector("body > div > div.privacy-policy-banner");
 	private By ByPrivacyPolicyBannerContents = By.cssSelector("body > div > div.privacy-policy-banner > div > p");
@@ -354,7 +346,7 @@ public class legalFooterMobile extends MobileBasePage {
 		Sleeper.sleep(5);
 		getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
 		Sleeper.sleep(5);
-		return getDriver().findElement(copyright2019Accuweather).getText().contains("Â© 2019 AccuWeather, Inc.");
+		return getDriver().findElement(copyright2019Accuweather).getText().contains("© 2019 AccuWeather, Inc.");
 
 	}
 
@@ -377,14 +369,12 @@ public class legalFooterMobile extends MobileBasePage {
 
 	}
 
-	
 	/**
-	 * Method to verify Liveramp providers URL and Page 
-	 * @author Sowmiya
-	 * Boolean return true if providers URL
-	 * */
-	public String verifyLiveRampLinkAndPage()
-	{
+	 * Method to verify Liveramp providers URL and Page
+	 * 
+	 * @author Sowmiya Boolean return true if providers URL
+	 */
+	public String verifyLiveRampLinkAndPage() {
 		/*
 		 * WebPageLoaded.isDomInteractive(2); WebElement LiveRampLink =
 		 * getDriver().findElement(By.xpath(
@@ -396,7 +386,6 @@ public class legalFooterMobile extends MobileBasePage {
 		 * switchToPopUpWindow(window); return getDriver().getCurrentUrl();
 		 */
 
-
 		WebPageLoaded.isDomInteractive(2);
 		WebElement LiveRampLink = getDriver().findElement(By.xpath(
 				"//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='LiveRamp']/../td/a[text()='https://liveramp.com/privacy/']"));
@@ -404,63 +393,55 @@ public class legalFooterMobile extends MobileBasePage {
 		int y = LiveRampLink.getLocation().getY();
 		getDriver().executeJavaScript("window.scrollBy(" + x + ", " + y + ")");
 		getDriver().executeJavaScript("window.scrollBy(" + x + ",-400)");
-		
-		WebPageLoaded.isDomInteractive(2);
-		WebElement LiveRampLink = getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='LiveRamp']/../td/a[text()='https://liveramp.com/privacy/']"));
-		int x = LiveRampLink.getLocation().getX();
-		int y = LiveRampLink.getLocation().getY();
-		getDriver().executeJavaScript("window.scrollBy(" +x +", " +y +")");
-		getDriver().executeJavaScript("window.scrollBy(" +x +",-400)");
 		Sleeper.sleep(5);
 		LiveRampLink.click();
 		Sleeper.sleep(3);
 		return getDriver().getCurrentUrl();
 	}
-	
+
 	/**
-	 * Method to verify Cuebiq providers URL and Page 
-	 * @author Sowmiya
-	 * Boolean return true if providers URL
-	 * */
-	public String verifyCuebiqLinkAndPage()
-	{
+	 * Method to verify Cuebiq providers URL and Page
+	 * 
+	 * @author Sowmiya Boolean return true if providers URL
+	 */
+	public String verifyCuebiqLinkAndPage() {
 		WebPageLoaded.isDomInteractive(2);
-		WebElement CuebiqLink = getDriver().findElement(By.xpath("//a[contains(text(),'https://www.cuebiq.com/privacypolicy/')]"));
+		WebElement CuebiqLink = getDriver()
+				.findElement(By.xpath("//a[contains(text(),'https://www.cuebiq.com/privacypolicy/')]"));
 		int x = CuebiqLink.getLocation().getX();
 		int y = CuebiqLink.getLocation().getY();
-		getDriver().executeJavaScript("window.scrollBy(" +x +", " +y +")");
-		getDriver().executeJavaScript("window.scrollBy(" +x +",-600)");
+		getDriver().executeJavaScript("window.scrollBy(" + x + ", " + y + ")");
+		getDriver().executeJavaScript("window.scrollBy(" + x + ",-600)");
 		Sleeper.sleep(5);
 		CuebiqLink.click();
 		Sleeper.sleep(3);
 		return getDriver().getCurrentUrl();
 	}
 
-	
-	
 	/**
-	 * Method to verify Intersection providers URL and Page 
-	 * @author Sowmiya
-	 * Boolean return true if providers URL
-	 * */
-	public String verifyIntersectionLinkAndPage()
-	{
+	 * Method to verify Intersection providers URL and Page
+	 * 
+	 * @author Sowmiya Boolean return true if providers URL
+	 */
+	public String verifyIntersectionLinkAndPage() {
 		WebPageLoaded.isDomInteractive();
-		//Advertising section should have live ramp, cuebiq, Intersection
-		  WebElement policyLink = getDriver().findElement(By.xpath("//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='Intersection']/../td/a[text()='https://www.intersection.com/privacy-policy/']"));
-		  int x = policyLink.getLocation().getX();
-			int y = policyLink.getLocation().getY();
-			getDriver().executeJavaScript("window.scrollBy(" +x +", " +y +")");
-			getDriver().executeJavaScript("window.scrollBy(" +x +",-450)");
-			Sleeper.sleep(5);
-			policyLink.click();
-			Sleeper.sleep(3);
-			return getDriver().getCurrentUrl();
+		// Advertising section should have live ramp, cuebiq, Intersection
+		WebElement policyLink = getDriver().findElement(By.xpath(
+				"//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='Intersection']/../td/a[text()='https://www.intersection.com/privacy-policy/']"));
+		int x = policyLink.getLocation().getX();
+		int y = policyLink.getLocation().getY();
+		getDriver().executeJavaScript("window.scrollBy(" + x + ", " + y + ")");
+		getDriver().executeJavaScript("window.scrollBy(" + x + ",-450)");
+		Sleeper.sleep(5);
+		policyLink.click();
+		Sleeper.sleep(3);
+		return getDriver().getCurrentUrl();
 	}
 
 	public Boolean IsBannerDislayed() {
 		WebPageLoaded.isDomInteractive(5);
-		return getDriver().findElements(ByPrivacyPolicyBanner).size()>0;
+		return getDriver().findElements(ByPrivacyPolicyBanner).size() > 0;
+
 	}
 
 	public String IsBannerColorDarkGrey() {
@@ -472,6 +453,7 @@ public class legalFooterMobile extends MobileBasePage {
 				ele);
 		String arrowcolourdisplayed = Color.fromString(result).asHex();
 		return arrowcolourdisplayed;
+
 	}
 
 	public String BannerConetentsText() {
@@ -526,6 +508,7 @@ public class legalFooterMobile extends MobileBasePage {
 
 	public String checkPrivacyAndPolicyTabIsinSpanish() {
 		return getDriver().findElement(ByPrivacyPolicyTabInspanish).getText();
+
 	}
 
 	public boolean BannerCenteredOnScreen360px() {
@@ -588,4 +571,5 @@ public class legalFooterMobile extends MobileBasePage {
 	public void clickDone() {
 		getDriver().executeJavaScript("seetest:client.click(\"NATIVE\", \"xpath=//*[@text='Done']\", 0, 1)");
 	}
+
 }
