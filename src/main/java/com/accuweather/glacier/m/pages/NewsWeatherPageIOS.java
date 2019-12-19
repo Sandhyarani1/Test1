@@ -25,6 +25,7 @@ public class NewsWeatherPageIOS extends MobileBasePage {
 	private By byLatestNewsBelowSecondaryNavigation = By
 			.xpath("//div[@class='page-subnav']/following::div/p[contains(text(),'Latest Weather News')]");
 	
+
 	private By byCenterWellOrganism = By
 			.xpath("//div[@class='content-recirc']");
 	
@@ -132,10 +133,10 @@ public class NewsWeatherPageIOS extends MobileBasePage {
 		return getDriver().findElements(byLatestNewsBelowSecondaryNavigation).size()>0;
 	}
 
+
 	public Boolean verifyCenterWellOrganismIsDisplayed() {
 		WebPageLoaded.isDomInteractive();
 		return getDriver().findElements(byLatestNewsBelowSecondaryNavigation).size()>0;
-		
 	}
 
 }

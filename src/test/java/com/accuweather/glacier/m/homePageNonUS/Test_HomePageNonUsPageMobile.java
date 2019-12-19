@@ -31,7 +31,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 	private ThreeDayForecastPage threedayForecastPage = new ThreeDayForecastPage();
 	private CityRadarPageMobile cityRadar = new CityRadarPageMobile();
 
-	@Test(priority = 1, enabled = true)
+	@Test(priority = 1, enabled = false)
 	public void RW_T745_ValidateTranslationOnBreadcrumbs_verifyCityPageTranslatedInSelectedLanguage() {
 		testStart("Verify city page get translated in selected langauge");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -47,7 +47,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 2, enabled = true)
+	@Test(priority = 2, enabled = false)
 	public void RW_T743_HomePageWithNonEnglishValidation_verifyMapTitleNonEnglishLanguage() {
 		testStart("Verify map title is in non-English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -63,7 +63,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 		homePage.clickBreadCrumbMenulanguageSelectMobileEnglish();
 	}
 
-	@Test(priority = 3, enabled = true)
+	@Test(priority = 3, enabled = false)
 	public void RW_T743_HomePageWithNonEnglishValidation_verifyMapsCTANonEnglishLanguage() {
 		testStart("Verify map cta is in non-English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -79,7 +79,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 		homePage.clickBreadCrumbMenulanguageSelectMobileEnglish();
 	}
 
-	@Test(priority = 4, enabled = true)
+	@Test(priority = 4, enabled = false)
 	public void RW_T743_HomePageWithNonEnglishValidation_verify20LocationsOfCountry() {
 		testStart("Change the language to non-english and verify 20 locations of the country");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -94,7 +94,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 		homePage.clickBreadCrumbMenulanguageSelectMobileEnglish();
 	}
 
-	@Test(priority = 5, enabled = true)
+	@Test(priority = 5, enabled = false)
 	public void RW_T743_HomePageWithNonEnglishValidation_verifyWeathericonForAllLocationsOfCountry() {
 		testStart("Verify weather for all 20 locations of the country");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -109,7 +109,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 		homePage.clickBreadCrumbMenulanguageSelectMobileEnglish();
 	}
 
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = false)
 	public void RW_T743_HomePageWithNonEnglishValidation_verifyTemperatureForAllLocationsOfCountry() {
 		testStart("Verify temperature for all 20 locations of the country");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -127,7 +127,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 		homePage.clickBreadCrumbMenulanguageSelectMobileEnglish();
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void RW_T743_HomePageWithNonEnglishValidation_clickAnyLocationAndUserNavigatedTo3DayForecastPage() {
 		testStart("Click one of the locations and verify user navigated to three day forecast page");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -143,7 +143,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 		homePage.clickBreadCrumbMenulanguageSelectMobileEnglish();
 	}
 
-	@Test(priority = 8, enabled = true)
+	@Test(priority = 8, enabled = false)
 	public void RW_T741_SatelliteAndRadarCountry_verifyMapTitleIsNonEnglishLanguage() {
 		testStart("Verify map title is in non-English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -159,7 +159,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 		homePage.clickBreadCrumbMenulanguageSelectMobileEnglish();
 	}
 
-	@Test(priority = 9, enabled = true)
+	@Test(priority = 9, enabled = false)
 	public void RW_T741_SatelliteAndRadarCountry_verifyMapsCTANonEnglishLanguage() {
 		testStart("Verify map cta is in non-English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -176,7 +176,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 10, enabled = true)
+	@Test(priority = 10, enabled = false)
 	public void RW_T741_SatelliteAndRadarCountry_verify20LocationsOfCountry() {
 		testStart("Change the language to non-english and verify 20 locations of the country");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcodeJapan);
@@ -191,7 +191,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 		homePage.clickBreadCrumbMenulanguageSelectMobileEnglish();
 	}
 
-	@Test(priority = 11, enabled = true)
+	@Test(priority = 11, enabled = false)
 	public void RW_T741_SatelliteAndRadarCountry_verifyWeathericonForAllLocationsOfCountry() {
 		testStart("Verify weather for all 20 locations of the country");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcodeJapan);
@@ -221,7 +221,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 		homePage.clickBreadCrumbMenulanguageSelectMobileEnglish();
 	}
 
-	@Test(priority = 13, enabled = true)
+	@Test(priority = 13, enabled = false)
 	public void RW_T741_SatelliteAndRadarCountry_clickAnyLocationAndUserNavigatedTo3DayForecastPage() {
 		testStart("Click one of the locations and verify user navigated to three day forecast page");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcodeJapan);
@@ -238,7 +238,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 14, enabled = true)
+	@Test(priority = 14, enabled = false)
 	public void RW_T740_SatelliteCountryEnglish_verifyMapTitleIsEnglishLanguage() {
 		testStart("Verify map title is in English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(satelliteCountry);
@@ -260,7 +260,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 16, enabled = true)
+	@Test(priority = 16, enabled = false)
 	public void RW_T739_RadarCountryCountryWithEnglish_verifyMapTitleIsEnglishLanguage() {
 		testStart("Verify map title is in English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(satelliteRadarCountry);
@@ -281,7 +281,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 18, enabled = true)
+	@Test(priority = 18, enabled = false)
 	public void RW_T742_UsHomePageWithEnglish_verifyMapTitleIsEnglishLanguage() {
 		testStart("Verify map title is in English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);

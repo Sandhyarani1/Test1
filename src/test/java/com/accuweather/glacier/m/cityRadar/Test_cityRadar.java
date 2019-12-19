@@ -23,7 +23,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 	private LandingPageMobile landingPage = new LandingPageMobile();
 	private CityRadarPageMobile cityRadar = new CityRadarPageMobile();
 
-	@Test(priority = 1, enabled = true)
+	@Test(priority = 1, enabled = false)
 	public void RW_T268_MixLegendsBelowMap_verifyLightAndSeverFromMixLegend() {
 		testStart("Verify severe and light present below the mix legend");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -45,7 +45,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(cityRadar.verifyColorVaryFromLightToDark());
 	}
 
-	@Test(priority = 3, enabled = true)
+	@Test(priority = 3, enabled = false)
 	public void RW_T267_IceLegendsBelowMap_verifyLightAndSeverFromIceLegend() {
 		testStart("Verify severe and light present below the ice legend");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -67,7 +67,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(cityRadar.verifyColorVaryFromLightToDark());
 	}
 
-	@Test(priority = 5, enabled = true)
+	@Test(priority = 5, enabled = false)
 	public void RW_T266_SnowLegendsBelowMap_verifyLightAndSeverFromSnowLegend() {
 		testStart("Verify severe and light present below the ice legend");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -91,7 +91,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(cityRadar.verifyColorVaryFromLightToDark());
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void RW_T265_RainLegendsBelowMap_verifyLightAndSeverFromSnowLegend() {
 		testStart("Verify severe and light present below the ice legend");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -113,7 +113,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(cityRadar.verifyColorVaryFromLightToDark());
 	}
 
-	@Test(priority = 9, enabled = true)
+	@Test(priority = 9, enabled = false)
 	public void RW_T261_ToggleBetweenPastAndFutureCTA_verifyTimelineControlsBelowMap() {
 		testStart("Verify timeline controls like Past and Future CTA below the map");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -124,7 +124,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(cityRadar.verifyPastAndFutureCTABelowMap());
 	}
 
-	@Test(priority = 10, enabled = true)
+	@Test(priority = 10, enabled = false)
 	public void RW_T261_AddSliderWithPlayButton_verifyPresenceOfSliderBarWithPlayButtonAndTime() {
 		testStart("Locate for Slider with Play button and time at the end of the slider bar");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -135,7 +135,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(cityRadar.verifyPresenceOfSliderBarWithPlayButtonAndTime());
 	}
 
-	@Test(priority = 11, enabled = true)
+	@Test(priority = 11, enabled = false)
 	public void RW_T262_AddSliderWithPlayButton_verifyPlayButtonBackgroundColor() {
 		testStart("Toggle between future and past cta");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -218,7 +218,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		}
 	} //fixed
 
-	@Test(priority = 16, enabled = true)
+	@Test(priority = 16, enabled = false)
 	public void RW_T258_FullScreenButton_ClickFullScreenButton() {
 		testStart(
 				"Click fullscreen button and verify Map opens up into full screen with timeline controls, slider with play button, and legend and if you click on x symbol the map switches back to normal.");
@@ -230,7 +230,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(cityRadar.clickFullScreenButtonOfMap());
 	}
 
-	@Test(priority = 17, enabled = true)
+	@Test(priority = 17, enabled = false)
 	public void RW_T257_ZoomControlButton_clickZoomInAndOut() {
 		testStart("Verify able to click zoom in and zoom out of the map");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -292,7 +292,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		}
 	} //fixed
 
-	@Test(priority = 21, enabled = true)
+	@Test(priority = 21, enabled = false)
 	public void RW_T256_ToolTip_verifyRadarTabHighlightedColor() {
 		testStart("Verify radar tab highlighted color");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);

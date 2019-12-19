@@ -72,6 +72,7 @@ public class Test_NewsLandingPageIPAD extends AccuWeatherBaseTest
 		navigationbar.navigateToNewsPage();
 	    newsWeatherPage.verifyLatestNewsPresent();
 	}
+
 	
 	@Test(priority = 6, enabled = false)
 	public void RW_T1405_CenterWellOrganismsContentIsDisplayed() {

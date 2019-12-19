@@ -105,10 +105,10 @@ public class NewsWeatherPageIPAD extends BasePage {
 		return latestNews.syncVisible(10);
 	}
 
+
 	public Boolean verifyCenterWellOrganismIsDisplayed() {
 		WebPageLoaded.isDomInteractive();
 		return getDriver().findElements(byLatestNewsBelowSecondaryNavigation).size()>0;
 		
 	}
-
 }

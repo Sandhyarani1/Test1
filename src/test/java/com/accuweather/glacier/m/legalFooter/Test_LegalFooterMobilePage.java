@@ -32,7 +32,9 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	private final static String EXPECTED_LIVERAMP_PAGE_URL = "https://liveramp.com/privacy/";
 	private final static String EXPECTED_CUEBIQ_PAGE_URL = "https://www.cuebiq.com/privacypolicy/";
 	private final static String EXPECTED_INTERSECTION_PAGE_URL = "https://www.intersection.com/privacy-policy/";
+
 	private final static String EXPECTED_PRIVACY_POLICY_HEADER = "Privacy Policy";
+
 
 	private LandingPage landingpage = new LandingPage();
 	private NavigationBar navBar = new NavigationBar();
@@ -343,7 +345,6 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	
 
 
-
 	@Test(priority = 34, enabled = false)
 	public void RW_T1423_ValidatePrivacyPolicyBannerDesign() {
 		testStart("Verify Privacy Policy Banner Design");
@@ -380,9 +381,6 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	
 	
 
-	
-	
-
 	@Test(priority = 39, enabled = false)
 	public void RW_T1425_ValidatePrivacyPolicyLink() {
 		testStart("Verify Privacy Policy link");
@@ -396,7 +394,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(legalFooterMob.IsclickedOnCookiePolicyLink(), EXPECTED_COOKIE_POLICY_URL);
 	}
 	
-  
+
 	@Test(priority = 41, enabled = false)
 	public void RW_T1429_ValidatePrivacyPolicyBannerIs320pxwidth() {
 		testStart("Verify Privacy Policy Banner Is 320px");
@@ -413,7 +411,8 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	
 	
 	/*
-	 * @Test(priority = 42, enabled = false) public void
+
+ @Test(priority = 42, enabled = true) public void
 	 * RW_T1626_ValidatePrivacyPolicyInSpanish() {
 	 * testStart("Verify Privacy Policy In Spanish");
 	 * legalFooterMob.TapPrivacyPolicyIUnderstandButton();
@@ -427,6 +426,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	 * homePage.clickBreadCrumbMenulanguageSelectMobileEnglish(); }
 	 */
 	
+
 	@Test(priority = 42, enabled = true)
 	public void RW_T1433_ValidateBannerCenteredOnScreen360px() {
 		testStart("Validate Banner Centered On Screen 360 px");
@@ -454,7 +454,4 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 		 
 		 
 	}
-	
-	
-
 }
