@@ -37,7 +37,7 @@ public class Test_minutecastPageIOS extends AccuWeatherMobileBaseTest
 	
 	
 	
-	@Test(priority=1,enabled=false)
+	@Test(priority=1,enabled=true)
 	public void TC_RW_T831_navigateToCityForecastPage_Valdiate_Secondary_Navigationmenus_Displayed() 
 	{
 		testStart("Navigation to City Forecast page validate secondary naviagtion menus Displayed ");
@@ -48,7 +48,7 @@ public class Test_minutecastPageIOS extends AccuWeatherMobileBaseTest
 		Assert.assertTrue(minutecast.validateSecondaryMenusDisplayed());
 	}
 	
-	@Test(priority=2,enabled=false)
+	@Test(priority=2,enabled=true)
 	public void TC_RW_T831_navigateToMinutecastForecastPage_Validate_MinutecastPageTitle() 
 	{
 		testStart("Navigation to Minutecast page from city forecast page ");
@@ -64,7 +64,7 @@ public class Test_minutecastPageIOS extends AccuWeatherMobileBaseTest
 	
 
 	
-	@Test(priority=4,enabled=false)
+	@Test(priority=4,enabled=true)
 	public void TC_RW_T831_Navigate_toMinutecastpage__validatingMinutecastDialhasLargeWeatherDescriptionDisplayed() 
 	{
 		testStart("Validate Minutecast page Displayed with Large WeatherDescription ");
@@ -78,7 +78,7 @@ public class Test_minutecastPageIOS extends AccuWeatherMobileBaseTest
 		Assert.assertNotNull(minutecast.minutecastDialLargeWeatherDescriptionDisplayed());
 	}
 	
-	@Test(priority=5,enabled=false)
+	@Test(priority=5,enabled=true)
 	public void TC_RW_T831_Navigate_toMinutecastpage_validatingMinutecastDialhasTimeStampDisplayed() 
 	{
 		testStart("Validating Minutecast  Dial has large weather Description on the top of the molecule .");

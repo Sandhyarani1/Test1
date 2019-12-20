@@ -98,7 +98,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(satellitePage.validateTeritaryMenusDisplayed());
 	}
 
-	@Test(priority = 5, enabled = false)
+	@Test(priority = 5, enabled = true)
 	public void RW_TC293_Validate_Title_of_map_displayed_on_Enchanced_City_Satellite_page() {
 		testStart("Validate Title of the map displayed on City Satellite Page.");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -157,7 +157,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		
 	}
 
-	@Test(priority = 9, enabled = true)
+	@Test(priority = 9, enabled = false)
 	public void RW_TC294_Validate_Zoom_Button_working_onEnchanced_City_Satellite_Page() {
 		testStart("Navigate to Enchanced satellite page and Validate Zoom  Control button Functioning as expeceted");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -379,7 +379,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	
 
-	@Test(priority = 22, enabled = true)
+	@Test(priority = 22, enabled = false)
 	public void RW_TC296_Validate_Zoom_Button_Functions_forStandard_CitySatelliteMap() {
 		testStart(
 				"Navigate to Standard City Satellite Map from teritary tab and Validate Zoom Control button functions as expected");
@@ -416,7 +416,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualLandingpageUrl, MAP_BOX_LANDING_PAGE_URL);
 	}
 
-	@Test(priority = 24, enabled = true)
+	@Test(priority = 24, enabled = false)
 	public void RW_TC317_Validate_Legend_Clouds_Text_LowandHigh_Displayed_for_Standard_CitySatelliteMap() {
 		testStart(
 				"Navigate to City Standard teritary tab from Satellite Map and Validate Mapbox attribution displayed on Bottom left corner of Map");
@@ -477,7 +477,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 	}
 
 	
-	@Test(priority = 27, enabled = true)
+	@Test(priority = 27, enabled = false)
 	public void RW_TC317_Validate_Legend_Clouds_Text_LowandHigh_Displayed_for_fullScreen_Standard_City_SatelliteMap() {
 		testStart(
 				"Navigate to City Standard Satellite Map from  teritary tab and Validate legend Cloud displayed with text High and Low");
@@ -510,7 +510,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		satellitePage.coloursdisplayedforStandardSatelliteMap();
 	}
 
-	@Test(priority = 29, enabled = true)
+	@Test(priority = 29, enabled = false)
 	public void RW_TC317_Validate_FullScreen_Standard_City_SatelliteMap_hasTimelineControl_Slider_legend() {
 		testStart(
 				"Navigate to City Standard satellite Full Screen Map and Validate Timeline control ,Timeslider with play button and legend displayed ");
@@ -528,7 +528,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 
 	// ****** Validation for Visible Satellite Map *******//
 
-	@Test(priority = 30, enabled = true)
+	@Test(priority = 30, enabled = false)
 	public void RW_TC318_Validate_Visible_City_Satellite_Map_Title() {
 		testStart("Navigate to Visible City Satellite Map from teritary tab and Validate Title of the map");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -596,7 +596,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 	}
 
 
-	@Test(priority = 34, enabled = true)
+	@Test(priority = 34, enabled = false)
 	public void RW_TC318_Validate_Zoom_Button_Functioning_onVisible_City_SatelliteMap() {
 		testStart("Navigate to Visible City Satellite Map and Validate Zoom  Control button Funtions on Map");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -711,7 +711,7 @@ public class Test_CitySatellitePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(satellitePage.validateFullscreenMap());
 	}
 
-	@Test(priority = 40, enabled = true)
+	@Test(priority = 40, enabled = false)
 	public void RW_TC299_Validate_FullScreen_Visble_City_SatelliteMap_display_Legend_Clouds_andText_ClearandClouds() {
 		testStart(
 				"Navigate to Visible City Satellite Full screen view and Validate Legend cloud with text clouds and clear");

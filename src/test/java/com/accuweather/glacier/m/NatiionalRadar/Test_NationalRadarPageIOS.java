@@ -113,7 +113,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		Assert.assertEquals(radarPage.colordisplayedwhenclickedonTooltip(), EXPECTED_TOOLTIP_COLOR);
 	}
 
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = false)
 	public void RW_TC167_b_Validate_Text_dispayed_whenClicked_onTooltip_onNationalRadarpage() {
 		testStart("Navigate to National Radar page and Validate Tooltip text displayed when clicked on Tooltip");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -128,7 +128,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(radarPage.textdisplayedwhenclickedonTooltip().equalsIgnoreCase(EXPECTED_TOOLTIP_TEXT));
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void RW_TC167_c_Validate_Tooltip_closes_whenClicked_onTooltip_twice() {
 		testStart("Navigate to National Radar page and Validate Tooltip closes when clicked on Tooltip twice");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -146,7 +146,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		waitUntilElementIsDisplayedOrClickable();
 	} 
 
-	@Test(priority = 8, enabled = true)
+	@Test(priority = 8, enabled = false)
 	public void RW_TC168_Validate_Zoomin_Button_working_onNational_RadarPage() {
 		testStart("Validate Zoom Control buttons working as expeceted on Radar Map");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -162,7 +162,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		radarPage.zoomoutControls();
 	} 
 
-	@Test(priority = 9, enabled = true)
+	@Test(priority = 9, enabled = false)
 	public void RW_TC168_Validate_Zoomout_Button_onNational_RadarPage() {
 		testStart("Validate Zoom Control buttons working as expeceted on Radar Map");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -176,7 +176,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		radarPage.zoomoutControls();
 	} 
 
-	@Test(priority = 10, enabled = true)
+	@Test(priority = 10, enabled = false)
 	public void RW_TC169_Validate_Mapbox_attribution_displayed_BottomLeft_onNationalRadarpage() {
 		testStart("Navigate to National Radar page and Validate Mapbox attribution displayed on Radar Map");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -190,7 +190,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(radarPage.MapboxattributionDisplayedBottomLeft());
 	} 
 
-	@Test(priority = 11, enabled = true)
+	@Test(priority = 11, enabled = false)
 	public void RW_TC169_Click_onMapbox_attribution_displayed_BottomLeft_onNationalRadarpage() {
 		testStart("Navigate to National Radar page and Validate Mapbox attribution displayed on Radar Map");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -209,7 +209,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		Assert.assertEquals(getDriver().getCurrentUrl(), EXPECTED_LANDINGPAGE_URL);
 	} 
 
-	@Test(priority = 12, enabled = true)
+	@Test(priority = 12, enabled = false)
 	public void RW_TC170_Validate_Full_Screen_button_displayed_onRight_corner_ofRadarMap() {
 		testStart("Navigate to National Radar page and Validate Full screen button displayed on Radar Map");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -224,7 +224,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		Assert.assertEquals(actualFullScreenbuttonHeight, EXPECTED_FULLSCREEN_BUTTONHEIGHT);
 	} 
 
-	@Test(priority = 13, enabled = true)
+	@Test(priority = 13, enabled = false)
 	public void RW_TC170a_Validate_Timeline_controls_onFull_Screen_RadarMap() {
 		testStart("Navigate to National Radar page and validate timeline controls displayed on fullscreen Radar Map ");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -239,7 +239,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(radarPage.timelinecontrolsdisplayedonFullscreen());
 	} 
 
-	@Test(priority = 14, enabled = true)
+	@Test(priority = 14, enabled = false)
 	public void RW_TC170b_Validate_legends_displayed_onFull_Screen_RadarMap() {
 		testStart("Navigate to National Radar page and validate legends displayed on Full screen Radar Map");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -254,7 +254,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(radarPage.legendsdisplayedonFullscreenRadarMap());
 	} 
 
-	@Test(priority = 15, enabled = true)
+	@Test(priority = 15, enabled = false)
 	public void RW_TC170c_Validate_Fullscreen_Radarmap_closed_when_clicked_onCloseSymbol() {
 		testStart("Navigate to National Radar page Click on Full screen button and Validate full screen exits when clicked on close symbol");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -270,7 +270,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		radarPage.clickedonClosebuttonfromFullscreenRadarMap();
 	} 
 
-	@Test(priority = 16, enabled = true)
+	@Test(priority = 16, enabled = false)
 	public void RW_TC171_Validate_Timeline_controls_PastandFuture_displayed_onNational_RadarMap() {
 		testStart("Validate Timeline controls PastandFuture displayed onNational RadarMap");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -284,7 +284,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(radarPage.timelinecontrolsdisplayedonRadarMap());
 	} 
 
-	@Test(priority = 17, enabled = true)
+	@Test(priority = 17, enabled = false)
 	public void RW_TC171a_Validate_PASTCTA_Highlighted_byDeafult_onNational_RadarMap() {
 		testStart("Validate PASTCTA Highlighted byDeafult onNational RadarMap");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -298,7 +298,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		Assert.assertEquals(radarPage.PastCTAHighlightedbyDefaultonRadarMap(), EXPECTED_PASTCTA_COLOR);
 	} 
 
-	@Test(priority = 18, enabled = true)
+	@Test(priority = 18, enabled = false)
 	public void RW_TC171b_Validate_FUTURE_CTA_NotHighlighted_byDeafult_onNational_RadarMap() {
 		testStart("Validate FUTURE CTA NotHighlighted byDeafult onNational RadarMap");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -313,7 +313,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		Assert.assertEquals(futureCTAdisplayed, EXPECTED_FUTURE_CTA_COLOR);
 	} 
 
-	@Test(priority = 19, enabled = true)
+	@Test(priority = 19, enabled = false)
 	public void RW_TC172_Toggle_between_Past_andFuture_CTA_onNational_RadarMap() {
 		testStart("Validate Past andFuture CTA displayed on National  Weather Radar Map ");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -335,7 +335,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		Assert.assertEquals(radarPage.PastCTAHighlightedbyDefaultonRadarMap(), EXPECTED_PASTCTA_COLOR);
 	} 
 
-	@Test(priority = 20, enabled = true)
+	@Test(priority = 20, enabled = false)
 	public void RW_TC173_Validate_Time_Slider_Playbutton_displayed_onNational_RadarMap() {
 		testStart("Validate Time Slider with Playbutton displayed on National Radar Map");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -350,7 +350,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 
 	} 
 
-	@Test(priority = 21, enabled = true)
+	@Test(priority = 21, enabled = false)
 	public void RW_TC173_Validate_Timeslider_toggle_between_Pastand_FututreCTA_onNational_RadarPage() {
 		testStart("Toggle between Pastand FututreCTA on National RadarPage and Validate Timeslider");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -367,7 +367,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		radarPage.clickonPauseButton();
 	} 
 
-	@Test(priority = 22, enabled = true)
+	@Test(priority = 22, enabled = false)
 	public void RW_TC174_Select_PastCTA_and_click_on_Play_button_onNational_RadarPage() {
 		testStart("Validate when PastCTA Select and clicked on Playbutton onNational_RadarPage");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -400,7 +400,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		}
 	} 
 
-	@Test(priority = 23, enabled = true)
+	@Test(priority = 23, enabled = false)
 	public void RW_TC175_Select_FutureCTA_and_click_on_Play_button_onNational_RadarPage() {
 		testStart("Validate when FutureCTA Selected and click on Play button onNational RadarPage");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -434,7 +434,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 
 	} 
 
-	@Test(priority = 24, enabled = true)
+	@Test(priority = 24, enabled = false)
 	public void RW_TC_176_Validate_Rain_Legends_below_RadarMap() {
 		testStart("Validate Rain Legends below RadarMap");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -448,7 +448,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(radarPage.isLegendDisplayedbelowRadarMap(LEGEND_RAIN));
 	}
 
-	@Test(priority = 25, enabled = true)
+	@Test(priority = 25, enabled = false)
 	public void RW_TC_176_a_Validate_Rain_Legends_displayed_with_Text_Light_andSevere() {
 		testStart("Validate Legend Rain displayed with Text Light");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -463,7 +463,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 
 	} 
 
-	@Test(priority = 26, enabled = true)
+	@Test(priority = 26, enabled = false)
 	public void RW_TC_177_c_Validate_Legend_Rain_displayed_with_Color() {
 		testStart("Validate Legend Snow displayed with Text Severe");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -478,7 +478,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 
 	} 
 
-	@Test(priority = 27, enabled = true)
+	@Test(priority = 27, enabled = false)
 	public void RW_TC_177_Validate_Legend_Snow_Displayed_below_RadarMap() {
 		testStart("Validate Legend Snow displayed below Radar map");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -493,7 +493,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 
 	}
 
-	@Test(priority = 28, enabled = true)
+	@Test(priority = 28, enabled = false)
 	public void RW_TC_177_a_Validate_Snow_Legends_displayed_with_Text_Light_andSevere() {
 		testStart("Validate Legend Snow displayed with Text Light");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -507,7 +507,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(radarPage.legendSnowDisplayedwithTextLightandSevere());
 	}
 
-	@Test(priority = 29, enabled = true)
+	@Test(priority = 29, enabled = false)
 	public void RW_TC_177_c_Validate_Legend_Snow_displayed_with_Color() {
 		testStart("Validate Legend Snow displayed with Text Severe");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -522,7 +522,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 
 	}
 
-	@Test(priority = 30, enabled = true)
+	@Test(priority = 30, enabled = false)
 	public void RW_TC_178_Validate_Legend_Ice_Displayed_below_RadarMap() {
 		testStart("Validate Legend Ice Displayed below RadarMap");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -537,7 +537,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 
 	}
 
-	@Test(priority = 31, enabled = true)
+	@Test(priority = 31, enabled = false)
 	public void RW_TC_178_a_Validate_Legend_ICE_displayed_with_Text_Light_andSevere() {
 		testStart("Validate Legend Ice displayed with Text Light");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -551,7 +551,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(radarPage.legendIceDisplayedwithTextLightandSevere());
 	}
 
-	@Test(priority = 32, enabled = true)
+	@Test(priority = 32, enabled = false)
 	public void RW_TC_177_c_Validate_Legend_ICE_displayed_with_Color() {
 		testStart("Validate Legend Snow displayed with Text Severe");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -565,7 +565,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		radarPage.legendIcecoloursdisplayed();
 	}
 
-	@Test(priority = 33, enabled = true)
+	@Test(priority = 33, enabled = false)
 	public void RW_TC_180_Validate_Legend_Mix_Displayed_below_RadarMap() {
 		testStart("Validate Legend Mix Displayed below RadarMap");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -580,7 +580,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 
 	}
 
-	@Test(priority = 34, enabled = true)
+	@Test(priority = 34, enabled = false)
 	public void RW_TC_180_a_Validate_Legend_Mix_displayed_with_Text_Light_andSevere() {
 		testStart("Validate Legend Mix displayed with Text Light");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);
@@ -594,7 +594,7 @@ public class Test_NationalRadarPageIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(radarPage.legendMixDisplayedwithTextLightandSevere());
 	}
 
-	@Test(priority = 35, enabled = true)
+	@Test(priority = 35, enabled = false)
 	public void RW_TC_177_c_Validate_Legend_Mix_displayed_with_Color() {
 		testStart("Validate Legend Mix displayed with various colors");
 		landingPage.enterZipcodeInSearchFieldAndClick(citySearchedByName);

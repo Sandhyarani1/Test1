@@ -36,7 +36,7 @@ public class Test_ContactUsPageIPAD extends AccuWeatherBaseTest {
 	private final static String RESPONSE_HEADING = "THANK YOU FOR CONTACTING US!";
 	private final static String RESPONSE_MESSAGE = "Thank you for your submission. All comments, suggestions, and bug reports for AccuWeather.com products and services are read. Due to the volume of requests, we cannot guarantee a personal response, however, we will investigate your request.";
 
-	@Test(priority = 1,enabled = true)
+	@Test(priority = 1,enabled = false)
 	private void RW_T510_ValidatePresenceOfContactUs() {
 		testStart("Verifying the presence of Contact Us");
 		Assert.assertEquals(contactUs.getContactUsText(), CONTACT_US);
@@ -44,7 +44,7 @@ public class Test_ContactUsPageIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 2,enabled = true)
+	@Test(priority = 2,enabled = false)
 	private void RW_T510_Validate_URL_Of_ContactUs_Page() {
 		testStart("Verifying the presence of Contact Us");
 		Assert.assertEquals(contactUs.getContactUsURL(), CONTACT_US_URL);
@@ -52,7 +52,7 @@ public class Test_ContactUsPageIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 3,enabled = true)
+	@Test(priority = 3,enabled = false)
 	private void RW_T510_Validate_Title_Of_ContactUs_Page() {
 		testStart("Verifying the presence of Contact Us");
 		Assert.assertEquals(contactUs.getContactUsTitle(), CONTACT_US_TITLE);
@@ -60,7 +60,7 @@ public class Test_ContactUsPageIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 4,enabled = true)
+	@Test(priority = 4,enabled = false)
 	private void RW_T510_Validate_Heading_Of_ContactUs_Tab() {
 		testStart("Verifying the presence of Contact Us");
 		Assert.assertEquals(contactUs.getHeadingOfContactUsTab().toUpperCase(), CONTACT_US_TAB_HEADING);
@@ -68,7 +68,7 @@ public class Test_ContactUsPageIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 5,enabled = true)
+	@Test(priority = 5,enabled = false)
 	private void RW_T510_Validate_BorderColor_Of_ContactUs_Tab() {
 		testStart("Verifying the presence of Contact Us");
 		Assert.assertEquals(contactUs.getTopBorderColor_Of_ContactUsTab(), CONTACT_US_BORDER_COLOR);
@@ -76,7 +76,7 @@ public class Test_ContactUsPageIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 6,enabled = true)
+	@Test(priority = 6,enabled = false)
 	private void RW_T510_Validate_BorderColor_Of_GeneralSupport_Tab() {
 		testStart("Verifying the presence of Contact Us");
 		Assert.assertEquals(contactUs.getBottom_BorderColor_Of_GeneralSupport_Link(),
@@ -85,7 +85,7 @@ public class Test_ContactUsPageIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 7,enabled = true)
+	@Test(priority = 7,enabled = false)
 	private void RW_T510_Validate_BorderColor_Of_IPhoneApps_Tab() {
 		testStart("Verifying the presence of Contact Us");
 		Assert.assertEquals(contactUs.getBottom_BorderColor_Of_IPhoneApps_Link(), IPHONE_APPS_BOTTOM_BORDER_COLOR);
@@ -93,7 +93,7 @@ public class Test_ContactUsPageIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 8,enabled = true)
+	@Test(priority = 8,enabled = false)
 	private void RW_T510_Validate_Presence_Of_IPhoneApps_Tab() {
 		testStart("Verifying the presence of Contact Us");
 		Assert.assertEquals(contactUs.getTextOfIPhoneAppsTab(), IPHONE_APPS);
@@ -101,7 +101,7 @@ public class Test_ContactUsPageIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 9,enabled = true)
+	@Test(priority = 9,enabled = false)
 	private void RW_T510_Validate_Presence_Of_GeneralSupport_Tab() {
 		testStart("Verifying the presence of Contact Us");
 		Assert.assertEquals(contactUs.getTextOfGeneralSupportTab(), GENERAL_SUPPORT);
@@ -109,7 +109,7 @@ public class Test_ContactUsPageIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 10,enabled = true)
+	@Test(priority = 10,enabled = false)
 	private void RW_T510_Validate_URL_WhenClickedOn_HelpLink_From_GeneralSupport_Tab() {
 		testStart("Verifying the presence of Contact Us");
 		Assert.assertEquals(contactUs.getHelpURLWhenClickedFromGeneralSupport(), HELP_URL);
@@ -117,7 +117,7 @@ public class Test_ContactUsPageIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 11,enabled = true)
+	@Test(priority = 11,enabled = false)
 	private void RW_T510_Validate_URL_WhenClickedOn_ClickHereLink_From_GeneralSupport_Tab() {
 		testStart("Verifying the presence of Contact Us");
 		Assert.assertEquals(contactUs.getClickHereURLWhenClickedFromGeneralSupport(), PRIVACY_POLICY_URL);
@@ -125,7 +125,7 @@ public class Test_ContactUsPageIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 12,enabled = true)
+	@Test(priority = 12,enabled = false)
 	private void RW_T510_Validate_URL_WhenClickedOn_HelpLink_From_IPhoneApps_Tab() {
 		testStart("Verifying the presence of Contact Us");
 		Assert.assertEquals(contactUs.getHelpURLWhenClickedFromIPhoneApps(), HELP_URL);
@@ -133,7 +133,7 @@ public class Test_ContactUsPageIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 13,enabled = true)
+	@Test(priority = 13,enabled = false)
 	private void RW_T510_Validate_URL_WhenClickedOn_ClickHereLink_From_IPhoneApps_Tab() {
 		testStart("Verifying the presence of Contact Us");
 		Assert.assertEquals(contactUs.getClickHereURLWhenClickedFromIPhoneApps(), PRIVACY_POLICY_URL);

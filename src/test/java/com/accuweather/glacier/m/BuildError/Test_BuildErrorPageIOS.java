@@ -81,7 +81,7 @@ public class Test_BuildErrorPageIOS extends AccuWeatherBaseTest {
 				"CTA Text (Back to AccuWeather) displayed not matching");
 	}
 
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = false)
 	public void TC4_errorpageCTAtextDisplayedinOrange() throws InterruptedException, URISyntaxException {
 		testStart("Navigating to the Error Page and verying cloud background displayed");
 		String appendedUrl = erropage.addtexttoEndURL();
@@ -93,7 +93,7 @@ public class Test_BuildErrorPageIOS extends AccuWeatherBaseTest {
 				"CTA Text Back to AcuuWeater not displayed in Orange colour");
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void TC4_errorpageCTAtextDisplayedwitharrow() throws InterruptedException, URISyntaxException {
 		testStart("Navigating to the Error Page and verying cloud background dislayed");
 		String appendedUrl = erropage.addtexttoEndURL();
@@ -103,7 +103,7 @@ public class Test_BuildErrorPageIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(erropage.CTABacktoAccuweatherwithArrowDisplayed());
 	}
 
-	@Test(priority = 8, enabled = true)
+	@Test(priority = 8, enabled = false)
 	public void TC5_errorpageCTABacktoAccuweatherisclicked() throws InterruptedException, URISyntaxException {
 		testStart("Navigating to the Error Page and verying cloud background dislayed");
 		String appendeUrl = erropage.addtexttoEndURL();
@@ -115,7 +115,7 @@ public class Test_BuildErrorPageIOS extends AccuWeatherBaseTest {
 				"User not redirected to Acuweather Home page");
 	}
 
-	@Test(priority = 9, enabled = true)
+	@Test(priority = 9, enabled = false)
 	public void TC6_navigatingtoBuild500ErrorPage() throws InterruptedException, URISyntaxException {
 		testStart("Navigating to the 500 Error Page");
 		String appendedUrl = erropage.apendtexttoEndURL2();
@@ -127,7 +127,7 @@ public class Test_BuildErrorPageIOS extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 10, enabled = true)
+	@Test(priority = 10, enabled = false)
 	public void TC6_navigatingto500ErrorPageandvalidatingErrortype() throws InterruptedException, URISyntaxException {
 		testStart("Navigating to the 500 Error Page and validating Error Type displayed ");
 		String appendedurl = erropage.apendtexttoEndURL2();
@@ -140,7 +140,7 @@ public class Test_BuildErrorPageIOS extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 11, enabled = true)
+	@Test(priority = 11, enabled = false)
 	public void TC7_navigatingto500ErrorPageandvalidatingErrortextdisplayed()
 			throws InterruptedException, URISyntaxException {
 		testStart("Navigating to the 500 Error Page and validating Error Type displayed ");
@@ -155,7 +155,7 @@ public class Test_BuildErrorPageIOS extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 12, enabled = true)
+	@Test(priority = 12, enabled = false)
 	public void TC8_navigatingto500errorpagevalidatingCTATextDisplayed()
 			throws InterruptedException, URISyntaxException {
 		testStart("Navigating to 500 Error Page and validating Text Back to AccuWeather is dislayed");
@@ -169,7 +169,7 @@ public class Test_BuildErrorPageIOS extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 13, enabled = true)
+	@Test(priority = 13, enabled = false)
 	public void TC8_navigatingto500errorpagevalidatingCTAtextDisplayedinOrange()
 			throws InterruptedException, URISyntaxException {
 		testStart("Navigating to 500 Error Page and validating CTAtext Displayed in Orange");
@@ -184,7 +184,7 @@ public class Test_BuildErrorPageIOS extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 14, enabled = true)
+	@Test(priority = 14, enabled = false)
 	public void TC8_navigatingto500errorpagevalidatingCTAtextDisplayedwitharrow()
 			throws InterruptedException, URISyntaxException {
 		testStart("Navigating to the Error Page and validating CTAtext Displayed with arrow");
@@ -197,7 +197,7 @@ public class Test_BuildErrorPageIOS extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 15, enabled = true)
+	@Test(priority = 15, enabled = false)
 	public void TC8_navigatingto500errorpageandvalidatingCTABacktoAccuweatherisclicked()
 			throws InterruptedException, URISyntaxException {
 		testStart(

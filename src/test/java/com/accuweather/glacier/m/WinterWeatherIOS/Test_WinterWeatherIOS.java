@@ -24,7 +24,7 @@ public class Test_WinterWeatherIOS extends AccuWeatherMobileBaseTest {
 	private WinterWeatherPageIOS winterWeatherPage = new WinterWeatherPageIOS();
 	private CityRadarPageMobile cityRadar = new CityRadarPageMobile();
 
-	@Test(priority = 1, enabled = false)
+	@Test(priority = 1, enabled = true)
 	public void RW_T1570_VerifyPageNavigationMenuSevereWeatherAndSubMenuWinterWeather_verifyWinterWeatherPage() {
 		testStart("Validate user successfullly navigated to winter weather page");
 		winterWeatherPage.clickBreadCrumbMenu();
@@ -33,7 +33,7 @@ public class Test_WinterWeatherIOS extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(getDriver().getCurrentUrl(), EXPECTED_WINTERWEATHER_URL);
 	}
 
-	@Test(priority = 2, enabled = false)
+	@Test(priority = 2, enabled = true)
 	public void RW_T1588_VerifyNationalWeatherServiceSnowDepthonWinterWeatherPage_verifyUserSeeNationalWeatherServiceMap() {
 		testStart("Validate user able to see national weather service map");
 		winterWeatherPage.clickBreadCrumbMenu();
@@ -45,7 +45,7 @@ public class Test_WinterWeatherIOS extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualTitle, EXPECTED_MAP_TITLE);
 	}
 
-	@Test(priority = 3, enabled = false)
+	@Test(priority = 3, enabled = true)
 	public void RW_T1573_VerifyNationalForecastMapModuleOnWinterWeatherHomePage_verifyNationalForecastMap() {
 		testStart("Verify National Forecast Maps module on winter weather home page");
 		winterWeatherPage.clickBreadCrumbMenu();
@@ -57,7 +57,7 @@ public class Test_WinterWeatherIOS extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualTitle, EXPECTED_NATIONAL_FORECAST_MAP_TITLE);
 	}
 
-	@Test(priority = 4, enabled = false)
+	@Test(priority = 4, enabled = true)
 	public void RW_T1587_VerifyLocalForecastMapModuleOnWinterWeatherHomePage_verifyLocalForecastMapSearchModule() {
 		testStart("Verify Local Forecast Maps module on winter weather home page");
 		winterWeatherPage.clickBreadCrumbMenu();

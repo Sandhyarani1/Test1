@@ -70,7 +70,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(ActualForecastPageTitle, EXPECTED_FORECAST_PAGE_URL);
 	}
 
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = false)
 	public void RW_T239_Currentweather() {
 		testStart("Validate curent condition page current weather card is displayed ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -81,7 +81,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(ActualForecastPageTitle, EXPECTED_FORECAST_PAGE_URL);
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void RW_T239_TimeDisplayedingrey() throws InterruptedException {
 		testStart("Validate curent weather Time is displayed ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -95,7 +95,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(Actualtimecolour, expectedblackcolour);
 	}
 
-	@Test(priority = 8, enabled = true)
+	@Test(priority = 8, enabled = false)
 	public void RW_T239_Weatherdisplayed() throws InterruptedException {
 		testStart("Validate curent weather icon is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -107,7 +107,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(conditionpage.weathericondisplayed());
 	}
 
-	@Test(priority = 9, enabled = true)
+	@Test(priority = 9, enabled = false)
 	public void RW_T239_Temperaturedisplayedinfont() throws InterruptedException {
 		testStart("Validate curent weather Temperature is displayed in bold");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -118,7 +118,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(Integer.parseInt(conditionpage.temperatureinbold()) > 290);
 	}
 
-	@Test(priority = 11, enabled = true)
+	@Test(priority = 11, enabled = false)
 	public void RW_T239_currentWeatherTimeisDisplayedinGrey() {
 		testStart("Validate curent weather time is displayed in Grey color");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -129,7 +129,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(conditionpage.validateElementIsGrey("time displayed"), expectedTimecolourgrey);
 	}
 
-	@Test(priority = 12, enabled = true)
+	@Test(priority = 12, enabled = false)
 	public void RW_T239_currentWeatherRealFeelTemperatureisDisplayedinGrey() {
 		testStart("Validate current Weather Real Feel Temperature is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -140,7 +140,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(conditionpage.validateElementIsGrey("Real feel temparature"), expectedTimecolourgrey);
 	}
 
-	@Test(priority = 13, enabled = true)
+	@Test(priority = 13, enabled = false)
 	public void RW_T239_currentWeatherHumidityisDisplayedinGrey() {
 		testStart("Validate TC4_current Weather Humidity is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -151,7 +151,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(conditionpage.validateElementIsGrey("Humidity"), expectedblackcolour);
 	}
 
-	@Test(priority = 14, enabled = true)
+	@Test(priority = 14, enabled = false)
 	public void RW_T239_currentWeatherUVIndexisDisplayedinGrey() {
 		testStart("Validate current Weather UVIndex is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -162,7 +162,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(conditionpage.validateElementIsGrey("UV index"), expectedblackcolour);
 	}
 
-	@Test(priority = 15, enabled = true)
+	@Test(priority = 15, enabled = false)
 	public void RW_T239_currentWeatherCloudCoverisDisplayedinGrey() {
 		testStart("Validate current Weather Cloud cover is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -173,7 +173,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(conditionpage.validateElementIsGrey("cloud cover"), expectedblackcolour);
 	}
 
-	@Test(priority = 16, enabled = true)
+	@Test(priority = 16, enabled = false)
 	public void RW_T239_currentWeatherPressureisDisplayedinGrey() {
 		testStart("Validate current Weather Pressure is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -184,7 +184,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(conditionpage.validateElementIsGrey("pressure"), expectedblackcolour);
 	}
 
-	@Test(priority = 17, enabled = true)
+	@Test(priority = 17, enabled = false)
 	public void RW_T239_currentWeatherDewPointisDisplayedinGrey() {
 		testStart("Validate current Weather dew point is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -195,7 +195,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(conditionpage.validateElementIsGrey("dew point"), expectedblackcolour);
 	}
 
-	@Test(priority = 18, enabled = true)
+	@Test(priority = 18, enabled = false)
 	public void RW_T239_currentWeathervisibilityisDisplayedinGrey() {
 		testStart("Validate current Weather visibility is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -206,7 +206,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(conditionpage.validateElementIsGrey("visibility"), expectedblackcolour);
 	}
 
-	@Test(priority = 19, enabled = true)
+	@Test(priority = 19, enabled = false)
 	public void RW_T239_currentWeatherRealfeelShadeIsDisplayedinGrey() {
 		testStart("Validate current Weather real feel shade is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -217,7 +217,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(conditionpage.validateElementIsGrey("real feel shade"), expectedblackcolour);
 	}
 
-	@Test(priority = 20, enabled = true)
+	@Test(priority = 20, enabled = false)
 	public void RW_T239_currentWeatherCompassIconIsDisplayedinGrey() {
 		testStart("Validate current Weather compass icon is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -228,7 +228,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(conditionpage.validateElementIsGrey("compass icon"), expectedblackcolour);
 	}
 
-	@Test(priority = 21, enabled = true)
+	@Test(priority = 21, enabled = false)
 	public void RW_T239_currentWeatherWindIsDisplayedinGrey() {
 		testStart("Validate current Weather wind is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -239,7 +239,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(conditionpage.validateElementIsGrey("wind"), expectedblackcolour);
 	}
 
-	@Test(priority = 22, enabled = true)
+	@Test(priority = 22, enabled = false)
 	public void RW_T239_currentWeatherGustsIsDisplayedinGrey() {
 		testStart("Validate current Weather gusts is Displayed in Grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -873,7 +873,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 62, enabled = true)
+	@Test(priority = 62, enabled = false)
 	public void RW_T241_NightorganismCurrentWeatherGustsIsInGreyColor() {
 		testStart("Validate whether Night organism Gusts element is grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -893,7 +893,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 63, enabled = true)
+	@Test(priority = 63, enabled = false)
 	public void RW_T241_NightorganismCurrentWeatherCompassIconIsInGreyColor() {
 		testStart("Validate whether Night organism compass icon is grey");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -913,7 +913,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 64, enabled = true)
+	@Test(priority = 64, enabled = false)
 	public void RW_T243_temperatureHistoryOrganismIsDisplayed() {
 		testStart("Validate whether Night organism temperature History Organism is displayed");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1335,7 +1335,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 82, enabled = true)
+	@Test(priority = 82, enabled = false)
 	public void RW_T242_Sunrise_Time_Displayed_inBlack() {
 		String Expectedblackcolour2 = "#1e1e1e";
 		testStart("Validate time displayed in Sunrise organism is in Black ");
@@ -1491,7 +1491,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(Integer.parseInt(conditionpage.Durationtimeinbold()) > 399);
 	}
 
-	@Test(priority = 90, enabled = true)
+	@Test(priority = 90, enabled = false)
 	public void RW_T242_Sunrise_Sunset_sunIcondisplayed() {
 		testStart("Validating time displayed under duration title is in Bold ");
 		landingpage.enterZipcodeInSearchField(zipcode);
@@ -1506,7 +1506,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(conditionpage.IssuniconDisplayed());
 	}
 
-	@Test(priority = 91, enabled = true)
+	@Test(priority = 91, enabled = false)
 	public void RW_T242_Moonrise_Title_Displayed_inGrey() {
 		String Expectedcolour = "#8f8f8f"; // Expected Colour display is Grey
 		testStart("Validate Title Moonrise displayed in grey color ");
@@ -1674,7 +1674,7 @@ public class Test_CurrentConditionMobile extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 98, enabled = true)
+	@Test(priority = 98, enabled = false)
 	public void RW_T242_Moonrise_Moonset_Duration_Displayed_inBlack() {
 		String Expectedblackcolour2 = "#1e1e1e";
 		testStart("Validating Moonrise and Moonset time displayed under duration title is Black ");

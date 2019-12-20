@@ -55,7 +55,7 @@ public class Test_RegionalSatellitePageMobile extends AccuWeatherMobileBaseTest 
 
 	}
 
-	@Test(priority = 2, enabled = false)
+	@Test(priority = 2, enabled = true)
 	public void RW_TC313_Validate_Satellite_tab_Highlighted_byDefault_onSecondary_Navigations_menus_ofRegional_Satellite_Map() {
 		testStart(
 				"Validate Satellite tab highlighted in orange by default on secondary navigations menus of satellite map.");
@@ -68,7 +68,7 @@ public class Test_RegionalSatellitePageMobile extends AccuWeatherMobileBaseTest 
 		Assert.assertEquals(satellitePage.satelliteTabHighlighted(), EXPECTED_SATELLITETAB_HIGHLIGHTED);
 	}
 
-	@Test(priority = 3, enabled = false)
+	@Test(priority = 3, enabled = true)
 	public void RW_TC313_Validate_Enchanced_tab_Highlighted_byDefault_onTeritary_Navigations_menus_ofRegional_Satellite_Map() {
 		testStart(
 				"Validate Enchaced Tab highlighted in orange by default on Teritary navigations menus of satellite map.");
@@ -81,7 +81,7 @@ public class Test_RegionalSatellitePageMobile extends AccuWeatherMobileBaseTest 
 		Assert.assertEquals(satellitePage.EnchancedTabHighlighted(), EXPECTED_ENCHANCEDTAB_HIGHLIGHTED_BYDEFAULT);
 	}
 	
-	@Test(priority = 4, enabled = false)
+	@Test(priority = 4, enabled = true)
 	public void RW_TC218_Validate_Tertiary_menus_displayed_for_National_Satellite_Map() {
 		testStart("Validate Tertiary menus displayed  on national satellite page.");
 		satellitePage.searchCityByName(citySearchedByName);
@@ -95,7 +95,7 @@ public class Test_RegionalSatellitePageMobile extends AccuWeatherMobileBaseTest 
 	}
 	
 
-	@Test(priority = 5, enabled = false)
+	@Test(priority = 5, enabled = true)
 	public void RW_TC313_Validate_Title_of_map_displayed_on_Regional_Satellite_page() {
 		testStart("Validate Title of the map displayed on Regional Satellite Map.");
 		satellitePage.searchCityByName(citySearchedByName);

@@ -241,7 +241,7 @@ public class Test_articlesPageIpad  extends AccuWeatherMobileBaseTest
 		Assert.assertNotNull(dateDisplayed);
 	}
 	
-	@Test(priority=13,enabled=true)
+	@Test(priority=13,enabled = false)
 	public void RW_TC966_Navigating_to_News_Article_Page_Validate_Shareicon_Displayed()
 	{
 		testStart("Validate National Article page is loaded successfully");
@@ -255,7 +255,7 @@ public class Test_articlesPageIpad  extends AccuWeatherMobileBaseTest
 		Assert.assertTrue(articles.shareIconDisplayed());
 	}
 	
-	@Test(priority=14,enabled=true)
+	@Test(priority=14,enabled = false)
 	public void RW_TC966_Navigating_to_News_Article_Page_Validate_Shareicon_hasSocial_Sharing_OptionsDisplayed()
 	{
 		testStart("Validate National Article page is loaded successfully");

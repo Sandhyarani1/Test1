@@ -64,7 +64,7 @@ public class TestLocalizationIOS extends AccuWeatherMobileBaseTest {
 	} 
 
 	/*
-	 * @Test(priority = 3,enabled = true) public void
+	 * @Test(priority = 3,enabled = false) public void
 	 * TC3_verify_MapsSubmenu_Description() {
 	 * testStart("Validate Maps submenu description");
 	 * landingPage.enterZipcodeInSearchField(location);
@@ -78,7 +78,7 @@ public class TestLocalizationIOS extends AccuWeatherMobileBaseTest {
 	
 	
 	/*
-	 * @Test(priority = 4, enabled = true) public void
+	 * @Test(priority = 4, enabled = false) public void
 	 * TC4__validation_Of_MapsSubmenu_URL() {
 	 * testStart("Validate the URL of Maps submenu page");
 	 * landingPage.enterZipcodeInSearchField(location);
@@ -92,7 +92,7 @@ public class TestLocalizationIOS extends AccuWeatherMobileBaseTest {
 	
 	
 	/*
-	 * @Test(priority = 5, enabled = true) public void
+	 * @Test(priority = 5, enabled = false) public void
 	 * TC5_verify_SatelliteSubmenu_Description() {
 	 * testStart("Validate Satellite submenu description");
 	 * landingPage.enterZipcodeInSearchField(location);
@@ -135,7 +135,7 @@ public class TestLocalizationIOS extends AccuWeatherMobileBaseTest {
 	} 
 
 	/*
-	 * @Test(priority = 8, enabled = true) public void
+	 * @Test(priority = 8, enabled = false) public void
 	 * TC8_verify_SevereSubmenu_Description() {
 	 * testStart("Validate Severe submenu description");
 	 * landingPage.enterZipcodeInSearchField("Rio de Janeiro, Brazil");
@@ -148,7 +148,7 @@ public class TestLocalizationIOS extends AccuWeatherMobileBaseTest {
 	 */
 	
 	
-	@Test(priority = 9, enabled = true)
+	@Test(priority = 9, enabled = false)
 	public void TC9__validation_Of_SevereSubmenu_URL() {
 		testStart("Validate the URL of Severe submenu under Maps");
 		landingPage.enterZipcodeInSearchFieldAndClick(locationRio);
@@ -162,7 +162,7 @@ public class TestLocalizationIOS extends AccuWeatherMobileBaseTest {
 	} 
 
 	/*
-	 * @Test(priority = 10, enabled = true) public void
+	 * @Test(priority = 10, enabled = false) public void
 	 * TC10__verify_SatelliteSubMenu_Map_Title() {
 	 * testStart("Locate Satellite under Maps and verify description below the Maps"
 	 * ); landingPage.enterZipcodeInSearchField("Rio de Janeiro, Brazil");
@@ -177,7 +177,7 @@ public class TestLocalizationIOS extends AccuWeatherMobileBaseTest {
 	
 	
 	/*
-	 * @Test(priority = 11, enabled = true) public void
+	 * @Test(priority = 11, enabled = false) public void
 	 * TC11__verify_SatelliteSubMenu_Map_Description() {
 	 * testStart("Locate Satellite under Maps and verify the title of the map");
 	 * landingPage.enterZipcodeInSearchField("Rio de Janeiro, Brazil");
@@ -191,7 +191,7 @@ public class TestLocalizationIOS extends AccuWeatherMobileBaseTest {
 	 */
 
 	/*
-	 * @Test(priority = 12, enabled = true) public void
+	 * @Test(priority = 12, enabled = false) public void
 	 * TC12__validation_Of_SatelliteImage_URL() {
 	 * testStart("Click on the satellite image under Maps and Validate the URL");
 	 * landingPage.enterZipcodeInSearchField("Rio de Janeiro, Brazil");
@@ -204,7 +204,7 @@ public class TestLocalizationIOS extends AccuWeatherMobileBaseTest {
 	 */
 	
 	
-	@Test(priority = 13, enabled = true)
+	@Test(priority = 13, enabled = false)
 	public void TC13__verfiy_PresenceOf_MinuteCast() {
 		testStart("Verify the prescence of minutecast on city forecast page");
 		landingPage.enterZipcodeInSearchFieldAndClick(locationRoyaOak);
@@ -213,7 +213,7 @@ public class TestLocalizationIOS extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(localization.isMinutecastPresent());
 	} 
 
-	@Test(priority = 14, enabled = true)
+	@Test(priority = 14, enabled = false)
 	public void TC14_change_Temperature_F_To_C() {
 		testStart("Change the temperature from F to C");
 		landingPage.enterZipcodeInSearchFieldAndClick(locationRoyaOak);
@@ -226,7 +226,7 @@ public class TestLocalizationIOS extends AccuWeatherMobileBaseTest {
 		cityRadar.clickBreadcrumbTemperatureToggleMenu();
 	} 
 
-	@Test(priority = 15, enabled = true)
+	@Test(priority = 15, enabled = false)
 	public void TC13__verfiy_abcenseOf_MinuteCast() {
 		testStart("Verify the prescence of minutecast on city forecast page");
 		landingPage.enterZipcodeInSearchFieldAndClick(location);

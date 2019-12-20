@@ -23,7 +23,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 	private LandingPageMobile landingPage = new LandingPageMobile();
 	private CityRadarPageMobile cityRadar = new CityRadarPageMobile();
 
-	@Test(priority = 1, enabled = false)
+	@Test(priority = 1, enabled = true)
 	public void RW_T268_MixLegendsBelowMap_verifyLightAndSeverFromMixLegend() {
 		testStart("Verify severe and light present below the mix legend");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -34,7 +34,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(cityRadar.verifyLightAndSeverFromMixLegend());
 	}
 
-	@Test(priority = 2, enabled = false)
+	@Test(priority = 2, enabled = true)
 	public void RW_T268_MixLegendsBelowMap_verifyMixLegendColorVaryFromLightToDark() {
 		testStart("Verify the color vary from light to dark");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -45,7 +45,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(cityRadar.verifyColorVaryFromLightToDark());
 	}
 
-	@Test(priority = 3, enabled = false)
+	@Test(priority = 3, enabled = true)
 	public void RW_T267_IceLegendsBelowMap_verifyLightAndSeverFromIceLegend() {
 		testStart("Verify severe and light present below the ice legend");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -56,7 +56,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(cityRadar.verifyLightAndSeverFromIceLegend());
 	}
 
-	@Test(priority = 4, enabled = false)
+	@Test(priority = 4, enabled = true)
 	public void RW_T267_IceLegendsBelowMap_verifyMixLegendColorVaryFromLightToDark() {
 		testStart("Verify the color vary from light to dark");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -67,7 +67,7 @@ public class Test_cityRadar extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(cityRadar.verifyColorVaryFromLightToDark());
 	}
 
-	@Test(priority = 5, enabled = false)
+	@Test(priority = 5, enabled = true)
 	public void RW_T266_SnowLegendsBelowMap_verifyLightAndSeverFromSnowLegend() {
 		testStart("Verify severe and light present below the ice legend");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);

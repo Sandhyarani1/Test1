@@ -22,7 +22,7 @@ public class Test_SevereWeatherIPAD extends AccuWeatherBaseTest {
 	private LandingPageMobile landingPage = new LandingPageMobile();
 	private SevereWeatherPageIPAD severeWeatherPage = new SevereWeatherPageIPAD();
 
-	@Test(priority = 1,enabled=true)
+	@Test(priority = 1,enabled=false)
 	public void RW_T502_ValidateTabsOnSevereWeatherPage_verifyUserIsTakenToSevereWeatherPage() {
 		testStart("Validate user is taken to severe weatehr page");
 		severeWeatherPage.mouseHoverOnSeverWeather();
@@ -34,7 +34,7 @@ public class Test_SevereWeatherIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 2,enabled=true)
+	@Test(priority = 2,enabled=false)
 	public void RW_T502_ValidateTabsOnSevereWeatherPage_verifyTabsOnSevereWeatherPage() {
 		testStart("Validate 3 tabs (Hurricane, severe, accuweather ready) on severe weatehr page");
 		severeWeatherPage.mouseHoverOnSeverWeather();
@@ -45,7 +45,7 @@ public class Test_SevereWeatherIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 3,enabled=true)
+	@Test(priority = 3,enabled=false)
 	public void RW_T381_TooltipAndZoomControlsOnRightCornerOfMap_verifyTooltipHighlightedInOrangeColor() {
 		testStart("Verify tooltip is orange in color");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -59,7 +59,7 @@ public class Test_SevereWeatherIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 4,enabled=true)
+	@Test(priority = 4,enabled=false)
 	public void RW_T381_TooltipAndZoomControlsOnRightCornerOfMap_verifyTooltipDescription() {
 		testStart("Verify tooltip description");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -73,7 +73,7 @@ public class Test_SevereWeatherIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 5,enabled=true)
+	@Test(priority = 5,enabled=false)
 	public void RW_T381_TooltipAndZoomControlsOnRightCornerOfMap_verifyZoomInAndZoomOutofMap() {
 		testStart("Verify able to click zoom in and zoom out of the map");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -87,7 +87,7 @@ public class Test_SevereWeatherIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 6,enabled=true)
+	@Test(priority = 6,enabled=false)
 	public void RW_T381_TooltipAndZoomControlsOnRightCornerOfMap_verifyToolTipClosed() {
 		testStart("Verify on click of tooltip again, the tooltip closes");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -101,7 +101,7 @@ public class Test_SevereWeatherIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 7,enabled=true)
+	@Test(priority = 7,enabled=false)
 	public void RW_T380_TitleOfMapForSevereWeather_verifyMapHeaderForSevereWeather() {
 		testStart("Verify title of map for severe weather");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -115,7 +115,7 @@ public class Test_SevereWeatherIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 8,enabled=true)
+	@Test(priority = 8,enabled=false)
 	public void RW_T379_TitleOfMapForSevereWeather_verifySecondaryNavigationMenusAboveMap() {
 		testStart("Verify secondary navigation menus [hurricane, severe] displayed above the map");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -129,7 +129,7 @@ public class Test_SevereWeatherIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 9,enabled=true)
+	@Test(priority = 9,enabled=false)
 	public void RW_T379_TitleOfMapForSevereWeather_verifySevereTabHiglightedColor() {
 		testStart("Verify severe tab highlighted in color");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -143,7 +143,7 @@ public class Test_SevereWeatherIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 10,enabled=true)
+	@Test(priority = 10,enabled=false)
 	public void RW_T382_MapboxAttribution_locateMapboxAndClickInextToit() {
 		testStart("Verify mapbox and click i next to mapbox");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -156,7 +156,7 @@ public class Test_SevereWeatherIPAD extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 11,enabled=true)
+	@Test(priority = 11,enabled=false)
 	public void RW_T382_MapboxAttribution_clickFullScreenButton() {
 		testStart("Verify Map opens up into full screen with zoom controls if you click on x symbol the map switches back to normal");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);

@@ -26,7 +26,7 @@ import com.chameleon.utils.Sleeper;
 		private SeachResultsPageMobile seachResultsPage = new SeachResultsPageMobile();
 		private ThreeDayForecastPage threedayForecastPage = new ThreeDayForecastPage();
 		
-		@Test(priority=1,enabled = false)
+		@Test(priority=1,enabled = true)
 		public void RW_T245_UniversalNavigation_navigateSearchResultPage()
 		{
 			testStart("Validate user successfullly navigated to search result page");
@@ -43,7 +43,7 @@ import com.chameleon.utils.Sleeper;
 			}
 		}
 		
-		@Test(priority=2,enabled = false)
+		@Test(priority=2,enabled = true)
 		public void RW_T247_SearchResultPageComponents_verifySearchResultPageWithAddedLocation()
 		{
 			testStart("Validate user navigated to search result page with added location");
@@ -68,7 +68,7 @@ import com.chameleon.utils.Sleeper;
 //			//check it once the merge is complete. BrowseForlocation is present browse location class.
 //		}
 	//	
-		@Test(priority=4,enabled = false)
+		@Test(priority=4,enabled = true)
 		public void RW_T249_Search5DigitNumericZipcode_verifySearchResultPageWithAddedZipcode()
 		{
 			testStart("Validate user navigated to search result page with added zipcode");
@@ -101,7 +101,7 @@ import com.chameleon.utils.Sleeper;
 			//check it once the merge is complete. BrowseForlocation is present browse location class.
 //		}
 		
-		@Test(priority=7,enabled = false)
+		@Test(priority=7,enabled = true)
 		public void RW_T251_SearchForLocationWithoutAnyMatch_verifySearchResultPage()
 		{
 			testStart("Validate user navigated to expected search result page");
@@ -167,7 +167,7 @@ import com.chameleon.utils.Sleeper;
 			seachResultsPage.navigateSearchResults();
 		}
 		
-		@Test(priority=1,enabled = true)
+		@Test(priority=1,enabled = false)
 		public void RW_T1230_SearchZipCode_Multiple_Locations()
 		{
 			testStart("Validate SearchZipCode Multiple Locations");

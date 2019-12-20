@@ -15,7 +15,7 @@ public class Test_LifeStyleIPAD extends AccuWeatherMobileBaseTest {
 	private LifeStyleIPAD lifeStylePage = new LifeStyleIPAD();
 	private LandingPageMobile landingPage = new LandingPageMobile();
 
-	@Test(priority = 1, enabled = true)
+	@Test(priority = 1, enabled = false)
 	public void RW_T370_ValidateDataFor3DayIndexPanels_clickOnAllergyPersonalizedForecastMenu() {
 		testStart("Verfiy Today, Tomorrow and Day after tomorrow days should appear on the 3-day page");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -24,7 +24,7 @@ public class Test_LifeStyleIPAD extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(lifeStylePage.check3DayPageShowUpto3Days());
 	}
 
-	@Test(priority = 2, enabled = true)
+	@Test(priority = 2, enabled = false)
 	public void RW_T370_ValidateDataFor3DayIndexPanels_validateDayElementsOfEachPanel() {
 		testStart(
 				"Validate elements of each panel like day, date, index dial, weather description, weather icon, high temp, low temp");
@@ -34,7 +34,7 @@ public class Test_LifeStyleIPAD extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(lifeStylePage.check3DayPageShowUpto3Days());
 	}
 
-	@Test(priority = 3, enabled = true)
+	@Test(priority = 3, enabled = false)
 	public void RW_T370_ValidateDataFor3DayIndexPanels_validateDateElementsOfEachPanel() {
 		testStart("Validate elements of each panel date");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -43,7 +43,7 @@ public class Test_LifeStyleIPAD extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(lifeStylePage.validateDateElementsOfEachPanel());
 	}
 
-	@Test(priority = 4, enabled = true)
+	@Test(priority = 4, enabled = false)
 	public void RW_T370_ValidateDataFor3DayIndexPanels_validateIndexDialOfEachPanel() {
 		testStart("Validate index dial of each panel");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -52,7 +52,7 @@ public class Test_LifeStyleIPAD extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(lifeStylePage.validateIndexDialOfEachPanel());
 	}
 
-	@Test(priority = 5, enabled = true)
+	@Test(priority = 5, enabled = false)
 	public void RW_T370_ValidateDataFor3DayIndexPanels_validateWeatherDescriptionOfEachPanel() {
 		testStart("Validate weather description  of each panel");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -61,7 +61,7 @@ public class Test_LifeStyleIPAD extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(lifeStylePage.validateWeatherDescriptionOfEachPanel());
 	}
 
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = false)
 	public void RW_T370_ValidateDataFor3DayIndexPanels_validateWeatherIconOfEachPanel() {
 		testStart("Validate weather icon of each panel");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -70,7 +70,7 @@ public class Test_LifeStyleIPAD extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(lifeStylePage.validateWeatherIconOfEachPanel());
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void RW_T370_ValidateDataFor3DayIndexPanels_validateHighTempOfEachPanel() {
 		testStart("Validate high temp of each panel");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -79,7 +79,7 @@ public class Test_LifeStyleIPAD extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(lifeStylePage.validateHighTempOfEachPanel());
 	}
 
-	@Test(priority = 8, enabled = true)
+	@Test(priority = 8, enabled = false)
 	public void RW_T370_ValidateDataFor3DayIndexPanels_validateLowTempOfEachPanel() {
 		testStart("Validate low temp of each panel");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -88,7 +88,7 @@ public class Test_LifeStyleIPAD extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(lifeStylePage.validateLowTempOfEachPanel());
 	}
 
-	@Test(priority = 9, enabled = true)
+	@Test(priority = 9, enabled = false)
 	public void RW_T370_ValidateDataFor3DayIndexPanels_clickForwardArrowAndUserIsShownNextThreeDays() {
 		testStart("Click forward arrow and verify the user is shown three days");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -97,7 +97,7 @@ public class Test_LifeStyleIPAD extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(lifeStylePage.clickForwardArrowAndUserIsShownNextThreeDays());
 	}
 
-	@Test(priority = 10, enabled = true)
+	@Test(priority = 10, enabled = false)
 	public void RW_T370_ValidateDataFor3DayIndexPanels_clickBackwardArrowAndUserIsShownPreviousThreeDays() {
 		testStart("Click backward arrow and verify the user is shown previous three days");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -106,7 +106,7 @@ public class Test_LifeStyleIPAD extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(lifeStylePage.clickBackwardArrowAndUserIsShownPreviousThreeDays());
 	}
 
-	@Test(priority = 11, enabled = true)
+	@Test(priority = 11, enabled = false)
 	public void RW_T365_ValidateCategoriesAndSubCategoriesUnderPersonalizedForecastMenu_validateDescriptionForPersonalizedForecast() {
 		testStart("Validate the description for personalized forecast in the expanded menu");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -122,7 +122,7 @@ public class Test_LifeStyleIPAD extends AccuWeatherMobileBaseTest {
 		}
 	}
 
-	@Test(priority = 12, enabled = true)
+	@Test(priority = 12, enabled = false)
 	public void RW_T365_ValidateCategoriesAndSubCategoriesUnderPersonalizedForecastMenu_verifyEditIconAppearInExpandedMenu() {
 		testStart("Validate edit icon appear in the expanded menu");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -130,7 +130,7 @@ public class Test_LifeStyleIPAD extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(lifeStylePage.verifyEditIconAppearInExpandedMenu());
 	}
 
-	@Test(priority = 13, enabled = true)
+	@Test(priority = 13, enabled = false)
 	public void RW_T365_ValidateCategoriesAndSubCategoriesUnderPersonalizedForecastMenu_verifyPersonalizedForecastMenu() {
 		testStart("Validate the Categories under Personalized Forecast Menu");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);

@@ -26,7 +26,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 	private LandingPage landingpage = new LandingPage();
 	private NavigationBar navBar = new NavigationBar();
 
-	@Test(priority = 1, enabled = false)
+	@Test(priority = 1, enabled = true)
 	public void TC1_VerifyRecentFirstLocationIsDisplayed() {
 		testStart("Is First Location Displayed Under Recent Location Section");
 		landingpage.isRecentLocationDisplayed();
@@ -35,7 +35,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualLocationSize, expectedLocationSize);
 	}
 
-	@Test(priority = 2, enabled = false)
+	@Test(priority = 2, enabled = true)
 	public void TC1_VerifyDefaultLocationNameAndAkamaiNameAreNotSame() {
 		testStart("Default Location names are not same Under Recent Location Section");
 		landingpage.isRecentLocationDisplayed();
@@ -43,7 +43,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 		Assert.assertNotSame(actualLocationName, locationName);
 	}
 
-	@Test(priority = 3, enabled = false)
+	@Test(priority = 3, enabled = true)
 	public void TC1_VerifyDefaultLocationAndCrumbNamesAreSame() {
 		testStart("Are Default Location and Crumb names are same");
 		landingpage.isRecentLocationDisplayed();
@@ -52,7 +52,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 		Assert.assertNotSame(actualLocationName, crumbLocationName);
 	}
 
-	@Test(priority = 4, enabled = false)
+	@Test(priority = 4, enabled = true)
 	public void TC2_VerifyRecentTwoLocationsAreDisplayed() {
 		testStart("Are Two recent locations Displayed Under Recent Location Section");
 		landingpage.enterZipcodeInSearchField(zip);
@@ -69,7 +69,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualLocationSize, expectedLocationSize);
 	}
 
-	@Test(priority = 5, enabled = false)
+	@Test(priority = 5, enabled = true)
 	public void TC3_VerifyRecentThreeLocationsAreDisplayed() {
 		testStart("Are Three recent locations Displayed Under Recent Location Section");
 		landingpage.enterZipcodeInSearchField(zip);
@@ -92,7 +92,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualLocationSize, expectedLocationSize);
 	}
 
-	@Test(priority = 6)
+	@Test(priority = 6, enabled = false)
 	public void TC2_VerifyCTATitleAreSame() {
 		testStart("Verify CTA Title");
 		actualCTATitle = landingpage.getCTATitle();
@@ -109,7 +109,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 		WebPageLoaded.isDomInteractive(2000);
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 8, enabled = false)
 	public void TC10_IsStickyVideoAutoPlayedOnHomePage() throws InterruptedException {
 		testStart("Verify Sticky Video is autoplayed on the landing page");
 		WebPageLoaded.isDomInteractive(5000);
@@ -119,7 +119,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 		WebPageLoaded.isDomInteractive(3000);
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 9, enabled = false)
 	public void TC11_IsWeatherRadarImageDisplayedPOnHomePage() {
 		testStart("Verify Weather Radar Image Displayed on the landing page");
 		WebPageLoaded.isDomInteractive(1000);
@@ -127,7 +127,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(landingpage.isWeatherRadarImageDisplayed());
 	}
 
-	@Test(priority = 10)
+	@Test(priority = 10, enabled = false)
 	public void TC12_IsWeatherRadarDisplayedFromMoreMapsLink() {
 		testStart("Verify Weather Radar Page displayed landing page");
 		WebPageLoaded.isDomInteractive(1000);

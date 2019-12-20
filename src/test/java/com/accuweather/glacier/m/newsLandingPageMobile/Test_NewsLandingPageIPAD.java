@@ -17,7 +17,7 @@ public class Test_NewsLandingPageIPAD extends AccuWeatherBaseTest
 	NewsWeatherPageIPAD newsWeatherPage = new NewsWeatherPageIPAD();
 	NavigationBar navigationbar = new NavigationBar();
 	
-	@Test(priority=1,enabled=true)
+	@Test(priority=1,enabled=false)
 	public void RW_T420_NewsLandingPageLoadsSuccessfully_verifyWeatherNewsPage()
 	{
 		testStart("User should be redirected to Daily forecast page when clicked on Daily tab");

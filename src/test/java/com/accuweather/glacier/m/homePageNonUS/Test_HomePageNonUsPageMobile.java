@@ -31,7 +31,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 	private ThreeDayForecastPage threedayForecastPage = new ThreeDayForecastPage();
 	private CityRadarPageMobile cityRadar = new CityRadarPageMobile();
 
-	@Test(priority = 1, enabled = false)
+	@Test(priority = 1, enabled = true)
 	public void RW_T745_ValidateTranslationOnBreadcrumbs_verifyCityPageTranslatedInSelectedLanguage() {
 		testStart("Verify city page get translated in selected langauge");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -47,7 +47,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 2, enabled = false)
+	@Test(priority = 2, enabled = true)
 	public void RW_T743_HomePageWithNonEnglishValidation_verifyMapTitleNonEnglishLanguage() {
 		testStart("Verify map title is in non-English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -63,7 +63,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 		homePage.clickBreadCrumbMenulanguageSelectMobileEnglish();
 	}
 
-	@Test(priority = 3, enabled = false)
+	@Test(priority = 3, enabled = true)
 	public void RW_T743_HomePageWithNonEnglishValidation_verifyMapsCTANonEnglishLanguage() {
 		testStart("Verify map cta is in non-English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -79,7 +79,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 		homePage.clickBreadCrumbMenulanguageSelectMobileEnglish();
 	}
 
-	@Test(priority = 4, enabled = false)
+	@Test(priority = 4, enabled = true)
 	public void RW_T743_HomePageWithNonEnglishValidation_verify20LocationsOfCountry() {
 		testStart("Change the language to non-english and verify 20 locations of the country");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
@@ -94,7 +94,7 @@ public class Test_HomePageNonUsPageMobile extends AccuWeatherMobileBaseTest {
 		homePage.clickBreadCrumbMenulanguageSelectMobileEnglish();
 	}
 
-	@Test(priority = 5, enabled = false)
+	@Test(priority = 5, enabled = true)
 	public void RW_T743_HomePageWithNonEnglishValidation_verifyWeathericonForAllLocationsOfCountry() {
 		testStart("Verify weather for all 20 locations of the country");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);

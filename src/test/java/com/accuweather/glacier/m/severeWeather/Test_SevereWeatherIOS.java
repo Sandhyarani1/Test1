@@ -75,7 +75,7 @@ public class Test_SevereWeatherIOS extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(severeWeatherPage.clickZoomInAndZoomOut());
 	}
 
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = false)
 	public void RW_T1074_TooltipAndZoomControlsOnRightCornerOfMap_verifyToolTipClosed() {
 		testStart("Verify on click of tooltip again, the tooltip closes");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -86,7 +86,7 @@ public class Test_SevereWeatherIOS extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualColor, EXPECTEDCLOSEDTOOLTIP_COLOR);
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void RW_T1073_TitleOfMapForSevereWeather_verifyMapHeaderForSevereWeather() {
 		testStart("Verify title of map for severe weather");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -97,7 +97,7 @@ public class Test_SevereWeatherIOS extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualHeader, EXPECTEDMAPHEADER_TITLE);
 	}
 
-	@Test(priority = 8, enabled = true)
+	@Test(priority = 8, enabled = false)
 	public void RW_T379_TitleOfMapForSevereWeather_verifySecondaryNavigationMenusAboveMap() {
 		testStart("Verify secondary navigation menus [hurricane, severe] displayed above the map");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -107,7 +107,7 @@ public class Test_SevereWeatherIOS extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(severeWeatherPage.verifySecondaryNavigationMenus());
 	}
 
-	@Test(priority = 9, enabled = true)
+	@Test(priority = 9, enabled = false)
 	public void RW_T1072_TitleOfMapForSevereWeather_verifySevereTabHiglightedColor() {
 		testStart("Verify severe tab highlighted in color");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -118,7 +118,7 @@ public class Test_SevereWeatherIOS extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(actualColor, EXPECTEDSEVERETAB_COLOR);
 	}
 
-	@Test(priority = 10, enabled = true)
+	@Test(priority = 10, enabled = false)
 	public void RW_T1075_MapboxAttribution_locateMapboxAndClickInextToit() {
 		testStart("Verify mapbox and click i next to mapbox");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -128,7 +128,7 @@ public class Test_SevereWeatherIOS extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(severeWeatherPage.locateMapboxAndClickInextToit());
 	}
 
-	@Test(priority = 11, enabled = true)
+	@Test(priority = 11, enabled = false)
 	public void RW_T1075_MapboxAttribution_clickFullScreenButton() {
 		testStart(
 				"Verify Map opens up into full screen with zoom controls if you click on x symbol the map switches back to normal");
@@ -139,7 +139,7 @@ public class Test_SevereWeatherIOS extends AccuWeatherMobileBaseTest {
 		severeWeatherPage.clickFullScreenButtonOfMap();
 	}
 	
-	@Test(priority = 12, enabled = true)
+	@Test(priority = 12, enabled = false)
 	public void RW_T1080_TabsOnSevereWeatherPage() {
 		testStart("Verify the tabs on severe Weather page on accuweather app");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);

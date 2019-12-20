@@ -41,7 +41,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 2, enabled = false)
+	@Test(priority = 2, enabled = true)
 	private void RW_T510_Validate_URL_Of_ContactUs_Page() {
 		testStart("Verifying the presence of Contact Us");
 		contactUs.clickOnCompanyDropDown();
@@ -53,7 +53,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 3, enabled = false)
+	@Test(priority = 3, enabled = true)
 	private void RW_T510_Validate_Title_Of_ContactUs_Page() {
 		testStart("Verifying the presence of Contact Us");
 		contactUs.clickOnCompanyDropDown();
@@ -65,7 +65,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 4, enabled = false)
+	@Test(priority = 4, enabled = true)
 	private void RW_T510_Validate_Heading_Of_ContactUs_Tab() {
 		testStart("Verifying the presence of Contact Us");
 		contactUs.clickOnCompanyDropDown();
@@ -77,7 +77,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 5, enabled = false)
+	@Test(priority = 5, enabled = true)
 	private void RW_T510_Validate_BorderColor_Of_ContactUs_Tab() {
 		testStart("Verifying the presence of Contact Us");
 		contactUs.clickOnCompanyDropDown();
@@ -173,7 +173,7 @@ public class Test_ContactUsMobile extends AccuWeatherBaseTest {
 	
 	
 
-	@Test(priority = 13, enabled = true)
+	@Test(priority = 13, enabled = false)
 	private void RW_T510_Validate_URL_WhenClickedOn_ClickHereLink_From_IPhoneApps_Tab() {
 		testStart("Verifying the presence of Contact Us");
 		contactUs.clickOnCompanyDropDown();

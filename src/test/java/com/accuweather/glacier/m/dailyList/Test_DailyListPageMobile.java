@@ -53,7 +53,7 @@ public class Test_DailyListPageMobile extends AccuWeatherMobileBaseTest {
 	
 	
 
-	@Test(priority = 3,enabled = true)
+	@Test(priority = 3,enabled  = true)
 	public void RW_187_DailyListPageItemsPresent_locateDayOfAWeek() {
 		testStart("Locate day of a week");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -66,7 +66,7 @@ public class Test_DailyListPageMobile extends AccuWeatherMobileBaseTest {
 	
 	
 
-	@Test(priority = 4,enabled = true)
+	@Test(priority = 4,enabled  = true)
 	public void RW_187_DailyListPageItemsPresent_locateDateOfAWeek() {
 		testStart("Locate date of a week");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -79,7 +79,7 @@ public class Test_DailyListPageMobile extends AccuWeatherMobileBaseTest {
 	
 	
 
-	@Test(priority = 5,enabled = true)
+	@Test(priority = 5,enabled  = true)
 	public void RW_187_DailyListPageItemsPresent_locateWeatherIcon() {
 		testStart("Locate weather icon");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -92,7 +92,7 @@ public class Test_DailyListPageMobile extends AccuWeatherMobileBaseTest {
 	
 	
 
-	@Test(priority = 6,enabled = true)
+	@Test(priority = 6,enabled  = false)
 	public void RW_187_DailyListPageItemsPresent_locateHighTemp() {
 		testStart("Locate high and low temperature");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -105,7 +105,7 @@ public class Test_DailyListPageMobile extends AccuWeatherMobileBaseTest {
 	
 	
 
-	@Test(priority = 7,enabled = true)
+	@Test(priority = 7,enabled  = false)
 	public void RW_187_DailyListPageItemsPresent_locateLowTemp() {
 		testStart("Locate high and low temperature");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -117,7 +117,7 @@ public class Test_DailyListPageMobile extends AccuWeatherMobileBaseTest {
 	
 	
 
-	@Test(priority = 8,enabled = true)
+	@Test(priority = 8,enabled  = false)
 	public void RW_187_DailyListPageItemsPresent_locateWetehrDescription() {
 		testStart("Locate weather description");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -131,7 +131,7 @@ public class Test_DailyListPageMobile extends AccuWeatherMobileBaseTest {
 
 	//EOF
 
-	@Test(priority = 8,enabled = true)
+	@Test(priority = 8,enabled  = false)
 	public void RW_187_DailyListPageItemsPresent_currentDateCardIsHiglightedInOrangeColor() {
 		testStart("Verify Current date card is highlighted in orange on the side of the component to indicate that it is today");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -151,7 +151,7 @@ public class Test_DailyListPageMobile extends AccuWeatherMobileBaseTest {
 	
 	
 
-	@Test(priority = 9,enabled = true)
+	@Test(priority = 9,enabled  = false)
 	public void RW_188_NextWeekListPageItemsPresent_confirmNextWeekHeaderDateAndMonth() {
 		testStart("Verify next week header month and date");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -163,7 +163,7 @@ public class Test_DailyListPageMobile extends AccuWeatherMobileBaseTest {
 	
 	
 
-	@Test(priority = 2,enabled  = true)
+	@Test(priority = 2,enabled  = false)
 	public void RW_188_NextWeekListPageItemsPresent_confirmForecastListForWeekFromMonToSun() {
 		testStart("Verify Forecast list for the current week should be displayed from mon to sun");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -176,7 +176,7 @@ public class Test_DailyListPageMobile extends AccuWeatherMobileBaseTest {
 	
 	
 
-	@Test(priority = 10,enabled = true)
+	@Test(priority = 10,enabled  = false)
 	public void RW_188_NextWeekListPageItemsPresent_confirmDailyForecastPageShowsThreeClusters() {
 		testStart("Verify Daily molecules should be limited to show only three clusters for the page");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -189,7 +189,7 @@ public class Test_DailyListPageMobile extends AccuWeatherMobileBaseTest {
 	
 	
 
-	@Test(priority = 11,enabled = true)
+	@Test(priority = 11,enabled  = false)
 	public void RW_189_NextweekActionDisplaysFutureWeekInformation_confirmLastPageHaveOneOrTwoWeekReports() {
 		testStart("Verify last week page have one or two week of data");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -215,7 +215,7 @@ public class Test_DailyListPageMobile extends AccuWeatherMobileBaseTest {
 	
 	
 
-	@Test(priority = 12,enabled = true)
+	@Test(priority = 12,enabled  = false)
 	public void RW_189_NextweekActionDisplaysFutureWeekInformation_confirmUserAbleToNavigateTo4PagesForward() {
 		testStart("Verify user able to navigate upto to 4 pages forward");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -241,7 +241,7 @@ public class Test_DailyListPageMobile extends AccuWeatherMobileBaseTest {
 	
 	
 
-	@Test(priority = 13,enabled = true)
+	@Test(priority = 13,enabled  = false)
 	public void RW_189_NextweekActionDisplaysFutureWeekInformation_confirmEachWeekHasAnAdditionalParam() {
 		testStart("Verify each week has an additional param like page=1, page=2, page=3, page=4..");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);

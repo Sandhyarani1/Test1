@@ -69,7 +69,7 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_STATE));
 	}
 
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = false)
 	public void RW_T196_validating_Footer_Breadcrumbs_for_City_Displayed() throws InterruptedException {
 		testStart("Validate footer breadcrumbs displayed for City");
 		landingPage.enterZipcodeInSearchField(zipCode);
@@ -77,7 +77,7 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_CITY));
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void RW_T197_valdating_URL_when_clicked_on_Worldbreadcrumb() {
 		testStart("Validating user redirected url when clicked on World ");
 		landingPage.enterZipcodeInSearchField(zipCode);

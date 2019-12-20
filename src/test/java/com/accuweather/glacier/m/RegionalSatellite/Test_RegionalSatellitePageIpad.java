@@ -42,7 +42,7 @@ public class Test_RegionalSatellitePageIpad extends AccuWeatherBaseTest {
 
 	private SatellitePageMobileIpad satellitePage = new SatellitePageMobileIpad();
 
-	@Test(priority = 1, enabled = true)
+	@Test(priority = 1, enabled = false)
 	public void RW_TC313_Regional_Satellite_page_loads_succesfully() {
 		testStart("Validate Regional Satellite page is loaded successfully");
 		satellitePage.searchCityByName(citySearchedByName);
@@ -86,7 +86,7 @@ public class Test_RegionalSatellitePageIpad extends AccuWeatherBaseTest {
 		Assert.assertEquals(satellitePage.EnchancedTabHighlighted(), EXPECTED_ENCHANCEDTAB_HIGHLIGHTED_BYDEFAULT);
 	}// pass
 
-	@Test(priority = 4, enabled = true)
+	@Test(priority = 4, enabled = false)
 	public void RW_TC313_Validate_EnchancedTab_on_Tertiary_menu_isDisplayed_for_Regional_Satellite_Map() {
 		testStart("Validate Enchanced Tab is displayed on Tertiary menus of Regional satellite page.");
 		satellitePage.searchCityByName(citySearchedByName);

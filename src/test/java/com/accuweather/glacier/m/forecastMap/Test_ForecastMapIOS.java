@@ -81,7 +81,7 @@ public class Test_ForecastMapIOS extends AccuWeatherBaseTest {
 		Assert.assertEquals(actualTooltipColor, EXPECTED_TOOLTIP_COLOR);
 	}
 
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = false)
 	public void RW_T1375_ZoomControlsOnLeftCornerOfMap_verifyZoomcontrolsButton() {
 		testStart("Verify zoom in and zoom out button");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -92,7 +92,7 @@ public class Test_ForecastMapIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(foreCastWeatherPage.clickZoomInAndZoomOut());
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void RW_T1373_FullScreenOnRightCornerOfMap_verifyFullScreenButton() {
 		testStart("Verify fullscreen button on the map");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -103,7 +103,7 @@ public class Test_ForecastMapIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(foreCastWeatherPage.clickFullScreenButtonOfMap());
 	}
 
-	@Test(priority = 8, enabled = true)
+	@Test(priority = 8, enabled = false)
 	public void RW_T1374_ValidateMapboxAttributes_verifyMapboxAndiPresent() {
 		testStart("Verify mapbox present on the screen and i displayed next to it");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -114,7 +114,7 @@ public class Test_ForecastMapIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(foreCastWeatherPage.verifyMapboxAndiNextToIt());
 	}
 
-	@Test(priority = 9, enabled = true)
+	@Test(priority = 9, enabled = false)
 	public void RW_T1372_AddSliderWithPlayButton_verifyPresenceOfSliderBarWithPlayButtonAndTime() {
 		testStart("Verify presence of slider button");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -125,7 +125,7 @@ public class Test_ForecastMapIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(foreCastWeatherPage.verifyPresenceOfSliderBarWithPlayButtonAndTime());
 	}
 
-	@Test(priority = 10, enabled = true)
+	@Test(priority = 10, enabled = false)
 	public void RW_T1372_AddSliderWithPlayButton_verifyCurrentDateAtTheEndOfSliderBar() {
 		testStart("Verify current date at the end of slide bar");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -136,7 +136,7 @@ public class Test_ForecastMapIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(foreCastWeatherPage.verifyCurrentDateAtTheEndOfSliderBar());
 	}
 
-	@Test(priority = 11, enabled = true)
+	@Test(priority = 11, enabled = false)
 	public void RW_T1371_ValidateRainLegends_verifyLightModerateHeavyFromRainLegend() {
 		testStart("Verify light moderate heavy are in order");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -148,7 +148,7 @@ public class Test_ForecastMapIOS extends AccuWeatherBaseTest {
 
 	}
 
-	@Test(priority = 12, enabled = true)
+	@Test(priority = 12, enabled = false)
 	public void RW_T1371_ValidateRainLegends_verifyLegendsForRainHaveTextRain() {
 		testStart("Legends for Rain should have text Rain in the center of the bar");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -160,7 +160,7 @@ public class Test_ForecastMapIOS extends AccuWeatherBaseTest {
 
 	}
 
-	@Test(priority = 13, enabled = true)
+	@Test(priority = 13, enabled = false)
 	public void RW_T1369_ValidateSnowLegends_verifyLightModerateHeavyFromSnowLegend() {
 		testStart("Verify light moderate heavy from snow are in order");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -172,7 +172,7 @@ public class Test_ForecastMapIOS extends AccuWeatherBaseTest {
 
 	}
 
-	@Test(priority = 14, enabled = true)
+	@Test(priority = 14, enabled = false)
 	public void RW_T1369_ValidateSnowLegends_verifyLegendsForSnowHaveTextSnow() {
 		testStart("Legends for Snow should have text Snow in the center of the bar");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -184,7 +184,7 @@ public class Test_ForecastMapIOS extends AccuWeatherBaseTest {
 
 	}
 
-	@Test(priority = 15, enabled = true)
+	@Test(priority = 15, enabled = false)
 	public void RW_T1368_ValidateIceLegends_verifyLegendsForIceHaveTextIce() {
 		testStart("Legends for Ice should have text Ice in the center of the bar");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -195,7 +195,7 @@ public class Test_ForecastMapIOS extends AccuWeatherBaseTest {
 		Assert.assertTrue(foreCastWeatherPage.verifyLegendsForIceHaveTextIce());
 	}
 
-	@Test(priority = 16, enabled = true)
+	@Test(priority = 16, enabled = false)
 	public void RW_T1367_ValidateIceLegends_verifyIceLegendBarColor() {
 		testStart("Verify legend bar is purple in color");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -207,7 +207,7 @@ public class Test_ForecastMapIOS extends AccuWeatherBaseTest {
 		Assert.assertEquals(actualLegendBarcolor, EXPECTED_ICE_LEGEND_COLOR);
 	}
 
-	@Test(priority = 17, enabled = true)
+	@Test(priority = 17, enabled = false)
 	public void RW_T1367_ValidateMixLegends_verifyLegendsForMixHaveTextMix() {
 		testStart("Legends for Mix should have text Mix in the center of the bar");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
@@ -219,7 +219,7 @@ public class Test_ForecastMapIOS extends AccuWeatherBaseTest {
 
 	}
 
-	@Test(priority = 18, enabled = true)
+	@Test(priority = 18, enabled = false)
 	public void RW_T1367_ValidateMixLegends_verifyMixLegendBarColor() {
 		testStart("Verify mix legend bar is purple in color");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);

@@ -43,28 +43,28 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	private HomePageNonUSMobile homePage = new HomePageNonUSMobile();
 
 
-	@Test(priority = 1, enabled = false)
+	@Test(priority = 1, enabled = true)
 	public void RW_T100_VerifylegalFooterSectionIsDisplayed() {
 		testStart("Is legal footer section is displayed");
 		Assert.assertTrue(legalFooterMob.legalFooterSectionIsDisplayed());
 	}
 
 
-	@Test(priority = 2, enabled = false)
+	@Test(priority = 2, enabled = true)
 	public void RW_T101_VerifytermsOfUseTextIsDisplayed() {
 		testStart("Is terms Of Use Text");
 		Assert.assertTrue(legalFooterMob.termsOfUseTextIsDisplayed());
 	}
 
 
-	@Test(priority = 3, enabled = false)
+	@Test(priority = 3, enabled = true)
 	public void RW_T101_VerifyclicktermsOfUseText() {
 		testStart("Is terms Of Use Text");
 		Assert.assertTrue(legalFooterMob.clicktermsOfUseText());
 	}
 
 
-	@Test(priority = 4, enabled = false)
+	@Test(priority = 4, enabled = true)
 	public void RW_T101_VerifyPageTitleTermsOfUseText() {
 		testStart("Is Page tilte : Terms of Use - AccuWeather.com");
 		legalFooterMob.clicktermsOfUseText();
@@ -73,7 +73,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 
-	@Test(priority = 5, enabled = false)
+	@Test(priority = 5, enabled = true)
 	public void RW_T101_VerifyTabNameTermsOfUseTextIsInUpperCase() {
 		testStart("Tab Name Terms Of Use Text Is In UpperCase");
 		legalFooterMob.clicktermsOfUseText();
@@ -412,7 +412,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	
 	/*
 
- @Test(priority = 42, enabled = true) public void
+ @Test(priority = 42, enabled = false) public void
 	 * RW_T1626_ValidatePrivacyPolicyInSpanish() {
 	 * testStart("Verify Privacy Policy In Spanish");
 	 * legalFooterMob.TapPrivacyPolicyIUnderstandButton();
@@ -427,7 +427,7 @@ public class Test_LegalFooterMobilePage extends AccuWeatherMobileBaseTest {
 	 */
 	
 
-	@Test(priority = 42, enabled = true)
+	@Test(priority = 42, enabled = false)
 	public void RW_T1433_ValidateBannerCenteredOnScreen360px() {
 		testStart("Validate Banner Centered On Screen 360 px");
 		Assert.assertEquals(legalFooterMob.IsPrivacyPolicyBanner320pxWidth(), EXPECTED_PRIVACY_POLICY_BANNER_WIDTH);

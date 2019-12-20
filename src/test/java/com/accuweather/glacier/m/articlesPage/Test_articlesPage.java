@@ -19,7 +19,7 @@ public class Test_articlesPage  extends AccuWeatherMobileBaseTest
 	private static final int FINAL_ARTICLES_SIZE=10;
 	
 	
-	@Test(priority=1,enabled = false)
+	@Test(priority=1,enabled = true)
 	public void RW_TC945_Navigation_to_News_Article_Page_succesfully()
 	{
 		testStart("Validate National Article page is loaded successfully");
@@ -33,7 +33,7 @@ public class Test_articlesPage  extends AccuWeatherMobileBaseTest
 	}
 	
 	
-	@Test(priority=2,enabled = false)
+	@Test(priority=2,enabled = true)
 	public void RW_TC945_Navigation_to_News_Article_Page_Validate_Secondary_menusDisplayed()
 	{
 		testStart("Validate National Article page is loaded successfully");
@@ -45,7 +45,7 @@ public class Test_articlesPage  extends AccuWeatherMobileBaseTest
 		Assert.assertTrue(articles.validateSecondaryMenusDisplayed());
 	}
 	
-	@Test(priority=2,enabled=false)
+	@Test(priority=2,enabled=true)
 	public void RW_TC944_Navigation_to_News_Article_Page_Validate_NewsTab_HighlightedbyDefault()
 	{
 		testStart("Validate National Article page is loaded successfully");
@@ -56,7 +56,7 @@ public class Test_articlesPage  extends AccuWeatherMobileBaseTest
 		articles.NewstabHighlightedinOrange();
 		
 	}
-	@Test(priority=3,enabled=false)
+	@Test(priority=3,enabled=true)
 	public void RW_TC945_Navigation_to_News_Article_Page_ClickonArticles_Displayed()
 	{
 		testStart("Validate National Article page is loaded successfully");
@@ -71,7 +71,7 @@ public class Test_articlesPage  extends AccuWeatherMobileBaseTest
 	}
 	
 	
-	@Test(priority=4,enabled=false)
+	@Test(priority=4,enabled=true)
 	public void RW_TC946_Navigation_to_News_Article_Page_ClickonArticles_Validate_ReportTypoDisplayed()
 	{
 		testStart("Validate National Article page is loaded successfully");

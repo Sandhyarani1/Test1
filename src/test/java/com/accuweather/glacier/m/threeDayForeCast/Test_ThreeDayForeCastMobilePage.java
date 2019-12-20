@@ -70,7 +70,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(threeDayForecastMobPage.isTodayWeatherCardTitleDisplayed());
 	}
 
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = false)
 	public void TC5_VerifyTodayWeatherCardIconIsDisplayed() {
 		testStart("Validate whether Today weather card icon is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -80,7 +80,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(threeDayForecastMobPage.isTodayWeatherCardIconDisplayed());
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void TC5_VerifyTodayWeatherCardTimeStampIsDisplayed() {
 		testStart("Validate whether Today weather card Time Stamp is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -90,7 +90,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(threeDayForecastMobPage.isTodayWeatherCardTimeStampDisplayed());
 	}
 
-	@Test(priority = 8, enabled = true)
+	@Test(priority = 8, enabled = false)
 	public void TC5_VerifyTodayWeatherCardCurrentTemperatureIsDisplayed() {
 		testStart("Validate whether Today weather card current temperature is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -100,7 +100,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(threeDayForecastMobPage.isTodayWeatherCardCurrentTemeratureDisplayed());
 	}
 
-	@Test(priority = 9, enabled = true)
+	@Test(priority = 9, enabled = false)
 	public void TC5_VerifyTodayWeatherCardReelFeelTemperatureIsDisplayed() {
 		testStart("Validate whether Today weather card Reel Feel temperature is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -110,7 +110,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(threeDayForecastMobPage.isTodayWeatherCardReelFeelTemperatureDisplayed());
 	}
 
-	@Test(priority = 10, enabled = true)
+	@Test(priority = 10, enabled = false)
 	public void TC5_VerifyTodayWeatherCardDescriptionIsDisplayed() {
 		testStart("Validate whether Today weather card description is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -122,7 +122,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 
 	// test case 6
 
-	@Test(priority = 11, enabled = true)
+	@Test(priority = 11, enabled = false)
 	public void TC6_VerifyTonightWeatherCardTitleIsDisplayed() {
 		testStart("Validate whether tonight weather card Title is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -132,7 +132,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(threeDayForecastMobPage.isTonghtWeatherCardTitleDisplayed());
 	}
 
-	@Test(priority = 12, enabled = true)
+	@Test(priority = 12, enabled = false)
 	public void TC6_VerifyTonightWeatherCardCurrentDateIsDisplayed() {
 		testStart("Validate whether tonight weather card Current date is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -143,7 +143,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	
-	@Test(priority = 13, enabled = true)
+	@Test(priority = 13, enabled = false)
 	public void TC6_VerifyTonightWeatherCardWeatherIconIsDisplayed() {
 		testStart("Validate whether tonight weather card Weather icon is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -153,7 +153,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(threeDayForecastMobPage.isTonightWeatherCardIconDisplayed());
 	}
 
-	@Test(priority = 14, enabled = true)
+	@Test(priority = 14, enabled = false)
 	public void TC6_VerifyTonightWeatherCardLowTempIsDisplayed() {
 		testStart("Validate whether tonight weather card Low Temerature is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -164,7 +164,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 	
 
-	@Test(priority = 15, enabled = true)
+	@Test(priority = 15, enabled = false)
 	public void TC6_VerifyTonightWeatherCardLowTextDisplayed() {
 		testStart("Validate whether tonight weather card Low Temerature text is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -174,7 +174,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(threeDayForecastMobPage.isTonightWeatherCardLowTextTemeratureDisplayed());
 	}
 
-	@Test(priority = 16, enabled = true)
+	@Test(priority = 16, enabled = false)
 	public void TC6_VerifyTonightWeatherCardReelFeelTempIsDisplayed() {
 		testStart("Validate whether tonight weather card Reel  Temerature text is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -184,7 +184,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(threeDayForecastMobPage.isTonightWeatherCardReelFeelTemeratureDisplayed());
 	}
 
-	@Test(priority = 17, enabled = true)
+	@Test(priority = 17, enabled = false)
 	public void TC6_VerifyTonightWeatherCardWeatherDescriptionIsDisplayed() {
 		testStart("Validate whether tonight weather card Weather Description text is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -196,7 +196,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 /////////////////////////////////////////
 	// test case 7
 
-	@Test(priority = 18, enabled = true)
+	@Test(priority = 18, enabled = false)
 	public void TC7_VerifyTodayWeatherPageIsDipslayed() {
 		testStart("Validate whether Today weather page is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -209,7 +209,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 19, enabled = true)
+	@Test(priority = 19, enabled = false)
 	public void TC7_VerifyTonightWeatherPageIsDipslayed() {
 		testStart("Validate whether tonight weather page is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -224,7 +224,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 
 	// Test case 8
 
-	@Test(priority = 20, enabled = true)
+	@Test(priority = 20, enabled = false)
 	public void TC6_VerifyTomorrowWeatherCardTitleIsDisplayed() {
 		testStart("Validate whether tonight weather card Title is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -234,7 +234,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(threeDayForecastMobPage.isTomorrowWeatherCardTitleDisplayed());
 	}
 
-	@Test(priority = 21, enabled = true)
+	@Test(priority = 21, enabled = false)
 	public void TC6_VerifyTomorrowWeatherCardCurrentDateIsDisplayed() {
 		testStart("Validate whether tonight weather card Current date is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -244,7 +244,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(threeDayForecastMobPage.isTomorrowWeatherCardDateDisplayed());
 	}
 
-	@Test(priority = 22, enabled = true)
+	@Test(priority = 22, enabled = false)
 	public void TC6_VerifyTomorrowWeatherCardWeatherIconIsDisplayed() {
 		testStart("Validate whether tonight weather card Weather icon is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -255,7 +255,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	
-	@Test(priority = 23, enabled = true)
+	@Test(priority = 23, enabled = false)
 	public void TC6_VerifyTomorrowWeatherCardLowTempIsDisplayed() {
 		testStart("Validate whether Tomorrow weather card Low Temerature is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -265,7 +265,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(threeDayForecastMobPage.isTomorrowWeatherCardLowTemeratureDisplayed());
 	}
 
-	@Test(priority = 24, enabled = true)
+	@Test(priority = 24, enabled = false)
 	public void TC6_VerifyTomorrowWeatherCardHighTempIsDisplayed() {
 		testStart("Validate whether Tomorrow weather card high Temerature is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -275,7 +275,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(threeDayForecastMobPage.isTomorrowWeatherCardHighTempTemeratureDisplayed());
 	}
 
-	@Test(priority = 25, enabled = true)
+	@Test(priority = 25, enabled = false)
 	public void TC6_VerifyTomorrowWeatherCardWeatherDescriptionIsDisplayed() {
 		testStart("Validate whether tonight weather card Weather Description text is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -287,7 +287,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 
 	// test case 9
 
-	@Test(priority = 25, enabled = true)
+	@Test(priority = 25, enabled = false)
 	public void TC7_VerifyTommorowWeatherlandingpageDisplayed() {
 		testStart("Validate whether tomorrow weather page is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -300,7 +300,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	// test case 10
-	@Test(priority = 26, enabled = true)
+	@Test(priority = 26, enabled = false)
 	public void TC7_VerifyThreeDayLandingPageForwardArrowLinkIsEnabled() {
 		testStart("Validate whether tomorrow weather page is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -313,7 +313,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 	
 
 	// test case 11
-	@Test(priority = 26, enabled = true)
+	@Test(priority = 26, enabled = false)
 	public void TC7_VerifyThreeDayLandingPageClickForwardArrowLink() {
 		testStart("Validate whether tomorrow weather page is displayed");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
@@ -324,7 +324,7 @@ public class Test_ThreeDayForeCastMobilePage extends AccuWeatherMobileBaseTest {
 				"Clicked on Forward arrow");
 	}
 
-	@Test(priority = 26, enabled = true)
+	@Test(priority = 26, enabled = false)
 	public void TC7_VerifyDailypageloads() {
 		testStart("Validating Daily  page loads when clicked on Forward arrow from city forecast page");
 		threeDayForecastMobPage.searchCityByName(citySearchedByName);
