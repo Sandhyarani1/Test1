@@ -38,7 +38,7 @@
 				name="com.accuweather.glacier.m.hourlyForecast.Test_HourlyForecastMobilePage" />
 			<class
 				name="com.accuweather.glacier.m.LandingPage.Test_LandingPage" />
-			<class
+			<!-- <class
 				name="com.accuweather.glacier.m.legalFooter.Test_LegalFooterMobilePage" />
 			<class
 				name="com.accuweather.glacier.m.lifeStyleMobile.Test_LifeStyleIOS" />
@@ -65,7 +65,7 @@
 			<class
 				name="com.accuweather.glacier.m.UniversalNavigation.Test_UniversalNavigationMobileIOS" />
 			<class
-				name="com.accuweather.glacier.m.WinterWeatherIOS.Test_WinterWeatherIOS" />
+				name="com.accuweather.glacier.m.WinterWeatherIOS.Test_WinterWeatherIOS" /> -->
 		</classes>
 	</test>
 </suite>
