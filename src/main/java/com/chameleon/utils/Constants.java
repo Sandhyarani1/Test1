@@ -16,9 +16,9 @@ public class Constants {
      */
     public static final String DRIVERS_PATH_LOCAL = "drivers" + DIR_SEPARATOR;
     public static final String SCREENSHOT_FOLDER = CURRENT_DIR + "selenium-reports" + DIR_SEPARATOR + "html" + DIR_SEPARATOR + "screenshots";
-    public static final int DEFAULT_GLOBAL_DRIVER_TIMEOUT = 500;
-    public static final int ELEMENT_TIMEOUT = 3;
-    public static final int PAGE_TIMEOUT = 500;
+    public static final int DEFAULT_GLOBAL_DRIVER_TIMEOUT = 1000;
+    public static final int ELEMENT_TIMEOUT = 8;
+    public static final int PAGE_TIMEOUT = 1000;
     public static final long MILLISECONDS_TO_POLL_FOR_ELEMENT = 250L;
     public static final int MAX_SLEEP_TIME = 600;
 
