@@ -1,5 +1,6 @@
 package com.accuweather.glacier.api;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import com.chameleon.utils.DataIOOperations.ExcelUtilities;
@@ -68,9 +69,26 @@ public class WinterCastAPI extends APIUtilities
 		 * Usage: Call getRowNumber() method and store the value in an integer variable and use it other methods like getCityName(rowNo), getZipCode(rowNo) etc.
 		 * */
 		  
-		  int rowNo = getRowNumber();
-		  getZipCode(rowNo);
-		  getWinterCastAPIResponse();
+		
+		 int rowNo = getRowNumber(); getZipCode(rowNo); getWinterCastAPIResponse();
+		 
+		Response response = APIUtilities.getDaily();
+		responseString = response.asString();
+		JsonPath jsonObject = new JsonPath(responseString);
+		
+		ArrayList<String> name = new ArrayList<String>();
+		ArrayList<Integer> id = new ArrayList<Integer>();
+		for (int i=0;i<=99;i++)
+		{
+			name.add(jsonObject.getString("["+i+"].Name"));
+			id.add(jsonObject.getInt("["+i+"].ID"));
+		}
+		System.out.println(name.size());
+		System.out.println(name.get(5));
+		System.out.println(id.get(5));
+		
 	  }
+	
+	
 	
 }

@@ -1,9 +1,11 @@
 package com.accuweather.glacier.www.pages;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import com.accuweather.glacier.BasePage;
+import com.accuweather.glacier.api.BannerAlertsAPI;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
 import com.chameleon.utils.Sleeper;
@@ -32,6 +34,40 @@ private By byWeatherImage = By.cssSelector("div.two-column-page-content > div.pa
 private By byMoreMapsLink = By.cssSelector("div.two-column-page-content > div.page-column-1 > div > a > div.cta-text > div");
 private By byMoreMapsIconLink = By.cssSelector("body > div.template-root > div.two-column-page-content > div.page-column-1 > a > div.cta-text > svg");
 private By byMapTitle = By.cssSelector("div.page-column-1 > div.content-module > a > div.cta-title");
+private By byAccuWeatherLogo = By.cssSelector("div.main-menu > div.logo-wrapper > div.icon-text > a:nth-child(1)");
+private By bySearchList = By.cssSelector("div.search-bar-result.search-result");
+
+
+/**
+ * @author HFARAZ
+ * Method to click on AccuWeather Logo at the top
+ * */
+public void clickAccuWeatherLogo()
+{
+	WebPageLoaded.isDomComplete();
+	getDriver().findElement(byAccuWeatherLogo).click();
+}
+
+/**
+ * @author HFARAZ
+ * Method to select from the list of cities that comes when user type any city name in search bar on home page
+ * */
+public void selectCityFromTheList(String city)
+{
+	List<WebElement> cities = getDriver().findElements(bySearchList);
+	
+	for(int i=0;i<=cities.size();i++)
+	{
+		int j=i+1;
+		String cityName = getDriver().findElement(By.cssSelector("div.search-results > div:nth-child("+j+")")).getText();
+		if(cityName.equalsIgnoreCase(city))
+		{
+			getDriver().findElement(By.cssSelector("div.search-results > div:nth-child("+j+")")).click();
+			break;
+		}	  		  			  
+	}
+}
+
 
 /*
  * Method to enter ZIPcode under ZipCode search field on the AccuWeather Landing page

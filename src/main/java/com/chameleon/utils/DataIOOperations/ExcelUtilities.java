@@ -20,6 +20,7 @@ public class ExcelUtilities
 	public static Map<String, String> apiProperties = PropertiesManager.properties(APIConstants.API_PROPERTIES);
 	
 	/**
+	 * @author HFARAZ
 	 * This method is to set the File path and to open the Excel file
 	 * @param Provide the complete path of the excel file
 	 * @param Provide the sheet name that you want the code to read
@@ -41,6 +42,7 @@ public class ExcelUtilities
 	}
 
 	/**
+	 * @author HFARAZ
 	 * This method is to read the String data from the Excel cell
 	 * @param rowNumber: Provide the row number
 	 * @param columnNumber: Provide the column number
@@ -65,6 +67,7 @@ public class ExcelUtilities
 	}
 	
 	/**
+	 * @author HFARAZ
 	 * This method is to read the numeric data from the Excel cell
 	 * @param rowNumber: Provide the row number
 	 * @param columnNumber: Provide the column number
@@ -86,6 +89,7 @@ public class ExcelUtilities
 		}
 		
 		/**
+		 * @author HFARAZ
 		 * Method to get the last row having data
 		 * @return integer value: "the last row number having data"
 		 * **/
