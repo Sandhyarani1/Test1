@@ -1,6 +1,7 @@
 package com.accuweather.glacier.api;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.when;
 
 import java.util.Map;
 
@@ -41,7 +42,19 @@ public class APIUtilities
 	 * */
 	public static String getZipCode(int rowNo)
 	{
-		return ExcelUtilities.getNumericData(rowNo, 4)+"";
+		String zipCode = ExcelUtilities.getNumericData(rowNo, 4)+"";
+		return zipCode;
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to fetch the country code from location_keys.xlsx file
+	 * @return String value: country code based on the row number provided in the parameters
+	 * */
+	public static String getCountryCode(int rowNo)
+	{
+		String countryCode = ExcelUtilities.getStringData(rowNo, 1)+"";
+		return countryCode;
 	}
 	
 	 /**
@@ -53,6 +66,17 @@ public class APIUtilities
 	  {
 		  String cityName = ExcelUtilities.getStringData(rowNo, 2);
 		  return cityName;
+	  }
+	  
+	  /**
+	   * @author HFARAZ
+	   * Method to get the State Name from location_keys.xlsx file
+	   * @return String value: city name based on the row no provide in the parameter
+	   * **/
+	  public static String getStateName(int rowNo)
+	  {
+		  String stateName = ExcelUtilities.getStringData(rowNo, 3);
+		  return stateName;
 	  }
 	
 	/**
@@ -116,6 +140,24 @@ public class APIUtilities
 		
 		return response;
 	}
+	
+	/**
+	 * @author HFARAZ
+	 * This method will fetch the JSON response for Daily
+	 * */
+	public static Response getDaily()
+	{
+		RestAssured.baseURI = apiProperties.get(APIConstants.BASE_URI);
+		Response response =
+		when().
+			get(apiProperties.get(APIConstants.DAILY)).
+		then().
+			assertThat().statusCode(200).and().
+		extract().response();
+		
+		return response;
+	}
+	
 	
 	/**
 	 * @author HFARAZ
