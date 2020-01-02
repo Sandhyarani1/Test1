@@ -77,7 +77,7 @@ public class Test_NationalSevereWeatherIPAD extends AccuWeatherMobileBaseTest {
 	
 
 	@Test(priority = 4, enabled = true)
-	public void RW_T393_OverlayOnSeverWeatherMapForFullScreen_closeMapFullScreen() {
+	public void RW_T1813_OverlayOnSeverWeatherMapForFullScreen_closeMapFullScreen() {
 		testStart("Close he map full screen and verify the map is back to default mode");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
 		landingPage.clickOnZipcodeSearchIcon();
@@ -127,7 +127,7 @@ public class Test_NationalSevereWeatherIPAD extends AccuWeatherMobileBaseTest {
 	
 
 	@Test(priority = 7, enabled = true)
-	public void RW_T390_TooltipAndZoomControlsOnRightCornerOfMapHeader_verifyTootipDescription() {
+	public void RW_T1810_TooltipAndZoomControlsOnRightCornerOfMapHeader_verifyTootipDescription() {
 		testStart("Verify tool tip description");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
 		landingPage.clickOnZipcodeSearchIcon();
@@ -161,7 +161,7 @@ public class Test_NationalSevereWeatherIPAD extends AccuWeatherMobileBaseTest {
 	
 
 	@Test(priority = 9, enabled = true)
-	public void RW_T390_TooltipAndZoomControlsOnRightCornerOfMapHeader_clickZoomInAndZoomOut() {
+	public void RW_T1812_TooltipAndZoomControlsOnRightCornerOfMapHeader_clickZoomInAndZoomOut() {
 		testStart("Verify zoom in and zoom out");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
 		landingPage.clickOnZipcodeSearchIcon();
