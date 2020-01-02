@@ -1,71 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Core-Regression" parallel="methods" thread-count="4">
+<suite name="Core-Regression" parallel="methods" thread-count="1">
 	<parameter name="runLocation" value="mobile" />
 	<parameter name="environment" value="qa" />
-	<parameter name="operatingSystem" value="IOS_WEB" />
+	<parameter name="operatingSystem" value="IPAD_WEB" />
 	<test
 		name="AccuWeather Mobile web smoke Test Suite on IOS devices ">
 		<parameter name="browserUnderTest" value="safari" />
 		<classes>
-			<class
-				name="com.accuweather.glacier.m.articlesPage.Test_articlesPage" />
-			<class
-				name="com.accuweather.glacier.m.browseLocationsMobile.Test_browseLocationsPageMobile" />
-			<class
-				name="com.accuweather.glacier.m.BuildError.Test_BuildErrorPageIOS" />
-			<class
-				name="com.accuweather.glacier.m.cityRadar.Test_cityRadar" />
-			<class
-				name="com.accuweather.glacier.m.citySatelliteMobile.Test_CitySatellitePage" />
-			<class
-				name="com.accuweather.glacier.m.contactUsMobile.Test_ContactUsMobile" />
-			<class
-				name="com.accuweather.glacier.m.currentCondition.Test_CurrentConditionMobile" />
-			<class
-				name="com.accuweather.glacier.m.currentConditions.Test_CurrentConditionMobile" />
-			<class
-				name="com.accuweather.glacier.m.dailyList.Test_DailyListPageMobile" />
-			<class
-				name="com.accuweather.glacier.m.DayParts.Test_DayPartsIOS" />
-			<class
-				name="com.accuweather.glacier.m.forecastMap.Test_ForecastMapIOS" />
-			<class
-				name="com.accuweather.glacier.m.homepagebreadcrumbs.Test_HomepageBreadcrumbsMobile" />
-			<class
-				name="com.accuweather.glacier.m.homePageNonUS.Test_HomePageNonUsPageMobile" />
-			<class
-				name="com.accuweather.glacier.m.hourlyForecast.Test_HourlyForecastMobilePage" />
-			<class
-				name="com.accuweather.glacier.m.LandingPage.Test_LandingPage" />
-			<!-- <class
-				name="com.accuweather.glacier.m.legalFooter.Test_LegalFooterMobilePage" />
-			<class
-				name="com.accuweather.glacier.m.lifeStyleMobile.Test_LifeStyleIOS" />
-			<class
-				name="com.accuweather.glacier.m.Localizations.TestLocalizationIOS" />
-			<class
-				name="com.accuweather.glacier.m.minutecastPage.Test_minutecastPageIOS" />
-			<class
-				name="com.accuweather.glacier.m.monthlyForecast.Test_MonthlyForecastPageIOS" />
-			<class
-				name="com.accuweather.glacier.m.NatiionalRadar.Test_NationalRadarPageIOS" />
-			<class
-				name="com.accuweather.glacier.m.NationalSatellite.Test_NationalSatellitePage" />
-			<class
-				name="com.accuweather.glacier.m.newsLandingPageMobile.Test_NewsLandingPageIOS" />
-			<class
-				name="com.accuweather.glacier.m.RegionalSatellite.Test_RegionalSatellitePageMobile" />
-			<class
-				name="com.accuweather.glacier.m.SearchResultsPage.Test_SearchResultsPageMobile" />
-			<class
-				name="com.accuweather.glacier.m.severeWeather.Test_SevereWeatherIOS" />
-			<class
-				name="com.accuweather.glacier.m.threeDayForeCast.Test_ThreeDayForeCastMobilePage" />
-			<class
-				name="com.accuweather.glacier.m.UniversalNavigation.Test_UniversalNavigationMobileIOS" />
-			<class
-				name="com.accuweather.glacier.m.WinterWeatherIOS.Test_WinterWeatherIOS" /> -->
+		<class
+				name="com.accuweather.glacier.m.nationalsevereWeather.Test_NationalSevereWeatherIPAD" />
 		</classes>
 	</test>
 </suite>
