@@ -2,13 +2,18 @@ package com.accuweather.glacier.m.minutecastPage;
 
 import com.accuweather.glacier.m.AccuWeatherMobileBaseTest;
 import com.accuweather.glacier.m.pages.MinutecastMobile;
+import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.utils.Sleeper;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class Test_minutecastPageAndroid extends AccuWeatherMobileBaseTest
+public class Test_minutecastPage extends AccuWeatherMobileBaseTest
 {
     String citySearchedByName="Chicago";
 	

@@ -34,7 +34,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 	MinutecastpageIpad minutecast =new MinutecastpageIpad();
 
 
-	@Test(priority=1,enabled=false)
+	@Test(priority=1,enabled=true)
 	public void TC_RW_T831_navigateToMinutecastForecastPage_Valdiate_Secondary_Navigationmenus() 
 	{
 		testStart("Navigation to City Forecast page validate secondary naviagtion menus Displayed ");
@@ -45,7 +45,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		Assert.assertTrue(minutecast.validateSecondaryMenusDisplayed());
 	}
 
-	@Test(priority=2,enabled=false)
+	@Test(priority=2,enabled=true)
 	public void TC_RW_T831_navigateToMinutecastForecastPage() 
 	{
 		testStart("Navigation to Minutecast page from city forecast page ");
@@ -59,7 +59,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		Assert.assertEquals(getDriver().getTitle(), ExpectedPageTitle);
 	}
 	
-	@Test(priority=4,enabled=false)
+	@Test(priority=4,enabled=true)
 	public void TC_RW_T831_Navigate_toMinutecastpage__validatingMinutecastDialhasLargeWeatherDescriptionDisplayed() 
 	{
 		testStart("Validate Minutecast page Displayed with Large WeatherDescription ");
@@ -73,7 +73,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		Assert.assertNotNull(minutecast.minutecastDialLargeWeatherDescriptionDisplayed());
 	}
 	
-	@Test(priority=5,enabled=false)
+	@Test(priority=5,enabled=true)
 	public void TC_RW_T831_Navigate_toMinutecastpage_validatingMinutecastDialhasTimeStampDisplayed() 
 	{
 		testStart("Validating Minutecast  Dial has large weather Description on the top of the molecule .");
@@ -88,7 +88,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 	}
 	
 	
-	@Test(priority=6,enabled=false)
+	@Test(priority=6,enabled=true)
 	public void TC_RW_T831_Navigate_toMinutecastpage_validatingMinutecastDialhasWeathericonDisplayed() 
 	{
 		testStart("Validating Minutecast  Dial has Weather icon displayed on the middle of the Dial .");
@@ -103,7 +103,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		
 	}
 	
-	@Test(priority=7,enabled=false)
+	@Test(priority=7,enabled=true)
 	public void TC_RW_T831_Navigate_toMinutecastpage_validatingMinutecastDialhasShortweatherDescriptionDisplayed() 
 	{
 		testStart("Validating Minutecast  Dial has Short weather Description below the weather icon .");
@@ -117,7 +117,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		Assert.assertNotNull(minutecast.minutecastDialshortWeatherDescriptionDisplayed());
 	}
 	
-	@Test(priority=8,enabled=false)
+	@Test(priority=8,enabled=true)
 	public void TC_RW_T831_Navigate_toMinutecastpage_validatingMinutecastDialhasUpdatedTimeDisplayed() 
 	{
 		testStart("Validating Minutecast  Dial has Updated Time displayed  at the bottom right corner of the Dial.");
@@ -177,7 +177,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		Assert.assertTrue(minutecast.radarMapTitle().equalsIgnoreCase(expectedMapTitle));
 	}
 	
-	@Test(priority=12,enabled=false)
+	@Test(priority=12,enabled=true)
 	public void RW_TC832_validatingMinutecastRadarMapZoomfunctionality() 
 	{
 		testStart("Navigate to Minutecast forecast page and valdate Zoomin and Zoomout  Functionality on the Map");
@@ -196,7 +196,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 	
 	///////////////////////mapbox attributon ///////////
 	
-	@Test(priority=13,enabled=false)
+	@Test(priority=13,enabled=true)
 	public void RW_TC833_validatingMinutecastRadarMapTooltipText() 
 	{
 		testStart("Navigate to Minutecast forecast page and valdate Tooltip title displayed");
@@ -216,7 +216,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 	}
 	
 	
-	@Test(priority=14,enabled=false)
+	@Test(priority=14,enabled=true)
 	public void RW_TC833_validatingMinutecastRadarMapTooltipcloseswhenclickedTwice() 
 	{
 		testStart("Navigate to Minutecast forecast page and valdate Tooltip Closes when clicked twice");
@@ -235,7 +235,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 	}
 	
 	
-	@Test(priority=15 ,enabled=false)
+	@Test(priority=15 ,enabled=true)
 	public void RW_TC88_validatingTimestampMoleculesDisplayed() 
 	{
 		testStart("Navigate to Minutecast forecast page and validating Timestamp Molecule displayed below radar map ");
@@ -251,7 +251,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		Assert.assertTrue(minutecast.timestampMolecuesDisplayed());
 	}
 	
-	@Test(priority=16 ,enabled=false)
+	@Test(priority=16 ,enabled=true)
 	public void RW_TC88_validatingTimestampMoleculeCurrentTimeDisplayedinOrange() 
 	{
 		testStart("Navigate to Minutecast forecast page and validating Timestamp Molecule displayed ad Current Time Highligted in Orange");
@@ -269,7 +269,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 	}  
 	
 	
-	@Test(priority=17 ,enabled=false)
+	@Test(priority=17 ,enabled=true)
 	public void RW_TC88_validatingTimestampMoleculeDisplayedbelowRadarmap()  
 	{
 		testStart("Navigate to Minutecast forecast page and validating Timestamp Molecule displayed for 30 minutes interval for one and half hour duration ");
@@ -288,7 +288,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		Assert.assertEquals(difference/(1000*3), EXPECTED_TIME_DIFFERENCE_inMINS);
 	}
 	
-	@Test(priority=18,enabled=false)
+	@Test(priority=18,enabled=true)
 	public void RW_TC88_ClickingonEachTimestampMolecule() 
 	{
 		testStart("Navigate to Radarmap from Minutecast forecast page and validating Timestamp Molecule displayed below radar map ");
@@ -321,7 +321,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		Assert.assertTrue(minutecast.RainlegendtextLightandSevereDisplayed());
 	}
 	
-	@Test(priority=20,enabled=false)
+	@Test(priority=20,enabled=true)
 	public void RW_TC88_Navigating_toMinutecastpage_validating_LegendSnow_displayedwithText_LightandSevere() 
 	{
 		testStart("Navigate to Minutecast forecast page and validating Legend Rain Displayed withText LightandSevere ");
@@ -335,7 +335,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		Assert.assertTrue(minutecast.legendSnowDisplayedwithTextLightandSevere());
 	}
 	
-	@Test(priority=21,enabled=false)
+	@Test(priority=21,enabled=true)
 	public void RW_TC88_Navigating_toMinutecastpage_validating_LegendIce_displayedwithText_LightandSevere() 
 	{
 		testStart("Navigate to Minutecast forecast page and validating Legend Rain Displayed withText LightandSevere ");
@@ -349,7 +349,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		Assert.assertTrue(minutecast.legendIceDisplayedwithTextLightandSevere());
 	}
 	
-	@Test(priority=22,enabled=false)
+	@Test(priority=22,enabled=true)
 	public void RW_TC88_Navigating_toMinutecastpage_validating_LegendMix_displayedwithText_LightandSevere() 
 	{
 		testStart("Navigate to Minutecast forecast page and validating Legend Rain Displayed withText LightandSevere ");
@@ -364,7 +364,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 	}
 	
 	
-	@Test(priority=23,enabled=false)
+	@Test(priority=23,enabled=true)
 	public void RW_TC88_Navigating_toMinutecastpage_validating_LegendRain_Displayed_withVariousColors() 
 	{
 		testStart("Navigate to Minutecast forecast page and validating Legend Rain Displayed withText LightandSevere ");
@@ -378,7 +378,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 	    minutecast.legendRaincoloursdisplayed();
 	}
 	
-	@Test(priority=24,enabled=false)
+	@Test(priority=24,enabled=true)
 	public void RW_TC88_Navigating_toMinutecastpage_validating_LegendSnow_Displayed_withVariousColors() 
 	{
 		testStart("Navigate to Minutecast forecast page and validating Legend Rain Displayed withText LightandSevere ");
@@ -392,7 +392,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 	    minutecast.legendSnowcoloursdisplayed();
 	}
 	
-	@Test(priority=25,enabled=false)
+	@Test(priority=25,enabled=true)
 	public void RW_TC88_Navigating_toMinutecastpage_validating_LegendICE_Displayed_withVariousColors() 
 	{
 		testStart("Navigate to Minutecast forecast page and validating Legend Rain Displayed withText LightandSevere ");
@@ -406,7 +406,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 	    minutecast.legendIcecoloursdisplayed();
 	}
 	
-	@Test(priority=26,enabled=false)
+	@Test(priority=26,enabled=true)
 	public void RW_TC88_Navigating_toMinutecastpage_validating_LegendMIX_Displayed_withVariousColors() 
 	{
 		testStart("Navigate to Minutecast forecast page and validating Legend Rain Displayed withText LightandSevere ");
@@ -420,7 +420,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 	    minutecast.legendMixcoloursdisplayed();
 	}
 
-	@Test(priority=27 ,enabled=false)
+	@Test(priority=27 ,enabled=true)
 	public void RW_TC87_validatingMapTimelineControlfunctions() 
 	{
 		testStart("Navigate to Radarmap from Minutecast forecast page and validating map timelincontrols function PAST and FUTURE CTA ");
@@ -436,7 +436,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 	
 	
 	
-	@Test(priority=28,enabled=false)
+	@Test(priority=28,enabled=true)
 	public void RW_TC87_validatingMapTimelineControlpresentTogglebetweenPastandFutureCTA() 
 	{
 		testStart("Navigate to Radarmap from Minutecast forecast page and validating Toggle funtionality between PAST and FUTURE CTA ");
@@ -450,7 +450,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		Assert.assertTrue(minutecast.toggleBetweenPastAndFutureCTA());
 	}
 	
-	@Test(priority=29,enabled=false)
+	@Test(priority=29,enabled=true)
 	public void RW_TC1563_validatingPastandFutureCTADisplayed() 
 	{
 		testStart("Navigate to Radarmap from Minutecast forecast page and validating map timelincontrols function PAST and FUTURE CTA ");
@@ -464,7 +464,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		Assert.assertTrue(minutecast.verifyPastAndFutureCTABelowMap());	
 	}
 	
-	@Test(priority=30,enabled=false)
+	@Test(priority=30,enabled=true)
 	public void RW_TC1563_Validate_Timeline_controls_PastandFuture_CTA_displayed_on_RadarMap() {
 		testStart("Validate Timeline controls with play button  displayed on RadarMap");
 		minutecast.searchCityByName(citySearchedByName);    
@@ -477,7 +477,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		Assert.assertTrue(minutecast.timelinecontrolsdisplayedonRadarMap());
 	} 
 
-	@Test(priority=31,enabled=false)
+	@Test(priority=31,enabled=true)
 	public void RW_TC1563_Validate_presence_Timesliderbar_WithPlayButton_displayed_on_RadarMap() {
 		testStart("Validate Timeline controls with play button  displayed on RadarMap");
 		minutecast.searchCityByName(citySearchedByName);    
@@ -492,7 +492,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 
 
 
-	@Test(priority=32,enabled=false)
+	@Test(priority=32,enabled=true)
 	public void RW_TC1563_Toggle_between_Past_andFuture_CTA_onNational_RadarMap() {
 		testStart("Validate Past andFuture CTA displayed on National  Weather Radar Map ");
 		minutecast.searchCityByName(citySearchedByName);    
@@ -505,7 +505,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		Assert.assertTrue(minutecast.toggleBetweenPastAndFutureCTA());
 	} 
 
-	@Test(priority=33,enabled=false)
+	@Test(priority=33,enabled=true)
 	public void RW_TC1563_Validate_Fullscreen_Radarmap_Displayed_Timeslider_Playbutton() {
 		testStart("Validate Past andFuture CTA displayed on National  Weather Radar Map ");
 		minutecast.searchCityByName(citySearchedByName);    
@@ -519,7 +519,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 	} 
 
 	
-	@Test(priority=31,enabled=false)
+	@Test(priority=31,enabled=true)
 	public void RW_T259_MapboxAttribution_clickMapbox() {
 		testStart("Click on the mapbox and verify the user is navigated to mapbox URL");
 		minutecast.searchCityByName(citySearchedByName);    
@@ -541,7 +541,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		}
 	} 
 
-	@Test(priority=32,enabled=false)
+	@Test(priority=32,enabled=true)
 	public void RW_T259_MapboxAttribution_clickOpenStreetMap() {
 		testStart("Click on the openstreetmap and verify the user is navigated to openstreet map URL");
 		minutecast.searchCityByName(citySearchedByName);    
@@ -563,7 +563,7 @@ public class Test_MinutecastpageIpad extends AccuWeatherMobileBaseTest
 		}
 	} 
 
-	@Test(priority=33,enabled=false)
+	@Test(priority=33,enabled= true)
 	public void RW_T259_MapboxAttribution_clickImproveThisMap() {
 		testStart("Click on the improvethis map and verify the user is navigated to improve this map URL");
 		minutecast.searchCityByName(citySearchedByName);    

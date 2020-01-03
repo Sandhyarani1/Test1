@@ -46,7 +46,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 		Sleeper.sleep(3);
 		hourlyPage.clickOnHourlyTab();
 		Sleeper.sleep(3);
-//		waitUntilWindowExistsWithTitle(expectedHourlyForecastTitle);
+		waitUntilWindowExistsWithTitle(expectedHourlyForecastTitle);
 		try
 		{
 			Assert.assertEquals(getDriver().getTitle(), expectedHourlyForecastTitle);
@@ -108,7 +108,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 4, enabled= true)
+	@Test(priority = 4, enabled= false)
 	public void TC1_validation_Of_hourlyTab_Color()
 	{
 		testStart("Validate the hourlyTab color");
@@ -157,7 +157,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 6, enabled=false)
+	@Test(priority = 6, enabled=true)
 	public void TC2_validation_If_CurrentHour_Tab_Expanded_ByDefault_On_Hourly_PageLoad()
 	{
 		testStart("Validate if current hour info tab is expanded automatically when the hourly page loads");
@@ -182,7 +182,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 	//fail
-	@Test(priority = 7, enabled =true)
+	@Test(priority = 7, enabled =false)
 	public void TC2_is_Time_Displayed_Correctly()
 	{
 		testStart("Validation if the time displayed is correct");
@@ -228,7 +228,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 
 
-	@Test(priority = 8, enabled=false)
+	@Test(priority = 8, enabled=true)
 	public void TC2_validation_UpArrow_Icon_Is_Displayed()
 	{
 		testStart("Validation if up arrow icon is displayed on the first page of Hourly tab");
@@ -252,7 +252,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 9, enabled=false)
+	@Test(priority = 9, enabled=true)
 	public void TC3_validation_If_Expanded_ForecastList_Collapses_When_Clicked_On_Current_Hour_Tab()
 	{
 		testStart(
@@ -279,7 +279,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 10, enabled=false)
+	@Test(priority = 10, enabled=true)
 	public void TC3_validation_If_DownwardArrowIcon_Is_Displayed_When_ExpandedHourTab_Collapses()
 	{
 		testStart("Validate if downward arrow icon is displayed when current hour tab collapses");
@@ -305,7 +305,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 
-	@Test(priority = 10, enabled=false)
+	@Test(priority = 10, enabled=true)
 	public void TC4_isDate_Correct()
 	{
 		testStart("Validation for date format");
@@ -330,7 +330,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 11, enabled=false)
+	@Test(priority = 11, enabled=true)
 	public void TC4_is_WeatherIcon_Displayed()
 	{
 		testStart("Validation if the weather icon is displayed");
@@ -353,7 +353,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 		}
 
 	}
-	@Test(priority = 12, enabled=false)
+	@Test(priority = 12, enabled=true)
 	public void TC4_isTemperature_Field_Displayed()
 	{
 		testStart("Validation if the temperature field is displayed and is not empty");
@@ -378,7 +378,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 	//weather description not displayed in the mobile 
 	/*
-	 * @Test(priority = 13, enabled=false) public void
+	 * @Test(priority = 13, enabled=true) public void
 	 * TC4_isWeather_Condition_Displayed_And_IsNotEmpty() {
 	 * testStart("Validation if the weather condition is displayed and is not empty"
 	 * ); landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
@@ -395,7 +395,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 	 * }
 	 */
 
-	@Test(priority = 14, enabled=false)
+	@Test(priority = 14, enabled=true)
 	public void TC4_is_Precipitation_Field_Displayed_And_NotEmpty()
 	{
 		testStart("Validation if the precipitation is displayed and is not empty");
@@ -449,7 +449,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 
-	@Test(priority = 16, enabled=false)
+	@Test(priority = 16, enabled=true)
 	public void TC15_validate_PresenceOf_RealFeel() throws InterruptedException
 	{
 		testStart("Validation whether RealFeel value is present");
@@ -474,7 +474,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 17, enabled=false)
+	@Test(priority = 17, enabled=true)
 	public void TC15_validate_PresenceOf_Wind() throws InterruptedException
 	{
 		testStart("Validation whether Wind value is present");
@@ -499,7 +499,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 18, enabled=false)
+	@Test(priority = 18, enabled=true)
 	public void TC15_validate_PresenceOf_Gusts() throws InterruptedException
 	{
 		testStart("Validation whether Gusts value is present");
@@ -524,7 +524,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 19, enabled=false)
+	@Test(priority = 19, enabled=true)
 	public void TC15_validate_PresenceOf_Humidity() throws InterruptedException
 	{
 		testStart("Validation whether Humidity value is present");
@@ -549,7 +549,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 20, enabled=false)
+	@Test(priority = 20, enabled=true)
 	public void TC15_validate_PresenceOf_DewPoint() throws InterruptedException
 	{
 		testStart("Validation whether DewPoint value is present");
@@ -574,7 +574,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 21, enabled=false)
+	@Test(priority = 21, enabled=true)
 	public void TC15_validate_PresenceOf_MaxUVIndex() throws InterruptedException
 	{
 		testStart("Validation whether MaxUV Index value is present");
@@ -599,7 +599,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 22, enabled=false)
+	@Test(priority = 22, enabled=true)
 	public void TC15_validate_PresenceOf_CloudCover() throws InterruptedException
 	{
 		testStart("Validation whether Cloud Cover value is present");
@@ -624,7 +624,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 23, enabled=false)
+	@Test(priority = 23, enabled=true)
 	public void TC15_validate_PresenceOf_Rain() throws InterruptedException
 	{
 		testStart("Validation whether Rain value is present");
@@ -649,7 +649,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 24, enabled=false)
+	@Test(priority = 24, enabled=true)
 	public void TC15_validate_PresenceOf_Snow() throws InterruptedException
 	{
 		testStart("Validation whether Snow value is present");
@@ -674,7 +674,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 25, enabled=false)
+	@Test(priority = 25, enabled=true)
 	public void TC15_validate_PresenceOf_Ice() throws InterruptedException
 	{
 		testStart("Validation whether Ice value is present");
@@ -699,7 +699,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 26, enabled=false)
+	@Test(priority = 26, enabled=true)
 	public void TC15_validate_PresenceOf_Visibility() throws InterruptedException
 	{
 		testStart("Validation whether Visibility value is present");
@@ -724,7 +724,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 27, enabled=false)
+	@Test(priority = 27, enabled=true)
 	public void TC15_validate_PresenceOf_Ceiling() throws InterruptedException
 	{
 		testStart("Validation whether Ceiling value is present");
@@ -749,7 +749,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 28, enabled=false)
+	@Test(priority = 28, enabled=true)
 	public void TC6_isCTACorrect()
 	{
 		testStart("Validation if the CTA on the first page is correct");
@@ -773,7 +773,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 29, enabled=false)
+	@Test(priority = 29, enabled=true)
 	public void TC6_isRightArrowIconDisplayedOnCTA()
 	{
 		testStart("Validation if the right arrow icon is displayed on the CTA");
@@ -797,7 +797,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 30, enabled=false)
+	@Test(priority = 30, enabled=true)
 	public void TC7_verify_ClickOnCTATab()
 	{
 		testStart("Validation if clicking on CTA tab is navigating to the next correct Hourly page");
@@ -824,7 +824,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 
-	@Test(priority = 31, enabled=false)
+	@Test(priority = 31, enabled=true)
 	public void TC7_validateCurrentDay_OnNextHourlyPage()
 	{
 		testStart("Validation if next hourly page is displaying the current day at the left CTA tab");
@@ -852,7 +852,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 
-	@Test(priority = 32, enabled=false) 
+	@Test(priority = 32, enabled=true) 
 	public void TC7_validateFuturetDay_OnNextHourlyPage() {
 		testStart("Validation if next hourly page is displaying the Future day at the right CTA tab");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
@@ -877,7 +877,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 
 
-	@Test(priority = 32, enabled=false)
+	@Test(priority = 32, enabled=true)
 	public void TC7_validateLeftArrowIconIsDisplayed()
 	{
 		testStart("Validation if left arrow icon < is displaying on the next day at the left CTA tab");
@@ -903,7 +903,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 33, enabled=false)
+	@Test(priority = 33, enabled=true)
 	public void TC7_validateRightArrowIconIsDisplayed()
 	{
 		testStart("Validation if right arrow icon > is displayed on the next day at the right CTA tab");
@@ -929,7 +929,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 34, enabled=false)
+	@Test(priority = 34, enabled=true)
 	public void TC7_validateAll24HourTabsPresentOnNextHourlyPage()
 	{
 		testStart("Validation if all 24 hour tabs are present on next hourly page");
@@ -955,7 +955,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 35, enabled=false)
+	@Test(priority = 35, enabled=true)
 	public void TC8_validateClickingOnCurrentDay()
 	{
 		testStart("Validation if current day is clicked it should navigate to the first page of Hourly tab");
@@ -984,7 +984,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 	}
 
 
-	@Test(priority = 36, enabled=false)
+	@Test(priority = 36, enabled=true)
 	public void TC9_validate_DayParam_In_URL_For_NextDay()
 	{
 		testStart("Validate the day parameter in URL for Hourly page");
@@ -1009,7 +1009,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 37, enabled=false)
+	@Test(priority = 37, enabled=true)
 	public void TC10_validate_DayParam_In_URL_For_PreviousDay()
 	{
 		testStart("Validate the day parameter in URL for Hourly page when clicked on Previous day tab");
@@ -1091,7 +1091,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 		     System.out.println("timeZone- "+myResponse.getString("timeZone"));  
 		   }*/
 	//
-	@Test(priority = 38, enabled=false)
+	@Test(priority = 38, enabled=true)
 	public void TC12_validationAfterClickingOnWeatherIcon()
 	{
 		testStart(
@@ -1108,7 +1108,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(getDriver().getTitle(), expectedThreeDayForecastTitle);
 	}
 
-	@Test(priority = 39, enabled=false)
+	@Test(priority = 39, enabled=true)
 	public void TC12_validationAfterClickingOnTemperatureIcon() throws InterruptedException
 	{
 		testStart(
@@ -1125,7 +1125,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 		Assert.assertEquals(getDriver().getTitle(), expectedThreeDayForecastTitle);
 	}
 
-	@Test(priority = 40, enabled=false)
+	@Test(priority = 40, enabled=true)
 	public void TC13_validate_PreviousDays_On_SubsequentPages() throws InterruptedException
 	{
 		testStart("Validation whether the previous days are coming correctly on subsequent pages");
@@ -1151,7 +1151,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 41, enabled=false)
+	@Test(priority = 41, enabled=true)
 	public void TC14_validate_NextDays_On_SubsequentPages() throws InterruptedException
 	{
 		testStart("Validation whether the next days are coming correctly on subsequent pages");
@@ -1178,7 +1178,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 
 		
-	@Test(priority =42, enabled=false)
+	@Test(priority =42, enabled=true)
 	public void TC16_validateTimeOnAllTabsOfFirstPage()
 	{
 		testStart("Validation whether time is correct on all the hour tabs of Hour Page");
@@ -1201,7 +1201,7 @@ public class Test_HourlyForecastMobilePage extends AccuWeatherMobileBaseTest {
 
 	}
 	//fail
-	@Test(priority = 43, enabled=false)
+	@Test(priority = 43, enabled=true)
 	public void TC16_validateDateOnAllTabsOfFirstPage()
 	{
 		testStart("Validation whether Date is correct on all the hour tabs of Hourly Page");

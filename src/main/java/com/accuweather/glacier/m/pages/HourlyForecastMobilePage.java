@@ -15,7 +15,6 @@ import org.testng.Assert;
 import com.accuweather.glacier.m.MobileBasePage;
 import com.accuweather.glacier.www.pages.HourlyForecastPage;
 import com.chameleon.selenium.DriverManager;
-import com.chameleon.selenium.elements.Element;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
 import com.chameleon.utils.Sleeper;
@@ -24,44 +23,21 @@ import com.chameleon.utils.date.SimpleDate;
 public class HourlyForecastMobilePage extends MobileBasePage {
 
 	private By byHourlyForecastPage = By.cssSelector("div > div > div.subnav-items > a:nth-child(4) > span");
-	//body > div > div.page-subnav > div > div > div.subnav-items > a:nth-child(4) > span
-	
 	private By byHourlyTab=By.cssSelector("div > div.page-subnav > div > div.subnav-items > a.subnav-item.active > h1");
-	//body > div > div.page-subnav > div > div.subnav-items > a.subnav-item.active > h1
-	
-//	body > div > div.page-subnav > div > div.subnav-items > a.subnav-item.active > h1
 	private By byTime = By.cssSelector(
 			"div.two-column-page-content > div > div > div > div > div > div > div > div.date > p:nth-child(1)");
 	private By byDate = By.cssSelector(
 			"div.page-column-1 > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div > div.date > p.sub");
-	
-	//div.two-column-page-content > div > div > div > div:nth-child(1) > div:nth-child(1) > div > div > div.date > p:nth-child(2)
 	private By byWeatherIcon = By.cssSelector(
 			"body > div > div.two-column-page-content > div.page-column-1 > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div > img");
-	
-	//body > div > div.two-column-page-content > div.page-column-1 > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div > img
-	//body > div > div.two-column-page-content > div.page-column-1 > div.hourly-wrapper > div:nth-child(4) > div.accordion-item-header-container > div > div > img
-	
-	
 	private By byTemperature = By.cssSelector(
 			"div.page-column-1 > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div > div.temp");
-	//body > div > div.two-column-page-content > div.page-column-1 > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div > div.temp
 	private By byWeatherText = By.cssSelector(
 			"div.page-column-1 > div.hourly-wrapper > div:nth-child(16) > div.accordion-item-header-container > div > div > span");
-	
-	
 	private By byPrecipitation = By.cssSelector(
 			"body > div > div.two-column-page-content > div.page-column-1 > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div > div.precip");
-	       //body > div > div.two-column-page-content > div.page-column-1 > div.hourly-wrapper > div:nth-child(16) > div.accordion-item-header-container > div > div > div.precip
-	//body > div > div.two-column-page-content > div.page-column-1 > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div > div.precip
-	
-	private By byExpandTabIcon = By.cssSelector(" div.two-column-page-content > div > div > div > div > div > svg.");
-	private By byCompressTabIcon = By.cssSelector("");
 	private By byRealFeelValue = By.cssSelector(
 			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div.panel.left > p:nth-child(1)");
-	        // div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div.panel.left > p:nth-child(1)
-	
-	
 	private By byWindValue = By.cssSelector(
 			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div.panel.left > p:nth-child(2)");
 	private By byGustsValue = By.cssSelector(
@@ -86,58 +62,32 @@ public class HourlyForecastMobilePage extends MobileBasePage {
 			"div.page-column-1 > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(6)");
 	
 	private By byNextDay = By.cssSelector("body > div > div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div > a");
-	//body > div > div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div > a
-	
 	private By byNextDayText = By
 			.cssSelector("body > div > div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div");
 	
-	//body > div > div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div
-	
 	private By byRightArrowIcon = By.cssSelector(
 			"body > div > div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div > a");
-	//body > div > div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div > a > svg
-	//body > div > div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div > a
-	
-	
 	private By byLeftArrowIcon = By.cssSelector(
 			"body > div > div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div.card-button.centered.nav-card.prev.has-next > a > svg");
-	//body > div > div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div.card-button.centered.nav-card.prev.has-next > a > svg
-	
 	private By byUpArrowIcon = By.cssSelector(
 			"div.page-column-1 > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > svg");
-	//body > div > div.two-column-page-content > div.page-column-1 > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > svg
-	
-	
 	private By byDownArrowIcon = By
 			.cssSelector("div.page-column-1 > div.hourly-wrapper > div:nth-child(5) > div.accordion-item-header-container > div > svg");
-	//body > div > div.two-column-page-content > div.page-column-1 > div.hourly-wrapper > div:nth-child(5) > div.accordion-item-header-container > div > svg
 
-	// a[@href='/en/us/royal-oak/48073/hourly-weather-forecast/20813_pc?day=0']
 	private By byPreviousDayText = By
 			.cssSelector("body > div > div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div.card-button.centered.nav-card.prev.has-next");
-	//body > div > div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div.card-button.centered.nav-card.prev.has-next
 
 	private By byFutureDayText = By
 			.cssSelector("body > div > div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div.card-button.centered.nav-card.next");
-	//body > div > div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div.card-button.centered.nav-card.next
 	private By byPreviousDay = By.cssSelector("body > div > div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div.card-button.centered.nav-card.prev.has-next");
-	
-	//body > div > div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div.card-button.centered.nav-card.prev.has-next
 	private By byLastDayCTATab = By.cssSelector("div.content-module > div.navigation.content-module > a");
 	private By byLastDayCTATabText = By.cssSelector("div.content-module > div.navigation.content-module > a");
 	private By byAccuWeatherLogo = By.cssSelector("div.logo-wrapper.has-partner > div > a > img");
 	private By byCurrentHourTab = By.cssSelector(
 			"div.two-column-page-content > div > div > div.hourly-wrapper > div:nth-child(1) > div > div.header-wrapper.card");
-//	body > div > div.two-column-page-content > div.page-column-1 > div.hourly-wrapper > div:nth-child(4) > div.accordion-item-header-container > div > svg
-//	body > div > div.two-column-page-content > div.page-column-1 > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div
-	
-	
 	private By byCurrentHourInfoTab = By.cssSelector(
 			"div.page-column-1 > div.hourly-wrapper > div:nth-child(2) > div.accordion-item-header-container > div > div");
-	
 	private By byCurrentHourArrow=By.cssSelector("body > div > div.two-column-page-content > div.page-column-1 > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div");
-			
-			
 	private By byTemperatureAtTheTop = By.cssSelector(
 			"div.page-subheader.content-module > div.page-subheader-wrap > div.recent-locations-label > a.recent-location-display > span:nth-child(2)");
 	private By byWeatherIconAtTheTop = By.cssSelector(

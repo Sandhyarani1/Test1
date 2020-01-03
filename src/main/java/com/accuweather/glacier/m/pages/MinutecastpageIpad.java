@@ -7,9 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.accuweather.glacier.m.MobileBasePage;
 import com.chameleon.selenium.DriverManager;
 import com.chameleon.selenium.web.WebPageLoaded;
@@ -19,8 +16,6 @@ import org.openqa.selenium.support.Color;
 
 public class MinutecastpageIpad  extends MobileBasePage
 {
-	
-	
 
 	private By byfeaturedSearchbar = By
 			.cssSelector(" div.searchbar.featured-search > div.searchbar-content > form > input");
@@ -39,10 +34,7 @@ public class MinutecastpageIpad  extends MobileBasePage
 	private By byFullScreenBtn = By.cssSelector("div.full-screen-button");
 	private By byCloseButton = By.cssSelector("div.close-button");
 	
-	private By byFutureCTA=By.cssSelector("div.map-container.full-mobile-width.content-module > div.map-tools > div.radar-controls.toggle-container > div:nth-child(2)");
 	private By byTimelinecontrols = By.cssSelector("div.map-container.full-mobile-width.content-module > div.map-tools > div.radar-controls.timeline-container");
-	private By byPastButton = By.cssSelector(".toggle-button");
-	
 	private By bySlideBar = By.cssSelector("div.timeline-controls > input.slider");
 	private By byPlayButton = By.xpath("//input[@class='slider']/../div/div[@class='play-toggle-button icon-play']");
 	private By byTimeStamp = By.cssSelector(".time-stamp");
