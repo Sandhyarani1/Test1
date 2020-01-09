@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.asserts.SoftAssert;
 
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 
@@ -46,6 +47,10 @@ public class TestA extends AccuWeatherBaseTest
 		System.out.println("X coordinate------>"+ p.getX());
 		System.out.println("Y coordinate------>"+p.getY());
 		System.out.println(privacyPolicyBanner.getCssValue("width"));
+		
+		SoftAssert sa = new SoftAssert();
+		sa.assertEquals(privacyPolicyBanner.getCssValue("width"), "320px");
+		sa.assertAll();
 		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,10000)");

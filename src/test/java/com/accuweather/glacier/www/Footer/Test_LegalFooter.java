@@ -126,63 +126,73 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	 */
 	
 	@Test(priority=4)
-	public void RW_T1428()
+	public void RW_T1428_ValidatingTheWidthOfPrivacyPolicy()
 	{
+		softAssert = new SoftAssert();
 		testStart("*********** Validating the width of privacy policy banner ********************");
-		softAssert.assertEquals(legalFooter.getPrivacyPolicyBannerWidth(), BANNER_WIDTH);
+		softAssert.assertEquals(legalFooter.getPrivacyPolicyBannerWidth(), BANNER_WIDTH,
+				"Issue------> Banner width was expected 320px but found "+legalFooter.getPrivacyPolicyBannerWidth());
 		softAssert.assertAll();
 	}
 	
 	@Test(priority=5)
-	public void RW_T1422()
+	public void RW_T1422_VerifyingThePresenceOfPrivacyPolicy()
 	{
+		softAssert = new SoftAssert();
 		testStart("******* Validate presence of privacy policy banner, 'I Understand' button, text on privacy policy banner *****************");
 		
 		//Verify the presence of privacy policy banner
-		softAssert.assertTrue(legalFooter.isAlertBannerPresent());
+		softAssert.assertTrue(legalFooter.isAlertBannerPresent(),"Issue-----> Privacy Policy banner not found");
 		
 		//Verify the presence of "I Understand" button on privacy policy banner
-		softAssert.assertTrue(legalFooter.isIUnderstandButtonPresentOnPrivacyPolicyBanner());
+		softAssert.assertTrue(legalFooter.isIUnderstandButtonPresentOnPrivacyPolicyBanner(),"Issue----> Button not found");
 		
 		//Verify the text of the button on privacy policy banner
-		softAssert.assertEquals(legalFooter.getTextOfButtonOnPrivacyPolicyBanner(), I_UNDERSTAND);
+		softAssert.assertEquals(legalFooter.getTextOfButtonOnPrivacyPolicyBanner(), I_UNDERSTAND,
+				"Issue-----> The text found on the button is "+legalFooter.getTextOfButtonOnPrivacyPolicyBanner());
 		
 		//Verify the text on Privacy Policy Banner
-		softAssert.assertEquals(legalFooter.getTextofPrivacyPolicyBanner(), PRIVACY_POLICY_TEXT);
+		softAssert.assertEquals(legalFooter.getTextofPrivacyPolicyBanner(), PRIVACY_POLICY_TEXT,"Issue-----> Privacy Policy text not as expected");
 		
 		softAssert.assertAll();
 	}
 	
 	@Test(priority=6)
-	public void RW_T1424()
+	public void RW_T1424_PrivacyPolicy_URL_Verification()
 	{
+		softAssert = new SoftAssert();
+		
 		testStart("******* Validating the URL after clicking on Privacy Policy link on the banner ************************");
 		legalFooter.clickPrivacyPolicyLinkOnBanner();
 		
 		//verify the URL on Privacy Policy page
-		softAssert.assertEquals(getDriver().getCurrentUrl(), PRIVACY_POLICY_URL);
+		softAssert.assertEquals(getDriver().getCurrentUrl(), PRIVACY_POLICY_URL,"Issue-----> Privacy Policy URL "+getDriver().getCurrentUrl()+" not as expected");
 		softAssert.assertAll();
 	}
 	
 	@Test(priority=7)
-	public void RW_T1430()
+	public void RW_T1430_CookiePolicy_URL_Verification()
 	{
+		softAssert = new SoftAssert();
+		
 		testStart("******* Validating the URL after clicking on Cookie Policy link on the banner ************************");
 		legalFooter.clickCookiePolicyLinkOnBanner();
 		
-		//verify the URL on Privacy Policy page
-		softAssert.assertEquals(getDriver().getCurrentUrl(), COOKIE_POLICY_URL);
+		//verify the URL on Cookie Policy page
+		softAssert.assertEquals(getDriver().getCurrentUrl(), COOKIE_POLICY_URL,"Issue-----> Cookie Policy URL "+getDriver().getCurrentUrl()+" not as expected");
 		softAssert.assertAll();
 	}
 	
-	@Test(priority=8)
+	@Test(priority=0)
 	public void RW_T1431()
 	{
+		softAssert = new SoftAssert();
+		
 		testStart("******* Validating whether privacy policy banner disappears after clicking on 'I Understand' button **************");
 		legalFooter.clickIUnderstand();
 		
-		//verify the presence of Privacy Policy Banner
-		softAssert.assertFalse(legalFooter.isPrivacyPolicyPresent());
+		//verify the presence of Privacy Policy Banner after clicking I Understand button
+		softAssert.assertFalse(legalFooter.isAlertBannerPresent(),"Issue-----> Privacy Policy Banner still present even after clicking on 'I Understand' button");
 		
 		softAssert.assertAll();
 	}

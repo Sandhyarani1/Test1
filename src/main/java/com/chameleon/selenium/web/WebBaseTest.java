@@ -480,7 +480,7 @@ public class WebBaseTest extends BaseTest {
 
         if (!getRunLocation().equalsIgnoreCase("mobile"))
         {
-            //DriverManager.getDriver().manage().deleteAllCookies();
+            DriverManager.getDriver().manage().deleteAllCookies();
             DriverManager.getDriver().manage().window().maximize();
         }
 
@@ -505,7 +505,9 @@ public class WebBaseTest extends BaseTest {
         }
         else
         {
-            DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest())).initalizeDriver();
+        	DriverOptionsManager options = new DriverOptionsManager();
+        	options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+"//src//main//resources//extension_3_7_0_0.crx"));
+            DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest()),options).initalizeDriver();
         }
     }
 

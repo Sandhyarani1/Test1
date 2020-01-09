@@ -5,8 +5,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import javax.sound.midi.SysexMessage;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.Color;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
@@ -772,11 +776,19 @@ public class LegalFooter extends BasePage
 	 * */
 	public Boolean isAlertBannerPresent()
 	{
+		Boolean isBannerPresent = false;
 		WebPageLoaded.isDomComplete();
-		if (getDriver().findElement(byPrivacyPolicyBanner).isDisplayed())
-			return true;
-		else
-			return false;
+		try
+		{
+			if (getDriver().findElement(byPrivacyPolicyBanner).isDisplayed())
+				isBannerPresent = true;
+		}
+		catch(NoSuchElementException nsee)
+		{
+			System.err.println(nsee.getMessage());
+			isBannerPresent = false;
+		}
+		return isBannerPresent;
 	}
 	
 	/**
@@ -800,6 +812,7 @@ public class LegalFooter extends BasePage
 	 * */
 	public String getPrivacyPolicyBannerWidth()
 	{
+		WebPageLoaded.isDomComplete();
 		return getDriver().findElement(byPrivacyPolicyBanner).getCssValue("width");
 	}
 	
@@ -823,6 +836,9 @@ public class LegalFooter extends BasePage
 		WebPageLoaded.isDomComplete();
 		if(getDriver().findElement(byPrivacyPolicyLinkOnBanner).isDisplayed())
 			getDriver().findElement(byPrivacyPolicyLinkOnBanner).click();
+		String window = getDriver().getWindowHandle();
+		switchToPopUpWindow(window);
+		WebPageLoaded.isDomComplete();
 	}
 	
 	/**
@@ -834,6 +850,9 @@ public class LegalFooter extends BasePage
 		WebPageLoaded.isDomComplete();
 		if(getDriver().findElement(byCookiePolicyLinkOnBanner).isDisplayed())
 			getDriver().findElement(byCookiePolicyLinkOnBanner).click();
+		String window = getDriver().getWindowHandle();
+		switchToPopUpWindow(window);
+		WebPageLoaded.isDomComplete();
 	}
 	
 	/**
