@@ -141,7 +141,7 @@ public class BannerAlertsAPI extends APIUtilities
 	 * Use the main method to see the function calls and usages
 	 * */
 	public static void main(String[] args) {
-		System.out.println(getAlertsAPIResponse(3));
+		System.out.println(getAlertsAPIResponse(1));
 		System.out.println(getCityName(rowNo));
 		System.out.println(getZipCode(rowNo));
 		System.out.println(getLocationKey(rowNo));

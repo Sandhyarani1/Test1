@@ -7,7 +7,6 @@ import java.util.Set;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 
 import com.chameleon.selenium.DriverManager;
 import com.chameleon.selenium.web.ExtendedWebDriver;
@@ -306,6 +305,11 @@ public class BasePage {
                // TestReporter.logScreenshot(element, elementName);
            }
          }
+    }
+    
+    public void scrollDown()
+    {
+    	DriverManager.getWebDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
     }
         
 }

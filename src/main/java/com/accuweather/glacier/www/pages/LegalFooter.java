@@ -1,9 +1,12 @@
 package com.accuweather.glacier.www.pages;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.Color;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
@@ -12,25 +15,38 @@ import com.chameleon.utils.Sleeper;
 
 public class LegalFooter extends BasePage
 {
-	private By byCopyRight = By.cssSelector("body > div.template-root > div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span:nth-child(1)");
-	private By byRegisteredTrademarks = By.cssSelector("body > div.template-root > div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span");
+	private By byCopyRight = By.cssSelector("div.template-root > div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span:nth-child(1)");
+	private By byRegisteredTrademarks = By.cssSelector("div.template-root > div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span");
 	private By byRightsReserved = By.cssSelector("div.footer-legalese.footer-legalese > div.footer-copyright > span");
-	private By byTermsOfUse = By.cssSelector("body > div.template-root > div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-terms > a:nth-child(1)");
-	private By byTermsOfUseSpanish = By.cssSelector("body > div.template-root > div.base-footer > div > div.footer-terms > a:nth-child(1)");
-	private By byPrivacyPolicy = By.cssSelector("body > div.template-root > div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-terms > a:nth-child(2)");
-	private By byCookiePolicy = By.cssSelector("body > div.template-root > div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-terms > a:nth-child(3)");
-	private By byTAGDisclosure = By.cssSelector("body > div.template-root > div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-terms > a:nth-child(4)");
-	private By byTermsOfUseTab = By.cssSelector("body > div.template-root > div.page-subnav > div > div > div.subnav-items > a:nth-child(1)");
-	private By byPrivacyPolicyTab = By.cssSelector("body > div.template-root > div.page-subnav > div > div > div.subnav-items > a:nth-child(2)");
-	private By byCookiePolicyTab = By.cssSelector("body > div.template-root > div.page-subnav > div > div > div.subnav-items > a:nth-child(5)");
-	private By byTAGDisclosureTab = By.cssSelector("body > div.template-root > div.page-subnav > div > div > div.subnav-items > a:nth-child(6)");
-	private By byTermsOfUseHeading = By.cssSelector("body > div.template-root > div > div.page-content > div > div > h2");
-	private By byPrivacyPolicyHeading = By.cssSelector("body > div.template-root > div > div.page-content > div > div > h2");
-	private By byTAGDisclosureHeading = By.cssSelector("body > div.template-root > div > div.page-content > div > div > h2");
-	private By byCookiePolicyHeading = By.cssSelector("body > div.template-root > div > div.page-content > div > div > h2");
+	private By byTermsOfUse = By.cssSelector("div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-terms > a:nth-child(1)");
+	private By byTermsOfUseSpanish = By.cssSelector("div.template-root > div.base-footer > div > div.footer-terms > a:nth-child(1)");
+	private By byPrivacyPolicy = By.cssSelector("div.footer-legalese.footer-legalese > div.footer-terms > a:nth-child(2)");
+	private By byCookiePolicy = By.cssSelector("div.footer-legalese.footer-legalese > div.footer-terms > a:nth-child(3)");
+	private By byCCPA = By.cssSelector("div.footer-legalese.footer-legalese > div.footer-terms > span:nth-child(4) > a:nth-child(4)");
+	private By byTAGDisclosure = By.cssSelector("div.footer-legalese.footer-legalese > div.footer-terms > a:nth-child(4)");
+	private By byDoNotSellMyData = By.cssSelector("div.footer-legalese.footer-legalese > div.footer-terms > span:nth-child(6) > a > span.opt-out");
+	private By byConfirmed = By.cssSelector("div.footer-legalese.footer-legalese > div.footer-terms > span:nth-child(6) > a > span.opt-out-transition > span");
+	private By byNotSellingYourData = By.cssSelector("div.footer-legalese.footer-legalese > div.footer-terms > span:nth-child(6) > a > span.opt-in");
+	private By byTermsOfUseTab = By.cssSelector("div.template-root > div.page-subnav > div > div > div.subnav-items > a:nth-child(1)");
+	private By byPrivacyPolicyTab = By.cssSelector("div.template-root > div.page-subnav > div > div > div.subnav-items > a:nth-child(2)");
+	private By byCookiePolicyTab = By.cssSelector("div.template-root > div.page-subnav > div > div > div.subnav-items > a:nth-child(5)");
+	private By byTAGDisclosureTab = By.cssSelector("div.template-root > div.page-subnav > div > div > div.subnav-items > a:nth-child(6)");
+	private By byCCPATab = By.cssSelector("div.template-root > div.page-subnav > div > div > div.subnav-items > a:nth-child(7) > h1");
+	private By byTermsOfUseHeading = By.cssSelector("div.template-root > div > div.page-content > div > div > h2");
+	private By byPrivacyPolicyHeading = By.cssSelector("div.template-root > div > div.page-content > div > div > h2");
+	private By byTAGDisclosureHeading = By.cssSelector("div.template-root > div > div.page-content > div > div > h2");
+	private By byCookiePolicyHeading = By.cssSelector("div.template-root > div > div.page-content > div > div > h2");
 	private By bySettingsButton = By.cssSelector("div.main-menu > div.header-right-container > div.settings-button");
 	private By byLanguageSelector = By.cssSelector("div.utility-bar > div > div > div.dropdown-select.locale-dropdown.fade-in-left > div.dropdown-select-wrapper > div.select-title.non-touch");
 	private By bySpanish = By.cssSelector("div.utility-bar > div > div > div.dropdown-select.locale-dropdown.fade-in-left > div.dropdown-content > div:nth-child(3)");
+	private By byPrivacyPolicyBanner = By.cssSelector("div.template-root > div.privacy-policy-banner");
+	private By byIUnderstandButton = By.cssSelector("div.privacy-policy-banner > div.banner-body > div.banner-button");
+	private By byStartTextPrivacyPolicyBanner = By.xpath("/html/body/div/div[11]/div/p/text()[1]");
+	private By byMiddleTextPrivacyPolicyBanner = By.xpath("/html/body/div/div[11]/div/p/text()[2]");
+	private By byEndTextPrivacyPolicyBanner = By.xpath("/html/body/div/div[11]/div/p/text()[3]");
+	private By byPrivacyPolicyLinkOnBanner = By.cssSelector("div.template-root > div.privacy-policy-banner > div > p > a:nth-child(1)");
+	private By byCookiePolicyLinkOnBanner = By.cssSelector("div.template-root > div.privacy-policy-banner > div > p > a:nth-child(2)");
+	
 	
 	/**
 	 * Method to validate if Terms Of Use link is present on Footer
@@ -621,5 +637,244 @@ public class LegalFooter extends BasePage
 		switchToPopUpWindow(window);
 		return getDriver().getCurrentUrl();
 	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to find if CCPA link is present
+	 * @return true if CCPA link found, else returns false
+	 * */
+	public Boolean isCCPAPresent()
+	{
+		WebPageLoaded.isDomComplete();
+		
+		((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);",
+				byCCPA);
+		Boolean isCCPAPresent = getDriver().findElement(byCCPA).syncVisible();
+		return isCCPAPresent;		
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to return the CCPA text
+	 * @return String value of the text present at CCPA locator
+	 * */
+	public String getCCPAText()
+	{
+		WebPageLoaded.isDomComplete();
+		return getDriver().findElement(byCCPA).getText();
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to click the CCPA link
+	 * */
+	public void clickCCPA()
+	{
+		WebPageLoaded.isDomComplete();
+		scrollDown();
+		getDriver().findElement(byCCPA).click();
+		String window = getDriver().getWindowHandle();
+		switchToPopUpWindow(window);
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to get the CCPA name on the secondary navigation
+	 * @return String value of the CCPA tab
+	 * */
+	public String getNameOfCCPATab()
+	{
+		WebPageLoaded.isDomComplete();
+		return getDriver().findElement(byCCPATab).getText();
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to get the border bottom color of active tab
+	 * @return String value of the border bottom color of the CCPA tab
+	 * */
+	public String getBorderColorOfCCPATab()
+	{
+		WebPageLoaded.isDomComplete();
+		String color = getDriver().findElement(byCCPATab).getCssValue("border-bottom");
+		return Color.fromString(color).asHex();
+	}
+	
+	
+	/**
+	 * @author HFARAZ
+	 * Method to find if Do Not Sell My Data link is present
+	 * @return true if "Do Not Sell My Data" link found, else returns false
+	 * */
+	public Boolean isDoNotSellYourDataPresent()
+	{
+		WebElement doNotSellMyData = getDriver().findWebElement(byDoNotSellMyData);
+		if(doNotSellMyData.isDisplayed())
+			return true;
+		else
+			return false;		
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to find if Confirmed text appears
+	 * @return true if Confirmed text found, else returns false
+	 * */
+	public Boolean isConfirmedPresent()
+	{
+		WebElement confirmed = getDriver().findWebElement(byConfirmed);
+		if(confirmed.isDisplayed())
+			return true;
+		else
+			return false;		
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to find if "Not Selling Your Data" link is present
+	 * @return true if "Not Selling Your Data" link found, else returns false
+	 * */
+	public Boolean isNotSellingYourDataPresent()
+	{
+		WebElement notSellingYourData = getDriver().findWebElement(byNotSellingYourData);
+		if(notSellingYourData.isDisplayed())
+			return true;
+		else
+			return false;		
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to return the Confirmed text
+	 * @return String value of the text present at Confirmed locator
+	 * */
+	public String getConfirmedText()
+	{
+		WebPageLoaded.isDomComplete();
+		return getDriver().findElement(byConfirmed).getText();
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to return the CCPA text
+	 * @return String value of the text present at CCPA locator
+	 * */
+	public String getNotSellingYourDataText()
+	{
+		WebPageLoaded.isDomComplete();
+		return getDriver().findElement(byNotSellingYourData).getText();
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to check if the privacy policy banner is present
+	 * @return true if alert banner present else returns false
+	 * */
+	public Boolean isAlertBannerPresent()
+	{
+		WebPageLoaded.isDomComplete();
+		if (getDriver().findElement(byPrivacyPolicyBanner).isDisplayed())
+			return true;
+		else
+			return false;
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to check if the "I Understand" button is present on privacy policy banner
+	 * @return true if "I Understand" button present else returns false
+	 * */
+	public Boolean isIUnderstandButtonPresentOnPrivacyPolicyBanner()
+	{
+		WebPageLoaded.isDomComplete();
+		if (getDriver().findElement(byIUnderstandButton).isDisplayed())
+			return true;
+		else
+			return false;
+	}
+	
+	
+	/**
+	 * @author HFARAZ
+	 * Method to give the width of privacy policy banner in pixels
+	 * */
+	public String getPrivacyPolicyBannerWidth()
+	{
+		return getDriver().findElement(byPrivacyPolicyBanner).getCssValue("width");
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to click "I Understand Button"
+	 * */
+	public void clickIUnderstand()
+	{
+		WebPageLoaded.isDomComplete();
+		if(getDriver().findElement(byIUnderstandButton).isDisplayed())
+			getDriver().findElement(byIUnderstandButton).click();
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to click "Privacy Policy" link on the banner
+	 * */
+	public void clickPrivacyPolicyLinkOnBanner()
+	{
+		WebPageLoaded.isDomComplete();
+		if(getDriver().findElement(byPrivacyPolicyLinkOnBanner).isDisplayed())
+			getDriver().findElement(byPrivacyPolicyLinkOnBanner).click();
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to click "Cookie Policy" link on the banner
+	 * */
+	public void clickCookiePolicyLinkOnBanner()
+	{
+		WebPageLoaded.isDomComplete();
+		if(getDriver().findElement(byCookiePolicyLinkOnBanner).isDisplayed())
+			getDriver().findElement(byCookiePolicyLinkOnBanner).click();
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to get the text of the button on the privacy policy banner
+	 * @return String value of the text present on the button
+	 * */
+	public String getTextOfButtonOnPrivacyPolicyBanner()
+	{
+		WebPageLoaded.isDomComplete();
+		return getDriver().findElement(byIUnderstandButton).getText();
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to return the value of the text on Privacy Policy Banner
+	 * @return String value of the text on Privacy Policy Banner
+	 * */
+	public String getTextofPrivacyPolicyBanner()
+	{
+		WebPageLoaded.isDomComplete();
+		StringBuilder privacyPolicyTextOnBanner = new StringBuilder();
+		ArrayList<String> multipleStringsOnPrivacyPolicyBanner = new ArrayList<String>();
+		
+		if(getDriver().findElement(byStartTextPrivacyPolicyBanner).isDisplayed() && getDriver().findElement(byPrivacyPolicyBanner).isDisplayed()
+				&& getDriver().findElement(byMiddleTextPrivacyPolicyBanner).isDisplayed() && getDriver().findElement(byCookiePolicyLinkOnBanner).isDisplayed()
+				&& getDriver().findElement(byEndTextPrivacyPolicyBanner).isDisplayed())
+		{
+			multipleStringsOnPrivacyPolicyBanner.add(getDriver().findElement(byStartTextPrivacyPolicyBanner).getText());
+			multipleStringsOnPrivacyPolicyBanner.add(getDriver().findElement(byPrivacyPolicyBanner).getText());
+			multipleStringsOnPrivacyPolicyBanner.add(getDriver().findElement(byMiddleTextPrivacyPolicyBanner).getText());
+			multipleStringsOnPrivacyPolicyBanner.add(getDriver().findElement(byCookiePolicyLinkOnBanner).getText());
+			multipleStringsOnPrivacyPolicyBanner.add(getDriver().findElement(byEndTextPrivacyPolicyBanner).getText());
+			
+		}
+		for (int i=0;i<multipleStringsOnPrivacyPolicyBanner.size();i++)
+		{
+			privacyPolicyTextOnBanner = privacyPolicyTextOnBanner.append(multipleStringsOnPrivacyPolicyBanner.get(i));
+		}
+		return privacyPolicyTextOnBanner.toString();
+	}
+	
 
 }
