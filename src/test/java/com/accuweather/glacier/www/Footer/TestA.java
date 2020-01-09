@@ -23,7 +23,7 @@ public class TestA extends AccuWeatherBaseTest
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Qualitest\\Downloads\\WebDrivers\\chromedriver.exe");
 		//System.setProperty("webdriver.gecko.driver", "C:\\Users\\Qualitest\\Downloads\\WebDrivers\\geckodriver.exe");
 		ChromeOptions options = new ChromeOptions();
-		options.addExtensions(new File("C:\\Users\\Qualitest\\Downloads\\Ad-Blocker Extension\\extension_3_7_0_0.crx"));
+		options.addExtensions(new File(System.getProperty("user.dir")+"\\src\\main\\resources\\extension_3_7_0_0.crx"));
 		//DesiredCapabilities capabilities = new DesiredCapabilities();
 		//options.merge(capabilities);
 		driver = new ChromeDriver(options);
