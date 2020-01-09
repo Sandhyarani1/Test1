@@ -550,7 +550,7 @@ public class WebBaseTest extends BaseTest {
 			 * options.getChromeOptions().addArguments("disable-impl-side-painting");
 			 * options.getChromeOptions().addArguments("--disable-accelerated-2d-canvas");
 			 */
-            	options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+"\\src\\main\\resources\\extension_3_7_0_0.crx"));
+            	options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+"//src//main//resources//extension_3_7_0_0.crx"));
             	options.getChromeOptions().setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             	options.getChromeOptions().setCapability(ChromeOptions.CAPABILITY, options.getChromeOptions());
             	break;
