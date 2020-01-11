@@ -1,13 +1,15 @@
 package com.chameleon.selenium.web;
 import static com.chameleon.selenium.DriverConstants.DEFAULT_CHROME_PAGE_LOAD_STRATEGY;
 import static com.chameleon.selenium.web.chromeDevTool.ChromeDevToolEmulator.DEVICE_NAME;
+
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.apache.commons.lang3.StringUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.testng.ITestContext;
@@ -18,6 +20,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+
 import com.accuweather.glacier.Environment;
 import com.chameleon.AutomationException;
 import com.chameleon.BaseTest;
@@ -34,6 +37,7 @@ import com.chameleon.utils.TestReporter;
 import com.chameleon.utils.io.PropertiesManager;
 import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.saucerest.SauceREST;
+
 import io.appium.java_client.remote.MobileBrowserType;
 import io.appium.java_client.remote.MobilePlatform;
 
@@ -499,9 +503,15 @@ public class WebBaseTest extends BaseTest {
             setBrowserUnderTest("firefox");
             DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest()), options).initalizeDriver();
         }
+        else if(DriverType.CHROME.equals(DriverType.fromString(getBrowserUnderTest())))
+        {
+        	DriverOptionsManager options = new DriverOptionsManager();
+        	options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+appURLRepository.get(Constants.AD_BLOCKER_EXTENSION_PATH)));
+            DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest()),options).initalizeDriver();
+        }
         else
         {
-            DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest())).initalizeDriver();
+        	DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest())).initalizeDriver();
         }
     }
 
@@ -534,16 +544,19 @@ public class WebBaseTest extends BaseTest {
                 options.getInternetExplorerOptions().ignoreZoomSettings();
                 break;
             case CHROME:
-//            	options.getChromeOptions().addArguments("--headless");
-            	options.getChromeOptions().addArguments("--disable-extensions");
-            	options.getChromeOptions().addArguments("--dns-prefetch-disable");      	
-            	options.getChromeOptions().addArguments("--no-sandbox");
-            	options.getChromeOptions().addArguments("--disable-gpu");
-            	options.getChromeOptions().addArguments("--remote-debugin-port=9222");
-            	options.getChromeOptions().addArguments("--screen-size=1200x800");
-            	options.getChromeOptions().addArguments("--test-type=ui");
-            	options.getChromeOptions().addArguments("disable-impl-side-painting");
-            	options.getChromeOptions().addArguments("--disable-accelerated-2d-canvas");
+			/*
+			 * // options.getChromeOptions().addArguments("--headless");
+			 * options.getChromeOptions().addArguments("--disable-extensions");
+			 * options.getChromeOptions().addArguments("--dns-prefetch-disable");
+			 * options.getChromeOptions().addArguments("--no-sandbox");
+			 * options.getChromeOptions().addArguments("--disable-gpu");
+			 * options.getChromeOptions().addArguments("--remote-debugin-port=9222");
+			 * options.getChromeOptions().addArguments("--screen-size=1200x800");
+			 * options.getChromeOptions().addArguments("--test-type=ui");
+			 * options.getChromeOptions().addArguments("disable-impl-side-painting");
+			 * options.getChromeOptions().addArguments("--disable-accelerated-2d-canvas");
+			 */
+            	options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+appURLRepository.get(Constants.AD_BLOCKER_EXTENSION_PATH)));
             	options.getChromeOptions().setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             	options.getChromeOptions().setCapability(ChromeOptions.CAPABILITY, options.getChromeOptions());
             	break;
