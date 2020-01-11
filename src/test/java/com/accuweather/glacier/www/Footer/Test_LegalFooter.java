@@ -43,7 +43,7 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	public final static String TAG_DISCLOSURE_CONTENT_HEADING = "TAG PUBLISHER SOURCE AND DISCLOSURE";
 	
 	/*************************** COPY RIGHT INFORMATION **********************************/
-	public final static String ACTIVE_TAB_COLOR = "#f05514";
+	public final static String ACTIVE_TAB_COLOR = "#c2c2c2";
 	public final static String COPYRIGHT_INFO = "© 2019 AccuWeather, Inc. \"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc. All Rights Reserved.";
 	public final static String REGISTERED_TRADEMARKS = "© 2019 AccuWeather, Inc. \"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc. All Rights Reserved.";
 	public final static String ALL_RIGHTS_RESERVED = "© 2019 AccuWeather, Inc. \"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc. All Rights Reserved.";
@@ -61,11 +61,13 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	
 	/******************************* DO NOT SELL MY DATA *****************************************/
 	public final static String DO_NOT_SELL_MY_DATA = "Do Not Sell My Data";
+	public final static String CONFIRMED = "Confirmed";
+	public final static String NOT_SELLING_YOUR_DATA = "Not Selling Your Data";
 	
 	/******************************** PRIVACY POLICY BANNER **************************************/
 	public final static String BANNER_WIDTH = "320px";
 	public final static String I_UNDERSTAND = "I Understand";
-	public final static String PRIVACY_POLICY_TEXT = "We have updated our Privacy Policy and our Cookie Policy.";
+	public final static String PRIVACY_POLICY_TEXT = "We have updated our Privacy Policy and our Cookie Policy";
 	
 	public LegalFooter legalFooter = new LegalFooter();
 	protected Map<String, String> appURLRepository = PropertiesManager.properties(Constants.ENVIRONMENT_URL_PROPERTIES);
@@ -74,58 +76,264 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	@BeforeTest
 	public void setURLData()
 	{
-		CCPA_URL = appURLRepository.get("ACCUWEATHER_WEB_QA")+CCPA_URL_SUFFIX;
-		PRIVACY_POLICY_URL = appURLRepository.get("ACCUWEATHER_WEB_QA")+PRIVACY_POLICY_URL_SUFFIX;
-		TERMS_OF_USE_URL = appURLRepository.get("ACCUWEATHER_WEB_QA")+TERMS_OF_USE_URL_SUFFIX;
-		TAG_DISCLOSURE_URL = appURLRepository.get("ACCUWEATHER_WEB_QA")+TAG_DISCLOSURE_URL_SUFIX;
-		COOKIE_POLICY_URL = appURLRepository.get("ACCUWEATHER_WEB_QA")+COOKIE_POLICY_URL_SUFFIX;
-		System.out.println(" CCPA URL :---------> "+CCPA_URL);
-		
+		CCPA_URL = appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+CCPA_URL_SUFFIX;
+		PRIVACY_POLICY_URL = appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+PRIVACY_POLICY_URL_SUFFIX;
+		TERMS_OF_USE_URL = appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+TERMS_OF_USE_URL_SUFFIX;
+		TAG_DISCLOSURE_URL = appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+TAG_DISCLOSURE_URL_SUFIX;
+		COOKIE_POLICY_URL = appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+COOKIE_POLICY_URL_SUFFIX;	
 	}
 	
+	@Test(priority=1)
+	public void RW_T100_ValidateTermsOfUseInFooter()
+	{
+		softAssert = new SoftAssert();
+		testStart("*******Validate Terms of Use link, it's spelling, title, URL, color of the tab and heading of the tab************");
+		
+		//Verifying whether Terms of Use is present
+		softAssert.assertTrue(legalFooter.isTermsOfUsePresent());
+		
+		//Verifying the spelling of Terms of Use
+		softAssert.assertEquals(legalFooter.getTermsOfUseText(),TERMS_OF_USE);
+		  
+		//Verifying the title of Terms of Use page 
+		legalFooter.clickTermsOfUse();
+		softAssert.assertEquals(getDriver().getTitle(),TERMS_OF_USE_TITLE);
+		  
+		//Verifying the URL of Terms of Use page
+		softAssert.assertEquals(getDriver().getCurrentUrl(),TERMS_OF_USE_URL);
+		  
+		//Verifying the spelling of Terms Of Use tab
+		softAssert.assertEquals(legalFooter.getNameOfTermsOfUseTab(),TERMS_OF_USE.toUpperCase());
+		  
+		//Verifying the color of the Terms of Use tab
+		softAssert.assertEquals(legalFooter.getBottomBorderColor_Of_TermsOfUseTab(),ACTIVE_TAB_COLOR);
+		  
+		//Verifying the content heading of the Terms of Use page
+		softAssert.assertEquals(legalFooter.getHeadingOfTermsOfUse(),TERMS_OF_USE_CONTENT_HEADING);
+		
+		softAssert.assertAll();
+	}
 	
-	
-	/*
-	 * @Test(priority = 1) public void RW_T2023_ValidatePresenceOfCCPA() {
-	 * testStart("************************** Verifying the presence of CCPA, spelling of CCPA *******************"
-	 * );
-	 * 
-	 * //Verifying the presence of CCPA
-	 * softAssert.assertTrue(legalFooter.isCCPAPresent());
-	 * 
-	 * //Verifying the spelling of CCPA
-	 * //System.out.println(legalFooter.getCCPAText());
-	 * softAssert.assertEquals(legalFooter.getCCPAText(), CCPA);
-	 * 
-	 * softAssert.assertAll(); }
-	 * 
-	 * @Test(priority=2) public void RW_T2029() {
-	 * testStart("************ Validating the title and URL of CCPA page ********************"
-	 * ); legalFooter.clickCCPA();
-	 * 
-	 * //Verify the title on CCPA page
-	 * softAssert.assertEquals(getDriver().getTitle(), CCPA_TITLE);
-	 * 
-	 * //Verify the URL of CCPA page
-	 * softAssert.assertEquals(getDriver().getCurrentUrl(), CCPA_URL);
-	 * 
-	 * softAssert.assertAll(); }
-	 * 
-	 * @Test(priority=3) public void RW_T2030() {
-	 * testStart("****************** Validating the CCPA Secondary Navigation Title ********************"
-	 * );
-	 * 
-	 * //Verify the name on CCPA tab
-	 * softAssert.assertEquals(legalFooter.getNameOfCCPATab(), CCPA);
-	 * 
-	 * //Verify the color at the bottom of CCPA tab
-	 * softAssert.assertEquals(legalFooter.getBorderColorOfCCPATab(),
-	 * ACTIVE_TAB_COLOR);
-	 * 
-	 * softAssert.assertAll(); }
-	 */
-	
+	@Test(priority=2)
+	public void RW_T101_ValidatePrivacyPolicyLinkInFooter()
+	{
+		softAssert = new SoftAssert();
+		testStart("*******Validate Privacy Policy link, it's spelling, title, URL, color of the tab and heading of the tab************");
+		
+		//Verify whether Privacy Policy link is present on footer
+		softAssert.assertTrue(legalFooter.isPrivacyPolicyPresent());
+		
+		//Verify the text of Privacy Policy
+		softAssert.assertEquals(legalFooter.getPrivacyPolicyText(),PRIVACY_POLICY);
+		
+		//Verify the title of Privacy Policy page
+		legalFooter.clickPrivacyPolicy();
+		softAssert.assertEquals(getDriver().getTitle(),PRIVACY_POLICY_TITLE);
+		
+		//Verify the URL of Privacy Policy page
+		softAssert.assertEquals(getDriver().getCurrentUrl(),PRIVACY_POLICY_URL);
+		
+		//Verify the spelling of Privacy Policy tab
+		softAssert.assertEquals(legalFooter.getNameOfPrivacyPolicyTab(),PRIVACY_POLICY_TAB.toUpperCase());
+		
+		//Verify the color of Privacy Policy tab
+		softAssert.assertEquals(legalFooter.getBottomBorderColor_Of_PrivacyPolicyTab(),ACTIVE_TAB_COLOR);
+		
+		//Verify the content heading of Privacy Policy header
+		softAssert.assertEquals(legalFooter.getHeadingOfPrivacyPolicy(),PRIVACY_POLICY_CONTENT_HEADING);
+		
+		softAssert.assertAll();
+		
+	}
+
+
+	@Test(priority=3)
+	public void RW_T102_ValidateCookiePolicyLinkInFooter()
+	{
+		softAssert = new SoftAssert();
+		testStart("*******Validate Cookie Policy link, it's spelling, title, URL, color of the tab and heading of the tab************");
+		
+		//Verifying the presence ofCookie Policy link in the footer
+		softAssert.assertTrue(legalFooter.isCookiePolicyPresent());
+		
+		//Verifying the spelling of Cookie Policy
+		softAssert.assertEquals(legalFooter.getCookiePolicyText(),COOKIE_POLICY);
+		
+		//verifying the title of Cookie Policy
+		legalFooter.clickCookiePolicy();
+		softAssert.assertEquals(getDriver().getTitle(),COOKIE_POLICY_TITLE);
+		
+		//Verifying the URL of Cookie Policy
+		softAssert.assertEquals(getDriver().getCurrentUrl(),COOKIE_POLICY_URL);
+		
+		//Verifying the name on Cookie Policy tab
+		softAssert.assertEquals(legalFooter.getNameOfCookiePolicyTab(),COOKIE_POLICY.toUpperCase());
+		
+		//verifying the Active Tab color
+		softAssert.assertEquals(legalFooter.getBottomBorderColor_Of_CookiePolicyTab(),ACTIVE_TAB_COLOR);
+		
+		//Verifying the content heading of Cookie Policy
+		softAssert.assertEquals(legalFooter.getHeadingOfCookiePolicy(),COOKIE_POLICY_CONTENT_HEADING);
+		
+		softAssert.assertAll();
+	}
+
 	@Test(priority=4)
+	public void RW_T102ValidateTAGDisclosureInFooter()
+	{
+		softAssert = new SoftAssert();
+		testStart("******Validate TAG Disclosure link, spelling, title, URL, color of the tab, content heading*************");
+		
+		//Verifying the presence of TAG Disclosure Link in Footer 
+		softAssert.assertTrue(legalFooter.isTAGDisclosurePresent());
+		
+		//Verifying the spelling of TAG Disclosure in Footer
+		softAssert.assertEquals(legalFooter.getTAGDisclosureText(),TAG_DISCLOSURE);
+		
+		//Verifying the title of TAG Disclosure Page
+		legalFooter.clickTAGDisclosure();
+		softAssert.assertEquals(getDriver().getTitle(),TAG_DISCLOSURE_TITLE);
+		
+		//Verifying the URL of TAG Disclosure Page
+		softAssert.assertEquals(getDriver().getCurrentUrl(),TAG_DISCLOSURE_URL);
+		
+		//Verifying the name on TAG Disclosure Tab
+		softAssert.assertEquals(legalFooter.getNameOfTAGDisclosureTab(),TAG_DISCLOSURE.toUpperCase());
+		
+		//Verifying the color of the Active tab
+		softAssert.assertEquals(legalFooter.getBottomBorderColor_Of_TAGDisclosureTab(),ACTIVE_TAB_COLOR);
+		
+		//Verifying the content heading of TAG Disclosure
+		softAssert.assertEquals(legalFooter.getHeadingOfTAGDisclosure(),TAG_DISCLOSURE_CONTENT_HEADING);
+		
+		softAssert.assertAll();
+	}
+
+	
+
+	
+	@Test(priority=5)
+	public void RW_T104_ValidateCopyrightInformation()
+	{
+		softAssert = new SoftAssert();
+		testStart("*********Validate the copyright information content************");
+		
+		//Verifying the presence of copyright information
+		softAssert.assertTrue(legalFooter.isCopyRightInformationPresent());
+		
+		//Verifying the copyright information
+		softAssert.assertEquals(legalFooter.getCopyRightInformation(),COPYRIGHT_INFO);
+		
+		//Verifying the current year in copyright information
+		softAssert.assertEquals(legalFooter.getYearInCopyRightInformation(),legalFooter.getCurrentYear());
+		
+		softAssert.assertAll();
+	}
+
+					
+
+	@Test(priority=6)
+	public void RW_T105_ValidatePresenceOfFooterWhenLanguageChanged()
+	{
+		softAssert = new SoftAssert();
+		testStart("********Validate the presence of footer when language changed**********");
+
+		//Verifying the presence of legal footer when language changed
+		softAssert.assertTrue(legalFooter.legalFooterStatusWhenLangChanged());
+		
+		softAssert.assertAll();
+	}
+	
+	@Test(priority=7)
+	public void RW_T761_ValidateDataProviderList()
+	{
+		softAssert = new SoftAssert();
+		testStart("Verify Advertising section have updated code");
+		softAssert.assertTrue(legalFooter.verifyAdvertisingSectionHaveUpdatedProviders());
+		
+		//Verifying the  Live Ramp URL
+	    softAssert.assertEquals(legalFooter.verifyLiveRampLinkAndPage(), EXPECTED_LIVERAMP_PAGE_URL);
+	    
+	    //verifying the Cuebiq URL
+	    softAssert.assertEquals(legalFooter.verifyCuebiqLinkAndPage(), EXPECTED_CUEBIQ_PAGE_URL);
+	    
+	    //Verifying the Intersection URL
+	    softAssert.assertEquals(legalFooter.verifyIntersectionLinkAndPage(), EXPECTED_INTERSECTION_PAGE_URL);
+	    
+	    softAssert.assertAll();
+	}
+	
+	  @Test(priority = 8, enabled=false)
+	  public void RW_T2023_ValidatePresenceOfCCPA()
+	  {
+		  softAssert = new SoftAssert();
+		  testStart("************************** Verifying the presence of CCPA, spelling of CCPA *******************");
+		  
+		  //Verifying the presence of CCPA
+		  softAssert.assertTrue(legalFooter.isCCPAPresent());
+		  
+		  //Verifying the spelling of CCPA
+		  softAssert.assertEquals(legalFooter.getCCPAText(), CCPA);
+		
+		  softAssert.assertAll(); 
+	  }
+	  
+	  @Test(priority=9, enabled=false)
+	  public void RW_T2029_ValidateURLAndTitleOfCCPA()
+	  {
+		  softAssert = new SoftAssert();
+		  testStart("************ Validating the title and URL of CCPA page ********************"); 
+		  
+		  legalFooter.clickCCPA();
+	  
+		  //Verify the title on CCPA page
+		  softAssert.assertEquals(getDriver().getTitle(), CCPA_TITLE);
+	  
+		  //Verify the URL of CCPA page
+		  softAssert.assertEquals(getDriver().getCurrentUrl(), CCPA_URL);
+	  
+		  softAssert.assertAll(); 
+	  }
+	  
+	  @Test(priority=10, enabled=false)
+	  public void RW_T2030_ValidateCCPASecondaryNavigation()
+	  {
+		  softAssert = new SoftAssert();
+		  testStart("****************** Validating the CCPA Secondary Navigation Title ********************");
+	  
+		  //Verify the name on CCPA tab
+		  softAssert.assertEquals(legalFooter.getNameOfCCPATab(), CCPA);
+	  
+		  //Verify the color at the bottom of CCPA tab
+		  softAssert.assertEquals(legalFooter.getBorderColorOfCCPATab(),ACTIVE_TAB_COLOR);
+	  
+		  softAssert.assertAll(); 
+	  }
+	  
+	  @Test(priority=0)
+	  public void RW_T1997_ValidateDoNotSellMyData()
+	  {
+		  softAssert = new SoftAssert();
+		  testStart("****************** Validating the Do Not Sell My Data ********************");
+		  
+		  //Verify the presence of Do Not Sell My Data Link
+		  softAssert.assertTrue(legalFooter.isDoNotSellMyDataPresent());
+		  
+		  legalFooter.clickDoNotSellMyData();
+		  
+		  //Verify the presence of Confirmed after clicking Do Not Sell My Data
+		  //softAssert.assertTrue(legalFooter.isConfirmedPresent());
+		  
+		  //Verify the text of Confirmed
+		  softAssert.assertEquals(legalFooter.getConfirmedText(),CONFIRMED);
+		  
+		  //Verify the presence of Not Selling your Data
+		  softAssert.assertEquals(legalFooter.getNotSellingYourDataText(),NOT_SELLING_YOUR_DATA);
+		  
+	  }
+	 
+	
+	@Test(priority=12)
 	public void RW_T1428_ValidatingTheWidthOfPrivacyPolicy()
 	{
 		softAssert = new SoftAssert();
@@ -135,8 +343,8 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 		softAssert.assertAll();
 	}
 	
-	@Test(priority=5)
-	public void RW_T1422_VerifyingThePresenceOfPrivacyPolicy()
+	@Test(priority=13)
+	public void RW_T1422_VerifyingThePresenceOfPrivacyPolicyBanner()
 	{
 		softAssert = new SoftAssert();
 		testStart("******* Validate presence of privacy policy banner, 'I Understand' button, text on privacy policy banner *****************");
@@ -151,13 +359,10 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 		softAssert.assertEquals(legalFooter.getTextOfButtonOnPrivacyPolicyBanner(), I_UNDERSTAND,
 				"Issue-----> The text found on the button is "+legalFooter.getTextOfButtonOnPrivacyPolicyBanner());
 		
-		//Verify the text on Privacy Policy Banner
-		softAssert.assertEquals(legalFooter.getTextofPrivacyPolicyBanner(), PRIVACY_POLICY_TEXT,"Issue-----> Privacy Policy text not as expected");
-		
 		softAssert.assertAll();
 	}
 	
-	@Test(priority=6)
+	@Test(priority=14)
 	public void RW_T1424_PrivacyPolicy_URL_Verification()
 	{
 		softAssert = new SoftAssert();
@@ -170,7 +375,7 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 		softAssert.assertAll();
 	}
 	
-	@Test(priority=7)
+	@Test(priority=15)
 	public void RW_T1430_CookiePolicy_URL_Verification()
 	{
 		softAssert = new SoftAssert();
@@ -183,8 +388,8 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 		softAssert.assertAll();
 	}
 	
-	@Test(priority=0)
-	public void RW_T1431()
+	@Test(priority=16)
+	public void RW_T1431_ValidatePresenceOfPrivacyPolicyBannerAfterAccepting()
 	{
 		softAssert = new SoftAssert();
 		

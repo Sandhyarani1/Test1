@@ -503,11 +503,15 @@ public class WebBaseTest extends BaseTest {
             setBrowserUnderTest("firefox");
             DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest()), options).initalizeDriver();
         }
-        else
+        else if(DriverType.CHROME.equals(DriverType.fromString(getBrowserUnderTest())))
         {
         	DriverOptionsManager options = new DriverOptionsManager();
-        	options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+"//src//main//resources//extension_3_7_0_0.crx"));
+        	options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+appURLRepository.get(Constants.AD_BLOCKER_EXTENSION_PATH)));
             DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest()),options).initalizeDriver();
+        }
+        else
+        {
+        	DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest())).initalizeDriver();
         }
     }
 
@@ -552,7 +556,7 @@ public class WebBaseTest extends BaseTest {
 			 * options.getChromeOptions().addArguments("disable-impl-side-painting");
 			 * options.getChromeOptions().addArguments("--disable-accelerated-2d-canvas");
 			 */
-            	options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+"//src//main//resources//extension_3_7_0_0.crx"));
+            	options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+appURLRepository.get(Constants.AD_BLOCKER_EXTENSION_PATH)));
             	options.getChromeOptions().setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             	options.getChromeOptions().setCapability(ChromeOptions.CAPABILITY, options.getChromeOptions());
             	break;

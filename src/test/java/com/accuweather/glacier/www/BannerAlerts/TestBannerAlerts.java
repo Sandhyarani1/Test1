@@ -1,6 +1,7 @@
 package com.accuweather.glacier.www.BannerAlerts;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -9,6 +10,8 @@ import com.accuweather.glacier.api.BannerAlertsAPI;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.BannerAlerts;
 import com.accuweather.glacier.www.pages.LandingPage;
+import com.chameleon.utils.Constants;
+import com.chameleon.utils.io.PropertiesManager;
 
 public class TestBannerAlerts extends AccuWeatherBaseTest {
 
@@ -26,8 +29,7 @@ public class TestBannerAlerts extends AccuWeatherBaseTest {
 	public static int alertCount=0;
 	public static String expectedTitle="";
 	public static ArrayList<String> alertsSummary;
-	
-	
+	protected Map<String, String> appURLRepository = PropertiesManager.properties(Constants.ENVIRONMENT_URL_PROPERTIES);
 	
 	public void getTestData(int noOfAlerts)
 	{
@@ -40,7 +42,7 @@ public class TestBannerAlerts extends AccuWeatherBaseTest {
 		
 		location = cityHavingAlerts+", "+stateHavingAlerts+", "+countryCodeHavingAlerts;
 		cityNameForURL = BannerAlertsAPI.getCityNameHavingAlerts().replace(' ', '-');
-		expectedURL = ("https://qualityassurance.accuweather.com/en/us/"+cityNameForURL+"/"+zipCodeHavingAlerts+"/weather-warnings/"+locationKeyHavingAlerts).toLowerCase();
+		expectedURL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+"/en/us/"+cityNameForURL+"/"+zipCodeHavingAlerts+"/weather-warnings/"+locationKeyHavingAlerts).toLowerCase();
 		alertCount = BannerAlertsAPI.getAlertCount();
 		expectedTitle = cityHavingAlerts+", "+stateHavingAlerts+" Weather Advisories - Warnings & Watches | AccuWeather";
 		alertsSummary = new ArrayList<String>();
@@ -53,6 +55,7 @@ public class TestBannerAlerts extends AccuWeatherBaseTest {
 	  {
 		  getTestData(1);
 		  softAssert =  new SoftAssert();
+		  
 		  testStart("********Verification of presence of Banner Alerts, Alert Summary Validation, URL validation, Title Validation, Number of Alerts on the recent search location********");
 		  landingPage.enterZipcodeInSearchField(cityHavingAlerts);
 		  landingPage.selectCityFromTheList(location);

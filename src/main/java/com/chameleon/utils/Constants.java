@@ -27,6 +27,8 @@ public class Constants {
      */
     public static final String ENVIRONMENT_URL_PATH = "EnvironmentURLs";
     public static final String ENVIRONMENT_URL_PROPERTIES = "EnvironmentURLs.properties";
+    public static final String ACCUWEATHER_WEB_QA = "ACCUWEATHER_WEB_QA";
+    public static final String AD_BLOCKER_EXTENSION_PATH = "AD_BLOCKER_EXTENSION_PATH";
     public static final String USER_CREDENTIALS_PATH = "UserCredentials";
     public static final String SANDBOX_PATH = DIR_SEPARATOR + "sandbox" + DIR_SEPARATOR;
     public static final String TNSNAMES_PATH = DIR_SEPARATOR + "database" + DIR_SEPARATOR;
