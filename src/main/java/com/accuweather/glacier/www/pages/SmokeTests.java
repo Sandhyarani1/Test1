@@ -25,18 +25,6 @@ public class SmokeTests extends BasePage
 	
 	/**
 	 * @author HFARAZ
-	 * Method to scroll to the bottom of the page
-	 * */
-	public void scrollDown(int pixels)
-	{
-		JavascriptExecutor js = (JavascriptExecutor) getDriver().getWebDriver();
-		js.executeScript("window.scrollBy(0,"+pixels+")");
-		//js.executeScript("arguments[0].scrollIntoView();", element);
-		WebPageLoaded.isDomComplete();
-	}
-	
-	/**
-	 * @author HFARAZ
 	 * Method to check if the title of content module is displayed
 	 * @return true if displayed else false
 	 * */
@@ -182,7 +170,7 @@ public class SmokeTests extends BasePage
 	
 	/**
 	 * @author HFARAZ
-	 * Method to click 'SHOW MORE' button
+	 * Method to click 'SHOW MORE' button for Weather News
 	 * */
 	public void clickShowMore()
 	{
@@ -200,7 +188,8 @@ public class SmokeTests extends BasePage
 	
 	/**
 	 * @author HFARAZ
-	 * Method to read the weather news articles
+	 * Method to read the titles of weather news articles
+	 * @return ArrayList of titles of all the weather news
 	 * */
 	public ArrayList readWeatherNewsTitles(int count)
 	{
@@ -262,7 +251,8 @@ public class SmokeTests extends BasePage
 	
 	/**
 	 * @author HFARAZ
-	 * Method to read the weather news dates
+	 * Method to read the dates of weather news articles
+	 * @return ArrayList of dates of all the weather news
 	 * */
 	public ArrayList readWeatherNewsDate(int count)
 	{
@@ -289,7 +279,8 @@ public class SmokeTests extends BasePage
 	
 	/**
 	 * @author HFARAZ
-	 * Method to read the weather news type
+	 * Method to read the types of weather news
+	 * @return ArrayList of types of all the weather news
 	 * */
 	public ArrayList readWeatherNewsType(int count)
 	{
@@ -316,7 +307,8 @@ public class SmokeTests extends BasePage
 	
 	/**
 	 * @author HFARAZ
-	 * Method to read right rail articles
+	 * Method to read the titles of right rail articles
+	 * @return ArrayList of the titles of right rail articles
 	 * */
 	public ArrayList<String> getRightRailArticlesTitles(int count)
 	{
