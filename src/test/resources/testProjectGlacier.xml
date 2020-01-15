@@ -6,10 +6,10 @@
 		<parameter name="operatingSystem" value="WINDOWS" />
 		<parameter name="logLevel" value="3"/>
 
-		<test name="Legal Footer page in Chrome">
+		<test name="Landing Page API Validations in Chrome">
 			<parameter name="browserUnderTest" value="Chrome" />
       		<classes>
-      			<class name="com.accuweather.glacier.www.Footer.Test_LegalFooter"/>
+      			<class name="com.accuweather.glacier.www.SmokeTests.SmokeTest"/>
       		</classes>
 		</test>>
 	</suite>
