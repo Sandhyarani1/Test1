@@ -40,7 +40,7 @@ public class BasePage {
 	 * */
 
 
-	public void switchToPopUpWindow(String webPage)
+	public void switchToDifferentTab(String webPage)
 	{
 		Set<String> windows = getDriver().getWindowHandles();
 		System.out.println(windows.size());
@@ -307,9 +307,6 @@ public class BasePage {
          }
     }
     
-    public void scrollDown()
-    {
-    	DriverManager.getWebDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
-    }
+    
         
 }

@@ -158,6 +158,26 @@ public class APIUtilities
 		return response;
 	}
 	
+	/**
+	 * @author HFARAZ
+	 * This method will fetch the JSON response for Landing Page API
+	 * */
+	public static Response getLandingPageDetails()
+	{
+		RestAssured.baseURI = apiProperties.get(APIConstants.LANDING_PAGE_URI);
+		Response response =
+		given().
+			param("template",apiProperties.get(APIConstants.TEMPLATE)).
+			param("locations",apiProperties.get(APIConstants.LOCATIONS)).
+		when().
+			get(apiProperties.get(APIConstants.LANDING_PAGE_RESOURCES)).
+		then().
+			assertThat().statusCode(200).and().
+		extract().response();
+		
+		return response;
+	}
+	
 	
 	/**
 	 * @author HFARAZ
@@ -167,5 +187,11 @@ public class APIUtilities
 	public static int getStatusCode(Response response)
 	{
 		return response.getStatusCode();
+	}
+	
+	public static void main(String[] args)
+	{
+		Response res = getLandingPageDetails();
+		System.out.println(res.asString());
 	}
 }
