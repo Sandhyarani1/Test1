@@ -99,16 +99,16 @@ public class LandingPageAPI extends APIUtilities
 		 */
 		ArrayList<String> a = new ArrayList<String>();
 		
-		/*
-		 * System.out.println(getLandingPageData(NAVIGATION_VIDEO));
-		 * System.out.println("\n");
-		 * System.out.println(getLandingPageData(NAVIGATION_NEWS));
-		 * System.out.println("\n");
-		 * System.out.println(getLandingPageData(NAVIGATION_SEVERE));
-		 * System.out.println("\n");
-		 * System.out.println(getLandingPageData(CENTERWELL1));
-		 * System.out.println("\n");
-		 */
+		
+		  System.out.println(getLandingPageData(NAVIGATION_VIDEO));
+		  System.out.println("\n");
+		  System.out.println(getLandingPageData(NAVIGATION_NEWS));
+		  System.out.println("\n");
+		  System.out.println(getLandingPageData(NAVIGATION_SEVERE));
+		  System.out.println("\n");
+		  System.out.println(getLandingPageData(CENTERWELL1));
+		  System.out.println("\n");
+		 
 		  System.out.println(getLandingPageData(CENTERWELL2));
 		  System.out.println("\n");
 		/*

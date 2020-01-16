@@ -22,14 +22,14 @@ public class RW_T2183_LandingPageAPIValidations extends AccuWeatherBaseTest
 	SoftAssert softAssert;
 	LandingPageAPI getLandingPageAPIData = new LandingPageAPI();
 	LandingPage landingPage = new LandingPage();
-	public String contentModuleTitle = "";
-	public String contentModuleDate = "";
-	public String centerWell1VideoTitle = "";
-	public ArrayList<String> rightRailArticleTitles = new ArrayList<String>();
+	public String contentModuleTitleFromAPI = "";
+	public String contentModuleDateFromAPI = "";
+	public String centerWell1VideoTitleFromAPI = "";
+	public ArrayList<String> rightRailArticleTitlesFromAPI = new ArrayList<String>();
 	public ArrayList<String> weatherNewsDateFromAPI = new ArrayList<String>();
 	public ArrayList<String> weatherNewsTypeFromAPI = new ArrayList<String>();
 	public ArrayList<String> weatherNewsTitleFromAPI = new ArrayList<String>();
-	public int noOfWeatherNews = 0;
+	public int noOfWeatherNewsFromAPI = 0;
 	
 	
 	/***
@@ -42,58 +42,58 @@ public class RW_T2183_LandingPageAPIValidations extends AccuWeatherBaseTest
 	@BeforeClass()
 	public void getAPIData()
 	{
-		contentModuleTitle = LandingPageAPI.getCenterWell1ContentModuleData()[0];
-		contentModuleDate = LandingPageAPI.getCenterWell1ContentModuleData()[1];
-		centerWell1VideoTitle = LandingPageAPI.getCenterWellVideoTitle()[0];
-		rightRailArticleTitles = LandingPageAPI.getRightRailsArticlesTitles();
-		noOfWeatherNews = LandingPageAPI.getNoOfWeatherNews();
+		contentModuleTitleFromAPI = LandingPageAPI.getCenterWell1ContentModuleData()[0];
+		contentModuleDateFromAPI = LandingPageAPI.getCenterWell1ContentModuleData()[1];
+		centerWell1VideoTitleFromAPI = LandingPageAPI.getCenterWellVideoTitle()[0];
+		rightRailArticleTitlesFromAPI = LandingPageAPI.getRightRailsArticlesTitles();
+		noOfWeatherNewsFromAPI = LandingPageAPI.getNoOfWeatherNews();
 		weatherNewsDateFromAPI = LandingPageAPI.getWeatherNewsDate();
 		weatherNewsTypeFromAPI = LandingPageAPI.getWeatherNewsType();
 		weatherNewsTitleFromAPI = LandingPageAPI.getWeatherNewsTitles();
 	}
 	
-	@Test(priority=1,enabled=false)
+	@Test(priority=1,enabled=true)
 	public void RW_T2183LandingPageAPIValidations()
 	{
 		softAssert = new SoftAssert();
 		testStart("API Validation of Landing Page Elements");
 		
 		/****************Validate CenterWell 1 Content Module Title***************************************/
-		softAssert.assertEquals(landingPage.getContentModuleTitle(), contentModuleTitle,
+		softAssert.assertEquals(landingPage.getContentModuleTitle(), contentModuleTitleFromAPI,
 				"Issue-----> CenterWell 1 Content Module Title not matching with API Data");
 		
 		/********************Validate CenterWell 1 Content Module Date***************************************/
-		softAssert.assertTrue(landingPage.getContentModuleDate().replaceAll("\\s+","").replaceAll(",", "").equalsIgnoreCase(contentModuleDate.replaceAll("\\s+","")),
+		softAssert.assertTrue(landingPage.getContentModuleDate().replaceAll("\\s+","").replaceAll(",", "").equalsIgnoreCase(contentModuleDateFromAPI.replaceAll("\\s+","")),
 				"Issue-----> CenterWell 1 Content Module Date not matching with API Data"
 				+"\n");
 		
 		/********************Validate CenterWell 1 Video Title*******************************************/
-		softAssert.assertEquals(landingPage.getCenterWell1VideoTitle(), centerWell1VideoTitle,
+		softAssert.assertEquals(landingPage.getCenterWell1VideoTitle(), centerWell1VideoTitleFromAPI,
 				"Issue----->CenterWell 1 Video Title not matcing with API Data");
 		
 		/********************Validate RightRail Articles Title*********************************************/
 		ArrayList<String> railRightArticleTitlesUI = new ArrayList<String>();
-		railRightArticleTitlesUI = landingPage.getRightRailArticlesTitles(rightRailArticleTitles.size());
+		railRightArticleTitlesUI = landingPage.getRightRailArticlesTitles(rightRailArticleTitlesFromAPI.size());
 		
-		for (int i=0;i<rightRailArticleTitles.size();i++)
+		for (int i=0;i<rightRailArticleTitlesFromAPI.size();i++)
 		{
 			int count = i+1;
-			softAssert.assertEquals(railRightArticleTitlesUI.get(i), rightRailArticleTitles.get(i),
+			softAssert.assertEquals(railRightArticleTitlesUI.get(i), rightRailArticleTitlesFromAPI.get(i),
 					"\nIssue-----> Title for Rightrail Article No: "+count+" not matching with API Data"
 					+"\n");
 		}
 		
 		/*********************************Validate the number of CenterWell 2 Weather News Articles******************************/
 		landingPage.clickShowMore();
-		softAssert.assertEquals(landingPage.getCountOfWeatherNewsArticles(), noOfWeatherNews,
+		softAssert.assertEquals(landingPage.getCountOfWeatherNewsArticles(), noOfWeatherNewsFromAPI,
 				"\nIssue----->Weather News Count not matching with the API"
 				+"\n");
 		
 		/*******************************Validate the Date on Weather News Articles with API Data**********************************/
 				
 		  ArrayList<String> weatherNewsDateOnUI = new ArrayList<String>();
-		  weatherNewsDateOnUI = landingPage.readWeatherNewsDate(noOfWeatherNews);
-		  for(int i=0;i<noOfWeatherNews;i++)
+		  weatherNewsDateOnUI = landingPage.readWeatherNewsDate(noOfWeatherNewsFromAPI);
+		  for(int i=0;i<noOfWeatherNewsFromAPI;i++)
 		  {
 			  /**
 			   * The count variable is for the number of article/element you want to point on GUI
@@ -118,8 +118,8 @@ public class RW_T2183_LandingPageAPIValidations extends AccuWeatherBaseTest
 		
 		/**********************************Validate the Weather News type on Weather News Articles with API Data******************************/
 		ArrayList<String> weatherNewsTypeOnUI = new ArrayList<String>();
-		weatherNewsTypeOnUI = landingPage.readWeatherNewsType(noOfWeatherNews);
-		for (int i=0;i<noOfWeatherNews;i++)
+		weatherNewsTypeOnUI = landingPage.readWeatherNewsType(noOfWeatherNewsFromAPI);
+		for (int i=0;i<noOfWeatherNewsFromAPI;i++)
 		{
 			int count=i+1;
 			softAssert.assertTrue(weatherNewsTypeOnUI.get(i).
@@ -133,8 +133,8 @@ public class RW_T2183_LandingPageAPIValidations extends AccuWeatherBaseTest
 			
 		/**********************************Validate the Weather News titles on Weather News Articles with API Data***************************/
 		ArrayList<String> weatherNewsTitlesOnUI = new ArrayList<String>();
-		weatherNewsTitlesOnUI = landingPage.readWeatherNewsTitles(noOfWeatherNews);
-		for (int i=0;i<noOfWeatherNews;i++)
+		weatherNewsTitlesOnUI = landingPage.readWeatherNewsTitles(noOfWeatherNewsFromAPI);
+		for (int i=0;i<noOfWeatherNewsFromAPI;i++)
 		{
 			int count=i+1;
 			softAssert.assertTrue(weatherNewsTitlesOnUI.get(i).
