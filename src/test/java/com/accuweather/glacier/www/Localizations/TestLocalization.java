@@ -74,7 +74,7 @@ public class TestLocalization extends AccuWeatherBaseTest
 		waitUntilElementIsDisplayedOrClickable();
 		try
 		{
-			Assert.assertEquals(localization.getMapsSubmenuDescription(), expectedMapsDescription);
+			Assert.assertEquals(navBar.getMapsSubmenuDescription(), expectedMapsDescription);
 		}
 		catch (AssertionError ae)
 		{
@@ -115,7 +115,7 @@ public class TestLocalization extends AccuWeatherBaseTest
 		waitUntilElementIsDisplayedOrClickable();
 		try
 		{
-			Assert.assertEquals(localization.getSatelliteSubmenuDescription(), expectedSatelliteDescription);
+			Assert.assertEquals(navBar.getSatelliteSubmenuDescription(), expectedSatelliteDescription);
 		}
 		catch (AssertionError ae)
 		{
@@ -175,7 +175,7 @@ public class TestLocalization extends AccuWeatherBaseTest
 		waitUntilElementIsDisplayedOrClickable();
 		try
 		{
-			Assert.assertEquals(localization.getSevereSubmenuDescription(), expectedSevereDescription);
+			Assert.assertEquals(navBar.getSevereSubmenuDescription(), expectedSevereDescription);
 		}
 		catch (AssertionError ae)
 		{
@@ -257,7 +257,7 @@ public class TestLocalization extends AccuWeatherBaseTest
 		landingPage.clickOnZipcodeSearchIcon();
 		navBar.mouseHoverOnMaps();
 		waitUntilElementIsDisplayedOrClickable();
-		localization.clickSatelliteImage();
+		localization.clickSatelliteImageDescription();
 		waitUntilWindowExistsWithTitle(submenuTitle);
 		try
 		{

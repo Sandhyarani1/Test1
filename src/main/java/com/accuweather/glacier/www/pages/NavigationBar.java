@@ -21,7 +21,7 @@ import com.chameleon.utils.Sleeper;
 public class NavigationBar extends BasePage 
 {
 
-    private By byLogo = By.cssSelector("#base-header > div > div.main-menu > div > div > a");
+    private By byLogo = By.cssSelector("div > div.main-menu > div > div > a");
     //private By byRadarMaps = By.id("navRadar");
     //private By byRadarMaps = By.xpath("//li[contains(@id,'navRadar')]/a/span");
     private By byMegaMenu = By.cssSelector("div.main-menu-content");
@@ -64,10 +64,11 @@ public class NavigationBar extends BasePage
     private By byTopNavCityList = By.cssSelector("div.mega-menu-search > div.content-column > a.recent-location-link");
     //private By bySuperSearchCityName = By.xpath("//nav[contains(@class,'header-refresh ')]/div[5]/div/div[1]/ul/li[1]/a[contains(@href,'select-city')]");
     private By bySuperSearchCityName = By.xpath("//body[contains(@id,'home')]/nav/div[5]/div/div[1]/ul/li/a");
+    private By byRadarAndMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(1) > a");
     private By byRadarSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(2) > a");
     private By bySevereSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(3) > a");
-    private By bySatelliteMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(4) > a > h4");
-    private By byForecastMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(5) > a > h4");
+    private By bySatelliteMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(4) > a");
+    private By byForecastMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(5) > a");
     private By byMainMenuDescriptionLink = By.cssSelector("a > figure > figcaption");
     //private By byWatchNewsSubMenu = By.cssSelector("div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(3)");
     private By byWatchNewsSubMenu = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-cta.fade-in-left > a.button-cta");
@@ -136,6 +137,26 @@ public class NavigationBar extends BasePage
 	//secondary tabs
     private By byRadarTabSecondaryNavigation = By.cssSelector("div.page-subnav > div > div > div.subnav-items > a:nth-child(2)");
     
+    
+    public static String strMapTitle;
+    public static String strSatelliteMapDescription;
+    
+	public static String strMapDescriptionUnderNews;
+	public static String strDateUnderNews;
+	
+    private By bySatelliteImageSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > img");
+    
+	//description
+    private By byRadarMapsSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(1) > p");
+    private By byRadarSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(2) > p");
+    private By bySevereSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(3) > p");
+    private By bySatelliteSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(4) > p");
+    private By byForecastSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(5) > p");
+    private By bySatelliteSubMenuMapTitle = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > p");
+    private By bySatelliteSubMenuMapDescription = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > figcaption");
+    private By byDateUnderNewsCategory = By.cssSelector("div > div.mega-menu-item.mega-menu-item-media.fade-in-left > div > a > figure > p");
+    private By byMapDescriptionUnderNews = By.cssSelector("div > div.mega-menu-item.mega-menu-item-media.fade-in-left > div > a > figure > figcaption");
+    
     public void navigateToHome() {
         clickVisibleElement(byLogo);
     }
@@ -160,6 +181,13 @@ public class NavigationBar extends BasePage
         clickVisibleElement(bySuperSearchCityName);
     }
 
+    //click radar and maps submenu under radar & maps
+    public void navigateToRadarAndMapsUnderRadarMaps() {
+        getDriver().findElement(byRadarAndMapsSubMenu).jsClick();
+        Sleeper.sleep(2);
+    }
+    
+  //click radar submenu under radar & maps
     public void navigateToRadar() {
     //WebDriverWait wait = new WebDriverWait(getDriver(), 10);
     //wait.until(ExpectedConditions.visibilityOfElementLocated(byRadarSubMenu));
@@ -185,7 +213,7 @@ public class NavigationBar extends BasePage
          }
 
     public void navigateToForeCastPage() {
-        getDriver().findElement(byForecastMapsSubMenu).click();
+        getDriver().findElement(byForecastMapsSubMenu).jsClick();
         //clickVisibleElement(byRadarSubMenu);
         }
 
@@ -413,15 +441,59 @@ public class NavigationBar extends BasePage
         Sleeper.sleep(3);
     }
     
-    //Maps
-    public void mouseHoverOnMaps() {
+    //verify universsal navigation menu is present 
+    public Boolean isRadarAndMapsDisplayed() {
+    	WebPageLoaded.isDomInteractive();
+        WebElement radarandmaps = getDriver().findElement(byRadarMaps);
+        radarandmaps.syncVisible(25);
+        return radarandmaps.isDisplayed();
+    }
+    //news
+    public Boolean isNewsDisplayed() {
+    	WebPageLoaded.isDomInteractive();
+        WebElement news = getDriver().findElement(byNews);
+        news.syncVisible(25);
+        return news.isDisplayed();
+    }
+    //video
+    public Boolean isVideoDisplayed() {
+    	WebPageLoaded.isDomInteractive();
+        WebElement video = getDriver().findElement(byVideo);
+        video.syncVisible(25);
+        return video.isDisplayed();
+    }
+    //severeweather
+    public Boolean isSevereWeatherDisplayed() {
+    	WebPageLoaded.isDomInteractive();
+        WebElement severeweather = getDriver().findElement(bySevereWeather);
+        severeweather.syncVisible(25);
+        return severeweather.isDisplayed();
+    }
+    //more
+    public Boolean isMoreDisplayed() {
+    	WebPageLoaded.isDomInteractive();
+        WebElement more = getDriver().findElement(byMore);
+        more.syncVisible(25);
+        return more.isDisplayed();
+    }
+    
+    //verify gear icon is present
+    public Boolean isGearIconDisplayed() {
        WebPageLoaded.isDomInteractive();
-       WebElement maps = getDriver().findElement(byMaps);
-       maps.syncVisible(20);
-       Sleeper.sleep(10);
-       maps.hover();
-       Sleeper.sleep(3);
+       WebElement gearIcon = getDriver().findElement(bySettingIcon);
+       gearIcon.syncVisible(25);
+       return gearIcon.isDisplayed();
    }
+    
+  
+    public void mouseHoverOnMaps() {
+        WebPageLoaded.isDomInteractive();
+        WebElement maps = getDriver().findElement(byMaps);
+        maps.syncVisible(20);
+        Sleeper.sleep(10);
+        maps.hover();
+        Sleeper.sleep(3);
+    }
    
     //Maps categories - Maps Submenu
     public boolean isMapsSubMenuDisplayed() {
@@ -1199,5 +1271,112 @@ public class NavigationBar extends BasePage
     		WebElement cityNameOnCityPage = getDriver().findElement(byCityNameOnCityPage);
     		cityNameOnCityPage.syncVisible(15);
     		return cityNameOnCityPage.getText();
+    	}
+    	
+    	/**
+    	 * Method to get the description of RadarMaps submenu.
+    	 * @author Sowmiya
+    	 * @return - Boolean value - "true if Maps submenu contains description on city forecast page"
+    	 * */
+    	public String getMapsSubmenuDescription()
+    	{
+    		WebPageLoaded.isDomInteractive();
+    		WebElement submenuMapsDescription = getDriver().findElement(byRadarMapsSubMenuDescription);
+    		submenuMapsDescription.syncVisible(10);
+    		return submenuMapsDescription.getText();	
+    	}
+    	
+    	
+    	/**
+    	 * Method to get the description of Radar submenu.
+    	 * @author Sowmiya
+    	 * @return - Boolean value - "true if Radar submenu contains description on city forecast page"
+    	 * */
+    	public String getRadarSubmenuDescription()
+    	{
+    		WebPageLoaded.isDomInteractive();
+    		WebElement submenuRadarDescription = getDriver().findElement(byRadarSubMenuDescription);
+    		submenuRadarDescription.syncVisible(10);
+    		return submenuRadarDescription.getText();	
+    	}
+
+    	/**
+    	 * Method  to get the description of Severe submenu.
+    	 * @author Sowmiya
+    	 * @return - Boolean value - "true if Severe submenu contains description present on city forecast page"
+    	 * */
+    	public String getSevereSubmenuDescription()
+    	{
+    		WebPageLoaded.isDomInteractive();
+    		WebElement submenuSevereDescription = getDriver().findElement(bySevereSubMenuDescription);
+    		submenuSevereDescription.syncVisible(10);
+    		return submenuSevereDescription.getText();	
+    	}
+
+    	/**
+    	 * Method  to get the description of Satellite submenu.
+    	 * @author Sowmiya
+    	 * @return - Boolean value - "true if Satellite submenu contains description present on city forecast page"
+    	 * */
+    	public String getSatelliteSubmenuDescription()
+    	{
+    		WebPageLoaded.isDomInteractive();
+    		WebElement submenuSatelliteDescription = getDriver().findElement(bySatelliteSubMenuDescription);
+    		submenuSatelliteDescription.syncVisible(10);
+    		return submenuSatelliteDescription.getText();	
+    	}
+    	
+    	/**
+    	 * Method  to get the description of Forecast submenu.
+    	 * @author Sowmiya
+    	 * @return - Boolean value - "true if Forecast submenu contains description present on city forecast page"
+    	 * */
+    	public String getForecastSubmenuDescription()
+    	{
+    		WebPageLoaded.isDomInteractive();
+    		WebElement submenuForecastDescription = getDriver().findElement(byForecastSubMenuDescription);
+    		submenuForecastDescription.syncVisible(10);
+    		return submenuForecastDescription.getText();	
+    	}
+    	
+    	/**
+    	 * Method  to verify satellite image is present, title of map and get the text of Satellite submenu description of the map.
+    	 * @author Sowmiya
+    	 * @return - Boolean value - "true if satellite image "
+    	 * */
+    	public Boolean verifySatelliteImageTitleDescription()
+    	{
+    		WebPageLoaded.isDomInteractive();
+    		WebElement satelliteImage = getDriver().findElement(bySatelliteImageSubMenu);
+    		
+    		//get title of map
+    		WebElement titleOfMap = getDriver().findElement(bySatelliteSubMenuMapTitle);
+    		titleOfMap.syncVisible(15);
+    		strMapTitle = titleOfMap.getText(); 
+    		
+    		//get text of satellite image description
+    		WebElement submenuSatelliteMapDescription = getDriver().findElement(bySatelliteSubMenuMapDescription);
+    		submenuSatelliteMapDescription.syncVisible(15);
+    		strSatelliteMapDescription = submenuSatelliteMapDescription.getText();
+    		
+    		return satelliteImage.syncVisible(15);
+    	}
+    	
+    	/**
+    	 * Method  to get date and description of the map under news category.
+    	 * @author Sowmiya
+    	 * */
+    	public void getDateAndDescriptionOfMapUnderNewsCategory()
+    	{	
+    		//get title of date and year under news category
+    		WebElement date = getDriver().findElement(byDateUnderNewsCategory);
+    		date.syncVisible(15);
+    		strDateUnderNews = date.getText(); 
+    		
+    		//get text of map description under news category
+    		WebElement mapDescription = getDriver().findElement(byMapDescriptionUnderNews);
+    		mapDescription.syncVisible(15);
+    		strMapDescriptionUnderNews = mapDescription.getText();
+    		
     	}
 }
