@@ -12,21 +12,18 @@ import com.chameleon.selenium.web.elements.WebElement;
 
 public class Localizations extends BasePage
 {
+	
 	private By byMaps = By.cssSelector("div.main-menu > ul > li:nth-child(1)");
-	private By byMapsSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(1) > a > h4");
-	private By byMapsSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(1) > p");
+    private By byMapsSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(1) > a > h4");
     private By bySatelliteSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(2) > a > h4");
-    private By bySatelliteSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(2) > p");
-    private By bySevereSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(3) > p");
-    private By bySatelliteImageSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(4) > a  > figure > img");
-    private By bySatelliteSubMenuMapTitle = By.cssSelector("div.mega-menu-content > div:nth-child(4) > a  > figure > p");
-    private By bySatelliteSubMenuMapDescription = By.cssSelector("div.mega-menu-content > div:nth-child(4) > a  > figure > figcaption");
+    private By bySatelliteImageSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > img");
+    private By bySatelliteSubMenuMapTitle = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > p");
+    private By bySatelliteSubMenuMapDescription = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > figcaption");
     private By bySettingTempCelciusLabel = By.cssSelector("div.utility-bar > div > div > div.temp-switcher.fade-in-left > div > span:nth-child(3)");
     private By byRecentLocationTempInCelcius = By.cssSelector("div.template-root > div > div.featured-locations > a:nth-child(1) > span.recent-location-temp");
-    private By bySatelliteImage = By.cssSelector("div.mega-menu-content > div:nth-child(4) > a.nav-media-item > figure > figcaption");
     private By bySatelliteTab = By.cssSelector("div.subnav-items > a > h1");
     private By byMinuteCast = By.cssSelector("div.subnav-items > a:nth-child(3) > span");
-	
+    
 	/**
 	 * Method to validate if Maps category present on top level navigation
 	 * @author Sowmiya
@@ -53,43 +50,36 @@ public class Localizations extends BasePage
 		return submenuMaps.syncVisible() && submenuSatellite.syncVisible() && submenuSatelliteImage.syncVisible();
 	}
 	
-	/**
-	 * Method to get the description of Maps submenu.
-	 * @author Sowmiya
-	 * @return - Boolean value - "true if Maps submenu contains description on city forecast page"
-	 * */
-	public String getMapsSubmenuDescription()
-	{
-		WebPageLoaded.isDomInteractive();
-		WebElement submenuMapsDescription = getDriver().findElement(byMapsSubMenuDescription);
-		submenuMapsDescription.syncVisible();
-		return submenuMapsDescription.getText();	
-	}
 
+	
 	/**
-	 * Method  to get the description of Satellite submenu.
+	 * Method  to click on the satellite image title under Maps.
 	 * @author Sowmiya
-	 * @return - Boolean value - "true if Satellite submenu contains description present on city forecast page"
+	 * @return - Boolean value - "true if landed on the correct page by identifying Satellite tab"
 	 * */
-	public String getSatelliteSubmenuDescription()
+	public Boolean clickSatelliteImageTitle()
 	{
 		WebPageLoaded.isDomInteractive();
-		WebElement submenuSatelliteDescription = getDriver().findElement(bySatelliteSubMenuDescription);
-		submenuSatelliteDescription.syncVisible();
-		return submenuSatelliteDescription.getText();	
+		WebElement satelliteSubMenuMapTitle = getDriver().findElement(bySatelliteSubMenuMapTitle);
+		satelliteSubMenuMapTitle.syncVisible(15);
+		satelliteSubMenuMapTitle.jsClick();
+		WebElement satelliteTab = getDriver().findElement(bySatelliteTab);
+		return satelliteTab.syncVisible();
 	}
 	
 	/**
-	 * Method  to get the description of Severe submenu.
+	 * Method  to click on the satellite image description under Maps.
 	 * @author Sowmiya
-	 * @return - Boolean value - "true if Severe submenu contains description present on city forecast page"
+	 * @return - Boolean value - "true if landed on the correct page by identifying Satellite tab"
 	 * */
-	public String getSevereSubmenuDescription()
+	public Boolean clickSatelliteImageDescription()
 	{
 		WebPageLoaded.isDomInteractive();
-		WebElement submenuSatelliteDescription = getDriver().findElement(bySevereSubMenuDescription);
-		submenuSatelliteDescription.syncVisible();
-		return submenuSatelliteDescription.getText();	
+		WebElement submenuSatelliteIMage = getDriver().findElement(bySatelliteSubMenuMapDescription);
+		submenuSatelliteIMage.syncVisible(15);
+		submenuSatelliteIMage.jsClick();
+		WebElement satelliteTab = getDriver().findElement(bySatelliteTab);
+		return satelliteTab.syncVisible();
 	}
 	
 
@@ -119,22 +109,6 @@ public class Localizations extends BasePage
 		submenuSatelliteMapDescription.syncVisible();
 		System.out.println(submenuSatelliteMapDescription.getText());
 		return submenuSatelliteMapDescription.getText();
-	}
-	
-	/**
-	 * Method  to click on the satellite image under Maps.
-	 * @author Sowmiya
-	 * @return - Boolean value - "true if landed on the correct page by identifying Satellite tab"
-	 * */
-	public Boolean clickSatelliteImage()
-	{
-		WebPageLoaded.isDomInteractive();
-		WebElement submenuSatelliteIMage = getDriver().findElement(bySatelliteImage);
-		submenuSatelliteIMage.syncVisible(15);
-		submenuSatelliteIMage.jsClick();
-		System.out.println("after image click");
-		WebElement satelliteTab = getDriver().findElement(bySatelliteTab);
-		return satelliteTab.syncVisible();
 	}
 	
 	/**
