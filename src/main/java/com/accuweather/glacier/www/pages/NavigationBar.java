@@ -8,6 +8,7 @@ import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -137,10 +138,14 @@ public class NavigationBar extends BasePage
 	//secondary tabs
     private By byRadarTabSecondaryNavigation = By.cssSelector("div.page-subnav > div > div > div.subnav-items > a:nth-child(2)");
     
-    
+   //under radar & maps category 
     public static String strMapTitle;
     public static String strSatelliteMapDescription;
+    public static String strMapUrl;
+    public static String strMapTitleUrl;
+    public static String strMapDescriptionUrl;
     
+    //under News category    
 	public static String strMapDescriptionUnderNews;
 	public static String strDateUnderNews;
 	
@@ -191,7 +196,7 @@ public class NavigationBar extends BasePage
     public void navigateToRadar() {
     //WebDriverWait wait = new WebDriverWait(getDriver(), 10);
     //wait.until(ExpectedConditions.visibilityOfElementLocated(byRadarSubMenu));
-    getDriver().findElement(byRadarSubMenu).jsClick();
+    getDriver().findElement(byRadarSubMenu).click();
     Sleeper.sleep(2);
     //clickVisibleElement(byRadarSubMenu);
     }
@@ -1282,7 +1287,7 @@ public class NavigationBar extends BasePage
     	{
     		WebPageLoaded.isDomInteractive();
     		WebElement submenuMapsDescription = getDriver().findElement(byRadarMapsSubMenuDescription);
-    		submenuMapsDescription.syncVisible(10);
+    		submenuMapsDescription.syncVisible(30);
     		return submenuMapsDescription.getText();	
     	}
     	
@@ -1296,7 +1301,7 @@ public class NavigationBar extends BasePage
     	{
     		WebPageLoaded.isDomInteractive();
     		WebElement submenuRadarDescription = getDriver().findElement(byRadarSubMenuDescription);
-    		submenuRadarDescription.syncVisible(10);
+    		submenuRadarDescription.syncVisible(30);
     		return submenuRadarDescription.getText();	
     	}
 
@@ -1309,7 +1314,7 @@ public class NavigationBar extends BasePage
     	{
     		WebPageLoaded.isDomInteractive();
     		WebElement submenuSevereDescription = getDriver().findElement(bySevereSubMenuDescription);
-    		submenuSevereDescription.syncVisible(10);
+    		submenuSevereDescription.syncVisible(30);
     		return submenuSevereDescription.getText();	
     	}
 
@@ -1322,7 +1327,7 @@ public class NavigationBar extends BasePage
     	{
     		WebPageLoaded.isDomInteractive();
     		WebElement submenuSatelliteDescription = getDriver().findElement(bySatelliteSubMenuDescription);
-    		submenuSatelliteDescription.syncVisible(10);
+    		submenuSatelliteDescription.syncVisible(30);
     		return submenuSatelliteDescription.getText();	
     	}
     	
@@ -1335,7 +1340,7 @@ public class NavigationBar extends BasePage
     	{
     		WebPageLoaded.isDomInteractive();
     		WebElement submenuForecastDescription = getDriver().findElement(byForecastSubMenuDescription);
-    		submenuForecastDescription.syncVisible(10);
+    		submenuForecastDescription.syncVisible(30);
     		return submenuForecastDescription.getText();	
     	}
     	
@@ -1344,22 +1349,32 @@ public class NavigationBar extends BasePage
     	 * @author Sowmiya
     	 * @return - Boolean value - "true if satellite image "
     	 * */
-    	public Boolean verifySatelliteImageTitleDescription()
+    	public void verifySatelliteImageTitleDescription()
     	{
-    		WebPageLoaded.isDomInteractive();
+    		WebPageLoaded.isDomComplete();
+    		this.mouseHoverOnRadarAndMaps();
     		WebElement satelliteImage = getDriver().findElement(bySatelliteImageSubMenu);
+    		satelliteImage.click();
+    		strMapUrl = getDriver().getCurrentUrl();
     		
     		//get title of map
+    		getDriver().navigate().back();
+    		this.mouseHoverOnRadarAndMaps();
     		WebElement titleOfMap = getDriver().findElement(bySatelliteSubMenuMapTitle);
     		titleOfMap.syncVisible(15);
     		strMapTitle = titleOfMap.getText(); 
+    		titleOfMap.click();
+    		strMapTitleUrl = getDriver().getCurrentUrl();
     		
     		//get text of satellite image description
+    		getDriver().navigate().back();
+    		this.mouseHoverOnRadarAndMaps();
     		WebElement submenuSatelliteMapDescription = getDriver().findElement(bySatelliteSubMenuMapDescription);
     		submenuSatelliteMapDescription.syncVisible(15);
     		strSatelliteMapDescription = submenuSatelliteMapDescription.getText();
+    		submenuSatelliteMapDescription.click();
+    		strMapDescriptionUrl = getDriver().getCurrentUrl();
     		
-    		return satelliteImage.syncVisible(15);
     	}
     	
     	/**
@@ -1376,7 +1391,7 @@ public class NavigationBar extends BasePage
     		//get text of map description under news category
     		WebElement mapDescription = getDriver().findElement(byMapDescriptionUnderNews);
     		mapDescription.syncVisible(15);
-    		strMapDescriptionUnderNews = mapDescription.getText();
-    		
+    		strMapDescriptionUnderNews = mapDescription.getText();	
     	}
+    	
 }
