@@ -24,6 +24,7 @@ public class RW_T2183_LandingPageAPIValidations extends AccuWeatherBaseTest
 	LandingPage landingPage = new LandingPage();
 	public String contentModuleTitleFromAPI = "";
 	public String contentModuleDateFromAPI = "";
+	public String contentModuleVideoURLFromAPI = "";
 	public String centerWell1VideoTitleFromAPI = "";
 	public ArrayList<String> rightRailArticleTitlesFromAPI = new ArrayList<String>();
 	public ArrayList<String> weatherNewsDateFromAPI = new ArrayList<String>();
@@ -44,6 +45,7 @@ public class RW_T2183_LandingPageAPIValidations extends AccuWeatherBaseTest
 	{
 		contentModuleTitleFromAPI = LandingPageAPI.getCenterWell1ContentModuleData()[0];
 		contentModuleDateFromAPI = LandingPageAPI.getCenterWell1ContentModuleData()[1];
+		contentModuleVideoURLFromAPI = LandingPageAPI.getCenterWell1ContentModuleData()[2];
 		centerWell1VideoTitleFromAPI = LandingPageAPI.getCenterWellVideoTitle()[0];
 		rightRailArticleTitlesFromAPI = LandingPageAPI.getRightRailsArticlesTitles();
 		noOfWeatherNewsFromAPI = LandingPageAPI.getNoOfWeatherNews();
@@ -58,14 +60,18 @@ public class RW_T2183_LandingPageAPIValidations extends AccuWeatherBaseTest
 		softAssert = new SoftAssert();
 		testStart("API Validation of Landing Page Elements");
 		
-		/****************Validate CenterWell 1 Content Module Title***************************************/
+		/****************Validate CenterWell 1 Article Title***************************************/
 		softAssert.assertEquals(landingPage.getContentModuleTitle(), contentModuleTitleFromAPI,
 				"Issue-----> CenterWell 1 Content Module Title not matching with API Data");
 		
-		/********************Validate CenterWell 1 Content Module Date***************************************/
+		/********************Validate CenterWell 1 Article Date***************************************/
 		softAssert.assertTrue(landingPage.getContentModuleDate().replaceAll("\\s+","").replaceAll(",", "").equalsIgnoreCase(contentModuleDateFromAPI.replaceAll("\\s+","")),
 				"Issue-----> CenterWell 1 Content Module Date not matching with API Data"
 				+"\n");
+		
+		/******************** Validate CenterWell 1 Article Video URL *********************************/
+		softAssert.assertEquals(landingPage.getURLForContentModule(), contentModuleVideoURLFromAPI,
+				"Issue------> Content Module URL not matching with the API Data");
 		
 		/********************Validate CenterWell 1 Video Title*******************************************/
 		softAssert.assertEquals(landingPage.getCenterWell1VideoTitle(), centerWell1VideoTitleFromAPI,
@@ -147,13 +153,5 @@ public class RW_T2183_LandingPageAPIValidations extends AccuWeatherBaseTest
 		
 		softAssert.assertAll();
 		
-	}
-	
-	@Test()
-	public void testA()
-	{
-		softAssert = new SoftAssert();
-		softAssert.assertEquals("A", "A");
-		softAssert.assertAll();
 	}
 }

@@ -327,7 +327,8 @@ public String getMapTitleName() {
 	return mapTitle.getText();
 	}
 
-/************************************* Methods to deal with CenterWell 1 Contents*******************************/
+/*************************************************** Methods to deal with CenterWell 1 Contents*******************************************************/
+
 /**
  * @author HFARAZ
  * Method to check if the title of content module is displayed
@@ -337,7 +338,7 @@ public Boolean isContentModuleTitleDisplayed()
 {
 	Boolean isContentModuleTitleDisplayed = false;
 	WebPageLoaded.isDomComplete();
-	scrollDown(800);
+	scrollDown(900);
 	WebPageLoaded.isDomComplete();
 	try
 	{
@@ -398,6 +399,20 @@ public String getContentModuleDate()
 		return getDriver().findElement(centerWell1FeaturedDate).getText();
 	else
 		return null;
+}
+
+/**
+ * @author HFARAZ
+ * Method to click on Content Module 1 Article and return the URL
+ * */
+public String getURLForContentModule()
+{
+	WebPageLoaded.isDomComplete();
+	getDriver().findElement(centerWell1Title).jsClick();
+	WebPageLoaded.isDomComplete();
+	String url = getDriver().getCurrentUrl();
+	getDriver().navigate().back();
+	return url;
 }
 
 /**
@@ -482,12 +497,21 @@ public void clickShowMore()
 	WebPageLoaded.isDomComplete();
 	scrollDown(800);
 	WebPageLoaded.isDomComplete();
-	while(getDriver().findElement(showMoreButton).getText().equalsIgnoreCase(SHOW_MORE))
+	try
 	{
-		scrollDown(200);
-		WebPageLoaded.isDomComplete();
-		getDriver().findElement(showMoreButton).jsClick();
+		while(getDriver().findElement(showMoreButton).getText().equalsIgnoreCase(SHOW_MORE))
+		{
+			scrollDown(200);
+			WebPageLoaded.isDomComplete();
+			getDriver().findElement(showMoreButton).jsClick();
+		}
 	}
+	catch(NoSuchElementException e)
+	{
+		System.err.println("Show More button not found\n");
+		e.printStackTrace();
+	}
+	
 		
 }
 
