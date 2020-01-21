@@ -12,6 +12,7 @@ public class APIConstants
     public static final String REGION_NORTH_AMERICA = "NAM";
     public static final String REGION_OCEANIA = "OCN";
     public static final String REGION_SOUTH_AMERICA = "SAM";
+    public static final String REGION_USA = "USA";
     public static final String API_PROPERTIES = "API.properties";
 	public static final String LOCATION_KEYS_FILE_PATH = "LOCATION_KEYS_FILE_PATH";
 	public static final String US_SHEET = "US_SHEET";
@@ -26,4 +27,8 @@ public class APIConstants
 	public static final String ALERTS_DETAILS = "ALERTS_DETAILS";
 	public static final String NO_OF_ALERTS = "NO_OF_ALERTS";
 	public static final String DAILY = "DAILY";
+	public static final String LANDING_PAGE_URI = "LANDING_PAGE_URI";
+	public static final String TEMPLATE = "TEMPLATE";
+	public static final String LOCATIONS = "LOCATIONS";
+	public static final String LANDING_PAGE_RESOURCES = "LANDING_PAGE_RESOURCES";
 }

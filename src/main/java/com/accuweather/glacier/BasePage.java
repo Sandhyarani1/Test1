@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
 import com.chameleon.selenium.DriverManager;
 import com.chameleon.selenium.web.ExtendedWebDriver;
@@ -40,20 +41,30 @@ public class BasePage {
 	 * */
 
 
-	public void switchToPopUpWindow(String webPage)
+	public void switchToDifferentTab(String webPage)
 	{
 		Set<String> windows = getDriver().getWindowHandles();
 		System.out.println(windows.size());
 		Iterator iterator = windows.iterator();
 		String currentwindowId;
-		while(iterator.hasNext()) 
+		while(iterator.hasNext())
 		{
 			currentwindowId = iterator.next().toString();
 			if(!currentwindowId.equals(webPage))
 				getDriver().switchTo().window(currentwindowId);
 		}
-
-  }
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to scroll down to the bottom of the page based on pixels
+	 * */
+	public void scrollDown(int pixels)
+	{
+		JavascriptExecutor js = (JavascriptExecutor) getDriver().getWebDriver();
+		js.executeScript("window.scrollBy(0,"+pixels+")");
+		WebPageLoaded.isDomComplete();
+	}
 
 	/*
 	 * protected void validate(final By by, final String elementName, final Object
@@ -307,9 +318,8 @@ public class BasePage {
          }
     }
     
-    public void scrollDown()
-    {
-    	DriverManager.getWebDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
-    }
+    
+    
+    
         
 }
