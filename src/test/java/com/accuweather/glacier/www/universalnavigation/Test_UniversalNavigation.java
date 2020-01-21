@@ -36,6 +36,8 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	private String EXPECTED_FORECAST_SUBMENU_DESCRIPTION = "Daily forecast map for precipitation";
 	private String EXPECTED_SATELLITEMAP_TITLE = "United States Weather Radar";
 	private String EXPECTED_SATELLITEMAP_DESCRIPTION = "United States National map showing where and how intense precipitation is falling";
+	private String EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL = "https://qualityassurance.accuweather.com/en/us/national/weather-radar";
+	
 	
 	String expectedradartitle = "United States Doppler Weather Radar Map - AccuWeather.com";
 	String actualweathervideourl;
@@ -157,20 +159,23 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	{
 		softAssert = new SoftAssert();
 		testStart("Hover over radar&maps and verify all submenu description and url of each by click on each submenu");
-		
+			
 		//Verifying the description of all submenu under radar&maps
 		navBar.mouseHoverOnRadarAndMaps();
 		softAssert.assertEquals(navBar.getMapsSubmenuDescription(), EXPECTED_RADARMAPS_SUBMENU_DESCRIPTION);
 		softAssert.assertEquals(navBar.getRadarSubmenuDescription(), EXPECTED_RADAR_SUBMENU_DESCRIPTION);
-		softAssert.assertEquals(navBar.getSevereSubmenuDescription(), EXPECTED_SATELLITE_SUBMENU_DESCRIPTION);
-		softAssert.assertEquals(navBar.getSatelliteSubmenuDescription(), EXPECTED_SEVERE_SUBMENU_DESCRIPTION);
+		softAssert.assertEquals(navBar.getSatelliteSubmenuDescription(), EXPECTED_SATELLITE_SUBMENU_DESCRIPTION);
+		softAssert.assertEquals(navBar.getSevereSubmenuDescription(), EXPECTED_SEVERE_SUBMENU_DESCRIPTION);
 		softAssert.assertEquals(navBar.getForecastSubmenuDescription(), EXPECTED_FORECAST_SUBMENU_DESCRIPTION);
 		
-		//verify satellite image, map title and description
-		softAssert.assertTrue(navBar.verifySatelliteImageTitleDescription());
+		//verify satellite image, map title and description and URL of mapimage, maptitle, mapdescription
+		navBar.verifySatelliteImageTitleDescription();
 		softAssert.assertEquals(navBar.strMapTitle, EXPECTED_SATELLITEMAP_TITLE);
 		softAssert.assertEquals(navBar.strSatelliteMapDescription, EXPECTED_SATELLITEMAP_DESCRIPTION);
-
+        softAssert.assertEquals(navBar.strMapUrl, EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL);
+        softAssert.assertEquals(navBar.strMapTitleUrl, EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL);
+        softAssert.assertEquals(navBar.strMapDescriptionUrl, EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL);
+		
 		//verify the url's of radarmaps submenu under radar and maps
 		navBar.mouseHoverOnRadarAndMaps();
 		navBar.navigateToRadarAndMapsUnderRadarMaps();
