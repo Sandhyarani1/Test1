@@ -31,6 +31,7 @@ public class RW_T2183_LandingPageAPIValidations extends AccuWeatherBaseTest
 	public ArrayList<String> weatherNewsTypeFromAPI = new ArrayList<String>();
 	public ArrayList<String> weatherNewsTitleFromAPI = new ArrayList<String>();
 	public int noOfWeatherNewsFromAPI = 0;
+	public static final String LANDING_PAGE_TITLE = "Local, National, & Global Daily Weather Forecast | AccuWeather";
 	
 	
 	/***
@@ -59,6 +60,10 @@ public class RW_T2183_LandingPageAPIValidations extends AccuWeatherBaseTest
 	{
 		softAssert = new SoftAssert();
 		testStart("API Validation of Landing Page Elements");
+		
+		/****************Validate whether the landing page loaded successfully*********************/
+		softAssert.assertEquals(getDriver().getTitle(), LANDING_PAGE_TITLE,
+				"Issue------> Landing Page Title Not matching");
 		
 		/****************Validate CenterWell 1 Article Title***************************************/
 		softAssert.assertEquals(landingPage.getContentModuleTitle(), contentModuleTitleFromAPI,

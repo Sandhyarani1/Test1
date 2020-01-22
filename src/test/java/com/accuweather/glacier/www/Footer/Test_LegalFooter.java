@@ -389,7 +389,7 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	}
 	
 	@Test(priority=16)
-	public void RW_T1431_ValidatePresenceOfPrivacyPolicyBannerAfterAccepting()
+	public void RW_T1431_ValidatePresenceOfPrivacyPolicyBannerAfterClickingIUnderstand()
 	{
 		softAssert = new SoftAssert();
 		
