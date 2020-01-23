@@ -19,7 +19,7 @@ public class LegalFooter extends BasePage
 {
 	private By byCopyRight = By.cssSelector("div.footer-legalese.footer-legalese > div.footer-copyright > span");
 	private By byTermsOfUse = By.cssSelector("div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-terms > a:nth-child(1)");
-	private By byTermsOfUseSpanish = By.cssSelector("div.template-root > div.base-footer > div > div.footer-terms > a:nth-child(1)");
+	private By byLegalFooterSpanish = By.cssSelector("div.footer-legalese.footer-legalese");
 	private By byPrivacyPolicy = By.cssSelector("div.footer-legalese.footer-legalese > div.footer-terms > a:nth-child(2)");
 	private By byCookiePolicy = By.cssSelector("div.footer-legalese.footer-legalese > div.footer-terms > a:nth-child(3)");
 	private By byCCPA = By.cssSelector("div.footer-legalese.footer-legalese > div.footer-terms > span:nth-child(4) > a:nth-child(4)");
@@ -510,13 +510,28 @@ public class LegalFooter extends BasePage
 	 * */
 	public Boolean legalFooterStatusWhenLangChanged()
 	{
-		WebPageLoaded.isDomComplete();
-		getDriver().findElement(bySettingsButton).click();
-		getDriver().findElement(byLanguageSelector).syncVisible(15);
-		getDriver().findElement(byLanguageSelector).click();
-		getDriver().findElement(bySpanish).click();
-		WebPageLoaded.isDomComplete();
-		return getDriver().findElement(byTermsOfUseSpanish).isDisplayed();
+		Boolean isLegalFooterPresent = false;
+		try
+		{
+			WebPageLoaded.isDomComplete();
+			getDriver().findElement(bySettingsButton).click();
+			getDriver().findElement(byLanguageSelector).syncVisible(15);
+			getDriver().findElement(byLanguageSelector).click();
+			getDriver().findElement(bySpanish).click();
+			WebPageLoaded.isDomComplete();
+			scrollDown();
+			if(getDriver().findElement(byLegalFooterSpanish).isDisplayed())
+				isLegalFooterPresent = true;
+			else
+				isLegalFooterPresent = false;
+		}
+		catch(NoSuchElementException e)
+		{
+			System.err.println("*********** Issue while selecting a different language and finding the legal footer**************");
+			e.printStackTrace();
+		}
+		
+		return isLegalFooterPresent;
 	}
 	
 	/**
