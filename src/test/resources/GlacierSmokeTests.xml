@@ -16,7 +16,7 @@
 			<class
 				name="com.accuweather.glacier.www.SmokeTests.RW_T2183_LandingPageAPIValidations" />
 			<class 
-			name="com.accuweather.glacier.www.Footer.Test_LegalFooter" />
+				name="com.accuweather.glacier.www.Footer.Test_LegalFooter" />
 		</classes>
 	</test>
 </suite>

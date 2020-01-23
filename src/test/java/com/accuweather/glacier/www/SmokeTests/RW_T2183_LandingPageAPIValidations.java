@@ -55,7 +55,7 @@ public class RW_T2183_LandingPageAPIValidations extends AccuWeatherBaseTest
 		weatherNewsTitleFromAPI = LandingPageAPI.getWeatherNewsTitles();
 	}
 	
-	@Test(priority=1,enabled=true)
+	@Test(priority=1)
 	public void RW_T2183LandingPageAPIValidations()
 	{
 		softAssert = new SoftAssert();
