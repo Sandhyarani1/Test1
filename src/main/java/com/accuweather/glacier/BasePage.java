@@ -8,6 +8,7 @@ import java.util.Set;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 
 import com.chameleon.selenium.DriverManager;
 import com.chameleon.selenium.web.ExtendedWebDriver;
@@ -65,6 +66,28 @@ public class BasePage {
 		js.executeScript("window.scrollBy(0,"+pixels+")");
 		WebPageLoaded.isDomComplete();
 	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to switch to a tab and close it
+	 * */
+	public static void closeExtraTab(WebDriver driver)
+	{
+		String parentWindow = driver.getWindowHandle();
+		Set<String> setOfWindows = driver.getWindowHandles();
+		Iterator<String> iterator = setOfWindows.iterator();
+		while (iterator.hasNext())
+		{
+			String childWindow = iterator.next();
+			if (!parentWindow.equals(childWindow))
+			{
+				driver.switchTo().window(childWindow);
+				driver.close();
+			}
+		}
+		driver.switchTo().window(parentWindow);
+	}
+	
 
 	/*
 	 * protected void validate(final By by, final String elementName, final Object

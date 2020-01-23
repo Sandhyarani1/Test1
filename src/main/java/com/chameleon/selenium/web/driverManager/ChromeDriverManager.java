@@ -7,6 +7,8 @@ import static com.chameleon.utils.Constants.DIR_SEPARATOR;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
@@ -15,6 +17,7 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.DriverConstants;
 import com.chameleon.selenium.DriverManager;
 import com.chameleon.selenium.DriverType;
@@ -84,13 +87,16 @@ public class ChromeDriverManager extends DriverManager {
     }
 
     @Override
-    public void createDriver() {
+    public void createDriver() 
+    {
         driver = new ChromeDriver((ChromeDriverService) driverService.get(), options);
+        BasePage.closeExtraTab(driver);
     }
 
     @Override
     public void createDriver(URL url) {
         driver = new RemoteWebDriver(url, options);
+        BasePage.closeExtraTab(driver);
     }
 
     @Override
