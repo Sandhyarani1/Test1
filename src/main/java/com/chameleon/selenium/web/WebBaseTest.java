@@ -11,6 +11,8 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.ProfilesIni;
 import org.openqa.selenium.remote.CapabilityType;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
@@ -496,17 +498,20 @@ public class WebBaseTest extends BaseTest {
      */
     private void localDriverSetup() 
     {
-        if (DriverType.HTML.equals(DriverType.fromString(getBrowserUnderTest())))
+        if (DriverType.FIREFOX.equals(DriverType.fromString(getBrowserUnderTest())))
         {
+        	ProfilesIni profileIni = new ProfilesIni();
+            FirefoxProfile profile = profileIni.getProfile("default");
             DriverOptionsManager options = new DriverOptionsManager();
-            options.getFirefoxOptions().setHeadless(true);
-            setBrowserUnderTest("firefox");
+            //options.getFirefoxOptions().setHeadless(true);
+            options.getFirefoxOptions().setProfile(profile);
+            //setBrowserUnderTest("firefox");
             DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest()), options).initalizeDriver();
         }
         else if(DriverType.CHROME.equals(DriverType.fromString(getBrowserUnderTest())))
         {
         	DriverOptionsManager options = new DriverOptionsManager();
-        	options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+appURLRepository.get(Constants.AD_BLOCKER_EXTENSION_PATH)));
+        	//options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+appURLRepository.get(Constants.AD_BLOCKER_EXTENSION_PATH)));
             DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest()),options).initalizeDriver();
         }
         else
