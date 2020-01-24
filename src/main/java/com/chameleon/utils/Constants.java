@@ -34,7 +34,7 @@ public class Constants {
     public static final String TNSNAMES_PATH = DIR_SEPARATOR + "database" + DIR_SEPARATOR;
     public static final String TESTNG_PARAM_RUN_LOCATION = "local";
     public static final String TESTNG_PARAM_BROWSER = "CHROME";
-//    public static final String TESTNG_PARAM_BROWSER = "FIREFOX";
+    //public static final String TESTNG_PARAM_BROWSER = "FIREFOX";
 //    public static final String TESTNG_PARAM_BROWSER = "INTERNETEXPLORER";
     //public static final String TESTNG_PARAM_BROWSER = "SAFARI";
     //public static final String TESTNG_PARAM_BROWSER = "IOS_WEB";
