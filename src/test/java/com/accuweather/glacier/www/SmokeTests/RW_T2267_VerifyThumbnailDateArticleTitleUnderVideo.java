@@ -21,7 +21,7 @@ public class RW_T2267_VerifyThumbnailDateArticleTitleUnderVideo extends AccuWeat
 	
 	NavigationBar navBar = new NavigationBar();
 	
-	/***
+	/**
 	 * @author SOWMIYA
 	 * This method will be called before any test starts.
 	 * It will make calls to the landing pages API and will gather the required test data for validation and will store in variables,
