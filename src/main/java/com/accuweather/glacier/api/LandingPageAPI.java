@@ -61,8 +61,8 @@ public class LandingPageAPI extends APIUtilities
 					{
 						if (element == "navigationVideo")
 						{
-							allElement.add(getElementTitle.get("description") + "|" + imageSrc + "|"
-									+ getElementTitle.get("duration") + "|" + getElementTitle.get("link"));
+							allElement.add(getElementTitle.get("description") + "|" + imageSrc + "|" 
+						+ getElementTitle.get("duration") + "|" + getElementTitle.get("link"));
 						} else
 						{
 							allElement.add(getElementTitle.get("description") + "|"
@@ -140,9 +140,9 @@ public class LandingPageAPI extends APIUtilities
 		System.out.println("\n");
 		System.out.println("********************* RIGHT RAIL 1 *********************************\n"
 				+ getLandingPageData(RIGHT_RAIL1));
-
-	}
-
+		
+		}
+	
 	/**
 	 * @author HFARAZ
 	 *         Method to get the values of Content Module Data like title, Weather
@@ -309,7 +309,7 @@ public class LandingPageAPI extends APIUtilities
 	 */
 	public static String[] getUniversalNavigationVideoData()
 	{
-		return splitString(getLandingPageData(NAVIGATION_VIDEO).get(0).toString(), 3);
+		return splitString(getLandingPageData(NAVIGATION_VIDEO).get(0).toString(), 4);
 	}
 
 	/**
@@ -318,7 +318,7 @@ public class LandingPageAPI extends APIUtilities
 	 *         title, date Image SRC and URL
 	 */
 	public static String[] getUniversalNavigationSevereWeatherData()
-	{
+	{		
 		return splitString(getLandingPageData(NAVIGATION_SEVERE).get(0).toString(), 5);
 	}
 

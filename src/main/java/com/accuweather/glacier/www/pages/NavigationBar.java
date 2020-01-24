@@ -148,9 +148,20 @@ public class NavigationBar extends BasePage
     //under News category    
 	public static String strMapDescriptionUnderNews;
 	public static String strDateUnderNews;
-	
-    private By bySatelliteImageSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > img");
-    
+	private By byThumbnailUnderNews = By.xpath("//div[@class='zone-navigationNews']/a/figure/img");
+    private By byDateUnderNews = By.xpath("//div[@class='zone-navigationNews']/a/figure/p");
+    private By byArticleTitleUnderNews = By.xpath("//div[@class='zone-navigationNews']/a/figure/figcaption");
+	 
+	//under severe weather category
+	private By byThumbnailUnderSevereWeather = By.xpath("//div[@class='zone-navigationSevere']/a/figure/img");
+    private By byDateUnderSevereWeather = By.xpath("//div[@class='zone-navigationSevere']/a/figure/p");
+    private By byArticleTitleUnderSevereWeather = By.xpath("//div[@class='zone-navigationSevere']/a/figure/figcaption");
+	 
+  //under video category
+  	private By byThumbnailUnderVideo = By.xpath("//div[@class='zone-navigationVideo']/a/figure/img");
+    private By byDurationUnderVideo = By.xpath("//div[@class='zone-navigationVideo']/a/figure/p");
+    private By byArticleTitleUnderVideo = By.xpath("//div[@class='zone-navigationVideo']/a/figure/figcaption");
+  	 
 	//description
     private By byRadarMapsSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(1) > p");
     private By byRadarSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(2) > p");
@@ -161,6 +172,7 @@ public class NavigationBar extends BasePage
     private By bySatelliteSubMenuMapDescription = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > figcaption");
     private By byDateUnderNewsCategory = By.cssSelector("div > div.mega-menu-item.mega-menu-item-media.fade-in-left > div > a > figure > p");
     private By byMapDescriptionUnderNews = By.cssSelector("div > div.mega-menu-item.mega-menu-item-media.fade-in-left > div > a > figure > figcaption");
+    private By bySatelliteImageSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > img");
     
     public void navigateToHome() {
         clickVisibleElement(byLogo);
@@ -683,8 +695,9 @@ public class NavigationBar extends BasePage
         public void mouseHoverOnSeverWeather() {
         	WebPageLoaded.isDomInteractive();
             WebElement severeweather = getDriver().findElement(bySevereWeather);
-            severeweather.syncVisible(15);
+            severeweather.syncVisible(30);
             severeweather.hover();
+            Sleeper.sleep(3);
         }
 
         public void mouseHoverOnVideo() {
@@ -1378,6 +1391,20 @@ public class NavigationBar extends BasePage
     	}
     	
     	/**
+    	 * Method  to verify thumbnail below date under severe category.
+    	 * @author Sowmiya
+    	 * */
+    	public void verifyThumbnailBelowDateUnderSevereWeather()
+    	{
+    		WebPageLoaded.isDomComplete();
+    		//verify thumbnail
+    		this.mouseHoverOnSeverWeather();
+    		WebElement thumbnailUnderSevereWeather = getDriver().findElement(byThumbnailUnderSevereWeather);
+    		thumbnailUnderSevereWeather.syncVisible(15);
+    		getDriver().navigate().back();	
+    	}
+    	
+    	/**
     	 * Method  to get date and description of the map under news category.
     	 * @author Sowmiya
     	 * */
@@ -1394,4 +1421,179 @@ public class NavigationBar extends BasePage
     		strMapDescriptionUnderNews = mapDescription.getText();	
     	}
     	
+    	/**
+    	 * @author SOWMIYA
+    	 * Method get the img data src of thumbnail under News category
+    	 * @return data-src value
+    	 * */
+    	public String getImgSrcThumbnailUnderSevereWeather()
+    	{
+    		this.mouseHoverOnSeverWeather();
+    		WebElement thumbnailUnderSevereWeather = getDriver().findElement(byThumbnailUnderSevereWeather);
+    		thumbnailUnderSevereWeather.syncVisible(15);
+    		return thumbnailUnderSevereWeather.getAttribute("data-src"); 	
+    	}
+    	
+    	/**
+    	 * @author SOWMIYA
+    	 * Method to get the date below thumbnail under severe weather category
+    	 * @return date
+    	 * */
+    	public String getDateBelowThumbnailUnderSevereWeather()
+    	{
+    		//get date under severe weather
+    		WebElement strDateUnderSevereWeather = getDriver().findElement(byDateUnderSevereWeather);
+    		strDateUnderSevereWeather.syncVisible(30);
+    		return strDateUnderSevereWeather.getText(); 	
+    	}
+    	
+    	/**
+    	 * @author SOWMIYA
+    	 * Method to get the article title under severe weather category
+    	 * @return article title
+    	 * */
+    	public String getArticleTitleUnderSevereWeather()
+    	{
+    		//get article title under severe weather
+    		WebElement strArticleTitleUnderSevereWeather = getDriver().findElement(byArticleTitleUnderSevereWeather);
+    		strArticleTitleUnderSevereWeather.syncVisible(15);
+    		String getArticleTitleUnderSevereWeather = strArticleTitleUnderSevereWeather.getText();
+    		return getArticleTitleUnderSevereWeather; 	
+    	}
+    	
+    	/**
+    	 * @author SOWMIYA
+    	 * Method to click on article title under severe weather and get URL
+    	 * @return article title url
+    	 * */
+    	public String getArticleTitleUrlUnderSevereWeather()
+    	{
+    		//click article title  under severe weather
+    		WebElement strArticleTitleUnderSevereWeather = getDriver().findElement(byArticleTitleUnderSevereWeather);
+    		strArticleTitleUnderSevereWeather.syncVisible(15);
+    		strArticleTitleUnderSevereWeather.click();
+    		Sleeper.sleep(2);
+    		return getDriver().getCurrentUrl(); 	
+    	}
+    	
+    	/**
+    	 * @author SOWMIYA
+    	 * Method get the img data src of thumbnail under News category
+    	 * @return data-src value
+    	 * */
+    	public String getImgSrcThumbnailUnderNews()
+    	{
+    		this.mouseHoverOnNews();
+    		WebElement thumbnailUnderNews = getDriver().findElement(byThumbnailUnderNews);
+    		thumbnailUnderNews.syncVisible(15);
+    		return thumbnailUnderNews.getAttribute("data-src"); 	
+    	}
+    	
+    	/**
+    	 * @author SOWMIYA
+    	 * Method to get the date below thumbnail under News category
+    	 * @return date
+    	 * */
+    	public String getDateBelowThumbnailUnderNews()
+    	{
+    		//get date under news 
+    		WebElement strDateUnderNews = getDriver().findElement(byDateUnderNews);
+    		strDateUnderNews.syncVisible(30);
+    		return strDateUnderNews.getText(); 	
+    	}
+    	
+    	/**
+    	 * @author SOWMIYA
+    	 * Method to get the article title under news category
+    	 * @return article title
+    	 * */
+    	public String getArticleTitleUnderNews()
+    	{
+    		//get article title under news
+    		WebElement strArticleTitleUnderNews = getDriver().findElement(byArticleTitleUnderNews);
+    		strArticleTitleUnderNews.syncVisible(15);
+    		String getArticleTitleUnderNews = strArticleTitleUnderNews.getText();
+    		return getArticleTitleUnderNews; 	
+    	}
+    	
+    	/**
+    	 * @author SOWMIYA
+    	 * Method to click on article title under news and get URL
+    	 * @return article title url
+    	 * */
+    	public String getArticleTitleUrlUnderNews()
+    	{
+    		//click article title  under news
+    		WebElement strArticleTitleUnderNews = getDriver().findElement(byArticleTitleUnderNews);
+    		strArticleTitleUnderNews.syncVisible(15);
+    		strArticleTitleUnderNews.click();
+    		Sleeper.sleep(4);
+    		String url = getDriver().getCurrentUrl();
+    		Sleeper.sleep(4);
+    		return url; 	
+    	}
+    	
+    	/**
+    	 * @author SOWMIYA
+    	 * Method get the img data src of thumbnail under Video category
+    	 * @return data-src value
+    	 * */
+    	public String getImgSrcThumbnailUnderVideo()
+    	{
+    		this.mouseHoverOnVideo();
+    		WebElement thumbnailUnderVideo = getDriver().findElement(byThumbnailUnderVideo);
+    		thumbnailUnderVideo.syncVisible(15);
+    		return thumbnailUnderVideo.getAttribute("data-src"); 	
+    	}
+    	
+    	/**
+    	 * @author SOWMIYA
+    	 * Method to get the duration below thumbnail under Video category
+    	 * @return duration
+    	 * */
+    	public String getDurationBelowThumbnailUnderVideo()
+    	{
+    		//get duration under video 
+    		WebElement strDurationUnderVideo = getDriver().findElement(byDurationUnderVideo);
+    		strDurationUnderVideo.syncVisible(30);
+    		String getDuration = strDurationUnderVideo.getText();
+    		//trim duration
+    		String duration = getDuration.substring(getDuration.indexOf(":")+1);
+    		duration.trim();
+    		System.out.println(duration);
+
+    		return duration.trim();
+    	}
+    	
+    	/**
+    	 * @author SOWMIYA
+    	 * Method to get the article title under video category
+    	 * @return article title
+    	 * */
+    	public String getArticleTitleUnderVideo()
+    	{
+    		//get article title under video
+    		WebElement strArticleTitleUnderVideo = getDriver().findElement(byArticleTitleUnderVideo);
+    		strArticleTitleUnderVideo.syncVisible(15);
+    		String getArticleTitleUnderVideo = strArticleTitleUnderVideo.getText();
+    		return getArticleTitleUnderVideo; 	
+    	}
+    	
+    	/**
+    	 * @author SOWMIYA
+    	 * Method to click on article title under video and get URL
+    	 * @return article url
+    	 * */
+    	public String getArticleTitleUrlUnderVideo()
+    	{
+    		//click article url under video
+    		this.mouseHoverOnVideo();
+    		WebElement strArticleUrlUnderVideo = getDriver().findElement(byArticleTitleUnderVideo);
+    		strArticleUrlUnderVideo.syncVisible(15);
+    		strArticleUrlUnderVideo.click();
+    		Sleeper.sleep(4);
+    		String url = getDriver().getCurrentUrl();
+    		Sleeper.sleep(4);
+    		return url; 	
+    	}
 }
