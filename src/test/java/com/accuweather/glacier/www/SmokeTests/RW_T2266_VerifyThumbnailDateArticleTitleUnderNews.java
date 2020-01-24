@@ -43,19 +43,19 @@ public class RW_T2266_VerifyThumbnailDateArticleTitleUnderNews extends AccuWeath
 		softAssert = new SoftAssert();
 		testStart("API Validation of News Weather Elements");
 //		
-//		/****************Validate date below thumbnail***************************************/
-//		
-//		softAssert.assertEquals(navBar.getImgSrcThumbnailUnderNews(), getThumbnailImgSrc,
-//				"Issue-----> Thumbnail src value under news is not matching with API Data");
-//
-//		/****************Validate date below thumbnail***************************************/	
-//		softAssert.assertEquals(navBar.getDateBelowThumbnailUnderNews(), getDateFromAPI,
-//				"Issue-----> Date below thumbnail under news is not matching with API Data");
-//		
-//		
-//		/****************Validate article title***************************************/
-//		softAssert.assertEquals(navBar.getArticleTitleUnderNews(), getArticleTitleFromAPI,
-//				"Issue-----> Article title under news is not matching with API Data");
+		/****************Validate date below thumbnail***************************************/
+		
+		softAssert.assertEquals(navBar.getImgSrcThumbnailUnderNews(), getThumbnailImgSrc,
+				"Issue-----> Thumbnail src value under news is not matching with API Data");
+
+		/****************Validate date below thumbnail***************************************/	
+		softAssert.assertEquals(navBar.getDateBelowThumbnailUnderNews(), getDateFromAPI,
+				"Issue-----> Date below thumbnail under news is not matching with API Data");
+		
+		
+		/****************Validate article title***************************************/
+		softAssert.assertEquals(navBar.getArticleTitleUnderNews(), getArticleTitleFromAPI,
+				"Issue-----> Article title under news is not matching with API Data");
 		
 		/******************** URL *********************************/
 		softAssert.assertEquals(navBar.getArticleTitleUrlUnderNews(), getArticleTitleUrlFromAPI,

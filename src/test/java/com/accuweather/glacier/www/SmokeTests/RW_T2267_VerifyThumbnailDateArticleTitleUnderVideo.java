@@ -50,20 +50,20 @@ public class RW_T2267_VerifyThumbnailDateArticleTitleUnderVideo extends AccuWeat
 
 		/****************Validate date below thumbnail***************************************/
 		
-//		softAssert.assertEquals(navBar.getImgSrcThumbnailUnderVideo(), getThumbnailImgSrc,
-//				"Issue-----> Thumbnail src value under video is not matching with API Data");
-//
-//		
-//		/****************Validate date below thumbnail***************************************/
-//		
-//		softAssert.assertEquals(navBar.getDurationBelowThumbnailUnderVideo(), getDurationFromAPI,
-//				"Issue-----> Duration below thumbnail under video is not matching with API Data");
-//		
-//		
-//		/****************Validate article title*************************************************/
-//		
-//		softAssert.assertEquals(navBar.getArticleTitleUnderVideo(), getArticleTitleFromAPI,
-//				"Issue-----> Article title under video is not matching with API Data");
+		softAssert.assertEquals(navBar.getImgSrcThumbnailUnderVideo(), getThumbnailImgSrc,
+				"Issue-----> Thumbnail src value under video is not matching with API Data");
+
+		
+		/****************Validate date below thumbnail***************************************/
+		
+		softAssert.assertEquals(navBar.getDurationBelowThumbnailUnderVideo(), getDurationFromAPI,
+				"Issue-----> Duration below thumbnail under video is not matching with API Data");
+		
+		
+		/****************Validate article title*************************************************/
+		
+		softAssert.assertEquals(navBar.getArticleTitleUnderVideo(), getArticleTitleFromAPI,
+				"Issue-----> Article title under video is not matching with API Data");
 		
 		/******************** URL *********************************/
 	    Sleeper.sleep(5);
