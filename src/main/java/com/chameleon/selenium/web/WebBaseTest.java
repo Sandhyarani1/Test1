@@ -511,6 +511,10 @@ public class WebBaseTest extends BaseTest {
         else if(DriverType.CHROME.equals(DriverType.fromString(getBrowserUnderTest())))
         {
         	DriverOptionsManager options = new DriverOptionsManager();
+        	/**
+        	 * Below is the line of code to install ad blocker extension to the browser. 
+        	 * Uncomment it if you want the scripts to run with ad blocker
+        	 * */
         	//options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+appURLRepository.get(Constants.AD_BLOCKER_EXTENSION_PATH)));
             DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest()),options).initalizeDriver();
         }
@@ -561,7 +565,11 @@ public class WebBaseTest extends BaseTest {
 			 * options.getChromeOptions().addArguments("disable-impl-side-painting");
 			 * options.getChromeOptions().addArguments("--disable-accelerated-2d-canvas");
 			 */
-            	options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+appURLRepository.get(Constants.AD_BLOCKER_EXTENSION_PATH)));
+            	/**
+            	 * Below is the line of code to install ad blocker extension to the browser. 
+            	 * Uncomment it if you want the scripts to run with ad blocker
+            	 * */
+            	//options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+appURLRepository.get(Constants.AD_BLOCKER_EXTENSION_PATH)));
             	options.getChromeOptions().setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             	options.getChromeOptions().setCapability(ChromeOptions.CAPABILITY, options.getChromeOptions());
             	break;
