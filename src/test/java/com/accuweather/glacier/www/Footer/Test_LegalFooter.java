@@ -61,7 +61,7 @@ public class Test_LegalFooter extends AccuWeatherBaseTest
 	 * COPY RIGHT INFORMATION
 	 **********************************/
 	public final static String ACTIVE_TAB_COLOR = "#c2c2c2";
-	public final static String COPYRIGHT_INFO = "© 2019 AccuWeather, Inc. \"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc. All Rights Reserved.";
+	public final static String COPYRIGHT_INFO = "© 2020 AccuWeather, Inc. \"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc. All Rights Reserved.";
 	public final static String REGISTERED_TRADEMARKS = "© 2019 AccuWeather, Inc. \"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc. All Rights Reserved.";
 	public final static String ALL_RIGHTS_RESERVED = "© 2019 AccuWeather, Inc. \"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc. All Rights Reserved.";
 
