@@ -1527,10 +1527,8 @@ public class NavigationBar extends BasePage
     		WebElement strArticleTitleUnderNews = getDriver().findElement(byArticleTitleUnderNews);
     		strArticleTitleUnderNews.syncVisible(15);
     		strArticleTitleUnderNews.click();
-    		Sleeper.sleep(4);
-    		String url = getDriver().getCurrentUrl();
-    		Sleeper.sleep(4);
-    		return url; 	
+    		Sleeper.sleep(2);
+    		return getDriver().getCurrentUrl();
     	}
     	
     	/**
@@ -1591,9 +1589,10 @@ public class NavigationBar extends BasePage
     		WebElement strArticleUrlUnderVideo = getDriver().findElement(byArticleTitleUnderVideo);
     		strArticleUrlUnderVideo.syncVisible(15);
     		strArticleUrlUnderVideo.click();
-    		Sleeper.sleep(4);
-    		String url = getDriver().getCurrentUrl();
-    		Sleeper.sleep(4);
-    		return url; 	
+    		Sleeper.sleep(2);
+    		String window = getDriver().getWindowHandle();
+    		switchToDifferentTab(window);
+    		Sleeper.sleep(2);
+    		return getDriver().getCurrentUrl();
     	}
 }

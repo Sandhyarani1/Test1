@@ -28,15 +28,15 @@ public class RW_T2239_VerifyAllSubmenuDescriptionsUnderRadarMapsAndURL extends A
 	SoftAssert softAssert;
 	
 	/************************************** RADARMAPS SUBMENU *************************************************/
-	public final static String RADARMAPS_URL_SUFFIX = "en/us/virginia/weather-radar";
+	public final static String RADARMAPS_URL_SUFFIX = "en/us/michigan/weather-radar";
 	public static String RADARMAPS_URL = "";
 	
 	/************************************** RADAR SUBMENU *************************************************/
-	public final static String RADAR_URL_SUFFIX = "en/us/virginia/weather-radar";
+	public final static String RADAR_URL_SUFFIX = "en/us/michigan/weather-radar";
 	public static String RADAR_URL = "";
 	
 	/************************************** SATELLITE SUBMENU *************************************************/
-	public final static String SATELLITE_URL_SUFFIX = "en/us/virginia/satellite";
+	public final static String SATELLITE_URL_SUFFIX = "en/us/michigan/satellite";
 	public static String SATELLITE_URL = "";
 	
 	/************************************** SEVERE SUBMENU *************************************************/

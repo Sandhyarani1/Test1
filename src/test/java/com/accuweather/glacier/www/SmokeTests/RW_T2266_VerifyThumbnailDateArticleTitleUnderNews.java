@@ -42,7 +42,7 @@ public class RW_T2266_VerifyThumbnailDateArticleTitleUnderNews extends AccuWeath
 	{
 		softAssert = new SoftAssert();
 		testStart("API Validation of News Weather Elements");
-//		
+		
 		/****************Validate date below thumbnail***************************************/
 		
 		softAssert.assertEquals(navBar.getImgSrcThumbnailUnderNews(), getThumbnailImgSrc,

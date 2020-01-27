@@ -511,7 +511,7 @@ public class WebBaseTest extends BaseTest {
         else if(DriverType.CHROME.equals(DriverType.fromString(getBrowserUnderTest())))
         {
         	DriverOptionsManager options = new DriverOptionsManager();
-        	//options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+appURLRepository.get(Constants.AD_BLOCKER_EXTENSION_PATH)));
+        	options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+appURLRepository.get(Constants.AD_BLOCKER_EXTENSION_PATH)));
             DriverManagerFactory.getManager(DriverType.fromString(getBrowserUnderTest()),options).initalizeDriver();
         }
         else
