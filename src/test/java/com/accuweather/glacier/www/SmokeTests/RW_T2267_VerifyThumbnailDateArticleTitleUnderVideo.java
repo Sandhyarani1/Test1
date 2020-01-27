@@ -42,11 +42,6 @@ public class RW_T2267_VerifyThumbnailDateArticleTitleUnderVideo extends AccuWeat
 	{
 		softAssert = new SoftAssert();
 		testStart("API Validation of Video Weather Elements");
-		
-		System.out.println("getThumbnailImgSrc:"+getThumbnailImgSrc);
-		System.out.println("getDurationFromAPI:"+getDurationFromAPI);
-		System.out.println("getArticleTitleFromAPI:"+getArticleTitleFromAPI);
-		System.out.println("getArticleTitleUrlFromAPI:"+getArticleTitleUrlFromAPI);
 
 		/****************Validate date below thumbnail***************************************/
 		
@@ -65,9 +60,10 @@ public class RW_T2267_VerifyThumbnailDateArticleTitleUnderVideo extends AccuWeat
 		softAssert.assertEquals(navBar.getArticleTitleUnderVideo(), getArticleTitleFromAPI,
 				"Issue-----> Article title under video is not matching with API Data");
 		
-//		/******************** URL *********************************/
-//		softAssert.assertEquals(navBar.getArticleTitleUrlUnderVideo(), getArticleTitleUrlFromAPI,
-//				"Issue------> Article URL not matching with the API Data");	
+		/******************** URL *********************************/
+		String articleTitleUrlFromAPI = getArticleTitleUrlFromAPI.toLowerCase();
+		softAssert.assertEquals(navBar.getArticleTitleUrlUnderVideo(), articleTitleUrlFromAPI,
+				"Issue------> Article URL not matching with the API Data");	
 		
 		softAssert.assertAll();
 	}
