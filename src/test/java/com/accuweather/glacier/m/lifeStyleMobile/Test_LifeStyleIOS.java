@@ -28,7 +28,7 @@ public class Test_LifeStyleIOS extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(lifeStylePage.verifyPersonalizedmenuOptions());
 	}
 
-	@Test(priority = 2, enabled = true)
+	@Test(priority = 2, enabled = false)
 	public void RW_T1030_ValidateValidatePersonalizedforecastCTAInThenavigationClickonForeCast() {
 		testStart("Validate the Personalized forecast CTA in the navigation");
 		cityRadar.clickBreadCrumbMenu();
@@ -37,7 +37,7 @@ public class Test_LifeStyleIOS extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 3, enabled = true)
+	@Test(priority = 3, enabled = false)
 	public void RW_T1030_ValidatetheCategoriesAndSubcategorieUunderPersonalizedForecastAMPlannerPickerValues() {
 		testStart("Validate the categories and subcategories under Personalized Forecast for AM planner picker values");
 		cityRadar.clickBreadCrumbMenu();
@@ -47,7 +47,7 @@ public class Test_LifeStyleIOS extends AccuWeatherMobileBaseTest {
 
 	}
 
-	@Test(priority = 4, enabled = true)
+	@Test(priority = 4, enabled = false)
 	public void RW_T1030_ValidatetheCategoriesAndSubcategorieUunderPersonalizedForecastHomeAndGardenPickerValues() {
 		testStart(
 				"Validate the categories and subcategories under Personalized Forecast for Home and garden Picker values");
@@ -57,7 +57,7 @@ public class Test_LifeStyleIOS extends AccuWeatherMobileBaseTest {
 		Assert.assertTrue(lifeStylePage.HomeAndGardenPickerValues());
 	}
 
-	@Test(priority = 5, enabled = true)
+	@Test(priority = 5, enabled = false)
 	public void RW_T1030_ValidatetheCategoriesAndSubcategorieUunderPersonalizedForecastSportsAndRecreationPickerValues() {
 		testStart(
 				"Validate the categories and subcategories under Personalized Forecast for sports and recreation Picker values");

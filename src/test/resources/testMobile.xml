@@ -3,13 +3,13 @@
 <suite name="Core-Regression" parallel="methods" thread-count="1">
 	<parameter name="runLocation" value="mobile" />
 	<parameter name="environment" value="qa" />
-	<parameter name="operatingSystem" value="IPAD_WEB" />
+	<parameter name="operatingSystem" value="IOS_WEB" />
 	<test
 		name="AccuWeather Mobile web smoke Test Suite on IOS devices ">
 		<parameter name="browserUnderTest" value="safari" />
 		<classes>
 		<class
-				name="com.accuweather.glacier.m.nationalsevereWeather.Test_NationalSevereWeatherIPAD" />
+				name="com.accuweather.glacier.m.legalFooter.Test_LegalFooterMobilePage" />
 		</classes>
 	</test>
 </suite>

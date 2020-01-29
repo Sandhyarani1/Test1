@@ -597,7 +597,7 @@ public class WebBaseTest extends BaseTest {
                     options.getIOSOptions().setCapability(CapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
                     options.getIOSOptions().setCapability("accessKey", mobileHubKey);
                     options.getIOSOptions().setCapability("deviceCategory", "PHONE");
-                    options.getIOSOptions().setCapability("autoAcceptAlerts", "True");
+                    options.getIOSOptions().setCapability("autoAcceptAlerts", true);
                     break;
                 case ANDROID_WEB:
                     options.getAndroidOptions().setCapability(CapabilityType.BROWSER_NAME, MobileBrowserType.BROWSER);
@@ -606,7 +606,7 @@ public class WebBaseTest extends BaseTest {
                     options.getAndroidOptions().setCapability("testName", getTestName());
                     options.getAndroidOptions().setCapability("accessKey", mobileHubKey);
                     options.getAndroidOptions().setCapability("deviceCategory", "PHONE");
-                    options.getAndroidOptions().setCapability("autoAcceptAlerts", "True");
+                    options.getAndroidOptions().setCapability("autoAcceptAlerts", true);
                     break;
                 case IPAD_WEB:
                 	options.getIOSOptions().setCapability(CapabilityType.BROWSER_NAME, MobileBrowserType.SAFARI);
@@ -614,7 +614,7 @@ public class WebBaseTest extends BaseTest {
                     options.getIOSOptions().setCapability(CapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
                     options.getIOSOptions().setCapability("accessKey", mobileHubKey);
                     options.getIOSOptions().setCapability("deviceCategory", "TABLET");
-                    options.getIOSOptions().setCapability("autoAcceptAlerts", "True");
+                    options.getIOSOptions().setCapability("autoAcceptAlerts", true);
                     break;
             default:
                 break;
