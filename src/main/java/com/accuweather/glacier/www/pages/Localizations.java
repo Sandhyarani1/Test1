@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
+import com.chameleon.utils.Sleeper;
 
 public class Localizations extends BasePage
 {
@@ -16,13 +17,14 @@ public class Localizations extends BasePage
 	private By byMaps = By.cssSelector("div.main-menu > ul > li:nth-child(1)");
     private By byMapsSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(1) > a > h4");
     private By bySatelliteSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(2) > a > h4");
-    private By bySatelliteImageSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > img");
-    private By bySatelliteSubMenuMapTitle = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > p");
-    private By bySatelliteSubMenuMapDescription = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > figcaption");
-    private By bySettingTempCelciusLabel = By.cssSelector("div.utility-bar > div > div > div.temp-switcher.fade-in-left > div > span:nth-child(3)");
+    private By bySatelliteImageSubMenu = By.cssSelector("div.mega-menu > div.mega-menu-content > div:nth-child(3) > a  > figure > img");
+    private By bySatelliteSubMenuMapTitle = By.cssSelector("div.mega-menu > div > div.mega-menu-item.fade-in-left.mega-menu-item-media > a > figure > p");
+    private By bySatelliteSubMenuMapDescription = By.cssSelector("div.mega-menu > div > div.mega-menu-item.fade-in-left.mega-menu-item-media > a > figure > figcaption");
+    private By bySettingUnitsDropdown = By.cssSelector("div.utility-bar > div > div > div.dropdown-select.select-units.fade-in-left.select-units > div.dropdown-select-wrapper");
+    private By bySettingTempCelciusLabel = By.cssSelector(" div.utility-bar > div > div > div.dropdown-select.select-units.fade-in-left.select-units > div.dropdown-content > div:nth-child(3)");
     private By byRecentLocationTempInCelcius = By.cssSelector("div.template-root > div > div.featured-locations > a:nth-child(1) > span.recent-location-temp");
-    private By bySatelliteTab = By.cssSelector("div.subnav-items > a > h1");
-    private By byMinuteCast = By.cssSelector("div.subnav-items > a:nth-child(3) > span");
+    private By bySatelliteTab = By.cssSelector("div.page-subnav > div > div > div.subnav-items > a:nth-child(2) > span");
+    private By byMinuteCast = By.xpath("//div[@class='subnav-items']/a/span[contains(text(),'WinterCast')]");
     
 	/**
 	 * Method to validate if Maps category present on top level navigation
@@ -31,9 +33,9 @@ public class Localizations extends BasePage
 	 * */
 	public Boolean isMapsPresent()
 	{
-		WebPageLoaded.isDomInteractive();
+		WebPageLoaded.isDomComplete();
 		WebElement maps = getDriver().findElement(byMaps);
-		return maps.syncVisible();
+		return maps.syncVisible(25);
 	}
 	
 	/**
@@ -120,7 +122,7 @@ public class Localizations extends BasePage
 	{
 		WebPageLoaded.isDomInteractive();
 		WebElement minuteCast = getDriver().findElement(byMinuteCast);
-		return minuteCast.syncVisible();
+		return minuteCast.syncVisible(15, false);
 	}
 	
 	/**
@@ -131,11 +133,17 @@ public class Localizations extends BasePage
 	public Boolean changeTemperatureFromFarenheitToCelcius()
 	{
 		WebPageLoaded.isDomInteractive();
+		
+		WebElement unitsDropdown = getDriver().findElement(bySettingUnitsDropdown);
+		unitsDropdown.syncVisible(15);
+		unitsDropdown.click();
+		Sleeper.sleep(3);
+		
 		WebElement tempCelciusLabel = getDriver().findElement(bySettingTempCelciusLabel);
 		tempCelciusLabel.syncVisible();
 		tempCelciusLabel.click();
+		
 		WebElement recentLocationTempInCelcius = getDriver().findElement(byRecentLocationTempInCelcius);
-		getDriver().manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		recentLocationTempInCelcius.syncVisible(10);
 		System.out.println(recentLocationTempInCelcius.getText());
 		return recentLocationTempInCelcius.getText().contains("C");
