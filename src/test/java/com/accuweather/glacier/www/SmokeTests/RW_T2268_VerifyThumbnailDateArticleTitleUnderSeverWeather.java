@@ -44,7 +44,7 @@ public class RW_T2268_VerifyThumbnailDateArticleTitleUnderSeverWeather extends A
 		testStart("API Validation of Severe Weather Elements");
 		
 		/****************Validate date below thumbnail***************************************/
-		
+		navBar.mouseHoverOnSeverWeather();
 		softAssert.assertEquals(navBar.getImgSrcThumbnailUnderSevereWeather(), getThumbnailImgSrc,
 				"Issue-----> Thumbnail src value under severe weather is not matching with API Data");
 		

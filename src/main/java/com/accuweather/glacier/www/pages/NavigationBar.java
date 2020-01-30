@@ -67,7 +67,7 @@ public class NavigationBar extends BasePage
     private By bySuperSearchCityName = By.xpath("//body[contains(@id,'home')]/nav/div[5]/div/div[1]/ul/li/a");
     private By byRadarAndMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(1) > a");
     private By byRadarSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(2) > a");
-    private By bySevereSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(3) > a");
+    private By bySevereSubMenu = By.cssSelector("div > div.mega-menu > div > div:nth-child(3) > a > h4");
     private By bySatelliteMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(4) > a");
     private By byForecastMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(5) > a");
     private By byMainMenuDescriptionLink = By.cssSelector("a > figure > figcaption");
@@ -83,8 +83,8 @@ public class NavigationBar extends BasePage
     private By byWinterWeatherSubMenu = By.xpath("//div[@class='mega-menu-content']/div[5]/a/h4[text()='Winter Weather']");
     private By bySeverWeatherSubMenu = By.xpath("//div[@class='mega-menu-content']/div[1]/a/h4[text()='Severe Weather']");
     //Maps Submenu
-    private By byMapsSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(1) > a > h4");
-    private By bySatelliteSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(2) > a > h4");
+    private By byMapsSubMenu = By.cssSelector("div.mega-menu > div.mega-menu-content > div:nth-child(1) > a");
+    private By bySatelliteSubMenu = By.cssSelector("div.mega-menu > div.mega-menu-content > div:nth-child(2) > a");
     //private By byVideoSubMenu = By.cssSelector("div.menu-dropdown > div > div:nth-child(1) > div > a:nth-child(1) > h3");
     private By byVideoSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(1) > a:nth-child(1) > h4");
     private By byVideoDescription = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-cta.fade-in-left > p");
@@ -165,8 +165,8 @@ public class NavigationBar extends BasePage
 	//description
     private By byRadarMapsSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(1) > p");
     private By byRadarSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(2) > p");
-    private By bySevereSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(3) > p");
-    private By bySatelliteSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(4) > p");
+    private By bySevereSubMenuDescription = By.cssSelector("div > div.mega-menu > div > div:nth-child(3) > p");
+    private By bySatelliteSubMenuDescription = By.cssSelector("div.mega-menu > div.mega-menu-content > div:nth-child(2) > p");
     private By byForecastSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(5) > p");
     private By bySatelliteSubMenuMapTitle = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > p");
     private By bySatelliteSubMenuMapDescription = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > figcaption");
@@ -215,7 +215,7 @@ public class NavigationBar extends BasePage
 
     public void navigateToHomePageByLogo() {
         getDriver().findElement(byLogo).jsClick();
-        Sleeper.sleep(5);
+        Sleeper.sleep(3);
         //clickVisibleElement(byRadarSubMenu);
         }
 
@@ -283,7 +283,7 @@ public class NavigationBar extends BasePage
         WebTextbox settingicon = getDriver().findTextbox(bySettingIcon);
         settingicon.syncVisible(15);
     	settingicon.click(); 
-    	Sleeper.sleep(10);
+    	Sleeper.sleep(5);
        }
     
     public void clickTopNavStartSearchIcon() {
@@ -417,8 +417,8 @@ public class NavigationBar extends BasePage
     public boolean isSeverSubMenuDisplayed() {
     	WebPageLoaded.isDomInteractive();
         WebElement Severe = getDriver().findElement(bySevereSubMenu);
-        Severe.syncVisible(15);
-        return Severe.isDisplayed();       	   	
+        Severe.syncVisible(15);  
+        return Severe.isDisplayed();
     }
 
     public boolean isSatelliteMapsSubMenuDisplayed() {
@@ -453,9 +453,9 @@ public class NavigationBar extends BasePage
     	WebPageLoaded.isDomInteractive();
         WebElement radarandmaps = getDriver().findElement(byRadarMaps);
         radarandmaps.syncVisible(25);
-        Sleeper.sleep(10);
+        Sleeper.sleep(5);
         radarandmaps.hover();
-        Sleeper.sleep(3);
+        Sleeper.sleep(5);
     }
     
     //verify universsal navigation menu is present 
@@ -507,7 +507,7 @@ public class NavigationBar extends BasePage
         WebPageLoaded.isDomInteractive();
         WebElement maps = getDriver().findElement(byMaps);
         maps.syncVisible(20);
-        Sleeper.sleep(10);
+        Sleeper.sleep(4);
         maps.hover();
         Sleeper.sleep(3);
     }
@@ -1428,7 +1428,6 @@ public class NavigationBar extends BasePage
     	 * */
     	public String getImgSrcThumbnailUnderSevereWeather()
     	{
-    		this.mouseHoverOnSeverWeather();
     		WebElement thumbnailUnderSevereWeather = getDriver().findElement(byThumbnailUnderSevereWeather);
     		thumbnailUnderSevereWeather.syncVisible(15);
     		return thumbnailUnderSevereWeather.getAttribute("data-src"); 	
@@ -1538,7 +1537,6 @@ public class NavigationBar extends BasePage
     	 * */
     	public String getImgSrcThumbnailUnderVideo()
     	{
-    		this.mouseHoverOnVideo();
     		WebElement thumbnailUnderVideo = getDriver().findElement(byThumbnailUnderVideo);
     		thumbnailUnderVideo.syncVisible(15);
     		return thumbnailUnderVideo.getAttribute("data-src"); 	
@@ -1546,21 +1544,34 @@ public class NavigationBar extends BasePage
     	
     	/**
     	 * @author SOWMIYA
+    	 * Method to convert the duration from API into MM:SS format
     	 * Method to get the duration below thumbnail under Video category
-    	 * @return duration
+    	 * @return true - if both UI and API duration are same else false
     	 * */
-    	public String getDurationBelowThumbnailUnderVideo()
+    	public Boolean getDurationBelowThumbnailUnderVideoAndCompareWithApiDuration(String durationFromAPI)
     	{
-    		//get duration under video 
+    	    //convert API duration from seconds into MM:SS
+    	    String apiSec = durationFromAPI;
+   		    int x = Integer.parseInt(apiSec);
+   	       
+   	        int p1 = x % 60;
+   	        int p2 = x / 60;
+   	        
+   	        String getP1Value = String.valueOf(p1);
+   	        String getP2Value = String.valueOf(p2);
+   	      
+   	        if( getP1Value.length()==1 ) {
+   	    	    getP1Value = "0"+getP1Value;
+   	          }
+   	        
+   	        String durationFromAPIinMtsAndSec = getP2Value + ":" + getP1Value;
+    		
+    		//get duration under video from UI 
     		WebElement strDurationUnderVideo = getDriver().findElement(byDurationUnderVideo);
     		strDurationUnderVideo.syncVisible(30);
-    		String getDuration = strDurationUnderVideo.getText();
-    		//trim duration
-    		String duration = getDuration.substring(getDuration.indexOf(":")+1);
-    		duration.trim();
-    		System.out.println(duration);
+    		String durationfromUI = strDurationUnderVideo.getText();
 
-    		return duration.trim();
+    		return durationFromAPIinMtsAndSec.equalsIgnoreCase(durationfromUI);
     	}
     	
     	/**
@@ -1585,7 +1596,6 @@ public class NavigationBar extends BasePage
     	public String getArticleTitleUrlUnderVideo()
     	{
     		//click article url under video
-    		this.mouseHoverOnVideo();
     		WebElement strArticleUrlUnderVideo = getDriver().findElement(byArticleTitleUnderVideo);
     		strArticleUrlUnderVideo.syncVisible(15);
     		strArticleUrlUnderVideo.click();

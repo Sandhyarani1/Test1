@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
-import com.accuweather.glacier.www.Localizations.TestLocalization;
+import com.accuweather.glacier.www.Localizations.Test_Localization;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.accuweather.glacier.www.pages.Localizations;
 import com.accuweather.glacier.www.pages.NavigationBar;

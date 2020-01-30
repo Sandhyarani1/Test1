@@ -8,7 +8,6 @@ import com.accuweather.glacier.api.LandingPageAPI;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.accuweather.glacier.www.pages.NavigationBar;
-import com.chameleon.utils.Sleeper;
 
 public class RW_T2267_VerifyThumbnailDateArticleTitleUnderVideo extends AccuWeatherBaseTest {
 	SoftAssert softAssert;
@@ -45,14 +44,15 @@ public class RW_T2267_VerifyThumbnailDateArticleTitleUnderVideo extends AccuWeat
 
 		/****************Validate date below thumbnail***************************************/
 		
+		navBar.mouseHoverOnVideo();
 		softAssert.assertEquals(navBar.getImgSrcThumbnailUnderVideo(), getThumbnailImgSrc,
 				"Issue-----> Thumbnail src value under video is not matching with API Data");
 
 		
 		/****************Validate date below thumbnail***************************************/
 		
-		softAssert.assertEquals(navBar.getDurationBelowThumbnailUnderVideo(), getDurationFromAPI,
-				"Issue-----> Duration below thumbnail under video is not matching with API Data");
+		softAssert.assertTrue(navBar.getDurationBelowThumbnailUnderVideoAndCompareWithApiDuration(getDurationFromAPI),
+				"Issue-----> Duration below thumbnail under video is not matching with duration shown in API");
 		
 		
 		/****************Validate article title*************************************************/
@@ -61,6 +61,7 @@ public class RW_T2267_VerifyThumbnailDateArticleTitleUnderVideo extends AccuWeat
 				"Issue-----> Article title under video is not matching with API Data");
 		
 		/******************** URL *********************************/
+		
 		String articleTitleUrlFromAPI = getArticleTitleUrlFromAPI.toLowerCase();
 		softAssert.assertEquals(navBar.getArticleTitleUrlUnderVideo(), articleTitleUrlFromAPI,
 				"Issue------> Article URL not matching with the API Data");	
