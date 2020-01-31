@@ -31,4 +31,9 @@ public class APIConstants
 	public static final String TEMPLATE = "TEMPLATE";
 	public static final String LOCATIONS = "LOCATIONS";
 	public static final String LANDING_PAGE_RESOURCES = "LANDING_PAGE_RESOURCES";
+	public static final String LOCATION_DETAILS = "LOCATION_DETAILS";
+	public static final String HOUR_COUNT = "HOUR_COUNT";
+	public static final String START_DATE_SUFFIX = "START_DATE_SUFFIX";
+	public static final String GET_HOURLY_FORECAST_DETAILS = "GET_HOURLY_FORECAST_DETAILS";
+	
 }
