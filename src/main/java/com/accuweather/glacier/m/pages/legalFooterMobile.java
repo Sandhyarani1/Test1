@@ -352,8 +352,8 @@ public class legalFooterMobile extends MobileBasePage {
 	/** Method to click Cookie policy footer link is displayed */
 	public boolean copyrightinformationhas2019AccuWeatherIncTextIsDisplayed() {
 		//Sleeper.sleep(5);
-		//getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
-		//Sleeper.sleep(5);
+		getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		Sleeper.sleep(3);
 		return getDriver().findElement(copyright2019Accuweather).getText().contains("© 2019 AccuWeather, Inc.");
 
 	}
@@ -361,8 +361,8 @@ public class legalFooterMobile extends MobileBasePage {
 	/** Method to click Cookie policy footer link is displayed */
 	public boolean copyrightAccuWeatherandsundesignareregisteredtrademarksofAccuWeatherIncTextIsDisplayed() {
 		//Sleeper.sleep(5);
-		//getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
-		//Sleeper.sleep(5);
+		getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		Sleeper.sleep(5);
 		return getDriver().findElement(copyrightAccuWeatherandsundesignareregisteredtrademarksofAccuWeatherInc)
 				.getText().contains("\"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc.");
 
@@ -371,8 +371,8 @@ public class legalFooterMobile extends MobileBasePage {
 	/** Method to click Cookie policy footer link is displayed */
 	public boolean copyrightAllRightsReservedTextIsDisplayed() {
 		//Sleeper.sleep(5);
-		//getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
-		//Sleeper.sleep(5);
+		getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		Sleeper.sleep(3);
 		return getDriver().findElement(allRightsReserved).getText().contains("All Rights Reserved.");
 
 	}
