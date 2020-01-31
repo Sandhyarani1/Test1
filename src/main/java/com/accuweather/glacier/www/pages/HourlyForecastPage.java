@@ -17,7 +17,9 @@ import com.chameleon.utils.date.SimpleDate;
 
 public class HourlyForecastPage extends BasePage
 {
-	private By byHourlyForecastPage = By.cssSelector("div > div > div.subnav-items > a:nth-child(4)");
+	private By byHourlyTab = By.xpath("//div[@class='subnav-items']/a/span[contains(text(),'Hourly')]");
+	private By byHourlyTabColor = By.xpath("//div[@class='subnav-items']/a/h2[contains(text(),'Hourly')]");
+	
 	private By byTime = By
 			.cssSelector("div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div > div.date > p:nth-child(1)");
 	private By byDate = By
@@ -56,20 +58,20 @@ public class HourlyForecastPage extends BasePage
 			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(5)");
 	private By byCeiling = By.cssSelector(
 			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(6)");
-	private By byNextDay = By.cssSelector("div.navigation.content-module > div.card-button.centered.nav-card.next > a");
-	private By byNextDayText = By.cssSelector("div.page-column-1 > div.navigation.content-module > div.card-button.centered.nav-card.next > span");
+	private By byNextDay = By.cssSelector("div.navigation.content-module > a.card-button.centered.nav-card.next");
+	private By byNextDayText = By.cssSelector("div.navigation.content-module > a.card-button.centered.nav-card.next > span");
 	private By byRightArrowIcon = By.cssSelector(
-			"div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div > a > svg");
+			"div.page-column-1 > div:nth-child(1) > div.navigation.content-module > a.card-button.centered.nav-card.next > div > svg");
 	private By byLeftArrowIcon = By.cssSelector(
-			"div.navigation.content-module > div.card-button.centered.nav-card.prev.has-next > a > svg");
+			"div.page-column-1 > div:nth-child(1) > div.navigation.content-module > a.card-button.centered.nav-card.prev.has-next > div > svg");
 	private By byUpArrowIcon = By.cssSelector(
 			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > svg");
 	private By byDownArrowIcon = By
 			.cssSelector("div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > svg");
 	private By byPreviousDayText = By
-			.cssSelector("div.navigation.content-module > div.card-button.centered.nav-card.prev.has-next > span");
+			.xpath("//div[@class='navigation content-module']/a[contains(@class,'card-button centered nav-card prev')]/span");
 	private By byPreviousDay = By
-			.cssSelector("div.navigation.content-module > div > a");
+			.xpath("//div[@class='navigation content-module']/a[contains(@class,'card-button centered nav-card prev')]");
 	private By byLastDayCTATab = By.cssSelector(
 			"div.two-column-page-content > div.page-column-1 > div.navigation.content-module > a.card-button.nav-card.prev.centered");
 	private By byLastDayCTATabText = By.cssSelector(
@@ -79,7 +81,7 @@ public class HourlyForecastPage extends BasePage
 	private By byCurrentHourTab = By
 			.cssSelector("div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div");
 	private By byCurrentHourInfoTab = By.cssSelector(
-			"div.two-column-page-content > div.page-column-1 > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div");
+			"div.two-column-page-content > div.page-column-1 >  div > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div");
 	private By byTemperatureAtTheTop = By.cssSelector(
 			"div.page-subheader.content-module > div.page-subheader-wrap > div.recent-locations-label > a.recent-location-display > span:nth-child(2)");
 	private By byWeatherIconAtTheTop = By.cssSelector(
@@ -178,7 +180,7 @@ public class HourlyForecastPage extends BasePage
 	public void clickOnHourlyTab()
 	{
 		WebPageLoaded.isDomInteractive();
-		WebElement hourlyTab = getDriver().findElement(byHourlyForecastPage);
+		WebElement hourlyTab = getDriver().findElement(byHourlyTab);
 		hourlyTab.syncVisible(15);
 		hourlyTab.click();
 		WebElement reelFeel = getDriver().findElement(byRealFeelValue);
@@ -201,7 +203,7 @@ public class HourlyForecastPage extends BasePage
 	public String getHourlyTabText()
 	{
 		WebPageLoaded.isDomInteractive();
-		WebElement hourlyTab = getDriver().findElement(byHourlyForecastPage);
+		WebElement hourlyTab = getDriver().findElement(byHourlyTabColor);
 		hourlyTab.syncVisible(15);
 		return hourlyTab.getText();
 	}
@@ -280,10 +282,8 @@ public class HourlyForecastPage extends BasePage
 	/** Method to click CTA */
 	public void clickCTATab()
 	{
-		WebPageLoaded.isDomInteractive();
+		WebPageLoaded.isDomComplete();
 		WebElement cta = getDriver().findElement(byNextDay);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		Sleeper.sleep(10);
 		cta.syncVisible(15);
 		cta.jsClick();
 		Sleeper.sleep(5);
@@ -295,7 +295,6 @@ public class HourlyForecastPage extends BasePage
 		WebPageLoaded.isDomInteractive();
 		WebElement rightArrowIcon = getDriver().findElement(byRightArrowIcon);
 		rightArrowIcon.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		return rightArrowIcon.isDisplayed();
 	}
 
@@ -341,7 +340,6 @@ public class HourlyForecastPage extends BasePage
 		WebPageLoaded.isDomInteractive();
 		WebElement leftArrowIcon = getDriver().findElement(byLeftArrowIcon);
 		leftArrowIcon.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		return leftArrowIcon.isDisplayed();
 	}
 
@@ -379,15 +377,18 @@ public class HourlyForecastPage extends BasePage
 	{
 		WebPageLoaded.isDomInteractive();
 		int counter = 0;
-		for (int i = 1; i <= 25; i++)
+		for (int i = 1; i <= 26; i++)
 		{
-			if( i == 15 ) {
+			if( i == 3 ) {
+				i = i + 1;
+			}
+			
+			if( i == 16 ) {
 				i = i + 1;
 			}
 			WebElement hourTab = getDriver()
-					.findElement(By.cssSelector("div.page-column-1 > div.hourly-wrapper > div:nth-child(" + i + ")"));
+					.findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ")"));
 			hourTab.syncVisible(30);
-			getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			if (hourTab.isDisplayed())
 				counter++;
 		}
@@ -524,17 +525,18 @@ public class HourlyForecastPage extends BasePage
 	public String getColor_Of_ActiveTab()
 	{
 		WebPageLoaded.isDomInteractive();
-		String color = getDriver().findElement(byHourlyForecastPage).getCssValue("border-top-color");
-		return Color.fromString(color).asHex();
+		String color = getDriver().findElement(byHourlyTabColor).getCssValue("border-bottom");
+		String getColor = color.substring(10);
+		return Color.fromString(getColor).asHex();
 	}
 
-	/** Method to get the color of the text in hour tab */
-	public String getColorOfHourComponents()
-	{
-		WebPageLoaded.isDomInteractive();
-		String color = getDriver().findElement(byHourlyForecastPage).getCssValue("border-top-color");
-		return Color.fromString(color).asHex();
-	}
+//	/** Method to get the color of the text in hour tab */
+//	public String getColorOfHourComponents()
+//	{
+//		WebPageLoaded.isDomInteractive();
+//		String color = getDriver().findElement(byHourlyForecastPage).getCssValue("border-top-color");
+//		return Color.fromString(color).asHex();
+//	}
 
 	/** Method to validate day parameter in URL when next CTA is clicked */
 	public void validateDayParamInURLForNextDay()
@@ -947,8 +949,7 @@ public class HourlyForecastPage extends BasePage
 		if(i==3)
 			i=i+1;
 		WebElement time = getDriver()
-				.findElement(By.cssSelector("div.two-column-page-content > div > div > div:nth-child(" + i
-						+ ") > div > div > div > div.date > p:nth-child(1)"));
+				.findElement(By.cssSelector("div:nth-child(" + i+ ") > div > div > div > div.date > p:nth-child(1)"));
 		time.syncVisible(15);
 		return time.getText();
 	}
@@ -960,8 +961,7 @@ public class HourlyForecastPage extends BasePage
 		if (i==3)
 			i=i+1;
 		WebElement date = getDriver()
-				.findElement(By.cssSelector("div.two-column-page-content > div > div > div:nth-child(" + i
-						+ ") > div > div > div > div.date > p.sub"));
+				.findElement(By.cssSelector("div:nth-child(" + i+ ") > div > div > div > div.date > p.sub"));
 		date.syncVisible(15);
 		return date.getText();
 	}
@@ -1445,7 +1445,7 @@ public class HourlyForecastPage extends BasePage
 	}
 	
 	/**
-	 * Method to verify all 72 Hour tabs are present in next page of Hourly tab
+	 * Method to verify all 72 Hour tabs are present in the next page of Hourly tab
 	 * @author SOWMIYA
 	 * return Boolean - true if 
 	 * */
@@ -1454,12 +1454,12 @@ public class HourlyForecastPage extends BasePage
 		
 		Boolean flag = false;
 		int counter = 3;
-		List<WebElement> getCurentWeekCardList = getDriver().findElements(By.cssSelector("div.two-column-page-content > div > div.hourly-wrapper > div")); 
+		List<WebElement> getCurentWeekCardList = getDriver().findElements(By.cssSelector("div > div.hourly-wrapper > div")); 
 		int sizeOfCurrentWeekCardsList = getCurentWeekCardList.size();
 		WebElement linkNextDay = getDriver().findElement(byNextDay);	
 		for (int i = 1; i <= 27; i++)
 		{
-			List<WebElement> getCardList = getDriver().findElements(By.cssSelector("div.two-column-page-content > div > div.hourly-wrapper > div"));
+			List<WebElement> getCardList = getDriver().findElements(By.cssSelector("div > div.hourly-wrapper > div"));
 			int totalCards = getCardList.size();
 			
 			if(i == totalCards+1) {
@@ -1467,7 +1467,7 @@ public class HourlyForecastPage extends BasePage
 					linkNextDay.syncVisible(5);
 					linkNextDay.jsClick();
 					Sleeper.sleep(3);
-					WebElement hourlyTab = getDriver().findElement(byHourlyForecastPage);
+					WebElement hourlyTab = getDriver().findElement(byHourlyTabColor);
 					if(hourlyTab.syncVisible(15))
 					i = 1;
 				} catch(Exception e) {
@@ -1482,7 +1482,7 @@ public class HourlyForecastPage extends BasePage
 			}
 			if(i==3)
 				i=i+1;
-			WebElement hourTab = getDriver().findElement(By.cssSelector("div.two-column-page-content > div > div.hourly-wrapper > div:nth-child(" + i + ")"));
+			WebElement hourTab = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ")"));
 			hourTab.syncVisible(30);
 			
 			if (hourTab.isDisplayed())
