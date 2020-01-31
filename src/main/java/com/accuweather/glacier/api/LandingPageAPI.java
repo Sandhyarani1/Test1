@@ -20,7 +20,7 @@ public class LandingPageAPI extends APIUtilities
 	public static final String RIGHT_RAIL1 = "rightRail1";
 
 	/**
-	 * @author HFARAZ
+	 * @author Apurba Das
 	 *         Method to get Landing page data from API based on the element passed
 	 *         as a parameter
 	 */
@@ -185,7 +185,8 @@ public class LandingPageAPI extends APIUtilities
 			try
 			{
 				weatherNewsDates.add(splitString(getLandingPageData(CENTERWELL2).get(i).toString(), 5)[1]);
-			} catch (ArrayIndexOutOfBoundsException e)
+			} 
+			catch (ArrayIndexOutOfBoundsException e)
 			{
 				int j = i + 1;
 				System.err.println("Date Not Found In API Response For Weather News " + j + ", Iteration: " + i
