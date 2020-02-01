@@ -17,7 +17,71 @@ public class ExcelUtilities
 	private static XSSFWorkbook excelWBook;
 	private static XSSFCell cell;
 	private static XSSFRow row;
+	public static int rowNo = 0;
 	public static Map<String, String> apiProperties = PropertiesManager.properties(APIConstants.API_PROPERTIES);
+	
+	/**
+	 * @author HFARAZ
+	 * Method to read the location_keys.xlsx file
+	 * **/
+	public static void readLocationKeysFile()
+	{
+		ExcelUtilities.readExcelFile(apiProperties.get(APIConstants.LOCATION_KEYS_FILE_PATH), apiProperties.get(APIConstants.US_SHEET));
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to fetch the location key from location_keys.xlsx file
+	 * @return String value: location key/CityID based on the row number provided in the parameter
+	 * */
+	public static String getLocationKey(int rowNo)
+	{
+		return ExcelUtilities.getNumericData(rowNo, 0)+"";
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to fetch the zipcode from location_keys.xlsx file
+	 * @return String value: zipcode based on the row number provided in the parameters
+	 * */
+	public static String getZipCode(int rowNo)
+	{
+		String zipCode = ExcelUtilities.getNumericData(rowNo, 4)+"";
+		return zipCode;
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to fetch the country code from location_keys.xlsx file
+	 * @return String value: country code based on the row number provided in the parameters
+	 * */
+	public static String getCountryCode(int rowNo)
+	{
+		String countryCode = ExcelUtilities.getStringData(rowNo, 1)+"";
+		return countryCode;
+	}
+	
+	 /**
+	   * @author HFARAZ
+	   * Method to get the City Name from location_keys.xlsx file
+	   * @return String value: city name based on the row no provide in the parameter
+	   * **/
+	  public static String getCityName(int rowNo)
+	  {
+		  String cityName = ExcelUtilities.getStringData(rowNo, 2);
+		  return cityName;
+	  }
+	  
+	  /**
+	   * @author HFARAZ
+	   * Method to get the State Name from location_keys.xlsx file
+	   * @return String value: city name based on the row no provide in the parameter
+	   * **/
+	  public static String getStateName(int rowNo)
+	  {
+		  String stateName = ExcelUtilities.getStringData(rowNo, 3);
+		  return stateName;
+	  }
 	
 	/**
 	 * @author HFARAZ
@@ -105,6 +169,24 @@ public class ExcelUtilities
 		public static void readExcelFile(String path, String sheetName)
 		{
 			ExcelUtilities.setExcelFile(System.getProperty("user.dir")+path, sheetName);
+		}
+		
+		/**
+		 * @author HFARAZ
+		 * Method to get the row number of the location specified in the parameter
+		 * @return Integer value: "row number" for the location having any alerts
+		 * **/
+		public static int getRowNumberForCity(String cityName)
+		{
+			readLocationKeysFile();
+			
+			for(rowNo=1;rowNo<=ExcelUtilities.getLastRow();rowNo++)
+			{		
+				if(getCityName(rowNo).equalsIgnoreCase(cityName))
+						break;
+			}
+			System.out.println("City found at row number:---->"+rowNo);
+			return rowNo;
 		}
 	
 }
