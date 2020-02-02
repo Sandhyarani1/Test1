@@ -15,7 +15,7 @@ import com.chameleon.selenium.windows.ExtendedWindowsDriver;
 import com.chameleon.utils.Constants;
 import com.chameleon.utils.io.FileLoader;
 
-public abstract class DriverManager {
+public abstract class DriverManager{
 
     protected WebDriver driver = null;
     protected static ThreadLocal<DriverService> driverService = new ThreadLocal<>();

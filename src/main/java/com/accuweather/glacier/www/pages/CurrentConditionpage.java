@@ -19,7 +19,9 @@ public class CurrentConditionpage extends BasePage {
 	 * 
 	 */
 	private By bycurrentWeatherCard = By.cssSelector(
-			"div > div.scroll > a.panel.panel-fade-in.card.current");
+			"div.page-column-1 > div > div > a:nth-child(1)");
+	private By byTodayWeatherCard = By.cssSelector(
+			"div.page-column-1 > div > div > a:nth-child(2)");
 	private By bycurrentWeatherTitle = By.cssSelector(
 			"div.flipper-panel.three-day-panel.three-day-forecast.full-mobile-width > div.scroll > a.panel.panel-fade-in.card.current > div > p:nth-child(1)");
 	private By bycurrentconditiontime = By.cssSelector(
@@ -67,74 +69,70 @@ public class CurrentConditionpage extends BasePage {
 			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > p:nth-child(1)");
 	private By bydayOrganismDate = By.cssSelector(
 			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > p.module-header.sub.date");
-	private By bynightOrganismDate = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > p.module-header.sub.date");
 	private By bydayOrganismWeatherIcon = By.cssSelector(
 			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > img");
-	private By bynightOrganismWeatherIcon = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > img");
-	private By bydayOrganismWeatherCurrenTempearture = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > div > p.value");
-	private By bydayOrganismWeatherCurrentReelFeelTemperature = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > div > p.realFeel");
-	private By bydayOrganismCurrentWeatherDescription = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.phrase");
+	
+	private By bydayOrganismWeatherCurrenTempearture = By.cssSelector("div > div.panel-2 > div > div > div > div > div.temp-icon-wrapper > div > p.value");
+	private By bydayOrganismWeatherCurrentReelFeelTemperature = By.cssSelector("div.panel-2 > div > div > div > div > div > div > p.realFeel");
+	private By bydayOrganismCurrentWeatherDescription = By.cssSelector("div.panel-2 > div > div > div > div > div.phrase");
+	
 	private By bydayOrganismCurrentWeatherPrecipitation = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(1)");
+			"div > div.panel-1 > div > div > div > div > div.list > p:nth-child(1)");
 	private By bydayOrganismCurrentWeatherMaxUVIdex = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(2)");
+			"div > div.panel-1 > div > div > div > div > div.list > p:nth-child(2)");
 	private By bydayOragnismCurrentWeatherThunderstorms = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(3)");
+			"div > div.panel-1 > div > div > div > div > div.list > p:nth-child(3)");
 	private By bydayOrganismCurrentWeatherPrecipitation2 = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(4)");
+			"div > div.panel-1 > div > div > div > div > div.list > p:nth-child(4)");
 	private By bydayOrganismCurrentWeatherRain = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(5)");
+			"div > div.panel-1 > div > div > div > div > div.list > p:nth-child(5)");
 	private By bydayOrganismCurrentWeatherSnow = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(6)");
+			"div > div.panel-1 > div > div > div > div > div.list > p:nth-child(6)");
 	private By bydayOrganismCurrentWeatherIce = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(7)");
+			"div > div.panel-1 > div > div > div > div > div.list > p:nth-child(7)");
 	private By bydayOrganismCurrentWeatherHoursOfPrecipitation = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(8)");
+			"div > div.panel-1 > div > div > div > div > div.list > p:nth-child(8)");
 	private By bydayOrganismCurrentWeatherHoursOfRain = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(9)");
+			"div > div.panel-1 > div > div > div > div > div.list > p:nth-child(9)");
 	private By bydayOrganismCurrentWeatherWind = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > p:nth-child(2)");
+			"div > div.panel-1 > div > div > div> div > div.short-list > p:nth-child(2)");
 	private By bydayOrganismCurrentWeatherGusts = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > p:nth-child(3)");
+			"div > div.panel-1 > div > div > div> div > div.short-list > p:nth-child(3)");
 	private By bydayOrganismCurrentWeatherCompassIcon = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-1 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > div > svg");
-	private By bynightOrganismCurrentWeather = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > p:nth-child(1)");
-	private By bynightOrganismWeatherCurrentTempearture = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > div > p.value");
-	private By bynightOrganismWeatherCurrentReelFeelTemperature = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.temp-icon-wrapper > div > p.realFeel");
-	private By bynightOrganismCurrentWeatherDescription = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.conditions-card.card.panel.allow-wrap > div.phrase");
+			"div > div.panel-1 > div > div > div > div > div.short-list > p:nth-child(3)");
+   
+	//NIGHT ORGANISMS
+	private By bynightOrganismTextInBold = By.cssSelector("div.panel-2 > div > div > div > div > p:nth-child(1)");
+	private By bynightOrganismDate = By.cssSelector("div.panel-2 > div > div > div > div> p.module-header.sub.date");
+	private By bynightOrganismWeatherIcon = By.cssSelector("div.panel-2 > div > div > div > div > div.temp-icon-wrapper > img");
+	private By byNightOrganismWeatherCurrenTempearture = By.cssSelector("div > div.panel-2 > div > div > div > div > div.temp-icon-wrapper > div > p.value");
+	private By bynightOrganismWeatherCurrentReelFeelTemperature = By.cssSelector("div.panel-2 > div > div > div > div > div > div > p.realFeel");
+	private By byNightOrganismCurrentWeatherDescription = By.cssSelector("div.panel-2 > div > div > div > div > div.phrase");
+	
 	private By bynightOrganismCurrentWeatherPrecipitation = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(1)");
-	private By bynightOrganismCurrentWeatherMaxUVIdex = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(2)");
+			"div > div.panel-2 > div > div > div > div > div.list > p:nth-child(1)");
 	private By bynightOragnismCurrentWeatherThunderstorms = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(3)");
+			"div > div.panel-2 > div > div > div > div > div.list > p:nth-child(2)");
 	private By bynightOrganismCurrentWeatherPrecipitation2 = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(4)");
+			"div > div.panel-2 > div > div > div > div > div.list > p:nth-child(3)");
 	private By bynightOrganismCurrentWeatherRain = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(5)");
+			"div > div.panel-2 > div > div > div > div > div.list > p:nth-child(4)");
 	private By bynightOrganismCurrentWeatherSnow = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(6)");
+			"div > div.panel-2 > div > div > div > div > div.list > p:nth-child(5)");
 	private By bynightOrganismCurrentWeatherIce = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(7)");
+			"div > div.panel-2 > div > div > div > div > div.list > p:nth-child(6)");
 	private By bynightOrganismCurrentWeatherHoursOfPrecipitation = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(8)");
+			"div > div.panel-2 > div > div > div > div > div.list > p:nth-child(7)");
 	private By bynightOrganismCurrentWeatherHoursOfRain = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.list > p:nth-child(9)");
+			"div > div.panel-2 > div > div > div > div > div.list > p:nth-child(8)");
 	private By bynightOrganismCurrentWeatherWind = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > p:nth-child(2)");
+			"div > div.panel-2 > div > div > div> div > div.short-list > p:nth-child(2)");
 	private By bynightOrganismCurrentWeatherGusts = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > p:nth-child(3)");
+			"div > div.panel-2 > div > div > div> div > div.short-list > p:nth-child(3)");
 	private By bynightcurrentconditionCompassicon = By.cssSelector(
-			"div.sliding-panel.sliding-panel.half-day > div > div.panel-2 > div > div.content > div.details-card.card.panel.details.allow-wrap > div.short-list > div > svg");
+			"div > div.panel-2 > div > div > div > div > div.short-list > div > svg");
+	
+	
 	private By bytemperatureHistoryOrganismCurrentWeather = By.cssSelector(
 			"div.temp-history.content-module > div.header.card > div.title > span:nth-child(1)");
 	private By bytemperatureHistoryOrganismDate = By.cssSelector(
@@ -199,15 +197,24 @@ public class CurrentConditionpage extends BasePage {
 			"div.temp-history.content-module > a > span");
 	private By bymoreHistoricalCTAarrow = By.cssSelector(
 			"div.temp-history.content-module > a > div > svg");
-			
+	private By byDayMoreButton = By.cssSelector("div.panel-1 > div > div > div > div > div > span.text.more");
+	private By byNightMoreButton = By.cssSelector("div.panel-2 > div > div > div > div > div > span.text.more");
+	private By byDayLessButton = By.cssSelector("div.panel-1 > div > div > div > div.conditions-card.card.panel.allow-wrap.expanded > div.toggle.trigger > span.text.less");
+	private By byDayLessButtonUpArrow = By.cssSelector("div.panel-1 > div > div > div > div > div.toggle.trigger > svg");
+	private By byNightLessButton = By.cssSelector("div.panel-2 > div > div > div > div.conditions-card.card.panel.allow-wrap.expanded > div.toggle.trigger > span.text.less");
+	private By byNightLessButtonUpArrow = By.cssSelector("div.panel-2 > div > div > div > div > div.toggle.trigger > svg");
+	private By byEveningCTAFromNightOrganism = By.cssSelector("div.page-column-1 > div > div > div > div.panel-2 > div > div.quarter-day-links > a.card-button.quarter-day-link.left");
+	private By byOvernightCTAFromNightOrganism = By.cssSelector("div.page-column-1 > div> div > a.card-button.quarter-day-link.left");
+	
+	
 	public void isclickedonCurrentweathercard() {
-		WebPageLoaded.isDomInteractive(10000);
+		WebPageLoaded.isDomInteractive();
 		getDriver().findElement(bycurrentWeatherCard).syncVisible();
 		getDriver().findElement(bycurrentWeatherCard).click();
 	}
 
 	public void isclickedonRecentLocationWeatherIcon() {
-		WebPageLoaded.isDomInteractive(10000);
+		WebPageLoaded.isDomInteractive();
 		getDriver().findElement(byRecentLocationWeatherIcon).syncVisible();
 		getDriver().findElement(byRecentLocationWeatherIcon).click();
 	}
@@ -257,7 +264,7 @@ public class CurrentConditionpage extends BasePage {
 
 	public Boolean bynightOrganismCurrentWeatherDescriptionIsDisplayed() {
 		WebPageLoaded.isDomInteractive();
-		Boolean icondisplayed = getDriver().findElement(bynightOrganismCurrentWeatherDescription).isDisplayed();
+		Boolean icondisplayed = getDriver().findElement(byNightOrganismCurrentWeatherDescription).isDisplayed();
 		return icondisplayed;
 	}
 
@@ -431,15 +438,16 @@ public class CurrentConditionpage extends BasePage {
 			WebPageLoaded.isDomInteractive();
 			timedisplayedcolour = getDriver().findElement(bynightOragnismCurrentWeatherThunderstorms).getCssValue("color");
 			String actualcolourdisplayed = Color.fromString(timedisplayedcolour).asHex();
+			System.out.println("actualcolourdisplayed:"+actualcolourdisplayed);
 			return actualcolourdisplayed;
 		}
 
-		if (element.equals("night Organism Current Weather MaxUVIdex")) {
-			WebPageLoaded.isDomInteractive();
-			timedisplayedcolour = getDriver().findElement(bynightOrganismCurrentWeatherMaxUVIdex).getCssValue("color");
-			String actualcolourdisplayed = Color.fromString(timedisplayedcolour).asHex();
-			return actualcolourdisplayed;
-		}
+//		if (element.equals("night Organism Current Weather MaxUVIdex")) {
+//			WebPageLoaded.isDomInteractive();
+//			timedisplayedcolour = getDriver().findElement(bynightOrganismCurrentWeatherMaxUVIdex).getCssValue("color");
+//			String actualcolourdisplayed = Color.fromString(timedisplayedcolour).asHex();
+//			return actualcolourdisplayed;
+//		}
 
 		if (element.equals("day Oragnism Current Weather Compass Icon")) {
 			WebPageLoaded.isDomInteractive();
@@ -681,7 +689,7 @@ public class CurrentConditionpage extends BasePage {
 			e.printStackTrace();
 		}
 
-		return getDriver().findElement(bynightOrganismCurrentWeather).isDisplayed();
+		return getDriver().findElement(byNightOrganismWeatherCurrenTempearture).isDisplayed();
 	}
 
 	public Boolean temperatureHistoryOrganism() {
@@ -897,10 +905,11 @@ public class CurrentConditionpage extends BasePage {
 		return dayOrganismFont;
 	}
 
-	public String nightOrganismTextTitleisBold() {
+	public Boolean nightOrganismTextTitleisBold() {
 		WebPageLoaded.isDomInteractive();
-		String dayOrganismFont = getDriver().findElement(bynightOrganismCurrentWeather).getCssValue("font-weight");
-		return dayOrganismFont;
+		String dayOrganismTextInCaps = getDriver().findElement(bynightOrganismTextInBold).getText();
+		String dayOrganismFont = getDriver().findElement(bynightOrganismTextInBold).getCssValue("font-weight");
+		return dayOrganismFont.equalsIgnoreCase("500") && dayOrganismTextInCaps.equals("NIGHT");
 	}
 
 	public String dayOrganismCurrentTemparatureisBold() {
@@ -909,10 +918,10 @@ public class CurrentConditionpage extends BasePage {
 		return dayOrganismFont;
 	}
 
-	public String nightOrganismCurrentTemparatureisBold() {
+	public Boolean nightOrganismCurrentTemparatureisBold() {
 		WebPageLoaded.isDomInteractive();
-		String dayOrganismFont = getDriver().findElement(bynightOrganismWeatherCurrentTempearture).getCssValue("font-weight");
-		return dayOrganismFont;
+		String dayOrganismFont = getDriver().findElement(byNightOrganismWeatherCurrenTempearture).getCssValue("font-weight");
+		return dayOrganismFont.equals("300");
 	}
 
 	public Boolean dayOrganismDateIsDisplayed() {
@@ -939,17 +948,6 @@ public class CurrentConditionpage extends BasePage {
 		return dayIcondisplayed;
 	}
 
-	public Boolean dayOrganismCurrentWeatherPrecipitationdisplayed() {
-		WebPageLoaded.isDomInteractive();
-		Boolean icondisplayed = getDriver().findElement(bydayOrganismCurrentWeatherPrecipitation).isDisplayed();
-		return icondisplayed;
-	}
-
-	public Boolean nightOrganismCurrentWeatherPrecipitationdisplayed() {
-		WebPageLoaded.isDomInteractive();
-		Boolean icondisplayed = getDriver().findElement(bynightOrganismCurrentWeatherPrecipitation).isDisplayed();
-		return icondisplayed;
-	}
 
 	public Boolean Sunrisesunsetorganismdisplayed() {
 		WebPageLoaded.isDomInteractive();
@@ -1020,5 +1018,228 @@ public class CurrentConditionpage extends BasePage {
 		String fontsize = getDriver().findElement(bymoonrisemoonsetdurationtime).getCssValue("font-weight");
 		return fontsize;
 	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public Boolean dayOrganismCurrentWeatherPrecipitationdisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bydayOrganismCurrentWeatherPrecipitation).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean dayOrganismCurrentWeatherMaxUVIndexdisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bydayOrganismCurrentWeatherMaxUVIdex).isDisplayed();
+		return icondisplayed;
+	}
 
+	public Boolean dayOrganismCurrentWeatherThunderstormsdisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bydayOragnismCurrentWeatherThunderstorms).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean dayOrganismCurrentWeatherPrecipitation2displayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bydayOrganismCurrentWeatherPrecipitation2).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean dayOrganismCurrentWeatherRaindisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bydayOrganismCurrentWeatherRain).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean dayOrganismCurrentWeatherSnowdisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bydayOrganismCurrentWeatherSnow).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean dayOrganismCurrentWeatherIcedisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bydayOrganismCurrentWeatherIce).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean dayOrganismCurrentWeatherHoursOfPrecipitationdisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bydayOrganismCurrentWeatherHoursOfPrecipitation).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean dayOrganismCurrentWeatherHoursOfRaindisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bydayOrganismCurrentWeatherHoursOfRain).isDisplayed();
+		return icondisplayed;
+	}
+
+	public Boolean dayOrganismCurrentWeatherWeatherWinddisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bydayOrganismCurrentWeatherWind).isDisplayed();
+		return icondisplayed;
+	}
+
+	public Boolean dayOrganismCurrentWeatherGustsdisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bydayOrganismCurrentWeatherGusts).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean dayOrganismCurrentWeatherCompassIcondisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bydayOrganismCurrentWeatherCompassIcon).isDisplayed();
+		return icondisplayed;
+	}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public Boolean nightOrganismCurrentWeatherPrecipitationdisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bynightOrganismCurrentWeatherPrecipitation).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean nightOrganismCurrentWeatherThunderstormdisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bynightOragnismCurrentWeatherThunderstorms).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean nightOrganismCurrentWeatherPrecipitationtowdisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bynightOrganismCurrentWeatherPrecipitation2).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean nightOrganismCurrentWeatherRaindisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bynightOrganismCurrentWeatherRain).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean nightOrganismCurrentWeatherSnowdisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bynightOrganismCurrentWeatherSnow).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean nightOrganismCurrentWeatherIcedisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bynightOrganismCurrentWeatherIce).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean nightOrganismCurrentWeatherHoursOfPrecipitationdisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bynightOrganismCurrentWeatherHoursOfPrecipitation).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean nightOrganismCurrentWeatherHoursOfRaindisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bynightOrganismCurrentWeatherHoursOfRain).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean nightOrganismCurrentWeatherWinddisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bynightOrganismCurrentWeatherWind).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean nightOrganismCurrentWeatherGustsdisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bynightOrganismCurrentWeatherGusts).isDisplayed();
+		return icondisplayed;
+	}
+	
+	public Boolean nightOrganismCurrentWeatherCompassiondisplayed() {
+		WebPageLoaded.isDomInteractive();
+		Boolean icondisplayed = getDriver().findElement(bynightcurrentconditionCompassicon).isDisplayed();
+		return icondisplayed;
+	}
+	
+	/**
+	 * Method to verify more button is present on day/night cards
+	 * @author SOWMIYA
+	 * Boolean - return value - "true if more button is present"
+	 * */
+	public Boolean isMoreButtonPresent() {
+		WebPageLoaded.isDomInteractive();
+		WebElement dayMoreButton = getDriver().findElement(byDayMoreButton);
+		WebElement nightMoreButton = getDriver().findElement(byNightMoreButton);
+		return dayMoreButton.syncVisible(15) && nightMoreButton.syncVisible(15);
+	}
+	
+	/**
+	 * Method to verify less button is present on click of more button on day cards
+	 * @author SOWMIYA
+	 * Boolean - return value - "true if less button and less arrow is present"
+	 * */
+	public Boolean verifyLessIsShownOnClickOfMoreButtonOnDayCard() {
+		WebPageLoaded.isDomInteractive();
+		WebElement dayMoreButton = getDriver().findElement(byDayMoreButton);
+		dayMoreButton.syncVisible(15);
+		dayMoreButton.click();
+		//verify less button is present and arrow next to less button is present
+		WebElement dayLessButton = getDriver().findElement(byDayLessButton);
+		WebElement dayLessButtonUpArrow = getDriver().findElement(byDayLessButtonUpArrow);
+		
+		return dayLessButton.syncVisible(15) && dayLessButtonUpArrow.syncVisible(15);
+	}
+	
+	/**
+	 * Method to verify less button is present on click of more button on night cards
+	 * @author SOWMIYA
+	 * Boolean - return value - "true if less button and less arrow is present"
+	 * */
+	public Boolean verifyLessIsShownOnClickOfMoreButtonOnNightCard() {
+		WebPageLoaded.isDomInteractive();
+		WebElement nightMoreButton = getDriver().findElement(byNightMoreButton);
+		nightMoreButton.syncVisible(15);
+		nightMoreButton.jsClick();
+		//verify less button is present and arrow next to less button is present
+		WebElement nightLessButton = getDriver().findElement(byNightLessButton);
+		WebElement nightLessButtonUpArrow = getDriver().findElement(byNightLessButtonUpArrow);
+		
+		return nightLessButton.syncVisible(15) && nightLessButtonUpArrow.syncVisible(15);
+	}
+	
+	/**
+	 * Method to click on today's weather card on night cards
+	 * @author SOWMIYA
+	 * Boolean - return value - "true if less button and less arrow is present"
+	 * */
+	public void isclickedonTodayWeathercard() {
+		WebPageLoaded.isDomInteractive();
+		getDriver().findElement(byTodayWeatherCard).syncVisible(15);
+		getDriver().findElement(byTodayWeatherCard).click();
+	}
+	
+	/**
+	 * Method to click on evening CTA on night card - today's module
+	 * @author SOWMIYA
+	 * Boolean - return value - "Evening URL"
+	 * */
+	public String clickEveningCTA() {
+		WebPageLoaded.isDomInteractive();
+		getDriver().findElement(byEveningCTAFromNightOrganism).syncVisible(15);
+		getDriver().findElement(byEveningCTAFromNightOrganism).click();
+		return getDriver().getCurrentUrl();
+	}
+	
+	/**
+	 * Method to click on overnight CTA on evening card - today's module
+	 * @author SOWMIYA
+	 * Boolean - return value - "Overnight URL"
+	 * */
+	public String clickOvernightCTA() {
+		WebPageLoaded.isDomInteractive();
+		getDriver().findElement(byEveningCTAFromNightOrganism).syncVisible(15);
+		getDriver().findElement(byEveningCTAFromNightOrganism).click();
+		getDriver().findElement(byOvernightCTAFromNightOrganism).syncVisible(15);
+		getDriver().findElement(byOvernightCTAFromNightOrganism).click();
+		return getDriver().getCurrentUrl();
+	}
 }

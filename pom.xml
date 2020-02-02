@@ -50,7 +50,7 @@
 		<jenkinsBrowserVersion>${browserVersion}</jenkinsBrowserVersion>
 		<jenkinsRunLocation>${runLocation}</jenkinsRunLocation>
 		<testNGSourceDirectory>src/test/resources</testNGSourceDirectory>
-		<suiteXMLName>testMobile</suiteXMLName>
+		<suiteXMLName>GlacierSmokeTests</suiteXMLName>
 	</properties>
 	<repositories>
 		<repository>
@@ -227,23 +227,19 @@
     		<artifactId>commons-lang3</artifactId>
     		<version>3.9</version>
 		</dependency>
-		
-		
+		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
 		<dependency>
                 <groupId>io.rest-assured</groupId>
                 <artifactId>rest-assured</artifactId>
                 <version>3.0.0</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
-        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <version>2.2</version>
-        </dependency>
-		
-		
-		<!-- End REST Core requirements -->
+		<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
+		<dependency>
+		    <groupId>org.hamcrest</groupId>
+		    <artifactId>hamcrest</artifactId>
+		    <version>2.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>

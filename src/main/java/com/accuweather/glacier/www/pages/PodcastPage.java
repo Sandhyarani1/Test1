@@ -1,7 +1,13 @@
 package com.accuweather.glacier.www.pages;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -17,7 +23,8 @@ import com.chameleon.selenium.web.elements.WebElement;
 import com.chameleon.utils.Sleeper;
 
 public class PodcastPage extends BasePage {
-
+	ArrayList<String> episodesDatePublishesList;
+	
 	private By byAWSunLogo = By.cssSelector("div.podcast-landing > div.container-wrapper.lead > div.container > a");
 	private By byAWTextLogo = By.cssSelector("div.container > a > svg > g > path");
 	private By byActiveVideoDate = By.xpath("/html/body/div[1]/div[1]/div[2]/div/div[2]/div[1]/span[contains(.,'minutes')]/..");
@@ -44,7 +51,8 @@ public class PodcastPage extends BasePage {
 	private By byShareImageText = By.cssSelector("div.share-text-icon > span");
 	private By byShareNotificationText = By.cssSelector("div > div.content > div.share-container > div.share-text-icon > div");
 	private By byListOfAllEpisodes = By.cssSelector("body > div.podcast-landing > div:nth-child(2) > div > div:nth-child(1)");
-
+	private By byEpisodeDateMonthYear = By.cssSelector("div:nth-child(1) > div:nth-child(5) > div.content > div.meta");
+	
 	/*
 	 * Method to verify the AccuWeather LOGO is displayed PodCast page
 	 */
@@ -362,5 +370,198 @@ public class PodcastPage extends BasePage {
 		sharenotificationmsg.syncVisible(30);
 		getDriver().manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		return sharenotificationmsg.isDisplayed();
+	}
+	
+	/**
+	 * Method to verify five episodes are loaded on click of load more episodes link. 
+	 * 
+	 * @author Sowmiya
+	 * return Boolean 
+	 */
+	public boolean loadFiveMoreEpisodes() {
+		Boolean flag = null;
+		WebElement loadMoreEpisodesLink = getDriver().findElement(byLoadMoreEpisodesLink);
+		loadMoreEpisodesLink.syncVisible(15);
+		loadMoreEpisodesLink.click();
+		
+		//verify five episodes are loaded
+		for (int i = 6; i<=10; i++) {
+			getDriver().findElement(By.cssSelector("div.podcast-landing > div:nth-child(2) > div > div:nth-child(1) > div:nth-child(" + i + ")")).syncVisible(15);
+		    
+			if(i==10)
+			   flag = getDriver().findElement(By.cssSelector("div.podcast-landing > div:nth-child(2) > div > div:nth-child(1) > div:nth-child(11)")).syncVisible(15, false);
+				
+		}
+     return flag;
+	}
+	
+	/**
+	 * Method to verify five episodes are loaded on click of load more episodes link. 
+	 * 
+	 * @author Sowmiya
+	 * return Boolean 
+	 * @throws ParseException 
+	 */
+	public void getAllFiveEpisodesDatePublished() throws ParseException {
+		
+		WebElement loadMoreEpisodesLink = getDriver().findElement(byLoadMoreEpisodesLink);
+		loadMoreEpisodesLink.syncVisible(15);
+		loadMoreEpisodesLink.click();
+		episodesDatePublishesList = new ArrayList<String>();
+		//get 5 episodes data publishes in arraylist
+		for (int i = 6; i<=10; i++) {
+	           getDriver().findElement(By.cssSelector("div:nth-child(1) > div:nth-child("+i+") > div.content > div.meta")).syncVisible(15);
+		       String datePublishedWithMinutes =  getDriver().findElement(By.cssSelector("div:nth-child(1) > div:nth-child("+i+") > div.content > div.meta")).getText();
+		       episodesDatePublishesList.add(datePublishedWithMinutes);
+		}
+		    System.out.println("ArrayList:"+episodesDatePublishesList);   
+		
+	}
+	
+	
+	/**
+	 * Method to verify episodes are listed in descending order of date published 
+	 * @author Sowmiya
+	 * return Boolean - true if episodes are listed in expected order
+	 * @throws ParseException 
+	 */
+	public Boolean verifyEpisodesListedInDescendingOrderOfDatePublished(int x, int y) throws ParseException {
+		Boolean flag;
+		
+		String episode1 = episodesDatePublishesList.get(x);
+		String episode2 = episodesDatePublishesList.get(y);
+		
+		//get year and compare
+		String strYear1 = getYearFromDatePublished(episode1);
+		String strYear2 = getYearFromDatePublished(episode2);
+		
+		int intYear1 = Integer.parseInt(strYear1);  
+		int intYear2 = Integer.parseInt(strYear2);  
+		
+		if(intYear1 > intYear2)
+			flag = true;
+		
+		else if (intYear1 == intYear2) {
+			//verify month 
+			int month1 = getMonthFromDatePublished(episode1);
+			int month2 = getMonthFromDatePublished(episode2);
+			
+			if(month1 > month2) 
+				flag = true;
+			
+			else if (month1 == month2) {
+				//get dates
+				String date1 = getDateFromDatePublished(episode1);
+				String date2 = getDateFromDatePublished(episode2);
+			
+				int intDate1 = Integer.parseInt(date1);
+				int intDate2 = Integer.parseInt(date2);
+				
+				//validate dates
+				if(intDate1 > intDate2)
+					flag = true;
+				else
+					flag = false;
+			} 
+			else 
+				flag = false;
+		} 
+		else
+			flag = false;
+		
+		return flag;
+	}
+	
+	/**
+	 * Method to verify episodes are listed in descending order of date published 
+	 * @author Sowmiya
+	 * return Boolean - true if episodes are listed in expected order
+	 * @throws ParseException 
+	 */
+	public void conditionToIterateEpisodes() throws ParseException {
+		 int i=0;
+		 if(i<4) {
+			 int x = i;
+			 i++;
+			 int y= i;
+			 //pass x and y value to descending order function
+			 verifyEpisodesListedInDescendingOrderOfDatePublished(x, y);
+		 }
+	}
+	
+	
+	
+	/**
+	 * Method to get year from the episodes
+	 * @author Sowmiya
+	 * return Boolean - Year
+	 * @throws ParseException 
+	 */
+	public String getYearFromDatePublished(String datePublishedWithMinutes) throws ParseException
+	{
+	       String datePublished = datePublishedWithMinutes.substring(0, datePublishedWithMinutes.indexOf('-'));
+	       String strMonthYearDate = datePublished.replaceAll("\\s+$", "");
+	       
+	       //get year
+	       String getYear = strMonthYearDate.substring(strMonthYearDate.length()-4);
+	       System.out.println("YEAR::::::::::"+getYear);
+	       
+	       return getYear; 
+	}
+	
+	/**
+	 * Method to get date from the episodes
+	 * @author Sowmiya
+	 * return Boolean - Date
+	 * @throws ParseException 
+	 */
+		public String getDateFromDatePublished(String datePublishedWithMinutes) throws ParseException
+		{
+			   String datePublished = datePublishedWithMinutes.substring(0, datePublishedWithMinutes.indexOf('-'));
+		       String strMonthYearDate = datePublished.replaceAll("\\s+$", "");
+		       
+		       //get Year
+		       String getYear = strMonthYearDate.substring(strMonthYearDate.length()-4);
+		       System.out.println("YEAR::::::::::"+getYear);
+		       
+		       //get date
+		       String strMonthDate = strMonthYearDate.substring(0, datePublishedWithMinutes.indexOf(','));
+		       String getDate = strMonthDate.substring(strMonthDate.length()-2).trim();
+		       
+		       System.out.println("DATE::::::::::::"+getDate);
+		       
+		       return getDate;
+		}
+
+		/**
+		 * Method to get month from the episodes
+		 * @author Sowmiya
+		 * return Boolean - Month in int
+		 * @throws ParseException 
+		 */
+	public int getMonthFromDatePublished(String datePublishedWithMinutes) throws ParseException
+	{
+		String datePublished = datePublishedWithMinutes.substring(0, datePublishedWithMinutes.indexOf('-'));
+	       String strMonthYearDate = datePublished.replaceAll("\\s+$", "");
+	       
+	       String getYear = strMonthYearDate.substring(strMonthYearDate.length()-4);
+	       System.out.println("YEAR::::::::::"+getYear);
+	       
+	       //get date
+	       String strMonthDate = strMonthYearDate.substring(0, datePublishedWithMinutes.indexOf(','));
+	       String getDate = strMonthDate.substring(strMonthDate.length()-2);
+	       System.out.println("DATE::::::::::::"+getDate);
+	       
+	       //get month
+	       String trimDate = strMonthDate.replaceAll("[0-31]","");
+	       String monthName = trimDate.replaceAll("\\s+$", "");
+	       
+	       Date date = new SimpleDateFormat("MMM", Locale.ENGLISH).parse(monthName);
+	       Calendar cal = Calendar.getInstance();
+	       cal.setTime(date);
+	       int getMonth = cal.get(Calendar.MONTH);
+	       System.out.println(getMonth+1);
+	       
+	       return getMonth+1;
 	}
 }

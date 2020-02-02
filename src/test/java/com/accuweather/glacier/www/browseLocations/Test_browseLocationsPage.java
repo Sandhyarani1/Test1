@@ -14,6 +14,7 @@ public class Test_browseLocationsPage extends AccuWeatherBaseTest {
 	private String expectedWorldWeatherCTAColour = "#f59721";
 	private String expectedRegion_URL = "https://qualityassurance.accuweather.com/en/browse-locations/asi";
 	private String expectedCountry_URL = "https://qualityassurance.accuweather.com/en/browse-locations/asi/in";
+	private String expectedLocationKey_URL = "https://qualityassurance.accuweather.com/en/mx/mexico-city/242560/weather-forecast/242560";
 	private LandingPage landingPage = new LandingPage();
 	private BrowseLocations browseLocationPage = new BrowseLocations();
 	
@@ -34,7 +35,7 @@ public class Test_browseLocationsPage extends AccuWeatherBaseTest {
 			Assert.fail("Browse for a location URL is not matching as the expected");
 		}
 	}
-	/*
+	
 	@Test(priority = 2)
 	public void RW_T212_verify_List_of_Regions_On_Browse_Location_Page()
 	{
@@ -391,5 +392,21 @@ public class Test_browseLocationsPage extends AccuWeatherBaseTest {
 	    browseLocationPage.clcikCountryFromAContinent();
 	    browseLocationPage.clcikStateFromCountry();
 	    Assert.assertTrue(browseLocationPage.verifyThreedayWeatherCard());
-	}*/
+	}
+	
+	@Test(priority = 1)
+	public void RW_T772_ModifySearchResultsAndRecentLocations_EnterALocationWhichDoNotHaveZipcode()
+	{
+		testStart("Navigate to Browse for a Location page");
+		landingPage.enterZipcodeInSearchFieldAndClick("Mexico City, MX");
+		try
+		{
+			Assert.assertEquals(getDriver().getCurrentUrl(), expectedLocationKey_URL);
+		}
+		catch (AssertionError ae)
+		{
+			System.err.println(ae.getMessage());
+			Assert.fail("Browse for a location URL is not matching as the expected");
+		}
+	}
 }

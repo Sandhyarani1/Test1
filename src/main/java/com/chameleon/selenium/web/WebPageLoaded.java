@@ -2,6 +2,7 @@ package com.chameleon.selenium.web;
 
 import static com.chameleon.utils.TestReporter.logFailure;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -322,6 +323,7 @@ public class WebPageLoaded {
         WebDriverWait wait = new WebDriverWait(driver.getWebDriver(), timeout);
         try {
             wait.pollingEvery(Constants.MILLISECONDS_TO_POLL_FOR_ELEMENT, TimeUnit.MILLISECONDS).until(jQueryLoad);
+            //wait.pollingEvery((Duration.ofSeconds(timeout)).until(jQueryLoad));
         } catch (WebDriverException e) {
             return false;
         }

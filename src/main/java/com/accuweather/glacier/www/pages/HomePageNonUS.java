@@ -22,7 +22,11 @@ public class HomePageNonUS extends BasePage
 	private By byMapCTA = By.cssSelector("div.page-column-1 > div.content-module > a > div.cta-text > div");
 	private By byLogo = By.cssSelector("div > div.main-menu > div.logo-wrapper >div.icon-text > a");
 	private By byCountryLocations = By.cssSelector("div.nearby-locations-list > a");
-	
+	private By byStateOnHomePage = By.cssSelector("div.breadcrumbs-wrapper > div > div:nth-child(4) > a");
+	private By byWeatherConditionsTitle = By.cssSelector("div.content-module > div.nearby-locations.content-module > p");
+	private By byCountryOnHomePage = By.cssSelector("div.breadcrumbs-wrapper > div > div:nth-child(3) > a");
+	private By byContinentOnHomePage = By.cssSelector("div.breadcrumbs-wrapper > div > div:nth-child(2) > a");
+	private By byWorldOnHomePage = By.cssSelector("div.breadcrumbs-wrapper > div > div:nth-child(1) > a");
 	
 	/**
 	 * Method to change the language
@@ -96,7 +100,6 @@ public class HomePageNonUS extends BasePage
 	public Boolean verify20LocationsOfCountry()
 	{
 		WebPageLoaded.isDomInteractive();
-		changeLanguage();
 		List<WebElement> locations = getDriver().findElements(byCountryLocations);
 		actualLocationsInTotal = locations.size();
 		if(actualLocationsInTotal==expectedLocationsInTotal)
@@ -162,6 +165,66 @@ public class HomePageNonUS extends BasePage
 		WebElement location = getDriver().findElement(By.cssSelector("div.nearby-locations-list > a:nth-child(1)"));
 		location.syncVisible(15);
 		location.jsClick();
+	}
+	
+	/**
+	 * Method to click state on homepage above universal footer
+	 * @author SOWMIYA  
+	 * */
+	public void clickStateOnHomePage()
+	{
+		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(3);
+		WebElement stateOnHomePage = getDriver().findElement(byStateOnHomePage);
+		stateOnHomePage.syncVisible(25);
+		stateOnHomePage.jsClick();
+		WebElement weatherConditionstitle = getDriver().findElement(byWeatherConditionsTitle);
+		weatherConditionstitle.syncVisible(25);
+	}
+	
+	/**
+	 * Method to click country on homepage above universal footer
+	 * @author SOWMIYA  
+	 * */
+	public void clickCountryOnHomePage()
+	{
+		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(3);
+		WebElement countryOnHomePage = getDriver().findElement(byCountryOnHomePage);
+		countryOnHomePage.syncVisible(25);
+		countryOnHomePage.jsClick();
+		WebElement weatherConditionstitle = getDriver().findElement(byWeatherConditionsTitle);
+		weatherConditionstitle.syncVisible(25);
+	}
+	
+	/**
+	 * Method to click continent on homepage above universal footer
+	 * @author SOWMIYA  
+	 * */
+	public void clickContinentOnHomePage()
+	{
+		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(3);
+		WebElement continentOnHomePage = getDriver().findElement(byContinentOnHomePage);
+		continentOnHomePage.syncVisible(25);
+		continentOnHomePage.jsClick();
+		WebElement weatherConditionstitle = getDriver().findElement(byWeatherConditionsTitle);
+		weatherConditionstitle.syncVisible(25);
+	}
+	
+	/**
+	 * Method to click world on homepage above universal footer
+	 * @author SOWMIYA  
+	 * */
+	public void clickWorldOnHomePage()
+	{
+		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(3);
+		WebElement worldOnHomePage = getDriver().findElement(byWorldOnHomePage);
+		worldOnHomePage.syncVisible(25);
+		worldOnHomePage.jsClick();
+		WebElement weatherConditionstitle = getDriver().findElement(byWeatherConditionsTitle);
+		weatherConditionstitle.syncVisible(25);
 	}
 	
 	

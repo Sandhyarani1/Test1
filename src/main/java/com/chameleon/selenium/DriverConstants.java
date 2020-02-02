@@ -24,7 +24,7 @@ public class DriverConstants {
     public static final long PAGE_TIMEOUT = 15000;
     public static final int MILLISECONDS_TO_POLL_FOR_ELEMENT = 250;
 
-    public static final PageLoadStrategy DEFAULT_CHROME_PAGE_LOAD_STRATEGY = PageLoadStrategy.NONE;
+    public static final PageLoadStrategy DEFAULT_CHROME_PAGE_LOAD_STRATEGY = PageLoadStrategy.EAGER;
     public static final PageLoadStrategy DEFAULT_EDGE_PAGE_LOAD_STRATEGY = PageLoadStrategy.NONE;
     public static final PageLoadStrategy DEFAULT_FIREFOX_PAGE_LOAD_STRATEGY = PageLoadStrategy.NONE;
     public static final PageLoadStrategy DEFAULT_INTERNET_EXPLORER_PAGE_LOAD_STRATEGY = PageLoadStrategy.NONE;

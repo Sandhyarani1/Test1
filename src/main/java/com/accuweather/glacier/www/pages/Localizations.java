@@ -9,24 +9,23 @@ import org.openqa.selenium.By;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
+import com.chameleon.utils.Sleeper;
 
 public class Localizations extends BasePage
 {
-	private By byMaps = By.cssSelector("div.main-menu > ul > li:nth-child(1)");
-	private By byMapsSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(1) > a > h4");
-	private By byMapsSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(1) > p");
-    private By bySatelliteSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(2) > a > h4");
-    private By bySatelliteSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(2) > p");
-    private By bySevereSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(3) > p");
-    private By bySatelliteImageSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(4) > a  > figure > img");
-    private By bySatelliteSubMenuMapTitle = By.cssSelector("div.mega-menu-content > div:nth-child(4) > a  > figure > p");
-    private By bySatelliteSubMenuMapDescription = By.cssSelector("div.mega-menu-content > div:nth-child(4) > a  > figure > figcaption");
-    private By bySettingTempCelciusLabel = By.cssSelector("div.utility-bar > div > div > div.temp-switcher.fade-in-left > div > span:nth-child(3)");
-    private By byRecentLocationTempInCelcius = By.cssSelector("div.template-root > div > div.featured-locations > a:nth-child(1) > span.recent-location-temp");
-    private By bySatelliteImage = By.cssSelector("div.mega-menu-content > div:nth-child(4) > a.nav-media-item > figure > figcaption");
-    private By bySatelliteTab = By.cssSelector("div.subnav-items > a > h1");
-    private By byMinuteCast = By.cssSelector("div.subnav-items > a:nth-child(3) > span");
 	
+	private By byMaps = By.cssSelector("div.main-menu > ul > li:nth-child(1)");
+    private By byMapsSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(1) > a > h4");
+    private By bySatelliteSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(2) > a > h4");
+    private By bySatelliteImageSubMenu = By.cssSelector("div.mega-menu > div.mega-menu-content > div:nth-child(3) > a  > figure > img");
+    private By bySatelliteSubMenuMapTitle = By.cssSelector("div.mega-menu > div > div.mega-menu-item.fade-in-left.mega-menu-item-media > a > figure > p");
+    private By bySatelliteSubMenuMapDescription = By.cssSelector("div.mega-menu > div > div.mega-menu-item.fade-in-left.mega-menu-item-media > a > figure > figcaption");
+    private By bySettingUnitsDropdown = By.cssSelector("div.utility-bar > div > div > div.dropdown-select.select-units.fade-in-left.select-units > div.dropdown-select-wrapper");
+    private By bySettingTempCelciusLabel = By.cssSelector(" div.utility-bar > div > div > div.dropdown-select.select-units.fade-in-left.select-units > div.dropdown-content > div:nth-child(3)");
+    private By byRecentLocationTempInCelcius = By.cssSelector("div.template-root > div > div.featured-locations > a:nth-child(1) > span.recent-location-temp");
+    private By bySatelliteTab = By.cssSelector("div.page-subnav > div > div > div.subnav-items > a:nth-child(2) > span");
+    private By byMinuteCast = By.xpath("//div[@class='subnav-items']/a/span[contains(text(),'WinterCast')]");
+    
 	/**
 	 * Method to validate if Maps category present on top level navigation
 	 * @author Sowmiya
@@ -34,9 +33,9 @@ public class Localizations extends BasePage
 	 * */
 	public Boolean isMapsPresent()
 	{
-		WebPageLoaded.isDomInteractive();
+		WebPageLoaded.isDomComplete();
 		WebElement maps = getDriver().findElement(byMaps);
-		return maps.syncVisible();
+		return maps.syncVisible(25);
 	}
 	
 	/**
@@ -53,43 +52,36 @@ public class Localizations extends BasePage
 		return submenuMaps.syncVisible() && submenuSatellite.syncVisible() && submenuSatelliteImage.syncVisible();
 	}
 	
-	/**
-	 * Method to get the description of Maps submenu.
-	 * @author Sowmiya
-	 * @return - Boolean value - "true if Maps submenu contains description on city forecast page"
-	 * */
-	public String getMapsSubmenuDescription()
-	{
-		WebPageLoaded.isDomInteractive();
-		WebElement submenuMapsDescription = getDriver().findElement(byMapsSubMenuDescription);
-		submenuMapsDescription.syncVisible();
-		return submenuMapsDescription.getText();	
-	}
 
+	
 	/**
-	 * Method  to get the description of Satellite submenu.
+	 * Method  to click on the satellite image title under Maps.
 	 * @author Sowmiya
-	 * @return - Boolean value - "true if Satellite submenu contains description present on city forecast page"
+	 * @return - Boolean value - "true if landed on the correct page by identifying Satellite tab"
 	 * */
-	public String getSatelliteSubmenuDescription()
+	public Boolean clickSatelliteImageTitle()
 	{
 		WebPageLoaded.isDomInteractive();
-		WebElement submenuSatelliteDescription = getDriver().findElement(bySatelliteSubMenuDescription);
-		submenuSatelliteDescription.syncVisible();
-		return submenuSatelliteDescription.getText();	
+		WebElement satelliteSubMenuMapTitle = getDriver().findElement(bySatelliteSubMenuMapTitle);
+		satelliteSubMenuMapTitle.syncVisible(15);
+		satelliteSubMenuMapTitle.jsClick();
+		WebElement satelliteTab = getDriver().findElement(bySatelliteTab);
+		return satelliteTab.syncVisible();
 	}
 	
 	/**
-	 * Method  to get the description of Severe submenu.
+	 * Method  to click on the satellite image description under Maps.
 	 * @author Sowmiya
-	 * @return - Boolean value - "true if Severe submenu contains description present on city forecast page"
+	 * @return - Boolean value - "true if landed on the correct page by identifying Satellite tab"
 	 * */
-	public String getSevereSubmenuDescription()
+	public Boolean clickSatelliteImageDescription()
 	{
 		WebPageLoaded.isDomInteractive();
-		WebElement submenuSatelliteDescription = getDriver().findElement(bySevereSubMenuDescription);
-		submenuSatelliteDescription.syncVisible();
-		return submenuSatelliteDescription.getText();	
+		WebElement submenuSatelliteIMage = getDriver().findElement(bySatelliteSubMenuMapDescription);
+		submenuSatelliteIMage.syncVisible(15);
+		submenuSatelliteIMage.jsClick();
+		WebElement satelliteTab = getDriver().findElement(bySatelliteTab);
+		return satelliteTab.syncVisible();
 	}
 	
 
@@ -122,22 +114,6 @@ public class Localizations extends BasePage
 	}
 	
 	/**
-	 * Method  to click on the satellite image under Maps.
-	 * @author Sowmiya
-	 * @return - Boolean value - "true if landed on the correct page by identifying Satellite tab"
-	 * */
-	public Boolean clickSatelliteImage()
-	{
-		WebPageLoaded.isDomInteractive();
-		WebElement submenuSatelliteIMage = getDriver().findElement(bySatelliteImage);
-		submenuSatelliteIMage.syncVisible(15);
-		submenuSatelliteIMage.jsClick();
-		System.out.println("after image click");
-		WebElement satelliteTab = getDriver().findElement(bySatelliteTab);
-		return satelliteTab.syncVisible();
-	}
-	
-	/**
 	 * Method to verify the presence of minutecast on city forecast page
 	 * @author Sowmiya
 	 * @return - Boolean value - "true if minutecast tab is present on the city forecast page"
@@ -146,7 +122,7 @@ public class Localizations extends BasePage
 	{
 		WebPageLoaded.isDomInteractive();
 		WebElement minuteCast = getDriver().findElement(byMinuteCast);
-		return minuteCast.syncVisible();
+		return minuteCast.syncVisible(15, false);
 	}
 	
 	/**
@@ -157,11 +133,17 @@ public class Localizations extends BasePage
 	public Boolean changeTemperatureFromFarenheitToCelcius()
 	{
 		WebPageLoaded.isDomInteractive();
+		
+		WebElement unitsDropdown = getDriver().findElement(bySettingUnitsDropdown);
+		unitsDropdown.syncVisible(15);
+		unitsDropdown.click();
+		Sleeper.sleep(3);
+		
 		WebElement tempCelciusLabel = getDriver().findElement(bySettingTempCelciusLabel);
 		tempCelciusLabel.syncVisible();
 		tempCelciusLabel.click();
+		
 		WebElement recentLocationTempInCelcius = getDriver().findElement(byRecentLocationTempInCelcius);
-		getDriver().manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		recentLocationTempInCelcius.syncVisible(10);
 		System.out.println(recentLocationTempInCelcius.getText());
 		return recentLocationTempInCelcius.getText().contains("C");

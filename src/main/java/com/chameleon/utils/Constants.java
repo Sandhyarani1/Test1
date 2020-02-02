@@ -11,14 +11,14 @@ public class Constants {
     public static final String DIR_SEPARATOR = File.separator;
     public static final String CURRENT_DIR = determineCurrentPath();
 
-    /*
+    /*	
      * Selenium Constants
      */
     public static final String DRIVERS_PATH_LOCAL = "drivers" + DIR_SEPARATOR;
     public static final String SCREENSHOT_FOLDER = CURRENT_DIR + "selenium-reports" + DIR_SEPARATOR + "html" + DIR_SEPARATOR + "screenshots";
-    public static final int DEFAULT_GLOBAL_DRIVER_TIMEOUT = 1000;
-    public static final int ELEMENT_TIMEOUT = 8;
-    public static final int PAGE_TIMEOUT = 1000;
+    public static final int DEFAULT_GLOBAL_DRIVER_TIMEOUT = 100;
+    public static final int ELEMENT_TIMEOUT = 3;
+    public static final int PAGE_TIMEOUT = 100;
     public static final long MILLISECONDS_TO_POLL_FOR_ELEMENT = 250L;
     public static final int MAX_SLEEP_TIME = 600;
 
@@ -27,6 +27,8 @@ public class Constants {
      */
     public static final String ENVIRONMENT_URL_PATH = "EnvironmentURLs";
     public static final String ENVIRONMENT_URL_PROPERTIES = "EnvironmentURLs.properties";
+    public static final String ACCUWEATHER_WEB_QA = "ACCUWEATHER_WEB_QA";
+    public static final String AD_BLOCKER_EXTENSION_PATH = "AD_BLOCKER_EXTENSION_PATH";
     public static final String USER_CREDENTIALS_PATH = "UserCredentials";
     public static final String SANDBOX_PATH = DIR_SEPARATOR + "sandbox" + DIR_SEPARATOR;
     public static final String TNSNAMES_PATH = DIR_SEPARATOR + "database" + DIR_SEPARATOR;
@@ -34,7 +36,7 @@ public class Constants {
     public static final String TESTNG_PARAM_BROWSER = "CHROME";
     public static final String ACCUWEATHER_WEB_QA ="ACCUWEATHER_MOBILE_QA"; 
     //public static final String TESTNG_PARAM_BROWSER = "FIREFOX";
-    //public static final String TESTNG_PARAM_BROWSER = "INTERNETEXPLORER";
+//    public static final String TESTNG_PARAM_BROWSER = "INTERNETEXPLORER";
     //public static final String TESTNG_PARAM_BROWSER = "SAFARI";
     //public static final String TESTNG_PARAM_BROWSER = "IOS_WEB";
     //public static final String TESTNG_PARAM_BROWSER = "ANDROID_WEB";
@@ -53,14 +55,10 @@ public class Constants {
      * @warning Exceptions are swallowed.
      * @return Constants.DIR_SEPARATOR
      */
-    private static final String determineCurrentPath() 
-    {
-        try
-        {
+    private static final String determineCurrentPath() {
+        try {
             return (new File(".").getCanonicalPath()) + Constants.DIR_SEPARATOR;
-        }
-        catch (Exception ex) 
-        {
+        } catch (Exception ex) {
         }
         return "." + Constants.DIR_SEPARATOR;
     }

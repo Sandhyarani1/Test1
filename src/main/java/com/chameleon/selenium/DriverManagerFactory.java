@@ -69,6 +69,8 @@ public class DriverManagerFactory {
                 driverManager = new ChromeDriverManager(options.getChromeOptions());
                 break;
             case FIREFOX:
+            	driverManager = new FirefoxDriverManager(options.getFirefoxOptions());
+                break;
             case HTML:
                 driverManager = new FirefoxDriverManager(options.getFirefoxOptions());
                 break;
