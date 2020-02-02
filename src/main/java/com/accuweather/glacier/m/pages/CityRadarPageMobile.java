@@ -53,7 +53,7 @@ public class CityRadarPageMobile extends MobileBasePage {
 			.xpath("//div/canvas[@aria-label='Map']/following::div[@class='map-tools']/div[2]/div[2]");
 	private By byFutureCTABelowMap = By
 			.xpath("//div/canvas[@aria-label='Map']/following::div[@class='map-tools']/div[2]/div[3]");
-	private By byMapbox = By.cssSelector(".mapboxgl-ctrl-attrib");
+	private By byMapbox = By.cssSelector("mapboxgl-ctrl mapboxgl-ctrl-attrib mapboxgl-compact");
 	private By byMapboxLink = By.xpath("//a[contains(text(),'© Mapbox')]");
 	private By byOpenStreetMap = By.cssSelector("div.mapboxgl-ctrl-attrib-inner > a:nth-child(2)");
 	private By byImproveThisMap = By.cssSelector("div.mapboxgl-ctrl-attrib-inner > a:nth-child(3)");
@@ -81,14 +81,46 @@ public class CityRadarPageMobile extends MobileBasePage {
 	private By byBreadCrumbMenuRadar = By.cssSelector(".accordion-item:nth-child(1) a:nth-child(1)");
 
 	private By byPastButton = By.cssSelector(".toggle-button");
-
-	public Boolean clickBreadCrumbMenu() {
+	
+	private By byBreadCrumbMenuMaps = By
+			.cssSelector(".accordion-item:nth-child(1) .accordion-item-header-content");
+	private By byBreadCrumbMenuSatellite = By.cssSelector(".accordion-item:nth-child(1) a:nth-child(1)");
+	private By byBreadCrumbMenuSevere = By.cssSelector(".accordion-item:nth-child(1) a:nth-child(2)");
+	
+	private By bySevereTab = By.cssSelector("body > div > div.page-subnav > div > div > div.subnav-items > a.subnav-item.active");
+	private By byBreadCrumbTemperatureToggleMenu = By.cssSelector(".bar");
+	
+	public Boolean clickBreadcrumbTemperatureToggleMenu() {
 		WebPageLoaded.isDomInteractive();
-		getDriver().findElement(byBreadCrumbMenu).scrollIntoView();
-		getDriver().findElement(byBreadCrumbMenu).click();
+		getDriver().findElement(byBreadCrumbTemperatureToggleMenu).scrollIntoView();
+		getDriver().findElement(byBreadCrumbTemperatureToggleMenu).click();
+		Sleeper.sleep(4);
+		return true;
+	}
+	
+	public Boolean clickbyBreadCrumbMenuSatellite() {
+		WebPageLoaded.isDomInteractive();
+		getDriver().findElement(byBreadCrumbMenuSatellite).scrollIntoView();
+		getDriver().findElement(byBreadCrumbMenuSatellite).click();
 		return true;
 	}
 
+	public Boolean clickBreadCrumbMenu() {
+		WebPageLoaded.isDomInteractive();
+	//	getDriver().findElement(byBreadCrumbMenu).scrollIntoView();
+		getDriver().findElement(byBreadCrumbMenu).jsClick();
+		return true;
+	}
+
+	public Boolean clickbyBreadCrumbMenuSevere() {
+		WebPageLoaded.isDomInteractive();
+		getDriver().findElement(byBreadCrumbMenuSevere).scrollIntoView();
+		getDriver().findElement(byBreadCrumbMenuSevere).click();
+		if (getDriver().findElements(bySevereTab).size() > 0)
+			return true;
+		else
+			return false;
+	}
 	public Boolean clickBreadCrumbMenuRadarAndMaps() {
 		WebPageLoaded.isDomInteractive();
 		getDriver().findElement(byBreadCrumbMenuRadarAndMaps).scrollIntoView();
@@ -98,9 +130,16 @@ public class CityRadarPageMobile extends MobileBasePage {
 
 	public Boolean clickbyBreadCrumbMenuRadar() {
 		WebPageLoaded.isDomInteractive();
-		getDriver().findElement(byBreadCrumbMenuRadar).scrollIntoView();
-		getDriver().findElement(byBreadCrumbMenuRadar).click();
-		getDriver().findElement(byRadarTab).syncVisible();
+		//getDriver().findElement(byBreadCrumbMenuRadar).scrollIntoView();
+		getDriver().findElement(byBreadCrumbMenuRadar).jsClick();
+		//getDriver().findElement(byRadarTab).syncVisible();
+		return true;
+	}
+	
+	public Boolean clickBreadCrumbMenuMaps() {
+		WebPageLoaded.isDomInteractive();
+		getDriver().findElement(byBreadCrumbMenuMaps).scrollIntoView();
+		getDriver().findElement(byBreadCrumbMenuMaps).click();
 		return true;
 	}
 
@@ -114,12 +153,12 @@ public class CityRadarPageMobile extends MobileBasePage {
 	public Boolean verifyLightAndSeverFromMixLegend() {
 		WebPageLoaded.isDomInteractive();
 		WebElement radarTab = getDriver().findElement(byRadarTab);
-		radarTab.syncVisible();
+		//radarTab.syncVisible();
 		WebElement light = getDriver().findElement(byLightMix);
 		WebElement severe = getDriver().findElement(bySeveremix);
-		light.syncVisible();
-		severe.syncVisible();
-		return light.isDisplayed() && severe.isDisplayed();
+		//light.syncVisible();
+		//severe.syncVisible();
+		return getDriver().findElements(byLightMix).size()>0 && getDriver().findElements(bySeveremix).size()>0;
 	}
 
 	/**
@@ -163,12 +202,12 @@ public class CityRadarPageMobile extends MobileBasePage {
 	public Boolean verifyLightAndSeverFromIceLegend() {
 		WebPageLoaded.isDomInteractive();
 		WebElement radarTab = getDriver().findElement(byRadarTab);
-		radarTab.syncVisible();
+		//radarTab.syncVisible();
 		WebElement light = getDriver().findElement(byLightIce);
 		WebElement severe = getDriver().findElement(bySevereIce);
-		light.syncVisible();
-		severe.syncVisible();
-		return light.isDisplayed() && severe.isDisplayed();
+		//light.syncVisible();
+		//severe.syncVisible();
+		return getDriver().findElements(byLightIce).size()>0 && getDriver().findElements(bySevereIce).size()>0;
 	}
 
 	/**
@@ -181,12 +220,12 @@ public class CityRadarPageMobile extends MobileBasePage {
 	public Boolean verifyLightAndSeverFromSnowLegend() {
 		WebPageLoaded.isDomInteractive();
 		WebElement radarTab = getDriver().findElement(byRadarTab);
-		radarTab.syncVisible();
+		//radarTab.syncVisible();
 		WebElement light = getDriver().findElement(byLightSnow);
 		WebElement severe = getDriver().findElement(bySevereSnow);
-		light.syncVisible();
-		severe.syncVisible();
-		return light.isDisplayed() && severe.isDisplayed();
+		//light.syncVisible();
+		//severe.syncVisible();
+		return getDriver().findElements(byLightSnow).size()>0 && getDriver().findElements(bySevereSnow).size()>0;
 	}
 
 	/**
@@ -204,7 +243,7 @@ public class CityRadarPageMobile extends MobileBasePage {
 		WebElement slideBar = getDriver().findElement(bySlideBar);
 		WebElement playButton = getDriver().findElement(byPlayButton);
 		WebElement timeStamp = getDriver().findElement(byTimeStamp);
-		return slideBar.isDisplayed() && playButton.isDisplayed() && timeStamp.isDisplayed();
+		return getDriver().findElements(bySlideBar).size()>0 && getDriver().findElements(byPlayButton).size()>0 && getDriver().findElements(byTimeStamp).size()>0;
 	}
 
 	/**
@@ -244,11 +283,11 @@ public class CityRadarPageMobile extends MobileBasePage {
 	public Boolean verifyPastAndFutureCTABelowMap() {
 		WebPageLoaded.isDomInteractive();
 		WebElement radarTab = getDriver().findElement(byRadarTab);
-		radarTab.syncVisible();
+		//radarTab.syncVisible();
 		// future cta
 		WebElement pastCTABelowMap = getDriver().findElement(byPastCTABelowMap);
 		WebElement futureCTABelowMap = getDriver().findElement(byFutureCTABelowMap);
-		return pastCTABelowMap.syncVisible(20) && futureCTABelowMap.syncVisible(20);
+		return getDriver().findElements(byPastCTABelowMap).size()>0 && getDriver().findElements(byFutureCTABelowMap).size()>0;
 	}
 
 	/**
@@ -262,7 +301,7 @@ public class CityRadarPageMobile extends MobileBasePage {
 		WebElement radarTab = getDriver().findElement(byRadarTab);
 		radarTab.syncVisible();
 		WebElement ctaPastActive = getDriver().findElement(byPastButton);
-		return ctaPastActive.syncVisible(15);
+		return getDriver().findElements(byPastButton).size()>0;
 	}
 
 	/**
@@ -308,6 +347,8 @@ public class CityRadarPageMobile extends MobileBasePage {
 		openStreetMap.jsClick();
 		Sleeper.sleep(6);
 	}
+	
+	
 
 	/**
 	 * Method to click improve this map
@@ -318,9 +359,16 @@ public class CityRadarPageMobile extends MobileBasePage {
 		WebPageLoaded.isDomInteractive();
 		WebElement radarTab = getDriver().findElement(byRadarTab);
 		radarTab.syncVisible();
+		WebElement maplink = getDriver().findElement(byMapbox);
+		getDriver().executeJavaScript("seetest:client.click(\"NATIVE\", \"xpath=//*[@class='i-amphtml-fill-content i-amphtml-fit-text-content']\", 0, 1)");
+		
+
+		
+		//getDriver().executeJavaScript("seetest:client.click(\"WEB\", \"class=mapboxgl-ctrl mapboxgl-ctrl-attrib mapboxgl-compact\", 0, 1");
+		Sleeper.sleep(3);
 		WebElement improveThisMap = getDriver().findElement(byImproveThisMap);
 		Sleeper.sleep(3);
-		improveThisMap.jsClick();
+		getDriver().executeJavaScript("seetest:client.click(\"NATIVE\", \"xpath=//*[@text=Improve this map]\", 0, 1)");
 		Sleeper.sleep(4);
 	}
 
@@ -379,13 +427,13 @@ public class CityRadarPageMobile extends MobileBasePage {
 	public String verifyTootipBackgroundColor() {
 		WebPageLoaded.isDomInteractive();
 		WebElement radarTab = getDriver().findElement(byRadarTab);
-		radarTab.syncVisible();
+		radarTab.syncVisible(5);
 		WebElement toolTip = getDriver().findElement(byTooltip);
-		toolTip.syncVisible();
+		//toolTip.syncVisible(5);
 		toolTip.jsClick();
 		WebElement ele = getDriver().findElement(byTooltipActive);
 		String result = (String) DriverManager.getWebDriver().executeJavaScript(
-				"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-header > div > div.tooltip-overlay > div.tooltip-header > div\")).backgroundColor;",
+				"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(4) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-header > div > div.tooltip-overlay > div.tooltip-header > div\")).backgroundColor;",
 				ele);
 		System.out.println("result > > > > " + result);
 		String arrowcolourdisplayed = Color.fromString(result).asHex();
@@ -402,11 +450,11 @@ public class CityRadarPageMobile extends MobileBasePage {
 		WebElement radarTab = getDriver().findElement(byRadarTab);
 		radarTab.syncVisible();
 		WebElement toolTip = getDriver().findElement(byTooltip);
-		toolTip.syncVisible();
+		//toolTip.syncVisible();
 		toolTip.jsClick();
 		WebElement ele = getDriver().findElement(byTooltipHeader);
 		String result = (String) DriverManager.getWebDriver().executeJavaScript(
-				"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-header > div > div.tooltip-overlay > div.tooltip-header > span\")).color;",
+				"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(4) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-header > div > div.tooltip-overlay > div.tooltip-header > span\")).color;",
 				ele);
 		System.out.println("result > > > > " + result);
 		String arrowcolourdisplayed = Color.fromString(result).asHex();
@@ -423,7 +471,7 @@ public class CityRadarPageMobile extends MobileBasePage {
 		WebElement radarTab = getDriver().findElement(byRadarTab);
 		radarTab.syncVisible();
 		WebElement toolTip = getDriver().findElement(byTooltip);
-		toolTip.syncVisible();
+		//toolTip.syncVisible();
 		toolTip.jsClick();
 		getDriver().findElement(byTooltipDescription).scrollIntoView();
 		WebElement tooltipDescription = getDriver().findElement(byTooltipDescription);
@@ -482,7 +530,7 @@ public class CityRadarPageMobile extends MobileBasePage {
 		getDriver().findElement(byTooltip).scrollIntoView();
 		WebElement ele = getDriver().findElement(byTooltip);
 		String result = (String) DriverManager.getWebDriver().executeJavaScript(
-				"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-header > div > div.icon-tooltip\")).color;",
+				"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(4) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-header > div > div.icon-tooltip\")).color;",
 				ele);
 		System.out.println("result > > > > " + result);
 		String arrowcolourdisplayed = Color.fromString(result).asHex();

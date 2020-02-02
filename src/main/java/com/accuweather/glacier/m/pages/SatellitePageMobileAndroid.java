@@ -133,41 +133,63 @@ public class SatellitePageMobileAndroid extends MobileBasePage {
 	 * Method to Validate Tertiary navigation menus displayed on National satellite
 	 * page
 	 * 
-	 * @author Mohammed Siddiq
+	 * @author Sandhya Naraayanaro
 	 * 
 	 **/
-
-	public boolean istertiarymenuhas(String link) {
-		if (link.equalsIgnoreCase("Enchanced")) {
-			WebPageLoaded.isDomInteractive();
-			WebElement enhancedTab = getDriver().findElement(byEnhancedTab);
-			enhancedTab.syncVisible(6000);
-			return enhancedTab.isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Standard")) {
-			WebPageLoaded.isDomInteractive();
-			WebElement standardTab = getDriver().findElement(byStandardTab);
-			standardTab.syncVisible(6000);
-			return standardTab.isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Visible")) {
-			WebPageLoaded.isDomInteractive();
-			WebElement visibleTab = getDriver().findElement(byVisibleTab);
-			visibleTab.syncVisible(6000);
-			return visibleTab.isDisplayed();
-
-		}
-		if (link.equalsIgnoreCase("WaterVapor")) {
-			WebPageLoaded.isDomInteractive();
-			WebElement watervaporTab = getDriver().findElement(byWaterVaporTab);
-			watervaporTab.syncVisible(6000);
-			return watervaporTab.isDisplayed();
-		}
-
-		return false;
+	public boolean validateTeritaryMenusDisplayed()
+	{
+		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(5);
+		WebElement enhancedTab = getDriver().findElement(byEnhancedTab);
+		enhancedTab.syncVisible(30);
+		
+		WebElement standardTab = getDriver().findElement(byStandardTab);
+		standardTab.syncVisible(30);
+		
+		WebElement visibleTab = getDriver().findElement(byVisibleTab);
+		visibleTab.syncVisible(30);
+		
+		WebElement waterVaporTab = getDriver().findElement(byWaterVaporTab);
+		waterVaporTab.syncVisible(30);
+		
+		
+		
+		return enhancedTab.isDisplayed() && standardTab.isDisplayed() 
+				&& visibleTab.isDisplayed() && waterVaporTab.isDisplayed() ;
 	}
+	
+
+//	public boolean istertiarymenuhas(String link) {
+//		if (link.equalsIgnoreCase("Enchanced")) {
+//			WebPageLoaded.isDomInteractive();
+//			WebElement enhancedTab = getDriver().findElement(byEnhancedTab);
+//			enhancedTab.syncVisible(6000);
+//			return enhancedTab.isDisplayed();
+//		}
+//
+//		if (link.equalsIgnoreCase("Standard")) {
+//			WebPageLoaded.isDomInteractive();
+//			WebElement standardTab = getDriver().findElement(byStandardTab);
+//			standardTab.syncVisible(6000);
+//			return standardTab.isDisplayed();
+//		}
+//
+//		if (link.equalsIgnoreCase("Visible")) {
+//			WebPageLoaded.isDomInteractive();
+//			WebElement visibleTab = getDriver().findElement(byVisibleTab);
+//			visibleTab.syncVisible(6000);
+//			return visibleTab.isDisplayed();
+//
+//		}
+//		if (link.equalsIgnoreCase("WaterVapor")) {
+//			WebPageLoaded.isDomInteractive();
+//			WebElement watervaporTab = getDriver().findElement(byWaterVaporTab);
+//			watervaporTab.syncVisible(6000);
+//			return watervaporTab.isDisplayed();
+//		}
+//
+//		return false;
+//	}
 
 	/**
 	 * Method to get the Title of the National Satellite map
@@ -333,7 +355,7 @@ public class SatellitePageMobileAndroid extends MobileBasePage {
 
 	public String getlandingurltitle() {
 		List<String> browserTabs = new ArrayList<>(getDriver().getWindowHandles());
-		WebPageLoaded.isDomComplete(5);
+		Sleeper.sleep(3);
 		return getDriver().switchTo().window(browserTabs.get(1)).getCurrentUrl();
 	}
 
@@ -480,42 +502,42 @@ public class SatellitePageMobileAndroid extends MobileBasePage {
 	}
 
 	/**
-	 * Method to validate Legend Cloud Displayed with various colors for Enhanced
+	 * Method to validate Legend Clouds Displayed with various colors for Enchanced
 	 * Satellite Map
 	 * 
-	 * @author Mohammed Siddiq
+	 * @author Sandhya Narayanarao
 	 * 
 	 **/
 	public void coloursdisplayedforEnchacedSatelliteMap() {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendClouds);
-		for (int j = 1; j <= childrenElements.size(); j++) {
-			WebElement ele = null;
-			String result = null;
-			ele = getDriver().findElement(By.xpath("(//*[@class='key enhanced']//*[name()='rect'])[" + j + "]"));
-			result = (String) DriverManager.getWebDriver().executeJavaScript(
-					"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > "
-							+ "div.content-module > div.map-container.full-mobile-width.content-module > div.map-tools > div.satellite-legend > "
-							+ "div > svg > rect.c-" + j + "\")).fill;",
-					ele);
-			String arrowcolourdisplayed = Color.fromString(result).asHex();
-			System.out.println("color displayed :" + Color.fromString(result).asHex());
-		}
+		for (int i = 1; i <= childrenElements.size(); i++) {
+			Sleeper.sleep(3);
+			
+			String colorDisplayed = getDriver()
+					.findElement(By.xpath("//*[@class='key enhanced']//*[name()='rect' and @class='c-" + i + "']"))
+					.getCssValue("fill");
+			String colorinHex = Color.fromString(colorDisplayed).asHex();
+			ArrayList<String> aList = new ArrayList<>();
+			aList.add(colorinHex);
+			for (String list : aList) {
+				System.out.println("Legend Cloud has following colors displayed for Standard Satellite Map" + list);
 
+			}
+		}
 	}
 
 	/**
 	 * Method to validate Legend Clouds Displayed with various colors for Standard
 	 * Satellite Map
 	 * 
-	 * @author Mohammed Siddiq
+	 * @author  Sandhya Narayanarao
 	 * 
 	 **/
 	public void coloursdisplayedforStandardSatelliteMap() {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendClouds);
 		for (int i = 1; i <= childrenElements.size(); i++) {
 			Sleeper.sleep(3);
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000);
-			wait.until(ExpectedConditions.elementToBeClickable(bylegendClouds));
+			
 			String colorDisplayed = getDriver()
 					.findElement(By.xpath("//*[@class='key standard']//*[name()='rect' and @class='c-" + i + "']"))
 					.getCssValue("fill");
@@ -533,52 +555,53 @@ public class SatellitePageMobileAndroid extends MobileBasePage {
 	 * Method to validate Legend Cloud Displayed with various colors for Visible
 	 * Satellite Map
 	 * 
-	 * @author Mohammed Siddiq
+	 * @author Sandhya Narayanarao
 	 * 
-	 **/
+	 **/	
+	
 	public void colorsDisplayedforVisibleSatelliteMap() {
-		List<WebElement> childrenElements = getDriver().findElements(bylegendCloudsforVisbile);
-		for (int j = 1; j <= childrenElements.size(); j++) {
-			WebElement ele = null;
-			String result = null;
-			ele = getDriver()
-					.findElement(By.xpath("//*[@class='key visible']//*[name()='rect' and @class='c-" + j + "']"));
-			result = (String) DriverManager.getWebDriver().executeJavaScript(
-					"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-tools > div.satellite-legend > div > svg > rect.c-"
-							+ j + "\")).fill;",
-					ele);
-			System.out.println("result > > > > " + result);
-			String arrowcolourdisplayed = Color.fromString(result).asHex();
-			System.out.println("color displayed :" + Color.fromString(result).asHex());
-		}
+		List<WebElement> childrenElements = getDriver().findElements(bylegendClouds);
+		for (int i = 1; i <= childrenElements.size(); i++) {
+			Sleeper.sleep(3);
+			
+			String colorDisplayed = getDriver()
+					.findElement(By.xpath("//*[@class='key visible']//*[name()='rect' and @class='c-" + i + "']"))
+					.getCssValue("fill");
+			String colorinHex = Color.fromString(colorDisplayed).asHex();
+			ArrayList<String> aList = new ArrayList<>();
+			aList.add(colorinHex);
+			for (String list : aList) {
+				System.out.println("Legend Cloud has following colors displayed for Visible Satellite Map" + list);
 
+			}
+		}
 	}
 
 	/**
 	 * Method to validate Legend WaterVapor Displayed with various colors
 	 * 
-	 * @author Mohammed Siddiq
+	 * @author Sandhya Narayanarao
 	 * 
 	 **/
+
+	
 	public void colorsDisplayedforLegendWaterVapor() {
-		List<WebElement> childrenElements = getDriver().findElements(bylegendWaterVapor);
-		for (int j = 1; j <= childrenElements.size(); j++) {
-			WebElement ele = null;
-			String result = null;
-			ele = getDriver()
-					.findElement(By.xpath("//*[@class='key waterVapor']//*[name()='rect' and @class='c-" + j + "']"));
-			ele.syncVisible(3);
-			result = (String) DriverManager.getWebDriver().executeJavaScript(
-					"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-tools > div.satellite-legend > div > svg > rect.c-"
-							+ j + "\")).fill;",
-					ele);
-			System.out.println("result > > > > " + result);
-			String arrowcolourdisplayed = Color.fromString(result).asHex();
-			System.out.println("color displayed :" + Color.fromString(result).asHex());
+		List<WebElement> childrenElements = getDriver().findElements(bylegendClouds);
+		for (int i = 1; i <= childrenElements.size(); i++) {
+			Sleeper.sleep(3);
+			
+			String colorDisplayed = getDriver()
+					.findElement(By.xpath("//*[@class='key waterVapor']//*[name()='rect' and @class='c-" + i + "']"))
+					.getCssValue("fill");
+			String colorinHex = Color.fromString(colorDisplayed).asHex();
+			ArrayList<String> aList = new ArrayList<>();
+			aList.add(colorinHex);
+			for (String list : aList) {
+				System.out.println("Legend Cloud has following colors displayed for Water Vapor Satellite Map" + list);
+
+			}
 		}
-
 	}
-
 	/**
 	 * Method to search city by name
 	 * 

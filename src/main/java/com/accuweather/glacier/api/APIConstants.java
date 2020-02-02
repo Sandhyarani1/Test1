@@ -27,6 +27,7 @@ public class APIConstants
 	public static final String ALERTS_DETAILS = "ALERTS_DETAILS";
 	public static final String NO_OF_ALERTS = "NO_OF_ALERTS";
 	public static final String DAILY = "DAILY";
+	public static final String BLOGS= "BLOGS_URI";
 	public static final String LANDING_PAGE_URI = "LANDING_PAGE_URI";
 	public static final String TEMPLATE = "TEMPLATE";
 	public static final String LOCATIONS = "LOCATIONS";
@@ -35,5 +36,4 @@ public class APIConstants
 	public static final String HOUR_COUNT = "HOUR_COUNT";
 	public static final String START_DATE_SUFFIX = "START_DATE_SUFFIX";
 	public static final String GET_HOURLY_FORECAST_DETAILS = "GET_HOURLY_FORECAST_DETAILS";
-	
 }
