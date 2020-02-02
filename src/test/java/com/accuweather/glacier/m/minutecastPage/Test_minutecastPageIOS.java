@@ -488,7 +488,7 @@ public class Test_minutecastPageIOS extends AccuWeatherMobileBaseTest
 		minutecast.scrolldownpage();
 		String defaultWindowid = getDriver().getWindowHandle();
 		minutecast.clickMapbox();
-		minutecast.switchToPopUpWindow(defaultWindowid);
+		minutecast.switchToDifferentTab(defaultWindowid);
 		System.out.println(getDriver().getCurrentUrl());
 		try {
 			Assert.assertEquals(getDriver().getCurrentUrl(), expectedMapbox_URL);
@@ -510,7 +510,7 @@ public class Test_minutecastPageIOS extends AccuWeatherMobileBaseTest
 		minutecast.scrolldownpage();
 		String defaultWindowid = getDriver().getWindowHandle();
 		minutecast.clickOpenStreetMap();
-		minutecast.switchToPopUpWindow(defaultWindowid);
+		minutecast.switchToDifferentTab(defaultWindowid);
 		System.out.println(getDriver().getCurrentUrl());
 		try {
 			Assert.assertEquals(getDriver().getCurrentUrl(), expectedOpenStreetMap_URL);
@@ -532,7 +532,7 @@ public class Test_minutecastPageIOS extends AccuWeatherMobileBaseTest
 		minutecast.scrolldownpage();
 		String defaultWindowid = getDriver().getWindowHandle();
 		minutecast.clickImproveThisMap();
-		minutecast.switchToPopUpWindow(defaultWindowid);
+		minutecast.switchToDifferentTab(defaultWindowid);
 		System.out.println(getDriver().getCurrentUrl());
 		try {
 			Assert.assertEquals(getDriver().getCurrentUrl(), expectedImproveThisMap_URL);

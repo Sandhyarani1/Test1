@@ -8,8 +8,6 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.Color;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.accuweather.glacier.m.MobileBasePage;
 import com.chameleon.selenium.DriverManager;

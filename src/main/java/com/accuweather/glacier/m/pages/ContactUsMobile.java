@@ -54,7 +54,7 @@ import com.chameleon.selenium.web.WebPageLoaded;
 		{
 			clickContactUs();
 			String window = getDriver().getWindowHandle();
-			switchToPopUpWindow(window);
+			switchToDifferentTab(window);
 			Sleeper.sleep(20);
 			WebPageLoaded.isDomInteractive();
 			getDriver().manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
