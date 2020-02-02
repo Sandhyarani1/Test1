@@ -14,7 +14,7 @@ public enum DriverType {
     IOS_APP("ios_app"),
     APPIUM("appium"),
     WINDOWS("windows", "win"),
-    HTML("html");
+    HTML("html"), IPAD_WEB("ios_web");
 
     private final String[] type;
 

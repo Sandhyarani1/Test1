@@ -16,8 +16,6 @@ public class APIUtilities extends ExcelUtilities
 	
 	public static Map<String, String> apiProperties = PropertiesManager.properties(APIConstants.API_PROPERTIES);
 	
-	
-	
 	/**
 	 * @author HFARAZ
 	 * Method to call API to get the no of alerts for a certain location
@@ -97,6 +95,22 @@ public class APIUtilities extends ExcelUtilities
 		return response;
 	}
 	
+	/**
+	 * @author Mohammed
+	 * This method will fetch the JSON response for Blogs API
+	 * */
+	public static Response getWeatherBlogsPostAPIResponse()
+	{
+		RestAssured.baseURI = apiProperties.get(APIConstants.BLOGS);
+		Response response =
+		given().
+		when().get("/wp-json/data/v1/blogs").
+		then().
+		assertThat().statusCode(200).and().
+		extract().response();
+		return response;
+	}
+    
 	/**
 	 * @author HFARAZ
 	 * This method will fetch the JSON response for Landing Page API

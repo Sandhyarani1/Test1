@@ -190,7 +190,7 @@ public class SimpleDate
 			dayOfTheWeek = "SATURDAY";
 			break;
 		}
-
+System.out.println("currentDay.getText()"+dayOfTheWeek);
 		return dayOfTheWeek;
 	}
 
@@ -227,10 +227,43 @@ public class SimpleDate
 			dayOfTheWeek = "SATURDAY";
 			break;
 		}
-
 		return dayOfTheWeek;
 	}
 
+	
+	  public String getDayAfterTomorrowsDay() {
+		  int today = calendar.get(Calendar.DAY_OF_WEEK);
+		  int DayAftertomorrow = today + 2;
+	  if(DayAftertomorrow>7) 
+		  DayAftertomorrow = DayAftertomorrow-7; 
+	  String dayOfTheWeek = ""; 
+	  switch (DayAftertomorrow) 
+	  { 
+	  case Calendar.SUNDAY:
+	  dayOfTheWeek = "SUNDAY";
+	  break;
+	  case Calendar.MONDAY: 
+		  dayOfTheWeek = "MONDAY"; 
+		  break;
+	  case Calendar.TUESDAY: 
+			  dayOfTheWeek = "TUESDAY";
+			  break;
+	  case  Calendar.WEDNESDAY:
+		  dayOfTheWeek = "WEDNESDAY"; 
+		  break; 
+	 case Calendar.THURSDAY:
+		  dayOfTheWeek = "THURSDAY"; 
+		  break; 
+	 case Calendar.FRIDAY:
+	  dayOfTheWeek = "FRIDAY"; 
+	  break;
+	 case Calendar.SATURDAY: 
+		  dayOfTheWeek ="SATURDAY";
+		  break; 
+		  }
+	  System.out.println(dayOfTheWeek);
+	  return dayOfTheWeek; }
+	 
 	public String getCurrentTime()
 	{
 		DateFormat dateFormat = new SimpleDateFormat("hh:mm aa");
@@ -238,4 +271,8 @@ public class SimpleDate
     	return currentTime;
 	}
 
+	/*
+	 * public static void main(String[] args) { SimpleDate d=new SimpleDate();
+	 * System.out.println(d.getDayAfterTomorrowsDay()); }
+	 */
 }
