@@ -3,15 +3,20 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
+import com.accuweather.glacier.api.BannerAlertsAPI;
+import com.accuweather.glacier.api.HourlyPageAPI;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.HourlyForecastPage;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.chameleon.selenium.web.WebPageLoaded;
+import com.chameleon.utils.Constants;
 import com.chameleon.utils.date.SimpleDate;
 
 public class Test_HourlyForecastPage extends AccuWeatherBaseTest
@@ -25,9 +30,11 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 	private static final String GREY_COLOR = "#878787";
 	private static final String HOURLY_TAB = "HOURLY";
 	private static final String QA = "QA";
+	public static String Zipcode = "";
 	private LandingPage landingPage = new LandingPage();
 	private HourlyForecastPage hourlyPage = new HourlyForecastPage();
 	private SimpleDate getDateTime = new SimpleDate();
+	SoftAssert softAssert;
 	
 //	@Test(priority = 1)
 //	public void TC1_navigation_To_Hourly_Tab()
@@ -630,29 +637,29 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 //
 //	}
 //
-	@Test(priority = 26)
-	public void TC10_validate_DayParam_In_URL_For_PreviousDay()
-	{
-		testStart("Validate the day parameter in URL for Hourly page when clicked on Previous day tab");
-		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
-		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomComplete();
-		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomComplete();
-		try
-		{
-			hourlyPage.validateDayParamInURLForPreviousDay();
-			Assert.assertTrue(hourlyPage.getHourlyTabURLState());
-		}
-
-		catch (AssertionError ae)
-		{
-			System.err.println(ae.getMessage());
-			Assert.fail();
-		}
-
-	}
-
+//	@Test(priority = 26)
+//	public void TC10_validate_DayParam_In_URL_For_PreviousDay()
+//	{
+//		testStart("Validate the day parameter in URL for Hourly page when clicked on Previous day tab");
+//		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
+//		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
+//		WebPageLoaded.isDomComplete();
+//		hourlyPage.clickOnHourlyTab();
+//		WebPageLoaded.isDomComplete();
+//		try
+//		{
+//			hourlyPage.validateDayParamInURLForPreviousDay();
+//			Assert.assertTrue(hourlyPage.getHourlyTabURLState());
+//		}
+//
+//		catch (AssertionError ae)
+//		{
+//			System.err.println(ae.getMessage());
+//			Assert.fail();
+//		}
+//
+//	}
+//
 //
 //	/*@Test(priority = 27)
 //	public void TC11_getStationCode_And_GTMOffset() throws ParseException, IOException
@@ -1158,6 +1165,32 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 //		}
 //
 //	}
+	
+	@Test(priority = 26)
+	public void TC10_validate_DayParam_In_URL_For_PreviousDay()
+	{
+		testStart("Validate the day parameter in URL for Hourly page when clicked on Previous day tab");
+		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
+		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
+		WebPageLoaded.isDomComplete();
+		hourlyPage.clickOnHourlyTab();
+		WebPageLoaded.isDomComplete();
+		try
+		{
+			hourlyPage.validateDayParamInURLForPreviousDay();
+			Assert.assertTrue(hourlyPage.getHourlyTabURLState());
+		}
+
+		catch (AssertionError ae)
+		{
+			System.err.println(ae.getMessage());
+			Assert.fail();
+		}
+
+	}
+	
+	
+
 //	
 //	public static void call_me() throws Exception {
 //	     String url = "http://api.ipinfodb.com/v3/ip-city/?key=d64fcfdfacc213c7ddf4ef911dfe97b55e4696be3532bf8302876c09ebd06b&ip=74.125.45.100&format=json";
