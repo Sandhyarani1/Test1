@@ -14,6 +14,7 @@ import org.openqa.selenium.interactions.internal.Coordinates;
 import com.accuweather.glacier.m.MobileBasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
+import com.chameleon.utils.Sleeper;
 
 public class HomepageBreadcrumbsMobile extends MobileBasePage {
 
@@ -32,7 +33,6 @@ public class HomepageBreadcrumbsMobile extends MobileBasePage {
 	 * @return - void
 	 */
 	public void scrolldownpage() {
-		WebPageLoaded.isDomInteractive();
 	}
 
 	/**
@@ -43,7 +43,6 @@ public class HomepageBreadcrumbsMobile extends MobileBasePage {
 	 */
 
 	public boolean footercrumb() {
-		WebPageLoaded.isDomInteractive();
 		return getDriver().findElement(byfooterbreadcrumbs).isDisplayed();
 	}
 
@@ -56,7 +55,6 @@ public class HomepageBreadcrumbsMobile extends MobileBasePage {
 
 	public String getlandingurltitle() {
 		List<String> browserTabs = new ArrayList<String>(getDriver().getWindowHandles());
-		WebPageLoaded.isDomComplete(8000000);
 		return getDriver().switchTo().window(browserTabs.get(1)).getCurrentUrl();
 	}
 
@@ -110,39 +108,53 @@ public class HomepageBreadcrumbsMobile extends MobileBasePage {
 
 	public boolean footerbreadcrumbDisplayedfor(String link) throws InterruptedException {
 		if (link.equalsIgnoreCase("Footer breadcrumb")) {
-			return getDriver().findElement(byfooterbreadcrumbs).isDisplayed();
+			 Sleeper.sleep(10);
+		        getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		        Sleeper.sleep(10);
+			return getDriver().findElements(byfooterbreadcrumbs).size()>0;
 		}
 
 		if (link.equalsIgnoreCase("Breadcrumb World")) {
-			getDriver().findElement(bybreadcrumbsforState).click();
-			Point loc = getDriver().findElement(bybreadcrumbsforState).getLocation();
-			scrollHorizontal(loc.getX(), loc.getY());
-			getDriver().findElement(bybreadcrumbforWorld).click();
-			WebPageLoaded.isDomInteractive(5000);
+			
+			Sleeper.sleep(10);
+	        getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+	        Sleeper.sleep(10);
+			
+			
+			  Point loc =
+			  getDriver().findElement(bybreadcrumbsforState).getLocation();
+			  scrollHorizontal(loc.getX(), loc.getY());
+			 
+			getDriver().findElement(bybreadcrumbforWorld).jsClick();
 			return true;
 		}
 
 		if (link.equalsIgnoreCase("Breadcrumb Region")) {
-			getDriver().findElement(bybreadcrumbsforRegion).click();
-			WebPageLoaded.isDomInteractive(5000);
+			Sleeper.sleep(10);
+	        getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+	        Sleeper.sleep(10);
+			getDriver().findElement(bybreadcrumbsforRegion).jsClick();
 			return true;
 		}
 
 		if (link.equalsIgnoreCase("Breadcrumb Country")) {
-			getDriver().findElement(bybreadcrumbsforCountry).click();
-			WebPageLoaded.isDomInteractive(5000);
+			 getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		        Sleeper.sleep(10);
+			getDriver().findElement(bybreadcrumbsforCountry).jsClick();
 			return true;
 		}
 
 		if (link.equalsIgnoreCase("Breadcrumb State")) {
-			getDriver().findElement(bybreadcrumbsforState).click();
-			WebPageLoaded.isDomInteractive(5000);
+			 getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		        Sleeper.sleep(10);
+			getDriver().findElement(bybreadcrumbsforState).jsClick();
 			return true;
 		}
 
 		if (link.equalsIgnoreCase("Breadcrumb City")) {
-			getDriver().findElement(bybreadcrumbsforCity).click();
-			WebPageLoaded.isDomInteractive(5000);
+			 getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		        Sleeper.sleep(10);
+			getDriver().findElement(bybreadcrumbsforCity).jsClick();
 			return true;
 		}
 		return false;
@@ -168,24 +180,38 @@ public class HomepageBreadcrumbsMobile extends MobileBasePage {
 	 */
 	public void isclickonFooterBreadcrumb(String link) {
 		if (link.equalsIgnoreCase("Breadcrumb World")) {
+			 Sleeper.sleep(10);
+		        getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		        Sleeper.sleep(10);
 			getDriver().findElement(bybreadcrumbforWorld).jsClick();
+			Sleeper.sleep(10);
 		}
 
 		if (link.equalsIgnoreCase("Breadcrumb Region")) {
+			 Sleeper.sleep(10);
+		        getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		        Sleeper.sleep(10);
 			getDriver().findElement(bybreadcrumbsforRegion).jsClick();
 		}
 
 		if (link.equalsIgnoreCase("Breadcrumb Country")) {
+			 Sleeper.sleep(10);
+		        getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		        Sleeper.sleep(10);
 			getDriver().findElement(bybreadcrumbsforCountry).jsClick();
 		}
 
 		if (link.equalsIgnoreCase("Breadcrumb State")) {
-			String currentUrl = getDriver().getCurrentUrl();
-			getDriver().navigate().to(currentUrl);
-			getDriver().findElement(bybreadcrumbsforState).jsClick();
+			 Sleeper.sleep(10);
+		        getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		        Sleeper.sleep(10);
+		        getDriver().findElement(bybreadcrumbsforState).jsClick();
 		}
 
 		if (link.equalsIgnoreCase("Breadcrumb City")) {
+			Sleeper.sleep(10);
+	        getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+	        Sleeper.sleep(10);
 			getDriver().findElement(bybreadcrumbsforCity).jsClick();
 		}
 	}

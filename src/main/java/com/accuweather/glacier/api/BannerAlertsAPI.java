@@ -26,7 +26,7 @@ public class BannerAlertsAPI extends APIUtilities
 	 * **/
 	public static int getRowNumber(int alertCount)
 	{
-		APIUtilities.readLocationKeysFile();
+		ExcelUtilities.readLocationKeysFile();
 		
 		for(rowNo=1;rowNo<=ExcelUtilities.getLastRow();rowNo++)
 		{		

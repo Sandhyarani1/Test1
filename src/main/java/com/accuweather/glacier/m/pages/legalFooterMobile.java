@@ -1,17 +1,34 @@
 package com.accuweather.glacier.m.pages;
 
+import static com.chameleon.utils.TestReporter.log;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.logging.Logger;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.Color;
 
 import com.accuweather.glacier.m.AccuWeatherMobileBaseTest;
 import com.accuweather.glacier.m.MobileBasePage;
+import com.chameleon.selenium.DriverManager;
 import com.chameleon.selenium.web.WebPageLoaded;
+import com.chameleon.selenium.web.elements.WebElement;
+import com.chameleon.utils.Sleeper;
 
 public class legalFooterMobile extends MobileBasePage {
 
 	private By lagalFooterSection = By.cssSelector("div.footer-legalese.footer-legalese");
-	private By termsOfUseText = By.cssSelector(
-			"div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-terms > a:nth-child(1)");
+	private By termsOfUseText = By.cssSelector("div.footer-terms > a:nth-child(1)");
 	private By termsOfUsePageTitle = By.cssSelector("head > title");
 
 	private By TermsOfUseTab = By
@@ -35,7 +52,7 @@ public class legalFooterMobile extends MobileBasePage {
 	private By TagDisclosureTab = By
 			.cssSelector("div.page-subnav > div > div > div.subnav-items > a.subnav-item.active > h1");
 
-	private By PrivacyAndPolicyPageHeading = By.cssSelector("div:nth-child(5) > div > div > div > h2");
+	private By PrivacyAndPolicyPageHeading = By.cssSelector("div:nth-child(4) > div > div > div > h2");
 	private By cookiePolicyfooterLink = By.cssSelector(
 			"div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-terms > a:nth-child(3)");
 	private By TagDisclosurefooterLink = By.cssSelector(
@@ -44,28 +61,70 @@ public class legalFooterMobile extends MobileBasePage {
 	private By copyright2019Accuweather = By.cssSelector(
 			"div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span:nth-child(1)");
 	private By copyrightAccuWeatherandsundesignareregisteredtrademarksofAccuWeatherInc = By.cssSelector(
-			"div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span:nth-child(2)");
+			"div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span:nth-child(1)");
 	private By allRightsReserved = By.cssSelector(
-			"div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span:nth-child(3)");
+			"div.base-footer.is-en > div.footer-legalese.footer-legalese > div.footer-copyright > span:nth-child(1)");
+
+	private By ByPrivacyPolicyBanner = By.cssSelector("body > div > div.privacy-policy-banner");
+	private By ByPrivacyPolicyBannerContents = By.cssSelector("body > div > div.privacy-policy-banner > div > p");
+	private By ByPrivacyPolicyBannerIUnderstand = By.cssSelector("body > div > div.privacy-policy-banner > div > div");
+	private By ByPrivacyPolicyLink = By
+			.cssSelector("body > div > div.privacy-policy-banner > div > p > a:nth-child(1)");
+	private By ByCookiePolicyLink = By.cssSelector("body > div > div.privacy-policy-banner > div > p > a:nth-child(2)");
+	private By ByPrivacyPolicyIUnderstandButton = By.cssSelector("body > div > div.privacy-policy-banner > div > div");
+	private By ByPrivacyPolicyTabInspanish = By
+			.cssSelector("body > div > div.page-subnav > div > div > div.subnav-items > a.subnav-item.active > h1");
 
 	/** Method to get legal footer section is displayed */
 	public boolean legalFooterSectionIsDisplayed() {
 		WebPageLoaded.isDomInteractive();
-		getDriver().findElement(lagalFooterSection).isDisplayed();
-		return true;
+		//Sleeper.sleep(5);
+		//getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+
+		return getDriver().findElements(lagalFooterSection).size() > 0;
 	}
 
+	
+	/** Method to get legal footer section is displayed */
+	public void navigateToEndOfThePage() {
+		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(5);
+		getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		Sleeper.sleep(5);
+		log("Navigated to end of the page");
+	}
+	
 	/** Method to get terms Of Use Text is displayed */
 	public boolean termsOfUseTextIsDisplayed() {
 		WebPageLoaded.isDomInteractive();
-		getDriver().findElement(termsOfUseText).isDisplayed();
-		return true;
+		//Sleeper.sleep(5);
+		//getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		return getDriver().findElements(termsOfUseText).size() > 0;
+	}
+
+	public void scrollPage() {
+		WebPageLoaded.isDomInteractive();
+		Robot robot = null;
+		try {
+			robot = new Robot();
+		} catch (AWTException e) {
+			e.printStackTrace();
+		}
+		robot.keyPress(KeyEvent.VK_PAGE_DOWN);
+		robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
 	}
 
 	/** Method to get terms Of Use Text is displayed */
+	/*
+	 * public boolean clicktermsOfUseText() {
+	 * getDriver().findElement(termsOfUseText).jsClick(); return true; }
+	 */
 	public boolean clicktermsOfUseText() {
-		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(5);
+		getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		Sleeper.sleep(5);
 		getDriver().findElement(termsOfUseText).click();
+		Sleeper.sleep(5);
 		return true;
 	}
 
@@ -78,7 +137,8 @@ public class legalFooterMobile extends MobileBasePage {
 	/** Method to get name on tab is "TERMS OF USE" in upper case */
 	public String getTabNameTermsOfUseIsinUpperCase() {
 		WebPageLoaded.isDomInteractive();
-		getDriver().findElement(TermsOfUseTab).scrollIntoView();
+		//getDriver().findElement(TermsOfUseTab).scrollIntoView();
+		//System.out.println(getDriver().findElement(TermsOfUseTab).getText());
 		return getDriver().findElement(TermsOfUseTab).getText();
 	}
 
@@ -106,14 +166,18 @@ public class legalFooterMobile extends MobileBasePage {
 	/** Method to click privacy and Policy footer link is displayed */
 	public boolean clickPrivacyAndPolicyFooterLinkIsDisplayed() {
 		WebPageLoaded.isDomInteractive();
-		getDriver().findElement(privacyAndPolicyfooterLink).isDisplayed();
-		return true;
+		Sleeper.sleep(5);
+		getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		return getDriver().findElements(privacyAndPolicyfooterLink).size() > 0;
 	}
 
 	/** Method to click privacy and Policy footer link */
 	public boolean clickPrivacyAndPolicyFooterLink() {
-		WebPageLoaded.isDomInteractive();
+		//Sleeper.sleep(5);
+		getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		Sleeper.sleep(5);
 		getDriver().findElement(privacyAndPolicyfooterLink).click();
+		//Sleeper.sleep(5);
 		return true;
 	}
 
@@ -130,9 +194,6 @@ public class legalFooterMobile extends MobileBasePage {
 	 * @return-String - Returns url privacy and Policy page
 	 **/
 	public String privacyandPolicypageUrl() {
-		WebPageLoaded.isDomInteractive(10000);
-		getDriver().findElement(privacyAndPolicyPageTitle);
-		WebPageLoaded.isDomInteractive(10000);
 		return getDriver().getCurrentUrl();
 	}
 
@@ -167,14 +228,18 @@ public class legalFooterMobile extends MobileBasePage {
 	/** Method to click Cookie policy footer link is displayed */
 	public boolean clickCookiePolicyFooterLinkIsDisplayed() {
 		WebPageLoaded.isDomInteractive();
-		getDriver().findElement(cookiePolicyfooterLink).isDisplayed();
-		return true;
+		Sleeper.sleep(5);
+		getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		return getDriver().findElements(cookiePolicyfooterLink).size() > 0;
 	}
 
 	/** Method to click privacy and Policy footer link */
 	public boolean clickCookiePolicyFooterLink() {
 		WebPageLoaded.isDomInteractive();
+		getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		Sleeper.sleep(5);
 		getDriver().findElement(cookiePolicyfooterLink).click();
+		Sleeper.sleep(5);
 		return true;
 	}
 
@@ -191,9 +256,6 @@ public class legalFooterMobile extends MobileBasePage {
 	 * @return-String - Returns url privacy and Policy page
 	 **/
 	public String cookiePolicypageUrl() {
-		WebPageLoaded.isDomInteractive(10000);
-		getDriver().findElement(cookiepolicyPageTitle);
-		WebPageLoaded.isDomInteractive(10000);
 		return getDriver().getCurrentUrl();
 	}
 
@@ -228,20 +290,24 @@ public class legalFooterMobile extends MobileBasePage {
 	/** Method to click Cookie policy footer link is displayed */
 	public boolean clickTagDisclosureFooterLinkIsDisplayed() {
 		WebPageLoaded.isDomInteractive();
-		getDriver().findElement(TagDisclosurefooterLink).isDisplayed();
-		return true;
+		getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		Sleeper.sleep(5);
+		return getDriver().findElements(TagDisclosurefooterLink).size() > 0;
 	}
 
 	/** Method to click privacy and Policy footer link */
 	public boolean clickTagDisclosureFooterLink() {
 		WebPageLoaded.isDomInteractive();
+		getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		Sleeper.sleep(5);
 		getDriver().findElement(TagDisclosurefooterLink).click();
+		//Sleeper.sleep(5);
 		return true;
 	}
 
 	/** Method to get title of the page "Privacy and Policy" */
 	public String getTitleTagDisclosure() {
-		WebPageLoaded.isDomInteractive(5000);
+		WebPageLoaded.isDomInteractive();
 		return getDriver().getTitle();
 	}
 
@@ -252,9 +318,6 @@ public class legalFooterMobile extends MobileBasePage {
 	 * @return-String - Returns url privacy and Policy page
 	 **/
 	public String TagDisclosurepageUrl() {
-		WebPageLoaded.isDomInteractive(10000);
-		getDriver().findElement(TagDisclosurePageTitle);
-		WebPageLoaded.isDomInteractive(10000);
 		return getDriver().getCurrentUrl();
 	}
 
@@ -288,14 +351,18 @@ public class legalFooterMobile extends MobileBasePage {
 
 	/** Method to click Cookie policy footer link is displayed */
 	public boolean copyrightinformationhas2019AccuWeatherIncTextIsDisplayed() {
-		WebPageLoaded.isDomInteractive();
+		//Sleeper.sleep(5);
+		getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		Sleeper.sleep(3);
 		return getDriver().findElement(copyright2019Accuweather).getText().contains("© 2019 AccuWeather, Inc.");
 
 	}
 
 	/** Method to click Cookie policy footer link is displayed */
 	public boolean copyrightAccuWeatherandsundesignareregisteredtrademarksofAccuWeatherIncTextIsDisplayed() {
-		WebPageLoaded.isDomInteractive();
+		//Sleeper.sleep(5);
+		getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		Sleeper.sleep(5);
 		return getDriver().findElement(copyrightAccuWeatherandsundesignareregisteredtrademarksofAccuWeatherInc)
 				.getText().contains("\"AccuWeather\" and sun design are registered trademarks of AccuWeather, Inc.");
 
@@ -303,8 +370,214 @@ public class legalFooterMobile extends MobileBasePage {
 
 	/** Method to click Cookie policy footer link is displayed */
 	public boolean copyrightAllRightsReservedTextIsDisplayed() {
-		WebPageLoaded.isDomInteractive();
+		//Sleeper.sleep(5);
+		getDriver().executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+		Sleeper.sleep(3);
 		return getDriver().findElement(allRightsReserved).getText().contains("All Rights Reserved.");
 
 	}
+
+	/**
+	 * Method to verify Liveramp providers URL and Page
+	 * 
+	 * @author Sowmiya Boolean return true if providers URL
+	 */
+	public String verifyLiveRampLinkAndPage() {
+		/*
+		 * WebPageLoaded.isDomInteractive(2); WebElement LiveRampLink =
+		 * getDriver().findElement(By.xpath(
+		 * "//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='LiveRamp']/../td/a[text()='https://liveramp.com/privacy/']"
+		 * )); getDriver().
+		 * executeJavaScript("seetest:client.swipeWhileNotFound(\"Up\", 0, 800, \"WEB\", \"xpath=//a[text()='https://liveramp.com/privacy/']\", 0, 1000, 5, true))"
+		 * ); LiveRampLink.jsClick(); getDriver().switchTo().alert().accept(); //return
+		 * the URL Sleeper.sleep(3); String window = getDriver().getWindowHandle();
+		 * switchToPopUpWindow(window); return getDriver().getCurrentUrl();
+		 */
+
+		WebPageLoaded.isDomInteractive(2);
+		WebElement LiveRampLink = getDriver().findElement(By.xpath(
+				"//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='LiveRamp']/../td/a[text()='https://liveramp.com/privacy/']"));
+		int x = LiveRampLink.getLocation().getX();
+		int y = LiveRampLink.getLocation().getY();
+		getDriver().executeJavaScript("window.scrollBy(" + x + ", " + y + ")");
+		getDriver().executeJavaScript("window.scrollBy(" + x + ",-400)");
+		Sleeper.sleep(5);
+		LiveRampLink.click();
+		Sleeper.sleep(3);
+		return getDriver().getCurrentUrl();
+	}
+
+	/**
+	 * Method to verify Cuebiq providers URL and Page
+	 * 
+	 * @author Sowmiya Boolean return true if providers URL
+	 */
+	public String verifyCuebiqLinkAndPage() {
+		WebPageLoaded.isDomInteractive(2);
+		WebElement CuebiqLink = getDriver()
+				.findElement(By.xpath("//a[contains(text(),'https://www.cuebiq.com/privacypolicy/')]"));
+		int x = CuebiqLink.getLocation().getX();
+		int y = CuebiqLink.getLocation().getY();
+		getDriver().executeJavaScript("window.scrollBy(" + x + ", " + y + ")");
+		getDriver().executeJavaScript("window.scrollBy(" + x + ",-600)");
+		Sleeper.sleep(5);
+		CuebiqLink.click();
+		Sleeper.sleep(3);
+		return getDriver().getCurrentUrl();
+	}
+
+	/**
+	 * Method to verify Intersection providers URL and Page
+	 * 
+	 * @author Sowmiya Boolean return true if providers URL
+	 */
+	public String verifyIntersectionLinkAndPage() {
+		WebPageLoaded.isDomInteractive();
+		// Advertising section should have live ramp, cuebiq, Intersection
+		WebElement policyLink = getDriver().findElement(By.xpath(
+				"//table/tbody[@class='table-section']/tr/th[contains(text(),'ADVERTISING')]/../../tr/td[text()='Intersection']/../td/a[text()='https://www.intersection.com/privacy-policy/']"));
+		int x = policyLink.getLocation().getX();
+		int y = policyLink.getLocation().getY();
+		getDriver().executeJavaScript("window.scrollBy(" + x + ", " + y + ")");
+		getDriver().executeJavaScript("window.scrollBy(" + x + ",-450)");
+		Sleeper.sleep(5);
+		policyLink.click();
+		Sleeper.sleep(3);
+		return getDriver().getCurrentUrl();
+	}
+
+	public Boolean IsBannerDislayed() {
+		WebPageLoaded.isDomInteractive(5);
+		return getDriver().findElements(ByPrivacyPolicyBanner).size() > 0;
+
+	}
+
+	public String IsBannerColorDarkGrey() {
+		WebPageLoaded.isDomInteractive(5);
+		getDriver().findElement(ByPrivacyPolicyBanner).scrollIntoView();
+		WebElement ele = getDriver().findElement(ByPrivacyPolicyBanner);
+		String result = (String) DriverManager.getWebDriver().executeJavaScript(
+				"return getComputedStyle(document.querySelector(\"body > div > div.privacy-policy-banner\")).backgroundColor;",
+				ele);
+		String arrowcolourdisplayed = Color.fromString(result).asHex();
+		return arrowcolourdisplayed;
+
+	}
+
+	public String BannerConetentsText() {
+		WebPageLoaded.isDomInteractive(5);
+		return getDriver().findElement(ByPrivacyPolicyBannerContents).getText();
+	}
+
+	public String BannerConetentsIUnderstandBackGroundColor() {
+		WebPageLoaded.isDomInteractive(5);
+		getDriver().findElement(ByPrivacyPolicyBannerIUnderstand).scrollIntoView();
+		WebElement ele = getDriver().findElement(ByPrivacyPolicyBannerIUnderstand);
+		String result = (String) DriverManager.getWebDriver().executeJavaScript(
+				"return getComputedStyle(document.querySelector(\"body > div > div.privacy-policy-banner > div > div\")).backgroundColor;",
+				ele);
+		String arrowcolourdisplayed = Color.fromString(result).asHex();
+		return arrowcolourdisplayed;
+	}
+
+	public String BannerConetentsIUnderstandText() {
+		WebPageLoaded.isDomInteractive(5);
+		return getDriver().findElement(ByPrivacyPolicyBannerIUnderstand).getText();
+	}
+
+	public String IsclickedOnPrivacyPolicyLink() {
+		WebPageLoaded.isDomInteractive(5);
+		getDriver().findElement(ByPrivacyPolicyLink).click();
+		Sleeper.sleep(5);
+		return getDriver().getCurrentUrl();
+	}
+
+	public String IsclickedOnCookiePolicyLink() {
+		WebPageLoaded.isDomInteractive(5);
+		getDriver().findElement(ByCookiePolicyLink).click();
+		Sleeper.sleep(5);
+		return getDriver().getCurrentUrl();
+	}
+
+	public String IsPrivacyPolicyBanner320pxWidth() {
+		WebPageLoaded.isDomInteractive(5);
+		getDriver().findElement(ByPrivacyPolicyBanner).scrollIntoView();
+		WebElement ele = getDriver().findElement(ByPrivacyPolicyBanner);
+		String result = (String) DriverManager.getWebDriver().executeJavaScript(
+				"return getComputedStyle(document.querySelector(\"body > div > div.privacy-policy-banner\")).width;",
+				ele);
+		return result;
+	}
+
+	public Boolean TapPrivacyPolicyIUnderstandButton() {
+		getDriver().findElement(ByPrivacyPolicyIUnderstandButton).click();
+		return true;
+	}
+
+	public String checkPrivacyAndPolicyTabIsinSpanish() {
+		return getDriver().findElement(ByPrivacyPolicyTabInspanish).getText();
+
+	}
+
+	public boolean BannerCenteredOnScreen360px() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void closeCurrentWindow() {
+		try {
+			Set<String> windows = getDriver().getWindowHandles();
+			Iterator<String> iter = windows.iterator();
+			String[] winNames = new String[windows.size()];
+			int i = 0;
+			while (iter.hasNext()) {
+				winNames[i] = iter.next();
+				i++;
+			}
+
+			if (winNames.length > 1) {
+				for (i = winNames.length; i > 1; i--) {
+					getDriver().switchTo().window(winNames[i - 1]);
+					getDriver().close();
+				}
+			}
+			getDriver().switchTo().window(winNames[0]);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void switchToMainTabSafari() {
+		int currentId = (int) getDriver().executeJavaScript("seetest:client.getCurrentBrowserTabId()");
+		List<Integer> tabs = Arrays.asList((int) getDriver().executeJavaScript("seetest:client.getBrowserTabIdList()"));
+		for (int tabId : tabs) {
+			getDriver().executeJavaScript("seetest:client.switchToBrowserTab(tabId)");
+			System.out.println(getDriver().executeJavaScript("seetest:client.hybridRunJavascript(\"", 0,
+					"result = document.URL\")")); // will print out all open tabs
+		}
+		getDriver().executeJavaScript("seetest:client.switchToBrowserTab(currentId)");
+	}
+
+	public String getMainWindowID() {
+		return (String) getDriver().executeJavaScript("seetest:client.getCurrentBrowserTab()");
+	}
+
+	public void SwitchToMainWindow(int mainWindowID) {
+		getDriver().executeJavaScript("seetest:client.switchToBrowserTab(" + mainWindowID + ")");
+	}
+
+	public void clickTabs() {
+		getDriver().executeJavaScript("seetest:client.click(\"NATIVE\", \"xpath=//*[@text='Tabs']\", 0, 1)");
+
+	}
+
+	public void clickCLoseChildTab() {
+		getDriver().executeJavaScript(
+				"seetest:client.click(\"NATIVE\", \"xpath=//*[@text='Close Privacy Statement & Policy | AccuWeather']\", 0, 1)");
+	}
+
+	public void clickDone() {
+		getDriver().executeJavaScript("seetest:client.click(\"NATIVE\", \"xpath=//*[@text='Done']\", 0, 1)");
+	}
+
 }

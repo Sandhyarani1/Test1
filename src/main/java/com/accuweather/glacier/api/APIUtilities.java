@@ -11,73 +11,10 @@ import com.chameleon.utils.io.PropertiesManager;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-public class APIUtilities 
+public class APIUtilities extends ExcelUtilities
 {
 	
 	public static Map<String, String> apiProperties = PropertiesManager.properties(APIConstants.API_PROPERTIES);
-	
-	/**
-	 * @author HFARAZ
-	 * Method to read the location_keys.xlsx file
-	 * **/
-	public static void readLocationKeysFile()
-	{
-		ExcelUtilities.readExcelFile(apiProperties.get(APIConstants.LOCATION_KEYS_FILE_PATH), apiProperties.get(APIConstants.US_SHEET));
-	}
-	
-	/**
-	 * @author HFARAZ
-	 * Method to fetch the location key from location_keys.xlsx file
-	 * @return String value: location key/CityID based on the row number provided in the parameter
-	 * */
-	public static String getLocationKey(int rowNo)
-	{
-		return ExcelUtilities.getNumericData(rowNo, 0)+"";
-	}
-	
-	/**
-	 * @author HFARAZ
-	 * Method to fetch the zipcode from location_keys.xlsx file
-	 * @return String value: zipcode based on the row number provided in the parameters
-	 * */
-	public static String getZipCode(int rowNo)
-	{
-		String zipCode = ExcelUtilities.getNumericData(rowNo, 4)+"";
-		return zipCode;
-	}
-	
-	/**
-	 * @author HFARAZ
-	 * Method to fetch the country code from location_keys.xlsx file
-	 * @return String value: country code based on the row number provided in the parameters
-	 * */
-	public static String getCountryCode(int rowNo)
-	{
-		String countryCode = ExcelUtilities.getStringData(rowNo, 1)+"";
-		return countryCode;
-	}
-	
-	 /**
-	   * @author HFARAZ
-	   * Method to get the City Name from location_keys.xlsx file
-	   * @return String value: city name based on the row no provide in the parameter
-	   * **/
-	  public static String getCityName(int rowNo)
-	  {
-		  String cityName = ExcelUtilities.getStringData(rowNo, 2);
-		  return cityName;
-	  }
-	  
-	  /**
-	   * @author HFARAZ
-	   * Method to get the State Name from location_keys.xlsx file
-	   * @return String value: city name based on the row no provide in the parameter
-	   * **/
-	  public static String getStateName(int rowNo)
-	  {
-		  String stateName = ExcelUtilities.getStringData(rowNo, 3);
-		  return stateName;
-	  }
 	
 	/**
 	 * @author HFARAZ
@@ -158,6 +95,22 @@ public class APIUtilities
 		return response;
 	}
 	
+	/**
+	 * @author Mohammed
+	 * This method will fetch the JSON response for Blogs API
+	 * */
+	public static Response getWeatherBlogsPostAPIResponse()
+	{
+		RestAssured.baseURI = apiProperties.get(APIConstants.BLOGS);
+		Response response =
+		given().
+		when().get("/wp-json/data/v1/blogs").
+		then().
+		assertThat().statusCode(200).and().
+		extract().response();
+		return response;
+	}
+    
 	/**
 	 * @author HFARAZ
 	 * This method will fetch the JSON response for Landing Page API

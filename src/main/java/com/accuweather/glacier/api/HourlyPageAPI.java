@@ -46,6 +46,9 @@ public class HourlyPageAPI extends APIUtilities
 	public static ArrayList<String> ceilingValue;
 	public static ArrayList<String> ceilingUnit;
 	public static final String ArrayName = "JSON";
+	public static String timeStampTime = "";
+	public static String timeStampDate = "";
+	public static int rowNo=0;
 	
 	/**
 	 * @author HFARAZ
@@ -61,47 +64,47 @@ public class HourlyPageAPI extends APIUtilities
 	
 	/**
 	 * @author HFARAZ
-	 * Method to give city name having alerts
+	 * Method to get city name from the locationKeys.xlsx file
 	 * **/
 	public static String getCityName()
 	{
-		return getCityName(1);
+		return getCityName(rowNo);
 	}
 	
 	/**
 	 * @author HFARAZ
-	 * Method to give state name having alerts
+	 * Method to get the state name from the locationKeys.xlsx file
 	 * **/
 	public static String getStateName()
 	{
-		return getStateName(1);
+		return getStateName(rowNo);
 	}
 	
 	/**
 	 * @author HFARAZ
-	 * Method to give zip code of the city name having alerts
+	 * Method to get zipcode from the locationKeys.xlsx file
 	 * **/
 	public static String getZipCode()
 	{
-		return getZipCode(1);
+		return getZipCode(rowNo);
 	}
 	
 	/**
 	 * @author HFARAZ
-	 * Method to give country code of the city name having alerts
+	 * Method to get country code of the city selected for testing
 	 * **/
 	public static String getCountryCode()
 	{
-		return getCountryCode(1);
+		return getCountryCode(rowNo);
 	}
 	
 	/**
 	 * @author HFARAZ
 	 * Method to give location key having alerts
 	 * **/
-	public static String getLocationKeyHavingAlerts()
+	public static String getLocationKey()
 	{
-		return getLocationKey(1);
+		return getLocationKey(rowNo);
 	}
 	
 	/**
@@ -157,11 +160,24 @@ public class HourlyPageAPI extends APIUtilities
 	}
 	
 	/**
+	 * @author Apurba Das
+	 * Method to split the date and time from the Hourly API response
+	 * */
+	public static void hourlyPageDateAndTimeFormat(String date)
+	{	 
+		String timeStamp[]=date.split("T");
+		timeStampDate=timeStamp[0].substring(5).replace("-", "/");
+		timeStampTime=timeStamp[1].substring(0, 2); 
+	}
+	
+	/**
 	 * @author HFARAZ
 	 * Method to get
 	 * */
-	public static void getHourlyForecastData()
+	public static void getHourlyForecastData(String cityName)
 	{
+		rowNo = getRowNumberForCity(cityName);
+		
 		hourlyForecastDetailsResponse = getHourlyForecastDetailsJSONResponse().asString();
 		JsonPath jsonObject = new JsonPath(hourlyForecastDetailsResponse);
 		
@@ -194,6 +210,10 @@ public class HourlyPageAPI extends APIUtilities
 		
 		for (int count=0;count<NoOfHoursForTheDay();count++)
 		{
+			hourlyPageDateAndTimeFormat(jsonObject.getString("["+count+"].DateTime"));
+			date.add(timeStampDate);
+			time.add(timeStampTime);
+			
 			iconPhrase.add(jsonObject.getString("["+count+"].IconPhrase"));
 			temperature.add(jsonObject.getString("["+count+"].Temperature.Value"));
 			precipitation.add(jsonObject.getString("["+count+"].PrecipitationProbability"));
@@ -224,7 +244,8 @@ public class HourlyPageAPI extends APIUtilities
 	
 	public static void main(String[] args)
 	{
-		getHourlyForecastData();
+		getHourlyForecastData("Buffalo");
+		
 		for(int i=0;i<NoOfHoursForTheDay();i++)
 		{
 			System.out.println(iconPhrase.get(i));
@@ -239,9 +260,12 @@ public class HourlyPageAPI extends APIUtilities
 			System.out.println(iconPhrase.get(i));
 			System.out.println(iconPhrase.get(i));
 			System.out.println(iconPhrase.get(i));
+			System.out.println(date.get(i));
+			System.out.println(time.get(i));
 			
 		}
 		
 		System.out.println(getCityName());
+		
 	}
 }

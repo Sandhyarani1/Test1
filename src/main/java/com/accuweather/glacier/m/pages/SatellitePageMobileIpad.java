@@ -129,41 +129,33 @@ public class SatellitePageMobileIpad extends BasePage {
 	 * Method to Validate Tertiary navigation menus displayed on National satellite
 	 * page
 	 * 
-	 * @author Mohammed Siddiq
+	 * @author Sandhya Narayanarao
 	 * 
 	 **/
-
-	public boolean istertiarymenuhas(String link) {
-		if (link.equalsIgnoreCase("Enchanced")) {
-			WebPageLoaded.isDomInteractive();
-			WebElement enhancedTab = getDriver().findElement(byEnhancedTab);
-			enhancedTab.syncVisible(5);
-			return enhancedTab.isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Standard")) {
-			WebPageLoaded.isDomInteractive();
-			WebElement standardTab = getDriver().findElement(byStandardTab);
-			standardTab.syncVisible(5);
-			return standardTab.isDisplayed();
-		}
-
-		if (link.equalsIgnoreCase("Visible")) {
-			WebPageLoaded.isDomInteractive();
-			WebElement visibleTab = getDriver().findElement(byVisibleTab);
-			visibleTab.syncVisible(5);
-			return visibleTab.isDisplayed();
-
-		}
-		if (link.equalsIgnoreCase("WaterVapor")) {
-			WebPageLoaded.isDomInteractive();
-			WebElement watervaporTab = getDriver().findElement(byWaterVaporTab);
-			watervaporTab.syncVisible(5);
-			return watervaporTab.isDisplayed();
-		}
-
-		return false;
+	public boolean validateTeritaryMenusDisplayed()
+	{
+		WebPageLoaded.isDomInteractive();
+		Sleeper.sleep(5);
+		WebElement enhancedTab = getDriver().findElement(byEnhancedTab);
+		enhancedTab.syncVisible(30);
+		
+		WebElement standardTab = getDriver().findElement(byStandardTab);
+		standardTab.syncVisible(30);
+		
+		WebElement visibleTab = getDriver().findElement(byVisibleTab);
+		visibleTab.syncVisible(30);
+		
+		WebElement waterVaporTab = getDriver().findElement(byWaterVaporTab);
+		waterVaporTab.syncVisible(30);
+		
+		
+		
+		return enhancedTab.isDisplayed() && standardTab.isDisplayed() 
+				&& visibleTab.isDisplayed() && waterVaporTab.isDisplayed() ;
 	}
+
+
+	
 
 	/**
 	 * Method to get the Title of the National Satellite map
@@ -215,7 +207,7 @@ public class SatellitePageMobileIpad extends BasePage {
 	public boolean toolTipDisplayed() {
 		WebPageLoaded.isDomInteractive();
 		WebElement tooltip = getDriver().findElement(byTooltip);
-		tooltip.syncVisible(15);
+		//tooltip.syncVisible(15);
 		return getDriver().findElements(byTooltip).size() > 0;
 	}
 
@@ -266,7 +258,7 @@ public class SatellitePageMobileIpad extends BasePage {
 	 * 
 	 */
 	public boolean zoomControlsDisplayedonTopLeftCorner() {
-		return getDriver().findElement(byZoomcontrols).isDisplayed();
+		return getDriver().findElements(byZoomcontrols).size()>0;
 	}
 
 	/**
@@ -278,10 +270,10 @@ public class SatellitePageMobileIpad extends BasePage {
 	public void zoominControls() {
 		for (int i = 0; i <= 5; i++) {
 			WebElement zoomIn = getDriver().findElement(byzoomInControl);
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
-			wait.until(ExpectedConditions.elementToBeClickable(zoomIn));
+			//WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
+			//wait.until(ExpectedConditions.elementToBeClickable(zoomIn));
 			zoomIn.jsClick();
-			Sleeper.sleep(2);
+			Sleeper.sleep(10);
 		}
 	}
 
@@ -295,10 +287,10 @@ public class SatellitePageMobileIpad extends BasePage {
 	public void zoomoutControls() {
 		for (int i = 0; i <= 5; i++) {
 			WebElement zoomOut = getDriver().findElement(byzoomOutControl);
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
-			wait.until(ExpectedConditions.elementToBeClickable(zoomOut));
+			//WebDriverWait wait = new WebDriverWait(getDriver(), 80000000);
+			//wait.until(ExpectedConditions.elementToBeClickable(zoomOut));
 			zoomOut.jsClick();
-			Sleeper.sleep(2);
+			Sleeper.sleep(10);
 		}
 	}
 
@@ -310,7 +302,7 @@ public class SatellitePageMobileIpad extends BasePage {
 	 **/
 	public boolean MapboxattributionDisplayedBottomLeft() {
 		WebElement mapboxattribution = getDriver().findElement(byMapboxattribution);
-		return mapboxattribution.isDisplayed();
+		return getDriver().findElements(byMapboxattribution).size()>0;
 	}
 
 	public void ClickonMapboxattribution() {
@@ -328,7 +320,7 @@ public class SatellitePageMobileIpad extends BasePage {
 
 	public String getlandingurltitle() {
 		List<String> browserTabs = new ArrayList<>(getDriver().getWindowHandles());
-		WebPageLoaded.isDomComplete(8000000);
+		Sleeper.sleep(3);
 		return getDriver().switchTo().window(browserTabs.get(1)).getCurrentUrl();
 	}
 
@@ -398,22 +390,22 @@ public class SatellitePageMobileIpad extends BasePage {
 
 		// TimelineControl with Play button
 		WebElement timelineControl = getDriver().findElement(byTimelineControl);
-		timelineControl.syncVisible(40);
+		//timelineControl.syncVisible(40);
 
 		// play button and slider bar
 		WebElement slideBar = getDriver().findElement(byslider);
 		WebElement playButton = getDriver().findElement(byPlaybutton);
 
 		slideBar.syncVisible();
-		playButton.syncVisible();
+		//playButton.syncVisible();
 
 		// Legends Displayed
 		WebElement legends = getDriver().findElement(byLegendsDisplayedonfullScreenMap);
-		legends.syncVisible();
+		//legends.syncVisible();
 
 		// click 'x' at the top right corner
 		WebElement closeButton = getDriver().findElement(byCloseButton);
-		closeButton.syncVisible(30);
+		//closeButton.syncVisible(30);
 		closeButton.click();
 
 		Sleeper.sleep(2);
@@ -488,43 +480,43 @@ public class SatellitePageMobileIpad extends BasePage {
 	}
 
 	/**
-	 * Method to validate Legend Cloud Displayed with various colors for Enhanced
+	 * Method to validate Legend Clouds Displayed with various colors for Enchanced
 	 * Satellite Map
 	 * 
-	 * @author Mohammed Siddiq
+	 * @author Sandhya Narayanarao
 	 * 
 	 **/
 	public void coloursdisplayedforEnchacedSatelliteMap() {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendClouds);
-		for (int j = 1; j <= childrenElements.size(); j++) {
-			WebElement ele = null;
-			String result = null;
-			ele = getDriver().findElement(By.xpath("(//*[@class='key enhanced']//*[name()='rect'])[" + j + "]"));
-			ele.syncVisible(3);
-			result = (String) DriverManager.getWebDriver().executeJavaScript(
-					"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > "
-							+ "div.content-module > div.map-container.full-mobile-width.content-module > div.map-tools > div.satellite-legend > "
-							+ "div > svg > rect.c-" + j + "\")).fill;",
-					ele);
-			System.out.println("result > > > > " + result);
-			String arrowcolourdisplayed = Color.fromString(result).asHex();
-			System.out.println("color displayed :" + Color.fromString(result).asHex());
+		for (int i = 1; i <= childrenElements.size(); i++) {
+			Sleeper.sleep(3);
+			
+			String colorDisplayed = getDriver()
+					.findElement(By.xpath("//*[@class='key enhanced']//*[name()='rect' and @class='c-" + i + "']"))
+					.getCssValue("fill");
+			String colorinHex = Color.fromString(colorDisplayed).asHex();
+			ArrayList<String> aList = new ArrayList<>();
+			aList.add(colorinHex);
+			for (String list : aList) {
+				System.out.println("Legend Cloud has following colors displayed for Enchanced Satellite Map" + list);
+
+			}
 		}
 	}
+
 
 	/**
 	 * Method to validate Legend Clouds Displayed with various colors for Standard
 	 * Satellite Map
 	 * 
-	 * @author Mohammed Siddiq
+	 * @author  Sandhya Narayanarao
 	 * 
 	 **/
 	public void coloursdisplayedforStandardSatelliteMap() {
 		List<WebElement> childrenElements = getDriver().findElements(bylegendClouds);
 		for (int i = 1; i <= childrenElements.size(); i++) {
 			Sleeper.sleep(3);
-			WebDriverWait wait = new WebDriverWait(getDriver(), 80000);
-			wait.until(ExpectedConditions.elementToBeClickable(bylegendClouds));
+			
 			String colorDisplayed = getDriver()
 					.findElement(By.xpath("//*[@class='key standard']//*[name()='rect' and @class='c-" + i + "']"))
 					.getCssValue("fill");
@@ -542,24 +534,54 @@ public class SatellitePageMobileIpad extends BasePage {
 	 * Method to validate Legend Cloud Displayed with various colors for Visible
 	 * Satellite Map
 	 * 
-	 * @author Mohammed Siddiq
+	 * @author Sandhya Narayanarao
 	 * 
 	 **/
+
+	
+	
 	public void colorsDisplayedforVisibleSatelliteMap() {
-		List<WebElement> childrenElements = getDriver().findElements(bylegendCloudsforVisbile);
-		for (int j = 1; j <= childrenElements.size(); j++) {
-			WebElement ele = null;
-			String result = null;
-			ele = getDriver()
-					.findElement(By.xpath("//*[@class='key visible']//*[name()='rect' and @class='c-" + j + "']"));
-			ele.syncVisible(3);
-			result = (String) DriverManager.getWebDriver().executeJavaScript(
-					"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-tools > div.satellite-legend > div > svg > rect.c-"
-							+ j + "\")).fill;",
-					ele);
-			System.out.println("result > > > > " + result);
-			String arrowcolourdisplayed = Color.fromString(result).asHex();
-			System.out.println("color displayed :" + Color.fromString(result).asHex());
+		List<WebElement> childrenElements = getDriver().findElements(bylegendClouds);
+		for (int i = 1; i <= childrenElements.size(); i++) {
+			Sleeper.sleep(3);
+			
+			String colorDisplayed = getDriver()
+					.findElement(By.xpath("//*[@class='key visible']//*[name()='rect' and @class='c-" + i + "']"))
+					.getCssValue("fill");
+			String colorinHex = Color.fromString(colorDisplayed).asHex();
+			ArrayList<String> aList = new ArrayList<>();
+			aList.add(colorinHex);
+			for (String list : aList) {
+				System.out.println("Legend Cloud has following colors displayed for Visible Satellite Map" + list);
+
+			}
+		}
+	}
+
+
+	/**
+	 * Method to validate Legend WaterVapor Displayed with various colors
+	 * 
+	 * @author Sandhya Narayanarao
+	 * 
+	 **/
+
+	
+	public void colorsDisplayedforLegendWaterVapor() {
+		List<WebElement> childrenElements = getDriver().findElements(bylegendClouds);
+		for (int i = 1; i <= childrenElements.size(); i++) {
+			Sleeper.sleep(3);
+			
+			String colorDisplayed = getDriver()
+					.findElement(By.xpath("//*[@class='key waterVapor']//*[name()='rect' and @class='c-" + i + "']"))
+					.getCssValue("fill");
+			String colorinHex = Color.fromString(colorDisplayed).asHex();
+			ArrayList<String> aList = new ArrayList<>();
+			aList.add(colorinHex);
+			for (String list : aList) {
+				System.out.println("Legend Cloud has following colors displayed for Water Vapor Satellite Map" + list);
+
+			}
 		}
 	}
 
@@ -573,8 +595,8 @@ public class SatellitePageMobileIpad extends BasePage {
 		searchBartextfield.syncVisible(15);
 		searchBartextfield.hover();
 		searchBartextfield.sendKeys(cityName);
-		WebDriverWait wait = new WebDriverWait(getDriver(), 90);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='search-results']//*")));
+		//WebDriverWait wait = new WebDriverWait(getDriver(), 90);
+		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='search-results']//*")));
 	}
 
 	/**
@@ -587,29 +609,6 @@ public class SatellitePageMobileIpad extends BasePage {
 		getDriver().findElement(By.cssSelector("div.search-results > div:nth-child(2)")).click();
 	}
 
-	/**
-	 * Method to validate Legend WaterVapor Displayed with various colors
-	 * 
-	 * @author Mohammed Siddiq
-	 * 
-	 **/
-	public void colorsDisplayedforLegendWaterVapor() {
-		List<WebElement> childrenElements = getDriver().findElements(bylegendWaterVapor);
-		for (int j = 1; j <= childrenElements.size(); j++) {
-			WebElement ele = null;
-			String result = null;
-			ele = getDriver()
-					.findElement(By.xpath("//*[@class='key waterVapor']//*[name()='rect' and @class='c-" + j + "']"));
-			ele.syncVisible(3);
-			result = (String) DriverManager.getWebDriver().executeJavaScript(
-					"return getComputedStyle(document.querySelector(\"body > div > div:nth-child(5) > div > div.page-column-1 > div.content-module > div.map-container.full-mobile-width.content-module > div.map-tools > div.satellite-legend > div > svg > rect.c-"
-							+ j + "\")).fill;",
-					ele);
-			System.out.println("result > > > > " + result);
-			String arrowcolourdisplayed = Color.fromString(result).asHex();
-			System.out.println("color displayed :" + Color.fromString(result).asHex());
-		}
-
-	}
+	
 
 }

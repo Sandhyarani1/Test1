@@ -34,10 +34,6 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validate footer breadcrumbs displayed on Homepage");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomInteractive(80000);
-		WebPageLoaded.isDomInteractive(80000);
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_CRUMB));
 	}
 
@@ -46,9 +42,6 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validate footer breadcrumbs displayed for World");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
-		WebPageLoaded.isDomInteractive(80000);
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(BREAD_CRUMB_WORLD));
 	}
 
@@ -57,9 +50,6 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validate footer breadcrumbs displayed for Region");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
-		WebPageLoaded.isDomInteractive(80000);
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_REGION));
 	}
 
@@ -68,10 +58,6 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validate footer breadcrumbs displayed for Country");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
-		WebPageLoaded.isDomInteractive(80000);
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_COUNTRY));
 	}
 
@@ -80,102 +66,65 @@ public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 		testStart("Validate footer breadcrumbs displayed for State");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
-		WebPageLoaded.isDomInteractive(80000);
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_STATE));
 	}
 
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = false)
 	public void RW_T196_validating_Footer_Breadcrumbs_for_City_Displayed() throws InterruptedException {
 		testStart("Validate footer breadcrumbs displayed for City");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
-		WebPageLoaded.isDomInteractive(80000);
 		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_CITY));
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void RW_T197_valdating_URL_when_clicked_on_Worldbreadcrumb() {
 		testStart("Validating user redirected url when clicked on World ");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.isclickonFooterBreadcrumb(BREAD_CRUMB_WORLD);
 		System.out.println("clicked on World breadcrump");
-		WebPageLoaded.isDomInteractive(800000);
-		WebPageLoaded.isDomComplete(800000);
-		System.out.println("Landing page URL is >>>" + getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedWorldForecastTitle);
 	}
 
-	@Test(priority = 8, enabled = true)
+	@Test(priority = 8, enabled = false)
 	public void RW_T199_valdating_URL_when_clicked_on_RegionBreadcrumb() {
 		testStart("Validating user redirected url when clicked on region");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_REGION);
-		waitUntilElementIsDisplayedOrClickable();
 		breadcrumbs.scrolldownpage();
-		WebPageLoaded.isDomInteractive(80000);
-		System.out.println("Landing page URL is >>>" + getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedRegionForecastTitle);
 	}
 
-	@Test(priority = 9, enabled = true)
+	@Test(priority = 9, enabled = false)
 	public void RW_T200_valdating_URL_when_clicked_on_CountryBreadcrumb() {
 		testStart("Validating user redirected url when clicked on Country");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_COUNTRY);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.scrolldownpage();
-		WebPageLoaded.isDomInteractive(80000);
-		System.out.println("Landing page URL is >>>" + getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedCountryForecastTitle);
 	}
 
-	@Test(priority = 10, enabled = true)
+	@Test(priority = 10, enabled = false)
 	public void RW_T200_valdating_URL_when_clicked_on_StateBreadcrumb() {
 		testStart("Validating user redirected url when clicked on State");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_STATE);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.scrolldownpage();
-		WebPageLoaded.isDomInteractive(80000);
-		System.out.println("Landing page URL is >>>" + getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedStateForecastTitle);
 	}
 
-	@Test(priority = 11, enabled = true)
+	@Test(priority = 11, enabled = false)
 	public void RW_T201_valdating_URL_when_clicked_on_CityBreadcrumb() {
 		testStart("Validating user redirected url when clicked on City");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_CITY);
-		WebPageLoaded.isDomComplete(8000);
 		breadcrumbs.scrolldownpage();
-		WebPageLoaded.isDomInteractive(80000);
-		System.out.println("Landing page URL is >>>" + getDriver().getCurrentUrl());
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedCityForecastTitle);
 	}
 }
