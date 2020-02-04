@@ -2,11 +2,10 @@ package com.accuweather.glacier.m.homepagebreadcrumbs;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import com.accuweather.glacier.m.AccuWeatherMobileBaseTest;
 import com.accuweather.glacier.m.pages.HomepageBreadcrumbsMobile;
 import com.accuweather.glacier.m.pages.LandingPageMobile;
-import com.accuweather.glacier.www.pages.LandingPage;
-import com.chameleon.selenium.web.WebPageLoaded;
 
 public class Test_HomepageBreadcrumbsMobile extends AccuWeatherMobileBaseTest {
 

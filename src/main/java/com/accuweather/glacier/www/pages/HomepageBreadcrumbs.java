@@ -8,7 +8,8 @@ import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.utils.Sleeper;
 
-public class HomepageBreadcrumbs extends BasePage {
+public class HomepageBreadcrumbs extends BasePage
+{
 	
 	private By byfooterbreadcrumbs=By.cssSelector("body > div.template-root > div.breadcrumbs-wrapper");
 	private By bybreadcrumbforWorld=By.cssSelector("body > div.template-root > div.breadcrumbs-wrapper > div > div:nth-child(1) > a");
@@ -25,7 +26,7 @@ public class HomepageBreadcrumbs extends BasePage {
 	 * 
 	 **/
 	public void scrolldownpage(){
-		WebPageLoaded.isDomInteractive();
+		WebPageLoaded.isDomComplete();
 		getDriver().executeJavaScript("window.scrollBy(0,2103)");	
 	}
 

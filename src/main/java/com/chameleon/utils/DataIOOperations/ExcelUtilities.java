@@ -1,6 +1,7 @@
 package com.chameleon.utils.DataIOOperations;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.Map;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -46,7 +47,7 @@ public class ExcelUtilities
 	 * */
 	public static String getZipCode(int rowNo)
 	{
-		String zipCode = ExcelUtilities.getNumericData(rowNo, 4)+"";
+		String zipCode = ExcelUtilities.getNumericData(rowNo, 5)+"";
 		return zipCode;
 	}
 	
@@ -118,7 +119,6 @@ public class ExcelUtilities
 		{
 			cell = excelWSheet.getRow(rowNum).getCell(colNum);
 			String cellData = cell.getStringCellValue();
-			System.out.println(cellData);
 			return cellData;
 
 		}
@@ -168,7 +168,8 @@ public class ExcelUtilities
 		 * **/
 		public static void readExcelFile(String path, String sheetName)
 		{
-			ExcelUtilities.setExcelFile(System.getProperty("user.dir")+path, sheetName);
+			//ExcelUtilities.setExcelFile(System.getProperty("user.dir")+path, sheetName);
+			ExcelUtilities.setExcelFile(path, sheetName);
 		}
 		
 		/**
@@ -187,6 +188,44 @@ public class ExcelUtilities
 			}
 			System.out.println("City found at row number:---->"+rowNo);
 			return rowNo;
+		}
+		
+		/**
+		 * @author HFARAZ
+		 * This method deals with updating the excel sheet with any data
+		 * based on the row number , column no provided in the parameters
+		 * */
+		public static void setCellData(String Result,  int RowNum, int ColNum)
+		{
+			try
+			{
+				row  = excelWSheet.getRow(RowNum);
+				cell = row.getCell(ColNum, row.RETURN_BLANK_AS_NULL);
+
+				if (cell == null) 
+				{
+					cell = row.createCell(ColNum);
+					cell.setCellValue(Result);
+
+				}
+				else
+				{
+					cell.setCellValue(Result);
+				}
+
+		// Constant variables Test Data path and Test Data file name
+
+				FileOutputStream fileOut = new FileOutputStream("C:\\Users\\Qualitest\\Downloads\\location_keys.xlsx");
+				excelWBook.write(fileOut);
+				fileOut.flush();
+				fileOut.close();
+
+			}
+			catch(Exception e)
+			{
+				System.err.println(e.getMessage());
+			}
+
 		}
 	
 }
