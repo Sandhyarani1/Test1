@@ -10,8 +10,7 @@ import com.accuweather.glacier.www.pages.HourlyForecastPage;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.chameleon.utils.Constants;
 
-public class HourlyForecastOptimized extends AccuWeatherBaseTest
-{
+public class RW_T194_PresentAndFutureLinkValidation extends AccuWeatherBaseTest {
 	public static final String CITY_NAME = "Buffalo";
 	public static String stateCode = "";
 	public static String locationKey = "";
@@ -47,21 +46,25 @@ public class HourlyForecastOptimized extends AccuWeatherBaseTest
 	}
 	
 	@Test(priority=1)
-	public void testNewCode()
+	public void RW_T194_verifyPresentAndFutureLink()
 	{
 		softAssert = new SoftAssert();
-		testStart("******** Testing newly optimized and generic code for Hourly page *********************");
-		
+		testStart("******** Validation of present and future link on Hourly page *********************");
 		landingPage.enterZipcodeInSearchField(CITY_NAME);
 		landingPage.selectCityFromTheList(location);
 		hourlyPage.clickOnHourlyTab();
 		
-		/******************** Validating the title on Hourly Forecast Page *******************************/
-		softAssert.assertEquals(getDriver().getTitle(), expectedHourlyForecastTitle);
-		
-		/******************** Validating the Hourly Forecast URL *******************************/
-		softAssert.assertEquals(getDriver().getCurrentUrl(), expectedHourlyForecastURL);
+		/************************Click NextDay CTA and verify the day parameter is increased by 1 in the URL*******************************/
+		hourlyPage.validateDayParamInURLForNextDay(appURLRepository.get(Constants.ACCUWEATHER_WEB_QA), cityNameForURL, zipCode, locationKey);
+		softAssert.assertTrue(hourlyPage.getHourlyTabURLState(),
+						"Issue------->NextDay parameter in the URL is not increased by 1");
+		 
+		/************************Click PreviousDay CTA and verify the day parameter is decreased by 1 in the URL*******************************/
+		hourlyPage.validateDayParamInURLForPreviousDay(appURLRepository.get(Constants.ACCUWEATHER_WEB_QA), cityNameForURL, zipCode, locationKey);
+		softAssert.assertTrue(hourlyPage.getHourlyTabURLState(),
+						"Issue------->PreviousDay parameter in the URL is not decreased by 1");
 		
 		softAssert.assertAll();
 	}
+
 }

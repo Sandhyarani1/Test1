@@ -1,6 +1,8 @@
 package com.accuweather.glacier.api;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.chameleon.utils.date.SimpleDate;
 
@@ -140,10 +142,11 @@ public class HourlyPageAPI extends APIUtilities
 		
 		locationOffSet = getLocationOffSet(locationDetailsResponse);
 		
-		String currentDate = SimpleDate.getCurrentDate("YYYY-MM-DD");
-		System.out.println(currentDate);
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String date = formatter.format(new Date());
+        System.out.println("Date--->"+date);
 		
-		hourlyForecastJSONResponse = getHourlyPageDetails(locationCode,locationOffSet,currentDate);
+		hourlyForecastJSONResponse = getHourlyPageDetails(locationCode,locationOffSet,date);
 		return hourlyForecastJSONResponse;
 	}
 	
@@ -155,7 +158,6 @@ public class HourlyPageAPI extends APIUtilities
 	{
 		JsonPath jsonPathEvaluator = hourlyForecastJSONResponse.jsonPath();
 		ArrayList hourlyForecastDetailsResponse=jsonPathEvaluator.get(ArrayName);
-		
 		return hourlyForecastDetailsResponse.size();
 	}
 	
@@ -245,23 +247,26 @@ public class HourlyPageAPI extends APIUtilities
 	public static void main(String[] args)
 	{
 		getHourlyForecastData("Buffalo");
+		NoOfHoursForTheDay();
 		
 		for(int i=0;i<NoOfHoursForTheDay();i++)
 		{
-			System.out.println(iconPhrase.get(i));
-			System.out.println(temperature.get(i));
-			System.out.println(precipitation.get(i));
-			System.out.println(realFeel.get(i));
-			System.out.println(windValue.get(i));
-			System.out.println(windUnit.get(i));
-			System.out.println(windDirection.get(i));
-			System.out.println(iconPhrase.get(i));
-			System.out.println(iconPhrase.get(i));
-			System.out.println(iconPhrase.get(i));
-			System.out.println(iconPhrase.get(i));
-			System.out.println(iconPhrase.get(i));
-			System.out.println(date.get(i));
+			
+//			System.out.println(iconPhrase.get(i));
+//			System.out.println(temperature.get(i));
+//			System.out.println(precipitation.get(i));
+//			System.out.println(realFeel.get(i));
+//			System.out.println(windValue.get(i));
+//			System.out.println(windUnit.get(i));
+//			System.out.println(windDirection.get(i));
+//			System.out.println(UVIndexValue.get(i));
+//			System.out.println(UVIndexText.get(i));
+//			System.out.println(iconPhrase.get(i));
+//			System.out.println(iconPhrase.get(i));
+//			System.out.println(iconPhrase.get(i));
+//			System.out.println(date.get(i));
 			System.out.println(time.get(i));
+//			System.out.println(date.get(i));
 			
 		}
 		

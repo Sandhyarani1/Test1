@@ -1166,28 +1166,28 @@ public class Test_HourlyForecastPage extends AccuWeatherBaseTest
 //
 //	}
 	
-	@Test(priority = 26)
-	public void TC10_validate_DayParam_In_URL_For_PreviousDay()
-	{
-		testStart("Validate the day parameter in URL for Hourly page when clicked on Previous day tab");
-		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
-		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
-		WebPageLoaded.isDomComplete();
-		hourlyPage.clickOnHourlyTab();
-		WebPageLoaded.isDomComplete();
-		try
-		{
-			hourlyPage.validateDayParamInURLForPreviousDay();
-			Assert.assertTrue(hourlyPage.getHourlyTabURLState());
-		}
-
-		catch (AssertionError ae)
-		{
-			System.err.println(ae.getMessage());
-			Assert.fail();
-		}
-
-	}
+//	@Test(priority = 26)
+//	public void TC10_validate_DayParam_In_URL_For_PreviousDay()
+//	{
+//		testStart("Validate the day parameter in URL for Hourly page when clicked on Previous day tab");
+//		landingPage.enterZipcodeInSearchFieldAndClick(zipCode);
+//		waitUntilWindowExistsWithTitle(expectedLandingPageTitle);
+//		WebPageLoaded.isDomComplete();
+//		hourlyPage.clickOnHourlyTab();
+//		WebPageLoaded.isDomComplete();
+//		try
+//		{
+//			hourlyPage.validateDayParamInURLForPreviousDay();
+//			Assert.assertTrue(hourlyPage.getHourlyTabURLState());
+//		}
+//
+//		catch (AssertionError ae)
+//		{
+//			System.err.println(ae.getMessage());
+//			Assert.fail();
+//		}
+//
+//	}
 	
 	
 
