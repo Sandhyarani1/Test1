@@ -1,6 +1,8 @@
 package com.accuweather.glacier.m.pages;
 
-	import java.util.concurrent.TimeUnit;
+	import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 	import org.openqa.selenium.By;
 	import org.openqa.selenium.support.Color;
 	import org.openqa.selenium.support.ui.Select;
@@ -388,6 +390,21 @@ import com.chameleon.selenium.web.WebPageLoaded;
 			Sleeper.sleep(2);
 			getDriver().findElement(byContactUSLinkMObile).click();
 		}
+		
+		public void switchToPopUpWindow(String defaultwindow) {
+            
+            Set<String> windows = getDriver().getWindowHandles();
+            Iterator iterator = windows.iterator();
+            String currentwindowId;
+            while(iterator.hasNext()) {
+            currentwindowId = iterator.next().toString();
+                          if(!currentwindowId.equals(defaultwindow)) {
+                   getDriver().switchTo().window(currentwindowId);
+                  
+            }
+      }
+           
+   }
 	}
 
 

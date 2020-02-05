@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import com.accuweather.glacier.m.AccuWeatherMobileBaseTest;
 import com.accuweather.glacier.m.pages.CityRadarPageMobile;
 import com.accuweather.glacier.m.pages.LandingPageMobile;
+import com.accuweather.glacier.m.pages.NavigationBarMobile;
 import com.accuweather.glacier.m.pages.UniversalNavigationMobile;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 
@@ -83,7 +84,7 @@ public class Test_UniversalNavigationMobileIOS extends AccuWeatherMobileBaseTest
 	String defaultWindowid;
 	String zipcode2 = "48073";
 
-	private NavigationBar navBar = new NavigationBar();
+	private NavigationBarMobile navBar = new NavigationBarMobile();
 	private RadarWeatherPage rwp = new RadarWeatherPage();
 	private NewsWeatherPage nwp = new NewsWeatherPage();
 	private LandingPageMobile landingPage = new LandingPageMobile();
