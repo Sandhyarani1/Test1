@@ -14,7 +14,7 @@ public class APIConstants
     public static final String REGION_SOUTH_AMERICA = "SAM";
     public static final String REGION_USA = "USA";
     public static final String API_PROPERTIES = "API.properties";
-	public static final String LOCATION_KEYS_FILE_PATH = "LOCATION_KEYS_FILE_PATH";
+	public static final String LOCATION_KEYS_FILE_PATH = "LOCATION_KEYS_FILE_PATH_JENKINS";
 	public static final String US_SHEET = "US_SHEET";
 	public static final String GLOBAL_SHEET = "GLOBAL_SHEET";
 	public static final String BASE_URI = "BASE_URI";
