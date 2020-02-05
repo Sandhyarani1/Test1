@@ -777,7 +777,7 @@ public class Test_UniversalNavigationMobileIOS extends AccuWeatherMobileBaseTest
 		navBar.locationSearch2Chars();
 		waitUntilElementIsDisplayedOrClickable();
 		WebPageLoaded.isDomComplete(5);
-		navBar.clickBrowseYourLocationLink2();
+		//navBar.clickBrowseYourLocationLink2();
 		waitUntilWindowExistsWithTitle(expectedbrowselocationtitle);
 		waitUntilElementIsDisplayedOrClickable();
 		actualbrowselocationtitle = getDriver().getTitle();
@@ -792,10 +792,10 @@ public class Test_UniversalNavigationMobileIOS extends AccuWeatherMobileBaseTest
 		landingPage.clickOnZipcodeSearchIcon();
 		Sleeper.sleep(5);
 		universalNavigationMobile.isTopNavSearchIconclick();
-		navBar.locationSearch2Chars2();
+		//navBar.locationSearch2Chars2();
 		waitUntilElementIsDisplayedOrClickable();
 		WebPageLoaded.isDomComplete(5);
-		navBar.clickBrowseYourLocationLink2();
+		//navBar.clickBrowseYourLocationLink2();
 		waitUntilWindowExistsWithTitle(expectedbrowselocationtitle);
 		waitUntilElementIsDisplayedOrClickable();
 		actualbrowselocationtitle = getDriver().getTitle();
