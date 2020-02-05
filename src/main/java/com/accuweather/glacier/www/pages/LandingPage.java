@@ -79,76 +79,57 @@ public class LandingPage extends BasePage
 	public static ArrayList<String> weatherNewsArticles_URLs = new ArrayList<String>();
 
 	/**
-	 * 
-	 * @author HFARAZ Method to click on AccuWeather Logo at the top
-	 * 
+	 * @author HFARAZ 
+	 * Method to click on AccuWeather Logo at the top
 	 */
 
 	public void clickAccuWeatherLogo()
 	{
-
 		WebPageLoaded.isDomComplete();
-
-		getDriver().findElement(byAccuWeatherLogo).click();
-
+		try
+		{
+			getDriver().findElement(byAccuWeatherLogo).click();
+		}
+		catch(NoSuchElementException nsee)
+		{
+			System.err.println("AccuWeather Logo not found");
+			nsee.printStackTrace();
+		}
 	}
 
 	/**
-	 * 
 	 * @author HFARAZ Method to select from the list of cities that comes when user
-	 * 
 	 *         type any city name in search bar on home page
-	 * 
 	 */
 
 	public void selectCityFromTheList(String city)
 	{
-
 		WebPageLoaded.isDomComplete();
-
 		List<WebElement> cities = getDriver().findElements(bySearchList);
-
 		for (int i = 0; i <= cities.size(); i++)
 		{
-
 			int j = i + 1;
-
 			String cityName = getDriver().findElement(By.cssSelector("div.search-results > div:nth-child(" + j + ")"))
-
 					.getText();
-
 			if (cityName.equalsIgnoreCase(city))
 			{
-
 				getDriver().findElement(By.cssSelector("div.search-results > div:nth-child(" + j + ")")).click();
-
 				break;
-
 			}
-
 		}
-
 	}
 
 	/*
-	 * 
-	 * Method to enter ZIPcode under ZipCode search field on the AccuWeather Landing
-	 * 
+	 * Method to enter ZIPcode under ZipCode search field on the AccuWeather Landing 
 	 * page
-	 * 
 	 */
 
 	public void enterZipcodeInSearchField(String zip)
 	{
-
 		WebPageLoaded.isDomInteractive();
-
 		WebElement zipcodetextfield = getDriver().findElement(byZipCodeSearchBox);
-
 		zipcodetextfield.syncVisible(15);
-
 		zipcodetextfield.hover();
-
 		zipcodetextfield.sendKeys(zip);
 
 	}
@@ -178,19 +159,11 @@ public class LandingPage extends BasePage
 
 	public void clickOnZipcodeSearchIcon()
 	{
-
 		WebPageLoaded.isDomInteractive();
-
 		WebElement zipcodesearchicon = getDriver().findElement(byZipCodeSearchIcon);
-
 		zipcodesearchicon.syncVisible(15);
-
 		zipcodesearchicon.hover();
-
 		zipcodesearchicon.click();
-
-		// Sleeper.sleep(2);
-
 	}
 
 	/*
@@ -203,21 +176,13 @@ public class LandingPage extends BasePage
 
 	public void enterZipcodeInSearchFieldAndClick(String zip)
 	{
-
-		WebPageLoaded.isDomInteractive();
-
+		WebPageLoaded.isDomComplete();
 		WebElement zipcodetextfield = getDriver().findElement(byZipCodeSearchBox);
-
 		zipcodetextfield.syncVisible(15);
-
 		zipcodetextfield.hover();
-
 		zipcodetextfield.sendKeys(zip);
-
 		zipcodetextfield.sendKeys(Keys.ENTER);
-
-		Sleeper.sleep(8);
-
+		WebPageLoaded.isDomComplete();
 	}
 
 	/*
@@ -1090,64 +1055,38 @@ public class LandingPage extends BasePage
 
 	public ArrayList readWeatherNewsDate(int count)
 	{
-
 		ArrayList<String> weatherNewsDates = new ArrayList<String>();
-
 		WebPageLoaded.isDomComplete();
 
 		for (int i = 1; i <= count; i++)
 		{
-
 			try
 			{
-
 				if (i == 1)
 				{
-
 					int j = i + 1;
-
 					weatherNewsDates
-
 							.add(getDriver().findElement(By.cssSelector("div.zone-centerWell2 > div > a:nth-child(" + j
-
 									+ ") > div.tout-body > div.tout-meta > span.tout-date")).getText());
-
 				}
 				else
 				{
-
 					int j = i + 2;
-
 					weatherNewsDates
-
 							.add(getDriver().findElement(By.cssSelector("div.zone-centerWell2 > div > a:nth-child(" + j
-
 									+ ") > div.tout-body > div.tout-meta > span.tout-date")).getText());
-
 				}
-
 			}
 			catch (NoSuchElementException e)
 			{
-
-				System.err
-
-						.println("Date Not Found For Weather News " + (i + 1) + " ,Iteration: " + i + "\nException\n");
-
+				System.err.println("Date Not Found For Weather News " + (i + 1) + " ,Iteration: " + i + "\nException\n");
 				e.printStackTrace();
-
 			}
 			catch (ArrayIndexOutOfBoundsException e)
 			{
-
-				System.err
-
-						.println("Date Not Found For Weather News " + (i + 1) + " ,Iteration: " + i + "\nException\n");
-
+				System.err.println("Date Not Found For Weather News " + (i + 1) + " ,Iteration: " + i + "\nException\n");
 				e.printStackTrace();
-
 			}
-
 		}
 
 		return weatherNewsDates;
@@ -1164,35 +1103,22 @@ public class LandingPage extends BasePage
 
 	public ArrayList readWeatherNewsType(int count)
 	{
-
 		ArrayList<String> weatherNewsTypes = new ArrayList<String>();
-
 		WebPageLoaded.isDomComplete();
-
 		for (int i = 1; i <= count; i++)
 		{
-
 			if (i == 1)
 			{
-
 				int j = i + 1;
-
 				weatherNewsTypes.add(getDriver().findElement(By.cssSelector("div.zone-centerWell2 > div > a:nth-child("
-
 						+ j + ") > div.tout-body > div.tout-meta > span.tout-type")).getText());
-
 			}
 			else
 			{
-
 				int j = i + 2;
-
 				weatherNewsTypes.add(getDriver().findElement(By.cssSelector("div.zone-centerWell2 > div > a:nth-child("
-
 						+ j + ") > div.tout-body > div.tout-meta > span.tout-type")).getText());
-
 			}
-
 		}
 
 		return weatherNewsTypes;
