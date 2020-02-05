@@ -1,9 +1,8 @@
 package com.accuweather.glacier.api;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
-import com.chameleon.utils.date.SimpleDate;
-
+import java.util.Date;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
@@ -45,7 +44,7 @@ public class HourlyPageAPI extends APIUtilities
 	public static ArrayList<String> visibilityUnit;
 	public static ArrayList<String> ceilingValue;
 	public static ArrayList<String> ceilingUnit;
-	public static final String ArrayName = "JSON";
+	public static final String ArrayName = "array";
 	public static String timeStampTime = "";
 	public static String timeStampDate = "";
 	public static int rowNo=0;
@@ -140,10 +139,11 @@ public class HourlyPageAPI extends APIUtilities
 		
 		locationOffSet = getLocationOffSet(locationDetailsResponse);
 		
-		String currentDate = SimpleDate.getCurrentDate("YYYY-MM-DD");
-		System.out.println(currentDate);
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		String date = formatter.format(new Date());
+		System.out.println("Date--->"+date);
 		
-		hourlyForecastJSONResponse = getHourlyPageDetails(locationCode,locationOffSet,currentDate);
+		hourlyForecastJSONResponse = getHourlyPageDetails(locationCode,locationOffSet,date);
 		return hourlyForecastJSONResponse;
 	}
 	
@@ -156,6 +156,7 @@ public class HourlyPageAPI extends APIUtilities
 		JsonPath jsonPathEvaluator = hourlyForecastJSONResponse.jsonPath();
 		ArrayList hourlyForecastDetailsResponse=jsonPathEvaluator.get(ArrayName);
 		
+		System.out.println("No of hours from the API---->"+hourlyForecastDetailsResponse.size());
 		return hourlyForecastDetailsResponse.size();
 	}
 	
@@ -244,28 +245,24 @@ public class HourlyPageAPI extends APIUtilities
 	
 	public static void main(String[] args)
 	{
-		getHourlyForecastData("Buffalo");
-		
-		for(int i=0;i<NoOfHoursForTheDay();i++)
-		{
-			System.out.println(iconPhrase.get(i));
-			System.out.println(temperature.get(i));
-			System.out.println(precipitation.get(i));
-			System.out.println(realFeel.get(i));
-			System.out.println(windValue.get(i));
-			System.out.println(windUnit.get(i));
-			System.out.println(windDirection.get(i));
-			System.out.println(iconPhrase.get(i));
-			System.out.println(iconPhrase.get(i));
-			System.out.println(iconPhrase.get(i));
-			System.out.println(iconPhrase.get(i));
-			System.out.println(iconPhrase.get(i));
-			System.out.println(date.get(i));
-			System.out.println(time.get(i));
-			
-		}
-		
-		System.out.println(getCityName());
+		  getHourlyForecastData("Buffalo");
+		  
+		  for(int i=0;i<NoOfHoursForTheDay();i++)
+		  {
+		  System.out.println("Icon Phrase---->"+iconPhrase.get(i));
+		  System.out.println("Temperature----->"+temperature.get(i));
+		  System.out.println("Precipitation---->"+precipitation.get(i));
+		  System.out.println("Real Feel----->"+realFeel.get(i));
+		  System.out.println("Wind Value----->"+windValue.get(i));
+		  System.out.println("Wind Unit---->"+windUnit.get(i));
+		  System.out.println("Wind Direction----->"+windDirection.get(i));
+		  System.out.println("Date--->"+date.get(i));
+		  System.out.println("Time--->"+time.get(i));
+		  
+		  }
+		  
+		  System.out.println(getCityName());
+		 
 		
 	}
 }

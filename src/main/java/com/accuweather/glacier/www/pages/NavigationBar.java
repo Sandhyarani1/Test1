@@ -164,7 +164,7 @@ public class NavigationBar extends BasePage
     private By byRadarMapsSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(1) > p");
     private By byRadarSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(2) > p");
     private By bySevereSubMenuDescription = By.cssSelector("div > div.mega-menu > div > div:nth-child(3) > p");
-    private By bySatelliteSubMenuDescription = By.cssSelector("div.mega-menu > div.mega-menu-content > div:nth-child(2) > p");
+    private By bySatelliteSubMenuDescription = By.cssSelector("div.mega-menu > div.mega-menu-content > div:nth-child(4) > p");
     private By byForecastSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(5) > p");
     private By bySatelliteSubMenuMapTitle = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > p");
     private By bySatelliteSubMenuMapDescription = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > figcaption");
