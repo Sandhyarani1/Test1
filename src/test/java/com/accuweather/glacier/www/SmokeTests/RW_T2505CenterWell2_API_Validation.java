@@ -23,7 +23,7 @@ public class RW_T2505CenterWell2_API_Validation extends AccuWeatherBaseTest
 	public ArrayList<String> weatherNewsTypeFromAPI = new ArrayList<String>();
 	public ArrayList<String> weatherNewsTitleFromAPI = new ArrayList<String>();
 	public ArrayList<String> weatherNewsURLFromAPI = new ArrayList<String>();
-	public int noOfWeatherNewsFromAPI = 0;
+	public static int noOfWeatherNewsFromAPI = 0;
 	
 	/***
 	 * 

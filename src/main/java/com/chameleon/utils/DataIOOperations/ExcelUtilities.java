@@ -75,13 +75,46 @@ public class ExcelUtilities
 	  
 	  /**
 	   * @author HFARAZ
+	   * Method to get the State code from location_keys.xlsx file
+	   * @return String value: state code based on the row no provide in the parameter
+	   * **/
+	  public static String getStateCode(int rowNo)
+	  {
+		  String stateCode = ExcelUtilities.getStringData(rowNo, 3);
+		  return stateCode;
+	  }
+	  
+	  /**
+	   * @author HFARAZ
 	   * Method to get the State Name from location_keys.xlsx file
-	   * @return String value: city name based on the row no provide in the parameter
+	   * @return String value: state name based on the row no provide in the parameter
 	   * **/
 	  public static String getStateName(int rowNo)
 	  {
-		  String stateName = ExcelUtilities.getStringData(rowNo, 3);
+		  String stateName = ExcelUtilities.getStringData(rowNo, 4);
 		  return stateName;
+	  }
+	  
+	  /**
+	   * @author HFARAZ
+	   * Method to get the State Name from location_keys.xlsx file
+	   * @return String value: state name based on the row no provide in the parameter
+	   * **/
+	  public static String getRegionName(int rowNo)
+	  {
+		  String regionName = ExcelUtilities.getStringData(rowNo, 6);
+		  return regionName;
+	  }
+	  
+	  /**
+	   * @author HFARAZ
+	   * Method to get the country Name from location_keys.xlsx file
+	   * @return String value: country name based on the row no provide in the parameter
+	   * **/
+	  public static String getCountryName(int rowNo)
+	  {
+		  String countryName = ExcelUtilities.getStringData(rowNo, 7);
+		  return countryName;
 	  }
 	
 	/**
@@ -168,8 +201,7 @@ public class ExcelUtilities
 		 * **/
 		public static void readExcelFile(String path, String sheetName)
 		{
-			//ExcelUtilities.setExcelFile(System.getProperty("user.dir")+path, sheetName);
-			ExcelUtilities.setExcelFile(path, sheetName);
+			ExcelUtilities.setExcelFile(System.getProperty("user.dir")+path, sheetName);
 		}
 		
 		/**

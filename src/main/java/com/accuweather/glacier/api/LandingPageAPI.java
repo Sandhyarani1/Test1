@@ -75,7 +75,6 @@ public class LandingPageAPI extends APIUtilities
 						} 
 						else
 						{
-							System.out.println(getElementTitle.get("date").toString());
 							allElement.add(getElementTitle.get("description") + "|"
 									+ convertToAccuweatherDate(getElementTitle.get("date").toString().substring(0,
 											getElementTitle.get("date").toString().indexOf("T")))
@@ -86,7 +85,6 @@ public class LandingPageAPI extends APIUtilities
 					}
 					else
 					{
-						System.out.println(getElementTitle.get("date").toString());
 						allElement.add(getElementTitle.get("title") + "|"
 								+ convertToAccuweatherDate(getElementTitle.get("date").toString().substring(0,
 										getElementTitle.get("date").toString().indexOf("T")))
@@ -116,7 +114,7 @@ public class LandingPageAPI extends APIUtilities
 		Date date1 = null;
 		try 
 		{
-			date1 = new SimpleDateFormat("yyyy/mm/dd").parse(date.replace("-", "/"));
+			date1 = new SimpleDateFormat("yyyy/MM/dd").parse(date.replace("-", "/"));
 		}
 		catch (ParseException e)
 		{
@@ -384,7 +382,7 @@ public class LandingPageAPI extends APIUtilities
 		{
 			try 
 			{
-				rightRailArticleTitles.add(splitString(getLandingPageData(RIGHT_RAIL1).get(i).toString(), 3)[0]);
+				rightRailArticleTitles.add(splitString(getLandingPageData(RIGHT_RAIL1).get(i).toString(), 5)[0]);
 			}
 			catch (ArrayIndexOutOfBoundsException e) 
 			{
@@ -414,7 +412,7 @@ public class LandingPageAPI extends APIUtilities
 		{
 			try
 			{
-				rightRailArticleTitles.add(splitString(getLandingPageData(RIGHT_RAIL2).get(i).toString(), 3)[0]);
+				rightRailArticleTitles.add(splitString(getLandingPageData(RIGHT_RAIL2).get(i).toString(), 5)[0]);
 			}
 			catch (ArrayIndexOutOfBoundsException e)
 			{
@@ -446,7 +444,7 @@ public class LandingPageAPI extends APIUtilities
 
 	public static String[] getUniversalNavigationVideoData()
 	{
-		return splitString(getLandingPageData(NAVIGATION_VIDEO).get(0).toString(), 3);
+		return splitString(getLandingPageData(NAVIGATION_VIDEO).get(0).toString(), 4);
 	}
 
 	/**

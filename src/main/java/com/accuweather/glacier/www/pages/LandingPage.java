@@ -152,6 +152,23 @@ public class LandingPage extends BasePage
 		zipcodetextfield.sendKeys(zip);
 
 	}
+	
+	/*
+	 * 
+	 * Method to enter city name under search field on the AccuWeather Landing
+	 * 
+	 * page
+	 * 
+	 */
+
+	public void enterCityNameInSearchField(String cityName)
+	{
+		WebPageLoaded.isDomInteractive();
+		WebElement zipcodetextfield = getDriver().findElement(byZipCodeSearchBox);
+		zipcodetextfield.syncVisible(15);
+		zipcodetextfield.hover();
+		zipcodetextfield.sendKeys(cityName);
+	}
 
 	/*
 	 * 
