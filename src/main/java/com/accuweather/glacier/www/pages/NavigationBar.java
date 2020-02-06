@@ -522,16 +522,16 @@ public class NavigationBar extends BasePage
    }
    
   
-	/*
-	 * public void mouseHoverOnMaps() {
-	 * WebPageLoaded.isDomInteractive();
-	 * WebElement maps = getDriver().findElement(byMaps);
-	 * maps.syncVisible(20);
-	 * Sleeper.sleep(4);
-	 * maps.hover();
-	 * Sleeper.sleep(3);
-	 * }
-	 */
+	
+	  public void mouseHoverOnMaps() {
+	  WebPageLoaded.isDomInteractive();
+	  WebElement maps = getDriver().findElement(byRadarMaps);
+	  maps.syncVisible(20);
+	  Sleeper.sleep(4);
+	  maps.hover();
+	  Sleeper.sleep(3);
+	  }
+	 
   
     //Maps categories - Maps Submenu
     public boolean isMapsSubMenuDisplayed() {
