@@ -2,7 +2,7 @@ package com.accuweather.glacier.m.Localizations;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.accuweather.glacier.m.pages.LocalizationsIpad;
-import com.accuweather.glacier.m.pages.NavigationBar;
+import com.accuweather.glacier.www.pages.NavigationBar;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.LandingPage;
 

@@ -10,7 +10,7 @@
 	<parameter name="operatingSystem" value="WINDOWS" />
 	<parameter name="logLevel" value="3" />
 
-	<test name="Glacier Desktop Web Smoke Test - Chrome">
+	<test name="Glacier Desktop Web Smoke Test QA - Chrome">
 		<parameter name="browserUnderTest" value="Chrome" />
 		<classes>
 			<class
