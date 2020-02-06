@@ -1,13 +1,10 @@
 package com.accuweather.glacier.m.Localizations;
-
-	
-	import org.testng.Assert;
-	import org.testng.annotations.Test;
-
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import com.accuweather.glacier.m.pages.LocalizationsIpad;
+import com.accuweather.glacier.m.pages.NavigationBar;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
-	import com.accuweather.glacier.www.pages.LandingPage;
-	import com.accuweather.glacier.www.pages.NavigationBar;
+import com.accuweather.glacier.www.pages.LandingPage;
 
 	public class TestLocalizationIpad extends AccuWeatherBaseTest
 	{
@@ -25,7 +22,7 @@ import com.accuweather.glacier.www.AccuWeatherBaseTest;
 		
 		LocalizationsIpad localization = new LocalizationsIpad();
 		LandingPage landingPage = new LandingPage();
-		private NavigationBar navBar = new NavigationBar();
+		NavigationBar navBar = new NavigationBar() ;
 		
 		@Test(priority = 1,enabled = false)
 		public void TC1_verify_PresenceOfMaps_OnTopNavigation()

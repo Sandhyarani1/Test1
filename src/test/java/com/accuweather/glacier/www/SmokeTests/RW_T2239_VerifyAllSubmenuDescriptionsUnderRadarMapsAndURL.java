@@ -15,6 +15,7 @@ public class RW_T2239_VerifyAllSubmenuDescriptionsUnderRadarMapsAndURL extends A
 {
 	private String EXPECTED_RADARMAPS_SUBMENU_DESCRIPTION = "Visualize past, present, and future weather from many angles via both static and interactive maps";
 	private String EXPECTED_RADAR_SUBMENU_DESCRIPTION = "Current and future radar maps for assessing areas of precipitation, type, and intensity";
+	private String EXPECTED_CURRENT_CONDITIONS_SUBMENU_DESCRIPTION = "View live current conditions in and around your area";
 	private String EXPECTED_SATELLITE_SUBMENU_DESCRIPTION = "Satellite maps for visualizing where there is cloud cover and associated precipitation";
 	private String EXPECTED_SEVERE_SUBMENU_DESCRIPTION = "Currently active global watches and warnings, lightning, and severe weather risk";
 	private String EXPECTED_FORECAST_SUBMENU_DESCRIPTION = "Daily forecast map for precipitation";
@@ -35,6 +36,10 @@ public class RW_T2239_VerifyAllSubmenuDescriptionsUnderRadarMapsAndURL extends A
 	/************************************** RADAR SUBMENU *************************************************/
 	public final static String RADAR_URL_SUFFIX = "weather-radar";
 	public static String RADAR_URL = "";
+	
+	/************************************** CURRENT CONDITIONS SUBMENU ***********************************/
+	public final static String CURRENT_CONDITIONS_URL_SUFFIX = "national/current-weather-maps";
+	public static String CURRENT_CONDITIONS_URL = "";
 	
 	/************************************** SATELLITE SUBMENU *************************************************/
 	public final static String SATELLITE_URL_SUFFIX = "satellite";
@@ -68,6 +73,7 @@ public class RW_T2239_VerifyAllSubmenuDescriptionsUnderRadarMapsAndURL extends A
 		
 		RADARMAPS_URL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+countryCode+"/"+stateName+"/"+RADARMAPS_URL_SUFFIX).toLowerCase();
 		RADAR_URL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+countryCode+"/"+stateName+"/"+RADAR_URL_SUFFIX).toLowerCase();
+		CURRENT_CONDITIONS_URL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+countryCode+"/"+CURRENT_CONDITIONS_URL_SUFFIX).toLowerCase();
 		SATELLITE_URL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+countryCode+"/"+stateName+"/"+SATELLITE_URL_SUFFIX).toLowerCase();
 		SEVERE_URL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+countryCode+"/"+SEVERE_URL_SUFFIX).toLowerCase();
 		FORECAST_URL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+countryCode+"/"+FORECAST_URL_SUFFIX).toLowerCase();
@@ -84,30 +90,41 @@ public class RW_T2239_VerifyAllSubmenuDescriptionsUnderRadarMapsAndURL extends A
 		landingPage.enterCityNameInSearchField(CITYNAME);
 		landingPage.selectCityFromTheList(location);
 			
-		//Verifying the description of all submenu under radar&maps
+		/**************************** Verifying the description of all sub menu under radar & maps *****************************/
 		navBar.mouseHoverOnRadarAndMaps();
 		softAssert.assertEquals(navBar.getMapsSubmenuDescription(), EXPECTED_RADARMAPS_SUBMENU_DESCRIPTION,
 				"\nIssue---->Map Submenu description not as expected\n");
+		
 		softAssert.assertEquals(navBar.getRadarSubmenuDescription(), EXPECTED_RADAR_SUBMENU_DESCRIPTION,
 				"\nIssue----->Radar Submenu description not as expected\n");
+		
+		softAssert.assertEquals(navBar.getCurrentConditionsSubmenuDescription(), EXPECTED_CURRENT_CONDITIONS_SUBMENU_DESCRIPTION,
+				"\nIssue----->Radar Submenu description not as expected\n");
+		
 		softAssert.assertEquals(navBar.getSatelliteSubmenuDescription(), EXPECTED_SATELLITE_SUBMENU_DESCRIPTION,
 				"\nIssue----->Satellite Submenu description not as expected\n");
+		
 		softAssert.assertEquals(navBar.getSevereSubmenuDescription(), EXPECTED_SEVERE_SUBMENU_DESCRIPTION,
 				"\nIssue----->Severe Submenu description not as expected\n");
+		
 		softAssert.assertEquals(navBar.getForecastSubmenuDescription(), EXPECTED_FORECAST_SUBMENU_DESCRIPTION,
 				"\nIssue---->Forecast Submenu description not as expected\n");
 		
-		//verify satellite image, map title and description and URL of mapimage, maptitle, mapdescription
+		/************************* verify satellite image, map title and description and URL of mapimage, maptitle, mapdescription *************************/
 		navBar.verifySatelliteImageTitleDescription();
 		softAssert.assertEquals(navBar.strMapTitle, EXPECTED_SATELLITEMAP_TITLE,
 				"\nIssue---->Satellite title not as expected\n");
+		
 		softAssert.assertEquals(navBar.strSatelliteMapDescription, EXPECTED_SATELLITEMAP_DESCRIPTION,
 				"\nIssue---->Satellite map description not as expected\n");
-        softAssert.assertEquals(navBar.strMapUrl, EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL,
+        
+		softAssert.assertEquals(navBar.strMapUrl, EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL,
         		"\nIssue----->Satellite map url not as expected\n");
-        softAssert.assertEquals(navBar.strMapTitleUrl, EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL,
+        
+		softAssert.assertEquals(navBar.strMapTitleUrl, EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL,
         		"\nIssue---->Satellite Map Title URL not as expected\n");
-        softAssert.assertEquals(navBar.strMapDescriptionUrl, EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL,
+        
+		softAssert.assertEquals(navBar.strMapDescriptionUrl, EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL,
         		"\nSatellite Map description not as expected\n");
 		
 		//verify the url's of radarmaps submenu under radar and maps
@@ -121,6 +138,12 @@ public class RW_T2239_VerifyAllSubmenuDescriptionsUnderRadarMapsAndURL extends A
 		navBar.navigateToRadar();
 		softAssert.assertEquals(getDriver().getCurrentUrl(), RADAR_URL,
 				"\nIssue---->Radar URL not as expected\n");
+		
+		//verify the url's of current conditions submenu under radar and maps
+				navBar.mouseHoverOnRadarAndMaps();
+				navBar.navigateToCurrentConditions();
+				softAssert.assertEquals(getDriver().getCurrentUrl(), CURRENT_CONDITIONS_URL,
+						"\nIssue---->Radar URL not as expected\n");
 		
 		//verify the url's of severe submenu under radar and maps
 		navBar.mouseHoverOnRadarAndMaps();

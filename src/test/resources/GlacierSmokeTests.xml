@@ -19,6 +19,16 @@
 				name="com.accuweather.glacier.www.SmokeTests.RW_T2505CenterWell2_API_Validation" />
 			<class 
 				name="com.accuweather.glacier.www.SmokeTests.RW_T2208RightRails_Validation" />
+			<class
+				name="com.accuweather.glacier.www.SmokeTests.RW_T2238_VerifyLogoNavigationMenusGearIcon" />
+			<class
+				name="com.accuweather.glacier.www.SmokeTests.RW_T2239_VerifyAllSubmenuDescriptionsUnderRadarMapsAndURL" />
+			<class 
+				name ="com.accuweather.glacier.www.SmokeTests.RW_T2266_VerifyThumbnailDateArticleTitleUnderNews" />
+			<class
+				name ="com.accuweather.glacier.www.SmokeTests.RW_T2267_VerifyThumbnailDateArticleTitleUnderVideo" />
+			<class 
+				name ="com.accuweather.glacier.www.SmokeTests.RW_T2268_VerifyThumbnailDateArticleTitleUnderSeverWeather" />
 			<class 
 				name ="com.accuweather.glacier.www.Footer.Test_LegalFooter" />
 			<class 
