@@ -20,16 +20,18 @@ import com.chameleon.utils.Sleeper;
  
 public class NavigationBar extends BasePage
 {
-    private By byLogo = By.cssSelector("div > div.main-menu > div > div > a");
-    //private By byRadarMaps = By.id("navRadar");
-    //private By byRadarMaps = By.xpath("//li[contains(@id,'navRadar')]/a/span");
+    private By byAccuWeatherLogo = By.cssSelector("div.main-menu > div > div > a");
     private By byMegaMenu = By.cssSelector("div.main-menu-content");
-    private By byRadarMaps = By.cssSelector("div.main-menu > ul > li:nth-child(1)");
-    private By byMaps = By.cssSelector("div.main-menu > ul > li:nth-child(1)");
-    private By byNews = By.cssSelector("div.main-menu > ul > li:nth-child(2)");
-    private By byVideo = By.cssSelector("div.main-menu > ul > li:nth-child(3)");
-    private By bySevereWeather = By.cssSelector("div.main-menu > ul > li:nth-child(4)");
-    private By byMore = By.cssSelector("div.main-menu > ul > li:nth-child(5)");
+    private By byRadar = By.xpath("//*[text()='Radar' and contains(@href,'weather-radar']");
+    
+    /********************************* Universal Navigation Menu Items ***************************************/
+    private By byRadarMaps 		= By.cssSelector("div.main-menu > ul > li:nth-child(1)");
+    private By byNews 			= By.cssSelector("div.main-menu > ul > li:nth-child(2)");
+    private By byVideo 			= By.cssSelector("div.main-menu > ul > li:nth-child(3)");
+    private By bySevereWeather 	= By.cssSelector("div.main-menu > ul > li:nth-child(4)");
+    private By byMore 			= By.cssSelector("div.main-menu > ul > li:nth-child(5)");
+    
+    /******************************** Settings Items ********************************************************/
     private By bySettingIcon = By.cssSelector("div.settings-button > svg.icon-settings");
     private By bySettingCountry = By.cssSelector("div.settings-wrap > div.dropdown-select.fade-in-left > div.dropdown-select-wrapper > div.select-title");
     private By bySettingLanguage = By.cssSelector("div.settings-wrap > div.fade-in-left:nth-of-type(2) > div > div");
@@ -63,11 +65,31 @@ public class NavigationBar extends BasePage
     private By byTopNavCityList = By.cssSelector("div.mega-menu-search > div.content-column > a.recent-location-link");
     //private By bySuperSearchCityName = By.xpath("//nav[contains(@class,'header-refresh ')]/div[5]/div/div[1]/ul/li[1]/a[contains(@href,'select-city')]");
     private By bySuperSearchCityName = By.xpath("//body[contains(@id,'home')]/nav/div[5]/div/div[1]/ul/li/a");
-    private By byRadarAndMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(1) > a");
-    private By byRadarSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(2) > a");
-    private By bySevereSubMenu = By.cssSelector("div > div.mega-menu > div > div:nth-child(3) > a > h4");
-    private By bySatelliteMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(4) > a");
-    private By byForecastMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(5) > a");
+    //private By byRadarAndMapsSubMenu = By.cssSelector("div.mega-menu > div > div:nth-child(1) > a");
+    
+    /************************************** Radar & Maps Sub Menus ********************************************************/
+    private By byRadarAndMapsSubMenu		= By.cssSelector("div.mega-menu-content-cta > div > a > h4");
+    private By byRadarSubMenu 				= By.cssSelector("div.mega-menu-content-links > div:nth-child(1) > a > h4");
+    private By bySatelliteMapsSubMenu 		= By.cssSelector("div.mega-menu-content-links > div:nth-child(2) > a > h4");
+    private By byCurrentConditionsSubMenu 	= By.cssSelector("div.mega-menu-content-links > div:nth-child(3) > a > h4");
+    private By bySevereSubMenu 				= By.cssSelector("div.mega-menu-content-links > div:nth-child(4) > a > h4");
+    private By byForecastMapsSubMenu 		= By.cssSelector("div.mega-menu-content-links > div:nth-child(5) > a > h4");
+    
+    /************************************* Description of Radar & Maps Sub Menu ******************************************/
+    private By byRadarMapsSubMenuDescription 			= By.cssSelector("div.mega-menu-content-cta > div > p");
+    private By byRadarSubMenuDescription 				= By.cssSelector("div.mega-menu-content-links > div:nth-child(1) > p");
+    private By bySatelliteSubMenuDescription 			= By.cssSelector("div.mega-menu-content-links > div:nth-child(2) > p");
+    private By byCurrentConditionsSubMenuDescription 	= By.cssSelector("div.mega-menu-content-links > div:nth-child(3) > p");
+    private By bySevereSubMenuDescription 				= By.cssSelector("div.mega-menu-content-links > div:nth-child(4) > p");
+    private By byForecastSubMenuDescription 			= By.cssSelector("div.mega-menu-content-links > div:nth-child(5) > p");
+    private By bySatelliteSubMenuMapTitle 				= By.cssSelector("div.mega-menu-content-media > a > figure > p");
+    private By bySatelliteSubMenuMapDescription 		= By.cssSelector("div.mega-menu-content-media > a > figure > figcaption");
+    private By bySatelliteImageSubMenu 					= By.cssSelector("div.mega-menu-content-media > a > figure > img");
+    
+    private By byDateUnderNewsCategory = By.cssSelector("div > div.mega-menu-item.mega-menu-item-media.fade-in-left > div > a > figure > p");
+    private By byMapDescriptionUnderNews = By.cssSelector("div > div.mega-menu-item.mega-menu-item-media.fade-in-left > div > a > figure > figcaption");
+    
+    
     private By byMainMenuDescriptionLink = By.cssSelector("a > figure > figcaption");
     //private By byWatchNewsSubMenu = By.cssSelector("div.mega-menu-item.mega-menu-item-cta.fade-in-left > a:nth-child(3)");
     private By byWatchNewsSubMenu = By.cssSelector("div.mega-menu-content > div.mega-menu-item.mega-menu-item-cta.fade-in-left > a.button-cta");
@@ -143,37 +165,29 @@ public class NavigationBar extends BasePage
     public static String strMapTitleUrl;
     public static String strMapDescriptionUrl;
    
-    //under News category   
-       public static String strMapDescriptionUnderNews;
-       public static String strDateUnderNews;
-       private By byThumbnailUnderNews = By.xpath("//div[@class='zone-navigationNews']/a/figure/img");
-    private By byDateUnderNews = By.xpath("//div[@class='zone-navigationNews']/a/figure/p");
-    private By byArticleTitleUnderNews = By.xpath("//div[@class='zone-navigationNews']/a/figure/figcaption");
-      
-       //under severe weather category
-       private By byThumbnailUnderSevereWeather = By.xpath("//div[@class='zone-navigationSevere']/a/figure/img");
+    /**************************** News Items ***************************************************/
+    public static String strMapDescriptionUnderNews;
+    public static String strDateUnderNews;
+    
+    private By byThumbnailUnderNews 	= By.cssSelector("div.mega-menu-content-media > div > a > figure > img");
+    private By byNewsArticleDate 		= By.cssSelector("div.mega-menu-content-media > div > a > figure > p");
+    private By byArticleTitleUnderNews 	= By.cssSelector("div.mega-menu-content-media > div > a > figure > figcaption");
+  
+    /**************************** Video Items ************************************/
+    private By byThumbnailUnderVideo = By.xpath("//div[@class='zone-navigationVideo']/a/figure/img");
+    private By byDurationUnderVideo = By.xpath("//div[@class='zone-navigationVideo']/a/figure/p");
+    private By byArticleTitleUnderVideo = By.xpath("//div[@class='zone-navigationVideo']/a/figure/figcaption");
+    
+    /************************** Severe Weather Items ***************************/
+    private By byThumbnailUnderSevereWeather = By.xpath("//div[@class='zone-navigationSevere']/a/figure/img");
     private By byDateUnderSevereWeather = By.xpath("//div[@class='zone-navigationSevere']/a/figure/p");
     private By byArticleTitleUnderSevereWeather = By.xpath("//div[@class='zone-navigationSevere']/a/figure/figcaption");
       
-  //under video category
-       private By byThumbnailUnderVideo = By.xpath("//div[@class='zone-navigationVideo']/a/figure/img");
-    private By byDurationUnderVideo = By.xpath("//div[@class='zone-navigationVideo']/a/figure/p");
-    private By byArticleTitleUnderVideo = By.xpath("//div[@class='zone-navigationVideo']/a/figure/figcaption");
+  
         
-       //description
-    private By byRadarMapsSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(1) > p");
-    private By byRadarSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(2) > p");
-    private By bySevereSubMenuDescription = By.cssSelector("div > div.mega-menu > div > div:nth-child(3) > p");
-    private By bySatelliteSubMenuDescription = By.cssSelector("div.mega-menu > div.mega-menu-content > div:nth-child(4) > p");
-    private By byForecastSubMenuDescription = By.cssSelector("div.mega-menu-content > div:nth-child(5) > p");
-    private By bySatelliteSubMenuMapTitle = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > p");
-    private By bySatelliteSubMenuMapDescription = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > figcaption");
-    private By byDateUnderNewsCategory = By.cssSelector("div > div.mega-menu-item.mega-menu-item-media.fade-in-left > div > a > figure > p");
-    private By byMapDescriptionUnderNews = By.cssSelector("div > div.mega-menu-item.mega-menu-item-media.fade-in-left > div > a > figure > figcaption");
-    private By bySatelliteImageSubMenu = By.cssSelector("div.mega-menu-content > div:nth-child(6) > a  > figure > img");
    
     public void navigateToHome() {
-        clickVisibleElement(byLogo);
+        clickVisibleElement(byAccuWeatherLogo);
     }
  
     public void navigateToRadarAndMaps() {
@@ -210,9 +224,16 @@ public class NavigationBar extends BasePage
     Sleeper.sleep(2);
     //clickVisibleElement(byRadarSubMenu);
     }
+    
+  //click radar submenu under radar & maps
+    public void navigateToCurrentConditions()
+    {
+    getDriver().findElement(byCurrentConditionsSubMenu).click();
+    Sleeper.sleep(2);
+    }
  
     public void navigateToHomePageByLogo() {
-        getDriver().findElement(byLogo).jsClick();
+        getDriver().findElement(byAccuWeatherLogo).jsClick();
         Sleeper.sleep(3);
         //clickVisibleElement(byRadarSubMenu);
         }
@@ -442,7 +463,7 @@ public class NavigationBar extends BasePage
  
     public void mouseHoverOnAWLogo() {
        WebPageLoaded.isDomInteractive();
-        WebElement radarandmaps = getDriver().findElement(byLogo);
+        WebElement radarandmaps = getDriver().findElement(byAccuWeatherLogo);
         radarandmaps.syncVisible(15);
         radarandmaps.hover();
     }
@@ -501,14 +522,16 @@ public class NavigationBar extends BasePage
    }
    
   
-    public void mouseHoverOnMaps() {
-        WebPageLoaded.isDomInteractive();
-        WebElement maps = getDriver().findElement(byMaps);
-        maps.syncVisible(20);
-        Sleeper.sleep(4);
-        maps.hover();
-        Sleeper.sleep(3);
-    }
+	
+	  public void mouseHoverOnMaps() {
+	  WebPageLoaded.isDomInteractive();
+	  WebElement maps = getDriver().findElement(byRadarMaps);
+	  maps.syncVisible(20);
+	  Sleeper.sleep(4);
+	  maps.hover();
+	  Sleeper.sleep(3);
+	  }
+	 
   
     //Maps categories - Maps Submenu
     public boolean isMapsSubMenuDisplayed() {
@@ -545,7 +568,7 @@ public class NavigationBar extends BasePage
  
         public boolean isAWLogoDisplayed() {
              WebPageLoaded.isDomInteractive();
-            WebElement awlogo = getDriver().findElement(byLogo);
+            WebElement awlogo = getDriver().findElement(byAccuWeatherLogo);
             awlogo.syncVisible(15);
             return awlogo.isDisplayed();            
         }
@@ -1315,6 +1338,19 @@ public class NavigationBar extends BasePage
              submenuRadarDescription.syncVisible(30);
              return submenuRadarDescription.getText();    
        }
+       
+       /**
+        * Method to get the description of Current conditions submenu.
+        * @author Sowmiya
+        * @return - Boolean value - "true if Radar submenu contains description on city forecast page"
+        * */
+       public String getCurrentConditionsSubmenuDescription()
+       {
+             WebPageLoaded.isDomInteractive();
+             WebElement currentConditionsSubMenuDescription = getDriver().findElement(byCurrentConditionsSubMenuDescription);
+             currentConditionsSubMenuDescription.syncVisible(30);
+             return currentConditionsSubMenuDescription.getText();    
+       }
  
        /**
         * Method  to get the description of Severe submenu.
@@ -1494,7 +1530,7 @@ public class NavigationBar extends BasePage
        public String getDateBelowThumbnailUnderNews()
        {
              //get date under news
-             WebElement strDateUnderNews = getDriver().findElement(byDateUnderNews);
+             WebElement strDateUnderNews = getDriver().findElement(byNewsArticleDate);
              strDateUnderNews.syncVisible(30);
              return strDateUnderNews.getText();    
        }

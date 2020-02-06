@@ -10,7 +10,7 @@
 	<parameter name="operatingSystem" value="WINDOWS" />
 	<parameter name="logLevel" value="3" />
 
-	<test name="Glacier Desktop Web Smoke Test - Chrome">
+	<test name="Glacier Desktop Web Smoke Test QA - Chrome">
 		<parameter name="browserUnderTest" value="Chrome" />
 		<classes>
 			<class
@@ -19,13 +19,13 @@
 				name="com.accuweather.glacier.www.SmokeTests.RW_T2505CenterWell2_API_Validation" />
 			<class 
 				name="com.accuweather.glacier.www.SmokeTests.RW_T2208RightRails_Validation" />
-			<class 
+			<class
 				name="com.accuweather.glacier.www.SmokeTests.RW_T2238_VerifyLogoNavigationMenusGearIcon" />
-			<class 
+			<class
 				name="com.accuweather.glacier.www.SmokeTests.RW_T2239_VerifyAllSubmenuDescriptionsUnderRadarMapsAndURL" />
 			<class 
 				name ="com.accuweather.glacier.www.SmokeTests.RW_T2266_VerifyThumbnailDateArticleTitleUnderNews" />
-			<class 
+			<class
 				name ="com.accuweather.glacier.www.SmokeTests.RW_T2267_VerifyThumbnailDateArticleTitleUnderVideo" />
 			<class 
 				name ="com.accuweather.glacier.www.SmokeTests.RW_T2268_VerifyThumbnailDateArticleTitleUnderSeverWeather" />
