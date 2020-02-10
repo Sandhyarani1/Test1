@@ -56,17 +56,17 @@ public class RW_T2238_VerifyLogoNavigationMenusGearIcon extends AccuWeatherBaseT
 		testStart("Verify accuweatherlogo, universal navigation menus and gear icon");
 		
 		//Verifying the presence of accuweather logo information
-		softAssert.assertTrue(navBar.isAWLogoDisplayed());
+		softAssert.assertTrue(navBar.isAccuWeatherLogoDisplayed());
 		
 		//Verifying the universal navigation menu appears 
-		softAssert.assertTrue(navBar.isRadarAndMapsDisplayed());
-		softAssert.assertTrue(navBar.isNewsDisplayed());
-		softAssert.assertTrue(navBar.isVideoDisplayed());
-		softAssert.assertTrue(navBar.isSevereWeatherDisplayed());
-		softAssert.assertTrue(navBar.isMoreDisplayed());
+		softAssert.assertTrue(navBar.isRadarAndMapsTabDisplayed());
+		softAssert.assertTrue(navBar.isNewsTabDisplayed());
+		softAssert.assertTrue(navBar.isVideoTabDisplayed());
+		softAssert.assertTrue(navBar.isSevereWeatherTabDisplayed());
+		softAssert.assertTrue(navBar.isMoreTabDisplayed());
 		
 		//Verifying a gear icon is present
-		softAssert.assertTrue(navBar.isGearIconDisplayed());
+		softAssert.assertTrue(navBar.isSettingIconDisplayed());
 
 		softAssert.assertAll();
 	}

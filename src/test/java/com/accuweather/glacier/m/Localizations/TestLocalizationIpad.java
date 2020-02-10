@@ -48,7 +48,7 @@ import com.accuweather.glacier.www.pages.LandingPage;
 			testStart("Validate maps categories on the city forecast page");
 			landingPage.enterZipcodeInSearchField(location);
 			landingPage.clickOnZipcodeSearchIcon();
-			navBar.mouseHoverOnMaps();
+			navBar.hoverOnRadarAndMaps();
 			waitUntilElementIsDisplayedOrClickable();
 			try
 			{
@@ -68,7 +68,7 @@ import com.accuweather.glacier.www.pages.LandingPage;
 			testStart("Validate Maps submenu description");
 			landingPage.enterZipcodeInSearchField(location);
 			landingPage.clickOnZipcodeSearchIcon();
-			navBar.mouseHoverOnMaps();
+			navBar.hoverOnRadarAndMaps();
 			waitUntilElementIsDisplayedOrClickable();
 			try
 			{
@@ -87,10 +87,9 @@ import com.accuweather.glacier.www.pages.LandingPage;
 			testStart("Validate the URL of Maps submenu page");
 			landingPage.enterZipcodeInSearchField(location);
 			landingPage.clickOnZipcodeSearchIcon();
-			navBar.mouseHoverOnMaps();
+			navBar.hoverOnRadarAndMaps();
 			waitUntilElementIsDisplayedOrClickable();
-			navBar.isMapsSubMenuDisplayed();
-			navBar.clickOnMapsSubMenu();
+			navBar.navigateToRadarAndMapsSubMenu();
 			waitUntilWindowExistsWithTitle(submenuTitle);
 			try
 			{
@@ -109,7 +108,7 @@ import com.accuweather.glacier.www.pages.LandingPage;
 			testStart("Validate Satellite submenu description");
 			landingPage.enterZipcodeInSearchField(location);
 			landingPage.clickOnZipcodeSearchIcon();
-			navBar.mouseHoverOnMaps();
+			navBar.hoverOnRadarAndMaps();
 			waitUntilElementIsDisplayedOrClickable();
 			try
 			{
@@ -128,10 +127,10 @@ import com.accuweather.glacier.www.pages.LandingPage;
 			testStart("Validate the URL of Satellite submenu page");
 			landingPage.enterZipcodeInSearchField(location);
 			landingPage.clickOnZipcodeSearchIcon();
-			navBar.mouseHoverOnMaps();
+			navBar.hoverOnRadarAndMaps();
 			waitUntilElementIsDisplayedOrClickable();
 			navBar.isSatelliteSubMenuDisplayed();
-			navBar.clickOnSatelliteSubMenu();
+			navBar.navigateToSatellitePage();
 			
 			waitUntilWindowExistsWithTitle(submenuTitle);
 			try
@@ -150,7 +149,7 @@ import com.accuweather.glacier.www.pages.LandingPage;
 		{
 			testStart("Verify the Severe submenu is present under Maps");
 			landingPage.enterZipcodeInSearchField("Munich, Germany");
-			navBar.mouseHoverOnRadarAndMaps();
+			navBar.hoverOnRadarAndMaps();
 			waitUntilElementIsDisplayedOrClickable();
 			try
 			{
@@ -169,7 +168,7 @@ import com.accuweather.glacier.www.pages.LandingPage;
 			testStart("Validate Severe submenu description");
 			landingPage.enterZipcodeInSearchField("Rio de Janeiro, Brazil");
 			landingPage.clickOnZipcodeSearchIcon();
-			navBar.mouseHoverOnMaps();
+			navBar.hoverOnRadarAndMaps();
 			waitUntilElementIsDisplayedOrClickable();
 			try
 			{
@@ -188,10 +187,10 @@ import com.accuweather.glacier.www.pages.LandingPage;
 			testStart("Validate the URL of Severe submenu under Maps");
 			landingPage.enterZipcodeInSearchField("Rio de Janeiro, Brazil");
 			landingPage.clickOnZipcodeSearchIcon();
-			navBar.mouseHoverOnMaps();
+			navBar.hoverOnRadarAndMaps();
 			waitUntilElementIsDisplayedOrClickable();
 			navBar.isSeverSubMenuDisplayed();
-			navBar.navigateToSevereTab();
+			navBar.navigateToSeverWeatherPage();
 			
 			waitUntilWindowExistsWithTitle(submenuTitle);
 			try
@@ -211,7 +210,7 @@ import com.accuweather.glacier.www.pages.LandingPage;
 			testStart("Locate Satellite under Maps and verify description below the Maps");
 			landingPage.enterZipcodeInSearchField("Rio de Janeiro, Brazil");
 			landingPage.clickOnZipcodeSearchIcon();
-			navBar.mouseHoverOnMaps();
+			navBar.hoverOnRadarAndMaps();
 			waitUntilElementIsDisplayedOrClickable();
 			
 			waitUntilWindowExistsWithTitle(submenuTitle);
@@ -232,7 +231,7 @@ import com.accuweather.glacier.www.pages.LandingPage;
 			testStart("Locate Satellite under Maps and verify the title of the map");
 			landingPage.enterZipcodeInSearchField("Rio de Janeiro, Brazil");
 			landingPage.clickOnZipcodeSearchIcon();
-			navBar.mouseHoverOnMaps();
+			navBar.hoverOnRadarAndMaps();
 			waitUntilElementIsDisplayedOrClickable();
 			
 			waitUntilWindowExistsWithTitle(submenuTitle);
@@ -253,7 +252,7 @@ import com.accuweather.glacier.www.pages.LandingPage;
 			testStart("Click on the satellite image under Maps and Validate the URL");
 			landingPage.enterZipcodeInSearchField("Rio de Janeiro, Brazil");
 			landingPage.clickOnZipcodeSearchIcon();
-			navBar.mouseHoverOnMaps();
+			navBar.hoverOnRadarAndMaps();
 			waitUntilElementIsDisplayedOrClickable();
 			localization.clickSatelliteImage();
 			waitUntilWindowExistsWithTitle(submenuTitle);

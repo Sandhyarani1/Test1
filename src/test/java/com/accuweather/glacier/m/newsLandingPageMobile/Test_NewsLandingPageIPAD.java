@@ -21,10 +21,9 @@ public class Test_NewsLandingPageIPAD extends AccuWeatherBaseTest
 	public void RW_T420_NewsLandingPageLoadsSuccessfully_verifyWeatherNewsPage()
 	{
 		testStart("User should be redirected to Daily forecast page when clicked on Daily tab");
-		navigationbar.mouseHoverOnNews();
+		navigationbar.hoverOnNews();
 		logInfo("Hovered mouse on news Main Tab");
-		navigationbar.isWeatherNewsSubMenuDisplayed();
-		navigationbar.navigateToNewsPage();
+		navigationbar.navigateToNewsSubMenu();
 		Sleeper.sleep(2);
 		String actualWeatherNewsURL = getDriver().getCurrentUrl();
 		Assert.assertEquals(actualWeatherNewsURL, EXPECTED_WEATHERNEWSPAGE_URL);	
@@ -34,9 +33,8 @@ public class Test_NewsLandingPageIPAD extends AccuWeatherBaseTest
 	public void RW_T421_Newstabhighlightedonsecondarynavigation_checkForSecondaryNavigationMenus()
 	{
 		testStart("Check for secondary navigation menus News, Videos, Blogs, Personalities");
-		navigationbar.mouseHoverOnNews();
-		navigationbar.isWeatherNewsSubMenuDisplayed();
-		navigationbar.navigateToNewsPage();
+		navigationbar.hoverOnNews();
+		navigationbar.navigateToNewsSubMenu();
 		Sleeper.sleep(2);
 		Assert.assertTrue(newsWeatherPage.checkSecondaryNavigationMenu());
 	}
@@ -45,9 +43,8 @@ public class Test_NewsLandingPageIPAD extends AccuWeatherBaseTest
 	public void RW_T421_Newstabhighlightedonsecondarynavigation_checkNewsTabIsHighlightedInColor()
 	{
 		testStart("Verify news tab is higlighted in orange color");
-		navigationbar.mouseHoverOnNews();
-		navigationbar.isWeatherNewsSubMenuDisplayed();
-		navigationbar.navigateToNewsPage();
+		navigationbar.hoverOnNews();
+		navigationbar.navigateToNewsSubMenu();
 		Sleeper.sleep(2);
 		String actualNewsTabColor = newsWeatherPage.checkNewsTabIsHighkightedInColor();
 		Assert.assertEquals(actualNewsTabColor, EXPECTED_NEWSTAB_COLOR);
@@ -57,9 +54,9 @@ public class Test_NewsLandingPageIPAD extends AccuWeatherBaseTest
 	public void RW_T424_RightRailOrganismsBelowTopRightAd_locateRightRailOrganism()
 	{
 		testStart("Verify rail organism is present or not");
-		navigationbar.mouseHoverOnNews();
-		navigationbar.isWeatherNewsSubMenuDisplayed();
-		navigationbar.navigateToNewsPage();
+		navigationbar.hoverOnNews();
+		
+		navigationbar.navigateToNewsSubMenu();
 	    newsWeatherPage.locateRightRailOrganism();
 	}
 	
@@ -67,9 +64,8 @@ public class Test_NewsLandingPageIPAD extends AccuWeatherBaseTest
 	public void RW_T422_CenterWellOrganismsContentTypeLatestNewsInBold_verifyLatestNewsPresent()
 	{
 		testStart("Verify latest news is present below secondary navigation menu");
-		navigationbar.mouseHoverOnNews();
-		navigationbar.isWeatherNewsSubMenuDisplayed();
-		navigationbar.navigateToNewsPage();
+		navigationbar.hoverOnNews();
+		navigationbar.navigateToNewsSubMenu();
 	    newsWeatherPage.verifyLatestNewsPresent();
 	}
 
@@ -77,9 +73,8 @@ public class Test_NewsLandingPageIPAD extends AccuWeatherBaseTest
 	@Test(priority = 6, enabled = false)
 	public void RW_T1405_CenterWellOrganismsContentIsDisplayed() {
 		testStart("Verify Center Well Organisms Content Is Displayed");
-		navigationbar.mouseHoverOnNews();
-		navigationbar.isWeatherNewsSubMenuDisplayed();
-		navigationbar.navigateToNewsPage();
+		navigationbar.hoverOnNews();
+		navigationbar.navigateToNewsSubMenu();
 		newsWeatherPage.verifyCenterWellOrganismIsDisplayed();
 	}
 }

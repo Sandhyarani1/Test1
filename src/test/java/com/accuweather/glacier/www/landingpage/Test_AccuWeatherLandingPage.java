@@ -64,7 +64,7 @@ public class Test_AccuWeatherLandingPage extends AccuWeatherBaseTest {
 	  landingpage.clickOnZipcodeSearchIcon();
 	  waitUntilElementIsDisplayedOrClickable();
 	  waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-	  navBar.navigateToHome(); WebPageLoaded.isDomInteractive(5000);
+	  navBar.clickAccuWeatherLogo(); WebPageLoaded.isDomInteractive(5000);
 	  landingpage.isRecentLocationDisplayed();
 	  landingpage.isSecondLocationDisplayed();
 	  waitUntilElementIsDisplayedOrClickable();
@@ -83,12 +83,12 @@ public class Test_AccuWeatherLandingPage extends AccuWeatherBaseTest {
 	  landingpage.clickOnZipcodeSearchIcon();
 	  waitUntilElementIsDisplayedOrClickable();
 	  waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-	  navBar.navigateToHome(); WebPageLoaded.isDomInteractive(5000);
+	  navBar.clickAccuWeatherLogo(); WebPageLoaded.isDomInteractive(5000);
 	  landingpage.enterZipcodeInSearchField(zipcode);
 	  landingpage.clickOnZipcodeSearchIcon();
 	  waitUntilElementIsDisplayedOrClickable();
 	  waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-	  navBar.navigateToHome(); WebPageLoaded.isDomInteractive(5000);
+	  navBar.clickAccuWeatherLogo(); WebPageLoaded.isDomInteractive(5000);
 	  landingpage.isRecentLocationDisplayed();
 	  landingpage.isSecondLocationDisplayed();
 	  landingpage.isThirdLocationDisplayed(); expectedLocationSize = 3;

@@ -1,8 +1,6 @@
 package com.accuweather.glacier.www.homePageNonUS;
 import org.testng.Assert;
-import com.chameleon.utils.Sleeper;
 import org.testng.annotations.Test;
-
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.HomePageNonUS;
 import com.accuweather.glacier.www.pages.HomepageBreadcrumbs;
@@ -208,7 +206,7 @@ public class Test_HomePageNonUs extends AccuWeatherBaseTest
 	{
 		testStart("Verify map title is in English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(satelliteCountry);
-		navBar.navigateToHomePageByLogo();
+		navBar.clickAccuWeatherLogo();
 		String actualMapTitle = homePage.verifyMapTitleLanguage();
 		try
 		{
@@ -227,7 +225,7 @@ public class Test_HomePageNonUs extends AccuWeatherBaseTest
 	{
 		testStart("Verify map cta is in English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(satelliteCountry);
-		navBar.navigateToHomePageByLogo();
+		navBar.clickAccuWeatherLogo();
 		String actualMapCTA = homePage.verifyMapCTALanguage();
 		try
 		{
@@ -246,7 +244,7 @@ public class Test_HomePageNonUs extends AccuWeatherBaseTest
 	{
 		testStart("Verify map title is in English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(satelliteRadarCountry);
-		navBar.navigateToHomePageByLogo();
+		navBar.clickAccuWeatherLogo();
 		String actualMapTitle = homePage.verifyMapTitleLanguage();
 		try
 		{
@@ -265,7 +263,7 @@ public class Test_HomePageNonUs extends AccuWeatherBaseTest
 	{
 		testStart("Verify map cta is in English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(satelliteRadarCountry);
-		navBar.navigateToHomePageByLogo();
+		navBar.clickAccuWeatherLogo();
 		String actualMapCTA = homePage.verifyMapCTALanguage();
 		try
 		{
@@ -284,7 +282,7 @@ public class Test_HomePageNonUs extends AccuWeatherBaseTest
 	{
 		testStart("Verify map title is in English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.navigateToHomePageByLogo();
+		navBar.clickAccuWeatherLogo();
 		String actualMapTitle = homePage.verifyMapTitleLanguage();
 		try
 		{
@@ -303,7 +301,7 @@ public class Test_HomePageNonUs extends AccuWeatherBaseTest
 	{
 		testStart("Verify map cta is in English language");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
-		navBar.navigateToHomePageByLogo();
+		navBar.clickAccuWeatherLogo();
 		String actualMapCTA = homePage.verifyMapCTALanguage();
 		try
 		{
@@ -322,7 +320,7 @@ public class Test_HomePageNonUs extends AccuWeatherBaseTest
 	{
 		testStart("International Home page should have list of top 20 cities located under Maps");
 		landingPage.enterZipcodeInSearchFieldAndClick("Salvador, Bahia, BR");
-		navBar.navigateToHomePageByLogo();
+		navBar.clickAccuWeatherLogo();
 		navBar.clickSettingsIcon();
 		homePage.changeLanguage();
 		Assert.assertTrue(homePage.verify20LocationsOfCountry());
