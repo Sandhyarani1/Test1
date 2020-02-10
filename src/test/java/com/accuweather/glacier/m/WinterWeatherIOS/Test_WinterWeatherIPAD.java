@@ -6,7 +6,6 @@ import com.accuweather.glacier.m.AccuWeatherMobileBaseTest;
 import com.accuweather.glacier.m.pages.LandingPageMobile;
 import com.accuweather.glacier.m.pages.WinterWeatherPageIPAD;
 import com.accuweather.glacier.www.pages.NavigationBar;
-import com.accuweather.glacier.www.pages.UniversalFooterPage;
 import com.chameleon.utils.Sleeper;
 
 public class Test_WinterWeatherIPAD extends AccuWeatherMobileBaseTest {
@@ -25,16 +24,16 @@ public class Test_WinterWeatherIPAD extends AccuWeatherMobileBaseTest {
 	@Test(priority = 1, enabled = false)
 	public void RW_T1583_VerifyPageNavigationMenuSevereWeatherAndSubMenuWinterWeather_verifyWinterWeatherPage() {
 		testStart("Validate user successfullly navigated to winter weather page");
-		navigationBar.mouseHoverOnSeverWeather();
-		navigationBar.clickWinterWeatherSubMenu();
+		navigationBar.hoverOnSevereWeather();
+		navigationBar.navigateToWinterWeather();
 		Assert.assertEquals(getDriver().getCurrentUrl(), EXPECTED_WINTERWEATHER_URL);
 	}
 
 	@Test(priority = 2, enabled = false)
 	public void RW_T1588_T1590_VerifyNationalWeatherServiceSnowDepthonWinterWeatherPage_verifyUserSeeNationalWeatherServiceMap() {
 		testStart("Validate user able to see national weather service map");
-		navigationBar.mouseHoverOnSeverWeather();
-		navigationBar.clickWinterWeatherSubMenu();
+		navigationBar.hoverOnSevereWeather();
+		navigationBar.navigateToWinterWeather();
 		Sleeper.sleep(2);
 		String actualTitle = winterWeatherPage.verifyUserSeeNationalWeatherServiceMap();
 		winterWeatherPage.verifyMobilehaveATopAdOnWinterWeatherPage();
@@ -44,8 +43,8 @@ public class Test_WinterWeatherIPAD extends AccuWeatherMobileBaseTest {
 	@Test(priority = 3, enabled = false)
 	public void RW_T1586_VerifyNationalForecastMapModuleOnWinterWeatherHomePage_verifyNationalForecastMap() {
 		testStart("Verify National Forecast Maps module on winter weather home page");
-		navigationBar.mouseHoverOnSeverWeather();
-		navigationBar.clickWinterWeatherSubMenu();
+		navigationBar.hoverOnSevereWeather();
+		navigationBar.navigateToWinterWeather();
 		Sleeper.sleep(2);
 		String actualTitle = winterWeatherPage.verifyNationalForecastMap();
 		Assert.assertEquals(actualTitle, EXPECTED_NATIONAL_FORECAST_MAP_TITLE);
@@ -54,8 +53,8 @@ public class Test_WinterWeatherIPAD extends AccuWeatherMobileBaseTest {
 	@Test(priority = 4, enabled = false)
 	public void RW_T1587_VerifyLocalForecastMapModuleOnWinterWeatherHomePage_verifyLocalForecastMapSearchModule() {
 		testStart("Verify Local Forecast Maps module on winter weather home page");
-		navigationBar.mouseHoverOnSeverWeather();
-		navigationBar.clickWinterWeatherSubMenu();
+		navigationBar.hoverOnSevereWeather();
+		navigationBar.navigateToWinterWeather();
 		Sleeper.sleep(2);
 		Assert.assertEquals(getDriver().getCurrentUrl(), EXPECTED_WINTERWEATHER_URL);
 		String actualTitle = winterWeatherPage.verifyLocalForecastMapSearchModule();
@@ -67,8 +66,8 @@ public class Test_WinterWeatherIPAD extends AccuWeatherMobileBaseTest {
 		testStart("Verify read more button is present in right rail module");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
 		landingPage.clickOnZipcodeSearchIcon();
-		navigationBar.mouseHoverOnSeverWeather();
-		navigationBar.clickWinterWeatherSubMenu();
+		navigationBar.hoverOnSevereWeather();
+		navigationBar.navigateToWinterWeather();
 		Sleeper.sleep(2);
 		Assert.assertTrue(winterWeatherPage.verifyReadMoreButtonPresntInRightRailModule());
 	}
@@ -78,8 +77,8 @@ public class Test_WinterWeatherIPAD extends AccuWeatherMobileBaseTest {
 		testStart("Verify read more button is present in right rail module is higlighted in blue color");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
 		landingPage.clickOnZipcodeSearchIcon();
-		navigationBar.mouseHoverOnSeverWeather();
-		navigationBar.clickWinterWeatherSubMenu();
+		navigationBar.hoverOnSevereWeather();
+		navigationBar.navigateToWinterWeather();
 		Sleeper.sleep(2);
 		String actualColor = winterWeatherPage.verifyReadMoreButtonPresntInRightRailModuleColor();
 		Assert.assertEquals(actualColor, EXPECTED_COLOR);
@@ -88,7 +87,7 @@ public class Test_WinterWeatherIPAD extends AccuWeatherMobileBaseTest {
 	@Test(priority = 7, enabled = false)
 	public void RW_T1597_ValidateWinterWeatherInMegaMenuWintereWeather_verifyWinterWeatherSubmenuDescription() {
 		testStart("Validate Winter Weather in mega menu-: Winter Weather");
-		navigationBar.mouseHoverOnSeverWeather();
+		navigationBar.hoverOnSevereWeather();
 		String actualDescription = winterWeatherPage.verifyWinterWeatherSubmenuDescription();
 		Assert.assertEquals(actualDescription, EXPECTED_WINETERWEAHTER_SUBMENU_DESCRIPTION);
 	}
@@ -96,8 +95,8 @@ public class Test_WinterWeatherIPAD extends AccuWeatherMobileBaseTest {
 	@Test(priority = 8, enabled = false)
 	public void RW_T1597_1596_1585_ValidateWinterWeatherInMegaMenuWintereWeather_verifyWinterWeatherTabIsPresentAndColor() {
 		testStart("Validate Winter Weather in mega menu-: Winter Weather tab and color");
-		navigationBar.mouseHoverOnSeverWeather();
-		navigationBar.clickWinterWeatherSubMenu();
+		navigationBar.hoverOnSevereWeather();
+		navigationBar.navigateToWinterWeather();
 		String actualColor = winterWeatherPage.verifyWinterWeatherTabIsPresentAndColor();
 		Assert.assertEquals(actualColor, EXPECTED_COLOR);
 	}
@@ -105,8 +104,8 @@ public class Test_WinterWeatherIPAD extends AccuWeatherMobileBaseTest {
 	@Test(priority = 9, enabled = false)
 	public void RW_T1572_verifyTertiaryNavigationWinterHomeTabActiveAndWinterPreparednessTabOnWinterWeatherPage_verifyWinterHomeTab() {
 		testStart("Validate Winter Weather in mega menu-: Winter Weather home and color");
-		navigationBar.mouseHoverOnSeverWeather();
-		navigationBar.clickWinterWeatherSubMenu();
+		navigationBar.hoverOnSevereWeather();
+		navigationBar.navigateToWinterWeather();
 		Sleeper.sleep(2);
 		String actualColor = winterWeatherPage.verifyWinterHomeTabIsPresentAndColor();
 		Assert.assertEquals(actualColor, EXPECTED_COLOR);
@@ -116,8 +115,8 @@ public class Test_WinterWeatherIPAD extends AccuWeatherMobileBaseTest {
 	@Test(priority = 10, enabled = false)
 	public void RW_T1584_verifyWinterWeatherFooterForEnglishAndFollowsStandardFooterRules_verifyHeadersUnderCompany() {
 		testStart("Verify headers under company on winter weather page");
-		navigationBar.mouseHoverOnSeverWeather();
-		navigationBar.clickWinterWeatherSubMenu();
+		navigationBar.hoverOnSevereWeather();
+		navigationBar.navigateToWinterWeather();
 		Sleeper.sleep(2);
 		winterWeatherPage.validatelinksforCompanyHeader();
 	}
@@ -125,8 +124,8 @@ public class Test_WinterWeatherIPAD extends AccuWeatherMobileBaseTest {
 	@Test(priority = 11, enabled = false)
 	public void RW_T1584_verifyWinterWeatherFooterForEnglishAndFollowsStandardFooterRules_validatelinksforProductsandServicesHeader() {
 		testStart("Verify headers under company on winter weather page");
-		navigationBar.mouseHoverOnSeverWeather();
-		navigationBar.clickWinterWeatherSubMenu();
+		navigationBar.hoverOnSevereWeather();
+		navigationBar.navigateToWinterWeather();
 		Sleeper.sleep(2);
 		winterWeatherPage.validatelinksforProductsandServicesHeader();
 	}
@@ -134,8 +133,8 @@ public class Test_WinterWeatherIPAD extends AccuWeatherMobileBaseTest {
 	@Test(priority = 12, enabled = false)
 	public void RW_T1584_verifyWinterWeatherFooterForEnglishAndFollowsStandardFooterRules_validatelinksDisplayedunderAppsandDownloads() {
 		testStart("Verify headers under company on winter weather page");
-		navigationBar.mouseHoverOnSeverWeather();
-		navigationBar.clickWinterWeatherSubMenu();
+		navigationBar.hoverOnSevereWeather();
+		navigationBar.navigateToWinterWeather();
 		Sleeper.sleep(2);
 		winterWeatherPage.validatelinksDisplayedunderAppsandDownloads();
 	}
@@ -143,8 +142,8 @@ public class Test_WinterWeatherIPAD extends AccuWeatherMobileBaseTest {
 	@Test(priority = 13, enabled = false)
 	public void RW_T1584_verifyWinterWeatherFooterForEnglishAndFollowsStandardFooterRules_subscriptionServicesContainsLink() {
 		testStart("Verify headers under company on winter weather page");
-		navigationBar.mouseHoverOnSeverWeather();
-		navigationBar.clickWinterWeatherSubMenu();
+		navigationBar.hoverOnSevereWeather();
+		navigationBar.navigateToWinterWeather();
 		Sleeper.sleep(2);
 		winterWeatherPage.subscriptionServicesContainsLink("AccuWeather Premium");
 		winterWeatherPage.subscriptionServicesContainsLink("AccuWeather Professional");

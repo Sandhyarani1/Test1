@@ -91,8 +91,8 @@ public class RW_T2239_VerifyAllSubmenuDescriptionsUnderRadarMapsAndURL extends A
 		landingPage.selectCityFromTheList(location);
 			
 		/**************************** Verifying the description of all sub menu under radar & maps *****************************/
-		navBar.mouseHoverOnRadarAndMaps();
-		softAssert.assertEquals(navBar.getMapsSubmenuDescription(), EXPECTED_RADARMAPS_SUBMENU_DESCRIPTION,
+		navBar.hoverOnRadarAndMaps();
+		softAssert.assertEquals(navBar.getRadarAndMapsSubmenuDescription(), EXPECTED_RADARMAPS_SUBMENU_DESCRIPTION,
 				"\nIssue---->Map Submenu description not as expected\n");
 		
 		softAssert.assertEquals(navBar.getRadarSubmenuDescription(), EXPECTED_RADAR_SUBMENU_DESCRIPTION,
@@ -112,56 +112,38 @@ public class RW_T2239_VerifyAllSubmenuDescriptionsUnderRadarMapsAndURL extends A
 		
 		/************************* verify satellite image, map title and description and URL of mapimage, maptitle, mapdescription *************************/
 		navBar.verifySatelliteImageTitleDescription();
-		softAssert.assertEquals(navBar.strMapTitle, EXPECTED_SATELLITEMAP_TITLE,
+		softAssert.assertEquals(NavigationBar.strMapTitle, EXPECTED_SATELLITEMAP_TITLE,
 				"\nIssue---->Satellite title not as expected\n");
 		
-		softAssert.assertEquals(navBar.strSatelliteMapDescription, EXPECTED_SATELLITEMAP_DESCRIPTION,
+		softAssert.assertEquals(NavigationBar.strSatelliteMapDescription, EXPECTED_SATELLITEMAP_DESCRIPTION,
 				"\nIssue---->Satellite map description not as expected\n");
         
-		softAssert.assertEquals(navBar.strMapUrl, EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL,
+		softAssert.assertEquals(NavigationBar.strMapUrl, EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL,
         		"\nIssue----->Satellite map url not as expected\n");
         
-		softAssert.assertEquals(navBar.strMapTitleUrl, EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL,
+		softAssert.assertEquals(NavigationBar.strMapTitleUrl, EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL,
         		"\nIssue---->Satellite Map Title URL not as expected\n");
         
-		softAssert.assertEquals(navBar.strMapDescriptionUrl, EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL,
+		softAssert.assertEquals(NavigationBar.strMapDescriptionUrl, EXPECTED_RADARMAPS_MAPIMAGETITLEDESCRIPTION_URL,
         		"\nSatellite Map description not as expected\n");
 		
-		//verify the url's of radarmaps submenu under radar and maps
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.navigateToRadarAndMapsUnderRadarMaps();
-		softAssert.assertEquals(getDriver().getCurrentUrl(), RADARMAPS_URL,
+		softAssert.assertEquals(navBar.getRadarAndMapPageURL(), RADARMAPS_URL,
 				"\nIssue---->Radar Maps URL not as expected");
 		
-		//verify the url's of radar submenu under radar and maps
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.navigateToRadar();
-		softAssert.assertEquals(getDriver().getCurrentUrl(), RADAR_URL,
-				"\nIssue---->Radar URL not as expected\n");
+		softAssert.assertEquals(navBar.getRadarPageURL(), RADARMAPS_URL,
+				"\nIssue---->Radar Page URL not as expected");
 		
-		//verify the url's of current conditions submenu under radar and maps
-				navBar.mouseHoverOnRadarAndMaps();
-				navBar.navigateToCurrentConditions();
-				softAssert.assertEquals(getDriver().getCurrentUrl(), CURRENT_CONDITIONS_URL,
-						"\nIssue---->Radar URL not as expected\n");
+		softAssert.assertEquals(navBar.getCurrentConditionsPageURL(), CURRENT_CONDITIONS_URL,
+				"\nIssue---->Current conditions page URL not as expected\n");
 		
-		//verify the url's of severe submenu under radar and maps
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.navigateToSeverWeatherPage();
-		softAssert.assertEquals(getDriver().getCurrentUrl(), SEVERE_URL,
+		softAssert.assertEquals(navBar.getSatellitePageURL(), SATELLITE_URL,
+				"\nIssue---->Satellite URL not as expected\n");
+		
+		softAssert.assertEquals(navBar.getSevereWeatherPageURL(), SEVERE_URL,
 				"\nIssue---->Severe URL not as expected\n");
 		
-		//verify the url's of satellite submenu under radar and maps
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.navigateToSatellitePage();
-		softAssert.assertEquals(getDriver().getCurrentUrl(), SATELLITE_URL,
-				"\nSatellite URL not as expected\n");
-		
-		//verify the url's of forecast submenu under radar and maps
-		navBar.mouseHoverOnRadarAndMaps();
-		navBar.navigateToForeCastPage();
-		softAssert.assertEquals(getDriver().getCurrentUrl(), FORECAST_URL,
-				"\nForecast URL not as expected\n");
+		softAssert.assertEquals(navBar.getForecastPageURL(), FORECAST_URL,
+				"\nIssue---->Forecast URL not as expected\n");
 		
 		softAssert.assertAll();
 	}

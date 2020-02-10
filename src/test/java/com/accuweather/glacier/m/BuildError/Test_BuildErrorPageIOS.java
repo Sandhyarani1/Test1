@@ -53,7 +53,7 @@ public class Test_BuildErrorPageIOS extends AccuWeatherBaseTest {
 		String appendedurl = erropage.addtexttoEndURL();
 		getDriver().navigate().to(appendedurl);
 		Sleeper.sleep(5);
-		navBar.isAWLogoDisplayed();
+		navBar.isAccuWeatherLogoDisplayed();
 		String errorTypeDisplayed = erropage.errortypeDisplayed();
 		Assert.assertEquals(errorTypeDisplayed, expected400ErrorpageType, "Error Type displayed is not matching ");
 	}
@@ -64,7 +64,7 @@ public class Test_BuildErrorPageIOS extends AccuWeatherBaseTest {
 		String appendedurl = erropage.addtexttoEndURL();
 		getDriver().navigate().to(appendedurl);
 		Sleeper.sleep(5);
-		navBar.isAWLogoDisplayed();
+		navBar.isAccuWeatherLogoDisplayed();
 		String errorTextDisplayed = erropage.errorpageTextDisplayed();
 		Assert.assertEquals(errorTextDisplayed, expected400ErrorpageErrorText, "Error Type displayed is not matching ");
 	}
@@ -87,7 +87,7 @@ public class Test_BuildErrorPageIOS extends AccuWeatherBaseTest {
 		String appendedUrl = erropage.addtexttoEndURL();
 		getDriver().navigate().to(appendedUrl);
 		Sleeper.sleep(5);
-		navBar.isAWLogoDisplayed();
+		navBar.isAccuWeatherLogoDisplayed();
 		String actualctatextcolourdisplayed = erropage.CTABacktoAccuweathercolourDisplayed();
 		Assert.assertEquals(actualctatextcolourdisplayed, ORANGE_COLOR,
 				"CTA Text Back to AcuuWeater not displayed in Orange colour");
@@ -99,7 +99,7 @@ public class Test_BuildErrorPageIOS extends AccuWeatherBaseTest {
 		String appendedUrl = erropage.addtexttoEndURL();
 		getDriver().navigate().to(appendedUrl);
 		Sleeper.sleep(5);
-		navBar.isAWLogoDisplayed();
+		navBar.isAccuWeatherLogoDisplayed();
 		Assert.assertTrue(erropage.CTABacktoAccuweatherwithArrowDisplayed());
 	}
 
@@ -109,7 +109,7 @@ public class Test_BuildErrorPageIOS extends AccuWeatherBaseTest {
 		String appendeUrl = erropage.addtexttoEndURL();
 		getDriver().navigate().to(appendeUrl);
 		Sleeper.sleep(5);
-		navBar.isAWLogoDisplayed();
+		navBar.isAccuWeatherLogoDisplayed();
 		erropage.CTABacktoAccuweatherisClicked();
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedAccuweatherUrl,
 				"User not redirected to Acuweather Home page");

@@ -1,7 +1,7 @@
 package com.accuweather.glacier.www.forecastMap;
 
 import org.testng.annotations.Test;
-
+import org.testng.asserts.SoftAssert;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.CityRadarPage;
 import com.accuweather.glacier.www.pages.ForeCastWeatherPage;
@@ -22,69 +22,70 @@ public class Test_ForecastMap extends AccuWeatherBaseTest {
 	private CityRadarPage cityRadarPage = new CityRadarPage();
 	private NavigationBar navigationBar = new NavigationBar();
     private ForeCastWeatherPage foreCastWeatherPage = new ForeCastWeatherPage();
+    SoftAssert softAssert;
 	
 	@Test(priority=1)
 	public void RW_T396_WeatherForecastMapsPage_verifyWeatherForecastMapsPageLoads()
 	{
+		softAssert = new SoftAssert();
 		testStart("Validate weather forecast maps page loads successfully");
-		navigationBar.mouseHoverOnRadarAndMaps();
-		navigationBar.isForecastMapsSubMenuDisplayed();
+		navigationBar.hoverOnRadarAndMaps();
+		navigationBar.isForecastSubMenuDisplayed();
 		navigationBar.navigateToForeCastPage();
 		String actualForecastURL = getDriver().getCurrentUrl();
-		Assert.assertEquals(actualForecastURL, EXPECTED_FORECAST_PAGE_URL);
+		softAssert.assertEquals(actualForecastURL, EXPECTED_FORECAST_PAGE_URL);
+		
+		softAssert.assertAll();
 	}
 	
 	@Test(priority=2)
 	public void RW_T397_ForecastTabHighlightedOnForecasrPage_verifyForecastTabIsHighlighted()
 	{
 		testStart("Validate forecast tab is highlighted in froecast page");
-		navigationBar.mouseHoverOnRadarAndMaps();
-		navigationBar.isForecastMapsSubMenuDisplayed();
+		navigationBar.hoverOnRadarAndMaps();
+		navigationBar.isForecastSubMenuDisplayed();
 		navigationBar.navigateToForeCastPage();
 		String actualcolor = foreCastWeatherPage.verifyForecastTabIsHiglighted();
-		Assert.assertEquals(actualcolor, EXPECTED_FORECAST_TAB_COLOR);
+		softAssert.assertEquals(actualcolor, EXPECTED_FORECAST_TAB_COLOR);
+		
+		softAssert.assertAll();
 	}
     
     @Test(priority=3)
 	public void RW_T398_TitleOfTheMapOnForecastPage_verifyTitleOfTheMap()
 	{
 		testStart("Validate title of the map on froecast page");
-		navigationBar.mouseHoverOnRadarAndMaps();
-		navigationBar.isForecastMapsSubMenuDisplayed();
+		navigationBar.hoverOnRadarAndMaps();
+		navigationBar.isForecastSubMenuDisplayed();
 		navigationBar.navigateToForeCastPage();
 		String actualTitleOfMap = foreCastWeatherPage.verifyTitleOfTheMap();
-		Assert.assertEquals(actualTitleOfMap, EXPECTED_MAP_TITLE.toUpperCase());
+		softAssert.assertEquals(actualTitleOfMap, EXPECTED_MAP_TITLE.toUpperCase());
+		
+		softAssert.assertAll();
 	}
 
     @Test(priority=4)
  	public void RW_T399_ToolTipOnRightCornerOfMapHeader_verifyToolTip()
  	{
  		testStart("Verify tool tip on the right corner of the map header");
- 		navigationBar.mouseHoverOnRadarAndMaps();
- 		navigationBar.isForecastMapsSubMenuDisplayed();
+ 		navigationBar.hoverOnRadarAndMaps();
+		navigationBar.isForecastSubMenuDisplayed();
  		navigationBar.navigateToForeCastPage();
  		String actualTooltipDescription = cityRadarPage.verifyTooltipDescription();
- 		Assert.assertEquals(actualTooltipDescription, EXPECTED_TOOLTIP_DESCRIPTION.toUpperCase());
- 	}
-
-
-    @Test(priority=5)
- 	public void RW_T399_ToolTipOnRightCornerOfMapHeader_verifyToolTipClosed()
- 	{
- 		testStart("Verify tool tip is closed");
- 		navigationBar.mouseHoverOnRadarAndMaps();
- 		navigationBar.isForecastMapsSubMenuDisplayed();
- 		navigationBar.navigateToForeCastPage();
+ 		softAssert.assertEquals(actualTooltipDescription, EXPECTED_TOOLTIP_DESCRIPTION.toUpperCase());
+ 		
  		String actualTooltipColor = cityRadarPage.verifyToolTipClosed();
- 		Assert.assertEquals(actualTooltipColor, EXPECTED_TOOLTIP_COLOR);
+ 		softAssert.assertEquals(actualTooltipColor, EXPECTED_TOOLTIP_COLOR);
+ 		
+ 		softAssert.assertAll();
  	}
     
     @Test(priority=6)
  	public void RW_T401_ZoomControlsOnLeftCornerOfMap_verifyZoomcontrolsButton()
  	{
  		testStart("Verify zoom in and zoom out button");
- 		navigationBar.mouseHoverOnRadarAndMaps();
- 		navigationBar.isForecastMapsSubMenuDisplayed();
+ 		navigationBar.hoverOnRadarAndMaps();
+		navigationBar.isForecastSubMenuDisplayed();
  		navigationBar.navigateToForeCastPage();
  		cityRadarPage.clickZoomInAndZoomOut();
  	}
@@ -93,8 +94,8 @@ public class Test_ForecastMap extends AccuWeatherBaseTest {
  	public void RW_T403_FullScreenOnRightCornerOfMap_verifyFullScreenButton()
  	{
  		testStart("Verify fullscreen button on the map");
- 		navigationBar.mouseHoverOnRadarAndMaps();
- 		navigationBar.isForecastMapsSubMenuDisplayed();
+ 		navigationBar.hoverOnRadarAndMaps();
+		navigationBar.isForecastSubMenuDisplayed();
  		navigationBar.navigateToForeCastPage();
  		foreCastWeatherPage.clickFullScreenButtonOfMap();
  	}
@@ -103,8 +104,8 @@ public class Test_ForecastMap extends AccuWeatherBaseTest {
  	public void RW_T402_ValidateMapboxAttributes_verifyMapboxAndiPresent()
  	{
  		testStart("Verify mapbox present on the screen and i displayed next to it");
- 		navigationBar.mouseHoverOnRadarAndMaps();
- 		navigationBar.isForecastMapsSubMenuDisplayed();
+ 		navigationBar.hoverOnRadarAndMaps();
+		navigationBar.isForecastSubMenuDisplayed();
  		navigationBar.navigateToForeCastPage();
  		foreCastWeatherPage.verifyMapboxAndiNextToIt();
  	}
@@ -113,101 +114,58 @@ public class Test_ForecastMap extends AccuWeatherBaseTest {
  	public void RW_T404_AddSliderWithPlayButton_verifyPresenceOfSliderBarWithPlayButtonAndTime()
  	{
  		testStart("Verify presence of slider button");
- 		navigationBar.mouseHoverOnRadarAndMaps();
- 		navigationBar.isForecastMapsSubMenuDisplayed();
+ 		navigationBar.hoverOnRadarAndMaps();
+		navigationBar.isForecastSubMenuDisplayed();
  		navigationBar.navigateToForeCastPage();
- 		foreCastWeatherPage.verifyPresenceOfSliderBarWithPlayButtonAndTime();
+ 		softAssert.assertTrue(foreCastWeatherPage.verifyPresenceOfSliderBarWithPlayButtonAndTime());
+ 		softAssert.assertTrue(foreCastWeatherPage.verifyCurrentDateAtTheEndOfSliderBar());
  	}
-    
-  @Test(priority=10)
-	public void RW_T404_AddSliderWithPlayButton_verifyCurrentDateAtTheEndOfSliderBar()
-	{
-		testStart("Verify current date at the end of slide bar");
-		navigationBar.mouseHoverOnRadarAndMaps();
-		navigationBar.isForecastMapsSubMenuDisplayed();
-		navigationBar.navigateToForeCastPage();
-		foreCastWeatherPage.verifyCurrentDateAtTheEndOfSliderBar();
-	}
      
     @Test(priority=11)
   	public void RW_T405_ValidateRainLegends_verifyLightModerateHeavyFromRainLegend()
   	{
   		testStart("Verify light moderate heavy are in order");
-  		navigationBar.mouseHoverOnRadarAndMaps();
-  		navigationBar.isForecastMapsSubMenuDisplayed();
+  		navigationBar.hoverOnRadarAndMaps();
+		navigationBar.isForecastSubMenuDisplayed();
   		navigationBar.navigateToForeCastPage();
-  		foreCastWeatherPage.verifyLightModerateHeavyFromRainLegend();
-  	}
-    
-    @Test(priority=12)
-  	public void RW_T405_ValidateRainLegends_verifyLegendsForRainHaveTextRain()
-  	{
-  		testStart("Legends for Rain should have text Rain in the center of the bar");
-  		navigationBar.mouseHoverOnRadarAndMaps();
-  		navigationBar.isForecastMapsSubMenuDisplayed();
-  		navigationBar.navigateToForeCastPage();
-  		foreCastWeatherPage.verifyLegendsForRainHaveTextRain();
+  		softAssert.assertTrue(foreCastWeatherPage.verifyLightModerateHeavyFromRainLegend());
+  		softAssert.assertTrue(foreCastWeatherPage.verifyLegendsForRainHaveTextRain());
   	}
     
     @Test(priority=13)
 	public void RW_T406_ValidateSnowLegends_verifyLightModerateHeavyFromSnowLegend()
 	{
 		testStart("Verify light moderate heavy from snow are in order");
-		navigationBar.mouseHoverOnRadarAndMaps();
-		navigationBar.isForecastMapsSubMenuDisplayed();
+		navigationBar.hoverOnRadarAndMaps();
+		navigationBar.isForecastSubMenuDisplayed();
 		navigationBar.navigateToForeCastPage();
-		foreCastWeatherPage.verifyLightModerateHeavyFromSnowLegend();
+		softAssert.assertTrue(foreCastWeatherPage.verifyLightModerateHeavyFromSnowLegend());
+		softAssert.assertTrue(foreCastWeatherPage.verifyLegendsForSnowHaveTextSnow());
 	}
-   
-    @Test(priority=14)
-   	public void RW_T406_ValidateSnowLegends_verifyLegendsForSnowHaveTextSnow()
-   	{
-   		testStart("Legends for Snow should have text Snow in the center of the bar");
-   		navigationBar.mouseHoverOnRadarAndMaps();
-   		navigationBar.isForecastMapsSubMenuDisplayed();
-   		navigationBar.navigateToForeCastPage();
-   		foreCastWeatherPage.verifyLegendsForSnowHaveTextSnow();
-   	}
    
     @Test(priority=15)
    	public void RW_T407_ValidateIceLegends_verifyLegendsForIceHaveTextIce()
    	{
    		testStart("Legends for Ice should have text Ice in the center of the bar");
-   		navigationBar.mouseHoverOnRadarAndMaps();
-   		navigationBar.isForecastMapsSubMenuDisplayed();
+   		navigationBar.hoverOnRadarAndMaps();
+		navigationBar.isForecastSubMenuDisplayed();
    		navigationBar.navigateToForeCastPage();
-   		foreCastWeatherPage.verifyLegendsForIceHaveTextIce();
-   	}
-    
-    @Test(priority=16)
-   	public void RW_T407_ValidateIceLegends_verifyIceLegendBarColor()
-   	{
-   		testStart("Verify legend bar is purple in color");
-   		navigationBar.mouseHoverOnRadarAndMaps();
-   		navigationBar.isForecastMapsSubMenuDisplayed();
-   		navigationBar.navigateToForeCastPage();
+   		softAssert.assertTrue(foreCastWeatherPage.verifyLegendsForIceHaveTextIce());
+   		
    		String actualLegendBarcolor = foreCastWeatherPage.verifyIceLegendBarColor();
-   		Assert.assertEquals(actualLegendBarcolor, EXPECTED_ICE_LEGEND_COLOR);
+   		softAssert.assertEquals(actualLegendBarcolor, EXPECTED_ICE_LEGEND_COLOR);
    	}
     
   @Test(priority=17)
  	public void RW_T408_ValidateMixLegends_verifyLegendsForMixHaveTextMix()
  	{
  		testStart("Legends for Mix should have text Mix in the center of the bar");
- 		navigationBar.mouseHoverOnRadarAndMaps();
- 		navigationBar.isForecastMapsSubMenuDisplayed();
+ 		navigationBar.hoverOnRadarAndMaps();
+		navigationBar.isForecastSubMenuDisplayed();
  		navigationBar.navigateToForeCastPage();
- 		foreCastWeatherPage.verifyLegendsForMixHaveTextMix();
- 	}
-  
-  @Test(priority=18)
- 	public void RW_T408_ValidateMixLegends_verifyMixLegendBarColor()
- 	{
- 		testStart("Verify mix legend bar is purple in color");
- 		navigationBar.mouseHoverOnRadarAndMaps();
- 		navigationBar.isForecastMapsSubMenuDisplayed();
- 		navigationBar.navigateToForeCastPage();
+ 		softAssert.assertTrue(foreCastWeatherPage.verifyLegendsForMixHaveTextMix());
+ 		
  		String actualLegendBarcolor = foreCastWeatherPage.verifyIceLegendBarColor();
- 		Assert.assertEquals(actualLegendBarcolor, EXPECTED_ICE_LEGEND_COLOR);
+ 		softAssert.assertEquals(actualLegendBarcolor, EXPECTED_ICE_LEGEND_COLOR);
  	}
 }

@@ -44,7 +44,7 @@ public class RW_T2267_VerifyThumbnailDateArticleTitleUnderVideo extends AccuWeat
 
 		/****************Validate date below thumbnail***************************************/
 		
-		navBar.mouseHoverOnVideo();
+		navBar.hoverOnVideo();
 		softAssert.assertEquals(navBar.getImgSrcThumbnailUnderVideo(), getThumbnailImgSrc,
 				"Issue-----> Thumbnail src value under video is not matching with API Data");
 
