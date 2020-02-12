@@ -3,8 +3,6 @@ package com.accuweather.glacier.www.pages;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sound.midi.SysexMessage;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.Color;
@@ -15,14 +13,13 @@ import com.chameleon.selenium.web.elements.WebElement;
 
 public class BannerAlerts extends BasePage
 {
-	private By alertSummary = By.cssSelector("#banner-wrap > div > a > span");
+	private By alertSummary = By.cssSelector("div.banner-wrap > div > a > span");
 	private By singleBannerAlertBar = By
 			.cssSelector("div.alert-banner-container > div > div.alert-banner.alert-banner-weather");
 	private By multipleAlertsBannerBar = By
 			.cssSelector("div.alert-banner-container.has-multiple > div > div.alert-banner.alert-banner-weather");
-	private By singleAlertHeaderSummary = By.cssSelector(
-			"div.two-column-page-content > div:nth-child(1) > div > div > div > div > div > div:nth-child(2)");
 	private By featuredLocations = By.cssSelector("div.featured-locations > a.recent-location-item.featured-location");
+	private By alertItems = By.cssSelector("div.content-module > div.accordion.full-mobile-width > div.accordion-item.alert-item");
 
 	String alertCount = "";
 	public static ArrayList<String> alertsSummary;
@@ -100,16 +97,6 @@ public class BannerAlerts extends BasePage
 		return getDriver().findElement(alertSummary).getText();
 	}
 
-	/**
-	 * @author HFARAZ
-	 *         Method to get alert header summary from the alert page
-	 * @return String value of the alert header summary
-	 */
-	public String getAlertHeaderSummary()
-	{
-		WebPageLoaded.isDomComplete();
-		return getDriver().findElement(singleAlertHeaderSummary).getText();
-	}
 
 	/**
 	 * @author HFARAZ
@@ -144,17 +131,18 @@ public class BannerAlerts extends BasePage
 
 			for (int i = 1; i <= recentlySearchedLocations.size(); i++)
 			{
-				String cityName = getDriver()
-						.findElement(By.cssSelector(
-								"div.featured-locations > a:nth-child(" + i + ") > span.recent-location-name"))
-						.getText();
-				if ((cityName.replaceAll("\\s+", "")).equalsIgnoreCase(location))
+				if(getDriver().findElement(By.cssSelector("div.featured-locations > a:nth-child(" + i + ") > span.recent-location-name")).syncVisible(15,false))
 				{
-					alertCount = getDriver()
-							.findElement(By.cssSelector(
-									"div.featured-locations > a:nth-child(" + i + ") > span.recrent-location-alert"))
-							.getText().replaceAll("\\s+", "");
-					break;
+					String cityName = getDriver().findElement(By.cssSelector("div.featured-locations > a:nth-child(" + i + ") > span.recent-location-name")).getText();
+					if ((cityName.replaceAll("\\s+", "")).equalsIgnoreCase(location))
+					{
+						if(getDriver().findElement(By.cssSelector("div.featured-locations > a:nth-child(" + i + ") > span.recrent-location-alert")).syncVisible(15,false))
+						alertCount = getDriver()
+								.findElement(By.cssSelector(
+										"div.featured-locations > a:nth-child(" + i + ") > span.recrent-location-alert"))
+								.getText().replaceAll("\\s+", "");
+						break;
+					}
 				}
 			}
 		} catch (NoSuchElementException e)
@@ -196,10 +184,14 @@ public class BannerAlerts extends BasePage
 			alertsSummary = new ArrayList<String>();
 			for (int i = 1; i <= alertBanners.size(); i++)
 			{
-				alertsSummary.add(getDriver()
-						.findElement(By.cssSelector(
-								"div.alert-banner-container.has-multiple > div > div:nth-child(" + i + ") > a > span"))
-						.getText());
+				if(getDriver().findElement(By.cssSelector("div.alert-banner-container.has-multiple > div > div:nth-child(" + i + ") > a > span"))
+						.syncVisible(15,false))
+				{
+					alertsSummary.add(getDriver()
+							.findElement(By.cssSelector(
+									"div.alert-banner-container.has-multiple > div > div:nth-child(" + i + ") > a > span"))
+							.getText());
+				}
 			}
 		} catch (ArrayIndexOutOfBoundsException e)
 		{
@@ -211,6 +203,88 @@ public class BannerAlerts extends BasePage
 		}
 
 		return alertsSummary;
+	}
+	
+	
+	/**
+	 * @author HFARAZ
+	 * Method to check the logos on the alerts
+	 * */
+	public ArrayList<String> verifyLogos()
+	{
+		ArrayList<String> alertLogos = new ArrayList<String>();
+		WebPageLoaded.isDomComplete();
+		List<WebElement> alerts = getDriver().findElements(alertItems);
+		
+		for(int i=0;i<alerts.size();i++)
+		{
+			if(getDriver().findElement(By.cssSelector("div.accordion.full-mobile-width > div:nth-child("+i+") > div > div > div > img")).syncVisible(15,false))
+					alertLogos.add(getDriver().findElement(By.cssSelector("div.accordion.full-mobile-width > div:nth-child("+i+") > div > div > div > img")).getAttribute("src"));
+		}
+		
+		return alertLogos;
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to get the alert header summary
+	 * */
+	public ArrayList<String> getAlertHeaderSummary()
+	{
+		ArrayList<String> alertHeaderSummary = new ArrayList<String>();
+		WebPageLoaded.isDomComplete();
+		
+		List<WebElement> alerts = getDriver().findElements(alertItems);
+		for(int i=1;i<=alerts.size();i++)
+		{
+			if(getDriver().findElement(By.cssSelector("div.accordion.full-mobile-width > div:nth-child("+i+") > div > div > div.alert-header-summary")).syncVisible(15,false))
+			alertHeaderSummary.add(getDriver().
+					findElement(By.cssSelector("div.accordion.full-mobile-width > div:nth-child("+i+") > div > div > div.alert-header-summary")).getText());
+		}
+		
+		return alertHeaderSummary;
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to get the alert description
+	 * */
+	public ArrayList<String> getAlertDescription()
+	{
+		ArrayList<String> alertDescription = new ArrayList<String>();
+		WebPageLoaded.isDomComplete();
+		
+		List<WebElement> alerts = getDriver().findElements(alertItems);
+		for(int i=1;i<=alerts.size();i++)
+		{
+			if(getDriver().findElement(By.cssSelector("div.accordion.full-mobile-width > div:nth-child("+i+") > div > div > div.alert-header-title > div > div.alert-description"))
+					.syncVisible(15,false))
+			alertDescription.add(getDriver().
+					findElement(By.cssSelector("div.accordion.full-mobile-width > div:nth-child("+i+") > div > div > div.alert-header-title > div > div.alert-description")).getText());
+		}
+		
+		return alertDescription;
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to get the alert location
+	 * */
+	public ArrayList<String> getAlertLocation()
+	{
+		ArrayList<String> alertLocation = new ArrayList<String>();
+		WebPageLoaded.isDomComplete();
+		
+		List<WebElement> alerts = getDriver().findElements(alertItems);
+		for(int i=1;i<=alerts.size();i++)
+		{
+			if(getDriver().
+					findElement(By.cssSelector("div.accordion.full-mobile-width > div:nth-child("+i+") > div > div > div.alert-header-title > div > div:nth-child(1)")).syncVisible(15,false))
+			alertLocation.add(getDriver().
+					findElement(By.cssSelector("div.accordion.full-mobile-width > div:nth-child("+i+") > div > div > div.alert-header-title > div > div:nth-child(1)")).getText());
+		}
+		
+		return alertLocation;
 	}
 
 }

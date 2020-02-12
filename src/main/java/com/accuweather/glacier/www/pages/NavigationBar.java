@@ -141,16 +141,16 @@ public class NavigationBar extends BasePage
 	 * Severe Weather Sub Menus Items
 	 ****************************************/
 	private By bySeverWeatherSubMenu 		= By.cssSelector("div.mega-menu-content-cta > div > a > h4");
-	private By byHurricaneSubMenu 			= By.cssSelector("div.mega-menu-content-links > div:nth-child(1) > a > h4");
-	private By byWinterWeatherSubMenu 		= By.cssSelector("div.mega-menu-content-links > div:nth-child(2) > a > h4");
-	private By byAWReadySubMenu 			= By.cssSelector("div.mega-menu-content-links > div:nth-child(3) > a > h4");
+	private By byHurricaneSubMenu 			= By.cssSelector("div.mega-menu-content-links > div:nth-child(2) > a > h4");
+	private By byWinterWeatherSubMenu 		= By.cssSelector("div.mega-menu-content-links > div:nth-child(3) > a > h4");
+	private By byAWReadySubMenu 			= By.cssSelector("div.mega-menu-content-links > div:nth-child(4) > a > h4");
 
 	/**********************************
 	 * Severe Weather Sub Menus Descriptions
 	 ********************************/
-	private By byHurricaneDescription 			= By.cssSelector("div.mega-menu-content-links > div:nth-child(1) > p");
-	private By byWinterWeatherDescription 		= By.cssSelector("div.mega-menu-content-links > div:nth-child(2) > p");
-	private By byAWReadyDescription 			= By.cssSelector("div.mega-menu-content-links > div:nth-child(3) > p");
+	private By byHurricaneDescription 			= By.cssSelector("div.mega-menu-content-links > div:nth-child(2) > p");
+	private By byWinterWeatherDescription 		= By.cssSelector("div.mega-menu-content-links > div:nth-child(3) > p");
+	private By byAWReadyDescription 			= By.cssSelector("div.mega-menu-content-links > div:nth-child(4) > p");
 	private By byThumbnailUnderSevereWeather 	= By.cssSelector("div.mega-menu-content-media > div > a > figure > img");
 	private By byDateUnderSevereWeather 		= By.cssSelector("div.mega-menu-content-media > div > a > figure > p");
 	private By byArticleTitleUnderSevereWeather = By.cssSelector("div.mega-menu-content-media > div > a > figure > figcaption");
@@ -1503,6 +1503,17 @@ public class NavigationBar extends BasePage
 	
 	/**
 	 * @author HFARAZ
+	 * Method to get the URL of Watch Video submenu page
+	 * */
+	public String getWatchVideo_SubMenu_PageURL()
+	{
+		navigateToWatchVideoTab();
+		WebPageLoaded.isDomComplete();
+		return getDriver().getCurrentUrl();
+	}
+	
+	/**
+	 * @author HFARAZ
 	 * Method to validate if the video tab is displayed
 	 * */
 	public Boolean isTrendingNow_SubMenu_Displayed()
@@ -1561,6 +1572,17 @@ public class NavigationBar extends BasePage
 			getDriver().findElement(byTrendingNow).jsClick();
 		WebPageLoaded.isDomComplete();
 	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to get the URL of Trending Now submenu page
+	 * */
+	public String getTrendingNowSubMenuPageURL()
+	{
+		navigateToTrendingNow();
+		WebPageLoaded.isDomComplete();
+		return getDriver().getCurrentUrl();
+	}
 
 	public boolean isExpertForecastSubMenuDisplayed()
 	{
@@ -1618,6 +1640,17 @@ public class NavigationBar extends BasePage
 			getDriver().findElement(byExpertForecasts).jsClick();
 		WebPageLoaded.isDomComplete();
 	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to get the URL of Expert Forecast submenu page
+	 * */
+	public String getExpertForecastSubMenuPageURL()
+	{
+		navigateToExpertForecast();
+		WebPageLoaded.isDomComplete();
+		return getDriver().getCurrentUrl();
+	}
 
 	public boolean isStormChasersSubMenuDisplayed()
 	{
@@ -1635,10 +1668,41 @@ public class NavigationBar extends BasePage
 		return stormChasers;	
 	}
 	
+	public boolean isStormChasers_SubMenu_DescriptionDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		hoverOnVideo();
+		return getDriver().findElement(byStormChasersDescription).syncVisible(15,false);
+	}
+	
+	public String getStormChasersDescription()
+	{
+		String stormChasers = null;
+		if(isStormChasers_SubMenu_DescriptionDisplayed())
+			stormChasers = getDriver().findElement(byStormChasersDescription).getText();
+		
+		return stormChasers;	
+	}
+	
 	public void navigateToStormChasersSubMenu()
 	{
 		if(isStormChasersSubMenuDisplayed())
 			getDriver().findElement(byStormChasers).click();
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to get the URL of Storm Chasers submenu page
+	 * */
+	public String getStormChasersSubMenuPageURL()
+	{
+		String url = "";
+		navigateToStormChasersSubMenu();
+		WebPageLoaded.isDomComplete();
+		url = getDriver().getCurrentUrl();
+		getDriver().navigate().back();
+		return url;
+		
 	}
 
 	public boolean isVideoTumbnailDisplayed()
@@ -1742,7 +1806,9 @@ public class NavigationBar extends BasePage
 		String window = getDriver().getWindowHandle();
 		switchToDifferentTab(window);
 		WebPageLoaded.isDomComplete();
-		return getDriver().getCurrentUrl();
+		String url = getDriver().getCurrentUrl();
+		getDriver().navigate().back();
+		return url;
 	}
 	
 /******************************************************* END OF VIDEOS CATEGORY ************************************************************************/	
@@ -1786,12 +1852,64 @@ public class NavigationBar extends BasePage
 		hoverOnSevereWeather();
 		return getDriver().findElement(byHurricaneSubMenu).syncVisible(15,false);
 	}
+	
+	public String getHurricaneSubMenuText()
+	{
+		String hurricaneSubMenu = null;
+		if(isHurricaneSubMenuDisplayed())
+			hurricaneSubMenu = getDriver().findElement(byHurricaneSubMenu).getText();
+		
+		return hurricaneSubMenu;
+	}
+	
+	public boolean isHurricaneDescriptionDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		hoverOnSevereWeather();
+		return getDriver().findElement(byHurricaneDescription).syncVisible(15,false);
+	}
+	
+	public String getHurricaneDescription()
+	{
+		String hurricaneDescription = null;
+		if(isHurricaneSubMenuDisplayed())
+			hurricaneDescription = getDriver().findElement(byHurricaneDescription).getText();
+		
+		return hurricaneDescription;
+	}
+	
+	
 
 	public boolean isAWReadySubMenuDisplayed()
 	{
 		WebPageLoaded.isDomComplete();
 		hoverOnSevereWeather();
 		return getDriver().findElement(byAWReadySubMenu).syncVisible(15,false);
+	}
+	
+	public String getAWReadyText()
+	{
+		String awReadySubMenu = null;
+		if(isAWReadySubMenuDisplayed())
+			awReadySubMenu = getDriver().findElement(byAWReadySubMenu).getText();
+		
+		return awReadySubMenu;
+	}
+	
+	public boolean isAWReadyDescriptionDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		hoverOnSevereWeather();
+		return getDriver().findElement(byAWReadyDescription).syncVisible(15,false);
+	}
+	
+	public String getAWReadyDescription()
+	{
+		String awReadyDescription = null;
+		if(isAWReadyDescriptionDisplayed())
+			awReadyDescription = getDriver().findElement(byAWReadyDescription).getText();
+		
+		return awReadyDescription;
 	}
 
 	public boolean isWinterWeatherSubMenuDisplayed()
@@ -1800,12 +1918,46 @@ public class NavigationBar extends BasePage
 		hoverOnSevereWeather();
 		return getDriver().findElement(byWinterWeatherSubMenu).syncVisible(15,false);
 	}
+	
+	public String getWinterWeatherSubMenuText()
+	{
+		String winterWeatherSubMenu = null;
+		if(isWinterWeatherSubMenuDisplayed())
+			winterWeatherSubMenu = getDriver().findElement(byWinterWeatherSubMenu).getText();
+		
+		return winterWeatherSubMenu;
+	}
+	
+	public boolean isWinterWeatherDescriptionDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		hoverOnSevereWeather();
+		return getDriver().findElement(byWinterWeatherDescription).syncVisible(15,false);
+	}
+	
+	public String getWinterWeatherDescription()
+	{
+		String winterWeatherDescription = null;
+		if(isWinterWeatherDescriptionDisplayed())
+			winterWeatherDescription = getDriver().findElement(byWinterWeatherDescription).getText();
+		
+		return winterWeatherDescription;
+	}
 
 	public boolean isSeverWeatherSubMenuDisplayed()
 	{
 		WebPageLoaded.isDomComplete();
 		hoverOnSevereWeather();
 		return getDriver().findElement(bySeverWeatherSubMenu).syncVisible(15,false);
+	}
+	
+	public String getSevereWeatherSubMenuText()
+	{
+		String severeWeatherSubMenuText = null;
+		if(isSeverWeatherSubMenuDisplayed())
+			severeWeatherSubMenuText =  getDriver().findElement(bySeverWeatherSubMenu).getText();
+		
+		return severeWeatherSubMenuText;
 	}
 
 	public void navigateToAccuWeatherReady()
@@ -1830,6 +1982,116 @@ public class NavigationBar extends BasePage
 	{
 		if(isSeverWeatherSubMenuDisplayed())
 			getDriver().findElement(bySeverWeatherSubMenu).jsClick();
+		WebPageLoaded.isDomComplete();
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to get the URL for Severe Weather page
+	 * */
+	public String getSevereWeatherSubMenuURL()
+	{
+		navigateToSevereWeatherSubMenu();
+		return getDriver().getCurrentUrl();
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to get the URL for Severe Weather page
+	 * */
+	public String getHurricaneSubMenuURL()
+	{
+		navigateToHurricane();
+		return getDriver().getCurrentUrl();
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to get the URL for Severe Weather page
+	 * */
+	public String getAWReadySubMenuURL()
+	{
+		navigateToAccuWeatherReady();
+		return getDriver().getCurrentUrl();
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to get the URL for Severe Weather page
+	 * */
+	public String getWinterWeatherSubMenuURL()
+	{
+		navigateToWinterWeather();
+		return getDriver().getCurrentUrl();
+	}
+	
+	/**
+	 * Method to verify thumbnail below date under severe category.
+	 * 
+	 * @author Sowmiya
+	 */
+	public void verifyThumbnailBelowDateUnderSevereWeather()
+	{
+		WebPageLoaded.isDomComplete();
+		// verify thumbnail
+		this.hoverOnSevereWeather();
+		WebElement thumbnailUnderSevereWeather = getDriver().findElement(byThumbnailUnderSevereWeather);
+		thumbnailUnderSevereWeather.syncVisible(15);
+		getDriver().navigate().back();
+	}
+
+	/**
+	 * @author SOWMIYA
+	 *         Method get the img data src of thumbnail under News category
+	 * @return data-src value
+	 */
+	public String getImgSrcThumbnailUnderSevereWeather()
+	{
+		WebElement thumbnailUnderSevereWeather = getDriver().findElement(byThumbnailUnderSevereWeather);
+		thumbnailUnderSevereWeather.syncVisible(15);
+		return thumbnailUnderSevereWeather.getAttribute("data-src");
+	}
+
+	/**
+	 * @author SOWMIYA
+	 *         Method to get the date below thumbnail under severe weather category
+	 * @return date
+	 */
+	public String getDateBelowThumbnailUnderSevereWeather()
+	{
+		// get date under severe weather
+		WebElement strDateUnderSevereWeather = getDriver().findElement(byDateUnderSevereWeather);
+		strDateUnderSevereWeather.syncVisible(30);
+		return strDateUnderSevereWeather.getText();
+	}
+
+	/**
+	 * @author SOWMIYA
+	 *         Method to get the article title under severe weather category
+	 * @return article title
+	 */
+	public String getArticleTitleUnderSevereWeather()
+	{
+		// get article title under severe weather
+		WebElement strArticleTitleUnderSevereWeather = getDriver().findElement(byArticleTitleUnderSevereWeather);
+		strArticleTitleUnderSevereWeather.syncVisible(15);
+		String getArticleTitleUnderSevereWeather = strArticleTitleUnderSevereWeather.getText();
+		return getArticleTitleUnderSevereWeather;
+	}
+
+	/**
+	 * @author SOWMIYA
+	 *         Method to click on article title under severe weather and get URL
+	 * @return article title url
+	 */
+	public String getArticleTitleUrlUnderSevereWeather()
+	{
+		// click article title under severe weather
+		WebElement strArticleTitleUnderSevereWeather = getDriver().findElement(byArticleTitleUnderSevereWeather);
+		strArticleTitleUnderSevereWeather.syncVisible(15);
+		strArticleTitleUnderSevereWeather.click();
+		Sleeper.sleep(2);
+		return getDriver().getCurrentUrl();
 	}
 
 /******************************************************* END OF SEVERE WEATHER ***********************************************************************/	
@@ -1965,6 +2227,15 @@ public class NavigationBar extends BasePage
 		if(isAWPremiumSubMenuDisplayed())
 			getDriver().findElement(byAccuWeatherPremium).jsClick();
 	}
+	
+	public String getAWPremiumDescription()
+	{
+		String awPremiumText = null;
+		if(isAWPremiumDescriptionDisplayed())
+		awPremiumText = getDriver().findElement(byAccuWeatherPremiumDescription).getText();
+		
+		return awPremiumText;
+	}
 
 	public String getAWPremiumText()
 	{
@@ -1988,6 +2259,15 @@ public class NavigationBar extends BasePage
 		WebPageLoaded.isDomComplete();
 		hoverOnMoreMenu();
 		return getDriver().findElement(byAccuWeatherProfessionalDescription).syncVisible(15,false);
+	}
+	
+	public String getAWProfessionalDescription()
+	{
+		String awProfessionalDescription = "";
+		if(isAWProfessionalDescriptionDisplayed())
+			awProfessionalDescription = getDriver().findElement(byAccuWeatherProfessionalDescription).getText();
+		
+		return awProfessionalDescription;
 	}
 
 	public void clickOnAWProfessionalSubMenu()
@@ -2437,77 +2717,6 @@ public class NavigationBar extends BasePage
 		WebElement cityNameOnCityPage = getDriver().findElement(byCityNameOnCityPage);
 		cityNameOnCityPage.syncVisible(15);
 		return cityNameOnCityPage.getText();
-	}
-
-	
-
-	/**
-	 * Method to verify thumbnail below date under severe category.
-	 * 
-	 * @author Sowmiya
-	 */
-	public void verifyThumbnailBelowDateUnderSevereWeather()
-	{
-		WebPageLoaded.isDomComplete();
-		// verify thumbnail
-		this.hoverOnSevereWeather();
-		WebElement thumbnailUnderSevereWeather = getDriver().findElement(byThumbnailUnderSevereWeather);
-		thumbnailUnderSevereWeather.syncVisible(15);
-		getDriver().navigate().back();
-	}
-
-	/**
-	 * @author SOWMIYA
-	 *         Method get the img data src of thumbnail under News category
-	 * @return data-src value
-	 */
-	public String getImgSrcThumbnailUnderSevereWeather()
-	{
-		WebElement thumbnailUnderSevereWeather = getDriver().findElement(byThumbnailUnderSevereWeather);
-		thumbnailUnderSevereWeather.syncVisible(15);
-		return thumbnailUnderSevereWeather.getAttribute("data-src");
-	}
-
-	/**
-	 * @author SOWMIYA
-	 *         Method to get the date below thumbnail under severe weather category
-	 * @return date
-	 */
-	public String getDateBelowThumbnailUnderSevereWeather()
-	{
-		// get date under severe weather
-		WebElement strDateUnderSevereWeather = getDriver().findElement(byDateUnderSevereWeather);
-		strDateUnderSevereWeather.syncVisible(30);
-		return strDateUnderSevereWeather.getText();
-	}
-
-	/**
-	 * @author SOWMIYA
-	 *         Method to get the article title under severe weather category
-	 * @return article title
-	 */
-	public String getArticleTitleUnderSevereWeather()
-	{
-		// get article title under severe weather
-		WebElement strArticleTitleUnderSevereWeather = getDriver().findElement(byArticleTitleUnderSevereWeather);
-		strArticleTitleUnderSevereWeather.syncVisible(15);
-		String getArticleTitleUnderSevereWeather = strArticleTitleUnderSevereWeather.getText();
-		return getArticleTitleUnderSevereWeather;
-	}
-
-	/**
-	 * @author SOWMIYA
-	 *         Method to click on article title under severe weather and get URL
-	 * @return article title url
-	 */
-	public String getArticleTitleUrlUnderSevereWeather()
-	{
-		// click article title under severe weather
-		WebElement strArticleTitleUnderSevereWeather = getDriver().findElement(byArticleTitleUnderSevereWeather);
-		strArticleTitleUnderSevereWeather.syncVisible(15);
-		strArticleTitleUnderSevereWeather.click();
-		Sleeper.sleep(2);
-		return getDriver().getCurrentUrl();
 	}
 
 	
