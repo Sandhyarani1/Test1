@@ -1,11 +1,10 @@
 package com.accuweather.glacier.www.universalnavigation;
-import java.awt.AWTException;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
-import org.testng.Assert;
+
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+
 import com.accuweather.glacier.api.LandingPageAPI;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.LandingPage;
@@ -13,14 +12,10 @@ import com.accuweather.glacier.www.pages.Localizations;
 import com.accuweather.glacier.www.pages.NavigationBar;
 import com.accuweather.glacier.www.pages.NewsWeatherPage;
 import com.accuweather.glacier.www.pages.RadarWeatherPage;
-import com.chameleon.selenium.DriverManager;
-import com.chameleon.selenium.web.ExtendedWebDriver;
-import com.chameleon.selenium.web.WebPageLoaded;
-import com.chameleon.selenium.web.WindowHandler;
 import com.chameleon.utils.Constants;
-import com.chameleon.utils.Sleeper;
 import com.chameleon.utils.DataIOOperations.ExcelUtilities;
 import com.chameleon.utils.io.PropertiesManager;
+import com.fasterxml.jackson.databind.introspect.AnnotatedWithParams;
 
 public class Test_UniversalNavigation extends AccuWeatherBaseTest 
 {
@@ -174,10 +169,23 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	public static final String TRENDING_NOW							= "Trending Now";
 	public static final String EXPERT_FORECASTS						= "Expert Forecasts";
 	public static final String STORM_CHASERS						= "Storm Chasers";
-	public static final String VIDEO_SUBMENU_DESCRIPTION			= "Coverage of top events from the world’s most trusted name in weather";
+	public static final String VIDEO_SUBMENU_DESCRIPTION			= "Video coverage of the top weather events people are talking about";
 	public static final String TRENDING_NOW_DESCRIPTION				= "Watch the best weather videos across the web";
 	public static final String EXPERT_FORECASTS_DESCRIPTION			= "How will the latest weather patterns impact you?";
 	public static final String STORM_CHASERS_DESCRIPTION			= "Our field teams brave the elements";
+	public static final String VIDEO_URL_SUFFIX						= "videos";
+	public static String video_URL									= "";
+	public static String watchVideo_URL								= "";
+	public static String trendingNow_URL							= "";
+	public static String expertForecasts_URL						= "";
+	public static final String EXPERT_FORECASTS_URL_SUFFIX			= "videos/experts";
+	public static String stormChasers_URL							= "";
+	public static final String STORM_CHASERS_URL_SUFFIX				= "videos/storm-chasers";
+	public String getThumbnailImgSrc_VIDEO 							= "";
+	public String getVideoDurationFromAPI 							= "";
+	public String getVideo_ArticleTitleFromAPI 						= "";
+	public String getVideo_ArticleTitleUrlFromAPI 					= "";
+	
 /******************************************END OF VIDEO *************************************************************************************************/	
 	
 /******************************************** SEVERE WEATHER *********************************************************************************************/	
@@ -189,6 +197,15 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 	public static final String ACCUWEATHER_READY_SUBMENU_DESCRIPTION		= "Be prepared for any type of weather";
 	public static final String WINTER_WEATHER_SUBMENU						= "Winter Weather";
 	public static final String WINTER_WEATHER_SUBMENU_DESCRIPTION			= "Provides winter weather forecasts and the winter weather outlook for your area";
+	public static String severeWeatherURL									= "";
+	public static final String SEVERE_WEATHER_URL_SUFFIX					= "severe-weather";
+	public static String hurricaneURL										= "";
+	public static final String HURRICANE_URL_SUFFIX							= "hurricane";
+	public static String accuWeatherReadyURL								= "";
+	public static final String ACCUWEATHER_READY_URL_SUFFIX					= "accuweather-ready";
+	public static String winterWeatherURL									= "";
+	public static final String WINTER_WEATHER_URL_SUFFIX					= "winter-weather";
+	
 /******************************************* END OF SEVERE WEATHER ***************************************************************************************/
 	
 	
@@ -233,6 +250,10 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 		getDateFromAPI = LandingPageAPI.getUniversalNavigationNewsData()[1];
 		getArticleTitleFromAPI = LandingPageAPI.getUniversalNavigationNewsData()[0];
 		getArticleTitleUrlFromAPI = LandingPageAPI.getUniversalNavigationNewsData()[2];
+		getThumbnailImgSrc_VIDEO = LandingPageAPI.getUniversalNavigationVideoData()[1];
+		getVideoDurationFromAPI = LandingPageAPI.getUniversalNavigationVideoData()[2];
+		getVideo_ArticleTitleFromAPI = LandingPageAPI.getUniversalNavigationVideoData()[0];
+		getVideo_ArticleTitleUrlFromAPI = LandingPageAPI.getUniversalNavigationVideoData()[3];
 		
 /********************************************* URLS*************************************************************************************************/
 /********************************************* RADAR AND MAPS URLS *********************************************************************************/
@@ -250,7 +271,18 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 		weatherBlogsURL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+WEATHER_BLOGS_URL_SUFFIX).toLowerCase();
 		climateChangeURL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+CLIMATE_CHANGE_URL_SUFFIX).toLowerCase();
 		
+/********************************************* VIDEO URLS *****************************************************************************************/
+		video_URL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+VIDEO_URL_SUFFIX).toLowerCase();
+		watchVideo_URL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+VIDEO_URL_SUFFIX).toLowerCase();
+		trendingNow_URL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+VIDEO_URL_SUFFIX).toLowerCase();
+		expertForecasts_URL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+EXPERT_FORECASTS_URL_SUFFIX).toLowerCase();
+		stormChasers_URL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+STORM_CHASERS_URL_SUFFIX).toLowerCase();
 		
+/********************************************* SEVERE WEATHER URLS ******************************************************************************/
+		severeWeatherURL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+countryCode+"/"+SEVERE_WEATHER_URL_SUFFIX).toLowerCase();
+		hurricaneURL = 	(appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+HURRICANE_URL_SUFFIX).toLowerCase();
+		accuWeatherReadyURL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+ACCUWEATHER_READY_URL_SUFFIX).toLowerCase();
+		winterWeatherURL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA)+LANGUAGE+"/"+countryCode+"/"+WINTER_WEATHER_URL_SUFFIX).toLowerCase();
 		
 	}
 	
@@ -521,78 +553,193 @@ public class Test_UniversalNavigation extends AccuWeatherBaseTest
 				"\nIssue----> Video submenu text is not correct\n");
 		softAssert.assertEquals(navigationBar.getVideoSubMenuDescriptionText(), VIDEO_SUBMENU_DESCRIPTION,
 				"\n Video Submenu description not correct\n");
-		softAssert.assertEquals(navigationBar.getVideoSubMenuPageURL(), newsURL,
+		softAssert.assertEquals(navigationBar.getVideoSubMenuPageURL(), video_URL,
 				"\nIssue-----> Video Page URL not matching");
 		
 		
-		/*************************** Watch News **********************************/
-		softAssert.assertTrue(navigationBar.isWatchNewsSubMenuDisplayed(),
-				"\nIssue-----> Watch News submenu unders News tab not displayed\n");
-		softAssert.assertEquals(navigationBar.getWatchNewsText(), WATCH_NEWS,
-				"\nIssue----> Watch News text is not correct\n");
-		softAssert.assertEquals(navigationBar.getWatchNewsPageURL(), watchNewsURL,
-				"\nIssue-----> Watch News Page URL not matching");
+		/*************************** Watch Video **********************************/
+		softAssert.assertTrue(navigationBar.isWatchVideoDisplayed(),
+				"\nIssue-----> Watch Video submenu unders Video tab not displayed\n");
+		softAssert.assertEquals(navigationBar.getWatchVideoText(), WATCH_VIDEO,
+				"\nIssue----> Watch Video text is not correct\n");
+		softAssert.assertEquals(navigationBar.getWatchVideo_SubMenu_PageURL(), watchVideo_URL,
+				"\nIssue-----> Watch Video Page URL not matching");
 		
-		/*************************** Weather News **********************************/
-		softAssert.assertTrue(navigationBar.isWeatherNewsSubMenuDisplayed(),
-				"\nIssue-----> Weather News submenu unders News tab not displayed\n");
-		softAssert.assertEquals(navigationBar.getWeatherNewsText(), WEATHER_NEWS_SUBMENU,
-				"\nIssue----> Weather News submenu text is not correct\n");
-		softAssert.assertEquals(navigationBar.getWeatherNewsDescription(), WEATHER_NEWS_SUBMENU_DESCRIPTION,
-				"\n Issue Weather News description not correct\n");
-		softAssert.assertEquals(navigationBar.getWeatherNewsPageURL(), weatherNewsURL,
-				"\nIssue-----> Weather News Page URL not matching");
+		/*************************** Trending Now **********************************/
+		softAssert.assertTrue(navigationBar.isTrendingNow_SubMenu_Displayed(),
+				"\nIssue-----> Trending Now tab not displayed\n");
+		softAssert.assertEquals(navigationBar.getTrendingNowText(), TRENDING_NOW,
+				"\nIssue----> Trending Now text is not correct\n");
+		softAssert.assertEquals(navigationBar.getTredndingNowSubMenuDescriptionText(), TRENDING_NOW_DESCRIPTION,
+				"\n Trending Now description not correct\n");
+		softAssert.assertEquals(navigationBar.getTrendingNowSubMenuPageURL(), trendingNow_URL,
+				"\nIssue-----> Trending Now Page URL not matching");
 		
-		/*************************** Personalities **********************************/
-		softAssert.assertTrue(navigationBar.isPersonalitiesSubMenuDisplayed(),
-				"\nIssue-----> Personalities submenu unders News tab not displayed\n");
-		softAssert.assertEquals(navigationBar.getPersonalitiesText(), PERSONALITIES_SUBMENU,
-				"\nIssue----> Personalities submenu text is not correct\n");
-		softAssert.assertEquals(navigationBar.getPersonalitiesDescription(), PERSONALITIES_SUBMENU_DESCRIPTION,
-				"\n Issue Personalities description not correct\n");
-		softAssert.assertEquals(navigationBar.getPersonalitiesPageURL(), PERSONALITIES_URL,
-				"\nIssue-----> Personalities Page URL not matching");
-		
-		
-		/*************************** Weather Blogs **********************************/
-		softAssert.assertTrue(navigationBar.isWeatherBlogsSubMenuDisplayed(),
-				"\nIssue-----> Weather Blogs unders News tab not displayed\n");
-		softAssert.assertEquals(navigationBar.getWeatherBlogsText(), WEATHER_BLOGS_SUBMENU,
-				"\nIssue----> News submenu text is not correct\n");
-		softAssert.assertEquals(navigationBar.getWeatherBlogsDescription(), WEATHER_BLOGS_SUBMENU_DESCRIPTION,
-				"\n Issue Weather Blogs description not correct\n");
-		softAssert.assertEquals(navigationBar.getWeatherBlogsURL(), weatherBlogsURL,
-				"\nIssue-----> Weather Blogs Page URL not matching");
+		/*************************** Expert Forecasts **********************************/
+		softAssert.assertTrue(navigationBar.isExpertForecastSubMenuDisplayed(),
+				"\nIssue-----> Expert Forecast submenu unders Video tab not displayed\n");
+		softAssert.assertEquals(navigationBar.getExpertForecastText(), EXPERT_FORECASTS,
+				"\nIssue---->"+EXPERT_FORECASTS+" submenu text is not correct\n");
+		softAssert.assertEquals(navigationBar.getExpertForecastDescription(), EXPERT_FORECASTS_DESCRIPTION,
+				"\n Issue "+EXPERT_FORECASTS +" description not correct\n");
+		softAssert.assertEquals(navigationBar.getExpertForecastSubMenuPageURL(), expertForecasts_URL,
+				"\nIssue-----> "+EXPERT_FORECASTS+" Page URL not matching");
 		
 		
-		/*************************** Climate Change **********************************/
-		softAssert.assertTrue(navigationBar.isClimateChangeSubMenuDisplayed(),
-				"\nIssue-----> Climate change submenu unders News tab not displayed\n");
-		softAssert.assertEquals(navigationBar.getClimateChangeText(), CLIMATE_CHANGE_SUBMENU,
-				"\nIssue----> Climate Change text is not correct\n");
-		softAssert.assertEquals(navigationBar.getClimateChangeDescription(), CLIMATE_CHANGE_SUBMENU_DESCRIPTION,
-				"\n Issue Climate Change Submenu description not correct\n");
-		softAssert.assertEquals(navigationBar.getClimateChangePageURL(), climateChangeURL,
-				"\nIssue-----> Climate Change Page URL not matching");
+		/*************************** Storm Chasers **********************************/
+		softAssert.assertTrue(navigationBar.isStormChasersSubMenuDisplayed(),
+				"\nIssue-----> "+STORM_CHASERS+" submenu not displayed\n");
+		softAssert.assertEquals(navigationBar.getStormChasersText(), STORM_CHASERS,
+				"\nIssue----> "+STORM_CHASERS+" submenu text is not correct\n");
+		softAssert.assertEquals(navigationBar.getStormChasersDescription(), STORM_CHASERS_DESCRIPTION,
+				"\n Issue "+STORM_CHASERS+" description not correct\n");
+		softAssert.assertEquals(navigationBar.getStormChasersSubMenuPageURL(), stormChasers_URL,
+				"\nIssue-----> "+STORM_CHASERS+" Page URL not matching");
 		
-		/************************** API Validations ***********************************/
-		softAssert.assertEquals(navigationBar.getImgSrcThumbnailUnderNews(), getThumbnailImgSrc,
-				"Issue-----> Thumbnail src value under news is not matching with API Data");
+		navigationBar.hoverOnVideo();
+		softAssert.assertEquals(navigationBar.getImgSrcThumbnailUnderVideo(), getThumbnailImgSrc,
+				"Issue-----> Thumbnail src value under video is not matching with API Data");
 
-		/****************Validate date of the news article ***************************************/	
-		softAssert.assertEquals(navigationBar.getDateBelowThumbnailUnderNews(), getDateFromAPI,
-				"Issue-----> Date below thumbnail under news is not matching with API Data");
+		
+		/****************Validate date below thumbnail***************************************/
+		
+		softAssert.assertTrue(navigationBar.getDurationBelowThumbnailUnderVideoAndCompareWithApiDuration(getVideoDurationFromAPI),
+				"Issue-----> Duration below thumbnail under video is not matching with duration shown in API");
 		
 		
-		/****************Validate article title***************************************/
-		softAssert.assertEquals(navigationBar.getArticleTitleUnderNews(), getArticleTitleFromAPI,
-				"Issue-----> Article title under news is not matching with API Data");
+		/****************Validate article title*************************************************/
+		
+		softAssert.assertEquals(navigationBar.getArticleTitleUnderVideo(), getVideo_ArticleTitleFromAPI,
+				"Issue-----> Article title under video is not matching with API Data");
 		
 		/******************** URL *********************************/
-		softAssert.assertEquals(navigationBar.getArticleTitleUrlUnderNews(), getArticleTitleUrlFromAPI,
+		
+		String articleTitleUrlFromAPI = getVideo_ArticleTitleUrlFromAPI.toLowerCase();
+		softAssert.assertEquals(navigationBar.getArticleTitleUrlUnderVideo(), articleTitleUrlFromAPI,
 				"Issue------> Article URL not matching with the API Data");	
 		
 		softAssert.assertAll();
+
+		
+	}
+	
+	@Test(priority=5)
+	public void RW_T288_SeverWeatherTabValidation()
+	{
+		softAssert = new SoftAssert();
+		testStart("********************* Validation of Severe Weather tab and sub menu items of Severe Weather ******************************");
+		
+		/********************* Validate if all the sub menus under video are displayed, the texts and descriptions are as expected ********/
+		
+		/*************************** Severe Weather Sub Menu **********************************/
+		softAssert.assertTrue(navigationBar.isSeverWeatherSubMenuDisplayed(),
+				"\nIssue-----> Severe Weather submenu tab not displayed\n");
+		softAssert.assertEquals(navigationBar.getSevereWeatherSubMenuText(), SEVERE_WEATHER_SUBMENU,
+				"\nIssue----> Severe Weather submenu text is not correct\n");
+		softAssert.assertEquals(navigationBar.getSevereWeatherSubMenuURL(), severeWeatherURL,
+				"\n Severe Weather URL not as expected\n");
+		
+		
+		/*************************** Hurricane **********************************/
+		softAssert.assertTrue(navigationBar.isHurricaneSubMenuDisplayed(),
+				"\nIssue-----> Hurricane submenu unders Severe Weather tab not displayed\n");
+		softAssert.assertEquals(navigationBar.getHurricaneSubMenuText(), HURRICANE_SUBMENU,
+				"\nIssue----> HURRICANE Sub Menu text is not correct\n");
+		softAssert.assertEquals(navigationBar.getHurricaneDescription(), HURRICANE_SUBMENU_DESCRIPTION,
+				"\nIssue-----> Hurricane Sub menu description not matching");
+		softAssert.assertEquals(navigationBar.getHurricaneSubMenuURL(), hurricaneURL,
+				"\n hurricane URL not as expected\n");
+		
+		/*************************** AccuWeather Ready **********************************/
+		softAssert.assertTrue(navigationBar.isAWReadySubMenuDisplayed(),
+				"\nIssue-----> AccuWeather Ready tab not displayed\n");
+		softAssert.assertEquals(navigationBar.getAWReadyText(), ACCUWEATHER_READY_SUBMENU,
+				"\nIssue----> "+ACCUWEATHER_READY_SUBMENU+" text is not correct\n");
+		softAssert.assertEquals(navigationBar.getAWReadyDescription(), ACCUWEATHER_READY_SUBMENU_DESCRIPTION,
+				"\n Issue----->"+ ACCUWEATHER_READY_SUBMENU+" description not correct\n");
+		softAssert.assertEquals(navigationBar.getAWReadySubMenuURL(), accuWeatherReadyURL,
+				"\nIssue-----> AccuWeather Ready URL not matching");
+		
+		/*************************** Winter Weather **********************************/
+		softAssert.assertTrue(navigationBar.isWinterWeatherSubMenuDisplayed(),
+				"\nIssue-----> Winter Weather submenu tab not displayed\n");
+		softAssert.assertEquals(navigationBar.getWinterWeatherSubMenuText(), WINTER_WEATHER_SUBMENU,
+				"\nIssue---->"+WINTER_WEATHER_SUBMENU+" submenu text is not correct\n");
+		softAssert.assertEquals(navigationBar.getWinterWeatherDescription(), WINTER_WEATHER_SUBMENU_DESCRIPTION,
+				"\n Issue "+WINTER_WEATHER_SUBMENU +" description not correct\n");
+		softAssert.assertEquals(navigationBar.getWinterWeatherSubMenuURL(), winterWeatherURL,
+				"\nIssue-----> "+WINTER_WEATHER_SUBMENU+" Page URL not matching");
+		
+		softAssert.assertAll();
+		
+	}
+	
+	@Test(priority=6)
+	public void RW_T289_MoreTabValidation()
+	{
+		softAssert = new SoftAssert();
+		testStart("********************* Validation of More tab and sub menu items under More ******************************");
+		
+		/********************* Validate if all the sub menus under video are displayed, the texts and descriptions are as expected ********/
+		
+		/*************************** About AccuWeather **********************************/
+		softAssert.assertTrue(navigationBar.isAWAboutSubMenuDisplayed(),
+				"\nIssue-----> About AccuWeather submenu tab not displayed\n");
+		softAssert.assertEquals(navigationBar.getAWAboutText(), ABOUT_ACCUWEATHER,
+				"\nIssue----> About AccuWeather submenu text is not correct\n");
+		softAssert.assertEquals(navigationBar.isAWAboutDescriptionDisplayed(),
+				"\nIssue-----> About Accuweather Submenu description not found\n");
+		softAssert.assertEquals(navigationBar.getAWAboutDescription(), ABOUT_ACCUWEATHER_DESCRIPTION,
+				"\nIssue-----> About Accuweather description not matching");
+		
+		
+		/*************************** AccuWeather Premium **********************************/
+		softAssert.assertTrue(navigationBar.isAWPremiumSubMenuDisplayed(),
+				"\nIssue-----> AW Premium submenu not displayed\n");
+		softAssert.assertEquals(navigationBar.getAWPremiumText(), ACCUWEATHER_PREMIUM,
+				"\nIssue----> "+ACCUWEATHER_PREMIUM+" text is not correct\n");
+		softAssert.assertEquals(navigationBar.isAWProfessionalDescriptionDisplayed(),
+				"\nIssue-----> "+ ACCUWEATHER_PREMIUM+" description not found");
+		softAssert.assertEquals(navigationBar.getAWPremiumDescription(), ACCUWEATHER_PREMIUM_DESCRIPTION,
+				"\nIssue-----> "+ACCUWEATHER_PREMIUM+" description not matching");
+		
+		/*************************** Apps & Downloads **********************************/
+		softAssert.assertTrue(navigationBar.isAppsAndDownloadSubMenuDisplayed(),
+				"\nIssue-----> "+APPS_AND_DOWNLOADS+" submenu not displayed\n");
+		softAssert.assertEquals(navigationBar.isAppAndDwnldTextDisplayed(), APPS_AND_DOWNLOADS,
+				"\nIssue----> "+ACCUWEATHER_PREMIUM+" is not correct\n");
+		softAssert.assertEquals(navigationBar.getAppAndDownloadDescription(), APPS_AND_DOWNLOADS_DESCRIPTION,
+				"\n "+APPS_AND_DOWNLOADS+" description not correct\n");
+		softAssert.assertEquals(navigationBar.getTrendingNowSubMenuPageURL(), trendingNow_URL,
+				"\nIssue-----> Trending Now Page URL not matching");
+		
+		/*************************** AccuWeather Professional **********************************/
+		softAssert.assertTrue(navigationBar.isAWProfessionalSubMenuDisplayed(),
+				"\nIssue-----> "+ACCUWEATHER_PROFESSIONAL+" submenu unders More tab not displayed\n");
+		
+		softAssert.assertEquals(navigationBar.getAWProfessionalText(), ACCUWEATHER_PROFESSIONAL,
+				"\nIssue---->"+ACCUWEATHER_PROFESSIONAL+" submenu text is not correct\n");
+		
+		softAssert.assertEquals(navigationBar.getAWProfessionalDescription(), ACCUWEATHER_PROFESSIONAL_DESCRIPTION,
+				"\n Issue "+ACCUWEATHER_PROFESSIONAL +" description not correct\n");
+		
+		softAssert.assertEquals(navigationBar.getExpertForecastSubMenuPageURL(), expertForecasts_URL,
+				"\nIssue-----> "+ACCUWEATHER_PROFESSIONAL+" Page URL not matching");
+		
+		
+		/*************************** Podcast **********************************/
+		softAssert.assertTrue(navigationBar.isPodcastSubMenuDisplayed(),
+				"\nIssue-----> "+PODCAST+" submenu not displayed\n");
+		softAssert.assertEquals(navigationBar.getPodcastDescription(), PODCAST_DESCRIPTION,
+				"\nIssue----> "+PODCAST+" description is not correct\n");
+		softAssert.assertEquals(navigationBar.getStormChasersSubMenuPageURL(), stormChasers_URL,
+				"\nIssue-----> "+PODCAST+" Page URL not matching");
+		
+		softAssert.assertEquals(navigationBar.getImgSrcThumbnailUnderVideo(), getThumbnailImgSrc,
+				"Issue-----> Thumbnail src value under video is not matching with API Data");
+
+
+		
 	}
 
 }
