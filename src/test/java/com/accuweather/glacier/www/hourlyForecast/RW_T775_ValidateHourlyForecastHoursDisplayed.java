@@ -9,26 +9,29 @@ import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.HourlyForecastPage;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.chameleon.utils.Constants;
+import com.chameleon.utils.date.SimpleDate;
 
-public class RW_T194_PresentAndFutureLinkValidation extends AccuWeatherBaseTest {
+public class RW_T775_ValidateHourlyForecastHoursDisplayed extends AccuWeatherBaseTest
+{
 	public static final String CITY_NAME = "Buffalo";
 	public static String stateCode = "";
 	public static String locationKey = "";
 	public static String countryCode = "";
 	public static String zipCode = "";
 	public static String location = "";
-	public static String cityNameForURL = "";
+	public static String cityNameForURL = "";    
 	public static String expectedHourlyForecastURL = "";
 	public static String expectedHourlyForecastTitle = "";
 	SoftAssert softAssert;
 	
 	LandingPage landingPage = new LandingPage();
 	HourlyForecastPage hourlyPage = new HourlyForecastPage();
+	SimpleDate sd = new SimpleDate();
 	
 	@BeforeClass
 	public void getTestData()
 	{
-		HourlyPageAPI.getHourlyForecastData(CITY_NAME);
+		HourlyPageAPI.getHourlyForecastData(CITY_NAME, sd.getCurrentDate("yyyy-MM-dd"), "IMPERIAL");
 		
 		stateCode = HourlyPageAPI.getStateName();
 		locationKey = HourlyPageAPI.getLocationKey();
@@ -42,27 +45,20 @@ public class RW_T194_PresentAndFutureLinkValidation extends AccuWeatherBaseTest 
 		
 		expectedHourlyForecastTitle = CITY_NAME + ", " + stateCode
 				+ " Hourly Weather | AccuWeather";
-	
 	}
 	
 	@Test(priority=1)
-	public void RW_T194_verifyPresentAndFutureLink()
-	{
+	public void RW_T775_verifyNumberOfHoursPresentInHourlyPage()
+	{	
 		softAssert = new SoftAssert();
-		testStart("******** Validation of present and future link on Hourly page *********************");
+		testStart("********Number of hours present in hourly page*********************");
 		landingPage.enterZipcodeInSearchField(CITY_NAME);
 		landingPage.selectCityFromTheList(location);
 		hourlyPage.clickOnHourlyTab();
-		
-		/************************Click NextDay CTA and verify the day parameter is increased by 1 in the URL*******************************/
-		hourlyPage.validateDayParamInURLForNextDay(appURLRepository.get(Constants.ACCUWEATHER_WEB_QA), cityNameForURL, zipCode, locationKey);
-		softAssert.assertTrue(hourlyPage.getHourlyTabURLState(),
-						"Issue------->NextDay parameter in the URL is not increased by 1");
 		 
-		/************************Click PreviousDay CTA and verify the day parameter is decreased by 1 in the URL*******************************/
-		hourlyPage.validateDayParamInURLForPreviousDay(appURLRepository.get(Constants.ACCUWEATHER_WEB_QA), cityNameForURL, zipCode, locationKey);
-		softAssert.assertTrue(hourlyPage.getHourlyTabURLState(),
-						"Issue------->PreviousDay parameter in the URL is not decreased by 1");
+		/*********Number of hours present in all subsequent pages of hourly forecast:hoursdisplayed for current day + 24 + 24*****************************/
+		softAssert.assertTrue(hourlyPage.verifyHourLimit(),
+						"Issue------->Number of hours are not exact");
 		
 		softAssert.assertAll();
 	}

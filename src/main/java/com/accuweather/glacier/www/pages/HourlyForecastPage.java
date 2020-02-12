@@ -105,29 +105,28 @@ public class HourlyForecastPage extends BasePage
 	public static ArrayList<String> iconPhraseList;
 	public static ArrayList<String> precipitationList;
 	public static ArrayList<String> realFeelList;
-	public static ArrayList<String> windValueList;
-	public static ArrayList<String> windUnitList;
-	public static ArrayList<String> windDirectionList;
-	public static ArrayList<String> windGustsValueList;
+	public static ArrayList<String> windList;
+	public static ArrayList<String> windGustsList;
 	public static ArrayList<String> windGustsUnitList;
 	public static ArrayList<String> HumidityList;
 	public static ArrayList<String> dewPointList;
-	public static ArrayList<String> uvIndexValueList;
-	public static ArrayList<String> uvIndexTextList;
+	public static ArrayList<String> maxUVIndexValueList;
 	public static ArrayList<String> cloudCoverList;
-	public static ArrayList<String> rainValueList;
-	public static ArrayList<String> rainUnitList;
-	public static ArrayList<String> snowValueList;
-	public static ArrayList<String> snowUnitList;
-	public static ArrayList<String> iceValueList;
-	public static ArrayList<String> iceUnitList;
-	public static ArrayList<String> visibilityValueList;
-	public static ArrayList<String> visibilityUnitList;
-	public static ArrayList<String> ceilingValueList;
-	public static ArrayList<String> ceilingUnitList;
+	public static ArrayList<String> rainList;
+	public static ArrayList<String> snowList;
+	public static ArrayList<String> iceList;
+	public static ArrayList<String> visibilityList;
+	public static ArrayList<String> ceilingList;
 	
 	public static ArrayList<String> timeFromAPIList;
-	public static ArrayList<String> windValueOrWindGustsfromAPIList;
+	public static ArrayList<String> roundingUpValuefromAPIList;
+	public static ArrayList<String> temperatureFromAPIList;
+	public static ArrayList<String> realFeelFromAPIList;
+	public static ArrayList<String> windValueFromAPIList;
+	public static ArrayList<String> windGustsValueFromAPIList;
+	public static ArrayList<String> dewPointFromAPIList;
+	public static ArrayList<String> visibilityValueFromAPIList;
+	public static ArrayList<String> ceilingValueFromAPIList;
 	
 	private static final String ENVIRONMENT_URL_CONFIG_FILE = "EnvironmentURLs.properties";
 	private Calendar calendar = Calendar.getInstance();
@@ -581,7 +580,7 @@ public class HourlyForecastPage extends BasePage
 	 * @author SOMWIYA
 	 * boolean return true - if day parameter is increased by 1 else false
 	 * */
-	public void validateDayParamInURLForNextDay(String URL, String cityName, String zipcode, String locationKey)
+	public Boolean validateDayParamInURLForNextDay(String URL, String cityName, String zipcode, String locationKey)
 	{
 		boolean isEquals = false;
 		for (int i = 1; i <= 3; i++)
@@ -605,7 +604,7 @@ public class HourlyForecastPage extends BasePage
 	        	}
 		}
 		
-		setHourlyTabURLState(isEquals);
+		return isEquals;
 	}
 
 	
@@ -614,13 +613,8 @@ public class HourlyForecastPage extends BasePage
 	 *  @author SOMWIYA
 	 *  boolean return true - if day parameter is decreased by 1 else false
 	 * */
-	public void validateDayParamInURLForPreviousDay(String URL, String cityName, String zipcode, String locationKey)
+	public Boolean validateDayParamInURLForPreviousDay(String URL, String cityName, String zipcode, String locationKey)
 	{
-//		for (int i = 0; i < 2; i++)
-//		{
-//			clickCTATab();
-//		}
-
 		boolean isEquals = false;
 		
 		for (int i = 3; i > 0; i--)
@@ -656,7 +650,7 @@ public class HourlyForecastPage extends BasePage
 
 		}
 		
-		setHourlyTabURLState(isEquals);
+		return isEquals;
 
 	}
 
@@ -754,65 +748,65 @@ public class HourlyForecastPage extends BasePage
 		return dayOfTheWeek;
 	}
 
-	/** Method to validate previous days on previous CTA tabs */
-	public void validatePreviousDays()
-	{
-		for (int i = 0; i <= 6; i++)
-		{
-			try
-			{
-				if (i == 0)
-					clickCTATab();
-				else
-				{
-					if (i == 1)
-					{
-						if (readPreviousDay().equals(day.getCurrentDay()))
-						{
-							setPreviousDayTextValidation(true);
-							clickCTATab();
-						}
-
-					}
-
-					else
-					{
-						if (i != 6)
-						{
-							if (readPreviousDay().equals(getNextDay(i)))
-							{
-								setPreviousDayTextValidation(true);
-								clickCTATab();
-							}
-
-						}
-
-						else
-						{
-							if (readLastCTATabtext().equals(getNextDay(i)))
-								setPreviousDayTextValidation(true);
-						}
-
-					}
-
-				}
-
-			}
-
-			catch (AssertionError ae)
-			{
-				setPreviousDayTextValidation(false);
-				Assert.fail("Previous day not matching on page " + i);
-			}
-
-			catch (Exception e)
-			{
-				e.getMessage();
-			}
-
-		}
-
-	}
+//	/** Method to validate previous days on previous CTA tabs */
+//	public void validatePreviousDays()
+//	{
+//		for (int i = 0; i <= 6; i++)
+//		{
+//			try
+//			{
+//				if (i == 0)
+//					clickCTATab();
+//				else
+//				{
+//					if (i == 1)
+//					{
+//						if (readPreviousDay().equals(day.getCurrentDay()))
+//						{
+//							setPreviousDayTextValidation(true);
+//							clickCTATab();
+//						}
+//
+//					}
+//
+//					else
+//					{
+//						if (i != 6)
+//						{
+//							if (readPreviousDay().equals(getNextDay(i)))
+//							{
+//								setPreviousDayTextValidation(true);
+//								clickCTATab();
+//							}
+//
+//						}
+//
+//						else
+//						{
+//							if (readLastCTATabtext().equals(getNextDay(i)))
+//								setPreviousDayTextValidation(true);
+//						}
+//
+//					}
+//
+//				}
+//
+//			}
+//
+//			catch (AssertionError ae)
+//			{
+//				setPreviousDayTextValidation(false);
+//				Assert.fail("Previous day not matching on page " + i);
+//			}
+//
+//			catch (Exception e)
+//			{
+//				e.getMessage();
+//			}
+//
+//		}
+//
+//	}
 
 	/** Method to validate next days on next CTA tabs */
 	public void validateNextDays()
@@ -1532,44 +1526,93 @@ public class HourlyForecastPage extends BasePage
 		return flag;  
 	}
 	
-	/** Method to get all the values of labels and save the values in the arraylist.
+	/** Method to click highlighted hourly tab
 	 * @author SOWMIYA
-	 * return 
 	 *  */
-	public Boolean getAllOrganismsValueOnHourlyPage()
+	public void clickHighlightedHourlyTab()
 	{
-		//get the total number of tabs in today's hourly page
-		List<WebElement> NoOfHoursTab = getDriver().findElements(By.cssSelector("div.hourly-wrapper > div > div.accordion-item-header-container > div"));
-		int totalTabs = NoOfHoursTab.size();
-		System.out.println("totalTabs:"+totalTabs);
-		
+		WebPageLoaded.isDomInteractive();
+		WebElement hourlyTab = getDriver().findElement(byHourlyTabColor);
+		hourlyTab.syncVisible(15);
+		hourlyTab.click();
+		Sleeper.sleep(3);
+	}
+
+	/** Method to validate previous days on previous CTA tabs 
+	 *  @author SOWMIYA
+	 * */
+	public void validatePreviousDays()
+	{
+		for (int i = 0; i <= 2; i++)
+		{
+			try
+			{
+				if (i == 0)
+					clickCTATab();
+				else
+				{
+					if (i == 1)
+					{
+						if (readPreviousDay().equals(day.getCurrentDay()))
+						{
+							setPreviousDayTextValidation(true);
+							clickCTATab();
+						}
+
+					}
+
+					else
+					{
+					   if (readPreviousDay().equals(getNextDay(i)))
+							{
+								setPreviousDayTextValidation(true);
+							}
+                   }
+				}
+			}catch (AssertionError ae)
+			{
+				setPreviousDayTextValidation(false);
+				Assert.fail("Previous day not matching on page " + i);
+			}
+
+			catch (Exception e)
+			{
+				e.getMessage();
+			}
+
+		}
+
+	}
+	
+	/** Method to get the text of labels and store them n arraylist.
+	 * @author SOWMIYA
+	 *  */
+	public void getTextOfAllLabelsFromEachHoursOnHourlyPage()
+	{
 		timeList = new ArrayList<String>();
 		dateList = new ArrayList<String>();
 		temperatureList = new ArrayList<String>();
 		iconPhraseList = new ArrayList<String>();
 		precipitationList = new ArrayList<String>();
 		realFeelList = new ArrayList<String>();
-		windValueList = new ArrayList<String>();
-		windUnitList = new ArrayList<String>();
-		windDirectionList = new ArrayList<String>();
-		windGustsValueList = new ArrayList<String>();
+		windList = new ArrayList<String>();
+		windGustsList = new ArrayList<String>();
 		windGustsUnitList = new ArrayList<String>();
 		HumidityList = new ArrayList<String>();
 		dewPointList = new ArrayList<String>();
-		uvIndexValueList = new ArrayList<String>();
-		uvIndexTextList = new ArrayList<String>();
+		maxUVIndexValueList = new ArrayList<String>();
 		cloudCoverList = new ArrayList<String>();
-		rainValueList = new ArrayList<String>();
-	    rainUnitList = new ArrayList<String>();
-	    snowValueList = new ArrayList<String>();
-	    snowUnitList = new ArrayList<String>();
-	    iceValueList = new ArrayList<String>();
-	    iceUnitList = new ArrayList<String>();
-	    visibilityValueList = new ArrayList<String>();
-		visibilityUnitList = new ArrayList<String>();
-		ceilingValueList = new ArrayList<String>();
-		ceilingUnitList  = new ArrayList<String>();
+		rainList = new ArrayList<String>();
+	    snowList = new ArrayList<String>();
+	    iceList = new ArrayList<String>();
+		visibilityList = new ArrayList<String>();
+		ceilingList  = new ArrayList<String>();
 		
+		//get the total number of tabs in today's hourly page
+		List<WebElement> NoOfHoursTab = getDriver().findElements(By.cssSelector("div.hourly-wrapper > div > div.accordion-item-header-container > div"));
+		int totalTabs = NoOfHoursTab.size();
+		System.out.println("totalTabs:"+totalTabs);
+	
 		for(int i=1; i<=totalTabs+1; i++) {
 			//there is no hour tab with child number 3. so add 1 to it.
 			if( i==3 )
@@ -1580,297 +1623,94 @@ public class HourlyForecastPage extends BasePage
 			WebElement downArrow = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > svg"));
 			downArrow.syncVisible(15);
 			downArrow.click();
+			Sleeper.sleep(1.5);
 			}
 			
-			//get TIME
-//			WebElement time = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > div > div.date > p:nth-child(1)"));
-//			time.syncVisible(10);
-//			timeList.add(time.getText());
-//			
-//			//get DATE
-//			WebElement date = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > div > div.date > p.sub"));
-//			date.syncVisible(10);
-//			dateList.add(contertStringIntoMMdd(date.getText()));
-//			
-//			get TEMPERATURE
-//			WebElement temperature = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > div > div.temp"));
-//			temperature.syncVisible(10);
-//			temperatureList.add(removeDegreeInTemperature(temperature.getText()));
-//			
-//			get PHRASE
-//			WebElement phrase = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > div > span"));
-//			phrase.syncVisible(10);
-//			iconPhraseList.add(phrase.getText());
-//			
-//			//get PRECIPITAION
-//			WebElement precipitation = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > div > div.precip"));
-//			precipitation.syncVisible(10);
-//			precipitationList.add(precipitation.getText().replace("Precip", "").replace("%", "").replaceAll("\\s+", ""));
-//			
-			//get the value of REALFEEL
+			//TIME
+			WebElement time = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > div > div.date > p:nth-child(1)"));
+			time.syncVisible(10);
+			timeList.add(time.getText());
+			
+			//date
+			WebElement date = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > div > div.date > p.sub"));
+			date.syncVisible(10);
+			dateList.add(date.getText());
+			
+			//TEMPERATURE
+			WebElement temperature = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > div > div.temp"));
+			temperature.syncVisible(10);
+			temperatureList.add(temperature.getText());
+			
+			//PHRASE
+			WebElement phrase = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > div > span"));
+			phrase.syncVisible(10);
+			iconPhraseList.add(phrase.getText());
+			
+			//PRECIPITATION
+			WebElement precipitation = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > div > div.precip"));
+			precipitation.syncVisible(10);
+			precipitationList.add(precipitation.getText());
+			
+			//REALFEEL
 			WebElement realFeel = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div.panel.left > p:nth-child(1)"));
 			realFeel.syncVisible(10);
-			realFeelList.add(removeDegreeInTemperature(getLabelValueAfterColon(realFeel.getText())));
+			realFeelList.add(realFeel.getText());
 			
-			//get the value of WIND
+			//WIND
 			WebElement wind = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div.panel.left > p:nth-child(2)"));
 			wind.syncVisible(10);
-			String getwindValueAfterColon = getLabelValueAfterColon(wind.getText());
-			String strWind[]  = getwindValueAfterColon.split("\\s+");
-			windDirectionList.add(strWind[1]);
-			windValueList.add(strWind[2]);
-			if(strWind[3].equals("mph")) {
-			windUnitList.add("mi/h");}
-			this.roundingUpDecimals(HourlyPageAPI.windValue);
+			windList.add(wind.getText());
 			
-			//get the value of WIND GUSTS
+			//WIND GUSTS
 			WebElement windGusts = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div.panel.left > p:nth-child(3)"));
 			windGusts.syncVisible(10);
-			String getwindGustsValueAfterColon = getLabelValueAfterColon(windGusts.getText());
-			String strWindGusts[]  = getwindGustsValueAfterColon.split("\\s+");
-			windGustsValueList.add(strWindGusts[1]);
-			if(strWindGusts[2].equals("mph")) {
-				windGustsUnitList.add("mi/h");}
-			this.roundingUpDecimals(HourlyPageAPI.windGustsValue);
+			windGustsList.add(windGusts.getText());
 			
-			//get the value of HUMUDITY
+			//HUMUDITY
 			WebElement humidity = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div.panel.left > p:nth-child(4)"));
 			humidity.syncVisible(10);
-			HumidityList.add(getLabelValueAfterColon(humidity.getText().replace("%", "").replaceAll("\\s+", "")));
+			HumidityList.add(humidity.getText());
 			
-			//get the value of DEW POINT
+			//DEW POINT
 			WebElement dewPoint = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div.panel.left > p:nth-child(5)"));
 			dewPoint.syncVisible(10);
-			dewPointList.add(getLabelValueAfterColon(removeDegreeInTemperature(dewPoint.getText())));
+			dewPointList.add(dewPoint.getText());
 			
-			//get the value of MAX UV INDEX
+			//MAX UV INDEX
 			WebElement maxUVIndex = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div.panel.left > p:nth-child(6)"));
 			maxUVIndex.syncVisible(10);
-			String getValueAfterColon = getLabelValueAfterColon(maxUVIndex.getText());
-			String strMaxUVIndex[]  = getValueAfterColon.split("\\s+");
-			uvIndexValueList.add(strMaxUVIndex[1]);
-			uvIndexTextList.add(strMaxUVIndex[2].replaceAll("\\(", "").replaceAll("\\)", ""));
+			maxUVIndexValueList.add(maxUVIndex.getText());
 			
-			//get the value of CLOUD COVER
+			//CLOUD COVER
 			WebElement cloudCover = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(1)"));
 			cloudCover.syncVisible(10);
-			cloudCoverList.add(getLabelValueAfterColon(cloudCover.getText().replace("%", "").replaceAll("\\s+", "")));
+			cloudCoverList.add(cloudCover.getText());
 			
-			//get the value of RAIN
+			//RAIN
 			WebElement rain = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(2)"));
 			rain.syncVisible(10);
-			String getRainValueAfterColon = getLabelValueAfterColon(rain.getText());
-			String strRain[]  = getRainValueAfterColon.split("\\s+");
-			rainValueList.add(strRain[1]);
-			rainUnitList.add(strRain[2]);
+			rainList.add(rain.getText());
 			
-			//get the value of SNOW
+			//SNOW
 			WebElement snow = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(3)"));
 			snow.syncVisible(10);
-			String getSnowValueAfterColon = getLabelValueAfterColon(snow.getText());
-			String strSnow[]  = getSnowValueAfterColon.split("\\s+");
-			snowValueList.add(strSnow[1]);
-			snowUnitList.add(strSnow[2]);
+			snowList.add(snow.getText());
 			
-			//get the value of ICE
+			//ICE
 			WebElement ice = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(4)"));
 			ice.syncVisible(10);
-			String getIceValueAfterColon = getLabelValueAfterColon(ice.getText());
-			String strIce[]  = getIceValueAfterColon.split("\\s+");
-			iceValueList.add(strIce[1]);
-			iceUnitList.add(strIce[2]);
+			iceList.add(ice.getText());
 			
-			//get the value of VISIBILITY
+			//VISIBILITY
 			WebElement visibility = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(5)"));
 			visibility.syncVisible(10);
-			String getvisibilityValueAfterColon = getLabelValueAfterColon(visibility.getText());
-			String strVisibility[]  = getvisibilityValueAfterColon.split("\\s+");
-			visibilityValueList.add(strVisibility[1].concat(".0"));
-			visibilityUnitList.add(strVisibility[2]);
+			visibilityList.add(visibility.getText());
 			
-			//get the value of CEILING
+			//CEILING
 			WebElement ceiling = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(6)"));
 			ceiling.syncVisible(10);
-			String getceilingValueAfterColon = getLabelValueAfterColon(ceiling.getText());
-			String strCeiling[]  = getceilingValueAfterColon.split("\\s+");
-			ceilingValueList.add(strCeiling[1].concat(".0"));
-			ceilingUnitList.add(strCeiling[2]);
+			ceilingList.add(ceiling.getText());
 		}
 		
-		return true;
-	}
-	
-	/**Method to match the hourly page content of UI and API
-	 * @author SOWMIYA
-	 * return String - value of a label
-	 *  */
-	public Boolean compareHourlyPageContentOfUIAndAPI()
-	{
-		boolean isEquals;
-		
-//		addAMAndPMIntoAPITime();
-//		isEquals = timeList.equals(timeFromAPIList);
-		
-//		isEquals = dateList.equals(HourlyPageAPI.date);
-//		
-//		isEquals = temperatureList.equals(HourlyPageAPI.temperature);
-//		
-//		isEquals = iconPhraseList.equals(HourlyPageAPI.iconPhrase); 
-//		
-//		isEquals = precipitationList.equals(HourlyPageAPI.precipitation);
-		
-//		isEquals = realFeelList.equals(HourlyPageAPI.realFeel);
-//		
-//		isEquals = windValueList.equals(windValueOrWindGustsfromAPIList);
-//		
-//		isEquals = windUnitList.equals(HourlyPageAPI.windUnit);
-//		
-//		isEquals = windDirectionList.equals(HourlyPageAPI.windDirection); 
-//		System.out.println(isEquals);
-//		System.out.println("windDirectionList:"+windDirectionList);
-//		
-//		isEquals = windGustsValueList.equals(windValueOrWindGustsfromAPIList);
-//		
-//		isEquals = windGustsUnitList.equals(HourlyPageAPI.windGustsUnit);
-		
-//		isEquals = HumidityList.equals(HourlyPageAPI.humidity);
-//		
-//		isEquals = dewPointList.equals(HourlyPageAPI.dewPoint);
-//		
-//		isEquals = uvIndexValueList.equals(HourlyPageAPI.UVIndexValue);
-//		System.out.println("uvIndexValueList:"+uvIndexValueList);
-//		System.out.println("UVIndexValue    :"+HourlyPageAPI.UVIndexValue);
-//		
-//		isEquals = uvIndexTextList.equals(HourlyPageAPI.UVIndexText);
-//		System.out.println("uvIndexTextList:"+uvIndexTextList);
-//		System.out.println("UVIndexText    :"+HourlyPageAPI.UVIndexText);
-//		
-//		isEquals = cloudCoverList.equals(HourlyPageAPI.cloudCover);
-//		
-//		isEquals = rainValueList.equals(HourlyPageAPI.rainValue);
-//		System.out.println("rainValueList:"+rainValueList);
-//		System.out.println("rainValue    :"+HourlyPageAPI.rainValue);
-//		
-//		isEquals =  rainUnitList.equals(HourlyPageAPI.rainUnit); 
-//		System.out.println("rainUnitList:"+rainUnitList);
-//		System.out.println("rainUnit    :"+HourlyPageAPI.rainUnit);
-//		
-//		isEquals =  snowValueList.equals(HourlyPageAPI.snowValue);
-//		System.out.println("snowValueList:"+snowValueList);
-//		System.out.println("snowValue    :"+HourlyPageAPI.snowValue);
-//		
-//		isEquals = snowUnitList.equals(HourlyPageAPI.snowUnit);
-//		System.out.println("snowUnitList:"+snowUnitList);
-//		System.out.println("snowUnit    :"+HourlyPageAPI.snowUnit);
-//		
-//		isEquals = iceValueList.equals(HourlyPageAPI.iceValue);
-//		System.out.println("iceValueList:"+iceValueList);
-//		System.out.println("iceValue    :"+HourlyPageAPI.iceValue);
-//		
-//		isEquals = iceUnitList.equals(HourlyPageAPI.iceUnit); 
-//		System.out.println("iceUnitList      :"+iceUnitList);
-//		System.out.println("iceUnit          :"+HourlyPageAPI.iceUnit);
-//		
-//		isEquals = visibilityValueList.equals(HourlyPageAPI.visibilityValue);
-//		System.out.println(isEquals);
-//		System.out.println("visibilityValueList:"+visibilityValueList);
-//		System.out.println("visibilityValue    :"+HourlyPageAPI.visibilityValue);
-//		
-//		isEquals = visibilityUnitList.equals(HourlyPageAPI.visibilityUnit); 
-//		System.out.println("visibilityUnitList:"+visibilityUnitList);
-//		System.out.println("visibilityUnit    :"+HourlyPageAPI.visibilityUnit);
-//		
-//		isEquals = ceilingValueList.equals(HourlyPageAPI.ceilingValue); 
-//		System.out.println(isEquals);
-//		
-//		isEquals = ceilingUnitList.equals(HourlyPageAPI.ceilingUnit);
-//		System.out.println("ceilingUnitList:"+ceilingUnitList);
-//		System.out.println("ceilingUnit    :"+HourlyPageAPI.ceilingUnit);
-		
-		
-		return true;
-	}
-	
-	/**Method to trim the label and get value of it after colon 
-	 * @author SOWMIYA
-	 * return String - value of a label
-	 *  */
-	public String getLabelValueAfterColon(String labels)
-	{
-		String valueOfLabelAfterColon = labels.substring(labels.lastIndexOf(":") + 1);
-		return valueOfLabelAfterColon;
-	}
-	
-	/**Method to add AM and PM respectively into timings from API.
-	 * @author SOWMIYA
-	 *  */
-	public void addAMAndPMIntoAPITime()
-	{
-		ArrayList<String> getTimeFromAPI = HourlyPageAPI.time;
-		timeFromAPIList = new ArrayList<String>(); 
-		
-		for ( int i=0; i<getTimeFromAPI.size(); i++) {
-			int timeFromApi = Integer.parseInt(getTimeFromAPI.get(i));
-			
-			if(timeFromApi < 12) {
-				String addAMToTime = getTimeFromAPI.get(i).concat(" AM");
-				timeFromAPIList.add(addAMToTime);
-			}
-					
-			if(timeFromApi == 12) {
-				String addPMToTime = getTimeFromAPI.get(i).concat(" PM");
-				timeFromAPIList.add(addPMToTime);
-			}
-					
-			if(timeFromApi > 12) {
-				int subtractTimeWith12 = timeFromApi - 12;
-				String addPMToTime = String.valueOf(subtractTimeWith12).concat(" PM");
-				timeFromAPIList.add(addPMToTime);
-			}
-							
-		}
-	}
-	
-	/**Method to convert the string into MM/dd format
-	 * @author SOWMIYA
-	 * return date in MM/dd format
-	 *  */
-	public String contertStringIntoMMdd(String dateInString)
-	{
-		String testDateString = dateInString;
-	    DateFormat df = new SimpleDateFormat("MM/dd");
-	    Date d1 = null;
-		try {
-			d1 = df.parse(testDateString);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-	    System.out.println("Date in dd/MM/yyyy format is: "+df.format(d1));
-	    return df.format(d1);
-	}
-	
-	/**Method to remove degree in the temperature
-	 * @author SOWMIYA
-	 * return temperature with degree at the top
-	 *  */
-	public String removeDegreeInTemperature(String dateInString)
-	{
-	    return dateInString.substring(0,dateInString.length()-1).concat(".0").replaceAll("\\s+", "");
-	}
-	
-	/**Method to round up the decimals
-	 * @author SOWMIYA
-	 * return roundup number
-	 *  */
-	public ArrayList<String> roundingUpDecimals(ArrayList<String> value)
-	{
-		windValueOrWindGustsfromAPIList = new ArrayList<String>();
-		for(int i=0; i<value.size(); i++) {
-			float numberToRound = Float.parseFloat(value.get(i));
-			int y =(int)Math.round(numberToRound);
-			windValueOrWindGustsfromAPIList.add(String.valueOf(y));
-		
-		}
-		return windValueOrWindGustsfromAPIList;
 	}
 }

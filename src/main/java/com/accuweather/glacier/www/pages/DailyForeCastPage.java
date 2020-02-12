@@ -41,7 +41,7 @@ public class DailyForeCastPage extends BasePage{
 	/*
      * Day Daily Forecast Area
      */
-	private By byDailyTab = By.cssSelector("div.page-subnav > div > div > div.subnav-items > a:nth-child(5)");
+	private By byDailyTab = By.cssSelector("div.page-subnav > div.subnav > div.subnav-items > a:nth-child(6)");
 	private By byDailyForecastDayTemp = By.cssSelector("div.block.day > div > div.column.temps > div.main > span.temp");
 	private By byDailyForecastDayRealFeel = By.cssSelector("div.block.day > div > div.column.temps > div.sub > div.realfeel");
 	private By byDailyForecastDayPreciptation = By.cssSelector("div.block.day > div > div.column.temps > div.sub > div.precip");
@@ -65,7 +65,7 @@ public class DailyForeCastPage extends BasePage{
 	private By byPrecipitationText = By.cssSelector("div:nth-child(1) > a.forecast-list-card.forecast-card.today > div.info.precip > p:nth-child(1)");
 	private By byPrecipitationValue = By.cssSelector("div:nth-child(1) > a.forecast-list-card.forecast-card.today > div.info.precip > p:nth-child(2)");
 	private By byCurentDayCard = By.cssSelector("div:nth-child(1) > a.forecast-list-card.forecast-card.today");
-	private By byNextCTATab = By.xpath("//a[@class='card-button nav-card next centered']");
+	private By byNextCTATab = By.cssSelector("div.two-column-page-content > div.page-column-1 > div > div.navigation > a");
 	private By byRightArrowIcon = By.cssSelector("body > div.template-root.daily-forecast > div.two-column-page-content > div.page-column-1 > div.navigation > a > div.arrow-wrap.is-next > svg.arrow.icon-chevron.icon-chevron-right");
 	
 	/*public void validateDailyForecast (Headline2 headline) {
@@ -158,7 +158,7 @@ public class DailyForeCastPage extends BasePage{
 		WebPageLoaded.isDomInteractive();
 		WebElement dailyTab = getDriver().findElement(byDailyTab);
 		dailyTab.syncVisible(15);
-		dailyTab.click();
+		dailyTab.jsClick();
 		Sleeper.sleep(2);
 	}
 

@@ -154,29 +154,35 @@ public class APIUtilities extends ExcelUtilities
 	}
 	
 	/**
-	 * @author HFARAZ
-	 * This method will give the API data for Hourly Page 
-	 * */
-	public static Response getHourlyPageDetails(String stationCode, String locationOffSet, String currentDate)
-	{
-		RestAssured.baseURI = apiProperties.get(APIConstants.BASE_URI);
-		Response response =
-		given().
-			param("apikey",apiProperties.get(APIConstants.API_KEY)).
-			param("language",apiProperties.get(APIConstants.LANGUAGE)).
-			param("details",apiProperties.get(APIConstants.DETAILS)).
-			param("locationOffset",locationOffSet).
-			param("startDate",currentDate+apiProperties.get(APIConstants.START_DATE_SUFFIX)).
-			param("hourCount",apiProperties.get(APIConstants.HOUR_COUNT)).
-			param("metric",apiProperties.get(APIConstants.METRIC)).
-		when().
-			get(apiProperties.get(APIConstants.GET_HOURLY_FORECAST_DETAILS)+stationCode+".json").
-		then().
-			assertThat().statusCode(200).and().
-		extract().response();
-		
-		return response;
-	}
+     * @author HFARAZ
+     * This method will give the API data for Hourly Page
+     * */
+    public static Response getHourlyPageDetails(String stationCode, String locationOffSet, String currentDate, String units)
+    {
+        Boolean metric = false;
+        if(units.equalsIgnoreCase("IMPERIAL"))
+            metric = false;
+        else
+            metric = true;
+       
+        RestAssured.baseURI = apiProperties.get(APIConstants.BASE_URI);
+        Response response =
+        given().
+            param("apikey",apiProperties.get(APIConstants.API_KEY)).
+            param("language",apiProperties.get(APIConstants.LANGUAGE)).
+            param("details",apiProperties.get(APIConstants.DETAILS)).
+            param("locationOffset",locationOffSet).
+            param("startDate",currentDate+apiProperties.get(APIConstants.START_DATE_SUFFIX)).
+            param("hourCount",apiProperties.get(APIConstants.HOUR_COUNT)).
+            param("metric",metric).
+        when().
+            get(apiProperties.get(APIConstants.GET_HOURLY_FORECAST_DETAILS)+stationCode+".json").
+        then().
+            assertThat().statusCode(200).and().
+        extract().response();
+       
+        return response;
+    }
 	
 	
 	/**
