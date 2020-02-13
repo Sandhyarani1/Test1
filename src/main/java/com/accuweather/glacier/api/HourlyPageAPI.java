@@ -138,6 +138,15 @@ public class HourlyPageAPI extends APIUtilities
 	
 	/**
 	 * @author HFARAZ
+	 * Method to get state code from the locationKeys.xlsx file
+	 * **/
+	public static String getStateCode()
+	{
+		return getStateCode(rowNo);
+	}
+	
+	/**
+	 * @author HFARAZ
 	 * Method to get country code of the city selected for testing
 	 * **/
 	public static String getCountryCode()
