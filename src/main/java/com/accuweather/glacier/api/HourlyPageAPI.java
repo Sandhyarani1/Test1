@@ -138,6 +138,15 @@ public class HourlyPageAPI extends APIUtilities
 	
 	/**
 	 * @author HFARAZ
+	 * Method to get statecode from the locationKeys.xlsx file
+	 * **/
+	public static String getStateCode()
+	{
+		return getStateCode(rowNo);
+	}
+	
+	/**
+	 * @author HFARAZ
 	 * Method to get country code of the city selected for testing
 	 * **/
 	public static String getCountryCode()
@@ -354,7 +363,8 @@ public class HourlyPageAPI extends APIUtilities
 		}
 		else if(Integer.parseInt(timeFromAPI)==12)
 			timeOnUI = String.valueOf(Integer.parseInt(timeFromAPI))+PM;
-		else 
+		
+		else
 			timeOnUI = String.valueOf(Integer.parseInt(timeFromAPI)-12)+PM;
 		
 		return timeOnUI;
@@ -579,7 +589,8 @@ public class HourlyPageAPI extends APIUtilities
 		
 		
 		SimpleDate sd = new SimpleDate();
-		getHourlyPageAPIData("Buffalo",sd.getCurrentDate("yyyy-MM-dd"),"METRIC");
+
+		getHourlyPageAPIData("Buffalo",sd.getCurrentDate("yyyy-MM-dd"),"IMPERIAL");
 		//getHourlyForecastData("Buffalo",sd.getTomorrowDate("yyyy-MM-dd"),"IMPERIAL");
 		  
 		  for(int i=0;i<NoOfHoursForTheDay();i++)
@@ -639,6 +650,7 @@ public class HourlyPageAPI extends APIUtilities
 		  System.out.println(getTimeAsPerHourlyPageUI("12"));
 		  System.out.println(getTimeAsPerHourlyPageUI("15"));
 		  System.out.println(getTimeAsPerHourlyPageUI("00"));
+		  
 		 
 		
 	}

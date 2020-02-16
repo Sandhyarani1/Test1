@@ -28,9 +28,9 @@ public class Test_SevereWeather extends AccuWeatherBaseTest
 	public void RW_T502_ValidateTabsOnSevereWeatherPage_verifyUserIsTakenToSevereWeatherPage()
 	{
 		testStart("Validate user is taken to severe weatehr page");
-		navBar.mouseHoverOnSeverWeather();
+		navBar.hoverOnSevereWeather();
 		navBar.isSeverWeatherSubMenuDisplayed();
-		navBar.clickSeverWeatherSubMenu();
+		navBar.navigateToSeverWeatherPage();
 		String actualSevereWeatherPageUrl = getDriver().getCurrentUrl();
 		try
 		{
@@ -46,7 +46,7 @@ public class Test_SevereWeather extends AccuWeatherBaseTest
 	public void RW_T502_ValidateTabsOnSevereWeatherPage_verifyTabsOnSevereWeatherPage()
 	{
 		testStart("Validate 3 tabs (Hurricane, severe, accuweather ready) on severe weatehr page");
-		navBar.mouseHoverOnSeverWeather();
+		navBar.hoverOnSevereWeather();
 		navBar.isSeverWeatherSubMenuDisplayed();
 		navBar.isHurricaneSubMenuDisplayed();
 		navBar.isAWReadySubMenuDisplayed();
@@ -57,9 +57,9 @@ public class Test_SevereWeather extends AccuWeatherBaseTest
 	{
 		testStart("Verify tooltip is orange in color");
 	    landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
-		navBar.mouseHoverOnSeverWeather();
+		navBar.hoverOnSevereWeather();
 		navBar.isSeverWeatherSubMenuDisplayed();
-		navBar.clickSeverWeatherSubMenu();
+		navBar.navigateToSevereWeatherSubMenu();
 		String actualColor = cityRadarPage.verifyTootipBackgroundColor();
 		try
 		{
@@ -77,9 +77,9 @@ public class Test_SevereWeather extends AccuWeatherBaseTest
 	{
 		testStart("Verify tooltip description");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
-		navBar.mouseHoverOnSeverWeather();
+		navBar.hoverOnSevereWeather();
 	    navBar.isSeverWeatherSubMenuDisplayed();
-	    navBar.clickSeverWeatherSubMenu();
+	    navBar.navigateToSevereWeatherSubMenu();
 		String actualDescription = cityRadarPage.verifyTooltipDescription();
 		try
 		{
@@ -97,9 +97,9 @@ public class Test_SevereWeather extends AccuWeatherBaseTest
 	{
 		testStart("Verify able to click zoom in and zoom out of the map");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
-		navBar.mouseHoverOnSeverWeather();
+		navBar.hoverOnSevereWeather();
 	    navBar.isSeverWeatherSubMenuDisplayed();
-	    navBar.clickSeverWeatherSubMenu();
+	    navBar.navigateToSevereWeatherSubMenu();
 		cityRadarPage.clickZoomInAndZoomOut();
 		
 	}	
@@ -109,9 +109,9 @@ public class Test_SevereWeather extends AccuWeatherBaseTest
 	{
 		testStart("Verify on click of tooltip again, the tooltip closes");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
-		navBar.mouseHoverOnSeverWeather();
+		navBar.hoverOnSevereWeather();
         navBar.isSeverWeatherSubMenuDisplayed();
-        navBar.clickSeverWeatherSubMenu();
+        navBar.navigateToSevereWeatherSubMenu();
 		String actualColor = cityRadarPage.verifyToolTipClosed();
 		try
 		{
@@ -129,9 +129,9 @@ public class Test_SevereWeather extends AccuWeatherBaseTest
 	{
 		testStart("Verify title of map for severe weather");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
-		navBar.mouseHoverOnSeverWeather();
+		navBar.hoverOnSevereWeather();
         navBar.isSeverWeatherSubMenuDisplayed();
-        navBar.clickSeverWeatherSubMenu();
+        navBar.navigateToSevereWeatherSubMenu();
 		String actualHeader = cityRadarPage.getMapHeader();
 		try
 		{
@@ -150,9 +150,9 @@ public class Test_SevereWeather extends AccuWeatherBaseTest
 	{
 		testStart("Verify secondary navigation menus [hurricane, severe] displayed above the map");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
-		navBar.mouseHoverOnSeverWeather();
+		navBar.hoverOnSevereWeather();
         navBar.isSeverWeatherSubMenuDisplayed();
-        navBar.clickSeverWeatherSubMenu();
+        navBar.navigateToSevereWeatherSubMenu();
         severeWeatherPage.verifySecondaryNavigationMenus();
 	}	
 	
@@ -161,9 +161,9 @@ public class Test_SevereWeather extends AccuWeatherBaseTest
 	{
 		testStart("Verify severe tab highlighted in color");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
-		navBar.mouseHoverOnSeverWeather();
+		navBar.hoverOnSevereWeather();
         navBar.isSeverWeatherSubMenuDisplayed();
-        navBar.clickSeverWeatherSubMenu();
+        navBar.navigateToSevereWeatherSubMenu();
         String actualColor = severeWeatherPage.verifySevereTabHiglightedColor();
         try
 		{
@@ -182,9 +182,9 @@ public class Test_SevereWeather extends AccuWeatherBaseTest
 	{
 		testStart("Verify mapbox and click i next to mapbox");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
-		navBar.mouseHoverOnSeverWeather();
+		navBar.hoverOnSevereWeather();
         navBar.isSeverWeatherSubMenuDisplayed();
-        navBar.clickSeverWeatherSubMenu();
+        navBar.navigateToSevereWeatherSubMenu();
         severeWeatherPage.locateMapboxAndClickInextToit();
 	}	
 
@@ -193,9 +193,9 @@ public class Test_SevereWeather extends AccuWeatherBaseTest
 	{
 		testStart("Verify Map opens up into full screen with zoom controls if you click on x symbol the map switches back to normal");
 		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
-		navBar.mouseHoverOnSeverWeather();
+		navBar.hoverOnSevereWeather();
         navBar.isSeverWeatherSubMenuDisplayed();
-        navBar.clickSeverWeatherSubMenu();
+        navBar.navigateToSevereWeatherSubMenu();
         severeWeatherPage.clickFullScreenButtonOfMap();
 	}	
 }

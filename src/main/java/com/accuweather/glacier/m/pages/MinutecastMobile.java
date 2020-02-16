@@ -4,7 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.Color;
@@ -751,6 +753,21 @@ public class MinutecastMobile extends MobileBasePage
 		improveThisMap.jsClick();
 		Sleeper.sleep(4);
 	}
+	
+	public void switchToPopUpWindow(String defaultwindow) {
+        
+        Set<String> windows = getDriver().getWindowHandles();
+        Iterator iterator = windows.iterator();
+        String currentwindowId;
+        while(iterator.hasNext()) {
+        currentwindowId = iterator.next().toString();
+                      if(!currentwindowId.equals(defaultwindow)) {
+               getDriver().switchTo().window(currentwindowId);
+              
+        }
+  }
+       
+}
 
 	
 

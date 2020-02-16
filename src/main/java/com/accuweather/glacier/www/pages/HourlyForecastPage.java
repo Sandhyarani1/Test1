@@ -129,6 +129,7 @@ public class HourlyForecastPage extends BasePage
 	public static ArrayList<String> ceilingValueFromAPIList;
 	
 	private static final String ENVIRONMENT_URL_CONFIG_FILE = "EnvironmentURLs.properties";
+
 	private Calendar calendar = Calendar.getInstance();
 	SimpleDate day = new SimpleDate();
 	private Boolean timeValidation;
@@ -1610,10 +1611,9 @@ public class HourlyForecastPage extends BasePage
 		
 		//get the total number of tabs in today's hourly page
 		List<WebElement> NoOfHoursTab = getDriver().findElements(By.cssSelector("div.hourly-wrapper > div > div.accordion-item-header-container > div"));
-		int totalTabs = NoOfHoursTab.size();
-		System.out.println("totalTabs:"+totalTabs);
+		int totalTabs = NoOfHoursTab.size()+1;
 	
-		for(int i=1; i<=totalTabs+1; i++) {
+		for(int i=1; i<=totalTabs; i++) {
 			//there is no hour tab with child number 3. so add 1 to it.
 			if( i==3 )
 				i = i+1;

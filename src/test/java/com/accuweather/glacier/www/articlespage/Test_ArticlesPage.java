@@ -35,9 +35,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC367_Navigation_to_News_Article_Page_succesfully()
 	{
 		testStart("Validate National Article page is loaded successfully");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -50,9 +48,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC367_Navigating_to_News_Article_Page_Validate_SecondaryMenu_isDisplayed()
 	{
 		testStart("Navigating to News Article page and Validating Secondary Menu Displayed on the page");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -65,9 +61,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC367_Navigating_to_News_Article_Page_andValidating_SecondaryMenu_hasNewstabDisplayed()
 	{
 		testStart("Navigating to News Article page and Validating Secondary Menu has News tab Displayed");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -80,9 +74,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC367_Navigating_to_News_Article_Page_andValidating_SecondaryMenu_hasVideoTabDisplayed()
 	{
 		testStart("Navigating to News Article page and Validating Secondary Menu has Video tab Displayed");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -94,9 +86,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC367_Navigating_to_News_Article_Page_andValidating_SecondaryMenu_hasBlogstabDisplayed()
 	{
 		testStart("Navigating to News Article page and Validating Secondary Menu has Blogs tab Displayed");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -108,9 +98,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC367_Navigating_to_News_Article_Page_andValidating_SecondaryMenu_hasPersonalitiestabDisplayed()
 	{
 		testStart("Navigating to News Article page and Validating Secondary Menu has Personalities tab Displayed ");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -123,9 +111,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC367_Navigating_to_News_Article_Page_andValidating_NewsTab_HighlightedinOrange_byDefault()
 	{
 		testStart("Navigating to News Article page and Validating News tab Highlighted in Orange by Default");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -139,9 +125,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC367_Navigating_to_News_Article_Page_andValidating_latestWeather_Displayed()
 	{
 		testStart("Navigating to News Article page and Validating Latest  Weather Header is displayed below Secondary Navgation menus");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -155,9 +139,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC367_Navigating_to_News_Article_Page_andValidating_numberofArticles_Displayed()
 	{
 		testStart("Navigating to News Article page and Validating five Articles displayed below Current Weather Header");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -172,9 +154,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC367_Navigating_to_News_Article_Page_andValidating_ShowMore_button_Displayed()
 	{
 		testStart("Navigating to News Article page and Validating five Articles displayed below Current Weather Header");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -189,9 +169,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC368_Navigating_to_News_Article_Page_andValidating_Articlespage_whenclickedonArticle()
 	{
 		testStart("Navigating to News Article page and Validating five Articles displayed below Current Weather Header");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -207,9 +185,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC367_Navigating_to_News_Article_Page_andValidating_Articlespage_whenclickedonArticle()
 	{
 		testStart("Navigating to News Article page and Validating five Articles displayed below Current Weather Header");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -227,9 +203,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC367_Navigating_to_News_Article_Page_andValidating_Articlespage_textDisplayed()
 	{
 		testStart("Navigating to News Article page and Validating five Articles displayed below Current Weather Header");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -247,9 +221,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC371_Navigating_to_News_Article_Page_andValidating_ReportTypo_isDisplayed()
 	{
 		testStart("Navigating to News Article page Click on Articles displayed Validate Report Typo is Displayed");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -267,9 +239,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC371_Navigating_to_News_Article_Page_andValidating_ReportTypo_Landingpage_URL()
 	{
 		testStart("Navigating to News Article page Click on Articles displayed Validate Report Typo is Displayed");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -291,9 +261,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC758_Navigating_to_News_Article_Page_andValidating_ShowMOre_Displayed()
 	{
 		testStart("Navigating to News Article page and Validating Show More CTA is Displayed");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -311,9 +279,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC758_Navigating_to_News_Article_Page_andClick_onShowMore_CTA()
 	{
 		testStart("Navigating to News Article page and Validating Show More CTA is Displayed");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -332,9 +298,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC759_Navigating_to_News_Article_Page_andValidate_onShowless_CTA()
 	{
 		testStart("Navigating to News Article page and Validating Show More CTA is Displayed");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -368,9 +332,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC759_Navigating_to_News_Article_Page_andValidate_ClickonShowless_CTA()
 	{
 		testStart("Navigating to News Article page and Validating Show Less CTA is Displayed and when clicked on Show less Hides the additional articles and reverts back to the initial 5 in view.");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -406,9 +368,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC750_Navigating_to_News_Article_Page_ClickonArticles_Validate_Shareicon_Displayed()
 	{
 		testStart("Navigating to News Article page and Validating Show Less CTA is Displayed and when clicked on Show less Hides the additional articles and reverts back to the initial 5 in view.");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -422,9 +382,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC750_Navigating_to_News_Article_Page_ClickonArticles_Validate_facebook_iconDisplayed() 
 	{
 		testStart("Navigating to News Article page click on any Articles and click on Share icon expanded menu isDisplayed  which has Facebook icon in it");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -441,9 +399,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC750_Navigating_to_News_Article_Page_ClickonArticles_Validate_facebook_LandingpageTitle() 
 	{
 		testStart("Navigating to News Article page click on any Articles and click on Share icon expanded menu Displayed validte Facebook landing page url");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -464,9 +420,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC750_Navigating_to_News_Article_Page_ClickonArticles_Validate_Twitter_iconDisplayed() 
 	{
 		testStart("Navigating to News Article page click on any Articles and click on Share icon expanded menu isDisplayed  which has Twittew icon in it");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -484,9 +438,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC750_Navigating_to_News_Article_Page_ClickonArticles_Validate_twitter_LandingpageTitle() 
 	{
 		testStart("Navigating to News Article page click on any Articles and click on Share icon expanded menu Displayed validte Twitter landing page url");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -507,9 +459,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC750_Navigating_to_News_Article_Page_ClickonArticles_Validate_Mail_iconDisplayed() 
 	{
 		testStart("Navigating to News Article page click on any Articles and click on Share icon expanded menu isDisplayed  which has Twittew icon in it");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -527,9 +477,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC750_Navigating_to_News_Article_Page_ClickonArticles_Validate_Mail_LandingpageTitle() 
 	{
 		testStart("Navigating to News Article page click on any Articles and click on Share icon expanded menu Displayed validte Twitter landing page url");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -546,9 +494,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC750_Navigating_to_News_Article_Page_ClickonArticles_ValidatePrint_iconDisplayed() 
 	{
 		testStart("Navigating to News Article page click on any Articles and click on Share icon expanded menu isDisplayed  which has Twittew icon in it");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -566,9 +512,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC750_Navigating_to_News_Article_Page_ClickonArticles_ValidatePrint_LandingpageTitle() 
 	{
 		testStart("Navigating to News Article page click on any Articles and click on Share icon expanded menu Displayed validte Twitter landing page url");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -587,9 +531,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC964_Navigating_to_News_Article_Page_Validate_ArticlebyLine_Displayed()
 	{
 		testStart("Navigating to News Article page and Click on Any Article and Validate Article by Line is Displayed.");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);
@@ -603,9 +545,7 @@ public class Test_ArticlesPage extends AccuWeatherBaseTest
 	public void RW_TC964_Navigating_to_News_Article_Page_Validate_ArtilcebyDate_Displayed()
 	{
 		testStart("Navigating to News Article page and Click on Any Article and Validate Article by Date is Displayed.");
-		navigation.navigateToNews();
-		navigation.isWeatherNewsSubMenuDisplayed();
-		navigation.navigateToNewsPage();
+		navigation.navigateToWeatherNewsPage();
 		Sleeper.sleep(5);
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedNewsPageTitle);

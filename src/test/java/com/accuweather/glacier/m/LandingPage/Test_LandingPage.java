@@ -59,7 +59,7 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-		navBar.navigateToHome();
+		navBar.clickAccuWeatherLogo();
 		WebPageLoaded.isDomInteractive(1000);
 		landingpage.isRecentLocationDisplayed();
 		landingpage.isSecondLocationDisplayed();
@@ -76,13 +76,13 @@ public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-		navBar.navigateToHome();
+		navBar.clickAccuWeatherLogo();
 		WebPageLoaded.isDomInteractive(1000);
 		landingpage.enterZipcodeInSearchField(zipcode);
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(expectedForecastPageTitle);
-		navBar.navigateToHome();
+		navBar.clickAccuWeatherLogo();
 		WebPageLoaded.isDomInteractive(1000);
 		landingpage.isRecentLocationDisplayed();
 		landingpage.isSecondLocationDisplayed();

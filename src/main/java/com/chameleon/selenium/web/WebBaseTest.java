@@ -569,7 +569,7 @@ public class WebBaseTest extends BaseTest {
             	 * Below is the line of code to install ad blocker extension to the browser. 
             	 * Uncomment it if you want the scripts to run with ad blocker
             	 * */
-            	//options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+appURLRepository.get(Constants.AD_BLOCKER_EXTENSION_PATH)));
+            	options.getChromeOptions().addExtensions(new File(System.getProperty("user.dir")+appURLRepository.get(Constants.AD_BLOCKER_EXTENSION_PATH)));
             	options.getChromeOptions().setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             	options.getChromeOptions().setCapability(ChromeOptions.CAPABILITY, options.getChromeOptions());
             	break;

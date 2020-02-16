@@ -1,6 +1,7 @@
 package com.chameleon.utils.DataIOOperations;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.Map;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -46,7 +47,7 @@ public class ExcelUtilities
 	 * */
 	public static String getZipCode(int rowNo)
 	{
-		String zipCode = ExcelUtilities.getNumericData(rowNo, 4)+"";
+		String zipCode = ExcelUtilities.getNumericData(rowNo, 5)+"";
 		return zipCode;
 	}
 	
@@ -74,13 +75,46 @@ public class ExcelUtilities
 	  
 	  /**
 	   * @author HFARAZ
+	   * Method to get the State code from location_keys.xlsx file
+	   * @return String value: state code based on the row no provide in the parameter
+	   * **/
+	  public static String getStateCode(int rowNo)
+	  {
+		  String stateCode = ExcelUtilities.getStringData(rowNo, 3);
+		  return stateCode;
+	  }
+	  
+	  /**
+	   * @author HFARAZ
 	   * Method to get the State Name from location_keys.xlsx file
-	   * @return String value: city name based on the row no provide in the parameter
+	   * @return String value: state name based on the row no provide in the parameter
 	   * **/
 	  public static String getStateName(int rowNo)
 	  {
-		  String stateName = ExcelUtilities.getStringData(rowNo, 3);
+		  String stateName = ExcelUtilities.getStringData(rowNo, 4);
 		  return stateName;
+	  }
+	  
+	  /**
+	   * @author HFARAZ
+	   * Method to get the State Name from location_keys.xlsx file
+	   * @return String value: state name based on the row no provide in the parameter
+	   * **/
+	  public static String getRegionName(int rowNo)
+	  {
+		  String regionName = ExcelUtilities.getStringData(rowNo, 6);
+		  return regionName;
+	  }
+	  
+	  /**
+	   * @author HFARAZ
+	   * Method to get the country Name from location_keys.xlsx file
+	   * @return String value: country name based on the row no provide in the parameter
+	   * **/
+	  public static String getCountryName(int rowNo)
+	  {
+		  String countryName = ExcelUtilities.getStringData(rowNo, 7);
+		  return countryName;
 	  }
 	
 	/**
@@ -118,7 +152,6 @@ public class ExcelUtilities
 		{
 			cell = excelWSheet.getRow(rowNum).getCell(colNum);
 			String cellData = cell.getStringCellValue();
-			System.out.println(cellData);
 			return cellData;
 
 		}
@@ -187,6 +220,44 @@ public class ExcelUtilities
 			}
 			System.out.println("City found at row number:---->"+rowNo);
 			return rowNo;
+		}
+		
+		/**
+		 * @author HFARAZ
+		 * This method deals with updating the excel sheet with any data
+		 * based on the row number , column no provided in the parameters
+		 * */
+		public static void setCellData(String Result,  int RowNum, int ColNum)
+		{
+			try
+			{
+				row  = excelWSheet.getRow(RowNum);
+				cell = row.getCell(ColNum, row.RETURN_BLANK_AS_NULL);
+
+				if (cell == null) 
+				{
+					cell = row.createCell(ColNum);
+					cell.setCellValue(Result);
+
+				}
+				else
+				{
+					cell.setCellValue(Result);
+				}
+
+		// Constant variables Test Data path and Test Data file name
+
+				FileOutputStream fileOut = new FileOutputStream("C:\\Users\\Qualitest\\Downloads\\location_keys.xlsx");
+				excelWBook.write(fileOut);
+				fileOut.flush();
+				fileOut.close();
+
+			}
+			catch(Exception e)
+			{
+				System.err.println(e.getMessage());
+			}
+
 		}
 	
 }

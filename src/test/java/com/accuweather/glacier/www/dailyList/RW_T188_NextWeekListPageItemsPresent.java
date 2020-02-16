@@ -11,18 +11,21 @@ import com.accuweather.glacier.www.pages.DailyListPage;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.accuweather.glacier.www.pages.NavigationBar;
 import com.chameleon.utils.Constants;
+import com.chameleon.utils.DataIOOperations.ExcelUtilities;
 import com.chameleon.utils.date.SimpleDate;
 
-public class RW_T188_NextweekListPageItemsPresent extends AccuWeatherBaseTest {
+public class RW_T188_NextWeekListPageItemsPresent extends AccuWeatherBaseTest {
 	public static final String CITY_NAME = "Buffalo";
 	public static String stateCode = "";
 	public static String locationKey = "";
 	public static String countryCode = "";
 	public static String zipCode = "";
 	public static String location = "";
+	public static String regionName = "";
+	public static String countryName = "";
+	public static String stateName = "";
 	public static String cityNameForURL = "";
-	public static String expectedHourlyForecastURL = "";
-	public static String expectedHourlyForecastTitle = "";
+	public static String expectedDailyURL = "";
 	SoftAssert softAssert;
 	
 	LandingPage landingPage = new LandingPage();
@@ -33,20 +36,18 @@ public class RW_T188_NextweekListPageItemsPresent extends AccuWeatherBaseTest {
 	@BeforeClass
 	public void getTestData()
 	{
-		HourlyPageAPI.getHourlyForecastData(CITY_NAME, sd.getCurrentDate("yyyy-MM-dd"), "IMPERIAL");
-		
-		stateCode = HourlyPageAPI.getStateName();
-		locationKey = HourlyPageAPI.getLocationKey();
-		zipCode = HourlyPageAPI.getZipCode();
-		countryCode = HourlyPageAPI.getCountryCode();
-		location = CITY_NAME + ", " + stateCode + ", " + countryCode;
+		int rowNo = 0;
+        rowNo = ExcelUtilities.getRowNumberForCity(CITY_NAME);
+        zipCode = ExcelUtilities.getZipCode(rowNo);
+        stateCode = ExcelUtilities.getStateCode(rowNo);
+        countryCode = ExcelUtilities.getCountryCode(rowNo);
+        locationKey = ExcelUtilities.getLocationKey(rowNo);
+        regionName = ExcelUtilities.getRegionName(rowNo);
+        countryName = ExcelUtilities.getCountryName(rowNo);
+        stateName = ExcelUtilities.getStateName(rowNo);
+        location = CITY_NAME + ", " + stateCode + ", " + countryCode;
+        
 		cityNameForURL = CITY_NAME.replace(' ', '-');
-		
-		expectedHourlyForecastURL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA) + "en/us/" + cityNameForURL + "/"
-				+ zipCode + "/hourly-weather-forecast/" + locationKey).toLowerCase();
-		
-		expectedHourlyForecastTitle = CITY_NAME + ", " + stateCode
-				+ " Hourly Weather | AccuWeather";
 	
 	}
 	
@@ -60,8 +61,11 @@ public class RW_T188_NextweekListPageItemsPresent extends AccuWeatherBaseTest {
 		dailyForeCastPage.clickDailyTab();
 		
 		/************************Verify NextWeek Headers (MonthAndDate)*******************************/
-		softAssert.assertTrue(dailyListPage.compareNextWeekHeaderArraylists(),
-						"Issue------->NExtweek heare Month and date are not matching as expected");
+		dailyListPage.getNextWeekHeaderDateAndMonthFromUI();
+		dailyListPage.getStartAndEndHeaderOnAllPagesUsingCalendarFunction();
+		for (int i=0; i<DailyListPage.dateMonthDateList_UI.size(); i++)
+		softAssert.assertEquals(DailyListPage.MonthAndDateHeaderList_UserDefined.get(i), DailyListPage.dateMonthDateList_UI.get(i),
+						"Issue------->Nextweek header Month and date from userdefined "+DailyListPage.MonthAndDateHeaderList_UserDefined.get(i)+" and "+DailyListPage.dateMonthDateList_UI.get(i)+" from UI are not matching as expected");
 		 
 		softAssert.assertAll();
 	}

@@ -41,7 +41,7 @@ public class DailyForeCastPage extends BasePage{
 	/*
      * Day Daily Forecast Area
      */
-	private By byDailyTab = By.cssSelector("div.page-subnav > div.subnav > div.subnav-items > a:nth-child(6)");
+	private By byDailyTab = By.xpath("//a[@data-gaid='daily']");
 	private By byDailyForecastDayTemp = By.cssSelector("div.block.day > div > div.column.temps > div.main > span.temp");
 	private By byDailyForecastDayRealFeel = By.cssSelector("div.block.day > div > div.column.temps > div.sub > div.realfeel");
 	private By byDailyForecastDayPreciptation = By.cssSelector("div.block.day > div > div.column.temps > div.sub > div.precip");
@@ -155,7 +155,7 @@ public class DailyForeCastPage extends BasePage{
 	 * */
 	public void clickDailyTab()
 	{
-		WebPageLoaded.isDomInteractive();
+		WebPageLoaded.isDomComplete();
 		WebElement dailyTab = getDriver().findElement(byDailyTab);
 		dailyTab.syncVisible(15);
 		dailyTab.jsClick();

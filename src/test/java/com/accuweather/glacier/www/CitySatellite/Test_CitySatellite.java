@@ -29,7 +29,7 @@ public class Test_CitySatellite extends AccuWeatherBaseTest {
 	 {
 		 testStart("Is Enhanced Tab enabled by default" );
 		 WebPageLoaded.isDomComplete(2000); 
-		 navBar.mouseHoverOnMoreMenu();
+		 navBar.hoverOnMoreMenu();
 		 waitUntilElementIsDisplayedOrClickable();
 		 
 		 navBar.clickTopNavStartSearchIcon();
@@ -48,7 +48,7 @@ public class Test_CitySatellite extends AccuWeatherBaseTest {
 	 {
 		 testStart("Is Enhanced Tab enabled by default" );
 		 WebPageLoaded.isDomComplete(2000); 
-		 navBar.mouseHoverOnMoreMenu();
+		 navBar.hoverOnMoreMenu();
 		 waitUntilElementIsDisplayedOrClickable();
 		 navBar.clickTopNavStartSearchIcon();
 		 waitUntilElementIsDisplayedOrClickable();
@@ -61,7 +61,7 @@ public class Test_CitySatellite extends AccuWeatherBaseTest {
 	 
 	 @Test(priority = 3) public void isEnhancedTabDisplayed() throws AWTException,
 	 InterruptedException { testStart("Is Enhanced Tab enabled by default" );
-	 WebPageLoaded.isDomComplete(2000); navBar.mouseHoverOnMoreMenu();
+	 WebPageLoaded.isDomComplete(2000); navBar.hoverOnMoreMenu();
 	 waitUntilElementIsDisplayedOrClickable();
 	 navBar.clickTopNavStartSearchIcon();
 	 waitUntilElementIsDisplayedOrClickable();
@@ -73,7 +73,7 @@ public class Test_CitySatellite extends AccuWeatherBaseTest {
 	 
 	 @Test(priority = 4) public void isEnhancedTabEnabled() throws AWTException,
 	 InterruptedException { testStart("Is Enhanced Tab enabled by default" );
-	 WebPageLoaded.isDomComplete(2000); navBar.mouseHoverOnMoreMenu();
+	 WebPageLoaded.isDomComplete(2000); navBar.hoverOnMoreMenu();
 	 waitUntilElementIsDisplayedOrClickable();
 	 navBar.clickTopNavStartSearchIcon();
 	 waitUntilElementIsDisplayedOrClickable();
@@ -85,7 +85,7 @@ public class Test_CitySatellite extends AccuWeatherBaseTest {
 	 
 	 @Test(priority = 5) public void isStandardTabDisplayed() throws AWTException,
 	 InterruptedException { testStart("Is Enhanced Tab enabled by default" );
-	 WebPageLoaded.isDomComplete(2000); navBar.mouseHoverOnMoreMenu();
+	 WebPageLoaded.isDomComplete(2000); navBar.hoverOnMoreMenu();
 	 waitUntilElementIsDisplayedOrClickable();
 	 navBar.clickTopNavStartSearchIcon();
 	 waitUntilElementIsDisplayedOrClickable();
@@ -97,7 +97,7 @@ public class Test_CitySatellite extends AccuWeatherBaseTest {
 	 
 	 @Test(priority = 6) public void isVisibleTabDisplayed() throws AWTException,
 	 InterruptedException { testStart("Is Enhanced Tab enabled by default" );
-	 WebPageLoaded.isDomComplete(2000); navBar.mouseHoverOnMoreMenu();
+	 WebPageLoaded.isDomComplete(2000); navBar.hoverOnMoreMenu();
 	 waitUntilElementIsDisplayedOrClickable();
 	 navBar.clickTopNavStartSearchIcon();
 	 waitUntilElementIsDisplayedOrClickable();
@@ -110,7 +110,7 @@ public class Test_CitySatellite extends AccuWeatherBaseTest {
 	 @Test(priority = 7) public void isWaterVaporTabDisplayed() throws
 	 AWTException, InterruptedException {
 	 testStart("Is Enhanced Tab enabled by default" );
-	 WebPageLoaded.isDomComplete(2000); navBar.mouseHoverOnMoreMenu();
+	 WebPageLoaded.isDomComplete(2000); navBar.hoverOnMoreMenu();
 	 waitUntilElementIsDisplayedOrClickable();
 	 navBar.clickTopNavStartSearchIcon();
 	 waitUntilElementIsDisplayedOrClickable();
@@ -123,7 +123,7 @@ public class Test_CitySatellite extends AccuWeatherBaseTest {
 	 @Test(priority = 8) public void isEnhancedHeaderDisplayed() throws
 	 AWTException, InterruptedException {
 	 testStart("Is Enhanced Header Displayed"); WebPageLoaded.isDomComplete(2000);
-	 navBar.mouseHoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
+	 navBar.hoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
 	 navBar.clickTopNavStartSearchIcon();
 	 waitUntilElementIsDisplayedOrClickable();
 	 navBar.satelliteCitylocationSearch(); navBar.enterlocationSearch();
@@ -135,7 +135,7 @@ public class Test_CitySatellite extends AccuWeatherBaseTest {
 	 @Test(priority = 9) public void isEnhancedZoomInDisplayed() throws
 	 AWTException, InterruptedException {
 	 testStart("Is Enhanced Header Displayed"); WebPageLoaded.isDomComplete(2000);
-	 navBar.mouseHoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
+	 navBar.hoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
 	 navBar.clickTopNavStartSearchIcon();
 	 waitUntilElementIsDisplayedOrClickable();
 	 navBar.satelliteCitylocationSearch(); navBar.enterlocationSearch();
@@ -147,7 +147,7 @@ public class Test_CitySatellite extends AccuWeatherBaseTest {
 	 @Test(priority = 10) public void isEnhancedZoomOutDisplayed() throws
 	 AWTException, InterruptedException {
 	 testStart("Is Enhanced Header Displayed"); WebPageLoaded.isDomComplete(2000);
-	 navBar.mouseHoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
+	 navBar.hoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
 	 navBar.clickTopNavStartSearchIcon();
 	 waitUntilElementIsDisplayedOrClickable();
 	 navBar.satelliteCitylocationSearch(); navBar.enterlocationSearch();
@@ -159,7 +159,7 @@ public class Test_CitySatellite extends AccuWeatherBaseTest {
 	 @Test(priority = 11) public void isEnhancedMapBoxDisplayed() throws
 	 AWTException, InterruptedException {
 	 testStart("Is Enhanced Header Displayed"); WebPageLoaded.isDomComplete(2000);
-	 navBar.mouseHoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
+	 navBar.hoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
 	 navBar.clickTopNavStartSearchIcon();
 	 waitUntilElementIsDisplayedOrClickable();
 	 navBar.satelliteCitylocationSearch(); navBar.enterlocationSearch();
@@ -172,7 +172,7 @@ public class Test_CitySatellite extends AccuWeatherBaseTest {
 	 
 	 @Test(priority = 12) public void isMapBoxPageDisplayed() throws AWTException,
 	 InterruptedException { testStart("Is Enhanced Header Displayed");
-	 WebPageLoaded.isDomComplete(2000); navBar.mouseHoverOnMoreMenu();
+	 WebPageLoaded.isDomComplete(2000); navBar.hoverOnMoreMenu();
 	 waitUntilElementIsDisplayedOrClickable();
 	 navBar.clickTopNavStartSearchIcon();
 	 waitUntilElementIsDisplayedOrClickable();
@@ -191,7 +191,7 @@ public class Test_CitySatellite extends AccuWeatherBaseTest {
 	@Test(priority = 13) public void isZoomInControlClickable() throws AWTException, InterruptedException {
 		  testStart("Is Enhanced Header Displayed"); 
 		  WebPageLoaded.isDomComplete(2000);
-		  navBar.mouseHoverOnMoreMenu(); 
+		  navBar.hoverOnMoreMenu(); 
 		  waitUntilElementIsDisplayedOrClickable();
 		  navBar.clickTopNavStartSearchIcon();
 		  waitUntilElementIsDisplayedOrClickable();

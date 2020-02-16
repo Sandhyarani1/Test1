@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -15,16 +16,31 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import com.accuweather.glacier.BasePage;
+import com.accuweather.glacier.api.DailyPageAPI;
 import com.accuweather.glacier.api.HourlyPageAPI;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
 import com.chameleon.utils.Sleeper;
 
 public class DailyListPage extends BasePage{
-	ArrayList<String> startMonthDateList;
-	ArrayList<String> endMonthDateList;
-	ArrayList<String> MonthAndDateHeaderList_UserDefined;
-	ArrayList<String> dateMonthDateList_UI = new ArrayList<String>();
+	public static ArrayList<String> startMonthDateList;
+	public static ArrayList<String> endMonthDateList;
+	public static ArrayList<String> MonthAndDateHeaderList_UserDefined;
+	public static ArrayList<String> dateMonthDateList_UI = new ArrayList<String>();
+	
+	//Arraylist
+	public static ArrayList<String> dayList_UI;
+	public static ArrayList<String> dateList;
+	public static ArrayList<String> maximimTemperatureList;
+	public static ArrayList<String> minimumTemperatureList;
+	public static ArrayList<String> iconPhraseList;
+	public static ArrayList<String> precipitationPercentageList;
+	public static ArrayList<String> dayList_Userdefined;
+	public static ArrayList<String> pageNumberForwardList_UI;
+	public static ArrayList<String> pageNumberPreviousList_UI;
+	public static ArrayList<String> firstWeekURLList_UI;
+	public static ArrayList<String> secondWeekURLList_UI;
+	public static ArrayList<String> thirdWeekURLList_UI;
 	
 	Boolean flag;
     private By byNextWeekHeader1 = By.cssSelector("div > div.page-column-1 > div > p:nth-child(4)");
@@ -33,7 +49,8 @@ public class DailyListPage extends BasePage{
     private By byNextWeekHeader4 = By.cssSelector("div > div.page-column-1 > div > p:nth-child(5)");
     private By byNextWeekHeader5 = By.cssSelector("div > div.page-column-1 > div > p:nth-child(8)");
     private By byNextCTA = By.cssSelector("div.navigation > a.card-button.centered.nav-card.next");
-    private By byPreviousCTA = By.cssSelector("div > div.navigation > a.card-button.centered.nav-card.prev.has-next");
+    private By byPreviousCTA = By.cssSelector("div > div.navigation > a.card-button.centered.nav-card.prev");
+    private By byDailyTab = By.xpath("//a[@data-gaid='daily']");
     
     /**
 	 * Method to locate day of the week when clicked on Daily tab
@@ -181,7 +198,8 @@ public class DailyListPage extends BasePage{
 		
 		startMonthDateList = new ArrayList<String>();
 		endMonthDateList = new ArrayList<String>();
-		
+		MonthAndDateHeaderList_UserDefined = new ArrayList<String>();
+		 
 		for(int i=1; i<=12; i++) {
 			Calendar calendar = Calendar.getInstance();
 			int j =i*7;
@@ -195,25 +213,9 @@ public class DailyListPage extends BasePage{
 			endMonthDateList.add(formatter1.format(calendar.getTime()));
 			
 		}
-		
-		System.out.println("startMonthDateList:"+startMonthDateList);
-		System.out.println("endMonthDateList:"+endMonthDateList);
-		
-	}
-	
-	/**
-	 * Method to compare nextweek date and month arraylist from UI and calender function
-	 * @author SOWMIYA
-	 * */
-	public Boolean compareNextWeekHeaderArraylists()
-	{
-	  //add next week header list to MonthDateHeaderList
-		for(int i=1; i<12; i++) {
-			MonthAndDateHeaderList_UserDefined.add(startMonthDateList.get(i)+" - "+endMonthDateList.get(i));
-		}
-		Boolean isEquals = MonthAndDateHeaderList_UserDefined.equals(dateMonthDateList_UI);
-		
-		return isEquals;
+		for(int i=0; i<12; i++) {
+			MonthAndDateHeaderList_UserDefined.add(startMonthDateList.get(i).toUpperCase()+" - "+endMonthDateList.get(i).toUpperCase());
+		}	
 	}
 	
 	/**
@@ -279,9 +281,9 @@ public class DailyListPage extends BasePage{
 	 * */
 	public Boolean confirmDailyForecastPageShowsThreeClustersWhenClickedOnPreviousCTA()
 	{
-		for (int i=1; i<=4; i++) {
+		for (int i=1; i<=3; i++) {
 			clickPreviousCTA();
-			if(i!=4)
+			if(i!=3)
 				verifyBothNextAndCTAPresentInNextPage();
 			WebPageLoaded.isDomInteractive();
 			List<WebElement> threeClustersOfWeek = getDriver().findElements(By.xpath("//a[contains(@class,'forecast-list-card forecast-card')]"));
@@ -402,117 +404,223 @@ public class DailyListPage extends BasePage{
 		Sleeper.sleep(1.5);
 	}
 	
-	/** Method to validate page number in URL when previous CTA is clicked
-	 *  @author SOMWIYA
-	 *  boolean return true - if page number is decreased by 1 else false
+	/**
+	 * Method to click next CTA
+	 * @author SOWMIYA
 	 * */
-	public Boolean validatePageNumberInURLWhenClickOnPreviousCTA()
+	public void clickDailyTab()
 	{
-		boolean isEquals = false;
-		
-		for (int i = 3; i >= 0; i--)
-		{
-			clickPreviousCTA();
-				if (i == 3)
-				{
-					if (getDriver().getCurrentUrl().substring(getDriver().getCurrentUrl().length()-6).equalsIgnoreCase("page=3"))
-					{
-						isEquals = true;
-						clickPreviousCTA();
-					} else
-						break;
-				}
-
-				else if (i == 2)
-				{
-					if (getDriver().getCurrentUrl().substring(getDriver().getCurrentUrl().length()-6).equalsIgnoreCase("page=2"))
-					{
-						isEquals = true;
-						clickPreviousCTA();
-					} else
-						break;
-				}
-				
-				else if (i == 1)
-				{
-					if (getDriver().getCurrentUrl().substring(getDriver().getCurrentUrl().length()-6).equalsIgnoreCase("page=1"))
-					{
-						isEquals = true;
-						clickPreviousCTA();
-					} else
-						break;
-				}
-				
-				else if (i == 0)
-				{
-					if (getDriver().getCurrentUrl().substring(getDriver().getCurrentUrl().length()-6).equalsIgnoreCase("page=0"))
-						isEquals = true;
-					else
-						break;
-				}
-
-		}
-		
-		return isEquals;
-
+		WebPageLoaded.isDomInteractive();
+		WebElement dailyTab = getDriver().findElement(byDailyTab);
+		dailyTab.syncVisible(15);
+		dailyTab.jsClick();
+		Sleeper.sleep(2);
 	}
 	
-	/** Method to validate page number in URL when next CTA is clicked
+	/** Method to get URL when previous CTA is clicked
 	 *  @author SOMWIYA
-	 *  boolean return true - if page number is increased by 1 else false
 	 * */
-	public Boolean validatePageNumberInURLWhenClickOnNextCTA()
+	public void getURLWhenClickOnPreviousCTA()
 	{
-		boolean isEquals = false;
+		pageNumberPreviousList_UI = new ArrayList<String>();
+		for (int i=4; i>=0; i--) {
+			pageNumberPreviousList_UI.add(getDriver().getCurrentUrl());
+			if(i!=0)
+				clickPreviousCTA();
+		}
+		
+		Collections.sort(pageNumberPreviousList_UI);
+		System.out.println("pageNumberPreviousList_UI:"+pageNumberPreviousList_UI);
+	}
+	
+	/** Method to get URL when next CTA is clicked
+	 *  @author SOMWIYA
+	 * */
+	public void getURLWhenClickOnNextCTA()
+	{
+		pageNumberForwardList_UI = new ArrayList<String>();
 		clickNextCTA();
-		for (int i = 3; i >= 0; i--)
-		{
-				if (i == 3)
-				{
-					if (getDriver().getCurrentUrl().substring(getDriver().getCurrentUrl().length()-6).equalsIgnoreCase("page=1"))
-						clickNextCTA();
-					else
-						break;
-				}
-
-				else if (i == 2)
-				{
-					if (getDriver().getCurrentUrl().substring(getDriver().getCurrentUrl().length()-6).equalsIgnoreCase("page=4"))
-						clickPreviousCTA();
-				    else
-						break;
-				}
-				
-				else if (i == 1)
-				{
-					if (getDriver().getCurrentUrl().substring(getDriver().getCurrentUrl().length()-6).equalsIgnoreCase("page=3"))
-					    clickPreviousCTA();
-					else
-						break;
-				}
-				
-				else if (i == 0)
-				{
-					if (getDriver().getCurrentUrl().substring(getDriver().getCurrentUrl().length()-6).equalsIgnoreCase("page=4"))
-						isEquals = true;
-					else
-						break;
-				}
-
+		for (int i=1; i<=4; i++) {
+			pageNumberForwardList_UI.add(getDriver().getCurrentUrl());
+			if(i!=4)
+			clickNextCTA();
 		}
-		
-		return isEquals;
-
 	}
 	
-	/** Method to get the elements on the each tab on daily page
+	/** Method to get the elements from three weeks cluster on daily page
 	 * @author SOWMIYA
 	 *  */
-	public void getTextOfAllValueFromEachTabOnDailyPage() {
+	public void getTextOfAllValueFromThreeWeekClustersOnDailyPage() {
+		dayList_UI = new ArrayList<String>();
+		dateList =new ArrayList<String>();
+		maximimTemperatureList = new ArrayList<String>();
+		minimumTemperatureList =new ArrayList<String>();
+		iconPhraseList = new ArrayList<String>();
+		precipitationPercentageList =new ArrayList<String>();
 		
+		boolean isEquals = false;
 		//get the total number of tabs in today's hourly page
-		List<WebElement> NoOfHoursTab = getDriver().findElements(By.cssSelector("div.hourly-wrapper > div > div.accordion-item-header-container > div"));
-		int totalTabs = NoOfHoursTab.size();
+		List<WebElement> NoOfTabs = getDriver().findElements(By.cssSelector("div.page-column-1 > div > div"));
+		int totalTabs = NoOfTabs.size();
 		System.out.println("totalTabs:"+totalTabs);
+		
+		for(int i=0; i<=totalTabs+1; i++) {
+			
+			if (i==1 || i==5 || i==8) {
+				
+				for(int j=1;j<=7;j++) {
+					
+					//DAY
+					WebElement day = getDriver().findElement(By.cssSelector("div:nth-child(" + i +") > a:nth-child(" + j + ") > div.date > p.dow"));
+					day.syncVisible(10);
+					dayList_UI.add(day.getText());
+					
+					//DATE
+					WebElement date = getDriver().findElement(By.cssSelector("div:nth-child(" + i +") > a:nth-child(" + j + ") > div.date > p.sub"));
+					date.syncVisible(10);
+					dateList.add(date.getText());
+					
+					//MAXIMUM TEMPERATURE
+					WebElement maximumTemperature = getDriver().findElement(By.cssSelector("div > div:nth-child(" + i + ") > a:nth-child(" + j + ") > div.temps > span.high"));
+					maximumTemperature.syncVisible(10);
+					maximimTemperatureList.add(maximumTemperature.getText());
+					
+					//MINIMUM TEMPERATURE
+					WebElement minimumTemperature = getDriver().findElement(By.cssSelector("div > div:nth-child(" + i + ") > a:nth-child(" + j + ") > div.temps > span.low"));
+					minimumTemperature.syncVisible(10);
+					minimumTemperatureList.add(minimumTemperature.getText().replace("/", "").replace(" ", ""));
+					
+					//PHRASE
+					WebElement phrase = getDriver().findElement(By.cssSelector("div.page-column-1 > div > div:nth-child(" + i +") > a:nth-child(" + j + ") > span"));
+					phrase.syncVisible(10);
+					iconPhraseList.add(phrase.getText());
+					
+					//PRECIPITATION PERCENTAGE
+					WebElement precipitaionPercentage = getDriver().findElement(By.cssSelector("div > div:nth-child(" + i + ") > a:nth-child(" + j + ") > div.info.precip > p:nth-child(2)"));
+					precipitaionPercentage.syncVisible(10);
+					precipitationPercentageList.add(precipitaionPercentage.getText());
+				}
+			}
+		}
+	}
+	
+	/** Method to click on each tab on first week card and get the url
+	 * @author SOWMIYA
+	 *  */
+	public void firstWeekCardClickAllTabAndGetURLFrom() {
+		
+		//get the total number of tabs from 1st week card
+		List<WebElement> NoOfTabs = getDriver().findElements(By.cssSelector("div.page-column-1 > div > div:nth-child(1) > a"));
+		firstWeekURLList_UI = new ArrayList<String>();
+		for(int i=1; i<=NoOfTabs.size(); i++) {	
+			//click on tab and store the URL in arraylist
+			WebElement card1 = getDriver().findElement(By.cssSelector("div.page-column-1 > div > div:nth-child(1) > a:nth-child(" + i + ")"));
+			card1.syncVisible(25);
+			card1.jsClick();
+			Sleeper.sleep(1.5);
+			firstWeekURLList_UI.add(getDriver().getCurrentUrl());
+			getDriver().navigate().back();
+		}
+	}
+	
+	/** Method to click on each tab on 2nd week card and get the url
+	 * @author SOWMIYA
+	 *  */
+	public void secondWeekCardClickAllTabAndGetURLFrom() {
+		
+		//get the total number of tabs from 2nd week card
+		List<WebElement> NoOfTabs = getDriver().findElements(By.cssSelector("div.page-column-1 > div > div:nth-child(5) > a"));
+		secondWeekURLList_UI = new ArrayList<String>();
+		for(int i=1; i<=NoOfTabs.size(); i++) {	
+			//click on tab and store the URL in arraylist
+			WebElement card1 = getDriver().findElement(By.cssSelector("div.page-column-1 > div > div:nth-child(5) > a:nth-child(" + i + ")"));
+			card1.syncVisible(25);
+			card1.jsClick();
+			Sleeper.sleep(1.5);
+			secondWeekURLList_UI.add(getDriver().getCurrentUrl());
+			getDriver().navigate().back();
+		}
+	}
+	
+	/** Method to click on each tab on 3rd week card and get the url
+	 * @author SOWMIYA
+	 *  */
+	public void thirdWeekCardClickAllTabAndGetURLFrom() {
+		
+		//get the total number of tabs from 3rd week card
+		List<WebElement> NoOfTabs = getDriver().findElements(By.cssSelector("div > div.content-module.bottom-forecast > a"));
+		thirdWeekURLList_UI = new ArrayList<String>();
+		for(int i=1; i<=NoOfTabs.size(); i++) {	
+			//click on tab and store the URL in arraylist
+			WebElement card1 = getDriver().findElement(By.cssSelector("div > div.content-module.bottom-forecast > a:nth-child(" + i + ")"));
+			card1.syncVisible(25);
+			card1.jsClick();
+			Sleeper.sleep(1.5);
+			thirdWeekURLList_UI.add(getDriver().getCurrentUrl());
+			getDriver().navigate().back();
+		}
+		
+		System.out.println("thirdWeekURLList_UI:"+thirdWeekURLList_UI);
+	}
+	
+	/**
+	 * Method to verify minimum temperature is not greater than /equal to maximum temperature
+	 * @author SOWMIYA
+	 * */
+	public Boolean verifyMinimumTemperatureIsNotGreaterOrEqualToMaximumTemperature(ArrayList<String> minTempFromAPI, ArrayList<String> maxTempFromAPI)
+	{
+		boolean isEquals = false;
+		//First verify min and max from UI and API are equal 
+		if(maximimTemperatureList.equals(maxTempFromAPI) && minimumTemperatureList.equals(minTempFromAPI)) {
+			
+			//verify minimum temperature is not greater than / equal to maximum temperature
+			for (int i=0; i<21;i++) {
+				System.out.println("minimumTemperatureList.get(i):"+minimumTemperatureList.get(i));
+				System.out.println("maximimTemperatureList.get(i):"+maximimTemperatureList.get(i));
+				if (Integer.parseInt(minimumTemperatureList.get(i).replace("°", "")) < Integer.parseInt(maximimTemperatureList.get(i).replace("°", "")))
+					isEquals = true;
+				else 
+					break;
+				}
+			}
+		System.out.println("maximimTemperatureList:"+maximimTemperatureList);
+		System.out.println("maxTempFromAPI        :"+maxTempFromAPI);
+		System.out.println("minimumTemperatureList:"+minimumTemperatureList);
+		System.out.println("minTempFromAPI        :"+minTempFromAPI);
+		return isEquals;	
+	}
+	
+	/**
+	 * Method to verify the days displayed in UI in all threee weeks
+	 * @author SOWMIYA
+	 * */
+	public void verifyDayShownInAllThreeWeeks()
+	{
+		dayList_Userdefined = new ArrayList<String>();
+		for(int i=0; i<=20; i++) {
+			Calendar calendar = Calendar.getInstance();
+			calendar.add(Calendar.DATE, i);
+			Format formatter = new SimpleDateFormat("EEE");
+			String day_Userdefined = formatter.format(calendar.getTime());
+			dayList_Userdefined.add(day_Userdefined);
+	        System.out.println("dayList_Userdefined:"+day_Userdefined);
+		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

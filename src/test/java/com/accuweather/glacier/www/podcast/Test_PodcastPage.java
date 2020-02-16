@@ -284,19 +284,19 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 //		 
 //		}
 //	
-	@Test (priority=1) public void RW_T789_VerifyResultsforPodcastPageImplementedAndPaged_verifyEpisodesListedInDescendingOrderOfDatePublished() {
-	 testStart("Is AccuWeather LOGO Displayed On PodCast Page");
-     navBar.mouseHoverOnMoreMenu(); 
-     navBar.mouseHoverOnPodcastSubMenu();
-     navBar.clickOnPodcastSubMenu();
-	 waitUntilWindowExistsWithTitle(PodcastTitle);
-	 try {
-		 podpage.getAllFiveEpisodesDatePublished();
-		 podpage.conditionToIterateEpisodes();
-	} catch (ParseException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	 
-	}
+//	@Test (priority=1) public void RW_T789_VerifyResultsforPodcastPageImplementedAndPaged_verifyEpisodesListedInDescendingOrderOfDatePublished() {
+//	 testStart("Is AccuWeather LOGO Displayed On PodCast Page");
+//     navBar.mouseHoverOnMoreMenu(); 
+//     navBar.mouseHoverOnPodcastSubMenu();
+//     navBar.clickOnPodcastSubMenu();
+//	 waitUntilWindowExistsWithTitle(PodcastTitle);
+//	 try {
+//		 podpage.getAllFiveEpisodesDatePublished();
+//		 podpage.conditionToIterateEpisodes();
+//	} catch (ParseException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+//	 
+//	}
 }

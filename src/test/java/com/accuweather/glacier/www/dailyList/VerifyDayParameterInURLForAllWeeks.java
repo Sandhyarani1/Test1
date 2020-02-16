@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import com.accuweather.glacier.api.HourlyPageAPI;
+import com.accuweather.glacier.api.DailyPageAPI;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.DailyForeCastPage;
 import com.accuweather.glacier.www.pages.DailyListPage;
@@ -13,7 +13,8 @@ import com.chameleon.utils.Constants;
 import com.chameleon.utils.DataIOOperations.ExcelUtilities;
 import com.chameleon.utils.date.SimpleDate;
 
-public class RW_T189_ValidateDailyPageContainNextAndPeviousButtonsAtBottomOfPage extends AccuWeatherBaseTest {
+public class VerifyDayParameterInURLForAllWeeks extends AccuWeatherBaseTest {
+	
 	public static final String CITY_NAME = "Buffalo";
 	public static String stateCode = "";
 	public static String locationKey = "";
@@ -52,43 +53,36 @@ public class RW_T189_ValidateDailyPageContainNextAndPeviousButtonsAtBottomOfPage
 	}
 	
 	@Test(priority=1)
-	public void RW_T192_validatePageNumberInUrlforNextAndPrevious()
+	public void RW_T192_verifyDayParameterOfEachTabForThreeWeeks()
 	{
 		softAssert = new SoftAssert();
-		testStart("******** Validation of present and future link on Hourly page *********************");
+		testStart("******** Validation of day parameter is correct as per the tab for three weeks clusters*********************");
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.selectCityFromTheList(location);
 		dailyForeCastPage.clickDailyTab();
 		
-		
-		/************************Click Next CTA and verify the page is increased by 1 in the URL*******************************/
-		dailyListPage.getURLWhenClickOnNextCTA();
-		for (int i=1; i<=4;i++) {
-			softAssert.assertEquals(DailyListPage.pageNumberForwardList_UI.get(i-1),  expectedDailyURL + "?page=" + i,
-					"Issue------->Parameter in the URL for the day "+i+" is not increased by 1 when clicked on next CTA");
+		/************************Verify the day parameter is correct as per the tab from 1st week card*******************************/
+		dailyListPage.firstWeekCardClickAllTabAndGetURLFrom();
+		for (int i=1; i<=7;i++) {
+			softAssert.assertEquals(DailyListPage.firstWeekURLList_UI.get(i-1),  expectedDailyURL + "?day=" + i,
+					"Issue------->Click on "+i+"th/st tab and day Parameter in the URL is matching as expected");
 		}
 		
-		/************************Verify last page has just 1 week report*******************************/
-		softAssert.assertTrue(dailyListPage.lastPageHaveOneWeekReports(),
-				        "Issue------->There is issue in showing one week report on last page");
-		
-		/************************Click Previous CTA and verify the page is decreased by 1 in the URL*******************************/
-		dailyListPage.getURLWhenClickOnPreviousCTA();
-		for (int i=0; i<=4; i++) {
-			softAssert.assertEquals(DailyListPage.pageNumberPreviousList_UI.get(i),  expectedDailyURL + "?page=" + i,
-					"Issue------->Parameter in the URL for the day "+i+" is not decreased by 1 when clicked on previous CTA");
+		/************************Verify the day parameter is correct as per the tab from 2nd week card*******************************/
+		dailyListPage.secondWeekCardClickAllTabAndGetURLFrom();
+		for (int i=8; i<=14; i++) {
+			softAssert.assertEquals(DailyListPage.secondWeekURLList_UI.get(i-8),  expectedDailyURL + "?day=" + i,
+					"Issue------->Click on "+i+"th/st tab and day Parameter in the URL is matching as expected");
 		}
-		
-		/************************Click Next CTA and the page displayed three weeks*******************************/
-		softAssert.assertTrue(dailyListPage.confirmDailyForecastPageShowsThreeClustersWhenClickedOnNextCTA(),
-						"Issue------->There is some issue in showing 3 weeks on a page when clicked on next CTA");
-		
-		/************************Click Previous CTA and the page displayed three weeks*******************************/
-		softAssert.assertTrue(dailyListPage.confirmDailyForecastPageShowsThreeClustersWhenClickedOnPreviousCTA(),
-						"Issue------->There is some issue in showing 3 weeks on a page when clicked on previous CTA");
+        
+		/************************Verify the day parameter is correct as per the tab from 3rd week card*******************************/
+		dailyListPage.thirdWeekCardClickAllTabAndGetURLFrom();
+		for (int i=15; i<=21; i++) {
+			softAssert.assertEquals(DailyListPage.thirdWeekURLList_UI.get(i-15),  expectedDailyURL + "?day=" + i,
+					"Issue------->Click on "+i+"th/st tab and day Parameter in the URL is matching as expected");
+		}
 		
 		softAssert.assertAll();
 	}
-
 
 }

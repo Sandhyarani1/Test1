@@ -136,13 +136,14 @@ public class Test_DailyListPage extends AccuWeatherBaseTest
 //		
 //	}
 	
-	@Test(priority=6)
-	public void RW_188_NextWeekListPageItemsPresent_confirmNextWeekHeaderDateAndMonth()
-	{
-		testStart("Verify next week header month and date");
-		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
-		dailyForeCastPage.clickDailyTab();
-	    dailyListPage.compareNextWeekHeaderArraylists();
+//	@Test(priority=6)
+//	public void RW_188_NextWeekListPageItemsPresent_confirmNextWeekHeaderDateAndMonth()
+//	{
+//		testStart("Verify next week header month and date");
+//		landingPage.enterZipcodeInSearchFieldAndClick(ZIPCODE);
+//		dailyForeCastPage.clickDailyTab();
+//		dailyListPage.getTextOfAllValueFromFirstWeekClusterOnDailyPage();
+//	    dailyListPage.compareNextWeekHeaderArraylists();
 	}
 	
 //	@Test(priority=2)
@@ -236,4 +237,4 @@ public class Test_DailyListPage extends AccuWeatherBaseTest
 //		Assert.assertTrue(dailyListPage.verifyBothNextAndCTAPresentInNextPage());
 //	}
 //	
-}
+//}

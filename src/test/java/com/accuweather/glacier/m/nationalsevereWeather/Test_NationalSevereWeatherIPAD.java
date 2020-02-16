@@ -31,9 +31,9 @@ public class Test_NationalSevereWeatherIPAD extends AccuWeatherMobileBaseTest {
 		testStart("Validate text at the bottom of the map");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
 		landingPage.clickOnZipcodeSearchIcon();
-		navigationBar.mouseHoverOnRadarAndMaps();
+		navigationBar.hoverOnRadarAndMaps();
 		navigationBar.isSeverSubMenuDisplayed();
-		navigationBar.navigateToSevereTab();
+		navigationBar.navigateToSeverWeatherPage();
 		Sleeper.sleep(2);
 		String actualSevereURL = getDriver().getCurrentUrl();
 		Assert.assertEquals(actualSevereURL, EXPECTED_SEVERE_PAGE_URL);
@@ -50,7 +50,7 @@ public class Test_NationalSevereWeatherIPAD extends AccuWeatherMobileBaseTest {
 	 * testStart("Validate text zoom in for more details at the bottom of the map");
 	 * landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
 	 * landingPage.clickOnZipcodeSearchIcon();
-	 * navigationBar.mouseHoverOnRadarAndMaps();
+	 * navigationBar.hoverOnRadarAndMaps();
 	 * navigationBar.isSeverSubMenuDisplayed(); navigationBar.navigateToSevereTab();
 	 * Sleeper.sleep(2); String actualSevereURL = getDriver().getCurrentUrl();
 	 * Assert.assertEquals(actualSevereURL, EXPECTED_SEVERE_PAGE_URL); String
@@ -63,9 +63,9 @@ public class Test_NationalSevereWeatherIPAD extends AccuWeatherMobileBaseTest {
 		testStart("Validate text at the bottom of the map in full screen mode");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
 		landingPage.clickOnZipcodeSearchIcon();
-		navigationBar.mouseHoverOnRadarAndMaps();
+		navigationBar.hoverOnRadarAndMaps();
 		navigationBar.isSeverSubMenuDisplayed();
-		navigationBar.navigateToSevereTab();
+		navigationBar.navigateToSeverWeatherPage();
 		Sleeper.sleep(2);
 		String actualSevereURL = getDriver().getCurrentUrl();
 		Assert.assertEquals(actualSevereURL, EXPECTED_SEVERE_PAGE_URL);
@@ -81,9 +81,9 @@ public class Test_NationalSevereWeatherIPAD extends AccuWeatherMobileBaseTest {
 		testStart("Close he map full screen and verify the map is back to default mode");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
 		landingPage.clickOnZipcodeSearchIcon();
-		navigationBar.mouseHoverOnRadarAndMaps();
+		navigationBar.hoverOnRadarAndMaps();
 		navigationBar.isSeverSubMenuDisplayed();
-		navigationBar.navigateToSevereTab();
+		navigationBar.navigateToSeverWeatherPage();
 		Sleeper.sleep(2);
 		String actualSevereURL = getDriver().getCurrentUrl();
 		Assert.assertEquals(actualSevereURL, EXPECTED_SEVERE_PAGE_URL);
@@ -97,9 +97,9 @@ public class Test_NationalSevereWeatherIPAD extends AccuWeatherMobileBaseTest {
 		testStart("Verify title of the map under secondary navigation menu");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
 		landingPage.clickOnZipcodeSearchIcon();
-		navigationBar.mouseHoverOnRadarAndMaps();
+		navigationBar.hoverOnRadarAndMaps();
 		navigationBar.isSeverSubMenuDisplayed();
-		navigationBar.navigateToSevereTab();
+		navigationBar.navigateToSeverWeatherPage();
 		Sleeper.sleep(2);
 		String actualSevereURL = getDriver().getCurrentUrl();
 		Assert.assertEquals(actualSevereURL, EXPECTED_SEVERE_PAGE_URL);
@@ -114,9 +114,9 @@ public class Test_NationalSevereWeatherIPAD extends AccuWeatherMobileBaseTest {
 		testStart("Verify tool tip background color");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
 		landingPage.clickOnZipcodeSearchIcon();
-		navigationBar.mouseHoverOnRadarAndMaps();
+		navigationBar.hoverOnRadarAndMaps();
 		navigationBar.isSeverSubMenuDisplayed();
-		navigationBar.navigateToSevereTab();
+		navigationBar.navigateToSeverWeatherPage();
 		Sleeper.sleep(2);
 		String actualSevereURL = getDriver().getCurrentUrl();
 		Assert.assertEquals(actualSevereURL, EXPECTED_SEVERE_PAGE_URL);
@@ -131,9 +131,9 @@ public class Test_NationalSevereWeatherIPAD extends AccuWeatherMobileBaseTest {
 		testStart("Verify tool tip description");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
 		landingPage.clickOnZipcodeSearchIcon();
-		navigationBar.mouseHoverOnRadarAndMaps();
+		navigationBar.hoverOnRadarAndMaps();
 		navigationBar.isSeverSubMenuDisplayed();
-		navigationBar.navigateToSevereTab();
+		navigationBar.navigateToSeverWeatherPage();
 		Sleeper.sleep(2);
 		String actualSevereURL = getDriver().getCurrentUrl();
 		Assert.assertEquals(actualSevereURL, EXPECTED_SEVERE_PAGE_URL);
@@ -148,9 +148,9 @@ public class Test_NationalSevereWeatherIPAD extends AccuWeatherMobileBaseTest {
 		testStart("Verify tool tip color after the tool tip is closed");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
 		landingPage.clickOnZipcodeSearchIcon();
-		navigationBar.mouseHoverOnRadarAndMaps();
+		navigationBar.hoverOnRadarAndMaps();
 		navigationBar.isSeverSubMenuDisplayed();
-		navigationBar.navigateToSevereTab();
+		navigationBar.navigateToSeverWeatherPage();
 		Sleeper.sleep(2);
 		String actualSevereURL = getDriver().getCurrentUrl();
 		Assert.assertEquals(actualSevereURL, EXPECTED_SEVERE_PAGE_URL);
@@ -165,9 +165,9 @@ public class Test_NationalSevereWeatherIPAD extends AccuWeatherMobileBaseTest {
 		testStart("Verify zoom in and zoom out");
 		landingPage.enterZipcodeInSearchFieldAndClick(zipcode);
 		landingPage.clickOnZipcodeSearchIcon();
-		navigationBar.mouseHoverOnRadarAndMaps();
+		navigationBar.hoverOnRadarAndMaps();
 		navigationBar.isSeverSubMenuDisplayed();
-		navigationBar.navigateToSevereTab();
+		navigationBar.navigateToSeverWeatherPage();
 		Sleeper.sleep(2);
 		String actualSevereURL = getDriver().getCurrentUrl();
 		Assert.assertEquals(actualSevereURL, EXPECTED_SEVERE_PAGE_URL);

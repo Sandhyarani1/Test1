@@ -26,14 +26,11 @@ public class RW_T775_ValidateHourlyForecastHoursDisplayed extends AccuWeatherBas
 	
 	LandingPage landingPage = new LandingPage();
 	HourlyForecastPage hourlyPage = new HourlyForecastPage();
-	SimpleDate sd = new SimpleDate();
 	
 	@BeforeClass
 	public void getTestData()
-	{
-		HourlyPageAPI.getHourlyForecastData(CITY_NAME, sd.getCurrentDate("yyyy-MM-dd"), "IMPERIAL");
-		
-		stateCode = HourlyPageAPI.getStateName();
+	{	
+		stateCode = HourlyPageAPI.getStateCode();
 		locationKey = HourlyPageAPI.getLocationKey();
 		zipCode = HourlyPageAPI.getZipCode();
 		countryCode = HourlyPageAPI.getCountryCode();
@@ -52,7 +49,7 @@ public class RW_T775_ValidateHourlyForecastHoursDisplayed extends AccuWeatherBas
 	{	
 		softAssert = new SoftAssert();
 		testStart("********Number of hours present in hourly page*********************");
-		landingPage.enterZipcodeInSearchField(CITY_NAME);
+		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.selectCityFromTheList(location);
 		hourlyPage.clickOnHourlyTab();
 		 

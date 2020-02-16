@@ -127,16 +127,16 @@ public class Test_SearchResultsPage extends AccuWeatherBaseTest
 		testStart("Validate Search - Zip Code - Multiple Locations");
 		landingPage.enterZipcodeInSearchFieldAndClick("11221");
 		Assert.assertEquals(navigationBar.verifyCityPageHasSearchedLocation(), "Brooklyn, NY");
-		navigationBar.navigateToHome();
+		navigationBar.clickAccuWeatherLogo();
 		//search for second location
 		landingPage.enterZipcodeInSearchFieldAndClick("11222");
 		Assert.assertEquals(navigationBar.verifyCityPageHasSearchedLocation(), "Brooklyn, NY");
-		navigationBar.navigateToHome();
+		navigationBar.clickAccuWeatherLogo();
 	    //search for third location
 		landingPage.enterZipcodeInSearchFieldAndClick("Brooklyn, OH, US");
 		seachResultsPage.selectFirstLocationFromSearchedResults();
 		Assert.assertEquals(navigationBar.verifyCityPageHasSearchedLocation(), "Brooklyn, OH");
-		navigationBar.navigateToHome();
+		navigationBar.clickAccuWeatherLogo();
 		
 		Assert.assertEquals(seachResultsPage.cityAppearsInRecentLocationUnderUniversalNavigationalMenu(1), "Brooklyn, OH");
 		

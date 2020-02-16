@@ -29,10 +29,8 @@ public class RW_T192_ValidatePresentAndFutureLinkAndParameterInURL extends AccuW
 	
 	@BeforeClass
 	public void getTestData()
-	{
-		HourlyPageAPI.getHourlyForecastData(CITY_NAME, sd.getCurrentDate("yyyy-MM-dd"), "IMPERIAL");
-		
-		stateCode = HourlyPageAPI.getStateName();
+	{	
+		stateCode = HourlyPageAPI.getStateCode();
 		locationKey = HourlyPageAPI.getLocationKey();
 		zipCode = HourlyPageAPI.getZipCode();
 		countryCode = HourlyPageAPI.getCountryCode();
@@ -52,7 +50,7 @@ public class RW_T192_ValidatePresentAndFutureLinkAndParameterInURL extends AccuW
 	{
 		softAssert = new SoftAssert();
 		testStart("******** Validation of present and future link on Hourly page *********************");
-		landingPage.enterZipcodeInSearchField(CITY_NAME);
+		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.selectCityFromTheList(location);
 		hourlyPage.clickOnHourlyTab();
 		

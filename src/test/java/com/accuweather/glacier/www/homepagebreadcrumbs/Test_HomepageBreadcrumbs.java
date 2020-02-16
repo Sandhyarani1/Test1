@@ -1,211 +1,239 @@
 package com.accuweather.glacier.www.homepagebreadcrumbs;
 
+import java.util.Map;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
+import org.testng.asserts.SoftAssert;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.HomepageBreadcrumbs;
 import com.accuweather.glacier.www.pages.LandingPage;
-import com.chameleon.utils.Sleeper;
+import com.chameleon.utils.Constants;
+import com.chameleon.utils.DataIOOperations.ExcelUtilities;
+import com.chameleon.utils.io.PropertiesManager;
 
 public class Test_HomepageBreadcrumbs extends AccuWeatherBaseTest {
 	
-	String zipCode = "16803";
-	String expectedHomePageTitle = "Weather Forecast Search - Find Your Location - AccuWeather.com";
-
-	private static final String  FOOTER_BREAD_CRUMB="Footer breadcrumb";
-	private static final String  BREAD_CRUMB_WORLD="Breadcrumb World";
-	private static final String  FOOTER_BREAD_REGION="Breadcrumb Region";
-	private static final String  FOOTER_BREAD_COUNTRY="Breadcrumb Country";
-	private static final String  FOOTER_BREAD_STATE ="Breadcrumb State";
-	private static final String  FOOTER_BREAD_CITY="Breadcrumb City";
+	public static final String CITY_NAME = "Buffalo";
+	public static String cityNameForURL = "";
+	public static String stateNameForURL = "";
+	public static String countryNameForURL = "";
+	public static String regionNameForURL = "";
+	public static String stateName = "";
+	public static String countryName = "";
+	public static String regionName = "";
+	public static String location = "";
+	public static final String LANGUAGE = "EN";
+	public static final String BREADCRUMBS_URL_SUFFIX = "-WEATHER";
+	public static final String BREADCRUMBS_CITY_URL_SUFFIX = "WEATHER-FORECAST";
+	public static String expectedWorldPage_URL = "";
+	public static String expectedRegionPageURL= "";
+	public static String expectedCountry_URL="";
+	public static String expectedState_URL="";
+	public static String expectedCity_URL = "";
+	public static String zipCode = "";
+	public static String locationKey = "";
+	public static String countryCode = "";
+	public static String stateCode = "";
+	public static final String WORLD_BREADCRUMB_TEXT = "World";
+	public static final String EXPECTED_LOCAL_BREADCRUMB_TITLE = "Local Current Weather | AccuWeather";
+	public static final String EXPECTED_NATIONAL_BREADCRUMB_TITLE = "National Current Weather | AccuWeather";
+	public static final String EXPECTED_GLOBAL_BREADCRUMB_TITLE = "Global Current Weather | AccuWeather";
+	public static String expectedCityBreadCrumbTitle = "";
 	
-	String expectedWorldForecastTitle = "https://qualityassurance.accuweather.com/en/world-weather";
-	String expectedRegionForecastTitle = "https://qualityassurance.accuweather.com/en/north-america-weather";
-	String expectedCountryForecastTitle = "https://qualityassurance.accuweather.com/en/us/united-states-weather";
-	String expectedStateForecastTitle = "https://qualityassurance.accuweather.com/en/us/pa/pennsylvania-weather";
-	String expectedCityForecastTitle = "https://qualityassurance.accuweather.com/en/us/state-college/16803/weather-forecast/6789_pc";
+
+	private static final String  BREAD_CRUMB="BREAD_CRUMB";
+	private static final String  BREAD_CRUMB_WORLD="BREAD_CRUMB_WORLD";
+	private static final String  BREAD_CRUMB_REGION="BREAD_CRUMB_REGION";
+	private static final String  BREAD_CRUMB_COUNTRY="BREAD_CRUMB_COUNTRY";
+	private static final String  BREAD_CRUMB_STATE ="BREAD_CRUMB_STATE";
+	private static final String  BREAD_CRUMB_CITY="BREAD_CRUMB_CITY";
 	
 	private LandingPage landingPage = new LandingPage();
 	private HomepageBreadcrumbs breadcrumbs = new HomepageBreadcrumbs();
+	protected Map<String, String> appURLRepository = PropertiesManager.properties(Constants.ENVIRONMENT_URL_PROPERTIES);
+	SoftAssert softAssert = new SoftAssert();
 	
-	
-	@Test(priority=1,enabled = true)
-	public void TC1_navigation_To_Homepage_Verfiying_footer_breadcrumbs_Displayed()
+	@BeforeClass
+	public void getTestData()
 	{
+		int rowNo = 0;
+		rowNo = ExcelUtilities.getRowNumberForCity(CITY_NAME);
+		zipCode = ExcelUtilities.getZipCode(rowNo);
+		stateCode = ExcelUtilities.getStateCode(rowNo);
+		countryCode = ExcelUtilities.getCountryCode(rowNo);
+		locationKey = ExcelUtilities.getLocationKey(rowNo);
+		regionName = ExcelUtilities.getRegionName(rowNo);
+		countryName = ExcelUtilities.getCountryName(rowNo);
+		stateName = ExcelUtilities.getStateName(rowNo);
+		location = CITY_NAME + ", " + stateCode + ", " + countryCode;
+		cityNameForURL = CITY_NAME.replace(' ', '-');
+		stateNameForURL = ExcelUtilities.getStateName(rowNo).replace(' ', '-');
+		countryNameForURL = ExcelUtilities.getCountryName(rowNo).replace(' ', '-');
+		regionNameForURL = ExcelUtilities.getRegionName(rowNo).replace(' ', '-');
+		expectedWorldPage_URL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA) + LANGUAGE+"/"+WORLD_BREADCRUMB_TEXT+BREADCRUMBS_URL_SUFFIX).toLowerCase();
+		expectedRegionPageURL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA) + LANGUAGE+"/"+regionNameForURL+BREADCRUMBS_URL_SUFFIX).toLowerCase();
+		expectedCountry_URL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA) + LANGUAGE+"/"+countryCode+"/"+countryNameForURL+BREADCRUMBS_URL_SUFFIX).toLowerCase();
+		expectedState_URL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA) + LANGUAGE+"/"+countryCode+"/"+stateCode+"/"+stateNameForURL+BREADCRUMBS_URL_SUFFIX).toLowerCase();
+		expectedCity_URL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA) + LANGUAGE+"/"+countryCode+"/"+cityNameForURL+"/"+zipCode+"/"+BREADCRUMBS_CITY_URL_SUFFIX+"/"+locationKey).toLowerCase();
+		expectedCityBreadCrumbTitle = CITY_NAME+", "+stateCode+" Three Day Weather Forecast | AccuWeather";
+	}
+	
+	@Test(priority=1)
+	public void RW_T196_Validation_If_BreadCrumbs_Displayed()
+	{
+		softAssert = new SoftAssert();
 		
-		testStart("Validate footer breadcrumbs displayed on Homepage" );
-		landingPage.enterZipcodeInSearchField(zipCode);
-		landingPage.clickOnZipcodeSearchIcon();
-    	waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-    	Sleeper.sleep(3);
-
-		waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-
-		breadcrumbs.scrolldownpage();
-		breadcrumbs.scrolldownpage();
-		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_CRUMB));
-	}
-	
-	@Test(priority=2,enabled = true)
-	public void TC1_validating_Footer_Breadcrumbs_for_World_Displayed()
-	{
-		testStart("Validate footer breadcrumbs displayed for World");
-		landingPage.enterZipcodeInSearchField(zipCode);
-		landingPage.clickOnZipcodeSearchIcon();
-   	waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-   	Sleeper.sleep(3);
-
-   	//waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		breadcrumbs.scrolldownpage();
-		breadcrumbs.scrolldownpage();
-		Sleeper.sleep(3);
-		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(BREAD_CRUMB_WORLD));
-	}
-	
-	@Test(priority=3,enabled = true)
-	public void TC1_validating_Footer_Breadcrumbs_for_Region_Displayed()
-	{
-		testStart("Validate footer breadcrumbs displayed for Region");
-		landingPage.enterZipcodeInSearchField(zipCode);
-		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		Sleeper.sleep(3);
-		breadcrumbs.scrolldownpage();
-		breadcrumbs.scrolldownpage();
-		Sleeper.sleep(3);
-		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_REGION));
-	}
-	
-	@Test(priority=4,enabled = true)
-	public void TC1_validating_Footer_Breadcrumbs_for_Country_Displayed()
-	{
-		testStart("Validate footer breadcrumbs displayed for Country");
-		landingPage.enterZipcodeInSearchField(zipCode);
-		landingPage.clickOnZipcodeSearchIcon();
-
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		Sleeper.sleep(3);
-		/*waitUntilElementIsDisplayedOrClickable();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);*/
-		breadcrumbs.scrolldownpage();
-		breadcrumbs.scrolldownpage();
-		Sleeper.sleep(3);
-		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_COUNTRY));
-	}
-	
-	@Test(priority=5,enabled = true)
-	public void TC1_validating_Footer_Breadcrumbs_for_State_Displayed()
-	{
-		testStart("Validate footer breadcrumbs displayed for State");
-		getDriver().manage().deleteAllCookies();
-		landingPage.enterZipcodeInSearchField(zipCode);
-		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		Sleeper.sleep(3);
-		breadcrumbs.scrolldownpage();
-		breadcrumbs.scrolldownpage();
-		Sleeper.sleep(3);
-		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_STATE));
-	}
-	
-	@Test(priority=6,enabled = true)
-	public void TC1_validating_Footer_Breadcrumbs_for_City_Displayed()
-	{
-		testStart("Validate footer breadcrumbs displayed for City");
-		landingPage.enterZipcodeInSearchField(zipCode);
-		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		Sleeper.sleep(3);
-		breadcrumbs.scrolldownpage();
-		breadcrumbs.scrolldownpage();
-		Sleeper.sleep(3);
-		Assert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(FOOTER_BREAD_CITY));
-	}
-	
-	@Test(priority=7,enabled = true)
-	public void TC2_valdating_URL_when_clicked_on_Worldbreadcrumb()
-	{
-		testStart("Validating user redirected url when clicked on World ");
-		landingPage.enterZipcodeInSearchField(zipCode);
-		landingPage.clickOnZipcodeSearchIcon();
-    	waitUntilWindowExistsWithTitle(expectedHomePageTitle);  
-    	Sleeper.sleep(3);
-    //waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-
-		breadcrumbs.scrolldownpage();
-		breadcrumbs.scrolldownpage();
-		breadcrumbs.isclickonFooterBreadcrumb(BREAD_CRUMB_WORLD);
-		Sleeper.sleep(3);
-		System.out.println("clicked on World breadcrump");
-		System.out.println("Landing page URL is >>>"+getDriver().getCurrentUrl());
-		Assert.assertEquals(getDriver().getCurrentUrl(), expectedWorldForecastTitle);
-	}
+		testStart("********************Validate footer breadcrumbs displayed on Homepage****************" );
 		
-	@Test(priority=8,enabled = true)
-	public void TC4_valdating_URL_when_clicked_on_RegionBreadcrumb()
-	{
-		testStart("Validating user redirected url when clicked on Country");
-		landingPage.enterZipcodeInSearchField(zipCode);
-		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		Sleeper.sleep(3);
-		breadcrumbs.scrolldownpage();
-		breadcrumbs.scrolldownpage();
-		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_REGION);
-		Sleeper.sleep(3);
-		System.out.println("Landing page URL is >>>"+getDriver().getCurrentUrl());
-		Assert.assertEquals(getDriver().getCurrentUrl(), expectedRegionForecastTitle);
-	}
-	
-	@Test(priority=9,enabled = true)
-	public void TC5_valdating_URL_when_clicked_on_CountryBreadcrumb()
-	{
-		testStart("Validating user redirected url when clicked on Country");
-		landingPage.enterZipcodeInSearchField(zipCode);
-		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		Sleeper.sleep(3);
-		breadcrumbs.scrolldownpage();
-		breadcrumbs.scrolldownpage();
-		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_COUNTRY);
-		Sleeper.sleep(3);
-		System.out.println("Landing page URL is >>>"+getDriver().getCurrentUrl());
-		Assert.assertEquals(getDriver().getCurrentUrl(), expectedCountryForecastTitle);
-	}
-	
-	
-	@Test(priority=	10,enabled = true)
-	public void TC5_valdating_URL_when_clicked_on_StateBreadcrumb()
-	{
-		testStart("Validating user redirected url when clicked on State");
-		landingPage.enterZipcodeInSearchField(zipCode);
-		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		Sleeper.sleep(3);
-		breadcrumbs.scrolldownpage();
-		breadcrumbs.scrolldownpage();
-		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_STATE);
-	  Sleeper.sleep(3);
-		System.out.println("Landing page URL is >>>"+getDriver().getCurrentUrl());
-		Assert.assertEquals(getDriver().getCurrentUrl(), expectedStateForecastTitle);
-	}
-	
+		landingPage.enterCityNameInSearchField(CITY_NAME);
+		landingPage.selectCityFromTheList(location);
 
-	@Test(priority=11,enabled = true)
-	public void TC6_valdating_URL_when_clicked_on_CityBreadcrumb()
+		breadcrumbs.scrolldownpage();
+		breadcrumbs.scrolldownpage();
+		
+		/****************** Validating whether breadcrumbs is displayed ****************************************************************/
+		softAssert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(BREAD_CRUMB),
+				"\nIssue----->Breadcrumbs not displayed");
+		softAssert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(BREAD_CRUMB_WORLD),
+				"\nIssue----->Breadcrumbs not displayed");
+		softAssert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(BREAD_CRUMB_REGION),
+				"\nIssue----->Breadcrumbs not displayed");
+		softAssert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(BREAD_CRUMB_COUNTRY),
+				"\nIssue----->Breadcrumbs not displayed");
+		softAssert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(BREAD_CRUMB_STATE),
+				"\nIssue----->Breadcrumbs not displayed");
+		softAssert.assertTrue(breadcrumbs.footerbreadcrumbDisplayedfor(BREAD_CRUMB_CITY),
+				"\nIssue----->Breadcrumbs not displayed");
+		
+		/****************** Validating whether the breadcrumbs values are correct ******************************/
+		softAssert.assertEquals(breadcrumbs.getTextOfBreadCrumbs(BREAD_CRUMB_WORLD), WORLD_BREADCRUMB_TEXT,
+				"\nIssue-----> Breadcrumb text for World not as expected\n");
+		softAssert.assertEquals(breadcrumbs.getTextOfBreadCrumbs(BREAD_CRUMB_REGION), regionName,"\nIssue---->Breadcrumb text for Region not as expected");
+		softAssert.assertEquals(breadcrumbs.getTextOfBreadCrumbs(BREAD_CRUMB_COUNTRY), countryName,"\nIssue---->Breadcrumb text for country not as expected");
+		softAssert.assertEquals(breadcrumbs.getTextOfBreadCrumbs(BREAD_CRUMB_STATE), stateName,"\nIssue---->Breadcrumb text for state not as expected");
+		softAssert.assertEquals(breadcrumbs.getTextOfBreadCrumbs(BREAD_CRUMB_CITY), CITY_NAME,"\nIssue---->Breadcrumb text for city not as expected");
+		
+		softAssert.assertAll();
+	}
+	
+	@Test(priority=2)
+	public void RW_T197_WorldBreadCrumb_URL_Validation()
 	{
-		testStart("Validating user redirected url when clicked on City");
-		landingPage.enterZipcodeInSearchField(zipCode);
-		landingPage.clickOnZipcodeSearchIcon();
-		waitUntilWindowExistsWithTitle(expectedHomePageTitle);
-		Sleeper.sleep(3);
+		softAssert = new SoftAssert();
+		
+		testStart("******************Validate the URL & Title for breadcrumbs displayed for World************************");
+		landingPage.enterCityNameInSearchField(CITY_NAME);
+		landingPage.selectCityFromTheList(location);
+
 		breadcrumbs.scrolldownpage();
 		breadcrumbs.scrolldownpage();
-		breadcrumbs.isclickonFooterBreadcrumb(FOOTER_BREAD_CITY);
-	  Sleeper.sleep(3);
-		System.out.println("Landing page URL is >>>"+getDriver().getCurrentUrl());
-		Assert.assertEquals(getDriver().getCurrentUrl(), expectedCityForecastTitle);
+		
+		/**************** Validating the URL for World breadcrumb ********************************/
+		breadcrumbs.clickOnBreadcrumb(BREAD_CRUMB_WORLD);
+		Assert.assertEquals(getDriver().getCurrentUrl(),expectedWorldPage_URL,
+				"\nIssue-----> URL not matching for World breadcrumb");
+		
+		/**************** Validating the Title for World Breadcrumb *****************************/
+		Assert.assertEquals(getDriver().getTitle(),EXPECTED_GLOBAL_BREADCRUMB_TITLE,
+				"\nIssue-----> Title not matching for World breadcrumb");
+		
+		softAssert.assertAll();
+	}
+	
+	@Test(priority=3)
+	public void RW_T198_RegionBreadCrumb_URL_Validation()
+	{
+		softAssert = new SoftAssert();
+		
+		testStart("******************Validate the URL & Title for breadcrumbs displayed for Region************************");
+		landingPage.enterCityNameInSearchField(CITY_NAME);
+		landingPage.selectCityFromTheList(location);
+
+		breadcrumbs.scrolldownpage();
+		breadcrumbs.scrolldownpage();
+		
+		/**************** Validating the URL for Region breadcrumb ********************************/
+		breadcrumbs.clickOnBreadcrumb(BREAD_CRUMB_REGION);
+		Assert.assertEquals(getDriver().getCurrentUrl(),expectedRegionPageURL,
+				"\nIssue-----> URL not matching for Region breadcrumb");
+		
+		/**************** Validating the Title for Region breadcrumb ********************************/
+		Assert.assertEquals(getDriver().getTitle(),EXPECTED_GLOBAL_BREADCRUMB_TITLE,
+				"\nIssue-----> Title not matching for Region breadcrumb");
+		
+		softAssert.assertAll();
+	}
+	
+	@Test(priority=4)
+	public void RW_T199_CountryBreadCrumb_URL_Validation()
+	{
+		softAssert = new SoftAssert();
+		
+		testStart("******************Validate the URL & Title for breadcrumbs displayed for Country************************");
+		landingPage.enterCityNameInSearchField(CITY_NAME);
+		landingPage.selectCityFromTheList(location);
+
+		breadcrumbs.scrolldownpage();
+		breadcrumbs.scrolldownpage();
+		
+		/**************** Validating the URL for Country breadcrumb ********************************/
+		breadcrumbs.clickOnBreadcrumb(BREAD_CRUMB_COUNTRY);
+		Assert.assertEquals(getDriver().getCurrentUrl(),expectedCountry_URL,
+				"\nIssue-----> URL not matching for Country breadcrumb");
+		
+		/**************** Validating the title for Country breadcrumb ********************************/
+		Assert.assertEquals(getDriver().getTitle(),EXPECTED_NATIONAL_BREADCRUMB_TITLE,
+				"\nIssue-----> Title not matching for Country breadcrumb");
+		
+		softAssert.assertAll();
+	}
+	
+	@Test(priority=5)
+	public void RW_T200_StateBreadCrumb_URL_Validation()
+	{
+		softAssert = new SoftAssert();
+		
+		testStart("******************Validate the URL & Title for breadcrumbs displayed for State************************");
+		landingPage.enterCityNameInSearchField(CITY_NAME);
+		landingPage.selectCityFromTheList(location);
+
+		breadcrumbs.scrolldownpage();
+		breadcrumbs.scrolldownpage();
+		
+		/**************** Validating the URL for State breadcrumb ********************************/
+		breadcrumbs.clickOnBreadcrumb(BREAD_CRUMB_STATE);
+		Assert.assertEquals(getDriver().getCurrentUrl(),expectedState_URL,
+				"\nIssue-----> URL not matching for State breadcrumb");
+		
+		/**************** Validating the Title for State breadcrumb ********************************/
+		Assert.assertEquals(getDriver().getTitle(),EXPECTED_LOCAL_BREADCRUMB_TITLE,
+				"\nIssue-----> Title not matching for State breadcrumb");
+		
+		softAssert.assertAll();
+	}
+	
+	@Test(priority=6)
+	public void RW_T201_CityBreadCrumb_URL_Validation()
+	{
+		softAssert = new SoftAssert();
+		
+		testStart("****************** Validate the URL & Title for breadcrumbs displayed for City ************************");
+		landingPage.enterCityNameInSearchField(CITY_NAME);
+		landingPage.selectCityFromTheList(location);
+
+		breadcrumbs.scrolldownpage();
+		breadcrumbs.scrolldownpage();
+		
+		/**************** Validating the URL for City breadcrumb ********************************/
+		breadcrumbs.clickOnBreadcrumb(BREAD_CRUMB_CITY);
+		Assert.assertEquals(getDriver().getCurrentUrl(),expectedCity_URL,
+				"\nIssue-----> URL not matching for City breadcrumb");
+		
+		/**************** Validating the Title for City breadcrumb ********************************/
+		Assert.assertEquals(getDriver().getTitle(),expectedCityBreadCrumbTitle,
+				"\nIssue-----> Title not matching for City breadcrumb");
+		
+		softAssert.assertAll();
 	}
 }

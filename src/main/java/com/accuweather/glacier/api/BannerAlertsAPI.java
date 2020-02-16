@@ -18,6 +18,8 @@ public class BannerAlertsAPI extends APIUtilities
 	public static int rowNo = 0;
 	public static int alertCount = 0;
 	public static ArrayList<String> alertSummary;
+	public static ArrayList<String> alertDescription;
+	public static ArrayList<String> alertLocation;
 	
 	/**
 	 * @author HFARAZ
@@ -69,7 +71,7 @@ public class BannerAlertsAPI extends APIUtilities
 	/**
 	 * @author HFARAZ
 	 * Method to get the alert summary from API response
-	 * */
+	 * */ 
 	public static ArrayList<String> getAlertSummary()
 	{
 		JsonPath jsonObject = new JsonPath(alertDetails);
@@ -79,6 +81,38 @@ public class BannerAlertsAPI extends APIUtilities
 			alertSummary.add(jsonObject.getString("["+i+"].Area[0].Summary"));
 		}
 		return alertSummary;
+		
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to get the alert description from API response
+	 * */
+	public static ArrayList<String> getAlertDescription()
+	{
+		JsonPath jsonObject = new JsonPath(alertDetails);
+		alertDescription = new ArrayList<String>();
+		for (int i=0;i<alertCount;i++)
+		{
+			alertDescription.add(jsonObject.getString("["+i+"].Description.Localized"));
+		}
+		return alertDescription;
+		
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to get the alert locations from API response
+	 * */
+	public static ArrayList<String> getAlertLocations()
+	{
+		JsonPath jsonObject = new JsonPath(alertDetails);
+		alertLocation = new ArrayList<String>();
+		for (int i=0;i<alertCount;i++)
+		{
+			alertLocation.add(jsonObject.getString("["+i+"].Area[0].Name"));
+		}
+		return alertLocation;
 		
 	}
 	
@@ -99,6 +133,15 @@ public class BannerAlertsAPI extends APIUtilities
 	public static String getStateNameHavingAlerts()
 	{
 		return getStateName(rowNo);
+	}
+	
+	/**
+	 * @author HFARAZ
+	 * Method to give state code having alerts
+	 * **/
+	public static String getStateCodeHavingAlerts()
+	{
+		return getStateCode(rowNo);
 	}
 	
 	/**
