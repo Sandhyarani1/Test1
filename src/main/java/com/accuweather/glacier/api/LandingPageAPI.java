@@ -7,6 +7,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
+
+import com.accuweather.chameleon.Utilities.CommonUtilities;
+
 import io.restassured.path.json.JsonPath;
 
 public class LandingPageAPI extends APIUtilities
@@ -178,16 +181,16 @@ public class LandingPageAPI extends APIUtilities
 
 	public static String getContentModuleDate()
 	{
-		month = getAllCharacters(getCenterWell1ContentModuleData()[1]).get(0);
+		month = CommonUtilities.getAllCharacters(getCenterWell1ContentModuleData()[1]).get(0);
 		if(getCenterWell1ContentModuleData()[1].length()==6)
 		{
-			date = getAllCharacters(getCenterWell1ContentModuleData()[1]).get(1).substring(0, 2);
-			year = getAllCharacters(getCenterWell1ContentModuleData()[1]).get(1).substring(2, 6);
+			date = CommonUtilities.getAllCharacters(getCenterWell1ContentModuleData()[1]).get(1).substring(0, 2);
+			year = CommonUtilities.getAllCharacters(getCenterWell1ContentModuleData()[1]).get(1).substring(2, 6);
 		}
 		else
 		{
-			date = getAllCharacters(getCenterWell1ContentModuleData()[1]).get(1).substring(0, 1);
-			year = getAllCharacters(getCenterWell1ContentModuleData()[1]).get(1).substring(1, 5);
+			date = CommonUtilities.getAllCharacters(getCenterWell1ContentModuleData()[1]).get(1).substring(0, 1);
+			year = CommonUtilities.getAllCharacters(getCenterWell1ContentModuleData()[1]).get(1).substring(1, 5);
 		}
 		String contentModueDate = month.toUpperCase() + " " + date + ", " + year;
 		
@@ -227,23 +230,23 @@ public class LandingPageAPI extends APIUtilities
 		{
 			try
 			{
-				month = getAllCharacters(splitString(getLandingPageData(CENTERWELL2).get(i).toString(), 5)[1]).get(0)
+				month = CommonUtilities.getAllCharacters(splitString(getLandingPageData(CENTERWELL2).get(i).toString(), 5)[1]).get(0)
 						.substring(0, 3).toUpperCase();
 				
-				if(getAllCharacters(splitString(getLandingPageData(CENTERWELL2).get(i).toString(), 5)[1]).get(1).length()==5)
+				if(CommonUtilities.getAllCharacters(splitString(getLandingPageData(CENTERWELL2).get(i).toString(), 5)[1]).get(1).length()==5)
 				{
-					date = getAllCharacters(splitString(getLandingPageData(CENTERWELL2).get(i).toString(), 5)[1]).get(1)
+					date = CommonUtilities.getAllCharacters(splitString(getLandingPageData(CENTERWELL2).get(i).toString(), 5)[1]).get(1)
 							.substring(0, 1);
 
-					year = getAllCharacters(splitString(getLandingPageData(CENTERWELL2).get(i).toString(), 5)[1]).get(1)
+					year = CommonUtilities.getAllCharacters(splitString(getLandingPageData(CENTERWELL2).get(i).toString(), 5)[1]).get(1)
 							.substring(1, 5);
 				}
 				else
 				{
-					date = getAllCharacters(splitString(getLandingPageData(CENTERWELL2).get(i).toString(), 5)[1]).get(1)
+					date = CommonUtilities.getAllCharacters(splitString(getLandingPageData(CENTERWELL2).get(i).toString(), 5)[1]).get(1)
 							.substring(0, 2);
 
-					year = getAllCharacters(splitString(getLandingPageData(CENTERWELL2).get(i).toString(), 5)[1]).get(1)
+					year = CommonUtilities.getAllCharacters(splitString(getLandingPageData(CENTERWELL2).get(i).toString(), 5)[1]).get(1)
 							.substring(2, 6);
 				}
 				
@@ -472,36 +475,4 @@ public class LandingPageAPI extends APIUtilities
 
 		return spit;
 	}
-
-	/**
-	 * 
-	 * @author hasanfaraz 
-	 * This method will split the String having alphanumeric and special characters
-	 * 
-	 * @return 
-	 * This will return separate strings having alphabets, numbers and special characters and store into global variables declared above
-	 */
-
-    public static ArrayList<String> getAllCharacters(String str)
-	{
-		ArrayList<String> allCharacters = new ArrayList<String>();
-		StringBuffer alpha = new StringBuffer(), num = new StringBuffer(), special = new StringBuffer();
-
-		for (int i = 0; i < str.length(); i++) 
-		{
-			if (Character.isDigit(str.charAt(i)))
-				num.append(str.charAt(i));
-			else if (Character.isAlphabetic(str.charAt(i)))
-				alpha.append(str.charAt(i));
-			else
-				special.append(str.charAt(i));
-		}
-
-		allCharacters.add(alpha.toString());
-		allCharacters.add(num.toString());
-		allCharacters.add(special.toString());
-
-		return allCharacters;
-	}
-
 }

@@ -215,7 +215,48 @@ public class APIUtilities extends ExcelUtilities
 		return response;
 	}
 	
+	/**
+	 * @author HFARAZ
+	 * This method will give the API data for Current Conditions Page 
+	 * */
+	public static Response getCurrentConditionsDetails(String locationKey)
+	{	
+		RestAssured.baseURI = apiProperties.get(APIConstants.BASE_URI);
+		Response response =
+		given().
+			param("apikey",apiProperties.get(APIConstants.API_KEY)).
+			param("language",apiProperties.get(APIConstants.LANGUAGE)).
+			param("details",apiProperties.get(APIConstants.DETAILS)).
+		when().
+			get(apiProperties.get(APIConstants.CURRENT_CONDITIONS_RESOURCES)+locationKey+".json").
+		then().
+			assertThat().statusCode(200).and().
+		extract().response();
+		
+		return response;
+	}
 	
+	
+	/**
+	 * @author HFARAZ
+	 * This method will give the API data for Temperature History 
+	 * */
+	public static Response getTemperatureHistoryDetails(String date, String locationKey)
+	{	
+		RestAssured.baseURI = apiProperties.get(APIConstants.BASE_URI);
+		Response response =
+		given().
+			param("apikey",apiProperties.get(APIConstants.API_KEY)).
+			param("language",apiProperties.get(APIConstants.LANGUAGE)).
+			param("details",apiProperties.get(APIConstants.DETAILS)).
+		when().
+			get(apiProperties.get(APIConstants.TEMPERATURE_HISTORY)+date+"/"+locationKey+".json").
+		then().
+			assertThat().statusCode(200).and().
+		extract().response();
+		
+		return response;
+	}
 	
 	
 	/**

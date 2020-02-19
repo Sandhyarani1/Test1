@@ -117,8 +117,8 @@ public class TestBannerAlerts extends AccuWeatherBaseTest
 				softAssert.assertEquals(getDriver().getCurrentUrl(), expectedURL,
 						"Issue--------> Wrong URL of alert page------->");
 
-				// verifying the title on Alert page
-				softAssert.assertEquals(getDriver().getTitle(), expectedTitle,
+		// verifying the title on Alert page
+		softAssert.assertEquals(getDriver().getTitle(), expectedTitle,
 						"\nIssue-----> Title of the alert page not as expected");
 
 		// Verifying the presence of alert banner on alert page

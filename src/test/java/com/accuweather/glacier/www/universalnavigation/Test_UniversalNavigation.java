@@ -15,7 +15,6 @@ import com.accuweather.glacier.www.pages.RadarWeatherPage;
 import com.chameleon.utils.Constants;
 import com.chameleon.utils.DataIOOperations.ExcelUtilities;
 import com.chameleon.utils.io.PropertiesManager;
-import com.fasterxml.jackson.databind.introspect.AnnotatedWithParams;
 
 public class Test_UniversalNavigation extends AccuWeatherBaseTest 
 {

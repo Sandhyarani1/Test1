@@ -1,8 +1,10 @@
 package com.accuweather.glacier.api;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+import com.accuweather.chameleon.Utilities.CommonUtilities;
 import com.chameleon.utils.date.SimpleDate;
+
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
@@ -67,7 +69,7 @@ public class HourlyPageAPI extends APIUtilities
 	public static ArrayList<String> ceiling_UI;
 	
 	
-	/************************************ UI TEXT *******************************************************/
+	/************************************ HOURLY PAGE UI TEXT FORMAT *******************************************************/
 	public static final String ArrayName = "array";
 	public static String timeStampTime = "";
 	public static String timeStampDate = "";
@@ -75,9 +77,9 @@ public class HourlyPageAPI extends APIUtilities
 	public static final String AM = " AM";
 	public static final String PM = " PM";
 	public static final String PRECIP = "Precip ";
-	public static final String DEGREE_SYMBOL = "°";
+	public static final String DEGREE_SYMBOL = "Â°";
 	public static final String PERCENTAGE_SYMBOL = "%";
-	public static final String REALFEEL = "RealFeel®: ";
+	public static final String REALFEEL = "RealFeelÂ®: ";
 	public static final String WIND = "Wind: ";
 	public static final String WINDGUSTS = "Wind Gusts: ";
 	public static final String HUMIDITY = "Humidity: ";
@@ -138,7 +140,7 @@ public class HourlyPageAPI extends APIUtilities
 	
 	/**
 	 * @author HFARAZ
-	 * Method to get statecode from the locationKeys.xlsx file
+	 * Method to get state code from the locationKeys.xlsx file
 	 * **/
 	public static String getStateCode()
 	{
@@ -393,7 +395,7 @@ public class HourlyPageAPI extends APIUtilities
 	 * */
 	public static String getTemperatureAsPerHourlyPageUI(String temperatureFromAPI)
 	{
-		return roundingUpDecimals(temperatureFromAPI)+DEGREE_SYMBOL;
+		return CommonUtilities.roundingUpDecimals(temperatureFromAPI)+DEGREE_SYMBOL;
 	}
 	
 	/**
@@ -412,7 +414,7 @@ public class HourlyPageAPI extends APIUtilities
 	 * */
 	public static String getRealFeelAsPerHourlyPageUI(String realFeelFromAPI)
 	{
-		return REALFEEL+roundingUpDecimals((realFeelFromAPI))+DEGREE_SYMBOL;
+		return REALFEEL+CommonUtilities.roundingUpDecimals((realFeelFromAPI))+DEGREE_SYMBOL;
 	}
 	
 	/**
@@ -422,9 +424,9 @@ public class HourlyPageAPI extends APIUtilities
 	public static String getWindAsPerHourlyPageUI(String windFromAPI, String windDirectionFromAPI,String windUnitFromAPI)
 	{
 		if(windUnitFromAPI.equalsIgnoreCase("mi/h"))
-			return WIND+windDirectionFromAPI+" "+roundingUpDecimals((windFromAPI))+" "+MPH;
+			return WIND+windDirectionFromAPI+" "+CommonUtilities.roundingUpDecimals((windFromAPI))+" "+MPH;
 		else
-			return WIND+windDirectionFromAPI+" "+roundingUpDecimals((windFromAPI))+" "+windUnitFromAPI;
+			return WIND+windDirectionFromAPI+" "+CommonUtilities.roundingUpDecimals((windFromAPI))+" "+windUnitFromAPI;
 	}
 	
 	/**
@@ -434,9 +436,9 @@ public class HourlyPageAPI extends APIUtilities
 	public static String getWindGustsAsPerHourlyPageUI(String windGustsFromAPI, String windUnitFromAPI)
 	{
 		if(windUnitFromAPI.equalsIgnoreCase("mi/h"))
-			return WINDGUSTS+roundingUpDecimals((windGustsFromAPI))+" "+MPH;
+			return WINDGUSTS+CommonUtilities.roundingUpDecimals((windGustsFromAPI))+" "+MPH;
 		else
-			return WINDGUSTS+roundingUpDecimals((windGustsFromAPI))+" "+windUnitFromAPI;
+			return WINDGUSTS+CommonUtilities.roundingUpDecimals((windGustsFromAPI))+" "+windUnitFromAPI;
 	}
 	
 	/**
@@ -454,7 +456,7 @@ public class HourlyPageAPI extends APIUtilities
 	 * */
 	public static String getDewPointAsPerHourlyPageUI(String dewPointFromAPI)
 	{
-		return DEW_POINT+roundingUpDecimals((dewPointFromAPI))+DEGREE_SYMBOL;
+		return DEW_POINT+CommonUtilities.roundingUpDecimals((dewPointFromAPI))+DEGREE_SYMBOL;
 	}
 	
 	
@@ -464,7 +466,7 @@ public class HourlyPageAPI extends APIUtilities
 	 * */
 	public static String getUVIndexAsPerHourlyPageUI(String uvIndexValueFromAPI, String uvIndexRangeFromAPI)
 	{
-		return MAX_UV_INDEX+roundingUpDecimals((uvIndexValueFromAPI))+" ("+uvIndexRangeFromAPI+")";
+		return MAX_UV_INDEX+CommonUtilities.roundingUpDecimals((uvIndexValueFromAPI))+" ("+uvIndexRangeFromAPI+")";
 	}
 	
 	/**
@@ -473,7 +475,7 @@ public class HourlyPageAPI extends APIUtilities
 	 * */
 	public static String getCloudCoverAsPerHourlyPageUI(String cloudCoverValueFromAPI)
 	{
-		return CLOUD_COVER+roundingUpDecimals((cloudCoverValueFromAPI))+PERCENTAGE_SYMBOL;
+		return CLOUD_COVER+CommonUtilities.roundingUpDecimals((cloudCoverValueFromAPI))+PERCENTAGE_SYMBOL;
 	}
 	
 	/**
@@ -483,9 +485,9 @@ public class HourlyPageAPI extends APIUtilities
 	public static String getRainAsPerHourlyPageUI(String rainValueFromAPI, String rainUnit)
 	{
 		if(rainUnit.equalsIgnoreCase(INCHES))
-			return RAIN+roundToTwoDecimalPlaces((rainValueFromAPI))+" "+rainUnit;
+			return RAIN+CommonUtilities.roundToTwoDecimalPlaces((rainValueFromAPI))+" "+rainUnit;
 		else
-			return RAIN+roundToOneDecimalPlaces((rainValueFromAPI))+" "+rainUnit;
+			return RAIN+CommonUtilities.roundToOneDecimalPlaces((rainValueFromAPI))+" "+rainUnit;
 	}
 	
 	/**
@@ -494,7 +496,7 @@ public class HourlyPageAPI extends APIUtilities
 	 * */
 	public static String getSnowAsPerHourlyPageUI(String snowValueFromAPI, String snowUnit)
 	{
-		return SNOW+roundToOneDecimalPlaces((snowValueFromAPI))+" "+snowUnit;
+		return SNOW+CommonUtilities.roundToOneDecimalPlaces((snowValueFromAPI))+" "+snowUnit;
 	}
 	
 	/**
@@ -504,9 +506,9 @@ public class HourlyPageAPI extends APIUtilities
 	public static String getIceAsPerHourlyPageUI(String iceValueFromAPI, String iceUnit)
 	{
 		if(iceUnit.equalsIgnoreCase(INCHES))
-			return ICE+roundToTwoDecimalPlaces((iceValueFromAPI))+" "+iceUnit;
+			return ICE+CommonUtilities.roundToTwoDecimalPlaces((iceValueFromAPI))+" "+iceUnit;
 		else
-			return ICE+roundToOneDecimalPlaces((iceValueFromAPI))+" "+iceUnit;
+			return ICE+CommonUtilities.roundToOneDecimalPlaces((iceValueFromAPI))+" "+iceUnit;
 	}
 	
 	/**
@@ -515,7 +517,7 @@ public class HourlyPageAPI extends APIUtilities
 	 * */
 	public static String getVisibilityAsPerHourlyPageUI(String visibilityFromAPI, String visibilityUnitFromAPI)
 	{
-		return VISIBILITY+roundingUpDecimals((visibilityFromAPI))+" "+visibilityUnitFromAPI;
+		return VISIBILITY+CommonUtilities.roundingUpDecimals((visibilityFromAPI))+" "+visibilityUnitFromAPI;
 	}
 	
 	/**
@@ -524,73 +526,35 @@ public class HourlyPageAPI extends APIUtilities
 	 * */
 	public static String getCeilingAsPerHourlyPageUI(String ceilingValueFromAPI, String ceilingUnit)
 	{
-		return CEILING+roundingUpDecimals((ceilingValueFromAPI))+" "+ceilingUnit;
-	}
-	
-	/**Method to round up the decimals
-	 * @author SOWMIYA
-	 * return roundup number
-	 *  */
-	public static String roundingUpDecimals(String value)
-	{
-		float numberToRound = Float.parseFloat(value);
-		int roundedFigure =(int)Math.round(numberToRound);
-		
-		return String.valueOf(roundedFigure);
-	}
-	
-	/**
-	 * @author HFARAZ
-	 * Method to round the number upto two decimal places
-	 * **/
-	public static String roundToTwoDecimalPlaces(String value)
-	{
-		DecimalFormat df = new DecimalFormat("0.00");
-		return df.format(Math.round(Double.valueOf(value))).toString();
-	}
-	
-	/**
-	 * @author HFARAZ
-	 * Method to round the number upto one decimal places
-	 * **/
-	public static String roundToOneDecimalPlaces(String value)
-	{
-		DecimalFormat df = new DecimalFormat("0.0");
-		return df.format(Math.round(Double.valueOf(value))).toString();
+		return CEILING+CommonUtilities.roundingUpDecimals((ceilingValueFromAPI))+" "+ceilingUnit;
 	}
 	
 	public static void main(String[] args)
 	{
 		/************* test rounding up scenarios *************************/
-		System.out.println(roundingUpDecimals("0.02"));
-		System.out.println(roundingUpDecimals("0.25"));
-		System.out.println(roundingUpDecimals("0.5"));
-		System.out.println(roundingUpDecimals("0.9"));
-		System.out.println(roundingUpDecimals("1.5"));
-		System.out.println(roundingUpDecimals("1.4"));
+		System.out.println(CommonUtilities.roundingUpDecimals("0.02"));
+		System.out.println(CommonUtilities.roundingUpDecimals("0.25"));
+		System.out.println(CommonUtilities.roundingUpDecimals("0.5"));
+		System.out.println(CommonUtilities.roundingUpDecimals("0.9"));
+		System.out.println(CommonUtilities.roundingUpDecimals("1.5"));
+		System.out.println(CommonUtilities.roundingUpDecimals("1.4"));
 		
 		/**************** test two decimal places scenarios *******************/
 		System.out.println("**************** up to two decimal places scenarios*******************");
-		System.out.println(roundToTwoDecimalPlaces("0.02"));
-		System.out.println(roundToTwoDecimalPlaces("0.05"));
-		System.out.println(roundToTwoDecimalPlaces("0.50"));
-		System.out.println(roundToTwoDecimalPlaces("0.7"));
-		System.out.println(roundToTwoDecimalPlaces("2.4"));
+		System.out.println(CommonUtilities.roundToTwoDecimalPlaces("0.02"));
+		System.out.println(CommonUtilities.roundToTwoDecimalPlaces("0.05"));
+		System.out.println(CommonUtilities.roundToTwoDecimalPlaces("0.50"));
+		System.out.println(CommonUtilities.roundToTwoDecimalPlaces("0.7"));
+		System.out.println(CommonUtilities.roundToTwoDecimalPlaces("2.4"));
 		
 		/****************** test one decimal places scenarios ******************************/
 		System.out.println("********************** One decimal places scenarios *************");
-		System.out.println(roundToOneDecimalPlaces("0.2"));
-		System.out.println(roundToOneDecimalPlaces("0.5"));
-		System.out.println(roundToOneDecimalPlaces("0.7"));
-		System.out.println(roundToOneDecimalPlaces("1.4"));
+		System.out.println(CommonUtilities.roundToOneDecimalPlaces("0.2"));
+		System.out.println(CommonUtilities.roundToOneDecimalPlaces("0.5"));
+		System.out.println(CommonUtilities.roundToOneDecimalPlaces("0.7"));
+		System.out.println(CommonUtilities.roundToOneDecimalPlaces("1.4"));
 		
-		
-		
-		
-		
-		SimpleDate sd = new SimpleDate();
-
-		getHourlyPageAPIData("Buffalo",sd.getCurrentDate("yyyy-MM-dd"),"IMPERIAL");
+		getHourlyPageAPIData("Buffalo",SimpleDate.getCurrentDate("yyyy-MM-dd"),"METRIC");
 		//getHourlyForecastData("Buffalo",sd.getTomorrowDate("yyyy-MM-dd"),"IMPERIAL");
 		  
 		  for(int i=0;i<NoOfHoursForTheDay();i++)

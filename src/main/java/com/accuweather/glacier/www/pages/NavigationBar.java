@@ -34,10 +34,17 @@ public class NavigationBar extends BasePage
 	/**
 	 *	***************************** SETTINGS *************************************
 	 */
-	private By bySettingIcon 				= By.cssSelector("div.settings-button > svg.icon-settings");
+	private By bySettingIcon 				= By.cssSelector("div.settings-button");
 	private By bySettingCountry 			= By.cssSelector("div.settings-wrap > div.dropdown-select.fade-in-left > div.dropdown-select-wrapper > div.select-title");
 	private By bySettingLanguage 			= By.cssSelector("div.settings-wrap > div.fade-in-left:nth-of-type(2) > div > div");
-	private By bySettingTemperature 		= By.cssSelector("div.settings-wrap > div.temp-switcher.fade-in-left > span.temp-switcher-label");
+	private By bySettingTempUnit	 		= By.cssSelector("div.utility-bar-wrapper > div.settings-wrap > div.dropdown-select.fade-in-left.js-dropdown.select-units > "
+			+ "div.dropdown-select-wrapper > div.head-title");
+	private By bySelectedTempUnit			= By.cssSelector("div.utility-bar-wrapper > div.settings-wrap > div.dropdown-select.fade-in-left.js-dropdown.select-units > "
+			+ "div.dropdown-select-wrapper > div.select-title");
+	private By byselectFahrenheit			= By.cssSelector("div.utility-bar-wrapper > div.settings-wrap > div.dropdown-select.fade-in-left.js-dropdown.select-units > "
+			+ "div.dropdown-content > div:nth-child(2)");
+	private By byselectCelsius				= By.cssSelector("div.utility-bar-wrapper > div.settings-wrap > div.dropdown-select.fade-in-left.js-dropdown.select-units > "
+			+ "div.dropdown-content > div:nth-child(3)");
 	private By bySettingCountryUpArrow 		= By.cssSelector("div > div:nth-child(1) > div.dropdown-select-wrapper > svg.hide-mobile.icon-chevron");
 	private By bySettingMyRecentCountries 	= By.cssSelector("div > div.dropdown-select.fade-in-left > div.dropdown-content > div.dropdown-content-title");
 	private By bySettingMoreCountries 		= By.cssSelector("div > div > div.dropdown-content > a.button-primary");
@@ -259,178 +266,7 @@ public class NavigationBar extends BasePage
 		txtSuperSearch.sendKeys(Keys.RETURN);
 	}
 
-	public boolean isSettingCountryDisplayed()
-	{
-		WebPageLoaded.isDomComplete();
-		WebTextbox settingcountry = getDriver().findTextbox(bySettingCountry);
-		settingcountry.syncVisible(15);
-		return settingcountry.isDisplayed();
-	}
-
-	public boolean isSettingLanguageDisplayed()
-	{
-		WebPageLoaded.isDomComplete();
-		WebTextbox settinglang = getDriver().findTextbox(bySettingLanguage);
-		settinglang.syncVisible(15);
-		return settinglang.isDisplayed();
-	}
-
-	public boolean isSettingTemperatureDisplayed()
-	{
-		WebPageLoaded.isDomComplete();
-		WebTextbox settingtemp = getDriver().findTextbox(bySettingTemperature);
-		settingtemp.syncVisible(15);
-		return settingtemp.isDisplayed();
-	}
-
-	public boolean isStartSearchDisplayed()
-	{
-		WebPageLoaded.isDomComplete();
-		WebTextbox txtSearch = getDriver().findTextbox(byTopSearch);
-		return txtSearch.syncVisible(15);
-	}
-
-	public void clickSettingsIcon()
-	{
-		WebPageLoaded.isDomComplete();
-		WebTextbox settingicon = getDriver().findTextbox(bySettingIcon);
-		settingicon.syncVisible(15);
-		settingicon.click();
-		Sleeper.sleep(5);
-	}
-
-	public void clickTopNavStartSearchIcon()
-	{
-		WebPageLoaded.isDomComplete();
-		WebTextbox startsearch = getDriver().findTextbox(byTopSearch);
-		startsearch.syncVisible(15);
-		startsearch.click();
-		Sleeper.sleep(5);
-	}
-
-	public void clickBrowseYourLocationLink()
-	{
-		WebPageLoaded.isDomComplete();
-		getDriver().findTextbox(byBrowseLocation).syncVisible();
-		WebTextbox browselocation = getDriver().findTextbox(byBrowseLocation);
-		browselocation.syncVisible(15);
-		browselocation.click();
-		Sleeper.sleep(3);
-	}
-
-	public boolean isMegaMenuContentDisplayed()
-	{
-		WebPageLoaded.isDomComplete();
-		WebElement megamenucontent = getDriver().findElement(byMegaMenu);
-		megamenucontent.syncVisible(15);
-		return megamenucontent.isDisplayed();
-	}
-
-	public boolean isTopNavSearchCloseIconDisplayed()
-	{
-		WebPageLoaded.isDomComplete();
-		WebTextbox closesearch = getDriver().findTextbox(byTopSearchClose);
-		closesearch.syncVisible(15);
-		return closesearch.isDisplayed();
-	}
-
-	public boolean isTopNavCTATextDisplayed()
-	{
-		WebPageLoaded.isDomComplete();
-		WebTextbox topnavctatext = getDriver().findTextbox(byTopNavCTA);
-		topnavctatext.syncVisible(15);
-		return topnavctatext.isDisplayed();
-	}
-
-	public boolean isTopNavNYCityImageDisplayed()
-	{
-		WebPageLoaded.isDomComplete();
-		WebTextbox topnavcityimage = getDriver().findTextbox(byTopNavNYCityImage);
-		topnavcityimage.syncVisible(15);
-		return topnavcityimage.isDisplayed();
-	}
-
-	public boolean isTopNavChicagoCityImageDisplayed()
-	{
-		WebPageLoaded.isDomComplete();
-		WebTextbox topnavcityimage = getDriver().findTextbox(byTopNavChicagoCityImage);
-		topnavcityimage.syncVisible(15);
-		return topnavcityimage.isDisplayed();
-	}
-
-	public boolean isTopNavDCCityImageDisplayed()
-	{
-		WebPageLoaded.isDomComplete();
-		WebTextbox topnavcityimage = getDriver().findTextbox(byTopNavDCCityImage);
-		topnavcityimage.syncVisible(15);
-		return topnavcityimage.isDisplayed();
-	}
-
-	public boolean isTopNavHoustonCityImageDisplayed()
-	{
-		WebPageLoaded.isDomComplete();
-		WebTextbox topnavcityimage = getDriver().findTextbox(byTopNavHoustonCityImage);
-		topnavcityimage.syncVisible(15);
-		return topnavcityimage.isDisplayed();
-	}
-
-	public boolean isTopNavFirstCityDisplayed()
-	{
-		WebPageLoaded.isDomComplete();
-		WebTextbox topnavcityimage = getDriver().findTextbox(byTopNavCityList);
-		topnavcityimage.syncVisible(15);
-		return topnavcityimage.isDisplayed();
-	}
-
-	public boolean isRecentCityNameDisplayed()
-	{
-		WebPageLoaded.isDomComplete();
-		WebTextbox recentcityname = getDriver().findTextbox(byFirstCityName);
-		recentcityname.syncVisible(15);
-		return recentcityname.isDisplayed();
-	}
-
-	public void clickTopNavSearchCloseIcon()
-	{
-		WebPageLoaded.isDomComplete();
-		WebTextbox closesearch = getDriver().findTextbox(byTopSearchClose);
-		closesearch.syncVisible(15);
-		closesearch.click();
-	}
-
-	public void clickStartSearch()
-	{
-		WebTextbox txtSearch = getDriver().findTextbox(byStartSearch);
-		txtSearch.syncVisible(15);
-		txtSearch.click();
-	}
-
-	public void clickTopNavCTALink()
-	{
-		WebTextbox ctalink = getDriver().findTextbox(byTopNavCTA);
-		ctalink.syncEnabled();
-		ctalink.click();
-	}
-
-	public boolean validateNavigation(String url)
-	{
-		WebDriverWait wait = new WebDriverWait(getDriver(), Constants.PAGE_TIMEOUT);
-		return wait.until(ExpectedConditions.urlContains(url));
-	}
-
-	public String clickAndGetlocationCityName(String info)
-	{
-		WebTextbox txtSearch = getDriver().findTextbox(byStartSearch);
-		txtSearch.syncEnabled();
-		txtSearch.click();
-		WebTextbox txtSuperSearch = getDriver().findTextbox(bySuperSearch);
-		txtSuperSearch.syncVisible();
-		txtSuperSearch.set(info);
-		txtSuperSearch.sendKeys();
-		String CityName = getCityNameText(info);
-		navigateToForeCastPage();
-		return CityName;
-	}
+	
 
 /***************************************************** START OF RADAR & MAPS CATEGORY ***************************************************************/	
 	/**
@@ -2421,6 +2257,9 @@ public class NavigationBar extends BasePage
 	
 /*********************************************** END OF MORE ITEMS **********************************************************************************/	
 
+	
+/*********************************************** SETTINGS ITEMS *************************************************************************************/
+	
 	/**
 	 * @author HFARAZ
 	 * Method to validate if the setting icon is displayed
@@ -2430,11 +2269,208 @@ public class NavigationBar extends BasePage
 		WebPageLoaded.isDomComplete();
 		return getDriver().findElement(bySettingIcon).syncVisible(15,false);
 	}
-
-
 	
-
+	/**
+	 * @author HFARAZ
+	 * Method to click Settings icon
+	 * */
+	public void clickSettingsIcon()
+	{
+		WebPageLoaded.isDomComplete();
+		if(isSettingIconDisplayed())
+			getDriver().findElement(bySettingIcon).jsClick();
+	}
 	
+	/**
+	 * @author HFARAZ
+	 * Method to validate if the country settings are displayed
+	 * */
+	public boolean isCountrySettingsDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		return getDriver().findTextbox(bySettingCountry).syncVisible(15,false);
+	}
+
+	/**
+	 * @author HFARAZ
+	 * Method to validate if the language settings are displayed
+	 * */
+	public boolean isLanguageSettingsDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		return getDriver().findTextbox(bySettingLanguage).syncVisible(15,false);
+	}
+
+	/**
+	 * @author HFARAZ
+	 * Method to validate if the temperature settings are displayed
+	 * */
+	public boolean isTemperatureSettingDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		return getDriver().findTextbox(bySettingTempUnit).syncVisible(15,false);
+	}
+	
+	
+	/**
+	 * @author HFARAZ
+	 * Method to select celsius in temperatures unit
+	 * */
+	public void selectCelsius()
+	{
+		WebPageLoaded.isDomComplete();
+		if(isSettingIconDisplayed())
+		{
+			getDriver().findElement(bySettingIcon).jsClick();
+			if(isTemperatureSettingDisplayed())
+			{
+				getDriver().findElement(bySettingTempUnit).jsClick();
+				getDriver().findElement(byselectCelsius).jsClick();
+				WebPageLoaded.isDomComplete();
+			}
+		}
+	}
+
+	public boolean isStartSearchDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		WebTextbox txtSearch = getDriver().findTextbox(byTopSearch);
+		return txtSearch.syncVisible(15);
+	}
+
+	public void clickTopNavStartSearchIcon()
+	{
+		WebPageLoaded.isDomComplete();
+		WebTextbox startsearch = getDriver().findTextbox(byTopSearch);
+		startsearch.syncVisible(15);
+		startsearch.click();
+		Sleeper.sleep(5);
+	}
+
+	public void clickBrowseYourLocationLink()
+	{
+		WebPageLoaded.isDomComplete();
+		getDriver().findTextbox(byBrowseLocation).syncVisible();
+		WebTextbox browselocation = getDriver().findTextbox(byBrowseLocation);
+		browselocation.syncVisible(15);
+		browselocation.click();
+		Sleeper.sleep(3);
+	}
+
+	public boolean isMegaMenuContentDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		WebElement megamenucontent = getDriver().findElement(byMegaMenu);
+		megamenucontent.syncVisible(15);
+		return megamenucontent.isDisplayed();
+	}
+
+	public boolean isTopNavSearchCloseIconDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		WebTextbox closesearch = getDriver().findTextbox(byTopSearchClose);
+		closesearch.syncVisible(15);
+		return closesearch.isDisplayed();
+	}
+
+	public boolean isTopNavCTATextDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		WebTextbox topnavctatext = getDriver().findTextbox(byTopNavCTA);
+		topnavctatext.syncVisible(15);
+		return topnavctatext.isDisplayed();
+	}
+
+	public boolean isTopNavNYCityImageDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		WebTextbox topnavcityimage = getDriver().findTextbox(byTopNavNYCityImage);
+		topnavcityimage.syncVisible(15);
+		return topnavcityimage.isDisplayed();
+	}
+
+	public boolean isTopNavChicagoCityImageDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		WebTextbox topnavcityimage = getDriver().findTextbox(byTopNavChicagoCityImage);
+		topnavcityimage.syncVisible(15);
+		return topnavcityimage.isDisplayed();
+	}
+
+	public boolean isTopNavDCCityImageDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		WebTextbox topnavcityimage = getDriver().findTextbox(byTopNavDCCityImage);
+		topnavcityimage.syncVisible(15);
+		return topnavcityimage.isDisplayed();
+	}
+
+	public boolean isTopNavHoustonCityImageDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		WebTextbox topnavcityimage = getDriver().findTextbox(byTopNavHoustonCityImage);
+		topnavcityimage.syncVisible(15);
+		return topnavcityimage.isDisplayed();
+	}
+
+	public boolean isTopNavFirstCityDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		WebTextbox topnavcityimage = getDriver().findTextbox(byTopNavCityList);
+		topnavcityimage.syncVisible(15);
+		return topnavcityimage.isDisplayed();
+	}
+
+	public boolean isRecentCityNameDisplayed()
+	{
+		WebPageLoaded.isDomComplete();
+		WebTextbox recentcityname = getDriver().findTextbox(byFirstCityName);
+		recentcityname.syncVisible(15);
+		return recentcityname.isDisplayed();
+	}
+
+	public void clickTopNavSearchCloseIcon()
+	{
+		WebPageLoaded.isDomComplete();
+		WebTextbox closesearch = getDriver().findTextbox(byTopSearchClose);
+		closesearch.syncVisible(15);
+		closesearch.click();
+	}
+
+	public void clickStartSearch()
+	{
+		WebTextbox txtSearch = getDriver().findTextbox(byStartSearch);
+		txtSearch.syncVisible(15);
+		txtSearch.click();
+	}
+
+	public void clickTopNavCTALink()
+	{
+		WebTextbox ctalink = getDriver().findTextbox(byTopNavCTA);
+		ctalink.syncEnabled();
+		ctalink.click();
+	}
+
+	public boolean validateNavigation(String url)
+	{
+		WebDriverWait wait = new WebDriverWait(getDriver(), Constants.PAGE_TIMEOUT);
+		return wait.until(ExpectedConditions.urlContains(url));
+	}
+
+	public String clickAndGetlocationCityName(String info)
+	{
+		WebTextbox txtSearch = getDriver().findTextbox(byStartSearch);
+		txtSearch.syncEnabled();
+		txtSearch.click();
+		WebTextbox txtSuperSearch = getDriver().findTextbox(bySuperSearch);
+		txtSuperSearch.syncVisible();
+		txtSuperSearch.set(info);
+		txtSuperSearch.sendKeys();
+		String CityName = getCityNameText(info);
+		navigateToForeCastPage();
+		return CityName;
+	}
+
 
 	public void mouseHoverOnSettingsIcon()
 	{

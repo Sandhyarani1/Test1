@@ -140,7 +140,10 @@ public class SimpleDate
 		return calendar.get(Calendar.MINUTE);
 	}
 
-	/** @author HFARAZ */
+	/**
+	 *  @author HFARAZ
+	 *  Method to get current date in the format specified in the parameter
+	 * */
 	public static String getCurrentDate(String format)
 	{
 		SimpleDateFormat formatter = new SimpleDateFormat(format);
@@ -275,7 +278,7 @@ System.out.println("currentDay.getText()"+dayOfTheWeek);
 	  public static void main(String[] args) 
 	  {
 		  SimpleDate sd = new SimpleDate();
-		  System.out.println(getCurrentDate("yyyy-MM-dd"));
+		  System.out.println(getCurrentDate("yyyy/MM/dd"));
 		  System.out.println(sd.getTomorrowDate("yyyy-MM-dd"));
 	  }
 	 
