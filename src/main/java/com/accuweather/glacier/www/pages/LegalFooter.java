@@ -855,8 +855,10 @@ public class LegalFooter extends BasePage
 	public void clickIUnderstand()
 	{
 		WebPageLoaded.isDomComplete();
-		if(getDriver().findElement(byIUnderstandButton).isDisplayed())
+		if(isIUnderstandButtonPresentOnPrivacyPolicyBanner())
 			getDriver().findElement(byIUnderstandButton).click();
+		WebPageLoaded.isDomComplete();
+		
 	}
 	
 	/**

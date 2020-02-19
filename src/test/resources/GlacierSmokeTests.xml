@@ -13,12 +13,12 @@
 	<test name="Glacier Desktop Web Smoke Test QA - Chrome">
 		<parameter name="browserUnderTest" value="Chrome" />
 		<classes>
-			<!-- <class
+			<class
 				name="com.accuweather.glacier.www.SmokeTests.RW_T2269CenterWell1_API_Validation" />
 			<class 
 				name="com.accuweather.glacier.www.SmokeTests.RW_T2505CenterWell2_API_Validation" />
 			<class 
-				name="com.accuweather.glacier.www.SmokeTests.RW_T2208RightRails_Validation" /> -->
+				name="com.accuweather.glacier.www.SmokeTests.RW_T2208RightRails_Validation" />
 			<class
 				name="com.accuweather.glacier.www.SmokeTests.RW_T2238_VerifyLogoNavigationMenusGearIcon" />
 			<class
@@ -29,10 +29,12 @@
 				name ="com.accuweather.glacier.www.SmokeTests.RW_T2267_VerifyThumbnailDateArticleTitleUnderVideo" />
 			<class 
 				name ="com.accuweather.glacier.www.SmokeTests.RW_T2268_VerifyThumbnailDateArticleTitleUnderSeverWeather" />
-			<!-- <class 
+			<class 
 				name ="com.accuweather.glacier.www.Footer.Test_LegalFooter" />
 			<class 
-				name ="com.accuweather.glacier.www.homepagebreadcrumbs.Test_HomepageBreadcrumbs" /> -->							
+				name ="com.accuweather.glacier.www.homepagebreadcrumbs.Test_HomepageBreadcrumbs" />
+			<class 
+				name ="com.accuweather.glacier.www.currentCondition.RW_T2253CurrentWeatherDataValidation" />							
 		</classes>
 	</test>
 </suite>
