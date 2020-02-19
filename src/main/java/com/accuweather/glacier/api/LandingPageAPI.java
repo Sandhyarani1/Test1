@@ -482,7 +482,7 @@ public class LandingPageAPI extends APIUtilities
 	 * This will return separate strings having alphabets, numbers and special characters and store into global variables declared above
 	 */
 
-	static ArrayList<String> getAllCharacters(String str)
+    public static ArrayList<String> getAllCharacters(String str)
 	{
 		ArrayList<String> allCharacters = new ArrayList<String>();
 		StringBuffer alpha = new StringBuffer(), num = new StringBuffer(), special = new StringBuffer();

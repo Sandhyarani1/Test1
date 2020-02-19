@@ -5,12 +5,10 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import com.accuweather.glacier.api.DailyPageAPI;
-import com.accuweather.glacier.api.HourlyPageAPI;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.DailyForeCastPage;
 import com.accuweather.glacier.www.pages.DailyListPage;
 import com.accuweather.glacier.www.pages.LandingPage;
-import com.accuweather.glacier.www.pages.Localizations;
 import com.accuweather.glacier.www.pages.NavigationBar;
 import com.chameleon.utils.Constants;
 import com.chameleon.utils.DataIOOperations.ExcelUtilities;
@@ -31,13 +29,13 @@ public class DataValidationofDailyPageWithAPI extends AccuWeatherBaseTest {
 	public static String expectedDailyURL = "";
 	public static final String UNIT_IMPERIAL = "IMPERIAL";
 	public static final String UNIT_METRIC = "METRIC";
+	public static final String DATE_FORMAT = "yyyy-MM-dd";
 	public static final int DAY_COUNT = 21; 
-	SoftAssert softAssert;
 	
+	SoftAssert softAssert;
 	LandingPage landingPage = new LandingPage();
 	DailyListPage dailyListPage = new DailyListPage();
 	DailyForeCastPage dailyForeCastPage = new DailyForeCastPage();
-	Localizations localization = new Localizations();
 	NavigationBar navigationBar = new NavigationBar();
 	
 	@BeforeClass
@@ -71,7 +69,7 @@ public class DataValidationofDailyPageWithAPI extends AccuWeatherBaseTest {
 		dailyForeCastPage.clickDailyTab();
 		
 		/************************Get hourly content values from API******************************/
-		DailyPageAPI.getDailyPageDataForUI(DAY_COUNT, SimpleDate.getCurrentDate("yyyy-MM-dd"), UNIT_IMPERIAL, locationKey);
+		DailyPageAPI.getDailyPageDataForUI(DAY_COUNT, SimpleDate.getCurrentDate(DATE_FORMAT), UNIT_IMPERIAL, locationKey);
 		
 		/************************Get text of all elements from all three week cards*******************************/
 		dailyListPage.getTextOfAllValueFromThreeWeekClustersOnDailyPage();
@@ -79,51 +77,58 @@ public class DataValidationofDailyPageWithAPI extends AccuWeatherBaseTest {
 		/************************Compare UI and API content of daily page*******************************/
 		for (int i = 0; i<DAY_COUNT; i++) {
 			
+		int j = i+1;	
 		softAssert.assertEquals(DailyListPage.dateList.get(i), DailyPageAPI.date_UI.get(i),
-				"Issue------->Date in "+i+" tab mismatch between time UI and time API");
+				"Issue------->Date in "+j+" tab mismatch between  UI and  API");
+		
+		softAssert.assertEquals(DailyListPage.iconNumberList.get(i), DailyPageAPI.iconNumber_UI.get(i),
+				"Issue------->Icon in "+j+" tab mismatch between  UI and  API");
         
         softAssert.assertEquals(DailyListPage.maximimTemperatureList.get(i), DailyPageAPI.maxTemperature_UI.get(i),
-				"Issue------->Maximum temperature in "+i+" tab mismatch between time UI and time API");
+				"Issue------->Maximum temperature in "+j+" tab mismatch between  UI and  API");
 
         softAssert.assertEquals(DailyListPage.minimumTemperatureList.get(i), DailyPageAPI.minTemperature_UI.get(i),
-				"Issue------->Minimum temperature in "+i+" tab mismatch between time UI and time API");
+				"Issue------->Minimum temperature in "+j+" tab mismatch between  UI and  API");
         
         softAssert.assertEquals(DailyListPage.iconPhraseList.get(i), DailyPageAPI.iconPhrase_UI.get(i),
-				"Issue------->Phrase in "+i+" tab mismatch between time UI and time API");
+				"Issue------->Phrase in "+j+" tab mismatch between  UI and  API");
         
         softAssert.assertEquals(DailyListPage.precipitationPercentageList.get(i), DailyPageAPI.precipitation_UI.get(i),
-				"Issue------->Precip in "+i+" tab mismatch between time UI and time API");
+				"Issue------->Precip in "+j+" tab mismatch between  UI and  API");
         
         /************************Verify minimum temperature is not greater than / equal to maximum temperature*******************************/
         softAssert.assertTrue(dailyListPage.verifyMinimumTemperatureIsNotGreaterOrEqualToMaximumTemperature(DailyPageAPI.minTemperature_UI, DailyPageAPI.maxTemperature_UI),
-        		"Issue------->Minimum temperature in "+i+" tab is not less than maximum temperature");
+        		"Issue------->Minimum temperature in "+j+" tab is not less than maximum temperature");
 		
         /************************compare dayList_UI and dayList_Userdefined and make sure both matches*******************************/
 		dailyListPage.verifyDayShownInAllThreeWeeks();
 		softAssert.assertEquals(DailyListPage.dayList_UI.get(i), DailyListPage.dayList_Userdefined.get(i),
-        		"Issue------->Day in "+i+" tab shown is not matching as expected");
+        		"Issue------->Day in "+j+" tab shown is not matching as expected");
         
 		}
 		
 		softAssert.assertAll();
 	} 
 	
-	@Test(priority=1)
+	@Test(priority=2)
 	public void verifyElementsPresentOnAllThreeWeeks_MetricUnit()
 	{
 		softAssert = new SoftAssert();
 		
 		/************************Get hourly content values from API******************************/
-		DailyPageAPI.getDailyPageDataForUI(DAY_COUNT, SimpleDate.getCurrentDate("yyyy-MM-dd"), UNIT_METRIC, locationKey);
+		DailyPageAPI.getDailyPageDataForUI(DAY_COUNT, SimpleDate.getCurrentDate(DATE_FORMAT), UNIT_METRIC, locationKey);
 		
 		testStart("******** Validation of correct value present in all the tabs*********************");
 		
-		/************************Change temperature from Imperial To Metric***************************/
-		navigationBar.clickSettingsIcon();
-		localization.changeTemperatureFromFarenheitToCelcius();
-		
+		/************************Search with zipcode and select city***************************/
 		landingPage.enterZipcodeInSearchField(zipCode);
 		landingPage.selectCityFromTheList(location);
+		
+		/************************Change temperature from Imperial To Metric***************************/
+		navigationBar.clickSettingsIcon();
+		navigationBar.changeTemperatureFromFarenheitToCelcius();
+		
+		/************************Click daily tab***************************/
 		dailyForeCastPage.clickDailyTab();
 		
 		/************************Get text of all elements from all three week cards*******************************/
@@ -131,30 +136,33 @@ public class DataValidationofDailyPageWithAPI extends AccuWeatherBaseTest {
 	
 		/************************Compare UI and API content of daily page*******************************/
 		for (int i = 0; i<DAY_COUNT; i++) {
-			
+		int j = i+1;	
 		softAssert.assertEquals(DailyListPage.dateList.get(i), DailyPageAPI.date_UI.get(i),
-				"Issue------->Date in "+i+" tab mismatch between time UI and time API");
+				"Issue------->Date in "+j+" tab mismatch between UI and API");
         
+		softAssert.assertEquals(DailyListPage.iconNumberList.get(i), DailyPageAPI.iconNumber_UI.get(i),
+				"Issue------->Icon in "+j+" tab mismatch between  UI and  API");
+		
         softAssert.assertEquals(DailyListPage.maximimTemperatureList.get(i), DailyPageAPI.maxTemperature_UI.get(i),
-				"Issue------->Maximum temperature in "+i+" tab mismatch between time UI and time API");
+				"Issue------->Maximum temperature in "+j+" tab mismatch between  UI and  API");
 
         softAssert.assertEquals(DailyListPage.minimumTemperatureList.get(i), DailyPageAPI.minTemperature_UI.get(i),
-				"Issue------->Minimum temperature in "+i+" tab mismatch between time UI and time API");
+				"Issue------->Minimum temperature in "+j+" tab mismatch between  UI and  API");
         
         softAssert.assertEquals(DailyListPage.iconPhraseList.get(i), DailyPageAPI.iconPhrase_UI.get(i),
-				"Issue------->Phrase in "+i+" tab mismatch between time UI and time API");
+				"Issue------->Phrase in "+j+" tab mismatch between  UI and  API");
         
         softAssert.assertEquals(DailyListPage.precipitationPercentageList.get(i), DailyPageAPI.precipitation_UI.get(i),
-				"Issue------->Precip in "+i+" tab mismatch between time UI and time API");
+				"Issue------->Precip in "+j+" tab mismatch between  UI and  API");
         
         /************************Verify minimum temperature is not greater than / equal to maximum temperature*******************************/
         softAssert.assertTrue(dailyListPage.verifyMinimumTemperatureIsNotGreaterOrEqualToMaximumTemperature(DailyPageAPI.minTemperature_UI, DailyPageAPI.maxTemperature_UI),
-        		"Issue------->Minimum temperature in tab "+i+" is not less than maximum temperature");
+        		"Issue------->Minimum temperature in tab "+j+" is not less than maximum temperature");
 		
         /************************compare dayList_UI and dayList_Userdefined and make sure both matches*******************************/
 		dailyListPage.verifyDayShownInAllThreeWeeks();
 		softAssert.assertEquals(DailyListPage.dayList_UI.get(i), DailyListPage.dayList_Userdefined.get(i),
-        		"Issue------->Day in "+i+" tab shown is not matchin as expected");
+        		"Issue------->Day in "+j+" tab shown is not matchin as expected");
         
 		}
 		

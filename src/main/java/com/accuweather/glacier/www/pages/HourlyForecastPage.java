@@ -16,16 +16,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.Color;
 import org.testng.Assert;
 import com.accuweather.glacier.BasePage;
-import com.accuweather.glacier.api.HourlyPageAPI;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
-import com.chameleon.utils.Constants;
 import com.chameleon.utils.Sleeper;
 import com.chameleon.utils.date.SimpleDate;
 
 public class HourlyForecastPage extends BasePage
 {
-	private By byHourlyTab = By.xpath("//div[@class='subnav-items']/a/span[contains(text(),'Hourly')]");
+	private By byHourlyTab = By.xpath("//a[@data-gaid='hourly']");
 	private By byHourlyTabColor = By.xpath("//div[@class='subnav-items']/a/h2[contains(text(),'Hourly')]");
 	
 	private By byTime = By
@@ -220,8 +218,8 @@ public class HourlyForecastPage extends BasePage
 	{
 		WebPageLoaded.isDomInteractive();
 		WebElement hourlyTab = getDriver().findElement(byHourlyTab);
-		hourlyTab.syncVisible(15);
-		hourlyTab.click();
+		hourlyTab.syncVisible(25);
+		hourlyTab.jsClick();
 		WebElement reelFeel = getDriver().findElement(byRealFeelValue);
 		try 
 		{ 
@@ -233,7 +231,7 @@ public class HourlyForecastPage extends BasePage
 			getDriver().navigate().refresh();
 			WebPageLoaded.isDomInteractive();
 			hourlyTab.syncVisible(15);
-			hourlyTab.click();
+			hourlyTab.jsClick();
 			reelFeel.syncVisible();
 		}
 	}
