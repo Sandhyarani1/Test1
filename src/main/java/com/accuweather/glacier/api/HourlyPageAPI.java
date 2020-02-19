@@ -77,9 +77,9 @@ public class HourlyPageAPI extends APIUtilities
 	public static final String AM = " AM";
 	public static final String PM = " PM";
 	public static final String PRECIP = "Precip ";
-	public static final String DEGREE_SYMBOL = "Â°";
+	public static final String DEGREE_SYMBOL = "°";
 	public static final String PERCENTAGE_SYMBOL = "%";
-	public static final String REALFEEL = "RealFeelÂ®: ";
+	public static final String REALFEEL = "RealFeel®: ";
 	public static final String WIND = "Wind: ";
 	public static final String WINDGUSTS = "Wind Gusts: ";
 	public static final String HUMIDITY = "Humidity: ";

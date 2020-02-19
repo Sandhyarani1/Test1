@@ -6,19 +6,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
+import com.accuweather.chameleon.Utilities.CommonUtilities;
 import com.accuweather.glacier.BasePage;
-import com.accuweather.glacier.api.DailyPageAPI;
-import com.accuweather.glacier.api.HourlyPageAPI;
-import com.accuweather.glacier.api.LandingPageAPI;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
 import com.chameleon.utils.Sleeper;
@@ -486,7 +479,7 @@ public class DailyListPage extends BasePage{
 					//ICON
 					WebElement icon = getDriver().findElement(By.cssSelector("div.two-column-page-content > div.page-column-1 > div > div:nth-child(" + i +") > a:nth-child(" + j + ") > img"));
 					icon.syncVisible(10);
-					iconNumberList.add(LandingPageAPI.getAllCharacters(icon.getAttribute("data-src")).get(1));
+					iconNumberList.add(CommonUtilities.getAllCharacters(icon.getAttribute("data-src")).get(1));
 					
 					
 					//MAXIMUM TEMPERATURE

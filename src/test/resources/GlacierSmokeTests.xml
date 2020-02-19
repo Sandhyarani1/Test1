@@ -34,7 +34,13 @@
 			<class 
 				name ="com.accuweather.glacier.www.homepagebreadcrumbs.Test_HomepageBreadcrumbs" />
 			<class 
-				name ="com.accuweather.glacier.www.currentCondition.RW_T2253CurrentWeatherDataValidation" />							
+				name ="com.accuweather.glacier.www.currentCondition.RW_T2253CurrentWeatherDataValidation" />
+			<class 
+				name ="com.accuweather.glacier.www.dailyList.RW_T2579_DailyPageDataValidation_Imperial" />
+			<class 
+				name ="com.accuweather.glacier.www.dailyList.RW_T2580_DailyPageDataValidation_Metric" />
+			<class 
+				name ="com.accuweather.glacier.www.hourlyForecast.RW_T2557_HourlyPageAPI" />										
 		</classes>
 	</test>
 </suite>

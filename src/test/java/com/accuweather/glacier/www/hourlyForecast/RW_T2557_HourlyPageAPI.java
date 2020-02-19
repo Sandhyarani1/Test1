@@ -76,55 +76,55 @@ public class RW_T2557_HourlyPageAPI extends AccuWeatherBaseTest
 		for(int i=0; i<HourlyForecastPage.timeList.size(); i++) {
 		int j = i+1;
 		softAssert.assertEquals(HourlyForecastPage.timeList.get(i), HourlyPageAPI.time_UI.get(i),
-						"Issue------->Time in tab "+j+" mismatch between time UI and time API");
+						"Issue-------> Mismatch between UI and API for the Time in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.dateList.get(i), HourlyPageAPI.date_UI.get(i),
-				"Issue------->Date in tab "+j+" mismatch between UI and API");
+				"Issue-------> Mismatch between UI and API for the Date in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.temperatureList.get(i), HourlyPageAPI.temperature_UI.get(i),
-				"Issue------->Temperature in tab "+j+" mismatch between UI and API");
+				"Issue-------> Mismatch between UI and API for the Temperature in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.iconPhraseList.get(i), HourlyPageAPI.iconPhrase_UI.get(i),
-				"Issue------->Phrase in tab "+j+" mismatch between UI and API");
+				"Issue------->Mismatch between UI and API for the Phrase in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.precipitationList.get(i), HourlyPageAPI.precipitation_UI.get(i),
-				"Issue------->Precipitation in tab "+j+" mismatch between UI and API");
+				"Issue------->Mismatch between UI and API for the Precipitation in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.realFeelList.get(i), HourlyPageAPI.realFeel_UI.get(i),
-				"Issue------->Realfeel in tab "+j+" mismatch between UI and API");
+				"Issue------->Mismatch between UI and API for the Realfeel in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.windList.get(i), HourlyPageAPI.wind_UI.get(i),
-				"Issue------->Wind in tab "+j+" mismatch between UI and API");
+				"Issue------->Mismatch between UI and API for the Wind in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.windGustsList.get(i), HourlyPageAPI.windGusts_UI.get(i),
-				"Issue------->Windgusts in tab "+j+"  mismatch between UI and API");
+				"Issue------->Mismatch between UI and API for the Windgusts in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.HumidityList.get(i), HourlyPageAPI.humidity_UI.get(i),
-				"Issue------->Humididty in tab "+j+" mismatch between UI and API");
+				"Issue------->Mismatch between UI and API for the Humididty in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.dewPointList.get(i), HourlyPageAPI.dewPoint_UI.get(i),
-				"Issue------->Dewpoint in tab "+j+" mismatch between UI and API");
+				"Issue-------> Mismatch between UI and API for the Dewpoint in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.maxUVIndexValueList.get(i), HourlyPageAPI.UVIndex_UI.get(i),
-				"Issue------->MaxuvIndex in tab "+j+" mismatch between UI and API");
+				"Issue-------> Mismatch between UI and API for the MaxuvIndex in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.cloudCoverList.get(i), HourlyPageAPI.cloudCover_UI.get(i),
-				"Issue------->Cloudcover in tab "+j+" mismatch between UI and API");
+				"Issue-------> Mismatch between UI and API for the Cloudcover in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.rainList.get(i), HourlyPageAPI.rain_UI.get(i),
-				"Issue------->Rain in tab "+j+" mismatch between UI and API");
+				"Issue------->Mismatch between UI and API for the Rain in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.snowList.get(i), HourlyPageAPI.snow_UI.get(i),
-				"Issue------->Snow in tab "+j+" mismatch between UI and API");
+				"Issue------->Mismatch between UI and API for the Snow in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.iceList.get(i), HourlyPageAPI.ice_UI.get(i),
-				"Issue------->Ice in tab "+j+" mismatch between UI and API");
+				"Issue------->Mismatch between UI and API for the Ice in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.visibilityList.get(i), HourlyPageAPI.visibility_UI.get(i),
-				"Issue------->Visibility in tab "+j+" mismatch between UI and API");
+				"Issue------->Mismatch between UI and API for the Visibility in tab "+j);
 		
 		softAssert.assertEquals(HourlyForecastPage.ceilingList.get(i), HourlyPageAPI.ceiling_UI.get(i),
-				"Issue------->Ceiling in tab "+j+" mismatch between UI and API");
+				"Issue------->Mismatch between UI and API for the Ceiling in tab "+j);
 		
 	}
 		softAssert.assertAll();
@@ -157,55 +157,55 @@ public class RW_T2557_HourlyPageAPI extends AccuWeatherBaseTest
 		for(int i=0; i<HourlyForecastPage.timeList.size(); i++) {
 			int j = i + 1;
 			softAssert.assertEquals(HourlyForecastPage.timeList.get(i), HourlyPageAPI.time_UI.get(i),
-							"Issue------->Time in tab "+j+" mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.dateList.get(i), HourlyPageAPI.date_UI.get(i),
-					"Issue------->Date in tab "+j+" mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.temperatureList.get(i), HourlyPageAPI.temperature_UI.get(i),
-					"Issue------->Temperature in tab "+j+" mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.iconPhraseList.get(i), HourlyPageAPI.iconPhrase_UI.get(i),
-					"Issue------->Phrase in tab "+j+" mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.precipitationList.get(i), HourlyPageAPI.precipitation_UI.get(i),
-					"Issue------->Precipitation in tab "+j+" mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.realFeelList.get(i), HourlyPageAPI.realFeel_UI.get(i),
-					"Issue------->Realfeel in tab "+j+" mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.windList.get(i), HourlyPageAPI.wind_UI.get(i),
-					"Issue------->Wind in tab "+j+" mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.windGustsList.get(i), HourlyPageAPI.windGusts_UI.get(i),
-					"Issue------->Windgusts in tab "+j+" mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.HumidityList.get(i), HourlyPageAPI.humidity_UI.get(i),
-					"Issue------->Humididty in tab "+j+" mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.dewPointList.get(i), HourlyPageAPI.dewPoint_UI.get(i),
-					"Issue------->Dewpoint in tab "+j+" mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.maxUVIndexValueList.get(i), HourlyPageAPI.UVIndex_UI.get(i),
-					"Issue------->MaxuvIndex in tab "+j+"mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.cloudCoverList.get(i), HourlyPageAPI.cloudCover_UI.get(i),
-					"Issue------->Cloudcover in tab "+j+" mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.rainList.get(i), HourlyPageAPI.rain_UI.get(i),
-					"Issue------->Rain in tab "+j+" mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.snowList.get(i), HourlyPageAPI.snow_UI.get(i),
-					"Issue------->Snow in tab "+j+" mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.iceList.get(i), HourlyPageAPI.ice_UI.get(i),
-					"Issue------->Ice in tab "+j+" mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.visibilityList.get(i), HourlyPageAPI.visibility_UI.get(i),
-					"Issue------->Visibility in tab "+j+" mismatch between UI and API");
-			
-			softAssert.assertEquals(HourlyForecastPage.ceilingList.get(i), HourlyPageAPI.ceiling_UI.get(i),
-					"Issue------->Ceiling in tab "+j+" mismatch between UI and API");
+					"Issue-------> Mismatch between UI and API for the Time in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.dateList.get(i), HourlyPageAPI.date_UI.get(i),
+			"Issue-------> Mismatch between UI and API for the Date in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.temperatureList.get(i), HourlyPageAPI.temperature_UI.get(i),
+			"Issue-------> Mismatch between UI and API for the Temperature in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.iconPhraseList.get(i), HourlyPageAPI.iconPhrase_UI.get(i),
+			"Issue------->Mismatch between UI and API for the Phrase in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.precipitationList.get(i), HourlyPageAPI.precipitation_UI.get(i),
+			"Issue------->Mismatch between UI and API for the Precipitation in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.realFeelList.get(i), HourlyPageAPI.realFeel_UI.get(i),
+			"Issue------->Mismatch between UI and API for the Realfeel in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.windList.get(i), HourlyPageAPI.wind_UI.get(i),
+			"Issue------->Mismatch between UI and API for the Wind in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.windGustsList.get(i), HourlyPageAPI.windGusts_UI.get(i),
+			"Issue------->Mismatch between UI and API for the Windgusts in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.HumidityList.get(i), HourlyPageAPI.humidity_UI.get(i),
+			"Issue------->Mismatch between UI and API for the Humididty in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.dewPointList.get(i), HourlyPageAPI.dewPoint_UI.get(i),
+			"Issue-------> Mismatch between UI and API for the Dewpoint in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.maxUVIndexValueList.get(i), HourlyPageAPI.UVIndex_UI.get(i),
+			"Issue-------> Mismatch between UI and API for the MaxuvIndex in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.cloudCoverList.get(i), HourlyPageAPI.cloudCover_UI.get(i),
+			"Issue-------> Mismatch between UI and API for the Cloudcover in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.rainList.get(i), HourlyPageAPI.rain_UI.get(i),
+			"Issue------->Mismatch between UI and API for the Rain in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.snowList.get(i), HourlyPageAPI.snow_UI.get(i),
+			"Issue------->Mismatch between UI and API for the Snow in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.iceList.get(i), HourlyPageAPI.ice_UI.get(i),
+			"Issue------->Mismatch between UI and API for the Ice in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.visibilityList.get(i), HourlyPageAPI.visibility_UI.get(i),
+			"Issue------->Mismatch between UI and API for the Visibility in tab "+j);
+	
+	softAssert.assertEquals(HourlyForecastPage.ceilingList.get(i), HourlyPageAPI.ceiling_UI.get(i),
+			"Issue------->Mismatch between UI and API for the Ceiling in tab "+j);
 		}
 
 		softAssert.assertAll();
