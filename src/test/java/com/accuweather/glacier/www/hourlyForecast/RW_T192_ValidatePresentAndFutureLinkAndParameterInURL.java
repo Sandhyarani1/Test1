@@ -9,6 +9,7 @@ import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.HourlyForecastPage;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.chameleon.utils.Constants;
+import com.chameleon.utils.DataIOOperations.ExcelUtilities;
 import com.chameleon.utils.date.SimpleDate;
 
 public class RW_T192_ValidatePresentAndFutureLinkAndParameterInURL extends AccuWeatherBaseTest {
@@ -30,11 +31,14 @@ public class RW_T192_ValidatePresentAndFutureLinkAndParameterInURL extends AccuW
 	@BeforeClass
 	public void getTestData()
 	{	
-		stateCode = HourlyPageAPI.getStateCode();
-		locationKey = HourlyPageAPI.getLocationKey();
-		zipCode = HourlyPageAPI.getZipCode();
-		countryCode = HourlyPageAPI.getCountryCode();
+		int rowNo = 0;
+		rowNo = ExcelUtilities.getRowNumberForCity(CITY_NAME);
+		zipCode = ExcelUtilities.getZipCode(rowNo);
+        stateCode = ExcelUtilities.getStateCode(rowNo);
+        countryCode = ExcelUtilities.getCountryCode(rowNo);
+        locationKey = ExcelUtilities.getLocationKey(rowNo);
 		location = CITY_NAME + ", " + stateCode + ", " + countryCode;
+		System.out.println("location:"+location);
 		cityNameForURL = CITY_NAME.replace(' ', '-');
 		
 		expectedHourlyForecastURL = (appURLRepository.get(Constants.ACCUWEATHER_WEB_QA) + "en/us/" + cityNameForURL + "/"

@@ -4,12 +4,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import com.accuweather.glacier.api.HourlyPageAPI;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.HourlyForecastPage;
 import com.accuweather.glacier.www.pages.LandingPage;
 import com.chameleon.utils.Constants;
-import com.chameleon.utils.date.SimpleDate;
+import com.chameleon.utils.DataIOOperations.ExcelUtilities;
+
 
 public class RW_T775_ValidateHourlyForecastHoursDisplayed extends AccuWeatherBaseTest
 {
@@ -30,10 +30,11 @@ public class RW_T775_ValidateHourlyForecastHoursDisplayed extends AccuWeatherBas
 	@BeforeClass
 	public void getTestData()
 	{	
-		stateCode = HourlyPageAPI.getStateCode();
-		locationKey = HourlyPageAPI.getLocationKey();
-		zipCode = HourlyPageAPI.getZipCode();
-		countryCode = HourlyPageAPI.getCountryCode();
+		int rowNo = 0;
+		rowNo = ExcelUtilities.getRowNumberForCity(CITY_NAME);
+		zipCode = ExcelUtilities.getZipCode(rowNo);
+        stateCode = ExcelUtilities.getStateCode(rowNo);
+        countryCode = ExcelUtilities.getCountryCode(rowNo);
 		location = CITY_NAME + ", " + stateCode + ", " + countryCode;
 		cityNameForURL = CITY_NAME.replace(' ', '-');
 		
