@@ -558,7 +558,7 @@ public class HourlyPageAPI extends APIUtilities
 		
 		
 		SimpleDate sd = new SimpleDate();
-		getHourlyPageAPIData("Buffalo",sd.getCurrentDate("yyyy-MM-dd"),"METRIC");
+		getHourlyPageAPIData("Buffalo",SimpleDate.getCurrentDate("yyyy-MM-dd"),"METRIC");
 		//getHourlyForecastData("Buffalo",sd.getTomorrowDate("yyyy-MM-dd"),"IMPERIAL");
 		  
 		  for(int i=0;i<NoOfHoursForTheDay();i++)

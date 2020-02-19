@@ -23,6 +23,7 @@ public class DailyPageAPI extends APIUtilities
 	public static ArrayList<String> minTemperature_API;
 	public static ArrayList<String> date_API;
 	public static ArrayList<String> precipitation_API;
+	public static ArrayList<String> iconNumber_API;
 	
 	/************** Array Lists for UI **********************/
 	public static ArrayList<String> iconPhrase_UI;
@@ -30,6 +31,7 @@ public class DailyPageAPI extends APIUtilities
 	public static ArrayList<String> minTemperature_UI;
 	public static ArrayList<String> date_UI;
 	public static ArrayList<String> precipitation_UI;
+	public static ArrayList<String> iconNumber_UI;
 	
 	public static String timeStampDate = "";
 	
@@ -105,6 +107,7 @@ public class DailyPageAPI extends APIUtilities
 		minTemperature_API 	= new ArrayList<String>();
 		date_API 			= new ArrayList<String>();
 		precipitation_API 	= new ArrayList<String>();
+		iconNumber_API		= new ArrayList<String>();
 		
 		for (int count=0;count<dayCount;count++)
 		{
@@ -113,7 +116,8 @@ public class DailyPageAPI extends APIUtilities
 			iconPhrase_API.add(jsonObject.getString("DailyForecasts["+count+"].Day.ShortPhrase"));
 			maxTemperature_API.add(jsonObject.getString("DailyForecasts["+count+"].Temperature.Maximum.Value"));
 			minTemperature_API.add(jsonObject.getString("DailyForecasts["+count+"].Temperature.Minimum.Value"));
-			precipitation_API.add(jsonObject.getString("DailyForecasts["+count+"].Day.PrecipitationProbability"));				
+			precipitation_API.add(jsonObject.getString("DailyForecasts["+count+"].Day.PrecipitationProbability"));
+			iconNumber_API.add(jsonObject.getString("DailyForecasts["+count+"].Day.Icon"));
 		}
 		
 		
@@ -133,6 +137,7 @@ public class DailyPageAPI extends APIUtilities
 		maxTemperature_UI 	= new ArrayList<String>();
 		minTemperature_UI 	= new ArrayList<String>();
 		precipitation_UI 	= new ArrayList<String>();
+		iconNumber_UI		= new ArrayList<String>();
 		
 		for (int count=0;count<dayCount;count++)
 		{
@@ -141,6 +146,7 @@ public class DailyPageAPI extends APIUtilities
 			maxTemperature_UI.add(getTemperatureAsPerDailyPageUI(maxTemperature_API.get(count)));
 			minTemperature_UI.add(getTemperatureAsPerDailyPageUI(minTemperature_API.get(count)));
 			precipitation_UI.add(getPrecipitationAsPerTheDailyPageUI(precipitation_API.get(count)));
+			iconNumber_UI.add(iconNumber_API.get(count));
 		}
 	}
 	
@@ -157,6 +163,7 @@ public class DailyPageAPI extends APIUtilities
 			System.out.println(maxTemperature_UI.get(i));
 			System.out.println(minTemperature_UI.get(i));
 			System.out.println(precipitation_UI.get(i));
+			System.out.println("Icon Number--->"+iconNumber_UI.get(i));
 		}
 		 
 		
