@@ -7,6 +7,7 @@ import org.testng.asserts.SoftAssert;
 import com.accuweather.glacier.api.LandingPageAPI;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.LandingPage;
+import com.accuweather.glacier.www.pages.LegalFooter;
 
 /**
  * @author Hasan Faraz
@@ -18,6 +19,7 @@ public class RW_T2505CenterWell2_API_Validation extends AccuWeatherBaseTest
 	SoftAssert softAssert;
 	LandingPageAPI landingPageAPI = new LandingPageAPI();
 	LandingPage landingPage = new LandingPage();
+	LegalFooter legalFooter = new LegalFooter();
 	
 	public ArrayList<String> weatherNewsDateFromAPI = new ArrayList<String>();
 	public ArrayList<String> weatherNewsTypeFromAPI = new ArrayList<String>();
@@ -47,6 +49,8 @@ public class RW_T2505CenterWell2_API_Validation extends AccuWeatherBaseTest
 	{	
 		softAssert = new SoftAssert();
 		testStart("*************** Validating the CenterWell 2 with API Data *******************************");
+		legalFooter.clickIUnderstand();
+		
 		
 		/************************* Validate the number of CenterWell 2 Weather News Articles ***************************/
 		landingPage.clickShowMore();

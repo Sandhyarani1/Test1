@@ -37,4 +37,6 @@ public class APIConstants
 	public static final String START_DATE_SUFFIX = "START_DATE_SUFFIX";
 	public static final String GET_HOURLY_FORECAST_DETAILS = "GET_HOURLY_FORECAST_DETAILS";
 	public static final String DAILY_PAGE_FORECAST = "DAILY_PAGE_FORECAST";
+	public static final String CURRENT_CONDITIONS_RESOURCES = "CURRENT_CONDITIONS_RESOURCES";
+	public static final String TEMPERATURE_HISTORY = "TEMPERATURE_HISTORY";
 }

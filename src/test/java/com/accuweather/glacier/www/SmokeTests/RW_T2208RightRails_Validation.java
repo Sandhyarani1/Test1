@@ -40,7 +40,7 @@ public class RW_T2208RightRails_Validation extends AccuWeatherBaseTest
 	{
 		softAssert = new SoftAssert();
 		testStart("******************** Validate right rail 1 articles titles ***********************");
-
+		
 		/****************** Validate the count of Rightrail 1 articles ****************************/
 		int countOfRightRail1Articles = landingPage.getCountOfRightRail1_Articles();
 		softAssert.assertEquals(countOfRightRail1Articles, noOfRightRail1_Articles);

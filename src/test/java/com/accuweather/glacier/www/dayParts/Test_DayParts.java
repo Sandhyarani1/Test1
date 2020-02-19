@@ -401,7 +401,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertEquals(dayPartsPage.validateElementINMorningeatherPageIsGrey(MORNING_WEATHER_SUNRISE_TEXT),
 				EXPECTED_BLACK_COLOR);
@@ -415,7 +415,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertEquals(dayPartsPage.validateElementINMorningeatherPageIsGrey(MORNING_WEATHER_SUNRISE_TIME),
 				EXPECTED_BLACK_COLORV2);
@@ -429,7 +429,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertTrue(Integer.parseInt(dayPartsPage.morningOrganismSuriseTimeISbold()) > 399);
 	}
@@ -442,7 +442,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertTrue(dayPartsPage.morningOrganismSuriseTimeIsdisplayedinAM());
 	}
@@ -455,7 +455,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertEquals(dayPartsPage.validateElementINMorningeatherPageIsGrey(MORNING_WEATHER_SUNRISE_SUNSET_TEXT),
 				EXPECTED_BLACK_COLOR);
@@ -469,7 +469,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertEquals(dayPartsPage.validateElementINMorningeatherPageIsGrey(MORNING_WEATHER_SUNSET_TIME),
 				EXPECTED_BLACK_COLORV2);
@@ -483,7 +483,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertTrue(Integer.parseInt(dayPartsPage.morningOrganismSunsetTimeISbold()) > 399);
 	}
@@ -496,7 +496,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertTrue(dayPartsPage.morningOrganismSunsetTimeIsdisplayedinPM());
 	}
@@ -509,7 +509,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertEquals(
 				dayPartsPage.validateElementINMorningeatherPageIsGrey(MORNING_WEATHER_SUNRISE_SUNSET_DURARION_TEXT),
@@ -524,7 +524,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertTrue(dayPartsPage.morningOrganismSunriseSunsetDurationTimeIsdisplayedinHR());
 	}
@@ -537,7 +537,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertTrue(Integer.parseInt(dayPartsPage.morningOrganismSunriseSunsetDurationTimeISbold()) > 399);
 	}
@@ -550,7 +550,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertEquals(
 				dayPartsPage.validateElementINMorningeatherPageIsGrey(MORNING_WEATHER_SUNRISE_SUNSET_DURATION_TIME),
@@ -580,7 +580,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertEquals(
 				dayPartsPage.validateElementINMorningeatherPageIsGrey(MORNING_WEATHER_MOONRISE_MOONSET_TEXT),
@@ -595,7 +595,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertTrue(dayPartsPage.morningOrganismMoonRiseTimeIsdisplayedinAM());
 	}
@@ -608,7 +608,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertTrue(Integer.parseInt(dayPartsPage.morningOrganismMoonRiseTimeIsbold()) > 399);
 	}
@@ -621,7 +621,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertEquals(dayPartsPage.validateElementINMorningeatherPageIsGrey(MORNING_WEATHER_MOONRISE_TIME),
 				EXPECTED_BLACK_COLORV2);
@@ -635,7 +635,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertTrue(dayPartsPage.morningOrganismMoonSetTimeIsdisplayedinAM());
 	}
@@ -648,7 +648,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertTrue(Integer.parseInt(dayPartsPage.morningOrganismMoonSetTimeIsbold()) > 399);
 	}
@@ -661,7 +661,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertEquals(dayPartsPage.validateElementINMorningeatherPageIsGrey(MORNING_WEATHER_MOONSET_TIME),
 				EXPECTED_BLACK_COLORV2);
@@ -675,7 +675,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertEquals(
 				dayPartsPage.validateElementINMorningeatherPageIsGrey(MORNING_WEATHER_MOONRISE_MOONSET_DURATION_TEXT),
@@ -690,7 +690,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertTrue(dayPartsPage.morningOrganismMoonRiseMoonSetDurationTimeIsdisplayedinHR());
 	}
@@ -703,7 +703,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertTrue(Integer.parseInt(dayPartsPage.morningOrganismMoonRiseMoonSetDurationTimeIsbold()) > 399);
 	}
@@ -716,7 +716,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertEquals(
 				dayPartsPage.validateElementINMorningeatherPageIsGrey(MORNING_WEATHER_MOONRISE_MOONSET_DURATION_TIME),
@@ -731,7 +731,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		Assert.assertEquals(
 				dayPartsPage.validateElementINMorningeatherPageIsGrey(MORNING_WEATHER_MOONRISE_MOONSET_ICON),
@@ -746,7 +746,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(2);
 		waitUntilElementIsDisplayedOrClickable();
@@ -761,7 +761,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(1);
 		waitUntilElementIsDisplayedOrClickable();
@@ -777,7 +777,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(1);
 		waitUntilElementIsDisplayedOrClickable();
@@ -792,7 +792,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(1);
 		waitUntilElementIsDisplayedOrClickable();
@@ -807,7 +807,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(1);
 		waitUntilElementIsDisplayedOrClickable();
@@ -822,7 +822,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(1);
 		waitUntilElementIsDisplayedOrClickable();
@@ -838,7 +838,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(1);
 		waitUntilElementIsDisplayedOrClickable();
@@ -854,7 +854,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(1);
 		waitUntilElementIsDisplayedOrClickable();
@@ -870,7 +870,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(1);
 		waitUntilElementIsDisplayedOrClickable();
@@ -886,7 +886,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(1);
 		waitUntilElementIsDisplayedOrClickable();
@@ -902,7 +902,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(1);
 		waitUntilElementIsDisplayedOrClickable();
@@ -918,7 +918,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(1);
 		waitUntilElementIsDisplayedOrClickable();
@@ -934,7 +934,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(1);
 		waitUntilElementIsDisplayedOrClickable();
@@ -950,7 +950,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(1);
 		waitUntilElementIsDisplayedOrClickable();
@@ -965,7 +965,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(2);
 		waitUntilElementIsDisplayedOrClickable();
@@ -980,7 +980,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(2);
 		waitUntilElementIsDisplayedOrClickable();
@@ -995,7 +995,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(2);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1010,7 +1010,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(2);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1025,7 +1025,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(2);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1040,7 +1040,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(2);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1055,7 +1055,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(2);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1070,7 +1070,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1086,7 +1086,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1101,7 +1101,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1116,7 +1116,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1131,7 +1131,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1146,7 +1146,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1161,7 +1161,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1176,7 +1176,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1191,7 +1191,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1206,7 +1206,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1221,7 +1221,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1236,7 +1236,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1251,7 +1251,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1266,7 +1266,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1281,7 +1281,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1296,7 +1296,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1311,7 +1311,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1326,7 +1326,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1341,7 +1341,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
@@ -1356,7 +1356,7 @@ public class Test_DayParts extends AccuWeatherBaseTest
 		landingpage.clickOnZipcodeSearchIcon();
 		waitUntilElementIsDisplayedOrClickable();
 		waitUntilWindowExistsWithTitle(EXPECTEDFORECASTPAGETITLE);
-		conditionpage.isclickedonCurrentweathercard();
+		conditionpage.clickCurrentweathercard();
 		dayPartsPage.currentweatherMorningLinkISClicked();
 		dayPartsPage.scrollPagewithCounter(3);
 		waitUntilElementIsDisplayedOrClickable();
