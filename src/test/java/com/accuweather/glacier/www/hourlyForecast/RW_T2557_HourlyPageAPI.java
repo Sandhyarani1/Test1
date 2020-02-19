@@ -12,7 +12,7 @@ import com.accuweather.glacier.www.pages.NavigationBar;
 import com.chameleon.utils.Constants;
 import com.chameleon.utils.date.SimpleDate;
 
-public class RW_T2496_DataValidationOfHourlyPageContentThroughAPI extends AccuWeatherBaseTest
+public class RW_T2557_HourlyPageAPI extends AccuWeatherBaseTest
 {
 	public static final String CITY_NAME = "Buffalo";
 	public static String stateCode = "";
