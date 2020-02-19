@@ -18,6 +18,7 @@ import org.testng.asserts.SoftAssert;
 import com.accuweather.glacier.BasePage;
 import com.accuweather.glacier.api.DailyPageAPI;
 import com.accuweather.glacier.api.HourlyPageAPI;
+import com.accuweather.glacier.api.LandingPageAPI;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.selenium.web.elements.WebElement;
 import com.chameleon.utils.Sleeper;
@@ -31,6 +32,7 @@ public class DailyListPage extends BasePage{
 	//Arraylist
 	public static ArrayList<String> dayList_UI;
 	public static ArrayList<String> dateList;
+	public static ArrayList<String> iconNumberList;
 	public static ArrayList<String> maximimTemperatureList;
 	public static ArrayList<String> minimumTemperatureList;
 	public static ArrayList<String> iconPhraseList;
@@ -453,6 +455,7 @@ public class DailyListPage extends BasePage{
 	public void getTextOfAllValueFromThreeWeekClustersOnDailyPage() {
 		dayList_UI = new ArrayList<String>();
 		dateList =new ArrayList<String>();
+		iconNumberList = new ArrayList<String>();
 		maximimTemperatureList = new ArrayList<String>();
 		minimumTemperatureList =new ArrayList<String>();
 		iconPhraseList = new ArrayList<String>();
@@ -479,6 +482,12 @@ public class DailyListPage extends BasePage{
 					WebElement date = getDriver().findElement(By.cssSelector("div:nth-child(" + i +") > a:nth-child(" + j + ") > div.date > p.sub"));
 					date.syncVisible(10);
 					dateList.add(date.getText());
+					
+					//ICON
+					WebElement icon = getDriver().findElement(By.cssSelector("div.two-column-page-content > div.page-column-1 > div > div:nth-child(" + i +") > a:nth-child(" + j + ") > img"));
+					icon.syncVisible(10);
+					iconNumberList.add(LandingPageAPI.getAllCharacters(icon.getAttribute("data-src")).get(1));
+					
 					
 					//MAXIMUM TEMPERATURE
 					WebElement maximumTemperature = getDriver().findElement(By.cssSelector("div > div:nth-child(" + i + ") > a:nth-child(" + j + ") > div.temps > span.high"));
@@ -570,23 +579,16 @@ public class DailyListPage extends BasePage{
 	public Boolean verifyMinimumTemperatureIsNotGreaterOrEqualToMaximumTemperature(ArrayList<String> minTempFromAPI, ArrayList<String> maxTempFromAPI)
 	{
 		boolean isEquals = false;
-		//First verify min and max from UI and API are equal 
-		if(maximimTemperatureList.equals(maxTempFromAPI) && minimumTemperatureList.equals(minTempFromAPI)) {
-			
 			//verify minimum temperature is not greater than / equal to maximum temperature
-			for (int i=0; i<21;i++) {
-				System.out.println("minimumTemperatureList.get(i):"+minimumTemperatureList.get(i));
-				System.out.println("maximimTemperatureList.get(i):"+maximimTemperatureList.get(i));
-				if (Integer.parseInt(minimumTemperatureList.get(i).replace("°", "")) < Integer.parseInt(maximimTemperatureList.get(i).replace("°", "")))
+			for (int i=0; i<21; i++) {
+				int minTemp = Integer.parseInt(minimumTemperatureList.get(i).replace("°", ""));
+				int maxTemp = Integer.parseInt(maximimTemperatureList.get(i).replace("°", ""));
+				System.out.println(minTemp +" "+ maxTemp);
+				if (minTemp < maxTemp)
 					isEquals = true;
 				else 
 					break;
 				}
-			}
-		System.out.println("maximimTemperatureList:"+maximimTemperatureList);
-		System.out.println("maxTempFromAPI        :"+maxTempFromAPI);
-		System.out.println("minimumTemperatureList:"+minimumTemperatureList);
-		System.out.println("minTempFromAPI        :"+minTempFromAPI);
 		return isEquals;	
 	}
 	
