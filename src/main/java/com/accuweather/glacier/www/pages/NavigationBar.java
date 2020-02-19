@@ -55,7 +55,9 @@ public class NavigationBar extends BasePage
 	private By bySettingCentigradeLabel 	= By.cssSelector("div.settings-wrap > div.temp-switcher.fade-in-left > div.switcher-container.switch-right");
 	private By bySettingTempBall 			= By.cssSelector("div > div.temp-switcher.fade-in-left > div.switcher-container > div.switcher > div.ball");
 	private By bySettingTempBar 			= By.cssSelector("div > div.temp-switcher.fade-in-left > div.switcher-container > div.switcher > div.bar");
-	
+	private By bySettingUnitsDropdown       = By.cssSelector("div.utility-bar > div > div > div.dropdown-select.select-units.fade-in-left.select-units > div.dropdown-select-wrapper");
+    private By bySettingTempCelciusLabel    = By.cssSelector(" div.utility-bar > div > div > div.dropdown-select.select-units.fade-in-left.select-units > div.dropdown-content > div:nth-child(3)");
+    
 	/**
 	 * *********************** SEARCH BAR **********************************
 	 * */
@@ -2754,6 +2756,24 @@ public class NavigationBar extends BasePage
 		cityNameOnCityPage.syncVisible(15);
 		return cityNameOnCityPage.getText();
 	}
+	
+	/**
+	 * Method  to change the temperature from Farenheit (IMPERIAL) to Celcius (METRIC)
+	 * @author Sowmiya
+	 * */
+	public void changeTemperatureFromFarenheitToCelcius()
+	{
+		WebPageLoaded.isDomComplete(10);
+		WebElement unitsDropdown = getDriver().findElement(bySettingUnitsDropdown);
+		unitsDropdown.syncVisible(30);
+		unitsDropdown.jsClick();
+		Sleeper.sleep(3);
+		
+		WebElement tempCelciusLabel = getDriver().findElement(bySettingTempCelciusLabel);
+		tempCelciusLabel.syncVisible();
+		tempCelciusLabel.click();
+		Sleeper.sleep(2);
+	}	
 
 	
 }

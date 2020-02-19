@@ -365,6 +365,7 @@ public class HourlyPageAPI extends APIUtilities
 		}
 		else if(Integer.parseInt(timeFromAPI)==12)
 			timeOnUI = String.valueOf(Integer.parseInt(timeFromAPI))+PM;
+		
 		else
 			timeOnUI = String.valueOf(Integer.parseInt(timeFromAPI)-12)+PM;
 		
@@ -553,11 +554,6 @@ public class HourlyPageAPI extends APIUtilities
 		System.out.println(CommonUtilities.roundToOneDecimalPlaces("0.7"));
 		System.out.println(CommonUtilities.roundToOneDecimalPlaces("1.4"));
 		
-		
-		
-		
-		
-		SimpleDate sd = new SimpleDate();
 		getHourlyPageAPIData("Buffalo",SimpleDate.getCurrentDate("yyyy-MM-dd"),"METRIC");
 		//getHourlyForecastData("Buffalo",sd.getTomorrowDate("yyyy-MM-dd"),"IMPERIAL");
 		  

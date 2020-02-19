@@ -132,11 +132,10 @@ public class Localizations extends BasePage
 	 * */
 	public Boolean changeTemperatureFromFarenheitToCelcius()
 	{
-		WebPageLoaded.isDomInteractive();
-		
+		WebPageLoaded.isDomComplete(10);
 		WebElement unitsDropdown = getDriver().findElement(bySettingUnitsDropdown);
-		unitsDropdown.syncVisible(15);
-		unitsDropdown.click();
+		unitsDropdown.syncVisible(30);
+		unitsDropdown.jsClick();
 		Sleeper.sleep(3);
 		
 		WebElement tempCelciusLabel = getDriver().findElement(bySettingTempCelciusLabel);
