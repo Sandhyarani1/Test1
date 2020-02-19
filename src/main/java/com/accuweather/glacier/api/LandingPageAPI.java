@@ -475,5 +475,4 @@ public class LandingPageAPI extends APIUtilities
 
 		return spit;
 	}
-
 }

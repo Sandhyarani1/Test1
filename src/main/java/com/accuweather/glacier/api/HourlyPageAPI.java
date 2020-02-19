@@ -77,9 +77,9 @@ public class HourlyPageAPI extends APIUtilities
 	public static final String AM = " AM";
 	public static final String PM = " PM";
 	public static final String PRECIP = "Precip ";
-	public static final String DEGREE_SYMBOL = "°";
+	public static final String DEGREE_SYMBOL = "Â°";
 	public static final String PERCENTAGE_SYMBOL = "%";
-	public static final String REALFEEL = "RealFeel®: ";
+	public static final String REALFEEL = "RealFeelÂ®: ";
 	public static final String WIND = "Wind: ";
 	public static final String WINDGUSTS = "Wind Gusts: ";
 	public static final String HUMIDITY = "Humidity: ";
@@ -365,6 +365,7 @@ public class HourlyPageAPI extends APIUtilities
 		}
 		else if(Integer.parseInt(timeFromAPI)==12)
 			timeOnUI = String.valueOf(Integer.parseInt(timeFromAPI))+PM;
+		
 		else
 			timeOnUI = String.valueOf(Integer.parseInt(timeFromAPI)-12)+PM;
 		
@@ -553,11 +554,6 @@ public class HourlyPageAPI extends APIUtilities
 		System.out.println(CommonUtilities.roundToOneDecimalPlaces("0.7"));
 		System.out.println(CommonUtilities.roundToOneDecimalPlaces("1.4"));
 		
-		
-		
-		
-		
-		SimpleDate sd = new SimpleDate();
 		getHourlyPageAPIData("Buffalo",SimpleDate.getCurrentDate("yyyy-MM-dd"),"METRIC");
 		//getHourlyForecastData("Buffalo",sd.getTomorrowDate("yyyy-MM-dd"),"IMPERIAL");
 		  

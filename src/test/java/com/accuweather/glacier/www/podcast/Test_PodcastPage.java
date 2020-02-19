@@ -1,6 +1,9 @@
 package com.accuweather.glacier.www.podcast;
 import java.text.ParseException;
+
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
 import com.accuweather.glacier.www.pages.NavigationBar;
 import com.accuweather.glacier.www.pages.PodcastPage;
@@ -22,7 +25,7 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 //	 
 //	 testStart("Is AccuWeather LOGO Displayed On PodCast Page");
 //	 
-//	 navBar.hoverOnMoreMenu(); navBar.mouseHoverOnPodcastSubMenu();
+//	 navBar.mouseHoverOnMoreMenu(); navBar.mouseHoverOnPodcastSubMenu();
 //	 
 //	 waitUntilElementIsDisplayedOrClickable(); navBar.clickOnPodcastSubMenu();
 //	 
@@ -37,7 +40,7 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 //	 
 //	 testStart("Is AccuWeather LOGO Text Displayed On PodCast Page");
 //	 
-//	 navBar.hoverOnMoreMenu(); navBar.mouseHoverOnPodcastSubMenu();
+//	 navBar.mouseHoverOnMoreMenu(); navBar.mouseHoverOnPodcastSubMenu();
 //	 
 //	 waitUntilElementIsDisplayedOrClickable(); navBar.clickOnPodcastSubMenu();
 //	 
@@ -50,7 +53,7 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 //	@Test(priority = 3)
 //	public void TC5_isAWHomePageDisplayed() {
 //		testStart("Is AccuWeather Home page Displayed From PodCast Page");
-//		navBar.hoverOnMoreMenu();
+//		navBar.mouseHoverOnMoreMenu();
 //		navBar.mouseHoverOnPodcastSubMenu();
 //		waitUntilElementIsDisplayedOrClickable();
 //		navBar.clickOnPodcastSubMenu();
@@ -68,7 +71,7 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 //	 public void TC6_isLatestEpisodeVideoDisplayed() 
 //	 {
 //		 testStart("Is Latest Episode Video Displayed On PodCast Page");
-//		 navBar.hoverOnMoreMenu();
+//		 navBar.mouseHoverOnMoreMenu();
 //		 navBar.mouseHoverOnPodcastSubMenu();
 //		 waitUntilElementIsDisplayedOrClickable();
 //		 navBar.clickOnPodcastSubMenu();
@@ -89,7 +92,7 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 //	 
 //	 testStart("Is Date and Duration Displayed under Active Video On PodCast Page"
 //	 
-//	 ); navBar.hoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
+//	 ); navBar.mouseHoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
 //	 
 //	 navBar.mouseHoverOnPodcastSubMenu();
 //	 
@@ -110,7 +113,7 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 //	 
 //	 testStart("Is All PodCast Title And Number Displayed On PodCast Page");
 //	 
-//	 navBar.hoverOnMoreMenu(); navBar.mouseHoverOnPodcastSubMenu();
+//	 navBar.mouseHoverOnMoreMenu(); navBar.mouseHoverOnPodcastSubMenu();
 //	 
 //	 waitUntilElementIsDisplayedOrClickable(); navBar.clickOnPodcastSubMenu();
 //	 
@@ -127,7 +130,7 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 //	 
 //	 testStart("Is Active Video Episode Name Displayed under Active Video On PodCast Page"
 //	 
-//	 ); navBar.hoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
+//	 ); navBar.mouseHoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
 //	 
 //	 navBar.mouseHoverOnPodcastSubMenu(); navBar.clickOnPodcastSubMenu();
 //	 
@@ -144,7 +147,7 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 //	 
 //	 testStart("Is Summary of Active Video Displayed under Active Video On PodCast Page"
 //	 
-//	 ); navBar.hoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
+//	 ); navBar.mouseHoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
 //	 
 //	 navBar.mouseHoverOnPodcastSubMenu(); navBar.clickOnPodcastSubMenu();
 //	 
@@ -163,7 +166,7 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 //	 
 //	 testStart("Is Play Icon Displayed under Active Video On PodCast Page");
 //	 
-//	 navBar.hoverOnMoreMenu(); navBar.mouseHoverOnPodcastSubMenu();
+//	 navBar.mouseHoverOnMoreMenu(); navBar.mouseHoverOnPodcastSubMenu();
 //	 
 //	 waitUntilElementIsDisplayedOrClickable(); navBar.clickOnPodcastSubMenu();
 //	 
@@ -184,7 +187,7 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 //	 
 //	 testStart("Is Episode List video played under Active Video On PodCast Page");
 //	 
-//	 navBar.hoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
+//	 navBar.mouseHoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
 //	 
 //	 navBar.mouseHoverOnPodcastSubMenu();
 //	 
@@ -203,7 +206,7 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 //	 
 //	 testStart("Is Pop-up Player displayed in New PodCast Window");
 //	 
-//	 navBar.hoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
+//	 navBar.mouseHoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
 //	 
 //	 navBar.mouseHoverOnPodcastSubMenu();
 //	 
@@ -226,7 +229,7 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 //	 
 //	 testStart("Is video under Pop-up Window playing");
 //	 
-//	 navBar.hoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
+//	 navBar.mouseHoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
 //	 
 //	 navBar.mouseHoverOnPodcastSubMenu();
 //	 
@@ -255,7 +258,7 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 //	 
 //	 testStart("Is Share Notification Message Displayed On PodCast Page");
 //	 
-//	 navBar.hoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
+//	 navBar.mouseHoverOnMoreMenu(); waitUntilElementIsDisplayedOrClickable();
 //	 
 //	 navBar.mouseHoverOnPodcastSubMenu();
 //	 
@@ -273,7 +276,7 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 	
 //	@Test (priority=1) public void RW_T789_VerifyResultsforPodcastPageImplementedAndPaged_loadMoreEpisodesDisplayFiveEpisodes() throws ParseException {
 //		 testStart("Click load more episodes and 5 episodes are listed");
-//	     navBar.hoverOnMoreMenu(); 
+//	     navBar.mouseHoverOnMoreMenu(); 
 //	     navBar.mouseHoverOnPodcastSubMenu();
 //	     navBar.clickOnPodcastSubMenu();
 //		 waitUntilWindowExistsWithTitle(PodcastTitle);
@@ -281,19 +284,19 @@ public class Test_PodcastPage extends AccuWeatherBaseTest
 //		 
 //		}
 //	
-	@Test (priority=1) public void RW_T789_VerifyResultsforPodcastPageImplementedAndPaged_verifyEpisodesListedInDescendingOrderOfDatePublished() {
-	 testStart("Is AccuWeather LOGO Displayed On PodCast Page");
-     navBar.hoverOnMoreMenu(); 
-     navBar.mouseHoverOnPodcastSubMenu();
-     navBar.clickOnPodcastSubMenu();
-	 waitUntilWindowExistsWithTitle(PodcastTitle);
-	 try {
-		 podpage.getAllFiveEpisodesDatePublished();
-		 podpage.conditionToIterateEpisodes();
-	} catch (ParseException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	 
-	}
+//	@Test (priority=1) public void RW_T789_VerifyResultsforPodcastPageImplementedAndPaged_verifyEpisodesListedInDescendingOrderOfDatePublished() {
+//	 testStart("Is AccuWeather LOGO Displayed On PodCast Page");
+//     navBar.mouseHoverOnMoreMenu(); 
+//     navBar.mouseHoverOnPodcastSubMenu();
+//     navBar.clickOnPodcastSubMenu();
+//	 waitUntilWindowExistsWithTitle(PodcastTitle);
+//	 try {
+//		 podpage.getAllFiveEpisodesDatePublished();
+//		 podpage.conditionToIterateEpisodes();
+//	} catch (ParseException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+//	 
+//	}
 }
