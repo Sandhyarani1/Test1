@@ -31,8 +31,8 @@ public class AccuWeatherReady extends BasePage
 	 * */
 	public String getAWReadyPageURL()
 	{
-		navBar.mouseHoverOnSeverWeather();
-		navBar.clicAwReadySubMenu();
+		navBar.hoverOnSevereWeather();
+		navBar.navigateToAccuWeatherReady();
 		WebPageLoaded.isDomInteractive();
 		Sleeper.sleep(10);
 		
@@ -45,8 +45,8 @@ public class AccuWeatherReady extends BasePage
 	 * */
 	public String getAWReadyPageTitle()
 	{
-		navBar.mouseHoverOnSeverWeather();
-		navBar.clicAwReadySubMenu();
+		navBar.hoverOnSevereWeather();
+		navBar.navigateToAccuWeatherReady();
 		WebPageLoaded.isDomInteractive();
 		Sleeper.sleep(10);
 		
@@ -74,8 +74,8 @@ public class AccuWeatherReady extends BasePage
 	 * */
 	public String getTextOfChecklistHeader()
 	{
-		navBar.mouseHoverOnSeverWeather();
-		navBar.clicAwReadySubMenu();
+		navBar.hoverOnSevereWeather();
+		navBar.navigateToAccuWeatherReady();
 		WebPageLoaded.isDomInteractive();
 		Sleeper.sleep(10);
 		WebElement checklistHeader = getDriver().findElement(byCheckListDownloadHeading);
@@ -89,8 +89,8 @@ public class AccuWeatherReady extends BasePage
 	 * */
 	public String getTextOfChecklist1()
 	{
-		navBar.mouseHoverOnSeverWeather();
-		navBar.clicAwReadySubMenu();
+		navBar.hoverOnSevereWeather();
+		navBar.navigateToAccuWeatherReady();
 		WebPageLoaded.isDomInteractive();
 		Sleeper.sleep(10);
 		WebElement checkList1 = getDriver().findElement(byChecklist1);
@@ -104,8 +104,8 @@ public class AccuWeatherReady extends BasePage
 	 * */
 	public String getTextOfChecklist2()
 	{
-		navBar.mouseHoverOnSeverWeather();
-		navBar.clicAwReadySubMenu();
+		navBar.hoverOnSevereWeather();
+		navBar.navigateToAccuWeatherReady();
 		WebPageLoaded.isDomInteractive();
 		Sleeper.sleep(10);
 		WebElement checkList2 = getDriver().findElement(byChecklist2);
@@ -119,8 +119,8 @@ public class AccuWeatherReady extends BasePage
 	 * */
 	public String getTextOfChecklist3()
 	{
-		navBar.mouseHoverOnSeverWeather();
-		navBar.clicAwReadySubMenu();
+		navBar.hoverOnSevereWeather();
+		navBar.navigateToAccuWeatherReady();
 		WebPageLoaded.isDomInteractive();
 		Sleeper.sleep(10);
 		WebElement checkList3 = getDriver().findElement(byChecklist3);
@@ -134,8 +134,8 @@ public class AccuWeatherReady extends BasePage
 	 * */
 	public String getTextOfChecklist4()
 	{
-		navBar.mouseHoverOnSeverWeather();
-		navBar.clicAwReadySubMenu();
+		navBar.hoverOnSevereWeather();
+		navBar.navigateToAccuWeatherReady();
 		WebPageLoaded.isDomInteractive();
 		Sleeper.sleep(10);
 		WebElement checkList4 = getDriver().findElement(byChecklist4);
@@ -149,8 +149,8 @@ public class AccuWeatherReady extends BasePage
 	 * */
 	public String getTextOfChecklist5()
 	{
-		navBar.mouseHoverOnSeverWeather();
-		navBar.clicAwReadySubMenu();
+		navBar.hoverOnSevereWeather();
+		navBar.navigateToAccuWeatherReady();
 		WebPageLoaded.isDomInteractive();
 		Sleeper.sleep(10);
 		WebElement checkList5 = getDriver().findElement(byChecklist5);
@@ -164,8 +164,8 @@ public class AccuWeatherReady extends BasePage
 	 * */
 	public String getTextOfChecklist6()
 	{
-		navBar.mouseHoverOnSeverWeather();
-		navBar.clicAwReadySubMenu();
+		navBar.hoverOnSevereWeather();
+		navBar.navigateToAccuWeatherReady();
 		WebPageLoaded.isDomInteractive();
 		Sleeper.sleep(10);
 		WebElement checkList6 = getDriver().findElement(byChecklist6);
@@ -179,8 +179,8 @@ public class AccuWeatherReady extends BasePage
 	 * */
 	public String getURLOfChecklist1()
 	{
-		navBar.mouseHoverOnSeverWeather();
-		navBar.clicAwReadySubMenu();
+		navBar.hoverOnSevereWeather();
+		navBar.navigateToAccuWeatherReady();
 		WebPageLoaded.isDomInteractive();
 		Sleeper.sleep(10);
 		getDriver().findElement(byChecklist1).jsClick();
@@ -195,8 +195,8 @@ public class AccuWeatherReady extends BasePage
 	 * */
 	public String getURLOfChecklist2()
 	{
-		navBar.mouseHoverOnSeverWeather();
-		navBar.clicAwReadySubMenu();
+		navBar.hoverOnSevereWeather();
+		navBar.navigateToAccuWeatherReady();
 		WebPageLoaded.isDomInteractive();
 		Sleeper.sleep(10);
 		getDriver().findElement(byChecklist2).jsClick();
@@ -211,8 +211,8 @@ public class AccuWeatherReady extends BasePage
 	 * */
 	public String getURLOfChecklist3()
 	{
-		navBar.mouseHoverOnSeverWeather();
-		navBar.clicAwReadySubMenu();
+		navBar.hoverOnSevereWeather();
+		navBar.navigateToAccuWeatherReady();
 		WebPageLoaded.isDomInteractive();
 		Sleeper.sleep(10);
 		getDriver().findElement(byChecklist3).jsClick();
@@ -227,8 +227,8 @@ public class AccuWeatherReady extends BasePage
 	 * */
 	public String getURLOfChecklist4()
 	{
-		navBar.mouseHoverOnSeverWeather();
-		navBar.clicAwReadySubMenu();
+		navBar.hoverOnSevereWeather();
+		navBar.navigateToAccuWeatherReady();
 		WebPageLoaded.isDomInteractive();
 		Sleeper.sleep(10);
 		getDriver().findElement(byChecklist4).jsClick();
@@ -243,8 +243,8 @@ public class AccuWeatherReady extends BasePage
 	 * */
 	public String getURLOfChecklist5()
 	{
-		navBar.mouseHoverOnSeverWeather();
-		navBar.clicAwReadySubMenu();
+		navBar.hoverOnSevereWeather();
+		navBar.navigateToAccuWeatherReady();
 		WebPageLoaded.isDomInteractive();
 		Sleeper.sleep(10);
 		getDriver().findElement(byChecklist5).jsClick();
@@ -259,8 +259,8 @@ public class AccuWeatherReady extends BasePage
 	 * */
 	public String getURLOfChecklist6()
 	{
-		navBar.mouseHoverOnSeverWeather();
-		navBar.clicAwReadySubMenu();
+		navBar.hoverOnSevereWeather();
+		navBar.navigateToAccuWeatherReady();
 		WebPageLoaded.isDomInteractive();
 		Sleeper.sleep(10);
 		getDriver().findElement(byChecklist6).jsClick();

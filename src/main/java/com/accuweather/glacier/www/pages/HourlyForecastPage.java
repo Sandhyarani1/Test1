@@ -2,7 +2,13 @@ package com.accuweather.glacier.www.pages;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -17,7 +23,9 @@ import com.chameleon.utils.date.SimpleDate;
 
 public class HourlyForecastPage extends BasePage
 {
-	private By byHourlyForecastPage = By.cssSelector("div > div > div.subnav-items > a:nth-child(4)");
+	private By byHourlyTab = By.xpath("//a[@data-gaid='hourly']");
+	private By byHourlyTabColor = By.xpath("//div[@class='subnav-items']/a/h2[contains(text(),'Hourly')]");
+	
 	private By byTime = By
 			.cssSelector("div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > div > div.date > p:nth-child(1)");
 	private By byDate = By
@@ -56,20 +64,20 @@ public class HourlyForecastPage extends BasePage
 			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(5)");
 	private By byCeiling = By.cssSelector(
 			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(6)");
-	private By byNextDay = By.cssSelector("div.navigation.content-module > div.card-button.centered.nav-card.next > a");
-	private By byNextDayText = By.cssSelector("div.page-column-1 > div.navigation.content-module > div.card-button.centered.nav-card.next > span");
+	private By byNextDay = By.cssSelector("div.navigation.content-module > a.card-button.centered.nav-card.next");
+	private By byNextDayText = By.cssSelector("div.navigation.content-module > a.card-button.centered.nav-card.next > span");
 	private By byRightArrowIcon = By.cssSelector(
-			"div.two-column-page-content > div.page-column-1 > div.navigation.content-module > div > a > svg");
+			"div.page-column-1 > div:nth-child(1) > div.navigation.content-module > a.card-button.centered.nav-card.next > div > svg");
 	private By byLeftArrowIcon = By.cssSelector(
-			"div.navigation.content-module > div.card-button.centered.nav-card.prev.has-next > a > svg");
+			"div.page-column-1 > div:nth-child(1) > div.navigation.content-module > a.card-button.centered.nav-card.prev.has-next > div > svg");
 	private By byUpArrowIcon = By.cssSelector(
 			"div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > svg");
 	private By byDownArrowIcon = By
 			.cssSelector("div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div > svg");
 	private By byPreviousDayText = By
-			.cssSelector("div.navigation.content-module > div.card-button.centered.nav-card.prev.has-next > span");
+			.xpath("//div[@class='navigation content-module']/a[contains(@class,'card-button centered nav-card prev')]/span");
 	private By byPreviousDay = By
-			.cssSelector("div.navigation.content-module > div > a");
+			.xpath("//div[@class='navigation content-module']/a[contains(@class,'card-button centered nav-card prev')]");
 	private By byLastDayCTATab = By.cssSelector(
 			"div.two-column-page-content > div.page-column-1 > div.navigation.content-module > a.card-button.nav-card.prev.centered");
 	private By byLastDayCTATabText = By.cssSelector(
@@ -79,7 +87,7 @@ public class HourlyForecastPage extends BasePage
 	private By byCurrentHourTab = By
 			.cssSelector("div.hourly-wrapper > div:nth-child(1) > div.accordion-item-header-container > div");
 	private By byCurrentHourInfoTab = By.cssSelector(
-			"div.two-column-page-content > div.page-column-1 > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div");
+			"div.two-column-page-content > div.page-column-1 >  div > div.hourly-wrapper > div:nth-child(1) > div.accordion-item-content > div");
 	private By byTemperatureAtTheTop = By.cssSelector(
 			"div.page-subheader.content-module > div.page-subheader-wrap > div.recent-locations-label > a.recent-location-display > span:nth-child(2)");
 	private By byWeatherIconAtTheTop = By.cssSelector(
@@ -88,7 +96,38 @@ public class HourlyForecastPage extends BasePage
 	private By byRightArrowIconFromTomorrowCard = By.cssSelector("div > div.card-button.content-module.centered > a.arrow-wrap.is-next");
 	private By byLeftArrowIconFromTomorrowCard = By.cssSelector("div > div.card-button.content-module.centered > a:nth-child(1)");
 				
+    //Arraylist
+	public static ArrayList<String> timeList;
+	public static ArrayList<String> dateList;
+	public static ArrayList<String> temperatureList;
+	public static ArrayList<String> iconPhraseList;
+	public static ArrayList<String> precipitationList;
+	public static ArrayList<String> realFeelList;
+	public static ArrayList<String> windList;
+	public static ArrayList<String> windGustsList;
+	public static ArrayList<String> windGustsUnitList;
+	public static ArrayList<String> HumidityList;
+	public static ArrayList<String> dewPointList;
+	public static ArrayList<String> maxUVIndexValueList;
+	public static ArrayList<String> cloudCoverList;
+	public static ArrayList<String> rainList;
+	public static ArrayList<String> snowList;
+	public static ArrayList<String> iceList;
+	public static ArrayList<String> visibilityList;
+	public static ArrayList<String> ceilingList;
+	
+	public static ArrayList<String> timeFromAPIList;
+	public static ArrayList<String> roundingUpValuefromAPIList;
+	public static ArrayList<String> temperatureFromAPIList;
+	public static ArrayList<String> realFeelFromAPIList;
+	public static ArrayList<String> windValueFromAPIList;
+	public static ArrayList<String> windGustsValueFromAPIList;
+	public static ArrayList<String> dewPointFromAPIList;
+	public static ArrayList<String> visibilityValueFromAPIList;
+	public static ArrayList<String> ceilingValueFromAPIList;
+	
 	private static final String ENVIRONMENT_URL_CONFIG_FILE = "EnvironmentURLs.properties";
+
 	private Calendar calendar = Calendar.getInstance();
 	SimpleDate day = new SimpleDate();
 	private Boolean timeValidation;
@@ -178,9 +217,9 @@ public class HourlyForecastPage extends BasePage
 	public void clickOnHourlyTab()
 	{
 		WebPageLoaded.isDomInteractive();
-		WebElement hourlyTab = getDriver().findElement(byHourlyForecastPage);
-		hourlyTab.syncVisible(15);
-		hourlyTab.click();
+		WebElement hourlyTab = getDriver().findElement(byHourlyTab);
+		hourlyTab.syncVisible(25);
+		hourlyTab.jsClick();
 		WebElement reelFeel = getDriver().findElement(byRealFeelValue);
 		try 
 		{ 
@@ -192,7 +231,7 @@ public class HourlyForecastPage extends BasePage
 			getDriver().navigate().refresh();
 			WebPageLoaded.isDomInteractive();
 			hourlyTab.syncVisible(15);
-			hourlyTab.click();
+			hourlyTab.jsClick();
 			reelFeel.syncVisible();
 		}
 	}
@@ -201,7 +240,7 @@ public class HourlyForecastPage extends BasePage
 	public String getHourlyTabText()
 	{
 		WebPageLoaded.isDomInteractive();
-		WebElement hourlyTab = getDriver().findElement(byHourlyForecastPage);
+		WebElement hourlyTab = getDriver().findElement(byHourlyTabColor);
 		hourlyTab.syncVisible(15);
 		return hourlyTab.getText();
 	}
@@ -280,10 +319,8 @@ public class HourlyForecastPage extends BasePage
 	/** Method to click CTA */
 	public void clickCTATab()
 	{
-		WebPageLoaded.isDomInteractive();
+		WebPageLoaded.isDomComplete();
 		WebElement cta = getDriver().findElement(byNextDay);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		Sleeper.sleep(10);
 		cta.syncVisible(15);
 		cta.jsClick();
 		Sleeper.sleep(5);
@@ -295,7 +332,6 @@ public class HourlyForecastPage extends BasePage
 		WebPageLoaded.isDomInteractive();
 		WebElement rightArrowIcon = getDriver().findElement(byRightArrowIcon);
 		rightArrowIcon.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		return rightArrowIcon.isDisplayed();
 	}
 
@@ -341,7 +377,6 @@ public class HourlyForecastPage extends BasePage
 		WebPageLoaded.isDomInteractive();
 		WebElement leftArrowIcon = getDriver().findElement(byLeftArrowIcon);
 		leftArrowIcon.syncVisible(30);
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		return leftArrowIcon.isDisplayed();
 	}
 
@@ -379,15 +414,18 @@ public class HourlyForecastPage extends BasePage
 	{
 		WebPageLoaded.isDomInteractive();
 		int counter = 0;
-		for (int i = 1; i <= 25; i++)
+		for (int i = 1; i <= 26; i++)
 		{
-			if( i == 15 ) {
+			if( i == 3 ) {
+				i = i + 1;
+			}
+			
+			if( i == 16 ) {
 				i = i + 1;
 			}
 			WebElement hourTab = getDriver()
-					.findElement(By.cssSelector("div.page-column-1 > div.hourly-wrapper > div:nth-child(" + i + ")"));
+					.findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ")"));
 			hourTab.syncVisible(30);
-			getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			if (hourTab.isDisplayed())
 				counter++;
 		}
@@ -524,97 +562,94 @@ public class HourlyForecastPage extends BasePage
 	public String getColor_Of_ActiveTab()
 	{
 		WebPageLoaded.isDomInteractive();
-		String color = getDriver().findElement(byHourlyForecastPage).getCssValue("border-top-color");
-		return Color.fromString(color).asHex();
+		String color = getDriver().findElement(byHourlyTabColor).getCssValue("border-bottom");
+		String getColor = color.substring(10);
+		return Color.fromString(getColor).asHex();
 	}
 
-	/** Method to get the color of the text in hour tab */
-	public String getColorOfHourComponents()
-	{
-		WebPageLoaded.isDomInteractive();
-		String color = getDriver().findElement(byHourlyForecastPage).getCssValue("border-top-color");
-		return Color.fromString(color).asHex();
-	}
+//	/** Method to get the color of the text in hour tab */
+//	public String getColorOfHourComponents()
+//	{
+//		WebPageLoaded.isDomInteractive();
+//		String color = getDriver().findElement(byHourlyForecastPage).getCssValue("border-top-color");
+//		return Color.fromString(color).asHex();
+//	}
 
-	/** Method to validate day parameter in URL when next CTA is clicked */
-	public void validateDayParamInURLForNextDay()
+	/** Method to validate day parameter in URL when next CTA is clicked 
+	 * @author SOMWIYA
+	 * boolean return true - if day parameter is increased by 1 else false
+	 * */
+	public Boolean validateDayParamInURLForNextDay(String URL, String cityName, String zipcode, String locationKey)
 	{
-		for (int i = 0; i < 2; i++)
+		boolean isEquals = false;
+		for (int i = 1; i <= 3; i++)
 		{
-			try
-			{
-				if (i == 0)
+				if (i == 1)
 				{
-					if ((getDriver().getCurrentUrl()
-							.equals(getQaUrl() + "en/us/royal-oak/48073/hourly-weather-forecast/20813_pc")))
-						;
-					setHourlyTabURLState(true);
+					if(getDriver().getCurrentUrl().equalsIgnoreCase(URL + "en/us/" + cityName + "/" + zipcode + "/hourly-weather-forecast/" + locationKey))
+					    isEquals = true;
+					else 
+						break;
 				}
 
 				else
 				{
 					clickCTATab();
-					if (getDriver().getCurrentUrl()
-							.equals(getQaUrl() + "en/us/royal-oak/48073/hourly-weather-forecast/20813_pc?day=" + i))
-						;
-					setHourlyTabURLState(true);
-				}
-
-			}
-
-			catch (AssertionError ae)
-			{
-				System.err.println(ae.getMessage());
-				Assert.fail("URL not as expected for page " + i);
-			}
-
+					if (getDriver().getCurrentUrl().equalsIgnoreCase(URL + "en/us/" + cityName + "/" + zipcode + "/hourly-weather-forecast/" + locationKey+ "?day=" + i))
+						isEquals = true;
+					else 
+					    break;
+						
+	        	}
 		}
-
+		
+		return isEquals;
 	}
 
-	/** Method to validate day parameter in URL when previous day CTA is clicked */
-	public void validateDayParamInURLForPreviousDay()
+	
+
+	/** Method to validate day parameter in URL when previous day CTA is clicked
+	 *  @author SOMWIYA
+	 *  boolean return true - if day parameter is decreased by 1 else false
+	 * */
+	public Boolean validateDayParamInURLForPreviousDay(String URL, String cityName, String zipcode, String locationKey)
 	{
-		for (int i = 0; i < 2; i++)
+		boolean isEquals = false;
+		
+		for (int i = 3; i > 0; i--)
 		{
-			clickCTATab();
-		}
-
-		for (int i = 6; i > 0; i--)
-		{
-			try
-			{
-				if (i == 6)
+				if (i == 3)
 				{
-					if (getDriver().getCurrentUrl()
-							.equals(getQaUrl() + "en/us/royal-oak/48073/hourly-weather-forecast/20813_pc?day=" + i))
+					if (getDriver().getCurrentUrl().equalsIgnoreCase(URL + "en/us/" + cityName + "/" + zipcode + "/hourly-weather-forecast/" + locationKey+ "?day=" + i))
 					{
-						setHourlyTabURLState(true);
-						clickLastDayCTATab();
-					}
-
-				}
-
-				else
-				{
-					if (getDriver().getCurrentUrl()
-							.equals("https://qualityassurance.accuweather.com/en/us/royal-oak/48073/hourly-weather-forecast/20813_pc?day=" + i))
-					{
+						isEquals = true;
 						clickPreviousDay();
-						setHourlyTabURLState(true);
-					}
-
+					} else
+						break;
 				}
 
-			}
-
-			catch (AssertionError ae)
-			{
-				System.err.println(ae.getMessage());
-				Assert.fail("URL not as expected for page " + i);
-			}
+				if (i == 2)
+				{
+					if (getDriver().getCurrentUrl().equalsIgnoreCase(URL + "en/us/" + cityName + "/" + zipcode + "/hourly-weather-forecast/" + locationKey+ "?day=" + i))
+					{
+						isEquals = true;
+						clickPreviousDay();
+					} else
+						break;
+				}
+				
+				if (i == 1)
+				{
+					if (getDriver().getCurrentUrl().equalsIgnoreCase(URL + "en/us/" + cityName + "/" + zipcode + "/hourly-weather-forecast/" + locationKey+ "?day=" + i))
+					{
+						isEquals = true;
+					} else
+						break;
+				}
 
 		}
+		
+		return isEquals;
 
 	}
 
@@ -712,65 +747,65 @@ public class HourlyForecastPage extends BasePage
 		return dayOfTheWeek;
 	}
 
-	/** Method to validate previous days on previous CTA tabs */
-	public void validatePreviousDays()
-	{
-		for (int i = 0; i <= 6; i++)
-		{
-			try
-			{
-				if (i == 0)
-					clickCTATab();
-				else
-				{
-					if (i == 1)
-					{
-						if (readPreviousDay().equals(day.getCurrentDay()))
-						{
-							setPreviousDayTextValidation(true);
-							clickCTATab();
-						}
-
-					}
-
-					else
-					{
-						if (i != 6)
-						{
-							if (readPreviousDay().equals(getNextDay(i)))
-							{
-								setPreviousDayTextValidation(true);
-								clickCTATab();
-							}
-
-						}
-
-						else
-						{
-							if (readLastCTATabtext().equals(getNextDay(i)))
-								setPreviousDayTextValidation(true);
-						}
-
-					}
-
-				}
-
-			}
-
-			catch (AssertionError ae)
-			{
-				setPreviousDayTextValidation(false);
-				Assert.fail("Previous day not matching on page " + i);
-			}
-
-			catch (Exception e)
-			{
-				e.getMessage();
-			}
-
-		}
-
-	}
+//	/** Method to validate previous days on previous CTA tabs */
+//	public void validatePreviousDays()
+//	{
+//		for (int i = 0; i <= 6; i++)
+//		{
+//			try
+//			{
+//				if (i == 0)
+//					clickCTATab();
+//				else
+//				{
+//					if (i == 1)
+//					{
+//						if (readPreviousDay().equals(day.getCurrentDay()))
+//						{
+//							setPreviousDayTextValidation(true);
+//							clickCTATab();
+//						}
+//
+//					}
+//
+//					else
+//					{
+//						if (i != 6)
+//						{
+//							if (readPreviousDay().equals(getNextDay(i)))
+//							{
+//								setPreviousDayTextValidation(true);
+//								clickCTATab();
+//							}
+//
+//						}
+//
+//						else
+//						{
+//							if (readLastCTATabtext().equals(getNextDay(i)))
+//								setPreviousDayTextValidation(true);
+//						}
+//
+//					}
+//
+//				}
+//
+//			}
+//
+//			catch (AssertionError ae)
+//			{
+//				setPreviousDayTextValidation(false);
+//				Assert.fail("Previous day not matching on page " + i);
+//			}
+//
+//			catch (Exception e)
+//			{
+//				e.getMessage();
+//			}
+//
+//		}
+//
+//	}
 
 	/** Method to validate next days on next CTA tabs */
 	public void validateNextDays()
@@ -947,8 +982,7 @@ public class HourlyForecastPage extends BasePage
 		if(i==3)
 			i=i+1;
 		WebElement time = getDriver()
-				.findElement(By.cssSelector("div.two-column-page-content > div > div > div:nth-child(" + i
-						+ ") > div > div > div > div.date > p:nth-child(1)"));
+				.findElement(By.cssSelector("div:nth-child(" + i+ ") > div > div > div > div.date > p:nth-child(1)"));
 		time.syncVisible(15);
 		return time.getText();
 	}
@@ -960,8 +994,7 @@ public class HourlyForecastPage extends BasePage
 		if (i==3)
 			i=i+1;
 		WebElement date = getDriver()
-				.findElement(By.cssSelector("div.two-column-page-content > div > div > div:nth-child(" + i
-						+ ") > div > div > div > div.date > p.sub"));
+				.findElement(By.cssSelector("div:nth-child(" + i+ ") > div > div > div > div.date > p.sub"));
 		date.syncVisible(15);
 		return date.getText();
 	}
@@ -1445,7 +1478,7 @@ public class HourlyForecastPage extends BasePage
 	}
 	
 	/**
-	 * Method to verify all 72 Hour tabs are present in next page of Hourly tab
+	 * Method to verify all 72 Hour tabs are present in the next page of Hourly tab
 	 * @author SOWMIYA
 	 * return Boolean - true if 
 	 * */
@@ -1454,12 +1487,12 @@ public class HourlyForecastPage extends BasePage
 		
 		Boolean flag = false;
 		int counter = 3;
-		List<WebElement> getCurentWeekCardList = getDriver().findElements(By.cssSelector("div.two-column-page-content > div > div.hourly-wrapper > div")); 
+		List<WebElement> getCurentWeekCardList = getDriver().findElements(By.cssSelector("div > div.hourly-wrapper > div")); 
 		int sizeOfCurrentWeekCardsList = getCurentWeekCardList.size();
 		WebElement linkNextDay = getDriver().findElement(byNextDay);	
 		for (int i = 1; i <= 27; i++)
 		{
-			List<WebElement> getCardList = getDriver().findElements(By.cssSelector("div.two-column-page-content > div > div.hourly-wrapper > div"));
+			List<WebElement> getCardList = getDriver().findElements(By.cssSelector("div > div.hourly-wrapper > div"));
 			int totalCards = getCardList.size();
 			
 			if(i == totalCards+1) {
@@ -1467,7 +1500,7 @@ public class HourlyForecastPage extends BasePage
 					linkNextDay.syncVisible(5);
 					linkNextDay.jsClick();
 					Sleeper.sleep(3);
-					WebElement hourlyTab = getDriver().findElement(byHourlyForecastPage);
+					WebElement hourlyTab = getDriver().findElement(byHourlyTabColor);
 					if(hourlyTab.syncVisible(15))
 					i = 1;
 				} catch(Exception e) {
@@ -1482,7 +1515,7 @@ public class HourlyForecastPage extends BasePage
 			}
 			if(i==3)
 				i=i+1;
-			WebElement hourTab = getDriver().findElement(By.cssSelector("div.two-column-page-content > div > div.hourly-wrapper > div:nth-child(" + i + ")"));
+			WebElement hourTab = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ")"));
 			hourTab.syncVisible(30);
 			
 			if (hourTab.isDisplayed())
@@ -1491,5 +1524,191 @@ public class HourlyForecastPage extends BasePage
 		}
 		return flag;  
 	}
+	
+	/** Method to click highlighted hourly tab
+	 * @author SOWMIYA
+	 *  */
+	public void clickHighlightedHourlyTab()
+	{
+		WebPageLoaded.isDomInteractive();
+		WebElement hourlyTab = getDriver().findElement(byHourlyTabColor);
+		hourlyTab.syncVisible(15);
+		hourlyTab.click();
+		Sleeper.sleep(3);
+	}
 
+	/** Method to validate previous days on previous CTA tabs 
+	 *  @author SOWMIYA
+	 * */
+	public void validatePreviousDays()
+	{
+		for (int i = 0; i <= 2; i++)
+		{
+			try
+			{
+				if (i == 0)
+					clickCTATab();
+				else
+				{
+					if (i == 1)
+					{
+						if (readPreviousDay().equals(day.getCurrentDay()))
+						{
+							setPreviousDayTextValidation(true);
+							clickCTATab();
+						}
+
+					}
+
+					else
+					{
+					   if (readPreviousDay().equals(getNextDay(i)))
+							{
+								setPreviousDayTextValidation(true);
+							}
+                   }
+				}
+			}catch (AssertionError ae)
+			{
+				setPreviousDayTextValidation(false);
+				Assert.fail("Previous day not matching on page " + i);
+			}
+
+			catch (Exception e)
+			{
+				e.getMessage();
+			}
+
+		}
+
+	}
+	
+	/** Method to get the text of labels and store them n arraylist.
+	 * @author SOWMIYA
+	 *  */
+	public void getTextOfAllLabelsFromEachHoursOnHourlyPage()
+	{
+		timeList = new ArrayList<String>();
+		dateList = new ArrayList<String>();
+		temperatureList = new ArrayList<String>();
+		iconPhraseList = new ArrayList<String>();
+		precipitationList = new ArrayList<String>();
+		realFeelList = new ArrayList<String>();
+		windList = new ArrayList<String>();
+		windGustsList = new ArrayList<String>();
+		windGustsUnitList = new ArrayList<String>();
+		HumidityList = new ArrayList<String>();
+		dewPointList = new ArrayList<String>();
+		maxUVIndexValueList = new ArrayList<String>();
+		cloudCoverList = new ArrayList<String>();
+		rainList = new ArrayList<String>();
+	    snowList = new ArrayList<String>();
+	    iceList = new ArrayList<String>();
+		visibilityList = new ArrayList<String>();
+		ceilingList  = new ArrayList<String>();
+		
+		//get the total number of tabs in today's hourly page
+		List<WebElement> NoOfHoursTab = getDriver().findElements(By.cssSelector("div.hourly-wrapper > div > div.accordion-item-header-container > div"));
+		int totalTabs = NoOfHoursTab.size()+1;
+	
+		for(int i=1; i<=totalTabs; i++) {
+			//there is no hour tab with child number 3. so add 1 to it.
+			if( i==3 )
+				i = i+1;
+			
+			if(i!=1) {
+			//click the down arrow from the hour tab
+			WebElement downArrow = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > svg"));
+			downArrow.syncVisible(15);
+			downArrow.click();
+			Sleeper.sleep(1.5);
+			}
+			
+			//TIME
+			WebElement time = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > div > div.date > p:nth-child(1)"));
+			time.syncVisible(10);
+			timeList.add(time.getText());
+			
+			//date
+			WebElement date = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > div > div.date > p.sub"));
+			date.syncVisible(10);
+			dateList.add(date.getText());
+			
+			//TEMPERATURE
+			WebElement temperature = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > div > div.temp"));
+			temperature.syncVisible(10);
+			temperatureList.add(temperature.getText());
+			
+			//PHRASE
+			WebElement phrase = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > div > span"));
+			phrase.syncVisible(10);
+			iconPhraseList.add(phrase.getText());
+			
+			//PRECIPITATION
+			WebElement precipitation = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-header-container > div > div > div.precip"));
+			precipitation.syncVisible(10);
+			precipitationList.add(precipitation.getText());
+			
+			//REALFEEL
+			WebElement realFeel = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div.panel.left > p:nth-child(1)"));
+			realFeel.syncVisible(10);
+			realFeelList.add(realFeel.getText());
+			
+			//WIND
+			WebElement wind = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div.panel.left > p:nth-child(2)"));
+			wind.syncVisible(10);
+			windList.add(wind.getText());
+			
+			//WIND GUSTS
+			WebElement windGusts = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div.panel.left > p:nth-child(3)"));
+			windGusts.syncVisible(10);
+			windGustsList.add(windGusts.getText());
+			
+			//HUMUDITY
+			WebElement humidity = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div.panel.left > p:nth-child(4)"));
+			humidity.syncVisible(10);
+			HumidityList.add(humidity.getText());
+			
+			//DEW POINT
+			WebElement dewPoint = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div.panel.left > p:nth-child(5)"));
+			dewPoint.syncVisible(10);
+			dewPointList.add(dewPoint.getText());
+			
+			//MAX UV INDEX
+			WebElement maxUVIndex = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div.panel.left > p:nth-child(6)"));
+			maxUVIndex.syncVisible(10);
+			maxUVIndexValueList.add(maxUVIndex.getText());
+			
+			//CLOUD COVER
+			WebElement cloudCover = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(1)"));
+			cloudCover.syncVisible(10);
+			cloudCoverList.add(cloudCover.getText());
+			
+			//RAIN
+			WebElement rain = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(2)"));
+			rain.syncVisible(10);
+			rainList.add(rain.getText());
+			
+			//SNOW
+			WebElement snow = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(3)"));
+			snow.syncVisible(10);
+			snowList.add(snow.getText());
+			
+			//ICE
+			WebElement ice = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(4)"));
+			ice.syncVisible(10);
+			iceList.add(ice.getText());
+			
+			//VISIBILITY
+			WebElement visibility = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(5)"));
+			visibility.syncVisible(10);
+			visibilityList.add(visibility.getText());
+			
+			//CEILING
+			WebElement ceiling = getDriver().findElement(By.cssSelector("div.hourly-wrapper > div:nth-child(" + i + ") > div.accordion-item-content > div > div:nth-child(2) > p:nth-child(6)"));
+			ceiling.syncVisible(10);
+			ceilingList.add(ceiling.getText());
+		}
+		
+	}
 }

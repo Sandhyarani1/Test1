@@ -5,7 +5,7 @@
 		<listener
 			class-name="com.chameleon.utils.listeners.CustomizedEmailableReport" />
 	</listeners>
-	<parameter name="runLocation" value="grid" />
+	<parameter name="runLocation" value="local" />
 	<parameter name="environment" value="qa" />
 	<parameter name="operatingSystem" value="WINDOWS" />
 	<parameter name="logLevel" value="3" />
@@ -32,7 +32,15 @@
 			<class 
 				name ="com.accuweather.glacier.www.Footer.Test_LegalFooter" />
 			<class 
-				name ="com.accuweather.glacier.www.homepagebreadcrumbs.Test_HomepageBreadcrumbs" />							
+				name ="com.accuweather.glacier.www.homepagebreadcrumbs.Test_HomepageBreadcrumbs" />
+			<class 
+				name ="com.accuweather.glacier.www.currentCondition.RW_T2253CurrentWeatherDataValidation" />
+			<class 
+				name ="com.accuweather.glacier.www.dailyList.RW_T2579_DailyPageDataValidation_Imperial" />
+			<class 
+				name ="com.accuweather.glacier.www.dailyList.RW_T2580_DailyPageDataValidation_Metric" />
+			<class 
+				name ="com.accuweather.glacier.www.hourlyForecast.RW_T2557_HourlyPageAPI" />										
 		</classes>
 	</test>
 </suite>

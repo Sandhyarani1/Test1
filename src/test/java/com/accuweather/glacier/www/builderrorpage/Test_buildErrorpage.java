@@ -28,7 +28,7 @@ public class Test_buildErrorpage extends AccuWeatherBaseTest
 		String appendedUrl=erropage.addtexttoEndURL();
 		getDriver().navigate().to(appendedUrl);
 		Sleeper.sleep(5);
-		navBar.isAWLogoDisplayed();
+		navBar.isAccuWeatherLogoDisplayed();
 		Assert.assertEquals(getDriver().getCurrentUrl(), expected400ErrorpageURL,"User not navigated to 400 Error Page");
 	}
 
@@ -49,7 +49,7 @@ public class Test_buildErrorpage extends AccuWeatherBaseTest
 		String appendedurl=erropage.addtexttoEndURL();
 		getDriver().navigate().to(appendedurl);
 		Sleeper.sleep(5);
-		navBar.isAWLogoDisplayed();
+		navBar.isAccuWeatherLogoDisplayed();
 		String errorTypeDisplayed=erropage.errortypeDisplayed();
 		Assert.assertEquals(errorTypeDisplayed, expected400ErrorpageType,"Error Type displayed is not matching ");
 	}
@@ -60,7 +60,7 @@ public class Test_buildErrorpage extends AccuWeatherBaseTest
 		String appendedurl=erropage.addtexttoEndURL();	
 		getDriver().navigate().to(appendedurl);
 		Sleeper.sleep(5);
-		navBar.isAWLogoDisplayed();
+		navBar.isAccuWeatherLogoDisplayed();
 		String errorTextDisplayed=erropage.errorpageTextDisplayed();
 		Assert.assertEquals(errorTextDisplayed, expected400ErrorpageErrorText,"Error Type displayed is not matching ");
 	}
@@ -82,7 +82,7 @@ public class Test_buildErrorpage extends AccuWeatherBaseTest
 		String appendedUrl=erropage.addtexttoEndURL();
 		getDriver().navigate().to(appendedUrl);
 		Sleeper.sleep(5);
-		navBar.isAWLogoDisplayed();
+		navBar.isAccuWeatherLogoDisplayed();
 		String actualctatextcolourdisplayed=erropage.CTABacktoAccuweathercolourDisplayed();
 		Assert.assertEquals(actualctatextcolourdisplayed, ORANGE_COLOR, "CTA Text Back to AcuuWeater not displayed in Orange colour");
 	}
@@ -93,7 +93,7 @@ public class Test_buildErrorpage extends AccuWeatherBaseTest
 		String appendedUrl=erropage.addtexttoEndURL();
 		getDriver().navigate().to(appendedUrl);
 		Sleeper.sleep(5);
-		navBar.isAWLogoDisplayed();
+		navBar.isAccuWeatherLogoDisplayed();
 		Assert.assertTrue(erropage.CTABacktoAccuweatherwithArrowDisplayed());
 	}
 
@@ -103,7 +103,7 @@ public class Test_buildErrorpage extends AccuWeatherBaseTest
 		String appendeUrl=erropage.addtexttoEndURL();
 		getDriver().navigate().to(appendeUrl);	
 		Sleeper.sleep(5);
-		navBar.isAWLogoDisplayed();
+		navBar.isAccuWeatherLogoDisplayed();
 		erropage.CTABacktoAccuweatherisClicked();
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedAccuweatherUrl,"User not redirected to Acuweather Home page");
 	}
@@ -113,7 +113,7 @@ public class Test_buildErrorpage extends AccuWeatherBaseTest
 		testStart("Navigating to the 500 Error Page");
 		String appendedUrl=erropage.apendtexttoEndURL2();
 		getDriver().navigate().to(appendedUrl);
-		navBar.isAWLogoDisplayed();	
+		navBar.isAccuWeatherLogoDisplayed();	
 		Assert.assertEquals(getDriver().getCurrentUrl(), expected500ErrorpageURL,"User not navigated to 500 Error Page");
 	}
 
@@ -134,7 +134,7 @@ public class Test_buildErrorpage extends AccuWeatherBaseTest
 		String appendedurl=erropage.apendtexttoEndURL2();
 		getDriver().navigate().to(appendedurl);
 		Sleeper.sleep(5);
-		navBar.isAWLogoDisplayed();	
+		navBar.isAccuWeatherLogoDisplayed();	
 		String errorTextDisplayed=erropage.errorpageTextDisplayed();
 		Assert.assertEquals(errorTextDisplayed, expected500ErrorpageErrorText,"Error Type 500 displayed is not matching ");
 	}
@@ -144,7 +144,7 @@ public class Test_buildErrorpage extends AccuWeatherBaseTest
 		testStart("Navigating to 500 Error Page and validating Text Back to AccuWeather is dislayed");
 		String appendedurl=erropage.apendtexttoEndURL2();
 		getDriver().navigate().to(appendedurl);
-		navBar.isAWLogoDisplayed();
+		navBar.isAccuWeatherLogoDisplayed();
 		String actualCTATextdisplayed=erropage.CTABacktoAccuweatheisDisplayed();
 		Assert.assertEquals(actualCTATextdisplayed, expectedCTAtext,"CTA Text (Back to AccuWeather) displayed not matching");
 	}
@@ -176,7 +176,7 @@ public class Test_buildErrorpage extends AccuWeatherBaseTest
 		String appendedurl=erropage.apendtexttoEndURL2();	
 		getDriver().navigate().to(appendedurl);	
 		erropage.CTABacktoAccuweatherisClicked();
-		navBar.isAWLogoDisplayed();
+		navBar.isAccuWeatherLogoDisplayed();
 		Assert.assertEquals(getDriver().getCurrentUrl(), expectedAccuweatherUrl,"User not redirected to Acuweather Home page");
 	}
 

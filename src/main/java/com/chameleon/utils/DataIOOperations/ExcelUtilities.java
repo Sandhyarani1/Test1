@@ -48,6 +48,10 @@ public class ExcelUtilities
 	public static String getZipCode(int rowNo)
 	{
 		String zipCode = ExcelUtilities.getNumericData(rowNo, 5)+"";
+		if(zipCode.length()==4)
+		{
+			zipCode = 0+zipCode;
+		}
 		return zipCode;
 	}
 	

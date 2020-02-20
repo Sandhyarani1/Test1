@@ -2,14 +2,11 @@ package com.accuweather.glacier.www.threedayforecast;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.accuweather.glacier.www.AccuWeatherBaseTest;
-import com.accuweather.glacier.www.pages.ForeCastWeatherPage;
 import com.accuweather.glacier.www.pages.HomepageBreadcrumbs;
 import com.accuweather.glacier.www.pages.LandingPage;
-import com.accuweather.glacier.www.pages.MonthlyForeCastPage;
 import com.accuweather.glacier.www.pages.NavigationBar;
 import com.accuweather.glacier.www.pages.ThreeDayForecastPage;
 import com.chameleon.selenium.web.WebPageLoaded;
-import com.chameleon.selenium.web.elements.WebElement;
 import com.chameleon.utils.Sleeper;
 import com.chameleon.utils.date.SimpleDate;
 
@@ -611,9 +608,9 @@ public class Test_ThreeDayForecast extends AccuWeatherBaseTest
 	public void TC1190_VerifyIndexTabsforThreeDayPageDisplayed_verifyTabReflectsFormatOfCityAndCountry()
 	{
 		testStart("Verify tab reflects severe weather warnings");
-		navBar.mouseHoverOnSeverWeather();
+		navBar.hoverOnSevereWeather();
 		navBar.isSeverWeatherSubMenuDisplayed();
-		navBar.clickSeverWeatherSubMenu();
+		navBar.navigateToSeverWeatherPage();
 		Sleeper.sleep(2);
 		String actualTabReflectsSevereWeather = getDriver().getTitle();
 		System.out.println("actualTabReflectsSevereWeather:"+actualTabReflectsSevereWeather);

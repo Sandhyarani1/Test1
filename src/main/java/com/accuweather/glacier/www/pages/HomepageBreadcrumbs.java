@@ -7,11 +7,9 @@ import org.openqa.selenium.By;
 import com.accuweather.glacier.BasePage;
 import com.chameleon.selenium.web.WebPageLoaded;
 import com.chameleon.utils.Sleeper;
-import com.chameleon.utils.DataIOOperations.ExcelUtilities;
 
 public class HomepageBreadcrumbs extends BasePage
 {
-	
 	private By byfooterbreadcrumbs=By.cssSelector("div.template-root > div.breadcrumbs-wrapper");
 	private By bybreadcrumbforWorld=By.cssSelector("div.template-root > div.breadcrumbs-wrapper > div > div:nth-child(1) > a");
 	private By bybreadcrumbsforRegion=By.cssSelector("div > div.breadcrumbs-wrapper > div > div:nth-child(2) > a");
@@ -20,88 +18,6 @@ public class HomepageBreadcrumbs extends BasePage
 	private By bybreadcrumbsforCity =By.cssSelector("div.template-root > div.breadcrumbs-wrapper > div > div:nth-child(5) > a");
 	public static int rowNo=0;
 
-	/**
-	 * @author HFARAZ
-	 * Method to get the row number for the city name
-	 * */
-	public static int getBreadCrumbsDetails(String cityName)
-	{
-		rowNo = ExcelUtilities.getRowNumberForCity(cityName);
-		return rowNo;
-	}
-	
-	/**
-	 * @author HFARAZ
-	 * Method to get city name
-	 * **/
-	public static String getCityName()
-	{
-		return ExcelUtilities.getCityName(rowNo);
-	}
-	
-	/**
-	 * @author HFARAZ
-	 * Method to get the state name
-	 * **/
-	public static String getStateCode()
-	{
-		return ExcelUtilities.getStateCode(rowNo);
-	}
-	
-	/**
-	 * @author HFARAZ
-	 * Method to get zipcode
-	 * **/
-	public static String getZipCode()
-	{
-		return ExcelUtilities.getZipCode(rowNo);
-	}
-	
-	/**
-	 * @author HFARAZ
-	 * Method to get country code of the city
-	 * **/
-	public static String getCountryCode()
-	{
-		return ExcelUtilities.getCountryCode(rowNo);
-	}
-	
-	/**
-	 * @author HFARAZ
-	 * Method to give location key for the city
-	 * **/
-	public static String getLocationKey()
-	{
-		return ExcelUtilities.getLocationKey(rowNo);
-	}
-	
-	/**
-	 * @author HFARAZ
-	 * Method to get the state name for the city searched 
-	 * */
-	public static String getStateName()
-	{
-		return ExcelUtilities.getStateName(rowNo);
-	}
-	
-	/**
-	 * @author HFARAZ
-	 * Method to get continent name for the city
-	 * */
-	public static String getRegionName()
-	{
-		return ExcelUtilities.getRegionName(rowNo);
-	}
-	
-	/**
-	 * @author HFARAZ
-	 * Method to get country name for the city
-	 * */
-	public static String getCountryName()
-	{
-		return ExcelUtilities.getCountryName(rowNo);
-	}
-	
 	
 	/**
 	 * @author Sandhya Rani 

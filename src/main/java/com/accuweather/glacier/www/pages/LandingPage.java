@@ -117,6 +117,7 @@ public class LandingPage extends BasePage
 				break;
 			}
 		}
+		WebPageLoaded.isDomComplete();
 	}
 
 	/*
@@ -708,30 +709,8 @@ public class LandingPage extends BasePage
 
 	public Boolean isCenterWell1ImageDisplayed()
 	{
-
-		Boolean isCenterWell1Image = false;
-
 		WebPageLoaded.isDomComplete();
-
-		try
-		{
-
-			if (getDriver().findElement(centerWell1Image).isDisplayed())
-
-				isCenterWell1Image = true;
-
-		}
-		catch (NoSuchElementException nsee)
-		{
-
-			isCenterWell1Image = false;
-
-			System.err.println(nsee.getMessage());
-
-		}
-
-		return isCenterWell1Image;
-
+		return getDriver().findElement(centerWell1Image).syncVisible(15,false);
 	}
 
 	/**
@@ -742,21 +721,15 @@ public class LandingPage extends BasePage
 
 	public String getImageSourceOfContentModule()
 	{
-
-		if (isCenterWell1ImageDisplayed().equals(true))
-
+		if (isCenterWell1ImageDisplayed())
 			return getDriver().findElement(centerWell1Image).getAttribute("src");
-
 		else
-
 			return null;
-
 	}
 
 	/**
-	 * 
-	 * @author HFARAZ Method to click on Content Module 1 Article and return the URL
-	 * 
+	 * @author HFARAZ 
+	 * Method to click on Content Module 1 Article and return the URL
 	 */
 
 	public String getURLForContentModule()
@@ -771,96 +744,41 @@ public class LandingPage extends BasePage
 	}
 
 	/**
-	 * 
-	 * @author HFARAZ Method to check if the date of content module is displayed
-	 * 
+	 * @author HFARAZ 
+	 * Method to check if the date of content module is displayed
 	 * @return true if displayed else false
-	 * 
 	 */
 
 	public Boolean isCenterWell1VideoDisplayed()
 	{
-
-		Boolean isCenterWell1Video = false;
-
 		WebPageLoaded.isDomComplete();
-
-		try
-		{
-
-			if (getDriver().findElement(centerWell1VideoTitle).isDisplayed())
-
-				isCenterWell1Video = true;
-
-		}
-		catch (NoSuchElementException nsee)
-		{
-
-			isCenterWell1Video = false;
-
-			System.err.println(nsee.getMessage());
-
-		}
-
-		return isCenterWell1Video;
-
+		return getDriver().findElement(centerWell1VideoTitle).syncVisible(15,false);
 	}
 
 	/**
-	 * 
-	 * @author HFARAZ Method to get the text of Content Module date
-	 * 
+	 * @author HFARAZ 
+	 * Method to get the text of Content Module date
 	 * @return String value of content module date
-	 * 
 	 */
 
 	public String getCenterWell1VideoTitle()
 	{
-
-		if (isCenterWell1VideoDisplayed().equals(true))
-
+		if (isCenterWell1VideoDisplayed())
 			return getDriver().findElement(centerWell1VideoTitle).getText();
-
 		else
-
 			return null;
-
 	}
 
 	/**
-	 * 
-	 * @author HFARAZ Method to check if the date of content module is displayed
-	 * 
+	 * @author HFARAZ 
+	 * Method to check if the date of content module is displayed
 	 * @return true if displayed else false
-	 * 
 	 */
 
 	public Boolean isWeatherNewsArticlesDisplayed()
 	{
-
-		Boolean isWeatherArticleDisplayed = false;
-
 		WebPageLoaded.isDomComplete();
-
-		try
-		{
-
-			if (getDriver().findElement(weatherNewsArticles).isDisplayed())
-
-				isWeatherArticleDisplayed = true;
-
-		}
-		catch (NoSuchElementException nsee)
-		{
-
-			isWeatherArticleDisplayed = false;
-
-			System.err.println(nsee.getMessage());
-
-		}
-
-		return isWeatherArticleDisplayed;
-
+		return getDriver().findElement(weatherNewsArticles).syncVisible(15,false);
 	}
 
 	/**
@@ -1046,11 +964,9 @@ public class LandingPage extends BasePage
 	}
 
 	/**
-	 * 
-	 * @author HFARAZ Method to read the dates of weather news articles
-	 * 
+	 * @author HFARAZ 
+	 * Method to read the dates of weather news articles
 	 * @return ArrayList of dates of all the weather news
-	 * 
 	 */
 
 	public ArrayList readWeatherNewsDate(int count)
@@ -1094,11 +1010,9 @@ public class LandingPage extends BasePage
 	}
 
 	/**
-	 * 
-	 * @author HFARAZ Method to read the types of weather news
-	 * 
+	 * @author HFARAZ
+	 * Method to read the types of weather news
 	 * @return ArrayList of types of all the weather news
-	 * 
 	 */
 
 	public ArrayList readWeatherNewsType(int count)
@@ -1127,8 +1041,7 @@ public class LandingPage extends BasePage
 	
 	/**
 	 * @author HFARAZ 
-	 * Method to get the text of Content Module date
-	 * @return String value of content module date 
+	 * Method to get the count of right rail 1 articles
 	 */
 
 	public int getCountOfRightRail1_Articles()
@@ -1159,8 +1072,7 @@ public class LandingPage extends BasePage
 	
 	/**
 	 * @author HFARAZ 
-	 * Method to get the text of Content Module date
-	 * @return String value of content module date 
+	 * Method to get the count of right rail 2 articles
 	 */
 
 	public int getCountOfRightRail2_Articles()
@@ -1192,11 +1104,9 @@ public class LandingPage extends BasePage
 	}
 
 	/**
-	 * 
-	 * @author HFARAZ Method to read the titles of right rail articles
-	 * 
+	 * @author HFARAZ 
+	 * Method to read the titles of right rail articles
 	 * @return ArrayList of the titles of right rail articles
-	 * 
 	 */
 
 	public ArrayList<String> getRightRail1_ArticlesTitles(int count)
@@ -1208,7 +1118,7 @@ public class LandingPage extends BasePage
 			try
 			{
 				if (getDriver().findElement(By.cssSelector("div.content-module.zone-rightRail1 > div > a:nth-child(" + i
-						+ ") > p.right-rail-article-title")).isDisplayed())
+						+ ") > p.right-rail-article-title")).syncVisible(15,false))
 					rightRailArticlesTitle.add(getDriver()
 							.findElement(By.cssSelector("div.content-module.zone-rightRail1 > div > a:nth-child(" + i
 									+ ") > p.right-rail-article-title")).getText());
@@ -1224,11 +1134,9 @@ public class LandingPage extends BasePage
 	}
 
 	/**
-	 * 
-	 * @author HFARAZ Method to read the titles of right rail articles
-	 * 
+	 * @author HFARAZ 
+	 * Method to read the titles of right rail articles
 	 * @return ArrayList of the titles of right rail articles
-	 * 
 	 */
 
 	public ArrayList<String> getRightRail2_ArticlesTitles(int count)
@@ -1241,7 +1149,7 @@ public class LandingPage extends BasePage
 			try
 			{
 				if (getDriver().findElement(By.cssSelector("div.zone-rightRail2 > div > a:nth-child(" + i
-						+ ") > p.right-rail-article-title")).isDisplayed())
+						+ ") > p.right-rail-article-title")).syncVisible(15,false))
 					rightRailArticlesTitle.add(getDriver()
 							.findElement(By.cssSelector("div.zone-rightRail2 > div > a:nth-child(" + i
 									+ ") > p.right-rail-article-title")).getText());

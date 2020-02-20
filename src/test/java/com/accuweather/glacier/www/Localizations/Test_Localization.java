@@ -42,13 +42,13 @@ public class Test_Localization extends AccuWeatherBaseTest
 
 		
 		/****************Validate Maps submenu on the city forecast page***************************************/
-		navBar.mouseHoverOnMaps();
+		navBar.hoverOnRadarAndMaps();
 		softAssert.assertTrue(localization.isCityForecastMapCategoriesPresent(),
 				"Issue-----> Maps submenus like Maps, Satellite and  Satellite Image are not present");
 		
 		
 		/****************Validate description of Map submenu under Maps category on top level navigation*************************************************/
-		softAssert.assertEquals(navBar.getMapsSubmenuDescription(), expectedMapsDescription, 
+		softAssert.assertEquals(navBar.getRadarAndMapsSubmenuDescription(), expectedMapsDescription, 
 				"Issue-----> Maps description under Maps category on top level navigation is not matching as expected");
 		
 		/****************Verify Satellite submenu description under Maps category on top level navigation*************************************************/
@@ -57,20 +57,20 @@ public class Test_Localization extends AccuWeatherBaseTest
 		
 		
 		/****************Click the URL of Maps submenu under Maps category on top level navigation and verify URL*************************************************/
-		navBar.clickOnMapsSubMenu();
+		navBar.navigateToRadarAndMapsSubMenu();
 		waitUntilWindowExistsWithTitle(submenuTitle);
 		softAssert.assertEquals(getDriver().getCurrentUrl(), expectedMapsSubmenuPage_URL, 
 				"Issue-----> Maps URL under Maps category on top level navigation is not matching as expected");
 		
 		/****************Click the URL of Satellite submenu under Maps category on top level navigation and verify URL*************************************************/
 		
-		navBar.navigateToHomePageByLogo();
+		navBar.clickAccuWeatherLogo();
 		landingPage.enterZipcodeInSearchField(location);
 		landingPage.clickOnZipcodeSearchIcon();
 		localization.isMapsPresent();
-		navBar.mouseHoverOnMaps();
+		navBar.hoverOnRadarAndMaps();
 		navBar.isSatelliteSubMenuDisplayed();
-		navBar.clickOnSatelliteSubMenu();
+		navBar.navigateToSatellitePage();
 		softAssert.assertEquals(getDriver().getCurrentUrl(), expectedSatelliteSubmenuPage_URL, 
 				"Issue-----> Satellite URL under Maps category on top level navigation is not matching as expected");
 	
@@ -88,34 +88,34 @@ public class Test_Localization extends AccuWeatherBaseTest
 		
 		landingPage.enterZipcodeInSearchField("Munich, Germany");
 		landingPage.clickOnZipcodeSearchIcon();
-		navBar.mouseHoverOnRadarAndMaps();
+		navBar.hoverOnRadarAndMaps();
 		softAssert.assertTrue(navBar.isSeverSubMenuDisplayed(),
 				"Issue-----> Severe submenu is not found under maps category");
 
 		
 		/****************Validate severe submenu description***************************************/
 		
-		navBar.navigateToHomePageByLogo();
+		navBar.clickAccuWeatherLogo();
 		landingPage.enterZipcodeInSearchField("Rio de Janeiro, Brazil");
 		landingPage.clickOnZipcodeSearchIcon();
-		navBar.mouseHoverOnMaps();
+		navBar.hoverOnRadarAndMaps();
 		softAssert.assertEquals(navBar.getSevereSubmenuDescription(), expectedSevereDescription,
 				"Issue-----> Severe submenu is not matching as expected");
 		
 		/****************Verify severe submenu URL*************************************************/
 		
 		navBar.isSeverSubMenuDisplayed();
-		navBar.navigateToSevereTab();
+		navBar.navigateToSeverWeatherPage();
 		waitUntilWindowExistsWithTitle(submenuTitle);
 		softAssert.assertEquals(getDriver().getCurrentUrl(), expectedSevereSubmenuPage_URL, 
 				"Issue-----> Severe submenu URl is matching as expected");
 		
 		/******************** Verify satellite submenu map title *********************************/
 		
-		navBar.navigateToHomePageByLogo();
+		navBar.clickAccuWeatherLogo();
 		landingPage.enterZipcodeInSearchField("Rio de Janeiro, Brazil");
 		landingPage.clickOnZipcodeSearchIcon();
-		navBar.mouseHoverOnMaps();
+		navBar.hoverOnRadarAndMaps();
 		waitUntilWindowExistsWithTitle(submenuTitle);
 		softAssert.assertEquals(localization.getSatelliteSubMenuMapTitle(), expectedSatelliteSubMenuMapTitle, 
 				"Issue-----> Satellite submenu map title is not matching");
@@ -165,7 +165,7 @@ public class Test_Localization extends AccuWeatherBaseTest
 		testStart("Countries with Severe Weather alerts ON should see Severe Weather navigation");
 		landingPage.enterZipcodeInSearchField("Rio de Janeiro, Brazil");
 		landingPage.clickOnZipcodeSearchIcon();
-		softAssert.assertTrue(navBar.isSevereWeatherDisplayed(),
+		softAssert.assertTrue(navBar.isSevereWeatherTabDisplayed(),
 				"Issue-----> Severe Weather is not present on the top level navigation for the countries that has severe weather alert ON");
 		
 		softAssert.assertAll();
