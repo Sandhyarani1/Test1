@@ -14,7 +14,7 @@
 		<aspectjVersion>1.8.13</aspectjVersion>
 		<jacksonVersion>2.9.4</jacksonVersion>	 
 		<jsonVersion>20180130</jsonVersion>
-		<jUnitVersion>4.12</jUnitVersion>    
+		<jUnitVersion>4.13.1</jUnitVersion>    
 		<mariadbVersion>2.2.5</mariadbVersion>
 		<sauceLabsVersion>2.1.23</sauceLabsVersion>  	
 		<seleniumVersion>3.141.59</seleniumVersion>      	
