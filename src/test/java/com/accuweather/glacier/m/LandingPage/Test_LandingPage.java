@@ -8,6 +8,7 @@ import com.accuweather.glacier.www.pages.LandingPage;
 import com.accuweather.glacier.www.pages.NavigationBar;
 import com.chameleon.selenium.web.WebPageLoaded;
 
+
 public class Test_LandingPage extends AccuWeatherMobileBaseTest {
 	int actualLocationSize;
 	int expectedLocationSize;
