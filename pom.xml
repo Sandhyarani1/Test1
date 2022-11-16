@@ -12,7 +12,7 @@
 		<apacheCommonsIOVersion>2.4</apacheCommonsIOVersion>
 		<apacheCommonsLang3Version>3.7</apacheCommonsLang3Version>	
 		<aspectjVersion>1.8.13</aspectjVersion>
-		<jacksonVersion>2.9.4</jacksonVersion>	 
+		<jacksonVersion>2.12.7.1</jacksonVersion>	 
 		<jsonVersion>20180130</jsonVersion>
 		<jUnitVersion>4.12</jUnitVersion>    
 		<mariadbVersion>2.2.5</mariadbVersion>
